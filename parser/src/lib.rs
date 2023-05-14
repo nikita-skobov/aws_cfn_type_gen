@@ -25,7 +25,7 @@ pub struct CfnResourceProviderSchema {
     #[serde(rename = "$schema")]
     pub schema: String,
     #[serde(rename = "type")]
-    pub ty: String,
+    pub ty: TypeWrapper,
     pub title: String,
 
     // meat and potatoes:
@@ -62,7 +62,6 @@ pub struct CfnResourceProviderSchema {
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
-#[serde(deny_unknown_fields)]
 #[serde(default)]
 #[derive(Default, Debug)]
 pub struct Property {
@@ -95,19 +94,59 @@ pub struct Property {
     pub additional_properties: bool,
     pub dependencies: HashMap<String, serde_json::Value>,
     #[serde(rename = "type")]
-    pub ty: PropertyType,
+    pub ty: TypeWrapper,
     #[serde(rename = "enum")]
     pub enm: PropertyType,
     #[serde(rename = "const")]
     pub cnst: String,
-
-    // i dont care:
-    pub items: serde_json::Value,
     #[serde(rename = "$ref")]
-    pub r: String,
+    pub reference: String,
+
+    /// this is a hack. the items schema is the same as the properties.
+    /// but we cant just do items: Property
+    /// because thats a cyclical data structure and rust complains.
+    /// instead the hack becomes:
+    /// capture all extra fields from this struct and put them into a hashmap.
+    /// we expect to only find 1 field here which should be "items".
+    /// at parse time we perform a runtime check to ensure the only extra field here is "items"
+    #[serde(flatten)]
+    pub items: HashMap<String, Property>,
+
     #[serde(rename = "$comment")]
     pub comment: String,
     pub pattern_properties: serde_json::Value,
+}
+
+#[derive(Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
+pub enum Type {
+    String,
+    Object,
+    Array,
+    Boolean,
+    Integer,
+    Number,
+    Null,
+}
+
+impl Default for Type {
+    fn default() -> Self {
+        Self::String
+    }
+}
+
+#[derive(Deserialize, Debug)]
+#[serde(deny_unknown_fields)]
+#[serde(untagged)]
+pub enum TypeWrapper {
+    Single(Type),
+    Multiple(Vec<Type>),
+}
+impl Default for TypeWrapper {
+    fn default() -> Self {
+        Self::Single(Type::String)
+    }
 }
 
 #[derive(Deserialize, Debug)]
@@ -272,6 +311,11 @@ pub fn get_all_provider_schemas(
     let mut map = HashMap::new();
     iterate_all_zip_files(zip_archive, &mut |name, data| {
         let schema = get_schema(name, &data);
+        for (pro_name, prop) in schema.properties.iter() {
+            if prop.items.len() > 1 {
+                panic!("Unexpected extra key in the items map for {} : {}\n{:?}", name, pro_name, prop.items);
+            }
+        }
         sort_by_service(name, schema, &mut map);
     });
     map
@@ -284,12 +328,6 @@ mod test {
 
     #[test]
     fn all_files_deser_correctly() {
-        let zip_archive = get_cfn_resource_provider_schema("us-east-2", true).expect("Failed to");
-        let mut map = HashMap::new();
-        iterate_all_zip_files(zip_archive, &mut |name, data| {
-            let schema = get_schema(name, &data);
-            sort_by_service(name, schema, &mut map);
-        });
-        println!("{:#?}", map.keys());
+        get_all_provider_schemas("us-east-2", true);
     }
 }
