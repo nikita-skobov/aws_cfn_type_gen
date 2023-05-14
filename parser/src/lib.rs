@@ -94,13 +94,13 @@ pub struct Property {
     pub additional_properties: bool,
     pub dependencies: HashMap<String, serde_json::Value>,
     #[serde(rename = "type")]
-    pub ty: TypeWrapper,
+    pub ty: Option<TypeWrapper>,
     #[serde(rename = "enum")]
     pub enm: PropertyType,
     #[serde(rename = "const")]
     pub cnst: String,
     #[serde(rename = "$ref")]
-    pub reference: String,
+    pub reference: Option<String>,
 
     /// this is a hack. the items schema is the same as the properties.
     /// but we cant just do items: Property
@@ -117,6 +117,34 @@ pub struct Property {
     pub pattern_properties: serde_json::Value,
 }
 
+impl Property {
+    pub fn get_reference_name(&self) -> Option<String> {
+        if let Some(r) = &self.reference {
+            let mut split = r.rsplit("/");
+            if let Some(f) = split.next() {
+                return Some(f.to_string());
+            }
+        }
+        None
+    }
+
+    /// if this is an array (type: Array)
+    /// return the name of the item that the array consists of
+    pub fn get_item_name(&self) -> Option<String> {
+        if let Some(ty) = &self.ty {
+            match ty {
+                TypeWrapper::Single(Type::Array) => {
+                    if let Some(item) = self.items.get("items") {
+                        return item.get_reference_name();
+                    }
+                }
+                _ => {}
+            }
+        }
+        None
+    }
+}
+
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
@@ -128,12 +156,6 @@ pub enum Type {
     Integer,
     Number,
     Null,
-}
-
-impl Default for Type {
-    fn default() -> Self {
-        Self::String
-    }
 }
 
 #[derive(Deserialize, Debug)]
@@ -314,6 +336,19 @@ pub fn get_all_provider_schemas(
         for (pro_name, prop) in schema.properties.iter() {
             if prop.items.len() > 1 {
                 panic!("Unexpected extra key in the items map for {} : {}\n{:?}", name, pro_name, prop.items);
+            }
+            if prop.reference.is_some() {
+                if let Some(typ) = &prop.ty {
+                    match typ {
+                        // this is the only case where
+                        // having both $ref and type is allowed.
+                        // because $ref implies type is object
+                        TypeWrapper::Single(Type::Object) => {}
+                        _ => {
+                            panic!("{} at {} has both $ref and type.\n{:#?}", name, pro_name, prop);
+                        }
+                    }
+                }
             }
         }
         sort_by_service(name, schema, &mut map);
