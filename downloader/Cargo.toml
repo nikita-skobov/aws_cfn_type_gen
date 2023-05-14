@@ -1,0 +1,9 @@
+[package]
+name = "downloader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ureq = "2.6.2"
+zip = "0.6.5"
+adler32 = "1.0"
