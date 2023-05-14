@@ -1,6 +1,6 @@
 use std::{collections::HashMap, io::Read};
 
-use downloader::{get_cfn_resource_provider_schema, Zipped};
+use downloader::{Zipped, get_cfn_resource_provider_schema};
 
 use serde::{Deserialize};
 
@@ -10,8 +10,11 @@ use serde::{Deserialize};
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct CfnResourceProviderSchema {
+    // this isnt in the schema. we form this after parsing
+    pub item_name: String,
+
     // simple metadata stuff:
     pub type_name: String,
     pub description: String,
@@ -61,7 +64,7 @@ pub struct CfnResourceProviderSchema {
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct Property {
     pub insertion_order: bool,
     pub array_type: ArrayType,
@@ -107,7 +110,7 @@ pub struct Property {
     pub pattern_properties: serde_json::Value,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 pub enum ArrayType {
     Standard,
@@ -120,7 +123,7 @@ impl Default for ArrayType {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 pub enum Requirement {
@@ -136,7 +139,7 @@ impl Default for Requirement {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -149,7 +152,7 @@ pub struct Handlers {
     pub list: HandlerDef,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -161,7 +164,7 @@ pub struct HandlerDef {
     pub handler_schema: serde_json::Value,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 #[serde(untagged)]
 pub enum PropertyType {
@@ -175,7 +178,7 @@ impl Default for PropertyType {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 #[serde(untagged)]
 pub enum DefaultType {
@@ -192,7 +195,7 @@ impl Default for DefaultType {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -233,7 +236,7 @@ pub fn get_schema(name: &str, data: &String) -> CfnResourceProviderSchema {
     }
 }
 
-pub fn get_service_name(name: &str, schema: &CfnResourceProviderSchema) -> String {
+pub fn get_service_name(name: &str, schema: &mut CfnResourceProviderSchema) -> String {
     let mut segments = schema.type_name.split("::");
     let _ = segments.next()
         .unwrap_or_else(|| {
@@ -244,16 +247,34 @@ pub fn get_service_name(name: &str, schema: &CfnResourceProviderSchema) -> Strin
         .unwrap_or_else(|| {
             panic!("Failed to get second type name segment of {} From {}", schema.type_name, name);
         });
+    let third = segments.next()
+        .unwrap_or_else(|| {
+            panic!("Failed to get item name of {} From {}", schema.type_name, name);
+        });
+    schema.item_name = third.to_string();
     second.to_string()
 }
 
-pub fn sort_by_service(name: &str, schema: CfnResourceProviderSchema, map: &mut HashMap<String, Vec<CfnResourceProviderSchema>>) {
-    let name = get_service_name(name, &schema);
+pub fn sort_by_service(name: &str, mut schema: CfnResourceProviderSchema, map: &mut HashMap<String, Vec<CfnResourceProviderSchema>>) {
+    let name = get_service_name(name, &mut schema);
     if let Some(existing) = map.get_mut(&name) {
         existing.push(schema);
     } else {
         map.insert(name.clone(), vec![schema]);
     }
+}
+
+pub fn get_all_provider_schemas(
+    region: &str,
+    cache: bool
+) -> HashMap<String, Vec<CfnResourceProviderSchema>> {
+    let zip_archive = get_cfn_resource_provider_schema(region, cache).expect("Failed to get schema file");
+    let mut map = HashMap::new();
+    iterate_all_zip_files(zip_archive, &mut |name, data| {
+        let schema = get_schema(name, &data);
+        sort_by_service(name, schema, &mut map);
+    });
+    map
 }
 
 
