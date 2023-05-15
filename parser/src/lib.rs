@@ -60,6 +60,21 @@ pub struct CfnResourceProviderSchema {
     pub type_configuration: serde_json::Value,
 }
 
+impl CfnResourceProviderSchema {
+    /// checks the list of "read_only_properties".
+    /// if this field name is in the read only list,
+    /// that means this field is not an input, but rather
+    /// an output that can be later retrieved via GetAtt
+    pub fn field_is_input(&self, field_name: &str) -> bool {
+        for name in self.read_only_properties.iter() {
+            if name.ends_with(field_name) {
+                return false;
+            }
+        }
+        true
+    }
+}
+
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
 #[serde(default)]
@@ -140,6 +155,36 @@ impl Property {
                 }
                 _ => {}
             }
+        }
+        None
+    }
+
+    pub fn get_item(&self) -> Option<&Property> {
+        self.items.get("items")
+    }
+
+    /// if this type can be represented by some type in rust's standard library,
+    /// we use it. for example, String, f64, Vec<String>, etc.
+    pub fn get_simple_type(&self) -> Option<String> {
+        match &self.ty {
+            Some(TypeWrapper::Single(x)) => {
+                match x {
+                    Type::Array => {
+                        if let Some(item) = self.get_item() {
+                            if let Some(simple) = item.get_simple_type() {
+                                return Some(format!("Vec<{}>", simple));
+                            }
+                        }
+                    }
+                    Type::String => return Some("String".to_string()),
+                    Type::Boolean => return Some("bool".to_string()),
+                    Type::Integer => return Some("usize".to_string()),
+                    Type::Number => return Some("f64".to_string()),
+                    Type::Null => panic!("{:#?}\n\nI have a single simple Null type??", self),
+                    Type::Object => {},
+                }
+            }
+            _ => {}
         }
         None
     }
