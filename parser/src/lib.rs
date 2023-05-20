@@ -5,6 +5,100 @@ use downloader::{Zipped, get_cfn_resource_provider_schema};
 use serde::{Deserialize};
 
 /// the schema of the data that cloudformation provides from these files:
+/// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification-format.html
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+#[serde(deny_unknown_fields)]
+#[serde(default)]
+#[derive(Default, Debug)]
+pub struct CfnResourceSpecSchema {
+    pub property_types: HashMap<String, Properties>,
+    pub resource_specification_version: String,
+    pub resource_types: Option<HashMap<String, ResourceType>>,
+    pub resource_type: Option<HashMap<String, ResourceType>>,
+}
+
+impl CfnResourceSpecSchema {
+    pub fn get_resource_types<'a>(&'a self) -> &'a HashMap<String, ResourceType> {
+        match (&self.resource_type, &self.resource_types) {
+            (None, None) => unreachable!(),
+            (Some(_), Some(_)) => unreachable!(),
+            (None, Some(r)) => return r,
+            (Some(r), None) => return r,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+#[serde(deny_unknown_fields)]
+#[serde(default)]
+#[derive(Default, Debug)]
+pub struct ResourceType {
+    pub attributes: HashMap<String, Attribute>,
+    pub documentation: String,
+    pub properties: HashMap<String, Properties>,
+    pub additional_properties: bool,
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+#[serde(deny_unknown_fields)]
+#[serde(default)]
+#[derive(Default, Debug)]
+pub struct Attribute {
+    pub item_type: String,
+    #[serde(rename = "Type")]
+    pub ty: String,
+    pub primitive_item_type: String,
+    pub primitive_type: String,
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+#[serde(deny_unknown_fields)]
+#[serde(default)]
+#[derive(Default, Debug)]
+pub struct PropertyTypeSpec {
+    pub documentation: String,
+    pub duplicates_allowed: bool,
+    pub item_type: String,
+    pub required: bool,
+    #[serde(rename = "Type")]
+    pub ty: String,
+    pub update_type: String,
+    pub primitive_item_type: String,
+    pub primitive_type: String,
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+#[serde(deny_unknown_fields)]
+#[serde(default)]
+#[derive(Default, Debug)]
+pub struct Properties {
+    pub documentation: String,
+    pub required: bool,
+    pub duplicates_allowed: bool,
+    #[serde(rename = "Type")]
+    pub ty: String,
+    pub properties: HashMap<String, PropertyTypeSpec>,
+    pub update_type: String,
+    pub primitive_item_type: String,
+    pub primitive_type: String,
+    pub item_type: String,
+}
+
+pub fn get_spec_schema(name: &str, data: &String) -> CfnResourceSpecSchema {
+    match serde_json::from_str::<CfnResourceSpecSchema>(&data) {
+        Ok(o) => o,
+        Err(e) => {
+            panic!("Failed to deserialize {name}\n{:?}", e);
+        }
+    }
+}
+
+/// the schema of the data that cloudformation provides from these files:
 /// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-type-schemas.html
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
