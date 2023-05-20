@@ -48,6 +48,38 @@ pub fn get_cfn_resource_provider_schema(
     bytes_to_zip(contents)
 }
 
+
+pub fn get_cfn_resource_spec(_region: &str, cache: bool) -> Result<Zipped, String> {
+    // this is us-east-2: TODO: find way to map region to cloudfront CDN name.
+    let url = format!("https://dnwj8swjjbsbt.cloudfront.net/latest/CloudFormationResourceSpecification.zip");
+    let url_hash = basic_hash(url.as_bytes());
+    let file_name = format!("{url_hash}.zip");
+    if cache {
+        match std::fs::File::open(&file_name) {
+            Ok(mut f) => {
+                // if we're able to read it then we're good.
+                // but if we fail, then we'll try to make a request.
+                let mut bytes = vec![];
+                if let Ok(_) = f.read_to_end(&mut bytes) {
+                    return Ok(bytes_to_zip(bytes)?);
+                }
+            }
+            Err(_) => {
+                // we assume it doesnt exist, so we just make a request instead.
+            }
+        }
+    }
+    // either cache is false, or we failed to read the file.
+    // in any case: download it.
+    let contents = download_file(&url)?;
+    // if cache is set, we'd like to save this file
+    if cache {
+        let _ = std::fs::write(&file_name, &contents);
+    }
+    bytes_to_zip(contents)
+}
+
+
 pub fn download_file(
     url: &str,
 ) -> Result<Vec<u8>, String> {
