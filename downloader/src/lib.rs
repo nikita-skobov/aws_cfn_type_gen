@@ -6,7 +6,7 @@ pub use zip::ZipArchive;
 
 pub type Zipped = ZipArchive<Cursor<Vec<u8>>>;
 
-fn basic_hash(data: &[u8]) -> u32 {
+pub fn basic_hash(data: &[u8]) -> u32 {
     adler32::adler32(data).unwrap_or(0)
 }
 
