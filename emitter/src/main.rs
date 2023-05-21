@@ -79,6 +79,9 @@ pub struct CfnField {
     pub documentation: String,
 
     pub valid_values: Option<Vec<String>>,
+    pub pattern: Option<String>,
+    pub maximum: Option<f64>,
+    pub minimum: Option<f64>,
 }
 
 impl CfnField {
@@ -162,12 +165,12 @@ impl ServiceCrate {
     }
 }
 
-pub fn emit_module_file(path: &str, module: &ModuleDef) {
-    let mut use_map_tracker = HashMap::new();
-    let use_name = format!("Cfn{}", module.name);
-    let mut out_str = emit_struct(&mut use_map_tracker, &use_name, &module.entrypoint_struct);
-
-    out_str.push_str(&format!("
+pub fn emit_cfn_resource_impl(
+    validations: String,
+    use_name: &str,
+    resource_type_str: &str
+) -> String {
+    format!("
 impl cfn_resources::CfnResource for {} {{
     fn type_string() -> &'static str {{
         \"{}\"
@@ -176,11 +179,25 @@ impl cfn_resources::CfnResource for {} {{
     fn properties(self) -> serde_json::Value {{
         serde_json::to_value(self).expect(\"Failed to serialize cloudformation resource properties\")
     }}
-}}
-", use_name, module.resource_name));
-    
+
+    fn validate(&self) -> Result<(), String> {{
+{validations}
+        Ok(())
+    }}
+}}", use_name, resource_type_str)
+}
+
+pub fn emit_module_file(path: &str, module: &ModuleDef) {
+    let mut use_map_tracker = HashMap::new();
+    let use_name = format!("Cfn{}", module.name);
+    let mut field_validations = "".to_string();
+    let mut out_str = emit_struct(&mut field_validations, &mut use_map_tracker, &use_name, &module.entrypoint_struct);
+    out_str.push_str(&emit_cfn_resource_impl(field_validations, &use_name, &module.resource_name));
+
     for aux in module.auxiliary_structs.iter() {
-        out_str.push_str(&emit_struct(&mut use_map_tracker, &aux.name, aux));
+        let mut aux_field_validations = "".to_string();
+        out_str.push_str(&emit_struct(&mut aux_field_validations, &mut use_map_tracker, &aux.name, aux));
+        out_str.push_str(&emit_cfn_resource_impl(aux_field_validations, &aux.name, "NOT_A_VALID_CFN_RESOURCE"));
     }
     if let Err(e) = std::fs::write(path, out_str) {
         panic!("Failed while writing out to {path}\nFor module {}\n{:?}", module.name, e);
@@ -248,12 +265,6 @@ impl Default for {name} {{
 ")
 }
 
-impl Default for CfnField {
-    fn default() -> Self {
-        Self { name: Default::default(), required: Default::default(), ty: Default::default(), documentation: Default::default(), valid_values: Default::default() }
-    }
-}
-
 pub fn emit_field_enums(field_enums: HashMap<String, Vec<String>>) -> String {
     let mut out = "".to_string();
     let mut list = vec![];
@@ -268,14 +279,91 @@ pub fn emit_field_enums(field_enums: HashMap<String, Vec<String>>) -> String {
     out
 }
 
-pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct) -> String {
+pub fn add_check_for_max_or_min(out: &mut String, f: &CfnField, limit: f64, direction: &str) {
+    let (validation_type, word) = if direction == ">" {
+        ("Max", "greater")
+    } else {
+        ("Min", "less")
+    };
+
+    let inner = if f.ty.starts_with("Vec<") || f.ty == "String" {
+        format!("
+        if the_val.len() {} {} as _ {{
+            return Err(format!(\"{} validation failed on field '{}'. {{}} is {} than {}\", the_val.len()));
+        }}
+", direction, limit, validation_type, f.get_field_name(), word, limit)
+    } else if f.ty == "i64" || f.ty == "f64" {
+        format!("
+        if *the_val {} {} as _ {{
+            return Err(format!(\"{} validation failed on field '{}'. {{}} is {} than {}\", the_val));
+        }}
+", direction, limit, validation_type, f.get_field_name(), word, limit)
+    } else {
+        return;
+    };
+
+    let push_s = if !f.required {
+        format!("
+        if let Some(the_val) = &self.{} {{
+{}
+        }}
+        ", f.get_field_name(), inner)
+    } else {
+        format!("
+        let the_val = &self.{};
+{}
+        ", f.get_field_name(), inner)
+    };
+
+    out.push_str(&push_s);
+}
+
+pub fn emit_field_validation(is_custom_type: bool, f: &CfnField) -> String {
+    if f.valid_values.is_some() {
+        return "".to_string();
+    }
+
+    if is_custom_type {
+        let validation_call = if f.required {
+            "validate()?;"
+        } else {
+            "as_ref().map_or(Ok(()), |val| val.validate())?;"
+        };
+        return format!("
+        self.{}.{}
+", f.get_field_name(), validation_call);
+    }
+
+    let mut out_str = "".to_string();
+    // check if there's min or max:
+    match (&f.maximum, &f.minimum) {
+        (None, None) => {},
+        (None, Some(min)) => {
+            add_check_for_max_or_min(&mut out_str, f, *min, "<");
+        }
+        (Some(max), None) => {
+            add_check_for_max_or_min(&mut out_str, f, *max, ">");
+        }
+        (Some(max), Some(min)) => {
+            add_check_for_max_or_min(&mut out_str, f, *max, ">");
+            add_check_for_max_or_min(&mut out_str, f, *min, "<");
+        }
+    }
+
+    out_str
+}
+
+pub fn emit_struct(validations: &mut String, use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct) -> String {
     let mut fields = "".to_string();
     let mut field_enums = HashMap::new();
     for f in s.fields.iter() {
         // add to the use tracker to say that
         // this current struct uses that other custom type
         if is_custom_type(&f.ty) {
+            validations.push_str(&emit_field_validation(true, f));
             add_or_insert_to_use_map(use_map_tracker, s.name.clone(), f.ty.clone());
+        } else {
+            validations.push_str(&emit_field_validation(false, f));
         }
         fields.push_str(&emit_field(&mut field_enums, use_map_tracker, &s.name, f));
     }
@@ -495,17 +583,41 @@ pub fn parse_valid_values_line(line: &str) -> Option<Vec<String>> {
     }
 }
 
+pub fn parse_min_max_values(doc: &str) -> (Option<f64>, Option<f64>) {
+    let mut max_value = None;
+    let mut min_value = None;
+    if let Some((_, right)) = doc.split_once("Maximum:") {
+        if let Some((left, _)) = right.split_once("\n") {
+            let left = left.trim();
+            if let Ok(num) = left.parse::<f64>() {
+                max_value = Some(num);
+            }
+        }
+    }
+    if let Some((_, right)) = doc.split_once("Minimum:") {
+        if let Some((left, _)) = right.split_once("\n") {
+            let left = left.trim();
+            if let Ok(num) = left.parse::<f64>() {
+                min_value = Some(num);
+            }
+        }
+    }
+    (min_value, max_value)
+}
+
 pub fn prop_to_cfn_field<T: PropertyLike>(name: &str, prop: &T) -> CfnField {
     let doc = prop.doc().to_string();
+    let (minimum, maximum) = parse_min_max_values(&doc);
     CfnField {
         name: name.to_string(),
         required: prop.required(),
         ty: get_type_from_prop(prop),
         valid_values: parse_valid_values(&doc),
         documentation: doc,
+        maximum,
+        minimum,
+        pattern: None,
     }
-
-
     // Maximum:
     // Minimum:
     // Pattern:
