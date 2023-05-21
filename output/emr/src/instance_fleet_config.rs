@@ -501,6 +501,21 @@ pub struct SpotProvisioningSpecification {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum SpotProvisioningSpecificationAllocationStrategyEnum {
+
+    /// capacity-optimized
+    #[serde(rename = "capacity-optimized")]
+    Capacityoptimized,
+
+}
+
+impl Default for SpotProvisioningSpecificationAllocationStrategyEnum {
+    fn default() -> Self {
+        SpotProvisioningSpecificationAllocationStrategyEnum::Capacityoptimized
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum SpotProvisioningSpecificationTimeoutActionEnum {
 
     /// SWITCH_TO_ON_DEMAND
@@ -516,21 +531,6 @@ pub enum SpotProvisioningSpecificationTimeoutActionEnum {
 impl Default for SpotProvisioningSpecificationTimeoutActionEnum {
     fn default() -> Self {
         SpotProvisioningSpecificationTimeoutActionEnum::Switchtoondemand
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SpotProvisioningSpecificationAllocationStrategyEnum {
-
-    /// capacity-optimized
-    #[serde(rename = "capacity-optimized")]
-    Capacityoptimized,
-
-}
-
-impl Default for SpotProvisioningSpecificationAllocationStrategyEnum {
-    fn default() -> Self {
-        SpotProvisioningSpecificationAllocationStrategyEnum::Capacityoptimized
     }
 }
 

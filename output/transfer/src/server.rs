@@ -255,6 +255,29 @@ impl Default for ServerDomainEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ServerEndpointTypeEnum {
+
+    /// PUBLIC
+    #[serde(rename = "PUBLIC")]
+    Public,
+
+    /// VPC
+    #[serde(rename = "VPC")]
+    Vpc,
+
+    /// VPC_ENDPOINT
+    #[serde(rename = "VPC_ENDPOINT")]
+    Vpcendpoint,
+
+}
+
+impl Default for ServerEndpointTypeEnum {
+    fn default() -> Self {
+        ServerEndpointTypeEnum::Public
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ServerIdentityProviderTypeEnum {
 
     /// API_GATEWAY
@@ -278,29 +301,6 @@ pub enum ServerIdentityProviderTypeEnum {
 impl Default for ServerIdentityProviderTypeEnum {
     fn default() -> Self {
         ServerIdentityProviderTypeEnum::Apigateway
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ServerEndpointTypeEnum {
-
-    /// PUBLIC
-    #[serde(rename = "PUBLIC")]
-    Public,
-
-    /// VPC
-    #[serde(rename = "VPC")]
-    Vpc,
-
-    /// VPC_ENDPOINT
-    #[serde(rename = "VPC_ENDPOINT")]
-    Vpcendpoint,
-
-}
-
-impl Default for ServerEndpointTypeEnum {
-    fn default() -> Self {
-        ServerEndpointTypeEnum::Public
     }
 }
 

@@ -512,6 +512,25 @@ pub struct Delegation {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum DelegationRoleTypeEnum {
+
+    /// PROCESS_OWNER
+    #[serde(rename = "PROCESS_OWNER")]
+    Processowner,
+
+    /// RESOURCE_OWNER
+    #[serde(rename = "RESOURCE_OWNER")]
+    Resourceowner,
+
+}
+
+impl Default for DelegationRoleTypeEnum {
+    fn default() -> Self {
+        DelegationRoleTypeEnum::Processowner
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum DelegationStatusEnum {
 
     /// COMPLETE
@@ -531,25 +550,6 @@ pub enum DelegationStatusEnum {
 impl Default for DelegationStatusEnum {
     fn default() -> Self {
         DelegationStatusEnum::Complete
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum DelegationRoleTypeEnum {
-
-    /// PROCESS_OWNER
-    #[serde(rename = "PROCESS_OWNER")]
-    Processowner,
-
-    /// RESOURCE_OWNER
-    #[serde(rename = "RESOURCE_OWNER")]
-    Resourceowner,
-
-}
-
-impl Default for DelegationRoleTypeEnum {
-    fn default() -> Self {
-        DelegationRoleTypeEnum::Processowner
     }
 }
 

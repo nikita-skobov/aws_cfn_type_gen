@@ -314,6 +314,29 @@ pub struct CfnService {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ServiceLaunchTypeEnum {
+
+    /// EC2
+    #[serde(rename = "EC2")]
+    Ec2,
+
+    /// EXTERNAL
+    #[serde(rename = "EXTERNAL")]
+    External,
+
+    /// FARGATE
+    #[serde(rename = "FARGATE")]
+    Fargate,
+
+}
+
+impl Default for ServiceLaunchTypeEnum {
+    fn default() -> Self {
+        ServiceLaunchTypeEnum::Ec2
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ServicePropagateTagsEnum {
 
     /// NONE
@@ -352,29 +375,6 @@ pub enum ServiceSchedulingStrategyEnum {
 impl Default for ServiceSchedulingStrategyEnum {
     fn default() -> Self {
         ServiceSchedulingStrategyEnum::Daemon
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ServiceLaunchTypeEnum {
-
-    /// EC2
-    #[serde(rename = "EC2")]
-    Ec2,
-
-    /// EXTERNAL
-    #[serde(rename = "EXTERNAL")]
-    External,
-
-    /// FARGATE
-    #[serde(rename = "FARGATE")]
-    Fargate,
-
-}
-
-impl Default for ServiceLaunchTypeEnum {
-    fn default() -> Self {
-        ServiceLaunchTypeEnum::Ec2
     }
 }
 

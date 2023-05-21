@@ -756,37 +756,6 @@ impl Default for ScalingInstructionPredictiveScalingMaxCapacityBehaviorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ScalingInstructionServiceNamespaceEnum {
-
-    /// autoscaling
-    #[serde(rename = "autoscaling")]
-    Autoscaling,
-
-    /// dynamodb
-    #[serde(rename = "dynamodb")]
-    Dynamodb,
-
-    /// ec2
-    #[serde(rename = "ec2")]
-    Ec2,
-
-    /// ecs
-    #[serde(rename = "ecs")]
-    Ecs,
-
-    /// rds
-    #[serde(rename = "rds")]
-    Rds,
-
-}
-
-impl Default for ScalingInstructionServiceNamespaceEnum {
-    fn default() -> Self {
-        ScalingInstructionServiceNamespaceEnum::Autoscaling
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ScalingInstructionPredictiveScalingModeEnum {
 
     /// ForecastAndScale
@@ -802,25 +771,6 @@ pub enum ScalingInstructionPredictiveScalingModeEnum {
 impl Default for ScalingInstructionPredictiveScalingModeEnum {
     fn default() -> Self {
         ScalingInstructionPredictiveScalingModeEnum::Forecastandscale
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ScalingInstructionScalingPolicyUpdateBehaviorEnum {
-
-    /// KeepExternalPolicies
-    #[serde(rename = "KeepExternalPolicies")]
-    Keepexternalpolicies,
-
-    /// ReplaceExternalPolicies
-    #[serde(rename = "ReplaceExternalPolicies")]
-    Replaceexternalpolicies,
-
-}
-
-impl Default for ScalingInstructionScalingPolicyUpdateBehaviorEnum {
-    fn default() -> Self {
-        ScalingInstructionScalingPolicyUpdateBehaviorEnum::Keepexternalpolicies
     }
 }
 
@@ -864,6 +814,56 @@ pub enum ScalingInstructionScalableDimensionEnum {
 impl Default for ScalingInstructionScalableDimensionEnum {
     fn default() -> Self {
         ScalingInstructionScalableDimensionEnum::Autoscalingautoscalinggroupdesiredcapacity
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingInstructionScalingPolicyUpdateBehaviorEnum {
+
+    /// KeepExternalPolicies
+    #[serde(rename = "KeepExternalPolicies")]
+    Keepexternalpolicies,
+
+    /// ReplaceExternalPolicies
+    #[serde(rename = "ReplaceExternalPolicies")]
+    Replaceexternalpolicies,
+
+}
+
+impl Default for ScalingInstructionScalingPolicyUpdateBehaviorEnum {
+    fn default() -> Self {
+        ScalingInstructionScalingPolicyUpdateBehaviorEnum::Keepexternalpolicies
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingInstructionServiceNamespaceEnum {
+
+    /// autoscaling
+    #[serde(rename = "autoscaling")]
+    Autoscaling,
+
+    /// dynamodb
+    #[serde(rename = "dynamodb")]
+    Dynamodb,
+
+    /// ec2
+    #[serde(rename = "ec2")]
+    Ec2,
+
+    /// ecs
+    #[serde(rename = "ecs")]
+    Ecs,
+
+    /// rds
+    #[serde(rename = "rds")]
+    Rds,
+
+}
+
+impl Default for ScalingInstructionServiceNamespaceEnum {
+    fn default() -> Self {
+        ScalingInstructionServiceNamespaceEnum::Autoscaling
     }
 }
 

@@ -462,25 +462,6 @@ pub struct DnsServiceDiscovery {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum DnsServiceDiscoveryResponseTypeEnum {
-
-    /// ENDPOINTS
-    #[serde(rename = "ENDPOINTS")]
-    Endpoints,
-
-    /// LOADBALANCER
-    #[serde(rename = "LOADBALANCER")]
-    Loadbalancer,
-
-}
-
-impl Default for DnsServiceDiscoveryResponseTypeEnum {
-    fn default() -> Self {
-        DnsServiceDiscoveryResponseTypeEnum::Endpoints
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum DnsServiceDiscoveryIpPreferenceEnum {
 
     /// IPv4_ONLY
@@ -504,6 +485,25 @@ pub enum DnsServiceDiscoveryIpPreferenceEnum {
 impl Default for DnsServiceDiscoveryIpPreferenceEnum {
     fn default() -> Self {
         DnsServiceDiscoveryIpPreferenceEnum::Ipv4only
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DnsServiceDiscoveryResponseTypeEnum {
+
+    /// ENDPOINTS
+    #[serde(rename = "ENDPOINTS")]
+    Endpoints,
+
+    /// LOADBALANCER
+    #[serde(rename = "LOADBALANCER")]
+    Loadbalancer,
+
+}
+
+impl Default for DnsServiceDiscoveryResponseTypeEnum {
+    fn default() -> Self {
+        DnsServiceDiscoveryResponseTypeEnum::Endpoints
     }
 }
 

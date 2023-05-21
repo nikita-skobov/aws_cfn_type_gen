@@ -7204,6 +7204,56 @@ pub struct SpotFleetRequestConfigData {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum SpotFleetRequestConfigDataAllocationStrategyEnum {
+
+    /// capacityOptimized
+    #[serde(rename = "capacityOptimized")]
+    Capacityoptimized,
+
+    /// capacityOptimizedPrioritized
+    #[serde(rename = "capacityOptimizedPrioritized")]
+    Capacityoptimizedprioritized,
+
+    /// diversified
+    #[serde(rename = "diversified")]
+    Diversified,
+
+    /// lowestPrice
+    #[serde(rename = "lowestPrice")]
+    Lowestprice,
+
+    /// priceCapacityOptimized
+    #[serde(rename = "priceCapacityOptimized")]
+    Pricecapacityoptimized,
+
+}
+
+impl Default for SpotFleetRequestConfigDataAllocationStrategyEnum {
+    fn default() -> Self {
+        SpotFleetRequestConfigDataAllocationStrategyEnum::Capacityoptimized
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
+
+    /// default
+    #[serde(rename = "default")]
+    Default,
+
+    /// noTermination
+    #[serde(rename = "noTermination")]
+    Notermination,
+
+}
+
+impl Default for SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
+    fn default() -> Self {
+        SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum::Default
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum SpotFleetRequestConfigDataInstanceInterruptionBehaviorEnum {
 
     /// hibernate
@@ -7269,37 +7319,6 @@ impl Default for SpotFleetRequestConfigDataTargetCapacityUnitTypeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum SpotFleetRequestConfigDataAllocationStrategyEnum {
-
-    /// capacityOptimized
-    #[serde(rename = "capacityOptimized")]
-    Capacityoptimized,
-
-    /// capacityOptimizedPrioritized
-    #[serde(rename = "capacityOptimizedPrioritized")]
-    Capacityoptimizedprioritized,
-
-    /// diversified
-    #[serde(rename = "diversified")]
-    Diversified,
-
-    /// lowestPrice
-    #[serde(rename = "lowestPrice")]
-    Lowestprice,
-
-    /// priceCapacityOptimized
-    #[serde(rename = "priceCapacityOptimized")]
-    Pricecapacityoptimized,
-
-}
-
-impl Default for SpotFleetRequestConfigDataAllocationStrategyEnum {
-    fn default() -> Self {
-        SpotFleetRequestConfigDataAllocationStrategyEnum::Capacityoptimized
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum SpotFleetRequestConfigDataTypeEnum {
 
     /// instant
@@ -7319,25 +7338,6 @@ pub enum SpotFleetRequestConfigDataTypeEnum {
 impl Default for SpotFleetRequestConfigDataTypeEnum {
     fn default() -> Self {
         SpotFleetRequestConfigDataTypeEnum::Instant
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
-
-    /// default
-    #[serde(rename = "default")]
-    Default,
-
-    /// noTermination
-    #[serde(rename = "noTermination")]
-    Notermination,
-
-}
-
-impl Default for SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
-    fn default() -> Self {
-        SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum::Default
     }
 }
 

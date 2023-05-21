@@ -715,29 +715,6 @@ pub struct Cookies {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CookiesOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for CookiesOversizeHandlingEnum {
-    fn default() -> Self {
-        CookiesOversizeHandlingEnum::Continue
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum CookiesMatchScopeEnum {
 
     /// ALL
@@ -757,6 +734,29 @@ pub enum CookiesMatchScopeEnum {
 impl Default for CookiesMatchScopeEnum {
     fn default() -> Self {
         CookiesMatchScopeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CookiesOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for CookiesOversizeHandlingEnum {
+    fn default() -> Self {
+        CookiesOversizeHandlingEnum::Continue
     }
 }
 
@@ -1575,6 +1575,25 @@ pub struct IPSetForwardedIPConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum IPSetForwardedIPConfigurationFallbackBehaviorEnum {
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for IPSetForwardedIPConfigurationFallbackBehaviorEnum {
+    fn default() -> Self {
+        IPSetForwardedIPConfigurationFallbackBehaviorEnum::Match
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum IPSetForwardedIPConfigurationPositionEnum {
 
     /// ANY
@@ -1594,25 +1613,6 @@ pub enum IPSetForwardedIPConfigurationPositionEnum {
 impl Default for IPSetForwardedIPConfigurationPositionEnum {
     fn default() -> Self {
         IPSetForwardedIPConfigurationPositionEnum::Any
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum IPSetForwardedIPConfigurationFallbackBehaviorEnum {
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for IPSetForwardedIPConfigurationFallbackBehaviorEnum {
-    fn default() -> Self {
-        IPSetForwardedIPConfigurationFallbackBehaviorEnum::Match
     }
 }
 
@@ -1795,29 +1795,6 @@ impl Default for JsonBodyInvalidFallbackBehaviorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for JsonBodyOversizeHandlingEnum {
-    fn default() -> Self {
-        JsonBodyOversizeHandlingEnum::Continue
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum JsonBodyMatchScopeEnum {
 
     /// ALL
@@ -1837,6 +1814,29 @@ pub enum JsonBodyMatchScopeEnum {
 impl Default for JsonBodyMatchScopeEnum {
     fn default() -> Self {
         JsonBodyMatchScopeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for JsonBodyOversizeHandlingEnum {
+    fn default() -> Self {
+        JsonBodyOversizeHandlingEnum::Continue
     }
 }
 

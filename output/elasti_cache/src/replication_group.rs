@@ -582,6 +582,25 @@ pub struct CfnReplicationGroup {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ReplicationGroupIpDiscoveryEnum {
+
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+    /// ipv6
+    #[serde(rename = "ipv6")]
+    Ipv6,
+
+}
+
+impl Default for ReplicationGroupIpDiscoveryEnum {
+    fn default() -> Self {
+        ReplicationGroupIpDiscoveryEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ReplicationGroupNetworkTypeEnum {
 
     /// dual_stack
@@ -620,25 +639,6 @@ pub enum ReplicationGroupTransitEncryptionModeEnum {
 impl Default for ReplicationGroupTransitEncryptionModeEnum {
     fn default() -> Self {
         ReplicationGroupTransitEncryptionModeEnum::Preferred
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ReplicationGroupIpDiscoveryEnum {
-
-    /// ipv4
-    #[serde(rename = "ipv4")]
-    Ipv4,
-
-    /// ipv6
-    #[serde(rename = "ipv6")]
-    Ipv6,
-
-}
-
-impl Default for ReplicationGroupIpDiscoveryEnum {
-    fn default() -> Self {
-        ReplicationGroupIpDiscoveryEnum::Ipv4
     }
 }
 

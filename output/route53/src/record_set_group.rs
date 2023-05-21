@@ -566,65 +566,21 @@ pub struct RecordSet {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetTypeEnum {
+pub enum RecordSetFailoverEnum {
 
-    /// A
-    #[serde(rename = "A")]
-    A,
+    /// PRIMARY
+    #[serde(rename = "PRIMARY")]
+    Primary,
 
-    /// AAAA
-    #[serde(rename = "AAAA")]
-    Aaaa,
-
-    /// CAA
-    #[serde(rename = "CAA")]
-    Caa,
-
-    /// CNAME
-    #[serde(rename = "CNAME")]
-    Cname,
-
-    /// DS
-    #[serde(rename = "DS")]
-    Ds,
-
-    /// MX
-    #[serde(rename = "MX")]
-    Mx,
-
-    /// NAPTR
-    #[serde(rename = "NAPTR")]
-    Naptr,
-
-    /// NS
-    #[serde(rename = "NS")]
-    Ns,
-
-    /// PTR
-    #[serde(rename = "PTR")]
-    Ptr,
-
-    /// SOA
-    #[serde(rename = "SOA")]
-    Soa,
-
-    /// SPF
-    #[serde(rename = "SPF")]
-    Spf,
-
-    /// SRV
-    #[serde(rename = "SRV")]
-    Srv,
-
-    /// TXT
-    #[serde(rename = "TXT")]
-    Txt,
+    /// SECONDARY
+    #[serde(rename = "SECONDARY")]
+    Secondary,
 
 }
 
-impl Default for RecordSetTypeEnum {
+impl Default for RecordSetFailoverEnum {
     fn default() -> Self {
-        RecordSetTypeEnum::A
+        RecordSetFailoverEnum::Primary
     }
 }
 
@@ -736,21 +692,65 @@ impl Default for RecordSetRegionEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetFailoverEnum {
+pub enum RecordSetTypeEnum {
 
-    /// PRIMARY
-    #[serde(rename = "PRIMARY")]
-    Primary,
+    /// A
+    #[serde(rename = "A")]
+    A,
 
-    /// SECONDARY
-    #[serde(rename = "SECONDARY")]
-    Secondary,
+    /// AAAA
+    #[serde(rename = "AAAA")]
+    Aaaa,
+
+    /// CAA
+    #[serde(rename = "CAA")]
+    Caa,
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+    /// DS
+    #[serde(rename = "DS")]
+    Ds,
+
+    /// MX
+    #[serde(rename = "MX")]
+    Mx,
+
+    /// NAPTR
+    #[serde(rename = "NAPTR")]
+    Naptr,
+
+    /// NS
+    #[serde(rename = "NS")]
+    Ns,
+
+    /// PTR
+    #[serde(rename = "PTR")]
+    Ptr,
+
+    /// SOA
+    #[serde(rename = "SOA")]
+    Soa,
+
+    /// SPF
+    #[serde(rename = "SPF")]
+    Spf,
+
+    /// SRV
+    #[serde(rename = "SRV")]
+    Srv,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
 
 }
 
-impl Default for RecordSetFailoverEnum {
+impl Default for RecordSetTypeEnum {
     fn default() -> Self {
-        RecordSetFailoverEnum::Primary
+        RecordSetTypeEnum::A
     }
 }
 

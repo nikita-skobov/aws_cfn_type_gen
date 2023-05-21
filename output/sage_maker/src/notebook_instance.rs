@@ -264,25 +264,6 @@ pub struct CfnNotebookInstance {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum NotebookInstanceRootAccessEnum {
-
-    /// Disabled
-    #[serde(rename = "Disabled")]
-    Disabled,
-
-    /// Enabled
-    #[serde(rename = "Enabled")]
-    Enabled,
-
-}
-
-impl Default for NotebookInstanceRootAccessEnum {
-    fn default() -> Self {
-        NotebookInstanceRootAccessEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum NotebookInstanceDirectInternetAccessEnum {
 
     /// Disabled
@@ -585,6 +566,25 @@ pub enum NotebookInstanceInstanceTypeEnum {
 impl Default for NotebookInstanceInstanceTypeEnum {
     fn default() -> Self {
         NotebookInstanceInstanceTypeEnum::Mlc42xlarge
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NotebookInstanceRootAccessEnum {
+
+    /// Disabled
+    #[serde(rename = "Disabled")]
+    Disabled,
+
+    /// Enabled
+    #[serde(rename = "Enabled")]
+    Enabled,
+
+}
+
+impl Default for NotebookInstanceRootAccessEnum {
+    fn default() -> Self {
+        NotebookInstanceRootAccessEnum::Disabled
     }
 }
 

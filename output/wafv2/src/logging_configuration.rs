@@ -307,25 +307,6 @@ pub struct Filter {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FilterRequirementEnum {
-
-    /// MEETS_ALL
-    #[serde(rename = "MEETS_ALL")]
-    Meetsall,
-
-    /// MEETS_ANY
-    #[serde(rename = "MEETS_ANY")]
-    Meetsany,
-
-}
-
-impl Default for FilterRequirementEnum {
-    fn default() -> Self {
-        FilterRequirementEnum::Meetsall
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FilterBehaviorEnum {
 
     /// DROP
@@ -341,6 +322,25 @@ pub enum FilterBehaviorEnum {
 impl Default for FilterBehaviorEnum {
     fn default() -> Self {
         FilterBehaviorEnum::Drop
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterRequirementEnum {
+
+    /// MEETS_ALL
+    #[serde(rename = "MEETS_ALL")]
+    Meetsall,
+
+    /// MEETS_ANY
+    #[serde(rename = "MEETS_ANY")]
+    Meetsany,
+
+}
+
+impl Default for FilterRequirementEnum {
+    fn default() -> Self {
+        FilterRequirementEnum::Meetsall
     }
 }
 
@@ -410,29 +410,6 @@ pub struct JsonBody {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyMatchScopeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// KEY
-    #[serde(rename = "KEY")]
-    Key,
-
-    /// VALUE
-    #[serde(rename = "VALUE")]
-    Value,
-
-}
-
-impl Default for JsonBodyMatchScopeEnum {
-    fn default() -> Self {
-        JsonBodyMatchScopeEnum::All
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum JsonBodyInvalidFallbackBehaviorEnum {
 
     /// EVALUATE_AS_STRING
@@ -452,6 +429,29 @@ pub enum JsonBodyInvalidFallbackBehaviorEnum {
 impl Default for JsonBodyInvalidFallbackBehaviorEnum {
     fn default() -> Self {
         JsonBodyInvalidFallbackBehaviorEnum::Evaluateasstring
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for JsonBodyMatchScopeEnum {
+    fn default() -> Self {
+        JsonBodyMatchScopeEnum::All
     }
 }
 

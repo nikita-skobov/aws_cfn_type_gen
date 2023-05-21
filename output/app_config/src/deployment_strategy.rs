@@ -140,25 +140,6 @@ pub struct CfnDeploymentStrategy {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum DeploymentStrategyReplicateToEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// SSM_DOCUMENT
-    #[serde(rename = "SSM_DOCUMENT")]
-    Ssmdocument,
-
-}
-
-impl Default for DeploymentStrategyReplicateToEnum {
-    fn default() -> Self {
-        DeploymentStrategyReplicateToEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum DeploymentStrategyGrowthTypeEnum {
 
     /// EXPONENTIAL
@@ -174,6 +155,25 @@ pub enum DeploymentStrategyGrowthTypeEnum {
 impl Default for DeploymentStrategyGrowthTypeEnum {
     fn default() -> Self {
         DeploymentStrategyGrowthTypeEnum::Exponential
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeploymentStrategyReplicateToEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SSM_DOCUMENT
+    #[serde(rename = "SSM_DOCUMENT")]
+    Ssmdocument,
+
+}
+
+impl Default for DeploymentStrategyReplicateToEnum {
+    fn default() -> Self {
+        DeploymentStrategyReplicateToEnum::None
     }
 }
 

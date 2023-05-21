@@ -566,29 +566,6 @@ pub struct ImportSourceSpecification {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ImportSourceSpecificationInputFormatEnum {
-
-    /// CSV
-    #[serde(rename = "CSV")]
-    Csv,
-
-    /// DYNAMODB_JSON
-    #[serde(rename = "DYNAMODB_JSON")]
-    Dynamodbjson,
-
-    /// ION
-    #[serde(rename = "ION")]
-    Ion,
-
-}
-
-impl Default for ImportSourceSpecificationInputFormatEnum {
-    fn default() -> Self {
-        ImportSourceSpecificationInputFormatEnum::Csv
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ImportSourceSpecificationInputCompressionTypeEnum {
 
     /// GZIP
@@ -608,6 +585,29 @@ pub enum ImportSourceSpecificationInputCompressionTypeEnum {
 impl Default for ImportSourceSpecificationInputCompressionTypeEnum {
     fn default() -> Self {
         ImportSourceSpecificationInputCompressionTypeEnum::Gzip
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ImportSourceSpecificationInputFormatEnum {
+
+    /// CSV
+    #[serde(rename = "CSV")]
+    Csv,
+
+    /// DYNAMODB_JSON
+    #[serde(rename = "DYNAMODB_JSON")]
+    Dynamodbjson,
+
+    /// ION
+    #[serde(rename = "ION")]
+    Ion,
+
+}
+
+impl Default for ImportSourceSpecificationInputFormatEnum {
+    fn default() -> Self {
+        ImportSourceSpecificationInputFormatEnum::Csv
     }
 }
 

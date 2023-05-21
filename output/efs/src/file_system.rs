@@ -360,21 +360,6 @@ pub struct LifecyclePolicy {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum LifecyclePolicyTransitionToPrimaryStorageClassEnum {
-
-    /// AFTER_1_ACCESS
-    #[serde(rename = "AFTER_1_ACCESS")]
-    After1access,
-
-}
-
-impl Default for LifecyclePolicyTransitionToPrimaryStorageClassEnum {
-    fn default() -> Self {
-        LifecyclePolicyTransitionToPrimaryStorageClassEnum::After1access
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum LifecyclePolicyTransitionToIAEnum {
 
     /// AFTER_14_DAYS
@@ -406,6 +391,21 @@ pub enum LifecyclePolicyTransitionToIAEnum {
 impl Default for LifecyclePolicyTransitionToIAEnum {
     fn default() -> Self {
         LifecyclePolicyTransitionToIAEnum::After14days
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LifecyclePolicyTransitionToPrimaryStorageClassEnum {
+
+    /// AFTER_1_ACCESS
+    #[serde(rename = "AFTER_1_ACCESS")]
+    After1access,
+
+}
+
+impl Default for LifecyclePolicyTransitionToPrimaryStorageClassEnum {
+    fn default() -> Self {
+        LifecyclePolicyTransitionToPrimaryStorageClassEnum::After1access
     }
 }
 

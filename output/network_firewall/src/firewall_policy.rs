@@ -400,6 +400,25 @@ pub struct StatefulEngineOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum StatefulEngineOptionsRuleOrderEnum {
+
+    /// DEFAULT_ACTION_ORDER
+    #[serde(rename = "DEFAULT_ACTION_ORDER")]
+    Defaultactionorder,
+
+    /// STRICT_ORDER
+    #[serde(rename = "STRICT_ORDER")]
+    Strictorder,
+
+}
+
+impl Default for StatefulEngineOptionsRuleOrderEnum {
+    fn default() -> Self {
+        StatefulEngineOptionsRuleOrderEnum::Defaultactionorder
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum StatefulEngineOptionsStreamExceptionPolicyEnum {
 
     /// CONTINUE
@@ -419,25 +438,6 @@ pub enum StatefulEngineOptionsStreamExceptionPolicyEnum {
 impl Default for StatefulEngineOptionsStreamExceptionPolicyEnum {
     fn default() -> Self {
         StatefulEngineOptionsStreamExceptionPolicyEnum::Continue
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum StatefulEngineOptionsRuleOrderEnum {
-
-    /// DEFAULT_ACTION_ORDER
-    #[serde(rename = "DEFAULT_ACTION_ORDER")]
-    Defaultactionorder,
-
-    /// STRICT_ORDER
-    #[serde(rename = "STRICT_ORDER")]
-    Strictorder,
-
-}
-
-impl Default for StatefulEngineOptionsRuleOrderEnum {
-    fn default() -> Self {
-        StatefulEngineOptionsRuleOrderEnum::Defaultactionorder
     }
 }
 

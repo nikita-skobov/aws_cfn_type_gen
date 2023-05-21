@@ -268,25 +268,6 @@ pub struct CfnAssociation {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum AssociationSyncComplianceEnum {
-
-    /// AUTO
-    #[serde(rename = "AUTO")]
-    Auto,
-
-    /// MANUAL
-    #[serde(rename = "MANUAL")]
-    Manual,
-
-}
-
-impl Default for AssociationSyncComplianceEnum {
-    fn default() -> Self {
-        AssociationSyncComplianceEnum::Auto
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum AssociationComplianceSeverityEnum {
 
     /// CRITICAL
@@ -314,6 +295,25 @@ pub enum AssociationComplianceSeverityEnum {
 impl Default for AssociationComplianceSeverityEnum {
     fn default() -> Self {
         AssociationComplianceSeverityEnum::Critical
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssociationSyncComplianceEnum {
+
+    /// AUTO
+    #[serde(rename = "AUTO")]
+    Auto,
+
+    /// MANUAL
+    #[serde(rename = "MANUAL")]
+    Manual,
+
+}
+
+impl Default for AssociationSyncComplianceEnum {
+    fn default() -> Self {
+        AssociationSyncComplianceEnum::Auto
     }
 }
 

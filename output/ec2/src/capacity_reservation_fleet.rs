@@ -128,21 +128,6 @@ pub struct CfnCapacityReservationFleet {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CapacityReservationFleetTenancyEnum {
-
-    /// default
-    #[serde(rename = "default")]
-    Default,
-
-}
-
-impl Default for CapacityReservationFleetTenancyEnum {
-    fn default() -> Self {
-        CapacityReservationFleetTenancyEnum::Default
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationFleetInstanceMatchCriteriaEnum {
 
     /// open
@@ -154,6 +139,21 @@ pub enum CapacityReservationFleetInstanceMatchCriteriaEnum {
 impl Default for CapacityReservationFleetInstanceMatchCriteriaEnum {
     fn default() -> Self {
         CapacityReservationFleetInstanceMatchCriteriaEnum::Open
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CapacityReservationFleetTenancyEnum {
+
+    /// default
+    #[serde(rename = "default")]
+    Default,
+
+}
+
+impl Default for CapacityReservationFleetTenancyEnum {
+    fn default() -> Self {
+        CapacityReservationFleetTenancyEnum::Default
     }
 }
 

@@ -85,6 +85,21 @@ pub struct GeoMatchConstraint {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum GeoMatchConstraintTypeEnum {
+
+    /// Country
+    #[serde(rename = "Country")]
+    Country,
+
+}
+
+impl Default for GeoMatchConstraintTypeEnum {
+    fn default() -> Self {
+        GeoMatchConstraintTypeEnum::Country
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum GeoMatchConstraintValueEnum {
 
     /// AD
@@ -1088,21 +1103,6 @@ pub enum GeoMatchConstraintValueEnum {
 impl Default for GeoMatchConstraintValueEnum {
     fn default() -> Self {
         GeoMatchConstraintValueEnum::Ad
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum GeoMatchConstraintTypeEnum {
-
-    /// Country
-    #[serde(rename = "Country")]
-    Country,
-
-}
-
-impl Default for GeoMatchConstraintTypeEnum {
-    fn default() -> Self {
-        GeoMatchConstraintTypeEnum::Country
     }
 }
 

@@ -1143,7 +1143,7 @@ pub struct InstanceRequirements {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum InstanceRequirementsLocalStorageEnum {
+pub enum InstanceRequirementsBareMetalEnum {
 
     /// excluded
     #[serde(rename = "excluded")]
@@ -1159,9 +1159,9 @@ pub enum InstanceRequirementsLocalStorageEnum {
 
 }
 
-impl Default for InstanceRequirementsLocalStorageEnum {
+impl Default for InstanceRequirementsBareMetalEnum {
     fn default() -> Self {
-        InstanceRequirementsLocalStorageEnum::Excluded
+        InstanceRequirementsBareMetalEnum::Excluded
     }
 }
 
@@ -1189,7 +1189,7 @@ impl Default for InstanceRequirementsBurstablePerformanceEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum InstanceRequirementsBareMetalEnum {
+pub enum InstanceRequirementsLocalStorageEnum {
 
     /// excluded
     #[serde(rename = "excluded")]
@@ -1205,9 +1205,9 @@ pub enum InstanceRequirementsBareMetalEnum {
 
 }
 
-impl Default for InstanceRequirementsBareMetalEnum {
+impl Default for InstanceRequirementsLocalStorageEnum {
     fn default() -> Self {
-        InstanceRequirementsBareMetalEnum::Excluded
+        InstanceRequirementsLocalStorageEnum::Excluded
     }
 }
 
@@ -1694,6 +1694,25 @@ pub struct LaunchTemplateData {
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
+
+    /// stop
+    #[serde(rename = "stop")]
+    Stop,
+
+    /// terminate
+    #[serde(rename = "terminate")]
+    Terminate,
+
+}
+
+impl Default for LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
+    fn default() -> Self {
+        LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum::Stop
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LaunchTemplateDataInstanceTypeEnum {
@@ -4246,25 +4265,6 @@ impl Default for LaunchTemplateDataInstanceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
-
-    /// stop
-    #[serde(rename = "stop")]
-    Stop,
-
-    /// terminate
-    #[serde(rename = "terminate")]
-    Terminate,
-
-}
-
-impl Default for LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
-    fn default() -> Self {
-        LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum::Stop
-    }
-}
-
 
 
 /// Specifies an elastic inference accelerator.
@@ -4917,21 +4917,21 @@ pub struct MetadataOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum MetadataOptionsHttpTokensEnum {
+pub enum MetadataOptionsHttpEndpointEnum {
 
-    /// optional
-    #[serde(rename = "optional")]
-    Optional,
+    /// disabled
+    #[serde(rename = "disabled")]
+    Disabled,
 
-    /// required
-    #[serde(rename = "required")]
-    Required,
+    /// enabled
+    #[serde(rename = "enabled")]
+    Enabled,
 
 }
 
-impl Default for MetadataOptionsHttpTokensEnum {
+impl Default for MetadataOptionsHttpEndpointEnum {
     fn default() -> Self {
-        MetadataOptionsHttpTokensEnum::Optional
+        MetadataOptionsHttpEndpointEnum::Disabled
     }
 }
 
@@ -4955,6 +4955,25 @@ impl Default for MetadataOptionsHttpProtocolIpv6Enum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum MetadataOptionsHttpTokensEnum {
+
+    /// optional
+    #[serde(rename = "optional")]
+    Optional,
+
+    /// required
+    #[serde(rename = "required")]
+    Required,
+
+}
+
+impl Default for MetadataOptionsHttpTokensEnum {
+    fn default() -> Self {
+        MetadataOptionsHttpTokensEnum::Optional
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum MetadataOptionsInstanceMetadataTagsEnum {
 
     /// disabled
@@ -4970,25 +4989,6 @@ pub enum MetadataOptionsInstanceMetadataTagsEnum {
 impl Default for MetadataOptionsInstanceMetadataTagsEnum {
     fn default() -> Self {
         MetadataOptionsInstanceMetadataTagsEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum MetadataOptionsHttpEndpointEnum {
-
-    /// disabled
-    #[serde(rename = "disabled")]
-    Disabled,
-
-    /// enabled
-    #[serde(rename = "enabled")]
-    Enabled,
-
-}
-
-impl Default for MetadataOptionsHttpEndpointEnum {
-    fn default() -> Self {
-        MetadataOptionsHttpEndpointEnum::Disabled
     }
 }
 

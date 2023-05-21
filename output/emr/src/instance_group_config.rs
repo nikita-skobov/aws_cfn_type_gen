@@ -370,6 +370,64 @@ pub struct CloudWatchAlarmDefinition {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum CloudWatchAlarmDefinitionComparisonOperatorEnum {
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL
+    #[serde(rename = "GREATER_THAN_OR_EQUAL")]
+    Greaterthanorequal,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL
+    #[serde(rename = "LESS_THAN_OR_EQUAL")]
+    Lessthanorequal,
+
+}
+
+impl Default for CloudWatchAlarmDefinitionComparisonOperatorEnum {
+    fn default() -> Self {
+        CloudWatchAlarmDefinitionComparisonOperatorEnum::Greaterthan
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CloudWatchAlarmDefinitionStatisticEnum {
+
+    /// AVERAGE
+    #[serde(rename = "AVERAGE")]
+    Average,
+
+    /// MAXIMUM
+    #[serde(rename = "MAXIMUM")]
+    Maximum,
+
+    /// MINIMUM
+    #[serde(rename = "MINIMUM")]
+    Minimum,
+
+    /// SAMPLE_COUNT
+    #[serde(rename = "SAMPLE_COUNT")]
+    Samplecount,
+
+    /// SUM
+    #[serde(rename = "SUM")]
+    Sum,
+
+}
+
+impl Default for CloudWatchAlarmDefinitionStatisticEnum {
+    fn default() -> Self {
+        CloudWatchAlarmDefinitionStatisticEnum::Average
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum CloudWatchAlarmDefinitionUnitEnum {
 
     /// BITS
@@ -485,64 +543,6 @@ pub enum CloudWatchAlarmDefinitionUnitEnum {
 impl Default for CloudWatchAlarmDefinitionUnitEnum {
     fn default() -> Self {
         CloudWatchAlarmDefinitionUnitEnum::Bits
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CloudWatchAlarmDefinitionStatisticEnum {
-
-    /// AVERAGE
-    #[serde(rename = "AVERAGE")]
-    Average,
-
-    /// MAXIMUM
-    #[serde(rename = "MAXIMUM")]
-    Maximum,
-
-    /// MINIMUM
-    #[serde(rename = "MINIMUM")]
-    Minimum,
-
-    /// SAMPLE_COUNT
-    #[serde(rename = "SAMPLE_COUNT")]
-    Samplecount,
-
-    /// SUM
-    #[serde(rename = "SUM")]
-    Sum,
-
-}
-
-impl Default for CloudWatchAlarmDefinitionStatisticEnum {
-    fn default() -> Self {
-        CloudWatchAlarmDefinitionStatisticEnum::Average
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CloudWatchAlarmDefinitionComparisonOperatorEnum {
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL
-    #[serde(rename = "GREATER_THAN_OR_EQUAL")]
-    Greaterthanorequal,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL
-    #[serde(rename = "LESS_THAN_OR_EQUAL")]
-    Lessthanorequal,
-
-}
-
-impl Default for CloudWatchAlarmDefinitionComparisonOperatorEnum {
-    fn default() -> Self {
-        CloudWatchAlarmDefinitionComparisonOperatorEnum::Greaterthan
     }
 }
 

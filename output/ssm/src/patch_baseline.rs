@@ -202,25 +202,6 @@ pub struct CfnPatchBaseline {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PatchBaselineRejectedPatchesActionEnum {
-
-    /// ALLOW_AS_DEPENDENCY
-    #[serde(rename = "ALLOW_AS_DEPENDENCY")]
-    Allowasdependency,
-
-    /// BLOCK
-    #[serde(rename = "BLOCK")]
-    Block,
-
-}
-
-impl Default for PatchBaselineRejectedPatchesActionEnum {
-    fn default() -> Self {
-        PatchBaselineRejectedPatchesActionEnum::Allowasdependency
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum PatchBaselineApprovedPatchesComplianceLevelEnum {
 
     /// CRITICAL
@@ -319,6 +300,25 @@ pub enum PatchBaselineOperatingSystemEnum {
 impl Default for PatchBaselineOperatingSystemEnum {
     fn default() -> Self {
         PatchBaselineOperatingSystemEnum::Amazonlinux
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PatchBaselineRejectedPatchesActionEnum {
+
+    /// ALLOW_AS_DEPENDENCY
+    #[serde(rename = "ALLOW_AS_DEPENDENCY")]
+    Allowasdependency,
+
+    /// BLOCK
+    #[serde(rename = "BLOCK")]
+    Block,
+
+}
+
+impl Default for PatchBaselineRejectedPatchesActionEnum {
+    fn default() -> Self {
+        PatchBaselineRejectedPatchesActionEnum::Allowasdependency
     }
 }
 

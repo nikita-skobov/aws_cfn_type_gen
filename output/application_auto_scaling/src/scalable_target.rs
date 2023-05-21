@@ -126,73 +126,6 @@ pub struct CfnScalableTarget {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ScalableTargetServiceNamespaceEnum {
-
-    /// appstream
-    #[serde(rename = "appstream")]
-    Appstream,
-
-    /// cassandra
-    #[serde(rename = "cassandra")]
-    Cassandra,
-
-    /// comprehend
-    #[serde(rename = "comprehend")]
-    Comprehend,
-
-    /// custom-resource
-    #[serde(rename = "custom-resource")]
-    Customresource,
-
-    /// dynamodb
-    #[serde(rename = "dynamodb")]
-    Dynamodb,
-
-    /// ec2
-    #[serde(rename = "ec2")]
-    Ec2,
-
-    /// ecs
-    #[serde(rename = "ecs")]
-    Ecs,
-
-    /// elasticache
-    #[serde(rename = "elasticache")]
-    Elasticache,
-
-    /// elasticmapreduce
-    #[serde(rename = "elasticmapreduce")]
-    Elasticmapreduce,
-
-    /// kafka
-    #[serde(rename = "kafka")]
-    Kafka,
-
-    /// lambda
-    #[serde(rename = "lambda")]
-    Lambda,
-
-    /// neptune
-    #[serde(rename = "neptune")]
-    Neptune,
-
-    /// rds
-    #[serde(rename = "rds")]
-    Rds,
-
-    /// sagemaker
-    #[serde(rename = "sagemaker")]
-    Sagemaker,
-
-}
-
-impl Default for ScalableTargetServiceNamespaceEnum {
-    fn default() -> Self {
-        ScalableTargetServiceNamespaceEnum::Appstream
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ScalableTargetScalableDimensionEnum {
 
     /// appstream:fleet:DesiredCapacity
@@ -284,6 +217,73 @@ pub enum ScalableTargetScalableDimensionEnum {
 impl Default for ScalableTargetScalableDimensionEnum {
     fn default() -> Self {
         ScalableTargetScalableDimensionEnum::Appstreamfleetdesiredcapacity
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalableTargetServiceNamespaceEnum {
+
+    /// appstream
+    #[serde(rename = "appstream")]
+    Appstream,
+
+    /// cassandra
+    #[serde(rename = "cassandra")]
+    Cassandra,
+
+    /// comprehend
+    #[serde(rename = "comprehend")]
+    Comprehend,
+
+    /// custom-resource
+    #[serde(rename = "custom-resource")]
+    Customresource,
+
+    /// dynamodb
+    #[serde(rename = "dynamodb")]
+    Dynamodb,
+
+    /// ec2
+    #[serde(rename = "ec2")]
+    Ec2,
+
+    /// ecs
+    #[serde(rename = "ecs")]
+    Ecs,
+
+    /// elasticache
+    #[serde(rename = "elasticache")]
+    Elasticache,
+
+    /// elasticmapreduce
+    #[serde(rename = "elasticmapreduce")]
+    Elasticmapreduce,
+
+    /// kafka
+    #[serde(rename = "kafka")]
+    Kafka,
+
+    /// lambda
+    #[serde(rename = "lambda")]
+    Lambda,
+
+    /// neptune
+    #[serde(rename = "neptune")]
+    Neptune,
+
+    /// rds
+    #[serde(rename = "rds")]
+    Rds,
+
+    /// sagemaker
+    #[serde(rename = "sagemaker")]
+    Sagemaker,
+
+}
+
+impl Default for ScalableTargetServiceNamespaceEnum {
+    fn default() -> Self {
+        ScalableTargetServiceNamespaceEnum::Appstream
     }
 }
 

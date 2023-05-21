@@ -198,25 +198,6 @@ pub struct CfnGameServerGroup {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum GameServerGroupGameServerProtectionPolicyEnum {
-
-    /// FULL_PROTECTION
-    #[serde(rename = "FULL_PROTECTION")]
-    Fullprotection,
-
-    /// NO_PROTECTION
-    #[serde(rename = "NO_PROTECTION")]
-    Noprotection,
-
-}
-
-impl Default for GameServerGroupGameServerProtectionPolicyEnum {
-    fn default() -> Self {
-        GameServerGroupGameServerProtectionPolicyEnum::Fullprotection
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum GameServerGroupBalancingStrategyEnum {
 
     /// ON_DEMAND_ONLY
@@ -259,6 +240,25 @@ pub enum GameServerGroupDeleteOptionEnum {
 impl Default for GameServerGroupDeleteOptionEnum {
     fn default() -> Self {
         GameServerGroupDeleteOptionEnum::Forcedelete
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum GameServerGroupGameServerProtectionPolicyEnum {
+
+    /// FULL_PROTECTION
+    #[serde(rename = "FULL_PROTECTION")]
+    Fullprotection,
+
+    /// NO_PROTECTION
+    #[serde(rename = "NO_PROTECTION")]
+    Noprotection,
+
+}
+
+impl Default for GameServerGroupGameServerProtectionPolicyEnum {
+    fn default() -> Self {
+        GameServerGroupGameServerProtectionPolicyEnum::Fullprotection
     }
 }
 

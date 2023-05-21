@@ -742,6 +742,29 @@ pub struct CfnCluster {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ClusterAquaConfigurationStatusEnum {
+
+    /// auto
+    #[serde(rename = "auto")]
+    Auto,
+
+    /// disabled
+    #[serde(rename = "disabled")]
+    Disabled,
+
+    /// enabled
+    #[serde(rename = "enabled")]
+    Enabled,
+
+}
+
+impl Default for ClusterAquaConfigurationStatusEnum {
+    fn default() -> Self {
+        ClusterAquaConfigurationStatusEnum::Auto
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ClusterClusterTypeEnum {
 
     /// multi-node
@@ -804,29 +827,6 @@ pub enum ClusterNodeTypeEnum {
 impl Default for ClusterNodeTypeEnum {
     fn default() -> Self {
         ClusterNodeTypeEnum::Ds2xlarge
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ClusterAquaConfigurationStatusEnum {
-
-    /// auto
-    #[serde(rename = "auto")]
-    Auto,
-
-    /// disabled
-    #[serde(rename = "disabled")]
-    Disabled,
-
-    /// enabled
-    #[serde(rename = "enabled")]
-    Enabled,
-
-}
-
-impl Default for ClusterAquaConfigurationStatusEnum {
-    fn default() -> Self {
-        ClusterAquaConfigurationStatusEnum::Auto
     }
 }
 

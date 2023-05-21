@@ -400,6 +400,25 @@ pub struct CfnEndpoint {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointEndpointTypeEnum {
+
+    /// source
+    #[serde(rename = "source")]
+    Source,
+
+    /// target
+    #[serde(rename = "target")]
+    Target,
+
+}
+
+impl Default for EndpointEndpointTypeEnum {
+    fn default() -> Self {
+        EndpointEndpointTypeEnum::Source
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointSslModeEnum {
 
     /// none
@@ -423,25 +442,6 @@ pub enum EndpointSslModeEnum {
 impl Default for EndpointSslModeEnum {
     fn default() -> Self {
         EndpointSslModeEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EndpointEndpointTypeEnum {
-
-    /// source
-    #[serde(rename = "source")]
-    Source,
-
-    /// target
-    #[serde(rename = "target")]
-    Target,
-
-}
-
-impl Default for EndpointEndpointTypeEnum {
-    fn default() -> Self {
-        EndpointEndpointTypeEnum::Source
     }
 }
 
@@ -2683,25 +2683,6 @@ pub struct RedisSettings {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RedisSettingsSslSecurityProtocolEnum {
-
-    /// plaintext
-    #[serde(rename = "plaintext")]
-    Plaintext,
-
-    /// ssl-encryption
-    #[serde(rename = "ssl-encryption")]
-    Sslencryption,
-
-}
-
-impl Default for RedisSettingsSslSecurityProtocolEnum {
-    fn default() -> Self {
-        RedisSettingsSslSecurityProtocolEnum::Plaintext
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum RedisSettingsAuthTypeEnum {
 
     /// auth-role
@@ -2721,6 +2702,25 @@ pub enum RedisSettingsAuthTypeEnum {
 impl Default for RedisSettingsAuthTypeEnum {
     fn default() -> Self {
         RedisSettingsAuthTypeEnum::Authrole
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RedisSettingsSslSecurityProtocolEnum {
+
+    /// plaintext
+    #[serde(rename = "plaintext")]
+    Plaintext,
+
+    /// ssl-encryption
+    #[serde(rename = "ssl-encryption")]
+    Sslencryption,
+
+}
+
+impl Default for RedisSettingsSslSecurityProtocolEnum {
+    fn default() -> Self {
+        RedisSettingsSslSecurityProtocolEnum::Plaintext
     }
 }
 
@@ -3659,125 +3659,6 @@ pub struct S3Settings {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsCompressionTypeEnum {
-
-    /// gzip
-    #[serde(rename = "gzip")]
-    Gzip,
-
-    /// none
-    #[serde(rename = "none")]
-    None,
-
-}
-
-impl Default for S3SettingsCompressionTypeEnum {
-    fn default() -> Self {
-        S3SettingsCompressionTypeEnum::Gzip
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsDatePartitionSequenceEnum {
-
-    /// DDMMYYYY
-    #[serde(rename = "DDMMYYYY")]
-    Ddmmyyyy,
-
-    /// MMYYYYDD
-    #[serde(rename = "MMYYYYDD")]
-    Mmyyyydd,
-
-    /// YYYYMM
-    #[serde(rename = "YYYYMM")]
-    Yyyymm,
-
-    /// YYYYMMDD
-    #[serde(rename = "YYYYMMDD")]
-    Yyyymmdd,
-
-    /// YYYYMMDDHH
-    #[serde(rename = "YYYYMMDDHH")]
-    Yyyymmddhh,
-
-}
-
-impl Default for S3SettingsDatePartitionSequenceEnum {
-    fn default() -> Self {
-        S3SettingsDatePartitionSequenceEnum::Ddmmyyyy
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsDataFormatEnum {
-
-    /// csv
-    #[serde(rename = "csv")]
-    Csv,
-
-    /// parquet
-    #[serde(rename = "parquet")]
-    Parquet,
-
-}
-
-impl Default for S3SettingsDataFormatEnum {
-    fn default() -> Self {
-        S3SettingsDataFormatEnum::Csv
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsEncodingTypeEnum {
-
-    /// plain
-    #[serde(rename = "plain")]
-    Plain,
-
-    /// plain-dictionary
-    #[serde(rename = "plain-dictionary")]
-    Plaindictionary,
-
-    /// rle-dictionary
-    #[serde(rename = "rle-dictionary")]
-    Rledictionary,
-
-}
-
-impl Default for S3SettingsEncodingTypeEnum {
-    fn default() -> Self {
-        S3SettingsEncodingTypeEnum::Plain
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsDatePartitionDelimiterEnum {
-
-    /// DASH
-    #[serde(rename = "DASH")]
-    Dash,
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// SLASH
-    #[serde(rename = "SLASH")]
-    Slash,
-
-    /// UNDERSCORE
-    #[serde(rename = "UNDERSCORE")]
-    Underscore,
-
-}
-
-impl Default for S3SettingsDatePartitionDelimiterEnum {
-    fn default() -> Self {
-        S3SettingsDatePartitionDelimiterEnum::Dash
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum S3SettingsCannedAclForObjectsEnum {
 
     /// authenticated-read
@@ -3821,21 +3702,121 @@ impl Default for S3SettingsCannedAclForObjectsEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum S3SettingsParquetVersionEnum {
+pub enum S3SettingsCompressionTypeEnum {
 
-    /// parquet-1-0
-    #[serde(rename = "parquet-1-0")]
-    Parquet10,
+    /// gzip
+    #[serde(rename = "gzip")]
+    Gzip,
 
-    /// parquet-2-0
-    #[serde(rename = "parquet-2-0")]
-    Parquet20,
+    /// none
+    #[serde(rename = "none")]
+    None,
 
 }
 
-impl Default for S3SettingsParquetVersionEnum {
+impl Default for S3SettingsCompressionTypeEnum {
     fn default() -> Self {
-        S3SettingsParquetVersionEnum::Parquet10
+        S3SettingsCompressionTypeEnum::Gzip
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3SettingsDataFormatEnum {
+
+    /// csv
+    #[serde(rename = "csv")]
+    Csv,
+
+    /// parquet
+    #[serde(rename = "parquet")]
+    Parquet,
+
+}
+
+impl Default for S3SettingsDataFormatEnum {
+    fn default() -> Self {
+        S3SettingsDataFormatEnum::Csv
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3SettingsDatePartitionDelimiterEnum {
+
+    /// DASH
+    #[serde(rename = "DASH")]
+    Dash,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SLASH
+    #[serde(rename = "SLASH")]
+    Slash,
+
+    /// UNDERSCORE
+    #[serde(rename = "UNDERSCORE")]
+    Underscore,
+
+}
+
+impl Default for S3SettingsDatePartitionDelimiterEnum {
+    fn default() -> Self {
+        S3SettingsDatePartitionDelimiterEnum::Dash
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3SettingsDatePartitionSequenceEnum {
+
+    /// DDMMYYYY
+    #[serde(rename = "DDMMYYYY")]
+    Ddmmyyyy,
+
+    /// MMYYYYDD
+    #[serde(rename = "MMYYYYDD")]
+    Mmyyyydd,
+
+    /// YYYYMM
+    #[serde(rename = "YYYYMM")]
+    Yyyymm,
+
+    /// YYYYMMDD
+    #[serde(rename = "YYYYMMDD")]
+    Yyyymmdd,
+
+    /// YYYYMMDDHH
+    #[serde(rename = "YYYYMMDDHH")]
+    Yyyymmddhh,
+
+}
+
+impl Default for S3SettingsDatePartitionSequenceEnum {
+    fn default() -> Self {
+        S3SettingsDatePartitionSequenceEnum::Ddmmyyyy
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3SettingsEncodingTypeEnum {
+
+    /// plain
+    #[serde(rename = "plain")]
+    Plain,
+
+    /// plain-dictionary
+    #[serde(rename = "plain-dictionary")]
+    Plaindictionary,
+
+    /// rle-dictionary
+    #[serde(rename = "rle-dictionary")]
+    Rledictionary,
+
+}
+
+impl Default for S3SettingsEncodingTypeEnum {
+    fn default() -> Self {
+        S3SettingsEncodingTypeEnum::Plain
     }
 }
 
@@ -3855,6 +3836,25 @@ pub enum S3SettingsEncryptionModeEnum {
 impl Default for S3SettingsEncryptionModeEnum {
     fn default() -> Self {
         S3SettingsEncryptionModeEnum::Ssekms
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3SettingsParquetVersionEnum {
+
+    /// parquet-1-0
+    #[serde(rename = "parquet-1-0")]
+    Parquet10,
+
+    /// parquet-2-0
+    #[serde(rename = "parquet-2-0")]
+    Parquet20,
+
+}
+
+impl Default for S3SettingsParquetVersionEnum {
+    fn default() -> Self {
+        S3SettingsParquetVersionEnum::Parquet10
     }
 }
 

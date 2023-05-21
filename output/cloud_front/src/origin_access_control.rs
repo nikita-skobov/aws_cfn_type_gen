@@ -117,17 +117,21 @@ pub struct OriginAccessControlConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OriginAccessControlConfigSigningProtocolEnum {
+pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
 
-    /// sigv4
-    #[serde(rename = "sigv4")]
-    Sigv4,
+    /// mediastore
+    #[serde(rename = "mediastore")]
+    Mediastore,
+
+    /// s3
+    #[serde(rename = "s3")]
+    S3,
 
 }
 
-impl Default for OriginAccessControlConfigSigningProtocolEnum {
+impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
     fn default() -> Self {
-        OriginAccessControlConfigSigningProtocolEnum::Sigv4
+        OriginAccessControlConfigOriginAccessControlOriginTypeEnum::Mediastore
     }
 }
 
@@ -155,21 +159,17 @@ impl Default for OriginAccessControlConfigSigningBehaviorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+pub enum OriginAccessControlConfigSigningProtocolEnum {
 
-    /// mediastore
-    #[serde(rename = "mediastore")]
-    Mediastore,
-
-    /// s3
-    #[serde(rename = "s3")]
-    S3,
+    /// sigv4
+    #[serde(rename = "sigv4")]
+    Sigv4,
 
 }
 
-impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+impl Default for OriginAccessControlConfigSigningProtocolEnum {
     fn default() -> Self {
-        OriginAccessControlConfigOriginAccessControlOriginTypeEnum::Mediastore
+        OriginAccessControlConfigSigningProtocolEnum::Sigv4
     }
 }
 

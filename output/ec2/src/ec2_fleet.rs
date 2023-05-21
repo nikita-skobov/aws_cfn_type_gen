@@ -168,6 +168,25 @@ pub struct CfnEC2Fleet {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum EC2FleetExcessCapacityTerminationPolicyEnum {
+
+    /// no-termination
+    #[serde(rename = "no-termination")]
+    Notermination,
+
+    /// termination
+    #[serde(rename = "termination")]
+    Termination,
+
+}
+
+impl Default for EC2FleetExcessCapacityTerminationPolicyEnum {
+    fn default() -> Self {
+        EC2FleetExcessCapacityTerminationPolicyEnum::Notermination
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum EC2FleetTypeEnum {
 
     /// instant
@@ -187,25 +206,6 @@ pub enum EC2FleetTypeEnum {
 impl Default for EC2FleetTypeEnum {
     fn default() -> Self {
         EC2FleetTypeEnum::Instant
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EC2FleetExcessCapacityTerminationPolicyEnum {
-
-    /// no-termination
-    #[serde(rename = "no-termination")]
-    Notermination,
-
-    /// termination
-    #[serde(rename = "termination")]
-    Termination,
-
-}
-
-impl Default for EC2FleetExcessCapacityTerminationPolicyEnum {
-    fn default() -> Self {
-        EC2FleetExcessCapacityTerminationPolicyEnum::Notermination
     }
 }
 
@@ -3602,29 +3602,6 @@ pub struct InstanceRequirementsRequest {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum InstanceRequirementsRequestLocalStorageEnum {
-
-    /// excluded
-    #[serde(rename = "excluded")]
-    Excluded,
-
-    /// included
-    #[serde(rename = "included")]
-    Included,
-
-    /// required
-    #[serde(rename = "required")]
-    Required,
-
-}
-
-impl Default for InstanceRequirementsRequestLocalStorageEnum {
-    fn default() -> Self {
-        InstanceRequirementsRequestLocalStorageEnum::Excluded
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceRequirementsRequestBareMetalEnum {
 
     /// excluded
@@ -3667,6 +3644,29 @@ pub enum InstanceRequirementsRequestBurstablePerformanceEnum {
 impl Default for InstanceRequirementsRequestBurstablePerformanceEnum {
     fn default() -> Self {
         InstanceRequirementsRequestBurstablePerformanceEnum::Excluded
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum InstanceRequirementsRequestLocalStorageEnum {
+
+    /// excluded
+    #[serde(rename = "excluded")]
+    Excluded,
+
+    /// included
+    #[serde(rename = "included")]
+    Included,
+
+    /// required
+    #[serde(rename = "required")]
+    Required,
+
+}
+
+impl Default for InstanceRequirementsRequestLocalStorageEnum {
+    fn default() -> Self {
+        InstanceRequirementsRequestLocalStorageEnum::Excluded
     }
 }
 

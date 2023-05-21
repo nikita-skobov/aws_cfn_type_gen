@@ -116,6 +116,25 @@ pub struct CfnResolverEndpoint {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ResolverEndpointDirectionEnum {
+
+    /// INBOUND
+    #[serde(rename = "INBOUND")]
+    Inbound,
+
+    /// OUTBOUND
+    #[serde(rename = "OUTBOUND")]
+    Outbound,
+
+}
+
+impl Default for ResolverEndpointDirectionEnum {
+    fn default() -> Self {
+        ResolverEndpointDirectionEnum::Inbound
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ResolverEndpointResolverEndpointTypeEnum {
 
     /// DUALSTACK
@@ -135,25 +154,6 @@ pub enum ResolverEndpointResolverEndpointTypeEnum {
 impl Default for ResolverEndpointResolverEndpointTypeEnum {
     fn default() -> Self {
         ResolverEndpointResolverEndpointTypeEnum::Dualstack
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ResolverEndpointDirectionEnum {
-
-    /// INBOUND
-    #[serde(rename = "INBOUND")]
-    Inbound,
-
-    /// OUTBOUND
-    #[serde(rename = "OUTBOUND")]
-    Outbound,
-
-}
-
-impl Default for ResolverEndpointDirectionEnum {
-    fn default() -> Self {
-        ResolverEndpointDirectionEnum::Inbound
     }
 }
 

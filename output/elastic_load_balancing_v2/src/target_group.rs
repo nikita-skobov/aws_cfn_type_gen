@@ -278,52 +278,6 @@ pub struct CfnTargetGroup {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TargetGroupTargetTypeEnum {
-
-    /// alb
-    #[serde(rename = "alb")]
-    Alb,
-
-    /// instance
-    #[serde(rename = "instance")]
-    Instance,
-
-    /// ip
-    #[serde(rename = "ip")]
-    Ip,
-
-    /// lambda
-    #[serde(rename = "lambda")]
-    Lambda,
-
-}
-
-impl Default for TargetGroupTargetTypeEnum {
-    fn default() -> Self {
-        TargetGroupTargetTypeEnum::Alb
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TargetGroupIpAddressTypeEnum {
-
-    /// ipv4
-    #[serde(rename = "ipv4")]
-    Ipv4,
-
-    /// ipv6
-    #[serde(rename = "ipv6")]
-    Ipv6,
-
-}
-
-impl Default for TargetGroupIpAddressTypeEnum {
-    fn default() -> Self {
-        TargetGroupIpAddressTypeEnum::Ipv4
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TargetGroupHealthCheckProtocolEnum {
 
     /// GENEVE
@@ -363,6 +317,25 @@ impl Default for TargetGroupHealthCheckProtocolEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupIpAddressTypeEnum {
+
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+    /// ipv6
+    #[serde(rename = "ipv6")]
+    Ipv6,
+
+}
+
+impl Default for TargetGroupIpAddressTypeEnum {
+    fn default() -> Self {
+        TargetGroupIpAddressTypeEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum TargetGroupProtocolEnum {
 
     /// GENEVE
@@ -398,6 +371,33 @@ pub enum TargetGroupProtocolEnum {
 impl Default for TargetGroupProtocolEnum {
     fn default() -> Self {
         TargetGroupProtocolEnum::Geneve
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupTargetTypeEnum {
+
+    /// alb
+    #[serde(rename = "alb")]
+    Alb,
+
+    /// instance
+    #[serde(rename = "instance")]
+    Instance,
+
+    /// ip
+    #[serde(rename = "ip")]
+    Ip,
+
+    /// lambda
+    #[serde(rename = "lambda")]
+    Lambda,
+
+}
+
+impl Default for TargetGroupTargetTypeEnum {
+    fn default() -> Self {
+        TargetGroupTargetTypeEnum::Alb
     }
 }
 

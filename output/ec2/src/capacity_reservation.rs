@@ -209,21 +209,21 @@ impl Default for CapacityReservationEndDateTypeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CapacityReservationTenancyEnum {
+pub enum CapacityReservationInstanceMatchCriteriaEnum {
 
-    /// dedicated
-    #[serde(rename = "dedicated")]
-    Dedicated,
+    /// open
+    #[serde(rename = "open")]
+    Open,
 
-    /// default
-    #[serde(rename = "default")]
-    Default,
+    /// targeted
+    #[serde(rename = "targeted")]
+    Targeted,
 
 }
 
-impl Default for CapacityReservationTenancyEnum {
+impl Default for CapacityReservationInstanceMatchCriteriaEnum {
     fn default() -> Self {
-        CapacityReservationTenancyEnum::Dedicated
+        CapacityReservationInstanceMatchCriteriaEnum::Open
     }
 }
 
@@ -307,21 +307,21 @@ impl Default for CapacityReservationInstancePlatformEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CapacityReservationInstanceMatchCriteriaEnum {
+pub enum CapacityReservationTenancyEnum {
 
-    /// open
-    #[serde(rename = "open")]
-    Open,
+    /// dedicated
+    #[serde(rename = "dedicated")]
+    Dedicated,
 
-    /// targeted
-    #[serde(rename = "targeted")]
-    Targeted,
+    /// default
+    #[serde(rename = "default")]
+    Default,
 
 }
 
-impl Default for CapacityReservationInstanceMatchCriteriaEnum {
+impl Default for CapacityReservationTenancyEnum {
     fn default() -> Self {
-        CapacityReservationInstanceMatchCriteriaEnum::Open
+        CapacityReservationTenancyEnum::Dedicated
     }
 }
 

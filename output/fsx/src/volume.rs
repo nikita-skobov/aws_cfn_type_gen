@@ -348,6 +348,25 @@ pub struct OntapConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum OntapConfigurationOntapVolumeTypeEnum {
+
+    /// DP
+    #[serde(rename = "DP")]
+    Dp,
+
+    /// RW
+    #[serde(rename = "RW")]
+    Rw,
+
+}
+
+impl Default for OntapConfigurationOntapVolumeTypeEnum {
+    fn default() -> Self {
+        OntapConfigurationOntapVolumeTypeEnum::Dp
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum OntapConfigurationSecurityStyleEnum {
 
     /// MIXED
@@ -367,25 +386,6 @@ pub enum OntapConfigurationSecurityStyleEnum {
 impl Default for OntapConfigurationSecurityStyleEnum {
     fn default() -> Self {
         OntapConfigurationSecurityStyleEnum::Mixed
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OntapConfigurationOntapVolumeTypeEnum {
-
-    /// DP
-    #[serde(rename = "DP")]
-    Dp,
-
-    /// RW
-    #[serde(rename = "RW")]
-    Rw,
-
-}
-
-impl Default for OntapConfigurationOntapVolumeTypeEnum {
-    fn default() -> Self {
-        OntapConfigurationOntapVolumeTypeEnum::Dp
     }
 }
 

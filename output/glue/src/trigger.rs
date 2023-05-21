@@ -350,6 +350,21 @@ pub struct Condition {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ConditionLogicalOperatorEnum {
+
+    /// EQUALS
+    #[serde(rename = "EQUALS")]
+    Equals,
+
+}
+
+impl Default for ConditionLogicalOperatorEnum {
+    fn default() -> Self {
+        ConditionLogicalOperatorEnum::Equals
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ConditionStateEnum {
 
     /// ERROR
@@ -393,21 +408,6 @@ pub enum ConditionStateEnum {
 impl Default for ConditionStateEnum {
     fn default() -> Self {
         ConditionStateEnum::Error
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConditionLogicalOperatorEnum {
-
-    /// EQUALS
-    #[serde(rename = "EQUALS")]
-    Equals,
-
-}
-
-impl Default for ConditionLogicalOperatorEnum {
-    fn default() -> Self {
-        ConditionLogicalOperatorEnum::Equals
     }
 }
 

@@ -643,25 +643,6 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum {
-
-    /// AllDocuments
-    #[serde(rename = "AllDocuments")]
-    Alldocuments,
-
-    /// FailedDocumentsOnly
-    #[serde(rename = "FailedDocumentsOnly")]
-    Faileddocumentsonly,
-
-}
-
-impl Default for AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum {
-    fn default() -> Self {
-        AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum::Alldocuments
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum {
 
     /// NoRotation
@@ -689,6 +670,25 @@ pub enum AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum 
 impl Default for AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum {
     fn default() -> Self {
         AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum::Norotation
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum {
+
+    /// AllDocuments
+    #[serde(rename = "AllDocuments")]
+    Alldocuments,
+
+    /// FailedDocumentsOnly
+    #[serde(rename = "FailedDocumentsOnly")]
+    Faileddocumentsonly,
+
+}
+
+impl Default for AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum {
+    fn default() -> Self {
+        AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum::Alldocuments
     }
 }
 
@@ -2319,25 +2319,6 @@ pub struct OrcSerDe {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OrcSerDeFormatVersionEnum {
-
-    /// V0_11
-    #[serde(rename = "V0_11")]
-    V011,
-
-    /// V0_12
-    #[serde(rename = "V0_12")]
-    V012,
-
-}
-
-impl Default for OrcSerDeFormatVersionEnum {
-    fn default() -> Self {
-        OrcSerDeFormatVersionEnum::V011
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum OrcSerDeCompressionEnum {
 
     /// NONE
@@ -2357,6 +2338,25 @@ pub enum OrcSerDeCompressionEnum {
 impl Default for OrcSerDeCompressionEnum {
     fn default() -> Self {
         OrcSerDeCompressionEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OrcSerDeFormatVersionEnum {
+
+    /// V0_11
+    #[serde(rename = "V0_11")]
+    V011,
+
+    /// V0_12
+    #[serde(rename = "V0_12")]
+    V012,
+
+}
+
+impl Default for OrcSerDeFormatVersionEnum {
+    fn default() -> Self {
+        OrcSerDeFormatVersionEnum::V011
     }
 }
 
@@ -2473,25 +2473,6 @@ pub struct ParquetSerDe {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ParquetSerDeWriterVersionEnum {
-
-    /// V1
-    #[serde(rename = "V1")]
-    V1,
-
-    /// V2
-    #[serde(rename = "V2")]
-    V2,
-
-}
-
-impl Default for ParquetSerDeWriterVersionEnum {
-    fn default() -> Self {
-        ParquetSerDeWriterVersionEnum::V1
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ParquetSerDeCompressionEnum {
 
     /// GZIP
@@ -2511,6 +2492,25 @@ pub enum ParquetSerDeCompressionEnum {
 impl Default for ParquetSerDeCompressionEnum {
     fn default() -> Self {
         ParquetSerDeCompressionEnum::Gzip
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ParquetSerDeWriterVersionEnum {
+
+    /// V1
+    #[serde(rename = "V1")]
+    V1,
+
+    /// V2
+    #[serde(rename = "V2")]
+    V2,
+
+}
+
+impl Default for ParquetSerDeWriterVersionEnum {
+    fn default() -> Self {
+        ParquetSerDeWriterVersionEnum::V1
     }
 }
 

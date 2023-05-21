@@ -503,25 +503,6 @@ pub struct Artifacts {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ArtifactsPackagingEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// ZIP
-    #[serde(rename = "ZIP")]
-    Zip,
-
-}
-
-impl Default for ArtifactsPackagingEnum {
-    fn default() -> Self {
-        ArtifactsPackagingEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ArtifactsNamespaceTypeEnum {
 
     /// BUILD_ID
@@ -537,6 +518,25 @@ pub enum ArtifactsNamespaceTypeEnum {
 impl Default for ArtifactsNamespaceTypeEnum {
     fn default() -> Self {
         ArtifactsNamespaceTypeEnum::Buildid
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ArtifactsPackagingEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// ZIP
+    #[serde(rename = "ZIP")]
+    Zip,
+
+}
+
+impl Default for ArtifactsPackagingEnum {
+    fn default() -> Self {
+        ArtifactsPackagingEnum::None
     }
 }
 

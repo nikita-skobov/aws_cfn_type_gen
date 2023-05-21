@@ -509,7 +509,7 @@ pub struct TokenValidityUnits {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TokenValidityUnitsRefreshTokenEnum {
+pub enum TokenValidityUnitsAccessTokenEnum {
 
     /// days
     #[serde(rename = "days")]
@@ -529,9 +529,9 @@ pub enum TokenValidityUnitsRefreshTokenEnum {
 
 }
 
-impl Default for TokenValidityUnitsRefreshTokenEnum {
+impl Default for TokenValidityUnitsAccessTokenEnum {
     fn default() -> Self {
-        TokenValidityUnitsRefreshTokenEnum::Days
+        TokenValidityUnitsAccessTokenEnum::Days
     }
 }
 
@@ -563,7 +563,7 @@ impl Default for TokenValidityUnitsIdTokenEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TokenValidityUnitsAccessTokenEnum {
+pub enum TokenValidityUnitsRefreshTokenEnum {
 
     /// days
     #[serde(rename = "days")]
@@ -583,9 +583,9 @@ pub enum TokenValidityUnitsAccessTokenEnum {
 
 }
 
-impl Default for TokenValidityUnitsAccessTokenEnum {
+impl Default for TokenValidityUnitsRefreshTokenEnum {
     fn default() -> Self {
-        TokenValidityUnitsAccessTokenEnum::Days
+        TokenValidityUnitsRefreshTokenEnum::Days
     }
 }
 

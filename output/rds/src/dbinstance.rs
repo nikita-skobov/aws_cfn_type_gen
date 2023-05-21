@@ -1354,21 +1354,6 @@ pub struct CfnDBInstance {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum DBInstanceRestoreTimeEnum {
-
-    /// Value must be a time in Universal Coordinated Time (UTC) format
-    #[serde(rename = "Value must be a time in Universal Coordinated Time (UTC) format")]
-    Valuemustbeatimeinuniversalcoordinatedtimeutcformat,
-
-}
-
-impl Default for DBInstanceRestoreTimeEnum {
-    fn default() -> Self {
-        DBInstanceRestoreTimeEnum::Valuemustbeatimeinuniversalcoordinatedtimeutcformat
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum DBInstanceReplicaModeEnum {
 
     /// open-read-only or mounted
@@ -1380,6 +1365,21 @@ pub enum DBInstanceReplicaModeEnum {
 impl Default for DBInstanceReplicaModeEnum {
     fn default() -> Self {
         DBInstanceReplicaModeEnum::Openreadonlyormounted
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DBInstanceRestoreTimeEnum {
+
+    /// Value must be a time in Universal Coordinated Time (UTC) format
+    #[serde(rename = "Value must be a time in Universal Coordinated Time (UTC) format")]
+    Valuemustbeatimeinuniversalcoordinatedtimeutcformat,
+
+}
+
+impl Default for DBInstanceRestoreTimeEnum {
+    fn default() -> Self {
+        DBInstanceRestoreTimeEnum::Valuemustbeatimeinuniversalcoordinatedtimeutcformat
     }
 }
 

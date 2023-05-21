@@ -152,6 +152,25 @@ pub struct CfnLoadBalancer {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum LoadBalancerIpAddressTypeEnum {
+
+    /// dualstack
+    #[serde(rename = "dualstack")]
+    Dualstack,
+
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+}
+
+impl Default for LoadBalancerIpAddressTypeEnum {
+    fn default() -> Self {
+        LoadBalancerIpAddressTypeEnum::Dualstack
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum LoadBalancerSchemeEnum {
 
     /// internal
@@ -190,25 +209,6 @@ pub enum LoadBalancerTypeEnum {
 impl Default for LoadBalancerTypeEnum {
     fn default() -> Self {
         LoadBalancerTypeEnum::Application
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum LoadBalancerIpAddressTypeEnum {
-
-    /// dualstack
-    #[serde(rename = "dualstack")]
-    Dualstack,
-
-    /// ipv4
-    #[serde(rename = "ipv4")]
-    Ipv4,
-
-}
-
-impl Default for LoadBalancerIpAddressTypeEnum {
-    fn default() -> Self {
-        LoadBalancerIpAddressTypeEnum::Dualstack
     }
 }
 

@@ -44,25 +44,6 @@ pub struct CfnResourceSpecificLogging {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ResourceSpecificLoggingTargetTypeEnum {
-
-    /// DEFAULT
-    #[serde(rename = "DEFAULT")]
-    Default,
-
-    /// THING_GROUP
-    #[serde(rename = "THING_GROUP")]
-    Thinggroup,
-
-}
-
-impl Default for ResourceSpecificLoggingTargetTypeEnum {
-    fn default() -> Self {
-        ResourceSpecificLoggingTargetTypeEnum::Default
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecificLoggingLogLevelEnum {
 
     /// DEBUG
@@ -90,6 +71,25 @@ pub enum ResourceSpecificLoggingLogLevelEnum {
 impl Default for ResourceSpecificLoggingLogLevelEnum {
     fn default() -> Self {
         ResourceSpecificLoggingLogLevelEnum::Debug
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResourceSpecificLoggingTargetTypeEnum {
+
+    /// DEFAULT
+    #[serde(rename = "DEFAULT")]
+    Default,
+
+    /// THING_GROUP
+    #[serde(rename = "THING_GROUP")]
+    Thinggroup,
+
+}
+
+impl Default for ResourceSpecificLoggingTargetTypeEnum {
+    fn default() -> Self {
+        ResourceSpecificLoggingTargetTypeEnum::Default
     }
 }
 

@@ -247,41 +247,6 @@ pub struct SizeConstraint {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum SizeConstraintTextTransformationEnum {
-
-    /// CMD_LINE
-    #[serde(rename = "CMD_LINE")]
-    Cmdline,
-
-    /// COMPRESS_WHITE_SPACE
-    #[serde(rename = "COMPRESS_WHITE_SPACE")]
-    Compresswhitespace,
-
-    /// HTML_ENTITY_DECODE
-    #[serde(rename = "HTML_ENTITY_DECODE")]
-    Htmlentitydecode,
-
-    /// LOWERCASE
-    #[serde(rename = "LOWERCASE")]
-    Lowercase,
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// URL_DECODE
-    #[serde(rename = "URL_DECODE")]
-    Urldecode,
-
-}
-
-impl Default for SizeConstraintTextTransformationEnum {
-    fn default() -> Self {
-        SizeConstraintTextTransformationEnum::Cmdline
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum SizeConstraintComparisonOperatorEnum {
 
     /// EQ
@@ -313,6 +278,41 @@ pub enum SizeConstraintComparisonOperatorEnum {
 impl Default for SizeConstraintComparisonOperatorEnum {
     fn default() -> Self {
         SizeConstraintComparisonOperatorEnum::Eq
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SizeConstraintTextTransformationEnum {
+
+    /// CMD_LINE
+    #[serde(rename = "CMD_LINE")]
+    Cmdline,
+
+    /// COMPRESS_WHITE_SPACE
+    #[serde(rename = "COMPRESS_WHITE_SPACE")]
+    Compresswhitespace,
+
+    /// HTML_ENTITY_DECODE
+    #[serde(rename = "HTML_ENTITY_DECODE")]
+    Htmlentitydecode,
+
+    /// LOWERCASE
+    #[serde(rename = "LOWERCASE")]
+    Lowercase,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// URL_DECODE
+    #[serde(rename = "URL_DECODE")]
+    Urldecode,
+
+}
+
+impl Default for SizeConstraintTextTransformationEnum {
+    fn default() -> Self {
+        SizeConstraintTextTransformationEnum::Cmdline
     }
 }
 

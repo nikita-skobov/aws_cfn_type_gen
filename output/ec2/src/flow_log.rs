@@ -185,29 +185,6 @@ impl Default for FlowLogLogDestinationTypeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FlowLogTrafficTypeEnum {
-
-    /// ACCEPT
-    #[serde(rename = "ACCEPT")]
-    Accept,
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// REJECT
-    #[serde(rename = "REJECT")]
-    Reject,
-
-}
-
-impl Default for FlowLogTrafficTypeEnum {
-    fn default() -> Self {
-        FlowLogTrafficTypeEnum::Accept
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FlowLogResourceTypeEnum {
 
     /// NetworkInterface
@@ -235,6 +212,29 @@ pub enum FlowLogResourceTypeEnum {
 impl Default for FlowLogResourceTypeEnum {
     fn default() -> Self {
         FlowLogResourceTypeEnum::Networkinterface
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FlowLogTrafficTypeEnum {
+
+    /// ACCEPT
+    #[serde(rename = "ACCEPT")]
+    Accept,
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// REJECT
+    #[serde(rename = "REJECT")]
+    Reject,
+
+}
+
+impl Default for FlowLogTrafficTypeEnum {
+    fn default() -> Self {
+        FlowLogTrafficTypeEnum::Accept
     }
 }
 

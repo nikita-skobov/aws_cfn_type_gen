@@ -234,6 +234,25 @@ pub struct CfnMaintenanceWindowTask {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum MaintenanceWindowTaskCutoffBehaviorEnum {
+
+    /// CANCEL_TASK
+    #[serde(rename = "CANCEL_TASK")]
+    Canceltask,
+
+    /// CONTINUE_TASK
+    #[serde(rename = "CONTINUE_TASK")]
+    Continuetask,
+
+}
+
+impl Default for MaintenanceWindowTaskCutoffBehaviorEnum {
+    fn default() -> Self {
+        MaintenanceWindowTaskCutoffBehaviorEnum::Canceltask
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum MaintenanceWindowTaskTaskTypeEnum {
 
     /// AUTOMATION
@@ -257,25 +276,6 @@ pub enum MaintenanceWindowTaskTaskTypeEnum {
 impl Default for MaintenanceWindowTaskTaskTypeEnum {
     fn default() -> Self {
         MaintenanceWindowTaskTaskTypeEnum::Automation
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum MaintenanceWindowTaskCutoffBehaviorEnum {
-
-    /// CANCEL_TASK
-    #[serde(rename = "CANCEL_TASK")]
-    Canceltask,
-
-    /// CONTINUE_TASK
-    #[serde(rename = "CONTINUE_TASK")]
-    Continuetask,
-
-}
-
-impl Default for MaintenanceWindowTaskCutoffBehaviorEnum {
-    fn default() -> Self {
-        MaintenanceWindowTaskCutoffBehaviorEnum::Canceltask
     }
 }
 

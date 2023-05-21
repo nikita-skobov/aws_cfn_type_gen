@@ -257,6 +257,25 @@ pub struct AggregationFunction {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum AggregationFunctionCategoricalAggregationFunctionEnum {
+
+    /// COUNT
+    #[serde(rename = "COUNT")]
+    Count,
+
+    /// DISTINCT_COUNT
+    #[serde(rename = "DISTINCT_COUNT")]
+    Distinctcount,
+
+}
+
+impl Default for AggregationFunctionCategoricalAggregationFunctionEnum {
+    fn default() -> Self {
+        AggregationFunctionCategoricalAggregationFunctionEnum::Count
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum AggregationFunctionDateAggregationFunctionEnum {
 
     /// COUNT
@@ -280,25 +299,6 @@ pub enum AggregationFunctionDateAggregationFunctionEnum {
 impl Default for AggregationFunctionDateAggregationFunctionEnum {
     fn default() -> Self {
         AggregationFunctionDateAggregationFunctionEnum::Count
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AggregationFunctionCategoricalAggregationFunctionEnum {
-
-    /// COUNT
-    #[serde(rename = "COUNT")]
-    Count,
-
-    /// DISTINCT_COUNT
-    #[serde(rename = "DISTINCT_COUNT")]
-    Distinctcount,
-
-}
-
-impl Default for AggregationFunctionCategoricalAggregationFunctionEnum {
-    fn default() -> Self {
-        AggregationFunctionCategoricalAggregationFunctionEnum::Count
     }
 }
 
@@ -1598,25 +1598,6 @@ pub struct BarChartConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum BarChartConfigurationOrientationEnum {
-
-    /// HORIZONTAL
-    #[serde(rename = "HORIZONTAL")]
-    Horizontal,
-
-    /// VERTICAL
-    #[serde(rename = "VERTICAL")]
-    Vertical,
-
-}
-
-impl Default for BarChartConfigurationOrientationEnum {
-    fn default() -> Self {
-        BarChartConfigurationOrientationEnum::Horizontal
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum BarChartConfigurationBarsArrangementEnum {
 
     /// CLUSTERED
@@ -1636,6 +1617,25 @@ pub enum BarChartConfigurationBarsArrangementEnum {
 impl Default for BarChartConfigurationBarsArrangementEnum {
     fn default() -> Self {
         BarChartConfigurationBarsArrangementEnum::Clustered
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BarChartConfigurationOrientationEnum {
+
+    /// HORIZONTAL
+    #[serde(rename = "HORIZONTAL")]
+    Horizontal,
+
+    /// VERTICAL
+    #[serde(rename = "VERTICAL")]
+    Vertical,
+
+}
+
+impl Default for BarChartConfigurationOrientationEnum {
+    fn default() -> Self {
+        BarChartConfigurationOrientationEnum::Horizontal
     }
 }
 
@@ -2236,25 +2236,6 @@ pub struct BoxPlotOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum BoxPlotOptionsOutlierVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for BoxPlotOptionsOutlierVisibilityEnum {
-    fn default() -> Self {
-        BoxPlotOptionsOutlierVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum BoxPlotOptionsAllDataPointsVisibilityEnum {
 
     /// HIDDEN
@@ -2270,6 +2251,25 @@ pub enum BoxPlotOptionsAllDataPointsVisibilityEnum {
 impl Default for BoxPlotOptionsAllDataPointsVisibilityEnum {
     fn default() -> Self {
         BoxPlotOptionsAllDataPointsVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BoxPlotOptionsOutlierVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for BoxPlotOptionsOutlierVisibilityEnum {
+    fn default() -> Self {
+        BoxPlotOptionsOutlierVisibilityEnum::Hidden
     }
 }
 
@@ -2933,25 +2933,6 @@ pub struct ChartAxisLabelOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ChartAxisLabelOptionsVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for ChartAxisLabelOptionsVisibilityEnum {
-    fn default() -> Self {
-        ChartAxisLabelOptionsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ChartAxisLabelOptionsSortIconVisibilityEnum {
 
     /// HIDDEN
@@ -2967,6 +2948,25 @@ pub enum ChartAxisLabelOptionsSortIconVisibilityEnum {
 impl Default for ChartAxisLabelOptionsSortIconVisibilityEnum {
     fn default() -> Self {
         ChartAxisLabelOptionsSortIconVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ChartAxisLabelOptionsVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for ChartAxisLabelOptionsVisibilityEnum {
+    fn default() -> Self {
+        ChartAxisLabelOptionsVisibilityEnum::Hidden
     }
 }
 
@@ -5405,44 +5405,6 @@ pub struct CustomFilterListConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CustomFilterListConfigurationSelectAllOptionsEnum {
-
-    /// FILTER_ALL_VALUES
-    #[serde(rename = "FILTER_ALL_VALUES")]
-    Filterallvalues,
-
-}
-
-impl Default for CustomFilterListConfigurationSelectAllOptionsEnum {
-    fn default() -> Self {
-        CustomFilterListConfigurationSelectAllOptionsEnum::Filterallvalues
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CustomFilterListConfigurationNullOptionEnum {
-
-    /// ALL_VALUES
-    #[serde(rename = "ALL_VALUES")]
-    Allvalues,
-
-    /// NON_NULLS_ONLY
-    #[serde(rename = "NON_NULLS_ONLY")]
-    Nonnullsonly,
-
-    /// NULLS_ONLY
-    #[serde(rename = "NULLS_ONLY")]
-    Nullsonly,
-
-}
-
-impl Default for CustomFilterListConfigurationNullOptionEnum {
-    fn default() -> Self {
-        CustomFilterListConfigurationNullOptionEnum::Allvalues
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum CustomFilterListConfigurationMatchOperatorEnum {
 
     /// CONTAINS
@@ -5474,6 +5436,44 @@ pub enum CustomFilterListConfigurationMatchOperatorEnum {
 impl Default for CustomFilterListConfigurationMatchOperatorEnum {
     fn default() -> Self {
         CustomFilterListConfigurationMatchOperatorEnum::Contains
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CustomFilterListConfigurationNullOptionEnum {
+
+    /// ALL_VALUES
+    #[serde(rename = "ALL_VALUES")]
+    Allvalues,
+
+    /// NON_NULLS_ONLY
+    #[serde(rename = "NON_NULLS_ONLY")]
+    Nonnullsonly,
+
+    /// NULLS_ONLY
+    #[serde(rename = "NULLS_ONLY")]
+    Nullsonly,
+
+}
+
+impl Default for CustomFilterListConfigurationNullOptionEnum {
+    fn default() -> Self {
+        CustomFilterListConfigurationNullOptionEnum::Allvalues
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CustomFilterListConfigurationSelectAllOptionsEnum {
+
+    /// FILTER_ALL_VALUES
+    #[serde(rename = "FILTER_ALL_VALUES")]
+    Filterallvalues,
+
+}
+
+impl Default for CustomFilterListConfigurationSelectAllOptionsEnum {
+    fn default() -> Self {
+        CustomFilterListConfigurationSelectAllOptionsEnum::Filterallvalues
     }
 }
 
@@ -5903,6 +5903,25 @@ pub struct DataLabelOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum DataLabelOptionsCategoryLabelVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for DataLabelOptionsCategoryLabelVisibilityEnum {
+    fn default() -> Self {
+        DataLabelOptionsCategoryLabelVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum DataLabelOptionsLabelContentEnum {
 
     /// PERCENT
@@ -5945,6 +5964,25 @@ impl Default for DataLabelOptionsMeasureLabelVisibilityEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum DataLabelOptionsOverlapEnum {
+
+    /// DISABLE_OVERLAP
+    #[serde(rename = "DISABLE_OVERLAP")]
+    Disableoverlap,
+
+    /// ENABLE_OVERLAP
+    #[serde(rename = "ENABLE_OVERLAP")]
+    Enableoverlap,
+
+}
+
+impl Default for DataLabelOptionsOverlapEnum {
+    fn default() -> Self {
+        DataLabelOptionsOverlapEnum::Disableoverlap
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum DataLabelOptionsPositionEnum {
 
     /// BOTTOM
@@ -5980,25 +6018,6 @@ impl Default for DataLabelOptionsPositionEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum DataLabelOptionsOverlapEnum {
-
-    /// DISABLE_OVERLAP
-    #[serde(rename = "DISABLE_OVERLAP")]
-    Disableoverlap,
-
-    /// ENABLE_OVERLAP
-    #[serde(rename = "ENABLE_OVERLAP")]
-    Enableoverlap,
-
-}
-
-impl Default for DataLabelOptionsOverlapEnum {
-    fn default() -> Self {
-        DataLabelOptionsOverlapEnum::Disableoverlap
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum DataLabelOptionsVisibilityEnum {
 
     /// HIDDEN
@@ -6014,25 +6033,6 @@ pub enum DataLabelOptionsVisibilityEnum {
 impl Default for DataLabelOptionsVisibilityEnum {
     fn default() -> Self {
         DataLabelOptionsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum DataLabelOptionsCategoryLabelVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for DataLabelOptionsCategoryLabelVisibilityEnum {
-    fn default() -> Self {
-        DataLabelOptionsCategoryLabelVisibilityEnum::Hidden
     }
 }
 
@@ -7974,25 +7974,6 @@ pub struct ExcludePeriodConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ExcludePeriodConfigurationStatusEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
-
-}
-
-impl Default for ExcludePeriodConfigurationStatusEnum {
-    fn default() -> Self {
-        ExcludePeriodConfigurationStatusEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ExcludePeriodConfigurationGranularityEnum {
 
     /// DAY
@@ -8036,6 +8017,25 @@ pub enum ExcludePeriodConfigurationGranularityEnum {
 impl Default for ExcludePeriodConfigurationGranularityEnum {
     fn default() -> Self {
         ExcludePeriodConfigurationGranularityEnum::Day
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ExcludePeriodConfigurationStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for ExcludePeriodConfigurationStatusEnum {
+    fn default() -> Self {
+        ExcludePeriodConfigurationStatusEnum::Disabled
     }
 }
 
@@ -8146,25 +8146,6 @@ pub struct FieldBasedTooltip {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FieldBasedTooltipTooltipTitleTypeEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRIMARY_VALUE
-    #[serde(rename = "PRIMARY_VALUE")]
-    Primaryvalue,
-
-}
-
-impl Default for FieldBasedTooltipTooltipTitleTypeEnum {
-    fn default() -> Self {
-        FieldBasedTooltipTooltipTitleTypeEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FieldBasedTooltipAggregationVisibilityEnum {
 
     /// HIDDEN
@@ -8180,6 +8161,25 @@ pub enum FieldBasedTooltipAggregationVisibilityEnum {
 impl Default for FieldBasedTooltipAggregationVisibilityEnum {
     fn default() -> Self {
         FieldBasedTooltipAggregationVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FieldBasedTooltipTooltipTitleTypeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRIMARY_VALUE
+    #[serde(rename = "PRIMARY_VALUE")]
+    Primaryvalue,
+
+}
+
+impl Default for FieldBasedTooltipTooltipTitleTypeEnum {
+    fn default() -> Self {
+        FieldBasedTooltipTooltipTitleTypeEnum::None
     }
 }
 
@@ -9435,21 +9435,6 @@ pub struct FilterListConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FilterListConfigurationSelectAllOptionsEnum {
-
-    /// FILTER_ALL_VALUES
-    #[serde(rename = "FILTER_ALL_VALUES")]
-    Filterallvalues,
-
-}
-
-impl Default for FilterListConfigurationSelectAllOptionsEnum {
-    fn default() -> Self {
-        FilterListConfigurationSelectAllOptionsEnum::Filterallvalues
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FilterListConfigurationMatchOperatorEnum {
 
     /// CONTAINS
@@ -9481,6 +9466,21 @@ pub enum FilterListConfigurationMatchOperatorEnum {
 impl Default for FilterListConfigurationMatchOperatorEnum {
     fn default() -> Self {
         FilterListConfigurationMatchOperatorEnum::Contains
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterListConfigurationSelectAllOptionsEnum {
+
+    /// FILTER_ALL_VALUES
+    #[serde(rename = "FILTER_ALL_VALUES")]
+    Filterallvalues,
+
+}
+
+impl Default for FilterListConfigurationSelectAllOptionsEnum {
+    fn default() -> Self {
+        FilterListConfigurationSelectAllOptionsEnum::Filterallvalues
     }
 }
 
@@ -10198,25 +10198,6 @@ pub struct FontConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FontConfigurationFontStyleEnum {
-
-    /// ITALIC
-    #[serde(rename = "ITALIC")]
-    Italic,
-
-    /// NORMAL
-    #[serde(rename = "NORMAL")]
-    Normal,
-
-}
-
-impl Default for FontConfigurationFontStyleEnum {
-    fn default() -> Self {
-        FontConfigurationFontStyleEnum::Italic
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FontConfigurationFontDecorationEnum {
 
     /// NONE
@@ -10232,6 +10213,25 @@ pub enum FontConfigurationFontDecorationEnum {
 impl Default for FontConfigurationFontDecorationEnum {
     fn default() -> Self {
         FontConfigurationFontDecorationEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FontConfigurationFontStyleEnum {
+
+    /// ITALIC
+    #[serde(rename = "ITALIC")]
+    Italic,
+
+    /// NORMAL
+    #[serde(rename = "NORMAL")]
+    Normal,
+
+}
+
+impl Default for FontConfigurationFontStyleEnum {
+    fn default() -> Self {
+        FontConfigurationFontStyleEnum::Italic
     }
 }
 
@@ -10849,25 +10849,6 @@ pub struct FreeFormLayoutElement {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FreeFormLayoutElementVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for FreeFormLayoutElementVisibilityEnum {
-    fn default() -> Self {
-        FreeFormLayoutElementVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FreeFormLayoutElementElementTypeEnum {
 
     /// FILTER_CONTROL
@@ -10891,6 +10872,25 @@ pub enum FreeFormLayoutElementElementTypeEnum {
 impl Default for FreeFormLayoutElementElementTypeEnum {
     fn default() -> Self {
         FreeFormLayoutElementElementTypeEnum::Filtercontrol
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FreeFormLayoutElementVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for FreeFormLayoutElementVisibilityEnum {
+    fn default() -> Self {
+        FreeFormLayoutElementVisibilityEnum::Hidden
     }
 }
 
@@ -11288,6 +11288,56 @@ pub struct FunnelChartDataLabelOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
+    fn default() -> Self {
+        FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
+
+    /// PERCENTAGE_BY_FIRST_STAGE
+    #[serde(rename = "PERCENTAGE_BY_FIRST_STAGE")]
+    Percentagebyfirststage,
+
+    /// PERCENTAGE_BY_PREVIOUS_STAGE
+    #[serde(rename = "PERCENTAGE_BY_PREVIOUS_STAGE")]
+    Percentagebypreviousstage,
+
+    /// VALUE_AND_PERCENTAGE_BY_FIRST_STAGE
+    #[serde(rename = "VALUE_AND_PERCENTAGE_BY_FIRST_STAGE")]
+    Valueandpercentagebyfirststage,
+
+    /// VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE
+    #[serde(rename = "VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE")]
+    Valueandpercentagebypreviousstage,
+
+    /// VALUE_ONLY
+    #[serde(rename = "VALUE_ONLY")]
+    Valueonly,
+
+}
+
+impl Default for FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
+    fn default() -> Self {
+        FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum::Percentagebyfirststage
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum FunnelChartDataLabelOptionsMeasureLabelVisibilityEnum {
 
     /// HIDDEN
@@ -11357,56 +11407,6 @@ pub enum FunnelChartDataLabelOptionsVisibilityEnum {
 impl Default for FunnelChartDataLabelOptionsVisibilityEnum {
     fn default() -> Self {
         FunnelChartDataLabelOptionsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
-
-    /// PERCENTAGE_BY_FIRST_STAGE
-    #[serde(rename = "PERCENTAGE_BY_FIRST_STAGE")]
-    Percentagebyfirststage,
-
-    /// PERCENTAGE_BY_PREVIOUS_STAGE
-    #[serde(rename = "PERCENTAGE_BY_PREVIOUS_STAGE")]
-    Percentagebypreviousstage,
-
-    /// VALUE_AND_PERCENTAGE_BY_FIRST_STAGE
-    #[serde(rename = "VALUE_AND_PERCENTAGE_BY_FIRST_STAGE")]
-    Valueandpercentagebyfirststage,
-
-    /// VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE
-    #[serde(rename = "VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE")]
-    Valueandpercentagebypreviousstage,
-
-    /// VALUE_ONLY
-    #[serde(rename = "VALUE_ONLY")]
-    Valueonly,
-
-}
-
-impl Default for FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
-    fn default() -> Self {
-        FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum::Percentagebyfirststage
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
-    fn default() -> Self {
-        FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum::Hidden
     }
 }
 
@@ -15163,29 +15163,6 @@ pub struct LineChartLineStyleSettings {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum LineChartLineStyleSettingsLineStyleEnum {
-
-    /// DASHED
-    #[serde(rename = "DASHED")]
-    Dashed,
-
-    /// DOTTED
-    #[serde(rename = "DOTTED")]
-    Dotted,
-
-    /// SOLID
-    #[serde(rename = "SOLID")]
-    Solid,
-
-}
-
-impl Default for LineChartLineStyleSettingsLineStyleEnum {
-    fn default() -> Self {
-        LineChartLineStyleSettingsLineStyleEnum::Dashed
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum LineChartLineStyleSettingsLineInterpolationEnum {
 
     /// LINEAR
@@ -15205,6 +15182,29 @@ pub enum LineChartLineStyleSettingsLineInterpolationEnum {
 impl Default for LineChartLineStyleSettingsLineInterpolationEnum {
     fn default() -> Self {
         LineChartLineStyleSettingsLineInterpolationEnum::Linear
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LineChartLineStyleSettingsLineStyleEnum {
+
+    /// DASHED
+    #[serde(rename = "DASHED")]
+    Dashed,
+
+    /// DOTTED
+    #[serde(rename = "DOTTED")]
+    Dotted,
+
+    /// SOLID
+    #[serde(rename = "SOLID")]
+    Solid,
+
+}
+
+impl Default for LineChartLineStyleSettingsLineStyleEnum {
+    fn default() -> Self {
+        LineChartLineStyleSettingsLineStyleEnum::Dashed
     }
 }
 
@@ -15293,25 +15293,6 @@ pub struct LineChartMarkerStyleSettings {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum LineChartMarkerStyleSettingsMarkerVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for LineChartMarkerStyleSettingsMarkerVisibilityEnum {
-    fn default() -> Self {
-        LineChartMarkerStyleSettingsMarkerVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum LineChartMarkerStyleSettingsMarkerShapeEnum {
 
     /// CIRCLE
@@ -15339,6 +15320,25 @@ pub enum LineChartMarkerStyleSettingsMarkerShapeEnum {
 impl Default for LineChartMarkerStyleSettingsMarkerShapeEnum {
     fn default() -> Self {
         LineChartMarkerStyleSettingsMarkerShapeEnum::Circle
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LineChartMarkerStyleSettingsMarkerVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for LineChartMarkerStyleSettingsMarkerVisibilityEnum {
+    fn default() -> Self {
+        LineChartMarkerStyleSettingsMarkerVisibilityEnum::Hidden
     }
 }
 
@@ -16642,6 +16642,25 @@ pub struct NumericEqualityFilter {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum NumericEqualityFilterMatchOperatorEnum {
+
+    /// DOES_NOT_EQUAL
+    #[serde(rename = "DOES_NOT_EQUAL")]
+    Doesnotequal,
+
+    /// EQUALS
+    #[serde(rename = "EQUALS")]
+    Equals,
+
+}
+
+impl Default for NumericEqualityFilterMatchOperatorEnum {
+    fn default() -> Self {
+        NumericEqualityFilterMatchOperatorEnum::Doesnotequal
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum NumericEqualityFilterNullOptionEnum {
 
     /// ALL_VALUES
@@ -16661,25 +16680,6 @@ pub enum NumericEqualityFilterNullOptionEnum {
 impl Default for NumericEqualityFilterNullOptionEnum {
     fn default() -> Self {
         NumericEqualityFilterNullOptionEnum::Allvalues
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum NumericEqualityFilterMatchOperatorEnum {
-
-    /// DOES_NOT_EQUAL
-    #[serde(rename = "DOES_NOT_EQUAL")]
-    Doesnotequal,
-
-    /// EQUALS
-    #[serde(rename = "EQUALS")]
-    Equals,
-
-}
-
-impl Default for NumericEqualityFilterMatchOperatorEnum {
-    fn default() -> Self {
-        NumericEqualityFilterMatchOperatorEnum::Doesnotequal
     }
 }
 
@@ -16877,21 +16877,6 @@ pub struct NumericRangeFilter {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum NumericRangeFilterSelectAllOptionsEnum {
-
-    /// FILTER_ALL_VALUES
-    #[serde(rename = "FILTER_ALL_VALUES")]
-    Filterallvalues,
-
-}
-
-impl Default for NumericRangeFilterSelectAllOptionsEnum {
-    fn default() -> Self {
-        NumericRangeFilterSelectAllOptionsEnum::Filterallvalues
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum NumericRangeFilterNullOptionEnum {
 
     /// ALL_VALUES
@@ -16911,6 +16896,21 @@ pub enum NumericRangeFilterNullOptionEnum {
 impl Default for NumericRangeFilterNullOptionEnum {
     fn default() -> Self {
         NumericRangeFilterNullOptionEnum::Allvalues
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NumericRangeFilterSelectAllOptionsEnum {
+
+    /// FILTER_ALL_VALUES
+    #[serde(rename = "FILTER_ALL_VALUES")]
+    Filterallvalues,
+
+}
+
+impl Default for NumericRangeFilterSelectAllOptionsEnum {
+    fn default() -> Self {
+        NumericRangeFilterSelectAllOptionsEnum::Filterallvalues
     }
 }
 
@@ -17392,6 +17392,25 @@ pub struct PanelConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum PanelConfigurationBackgroundVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for PanelConfigurationBackgroundVisibilityEnum {
+    fn default() -> Self {
+        PanelConfigurationBackgroundVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum PanelConfigurationBorderStyleEnum {
 
     /// DASHED
@@ -17415,7 +17434,7 @@ impl Default for PanelConfigurationBorderStyleEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PanelConfigurationBackgroundVisibilityEnum {
+pub enum PanelConfigurationBorderVisibilityEnum {
 
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -17427,9 +17446,9 @@ pub enum PanelConfigurationBackgroundVisibilityEnum {
 
 }
 
-impl Default for PanelConfigurationBackgroundVisibilityEnum {
+impl Default for PanelConfigurationBorderVisibilityEnum {
     fn default() -> Self {
-        PanelConfigurationBackgroundVisibilityEnum::Hidden
+        PanelConfigurationBorderVisibilityEnum::Hidden
     }
 }
 
@@ -17449,25 +17468,6 @@ pub enum PanelConfigurationGutterVisibilityEnum {
 impl Default for PanelConfigurationGutterVisibilityEnum {
     fn default() -> Self {
         PanelConfigurationGutterVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum PanelConfigurationBorderVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for PanelConfigurationBorderVisibilityEnum {
-    fn default() -> Self {
-        PanelConfigurationBorderVisibilityEnum::Hidden
     }
 }
 
@@ -19750,25 +19750,6 @@ pub struct PivotTableOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PivotTableOptionsSingleMetricVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for PivotTableOptionsSingleMetricVisibilityEnum {
-    fn default() -> Self {
-        PivotTableOptionsSingleMetricVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum PivotTableOptionsColumnNamesVisibilityEnum {
 
     /// HIDDEN
@@ -19788,25 +19769,6 @@ impl Default for PivotTableOptionsColumnNamesVisibilityEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PivotTableOptionsToggleButtonsVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for PivotTableOptionsToggleButtonsVisibilityEnum {
-    fn default() -> Self {
-        PivotTableOptionsToggleButtonsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum PivotTableOptionsMetricPlacementEnum {
 
     /// COLUMN
@@ -19822,6 +19784,44 @@ pub enum PivotTableOptionsMetricPlacementEnum {
 impl Default for PivotTableOptionsMetricPlacementEnum {
     fn default() -> Self {
         PivotTableOptionsMetricPlacementEnum::Column
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PivotTableOptionsSingleMetricVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for PivotTableOptionsSingleMetricVisibilityEnum {
+    fn default() -> Self {
+        PivotTableOptionsSingleMetricVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PivotTableOptionsToggleButtonsVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for PivotTableOptionsToggleButtonsVisibilityEnum {
+    fn default() -> Self {
+        PivotTableOptionsToggleButtonsVisibilityEnum::Hidden
     }
 }
 
@@ -19863,25 +19863,6 @@ pub struct PivotTablePaginatedReportOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
-    fn default() -> Self {
-        PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
 
     /// HIDDEN
@@ -19897,6 +19878,25 @@ pub enum PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
 impl Default for PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
     fn default() -> Self {
         PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
+    fn default() -> Self {
+        PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum::Hidden
     }
 }
 
@@ -20216,6 +20216,25 @@ pub struct PivotTotalOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum PivotTotalOptionsPlacementEnum {
+
+    /// END
+    #[serde(rename = "END")]
+    End,
+
+    /// START
+    #[serde(rename = "START")]
+    Start,
+
+}
+
+impl Default for PivotTotalOptionsPlacementEnum {
+    fn default() -> Self {
+        PivotTotalOptionsPlacementEnum::End
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum PivotTotalOptionsScrollStatusEnum {
 
     /// PINNED
@@ -20250,25 +20269,6 @@ pub enum PivotTotalOptionsTotalsVisibilityEnum {
 impl Default for PivotTotalOptionsTotalsVisibilityEnum {
     fn default() -> Self {
         PivotTotalOptionsTotalsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum PivotTotalOptionsPlacementEnum {
-
-    /// END
-    #[serde(rename = "END")]
-    End,
-
-    /// START
-    #[serde(rename = "START")]
-    Start,
-
-}
-
-impl Default for PivotTotalOptionsPlacementEnum {
-    fn default() -> Self {
-        PivotTotalOptionsPlacementEnum::End
     }
 }
 
@@ -20646,25 +20646,6 @@ pub struct RadarChartConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RadarChartConfigurationShapeEnum {
-
-    /// CIRCLE
-    #[serde(rename = "CIRCLE")]
-    Circle,
-
-    /// POLYGON
-    #[serde(rename = "POLYGON")]
-    Polygon,
-
-}
-
-impl Default for RadarChartConfigurationShapeEnum {
-    fn default() -> Self {
-        RadarChartConfigurationShapeEnum::Circle
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum RadarChartConfigurationAlternateBandColorsVisibilityEnum {
 
     /// HIDDEN
@@ -20680,6 +20661,25 @@ pub enum RadarChartConfigurationAlternateBandColorsVisibilityEnum {
 impl Default for RadarChartConfigurationAlternateBandColorsVisibilityEnum {
     fn default() -> Self {
         RadarChartConfigurationAlternateBandColorsVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RadarChartConfigurationShapeEnum {
+
+    /// CIRCLE
+    #[serde(rename = "CIRCLE")]
+    Circle,
+
+    /// POLYGON
+    #[serde(rename = "POLYGON")]
+    Polygon,
+
+}
+
+impl Default for RadarChartConfigurationShapeEnum {
+    fn default() -> Self {
+        RadarChartConfigurationShapeEnum::Circle
     }
 }
 
@@ -21645,53 +21645,6 @@ impl Default for RelativeDatesFilterMinimumGranularityEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RelativeDatesFilterTimeGranularityEnum {
-
-    /// DAY
-    #[serde(rename = "DAY")]
-    Day,
-
-    /// HOUR
-    #[serde(rename = "HOUR")]
-    Hour,
-
-    /// MILLISECOND
-    #[serde(rename = "MILLISECOND")]
-    Millisecond,
-
-    /// MINUTE
-    #[serde(rename = "MINUTE")]
-    Minute,
-
-    /// MONTH
-    #[serde(rename = "MONTH")]
-    Month,
-
-    /// QUARTER
-    #[serde(rename = "QUARTER")]
-    Quarter,
-
-    /// SECOND
-    #[serde(rename = "SECOND")]
-    Second,
-
-    /// WEEK
-    #[serde(rename = "WEEK")]
-    Week,
-
-    /// YEAR
-    #[serde(rename = "YEAR")]
-    Year,
-
-}
-
-impl Default for RelativeDatesFilterTimeGranularityEnum {
-    fn default() -> Self {
-        RelativeDatesFilterTimeGranularityEnum::Day
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum RelativeDatesFilterNullOptionEnum {
 
     /// ALL_VALUES
@@ -21742,6 +21695,53 @@ pub enum RelativeDatesFilterRelativeDateTypeEnum {
 impl Default for RelativeDatesFilterRelativeDateTypeEnum {
     fn default() -> Self {
         RelativeDatesFilterRelativeDateTypeEnum::Last
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RelativeDatesFilterTimeGranularityEnum {
+
+    /// DAY
+    #[serde(rename = "DAY")]
+    Day,
+
+    /// HOUR
+    #[serde(rename = "HOUR")]
+    Hour,
+
+    /// MILLISECOND
+    #[serde(rename = "MILLISECOND")]
+    Millisecond,
+
+    /// MINUTE
+    #[serde(rename = "MINUTE")]
+    Minute,
+
+    /// MONTH
+    #[serde(rename = "MONTH")]
+    Month,
+
+    /// QUARTER
+    #[serde(rename = "QUARTER")]
+    Quarter,
+
+    /// SECOND
+    #[serde(rename = "SECOND")]
+    Second,
+
+    /// WEEK
+    #[serde(rename = "WEEK")]
+    Week,
+
+    /// YEAR
+    #[serde(rename = "YEAR")]
+    Year,
+
+}
+
+impl Default for RelativeDatesFilterTimeGranularityEnum {
+    fn default() -> Self {
+        RelativeDatesFilterTimeGranularityEnum::Day
     }
 }
 
@@ -24486,6 +24486,33 @@ pub struct TableCellStyle {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum TableCellStyleHorizontalTextAlignmentEnum {
+
+    /// AUTO
+    #[serde(rename = "AUTO")]
+    Auto,
+
+    /// CENTER
+    #[serde(rename = "CENTER")]
+    Center,
+
+    /// LEFT
+    #[serde(rename = "LEFT")]
+    Left,
+
+    /// RIGHT
+    #[serde(rename = "RIGHT")]
+    Right,
+
+}
+
+impl Default for TableCellStyleHorizontalTextAlignmentEnum {
+    fn default() -> Self {
+        TableCellStyleHorizontalTextAlignmentEnum::Auto
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum TableCellStyleTextWrapEnum {
 
     /// NONE
@@ -24524,33 +24551,6 @@ pub enum TableCellStyleVerticalTextAlignmentEnum {
 impl Default for TableCellStyleVerticalTextAlignmentEnum {
     fn default() -> Self {
         TableCellStyleVerticalTextAlignmentEnum::Bottom
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TableCellStyleHorizontalTextAlignmentEnum {
-
-    /// AUTO
-    #[serde(rename = "AUTO")]
-    Auto,
-
-    /// CENTER
-    #[serde(rename = "CENTER")]
-    Center,
-
-    /// LEFT
-    #[serde(rename = "LEFT")]
-    Left,
-
-    /// RIGHT
-    #[serde(rename = "RIGHT")]
-    Right,
-
-}
-
-impl Default for TableCellStyleHorizontalTextAlignmentEnum {
-    fn default() -> Self {
-        TableCellStyleHorizontalTextAlignmentEnum::Auto
     }
 }
 
@@ -25247,25 +25247,6 @@ pub struct TablePaginatedReportOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
-    fn default() -> Self {
-        TablePaginatedReportOptionsVerticalOverflowVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
 
     /// HIDDEN
@@ -25281,6 +25262,25 @@ pub enum TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
 impl Default for TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
     fn default() -> Self {
         TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum::Hidden
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
+    fn default() -> Self {
+        TablePaginatedReportOptionsVerticalOverflowVisibilityEnum::Hidden
     }
 }
 
@@ -26285,6 +26285,29 @@ pub struct TimeRangeFilter {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum TimeRangeFilterNullOptionEnum {
+
+    /// ALL_VALUES
+    #[serde(rename = "ALL_VALUES")]
+    Allvalues,
+
+    /// NON_NULLS_ONLY
+    #[serde(rename = "NON_NULLS_ONLY")]
+    Nonnullsonly,
+
+    /// NULLS_ONLY
+    #[serde(rename = "NULLS_ONLY")]
+    Nullsonly,
+
+}
+
+impl Default for TimeRangeFilterNullOptionEnum {
+    fn default() -> Self {
+        TimeRangeFilterNullOptionEnum::Allvalues
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum TimeRangeFilterTimeGranularityEnum {
 
     /// DAY
@@ -26328,29 +26351,6 @@ pub enum TimeRangeFilterTimeGranularityEnum {
 impl Default for TimeRangeFilterTimeGranularityEnum {
     fn default() -> Self {
         TimeRangeFilterTimeGranularityEnum::Day
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TimeRangeFilterNullOptionEnum {
-
-    /// ALL_VALUES
-    #[serde(rename = "ALL_VALUES")]
-    Allvalues,
-
-    /// NON_NULLS_ONLY
-    #[serde(rename = "NON_NULLS_ONLY")]
-    Nonnullsonly,
-
-    /// NULLS_ONLY
-    #[serde(rename = "NULLS_ONLY")]
-    Nullsonly,
-
-}
-
-impl Default for TimeRangeFilterNullOptionEnum {
-    fn default() -> Self {
-        TimeRangeFilterNullOptionEnum::Allvalues
     }
 }
 
@@ -26494,25 +26494,6 @@ pub struct TooltipOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TooltipOptionsTooltipVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for TooltipOptionsTooltipVisibilityEnum {
-    fn default() -> Self {
-        TooltipOptionsTooltipVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TooltipOptionsSelectedTooltipTypeEnum {
 
     /// BASIC
@@ -26528,6 +26509,25 @@ pub enum TooltipOptionsSelectedTooltipTypeEnum {
 impl Default for TooltipOptionsSelectedTooltipTypeEnum {
     fn default() -> Self {
         TooltipOptionsSelectedTooltipTypeEnum::Basic
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TooltipOptionsTooltipVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for TooltipOptionsTooltipVisibilityEnum {
+    fn default() -> Self {
+        TooltipOptionsTooltipVisibilityEnum::Hidden
     }
 }
 
@@ -27094,25 +27094,6 @@ impl Default for TotalOptionsPlacementEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TotalOptionsTotalsVisibilityEnum {
-
-    /// HIDDEN
-    #[serde(rename = "HIDDEN")]
-    Hidden,
-
-    /// VISIBLE
-    #[serde(rename = "VISIBLE")]
-    Visible,
-
-}
-
-impl Default for TotalOptionsTotalsVisibilityEnum {
-    fn default() -> Self {
-        TotalOptionsTotalsVisibilityEnum::Hidden
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TotalOptionsScrollStatusEnum {
 
     /// PINNED
@@ -27128,6 +27109,25 @@ pub enum TotalOptionsScrollStatusEnum {
 impl Default for TotalOptionsScrollStatusEnum {
     fn default() -> Self {
         TotalOptionsScrollStatusEnum::Pinned
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TotalOptionsTotalsVisibilityEnum {
+
+    /// HIDDEN
+    #[serde(rename = "HIDDEN")]
+    Hidden,
+
+    /// VISIBLE
+    #[serde(rename = "VISIBLE")]
+    Visible,
+
+}
+
+impl Default for TotalOptionsTotalsVisibilityEnum {
+    fn default() -> Self {
+        TotalOptionsTotalsVisibilityEnum::Hidden
     }
 }
 
@@ -28918,6 +28918,63 @@ pub struct WordCloudOptions {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum WordCloudOptionsCloudLayoutEnum {
+
+    /// FLUID
+    #[serde(rename = "FLUID")]
+    Fluid,
+
+    /// NORMAL
+    #[serde(rename = "NORMAL")]
+    Normal,
+
+}
+
+impl Default for WordCloudOptionsCloudLayoutEnum {
+    fn default() -> Self {
+        WordCloudOptionsCloudLayoutEnum::Fluid
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WordCloudOptionsWordCasingEnum {
+
+    /// EXISTING_CASE
+    #[serde(rename = "EXISTING_CASE")]
+    Existingcase,
+
+    /// LOWER_CASE
+    #[serde(rename = "LOWER_CASE")]
+    Lowercase,
+
+}
+
+impl Default for WordCloudOptionsWordCasingEnum {
+    fn default() -> Self {
+        WordCloudOptionsWordCasingEnum::Existingcase
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WordCloudOptionsWordOrientationEnum {
+
+    /// HORIZONTAL
+    #[serde(rename = "HORIZONTAL")]
+    Horizontal,
+
+    /// HORIZONTAL_AND_VERTICAL
+    #[serde(rename = "HORIZONTAL_AND_VERTICAL")]
+    Horizontalandvertical,
+
+}
+
+impl Default for WordCloudOptionsWordOrientationEnum {
+    fn default() -> Self {
+        WordCloudOptionsWordOrientationEnum::Horizontal
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum WordCloudOptionsWordPaddingEnum {
 
     /// LARGE
@@ -28960,63 +29017,6 @@ pub enum WordCloudOptionsWordScalingEnum {
 impl Default for WordCloudOptionsWordScalingEnum {
     fn default() -> Self {
         WordCloudOptionsWordScalingEnum::Emphasize
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum WordCloudOptionsWordOrientationEnum {
-
-    /// HORIZONTAL
-    #[serde(rename = "HORIZONTAL")]
-    Horizontal,
-
-    /// HORIZONTAL_AND_VERTICAL
-    #[serde(rename = "HORIZONTAL_AND_VERTICAL")]
-    Horizontalandvertical,
-
-}
-
-impl Default for WordCloudOptionsWordOrientationEnum {
-    fn default() -> Self {
-        WordCloudOptionsWordOrientationEnum::Horizontal
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum WordCloudOptionsWordCasingEnum {
-
-    /// EXISTING_CASE
-    #[serde(rename = "EXISTING_CASE")]
-    Existingcase,
-
-    /// LOWER_CASE
-    #[serde(rename = "LOWER_CASE")]
-    Lowercase,
-
-}
-
-impl Default for WordCloudOptionsWordCasingEnum {
-    fn default() -> Self {
-        WordCloudOptionsWordCasingEnum::Existingcase
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum WordCloudOptionsCloudLayoutEnum {
-
-    /// FLUID
-    #[serde(rename = "FLUID")]
-    Fluid,
-
-    /// NORMAL
-    #[serde(rename = "NORMAL")]
-    Normal,
-
-}
-
-impl Default for WordCloudOptionsCloudLayoutEnum {
-    fn default() -> Self {
-        WordCloudOptionsCloudLayoutEnum::Fluid
     }
 }
 

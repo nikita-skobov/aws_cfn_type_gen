@@ -552,29 +552,6 @@ pub struct CfnInstance {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum InstanceTenancyEnum {
-
-    /// dedicated
-    #[serde(rename = "dedicated")]
-    Dedicated,
-
-    /// default
-    #[serde(rename = "default")]
-    Default,
-
-    /// host
-    #[serde(rename = "host")]
-    Host,
-
-}
-
-impl Default for InstanceTenancyEnum {
-    fn default() -> Self {
-        InstanceTenancyEnum::Dedicated
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceInstanceInitiatedShutdownBehaviorEnum {
 
     /// stop
@@ -3141,6 +3118,29 @@ pub enum InstanceInstanceTypeEnum {
 impl Default for InstanceInstanceTypeEnum {
     fn default() -> Self {
         InstanceInstanceTypeEnum::A12xlarge
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum InstanceTenancyEnum {
+
+    /// dedicated
+    #[serde(rename = "dedicated")]
+    Dedicated,
+
+    /// default
+    #[serde(rename = "default")]
+    Default,
+
+    /// host
+    #[serde(rename = "host")]
+    Host,
+
+}
+
+impl Default for InstanceTenancyEnum {
+    fn default() -> Self {
+        InstanceTenancyEnum::Dedicated
     }
 }
 

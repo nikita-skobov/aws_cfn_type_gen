@@ -183,33 +183,6 @@ impl Default for AlarmComparisonOperatorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum AlarmTreatMissingDataEnum {
-
-    /// breaching
-    #[serde(rename = "breaching")]
-    Breaching,
-
-    /// ignore
-    #[serde(rename = "ignore")]
-    Ignore,
-
-    /// missing
-    #[serde(rename = "missing")]
-    Missing,
-
-    /// notBreaching
-    #[serde(rename = "notBreaching")]
-    Notbreaching,
-
-}
-
-impl Default for AlarmTreatMissingDataEnum {
-    fn default() -> Self {
-        AlarmTreatMissingDataEnum::Breaching
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum AlarmMetricNameEnum {
 
     /// BurstCapacityPercentage
@@ -317,6 +290,33 @@ pub enum AlarmMetricNameEnum {
 impl Default for AlarmMetricNameEnum {
     fn default() -> Self {
         AlarmMetricNameEnum::Burstcapacitypercentage
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AlarmTreatMissingDataEnum {
+
+    /// breaching
+    #[serde(rename = "breaching")]
+    Breaching,
+
+    /// ignore
+    #[serde(rename = "ignore")]
+    Ignore,
+
+    /// missing
+    #[serde(rename = "missing")]
+    Missing,
+
+    /// notBreaching
+    #[serde(rename = "notBreaching")]
+    Notbreaching,
+
+}
+
+impl Default for AlarmTreatMissingDataEnum {
+    fn default() -> Self {
+        AlarmTreatMissingDataEnum::Breaching
     }
 }
 

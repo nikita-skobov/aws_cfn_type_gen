@@ -475,25 +475,6 @@ pub struct UserSetting {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum UserSettingPermissionEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
-
-}
-
-impl Default for UserSettingPermissionEnum {
-    fn default() -> Self {
-        UserSettingPermissionEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum UserSettingActionEnum {
 
     /// CLIPBOARD_COPY_FROM_LOCAL_DEVICE
@@ -529,6 +510,25 @@ pub enum UserSettingActionEnum {
 impl Default for UserSettingActionEnum {
     fn default() -> Self {
         UserSettingActionEnum::Clipboardcopyfromlocaldevice
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserSettingPermissionEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for UserSettingPermissionEnum {
+    fn default() -> Self {
+        UserSettingPermissionEnum::Disabled
     }
 }
 

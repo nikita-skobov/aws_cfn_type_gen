@@ -540,6 +540,29 @@ pub struct HealthCheckConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum HealthCheckConfigInsufficientDataHealthStatusEnum {
+
+    /// Healthy
+    #[serde(rename = "Healthy")]
+    Healthy,
+
+    /// LastKnownStatus
+    #[serde(rename = "LastKnownStatus")]
+    Lastknownstatus,
+
+    /// Unhealthy
+    #[serde(rename = "Unhealthy")]
+    Unhealthy,
+
+}
+
+impl Default for HealthCheckConfigInsufficientDataHealthStatusEnum {
+    fn default() -> Self {
+        HealthCheckConfigInsufficientDataHealthStatusEnum::Healthy
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum HealthCheckConfigTypeEnum {
 
     /// CALCULATED
@@ -579,29 +602,6 @@ pub enum HealthCheckConfigTypeEnum {
 impl Default for HealthCheckConfigTypeEnum {
     fn default() -> Self {
         HealthCheckConfigTypeEnum::Calculated
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum HealthCheckConfigInsufficientDataHealthStatusEnum {
-
-    /// Healthy
-    #[serde(rename = "Healthy")]
-    Healthy,
-
-    /// LastKnownStatus
-    #[serde(rename = "LastKnownStatus")]
-    Lastknownstatus,
-
-    /// Unhealthy
-    #[serde(rename = "Unhealthy")]
-    Unhealthy,
-
-}
-
-impl Default for HealthCheckConfigInsufficientDataHealthStatusEnum {
-    fn default() -> Self {
-        HealthCheckConfigInsufficientDataHealthStatusEnum::Healthy
     }
 }
 

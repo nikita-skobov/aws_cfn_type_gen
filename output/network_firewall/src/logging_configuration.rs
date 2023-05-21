@@ -113,25 +113,6 @@ pub struct LogDestinationConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum LogDestinationConfigLogTypeEnum {
-
-    /// ALERT
-    #[serde(rename = "ALERT")]
-    Alert,
-
-    /// FLOW
-    #[serde(rename = "FLOW")]
-    Flow,
-
-}
-
-impl Default for LogDestinationConfigLogTypeEnum {
-    fn default() -> Self {
-        LogDestinationConfigLogTypeEnum::Alert
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum LogDestinationConfigLogDestinationTypeEnum {
 
     /// CloudWatchLogs
@@ -151,6 +132,25 @@ pub enum LogDestinationConfigLogDestinationTypeEnum {
 impl Default for LogDestinationConfigLogDestinationTypeEnum {
     fn default() -> Self {
         LogDestinationConfigLogDestinationTypeEnum::Cloudwatchlogs
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LogDestinationConfigLogTypeEnum {
+
+    /// ALERT
+    #[serde(rename = "ALERT")]
+    Alert,
+
+    /// FLOW
+    #[serde(rename = "FLOW")]
+    Flow,
+
+}
+
+impl Default for LogDestinationConfigLogTypeEnum {
+    fn default() -> Self {
+        LogDestinationConfigLogTypeEnum::Alert
     }
 }
 

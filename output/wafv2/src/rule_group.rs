@@ -1607,29 +1607,6 @@ pub struct JsonBody {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyMatchScopeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// KEY
-    #[serde(rename = "KEY")]
-    Key,
-
-    /// VALUE
-    #[serde(rename = "VALUE")]
-    Value,
-
-}
-
-impl Default for JsonBodyMatchScopeEnum {
-    fn default() -> Self {
-        JsonBodyMatchScopeEnum::All
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum JsonBodyInvalidFallbackBehaviorEnum {
 
     /// EVALUATE_AS_STRING
@@ -1649,6 +1626,29 @@ pub enum JsonBodyInvalidFallbackBehaviorEnum {
 impl Default for JsonBodyInvalidFallbackBehaviorEnum {
     fn default() -> Self {
         JsonBodyInvalidFallbackBehaviorEnum::Evaluateasstring
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for JsonBodyMatchScopeEnum {
+    fn default() -> Self {
+        JsonBodyMatchScopeEnum::All
     }
 }
 

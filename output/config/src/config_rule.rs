@@ -438,6 +438,21 @@ pub struct SourceDetail {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceDetailEventSourceEnum {
+
+    /// aws.config
+    #[serde(rename = "aws.config")]
+    Awsconfig,
+
+}
+
+impl Default for SourceDetailEventSourceEnum {
+    fn default() -> Self {
+        SourceDetailEventSourceEnum::Awsconfig
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum SourceDetailMaximumExecutionFrequencyEnum {
 
     /// One_Hour
@@ -492,21 +507,6 @@ pub enum SourceDetailMessageTypeEnum {
 impl Default for SourceDetailMessageTypeEnum {
     fn default() -> Self {
         SourceDetailMessageTypeEnum::Configurationitemchangenotification
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SourceDetailEventSourceEnum {
-
-    /// aws.config
-    #[serde(rename = "aws.config")]
-    Awsconfig,
-
-}
-
-impl Default for SourceDetailEventSourceEnum {
-    fn default() -> Self {
-        SourceDetailEventSourceEnum::Awsconfig
     }
 }
 

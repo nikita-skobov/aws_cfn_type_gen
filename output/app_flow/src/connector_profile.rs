@@ -98,6 +98,25 @@ pub struct CfnConnectorProfile {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorProfileConnectionModeEnum {
+
+    /// Private
+    #[serde(rename = "Private")]
+    Private,
+
+    /// Public
+    #[serde(rename = "Public")]
+    Public,
+
+}
+
+impl Default for ConnectorProfileConnectionModeEnum {
+    fn default() -> Self {
+        ConnectorProfileConnectionModeEnum::Private
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ConnectorProfileConnectorTypeEnum {
 
     /// Amplitude
@@ -201,25 +220,6 @@ pub enum ConnectorProfileConnectorTypeEnum {
 impl Default for ConnectorProfileConnectorTypeEnum {
     fn default() -> Self {
         ConnectorProfileConnectorTypeEnum::Amplitude
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorProfileConnectionModeEnum {
-
-    /// Private
-    #[serde(rename = "Private")]
-    Private,
-
-    /// Public
-    #[serde(rename = "Public")]
-    Public,
-
-}
-
-impl Default for ConnectorProfileConnectionModeEnum {
-    fn default() -> Self {
-        ConnectorProfileConnectionModeEnum::Private
     }
 }
 

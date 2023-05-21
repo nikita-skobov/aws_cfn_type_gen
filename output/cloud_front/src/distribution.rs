@@ -1237,29 +1237,6 @@ pub struct DistributionConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum DistributionConfigPriceClassEnum {
-
-    /// PriceClass_100
-    #[serde(rename = "PriceClass_100")]
-    Priceclass100,
-
-    /// PriceClass_200
-    #[serde(rename = "PriceClass_200")]
-    Priceclass200,
-
-    /// PriceClass_All
-    #[serde(rename = "PriceClass_All")]
-    Priceclassall,
-
-}
-
-impl Default for DistributionConfigPriceClassEnum {
-    fn default() -> Self {
-        DistributionConfigPriceClassEnum::Priceclass100
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum DistributionConfigHttpVersionEnum {
 
     /// http1.1
@@ -1283,6 +1260,29 @@ pub enum DistributionConfigHttpVersionEnum {
 impl Default for DistributionConfigHttpVersionEnum {
     fn default() -> Self {
         DistributionConfigHttpVersionEnum::Http11
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DistributionConfigPriceClassEnum {
+
+    /// PriceClass_100
+    #[serde(rename = "PriceClass_100")]
+    Priceclass100,
+
+    /// PriceClass_200
+    #[serde(rename = "PriceClass_200")]
+    Priceclass200,
+
+    /// PriceClass_All
+    #[serde(rename = "PriceClass_All")]
+    Priceclassall,
+
+}
+
+impl Default for DistributionConfigPriceClassEnum {
+    fn default() -> Self {
+        DistributionConfigPriceClassEnum::Priceclass100
     }
 }
 
@@ -2349,29 +2349,6 @@ pub struct ViewerCertificate {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ViewerCertificateSslSupportMethodEnum {
-
-    /// sni-only
-    #[serde(rename = "sni-only")]
-    Snionly,
-
-    /// static-ip
-    #[serde(rename = "static-ip")]
-    Staticip,
-
-    /// vip
-    #[serde(rename = "vip")]
-    Vip,
-
-}
-
-impl Default for ViewerCertificateSslSupportMethodEnum {
-    fn default() -> Self {
-        ViewerCertificateSslSupportMethodEnum::Snionly
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ViewerCertificateMinimumProtocolVersionEnum {
 
     /// SSLv3
@@ -2407,6 +2384,29 @@ pub enum ViewerCertificateMinimumProtocolVersionEnum {
 impl Default for ViewerCertificateMinimumProtocolVersionEnum {
     fn default() -> Self {
         ViewerCertificateMinimumProtocolVersionEnum::Sslv3
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ViewerCertificateSslSupportMethodEnum {
+
+    /// sni-only
+    #[serde(rename = "sni-only")]
+    Snionly,
+
+    /// static-ip
+    #[serde(rename = "static-ip")]
+    Staticip,
+
+    /// vip
+    #[serde(rename = "vip")]
+    Vip,
+
+}
+
+impl Default for ViewerCertificateSslSupportMethodEnum {
+    fn default() -> Self {
+        ViewerCertificateSslSupportMethodEnum::Snionly
     }
 }
 

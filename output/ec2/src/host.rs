@@ -102,25 +102,6 @@ pub struct CfnHost {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum HostHostMaintenanceEnum {
-
-    /// off
-    #[serde(rename = "off")]
-    Off,
-
-    /// on
-    #[serde(rename = "on")]
-    On,
-
-}
-
-impl Default for HostHostMaintenanceEnum {
-    fn default() -> Self {
-        HostHostMaintenanceEnum::Off
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum HostAutoPlacementEnum {
 
     /// off
@@ -136,6 +117,25 @@ pub enum HostAutoPlacementEnum {
 impl Default for HostAutoPlacementEnum {
     fn default() -> Self {
         HostAutoPlacementEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HostHostMaintenanceEnum {
+
+    /// off
+    #[serde(rename = "off")]
+    Off,
+
+    /// on
+    #[serde(rename = "on")]
+    On,
+
+}
+
+impl Default for HostHostMaintenanceEnum {
+    fn default() -> Self {
+        HostHostMaintenanceEnum::Off
     }
 }
 

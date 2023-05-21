@@ -800,6 +800,25 @@ pub struct NamedEntityDefinition {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum NamedEntityDefinitionPropertyRoleEnum {
+
+    /// ID
+    #[serde(rename = "ID")]
+    Id,
+
+    /// PRIMARY
+    #[serde(rename = "PRIMARY")]
+    Primary,
+
+}
+
+impl Default for NamedEntityDefinitionPropertyRoleEnum {
+    fn default() -> Self {
+        NamedEntityDefinitionPropertyRoleEnum::Id
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum NamedEntityDefinitionPropertyUsageEnum {
 
     /// DIMENSION
@@ -819,25 +838,6 @@ pub enum NamedEntityDefinitionPropertyUsageEnum {
 impl Default for NamedEntityDefinitionPropertyUsageEnum {
     fn default() -> Self {
         NamedEntityDefinitionPropertyUsageEnum::Dimension
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum NamedEntityDefinitionPropertyRoleEnum {
-
-    /// ID
-    #[serde(rename = "ID")]
-    Id,
-
-    /// PRIMARY
-    #[serde(rename = "PRIMARY")]
-    Primary,
-
-}
-
-impl Default for NamedEntityDefinitionPropertyRoleEnum {
-    fn default() -> Self {
-        NamedEntityDefinitionPropertyRoleEnum::Id
     }
 }
 
@@ -1521,6 +1521,25 @@ pub struct TopicCategoryFilter {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum TopicCategoryFilterCategoryFilterFunctionEnum {
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// EXACT
+    #[serde(rename = "EXACT")]
+    Exact,
+
+}
+
+impl Default for TopicCategoryFilterCategoryFilterFunctionEnum {
+    fn default() -> Self {
+        TopicCategoryFilterCategoryFilterFunctionEnum::Contains
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum TopicCategoryFilterCategoryFilterTypeEnum {
 
     /// CUSTOM_FILTER
@@ -1540,25 +1559,6 @@ pub enum TopicCategoryFilterCategoryFilterTypeEnum {
 impl Default for TopicCategoryFilterCategoryFilterTypeEnum {
     fn default() -> Self {
         TopicCategoryFilterCategoryFilterTypeEnum::Customfilter
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TopicCategoryFilterCategoryFilterFunctionEnum {
-
-    /// CONTAINS
-    #[serde(rename = "CONTAINS")]
-    Contains,
-
-    /// EXACT
-    #[serde(rename = "EXACT")]
-    Exact,
-
-}
-
-impl Default for TopicCategoryFilterCategoryFilterFunctionEnum {
-    fn default() -> Self {
-        TopicCategoryFilterCategoryFilterFunctionEnum::Contains
     }
 }
 

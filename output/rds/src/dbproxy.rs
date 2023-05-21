@@ -219,6 +219,21 @@ pub struct AuthFormat {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthFormatAuthSchemeEnum {
+
+    /// SECRETS
+    #[serde(rename = "SECRETS")]
+    Secrets,
+
+}
+
+impl Default for AuthFormatAuthSchemeEnum {
+    fn default() -> Self {
+        AuthFormatAuthSchemeEnum::Secrets
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum AuthFormatIAMAuthEnum {
 
     /// ENABLED
@@ -238,21 +253,6 @@ pub enum AuthFormatIAMAuthEnum {
 impl Default for AuthFormatIAMAuthEnum {
     fn default() -> Self {
         AuthFormatIAMAuthEnum::Enabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AuthFormatAuthSchemeEnum {
-
-    /// SECRETS
-    #[serde(rename = "SECRETS")]
-    Secrets,
-
-}
-
-impl Default for AuthFormatAuthSchemeEnum {
-    fn default() -> Self {
-        AuthFormatAuthSchemeEnum::Secrets
     }
 }
 

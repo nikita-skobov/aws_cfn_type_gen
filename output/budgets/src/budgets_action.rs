@@ -108,25 +108,6 @@ pub struct CfnBudgetsAction {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum BudgetsActionNotificationTypeEnum {
-
-    /// ACTUAL
-    #[serde(rename = "ACTUAL")]
-    Actual,
-
-    /// FORECASTED
-    #[serde(rename = "FORECASTED")]
-    Forecasted,
-
-}
-
-impl Default for BudgetsActionNotificationTypeEnum {
-    fn default() -> Self {
-        BudgetsActionNotificationTypeEnum::Actual
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum BudgetsActionActionTypeEnum {
 
     /// APPLY_IAM_POLICY
@@ -165,6 +146,25 @@ pub enum BudgetsActionApprovalModelEnum {
 impl Default for BudgetsActionApprovalModelEnum {
     fn default() -> Self {
         BudgetsActionApprovalModelEnum::Automatic
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BudgetsActionNotificationTypeEnum {
+
+    /// ACTUAL
+    #[serde(rename = "ACTUAL")]
+    Actual,
+
+    /// FORECASTED
+    #[serde(rename = "FORECASTED")]
+    Forecasted,
+
+}
+
+impl Default for BudgetsActionNotificationTypeEnum {
+    fn default() -> Self {
+        BudgetsActionNotificationTypeEnum::Actual
     }
 }
 

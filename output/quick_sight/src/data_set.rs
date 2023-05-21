@@ -1806,25 +1806,6 @@ pub struct UploadSettings {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum UploadSettingsTextQualifierEnum {
-
-    /// DOUBLE_QUOTE
-    #[serde(rename = "DOUBLE_QUOTE")]
-    Doublequote,
-
-    /// SINGLE_QUOTE
-    #[serde(rename = "SINGLE_QUOTE")]
-    Singlequote,
-
-}
-
-impl Default for UploadSettingsTextQualifierEnum {
-    fn default() -> Self {
-        UploadSettingsTextQualifierEnum::Doublequote
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum UploadSettingsFormatEnum {
 
     /// CLF
@@ -1856,6 +1837,25 @@ pub enum UploadSettingsFormatEnum {
 impl Default for UploadSettingsFormatEnum {
     fn default() -> Self {
         UploadSettingsFormatEnum::Clf
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UploadSettingsTextQualifierEnum {
+
+    /// DOUBLE_QUOTE
+    #[serde(rename = "DOUBLE_QUOTE")]
+    Doublequote,
+
+    /// SINGLE_QUOTE
+    #[serde(rename = "SINGLE_QUOTE")]
+    Singlequote,
+
+}
+
+impl Default for UploadSettingsTextQualifierEnum {
+    fn default() -> Self {
+        UploadSettingsTextQualifierEnum::Doublequote
     }
 }
 

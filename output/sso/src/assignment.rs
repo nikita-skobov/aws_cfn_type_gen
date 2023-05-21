@@ -108,21 +108,6 @@ pub struct CfnAssignment {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum AssignmentTargetTypeEnum {
-
-    /// AWS_ACCOUNT
-    #[serde(rename = "AWS_ACCOUNT")]
-    Awsaccount,
-
-}
-
-impl Default for AssignmentTargetTypeEnum {
-    fn default() -> Self {
-        AssignmentTargetTypeEnum::Awsaccount
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum AssignmentPrincipalTypeEnum {
 
     /// GROUP
@@ -138,6 +123,21 @@ pub enum AssignmentPrincipalTypeEnum {
 impl Default for AssignmentPrincipalTypeEnum {
     fn default() -> Self {
         AssignmentPrincipalTypeEnum::Group
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssignmentTargetTypeEnum {
+
+    /// AWS_ACCOUNT
+    #[serde(rename = "AWS_ACCOUNT")]
+    Awsaccount,
+
+}
+
+impl Default for AssignmentTargetTypeEnum {
+    fn default() -> Self {
+        AssignmentTargetTypeEnum::Awsaccount
     }
 }
 

@@ -381,25 +381,21 @@ pub struct CfnCacheCluster {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CacheClusterNetworkTypeEnum {
+pub enum CacheClusterAZModeEnum {
 
-    /// dual_stack
-    #[serde(rename = "dual_stack")]
-    Dualstack,
+    /// cross-az
+    #[serde(rename = "cross-az")]
+    Crossaz,
 
-    /// ipv4
-    #[serde(rename = "ipv4")]
-    Ipv4,
-
-    /// ipv6
-    #[serde(rename = "ipv6")]
-    Ipv6,
+    /// single-az
+    #[serde(rename = "single-az")]
+    Singleaz,
 
 }
 
-impl Default for CacheClusterNetworkTypeEnum {
+impl Default for CacheClusterAZModeEnum {
     fn default() -> Self {
-        CacheClusterNetworkTypeEnum::Dualstack
+        CacheClusterAZModeEnum::Crossaz
     }
 }
 
@@ -423,21 +419,25 @@ impl Default for CacheClusterIpDiscoveryEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CacheClusterAZModeEnum {
+pub enum CacheClusterNetworkTypeEnum {
 
-    /// cross-az
-    #[serde(rename = "cross-az")]
-    Crossaz,
+    /// dual_stack
+    #[serde(rename = "dual_stack")]
+    Dualstack,
 
-    /// single-az
-    #[serde(rename = "single-az")]
-    Singleaz,
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+    /// ipv6
+    #[serde(rename = "ipv6")]
+    Ipv6,
 
 }
 
-impl Default for CacheClusterAZModeEnum {
+impl Default for CacheClusterNetworkTypeEnum {
     fn default() -> Self {
-        CacheClusterAZModeEnum::Crossaz
+        CacheClusterNetworkTypeEnum::Dualstack
     }
 }
 

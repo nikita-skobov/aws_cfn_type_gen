@@ -155,7 +155,7 @@ pub struct Options {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsIpv6SupportEnum {
+pub enum OptionsApplianceModeSupportEnum {
 
     /// disable
     #[serde(rename = "disable")]
@@ -167,9 +167,9 @@ pub enum OptionsIpv6SupportEnum {
 
 }
 
-impl Default for OptionsIpv6SupportEnum {
+impl Default for OptionsApplianceModeSupportEnum {
     fn default() -> Self {
-        OptionsIpv6SupportEnum::Disable
+        OptionsApplianceModeSupportEnum::Disable
     }
 }
 
@@ -193,7 +193,7 @@ impl Default for OptionsDnsSupportEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsApplianceModeSupportEnum {
+pub enum OptionsIpv6SupportEnum {
 
     /// disable
     #[serde(rename = "disable")]
@@ -205,9 +205,9 @@ pub enum OptionsApplianceModeSupportEnum {
 
 }
 
-impl Default for OptionsApplianceModeSupportEnum {
+impl Default for OptionsIpv6SupportEnum {
     fn default() -> Self {
-        OptionsApplianceModeSupportEnum::Disable
+        OptionsIpv6SupportEnum::Disable
     }
 }
 

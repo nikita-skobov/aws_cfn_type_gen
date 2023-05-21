@@ -236,25 +236,6 @@ pub struct CfnNodegroup {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum NodegroupCapacityTypeEnum {
-
-    /// ON_DEMAND
-    #[serde(rename = "ON_DEMAND")]
-    Ondemand,
-
-    /// SPOT
-    #[serde(rename = "SPOT")]
-    Spot,
-
-}
-
-impl Default for NodegroupCapacityTypeEnum {
-    fn default() -> Self {
-        NodegroupCapacityTypeEnum::Ondemand
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum NodegroupAmiTypeEnum {
 
     /// AL2_ARM_64
@@ -310,6 +291,25 @@ pub enum NodegroupAmiTypeEnum {
 impl Default for NodegroupAmiTypeEnum {
     fn default() -> Self {
         NodegroupAmiTypeEnum::Al2arm64
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NodegroupCapacityTypeEnum {
+
+    /// ON_DEMAND
+    #[serde(rename = "ON_DEMAND")]
+    Ondemand,
+
+    /// SPOT
+    #[serde(rename = "SPOT")]
+    Spot,
+
+}
+
+impl Default for NodegroupCapacityTypeEnum {
+    fn default() -> Self {
+        NodegroupCapacityTypeEnum::Ondemand
     }
 }
 

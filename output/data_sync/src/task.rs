@@ -521,44 +521,6 @@ pub struct Options {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPreserveDevicesEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsPreserveDevicesEnum {
-    fn default() -> Self {
-        OptionsPreserveDevicesEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPosixPermissionsEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsPosixPermissionsEnum {
-    fn default() -> Self {
-        OptionsPosixPermissionsEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsAtimeEnum {
 
     /// BEST_EFFORT
@@ -574,109 +536,6 @@ pub enum OptionsAtimeEnum {
 impl Default for OptionsAtimeEnum {
     fn default() -> Self {
         OptionsAtimeEnum::Besteffort
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsMtimeEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsMtimeEnum {
-    fn default() -> Self {
-        OptionsMtimeEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsTaskQueueingEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
-
-}
-
-impl Default for OptionsTaskQueueingEnum {
-    fn default() -> Self {
-        OptionsTaskQueueingEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsUidEnum {
-
-    /// BOTH
-    #[serde(rename = "BOTH")]
-    Both,
-
-    /// INT_VALUE
-    #[serde(rename = "INT_VALUE")]
-    Intvalue,
-
-    /// NAME
-    #[serde(rename = "NAME")]
-    Name,
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-}
-
-impl Default for OptionsUidEnum {
-    fn default() -> Self {
-        OptionsUidEnum::Both
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsTransferModeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// CHANGED
-    #[serde(rename = "CHANGED")]
-    Changed,
-
-}
-
-impl Default for OptionsTransferModeEnum {
-    fn default() -> Self {
-        OptionsTransferModeEnum::All
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsOverwriteModeEnum {
-
-    /// ALWAYS
-    #[serde(rename = "ALWAYS")]
-    Always,
-
-    /// NEVER
-    #[serde(rename = "NEVER")]
-    Never,
-
-}
-
-impl Default for OptionsOverwriteModeEnum {
-    fn default() -> Self {
-        OptionsOverwriteModeEnum::Always
     }
 }
 
@@ -708,25 +567,6 @@ impl Default for OptionsGidEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsObjectTagsEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsObjectTagsEnum {
-    fn default() -> Self {
-        OptionsObjectTagsEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsLogLevelEnum {
 
     /// BASIC
@@ -750,25 +590,116 @@ impl Default for OptionsLogLevelEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsVerifyModeEnum {
+pub enum OptionsMtimeEnum {
 
     /// NONE
     #[serde(rename = "NONE")]
     None,
 
-    /// ONLY_FILES_TRANSFERRED
-    #[serde(rename = "ONLY_FILES_TRANSFERRED")]
-    Onlyfilestransferred,
-
-    /// POINT_IN_TIME_CONSISTENT
-    #[serde(rename = "POINT_IN_TIME_CONSISTENT")]
-    Pointintimeconsistent,
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
 
 }
 
-impl Default for OptionsVerifyModeEnum {
+impl Default for OptionsMtimeEnum {
     fn default() -> Self {
-        OptionsVerifyModeEnum::None
+        OptionsMtimeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsObjectTagsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsObjectTagsEnum {
+    fn default() -> Self {
+        OptionsObjectTagsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsOverwriteModeEnum {
+
+    /// ALWAYS
+    #[serde(rename = "ALWAYS")]
+    Always,
+
+    /// NEVER
+    #[serde(rename = "NEVER")]
+    Never,
+
+}
+
+impl Default for OptionsOverwriteModeEnum {
+    fn default() -> Self {
+        OptionsOverwriteModeEnum::Always
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPosixPermissionsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsPosixPermissionsEnum {
+    fn default() -> Self {
+        OptionsPosixPermissionsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPreserveDeletedFilesEnum {
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+    /// REMOVE
+    #[serde(rename = "REMOVE")]
+    Remove,
+
+}
+
+impl Default for OptionsPreserveDeletedFilesEnum {
+    fn default() -> Self {
+        OptionsPreserveDeletedFilesEnum::Preserve
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPreserveDevicesEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsPreserveDevicesEnum {
+    fn default() -> Self {
+        OptionsPreserveDevicesEnum::None
     }
 }
 
@@ -796,21 +727,90 @@ impl Default for OptionsSecurityDescriptorCopyFlagsEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPreserveDeletedFilesEnum {
+pub enum OptionsTaskQueueingEnum {
 
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
 
-    /// REMOVE
-    #[serde(rename = "REMOVE")]
-    Remove,
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
 
 }
 
-impl Default for OptionsPreserveDeletedFilesEnum {
+impl Default for OptionsTaskQueueingEnum {
     fn default() -> Self {
-        OptionsPreserveDeletedFilesEnum::Preserve
+        OptionsTaskQueueingEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsTransferModeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// CHANGED
+    #[serde(rename = "CHANGED")]
+    Changed,
+
+}
+
+impl Default for OptionsTransferModeEnum {
+    fn default() -> Self {
+        OptionsTransferModeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsUidEnum {
+
+    /// BOTH
+    #[serde(rename = "BOTH")]
+    Both,
+
+    /// INT_VALUE
+    #[serde(rename = "INT_VALUE")]
+    Intvalue,
+
+    /// NAME
+    #[serde(rename = "NAME")]
+    Name,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for OptionsUidEnum {
+    fn default() -> Self {
+        OptionsUidEnum::Both
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsVerifyModeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// ONLY_FILES_TRANSFERRED
+    #[serde(rename = "ONLY_FILES_TRANSFERRED")]
+    Onlyfilestransferred,
+
+    /// POINT_IN_TIME_CONSISTENT
+    #[serde(rename = "POINT_IN_TIME_CONSISTENT")]
+    Pointintimeconsistent,
+
+}
+
+impl Default for OptionsVerifyModeEnum {
+    fn default() -> Self {
+        OptionsVerifyModeEnum::None
     }
 }
 

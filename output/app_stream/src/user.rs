@@ -90,25 +90,6 @@ pub struct CfnUser {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum UserMessageActionEnum {
-
-    /// RESEND
-    #[serde(rename = "RESEND")]
-    Resend,
-
-    /// SUPPRESS
-    #[serde(rename = "SUPPRESS")]
-    Suppress,
-
-}
-
-impl Default for UserMessageActionEnum {
-    fn default() -> Self {
-        UserMessageActionEnum::Resend
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum UserAuthenticationTypeEnum {
 
     /// API
@@ -132,6 +113,25 @@ pub enum UserAuthenticationTypeEnum {
 impl Default for UserAuthenticationTypeEnum {
     fn default() -> Self {
         UserAuthenticationTypeEnum::Api
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserMessageActionEnum {
+
+    /// RESEND
+    #[serde(rename = "RESEND")]
+    Resend,
+
+    /// SUPPRESS
+    #[serde(rename = "SUPPRESS")]
+    Suppress,
+
+}
+
+impl Default for UserMessageActionEnum {
+    fn default() -> Self {
+        UserMessageActionEnum::Resend
     }
 }
 

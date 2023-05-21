@@ -272,6 +272,29 @@ pub struct CfnTaskDefinition {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum TaskDefinitionIpcModeEnum {
+
+    /// host
+    #[serde(rename = "host")]
+    Host,
+
+    /// none
+    #[serde(rename = "none")]
+    None,
+
+    /// task
+    #[serde(rename = "task")]
+    Task,
+
+}
+
+impl Default for TaskDefinitionIpcModeEnum {
+    fn default() -> Self {
+        TaskDefinitionIpcModeEnum::Host
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum TaskDefinitionNetworkModeEnum {
 
     /// awsvpc
@@ -314,29 +337,6 @@ pub enum TaskDefinitionPidModeEnum {
 impl Default for TaskDefinitionPidModeEnum {
     fn default() -> Self {
         TaskDefinitionPidModeEnum::Host
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TaskDefinitionIpcModeEnum {
-
-    /// host
-    #[serde(rename = "host")]
-    Host,
-
-    /// none
-    #[serde(rename = "none")]
-    None,
-
-    /// task
-    #[serde(rename = "task")]
-    Task,
-
-}
-
-impl Default for TaskDefinitionIpcModeEnum {
-    fn default() -> Self {
-        TaskDefinitionIpcModeEnum::Host
     }
 }
 
@@ -2283,6 +2283,25 @@ pub struct RuntimePlatform {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum RuntimePlatformCpuArchitectureEnum {
+
+    /// ARM64
+    #[serde(rename = "ARM64")]
+    Arm64,
+
+    /// X86_64
+    #[serde(rename = "X86_64")]
+    X8664,
+
+}
+
+impl Default for RuntimePlatformCpuArchitectureEnum {
+    fn default() -> Self {
+        RuntimePlatformCpuArchitectureEnum::Arm64
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum RuntimePlatformOperatingSystemFamilyEnum {
 
     /// LINUX
@@ -2322,25 +2341,6 @@ pub enum RuntimePlatformOperatingSystemFamilyEnum {
 impl Default for RuntimePlatformOperatingSystemFamilyEnum {
     fn default() -> Self {
         RuntimePlatformOperatingSystemFamilyEnum::Linux
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RuntimePlatformCpuArchitectureEnum {
-
-    /// ARM64
-    #[serde(rename = "ARM64")]
-    Arm64,
-
-    /// X86_64
-    #[serde(rename = "X86_64")]
-    X8664,
-
-}
-
-impl Default for RuntimePlatformCpuArchitectureEnum {
-    fn default() -> Self {
-        RuntimePlatformCpuArchitectureEnum::Arm64
     }
 }
 

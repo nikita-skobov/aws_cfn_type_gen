@@ -138,25 +138,6 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TrafficMirrorFilterRuleTrafficDirectionEnum {
-
-    /// egress
-    #[serde(rename = "egress")]
-    Egress,
-
-    /// ingress
-    #[serde(rename = "ingress")]
-    Ingress,
-
-}
-
-impl Default for TrafficMirrorFilterRuleTrafficDirectionEnum {
-    fn default() -> Self {
-        TrafficMirrorFilterRuleTrafficDirectionEnum::Egress
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TrafficMirrorFilterRuleRuleActionEnum {
 
     /// accept
@@ -172,6 +153,25 @@ pub enum TrafficMirrorFilterRuleRuleActionEnum {
 impl Default for TrafficMirrorFilterRuleRuleActionEnum {
     fn default() -> Self {
         TrafficMirrorFilterRuleRuleActionEnum::Accept
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TrafficMirrorFilterRuleTrafficDirectionEnum {
+
+    /// egress
+    #[serde(rename = "egress")]
+    Egress,
+
+    /// ingress
+    #[serde(rename = "ingress")]
+    Ingress,
+
+}
+
+impl Default for TrafficMirrorFilterRuleTrafficDirectionEnum {
+    fn default() -> Self {
+        TrafficMirrorFilterRuleTrafficDirectionEnum::Egress
     }
 }
 

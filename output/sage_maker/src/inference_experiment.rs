@@ -208,21 +208,6 @@ pub struct CfnInferenceExperiment {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum InferenceExperimentTypeEnum {
-
-    /// ShadowMode
-    #[serde(rename = "ShadowMode")]
-    Shadowmode,
-
-}
-
-impl Default for InferenceExperimentTypeEnum {
-    fn default() -> Self {
-        InferenceExperimentTypeEnum::Shadowmode
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum InferenceExperimentDesiredStateEnum {
 
     /// Cancelled
@@ -238,6 +223,21 @@ pub enum InferenceExperimentDesiredStateEnum {
 impl Default for InferenceExperimentDesiredStateEnum {
     fn default() -> Self {
         InferenceExperimentDesiredStateEnum::Cancelled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum InferenceExperimentTypeEnum {
+
+    /// ShadowMode
+    #[serde(rename = "ShadowMode")]
+    Shadowmode,
+
+}
+
+impl Default for InferenceExperimentTypeEnum {
+    fn default() -> Self {
+        InferenceExperimentTypeEnum::Shadowmode
     }
 }
 

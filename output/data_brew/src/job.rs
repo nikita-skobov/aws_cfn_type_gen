@@ -281,6 +281,25 @@ pub struct CfnJob {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum JobEncryptionModeEnum {
+
+    /// SSE-KMS
+    #[serde(rename = "SSE-KMS")]
+    Ssekms,
+
+    /// SSE-S3
+    #[serde(rename = "SSE-S3")]
+    Sses3,
+
+}
+
+impl Default for JobEncryptionModeEnum {
+    fn default() -> Self {
+        JobEncryptionModeEnum::Ssekms
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum JobLogSubscriptionEnum {
 
     /// DISABLE
@@ -315,25 +334,6 @@ pub enum JobTypeEnum {
 impl Default for JobTypeEnum {
     fn default() -> Self {
         JobTypeEnum::Profile
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum JobEncryptionModeEnum {
-
-    /// SSE-KMS
-    #[serde(rename = "SSE-KMS")]
-    Ssekms,
-
-    /// SSE-S3
-    #[serde(rename = "SSE-S3")]
-    Sses3,
-
-}
-
-impl Default for JobEncryptionModeEnum {
-    fn default() -> Self {
-        JobEncryptionModeEnum::Ssekms
     }
 }
 
@@ -858,49 +858,6 @@ pub struct Output {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OutputFormatEnum {
-
-    /// AVRO
-    #[serde(rename = "AVRO")]
-    Avro,
-
-    /// CSV
-    #[serde(rename = "CSV")]
-    Csv,
-
-    /// GLUEPARQUET
-    #[serde(rename = "GLUEPARQUET")]
-    Glueparquet,
-
-    /// JSON
-    #[serde(rename = "JSON")]
-    Json,
-
-    /// ORC
-    #[serde(rename = "ORC")]
-    Orc,
-
-    /// PARQUET
-    #[serde(rename = "PARQUET")]
-    Parquet,
-
-    /// TABLEAUHYPER
-    #[serde(rename = "TABLEAUHYPER")]
-    Tableauhyper,
-
-    /// XML
-    #[serde(rename = "XML")]
-    Xml,
-
-}
-
-impl Default for OutputFormatEnum {
-    fn default() -> Self {
-        OutputFormatEnum::Avro
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum OutputCompressionFormatEnum {
 
     /// BROTLI
@@ -944,6 +901,49 @@ pub enum OutputCompressionFormatEnum {
 impl Default for OutputCompressionFormatEnum {
     fn default() -> Self {
         OutputCompressionFormatEnum::Brotli
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OutputFormatEnum {
+
+    /// AVRO
+    #[serde(rename = "AVRO")]
+    Avro,
+
+    /// CSV
+    #[serde(rename = "CSV")]
+    Csv,
+
+    /// GLUEPARQUET
+    #[serde(rename = "GLUEPARQUET")]
+    Glueparquet,
+
+    /// JSON
+    #[serde(rename = "JSON")]
+    Json,
+
+    /// ORC
+    #[serde(rename = "ORC")]
+    Orc,
+
+    /// PARQUET
+    #[serde(rename = "PARQUET")]
+    Parquet,
+
+    /// TABLEAUHYPER
+    #[serde(rename = "TABLEAUHYPER")]
+    Tableauhyper,
+
+    /// XML
+    #[serde(rename = "XML")]
+    Xml,
+
+}
+
+impl Default for OutputFormatEnum {
+    fn default() -> Self {
+        OutputFormatEnum::Avro
     }
 }
 

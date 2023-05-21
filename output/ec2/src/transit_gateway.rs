@@ -172,25 +172,6 @@ pub struct CfnTransitGateway {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TransitGatewayDefaultRouteTableAssociationEnum {
-
-    /// disable
-    #[serde(rename = "disable")]
-    Disable,
-
-    /// enable
-    #[serde(rename = "enable")]
-    Enable,
-
-}
-
-impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
-    fn default() -> Self {
-        TransitGatewayDefaultRouteTableAssociationEnum::Disable
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TransitGatewayAutoAcceptSharedAttachmentsEnum {
 
     /// disable
@@ -206,6 +187,25 @@ pub enum TransitGatewayAutoAcceptSharedAttachmentsEnum {
 impl Default for TransitGatewayAutoAcceptSharedAttachmentsEnum {
     fn default() -> Self {
         TransitGatewayAutoAcceptSharedAttachmentsEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayDefaultRouteTableAssociationEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
+    fn default() -> Self {
+        TransitGatewayDefaultRouteTableAssociationEnum::Disable
     }
 }
 

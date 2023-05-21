@@ -233,37 +233,6 @@ pub struct As2Config {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum As2ConfigSigningAlgorithmEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// SHA1
-    #[serde(rename = "SHA1")]
-    Sha1,
-
-    /// SHA256
-    #[serde(rename = "SHA256")]
-    Sha256,
-
-    /// SHA384
-    #[serde(rename = "SHA384")]
-    Sha384,
-
-    /// SHA512
-    #[serde(rename = "SHA512")]
-    Sha512,
-
-}
-
-impl Default for As2ConfigSigningAlgorithmEnum {
-    fn default() -> Self {
-        As2ConfigSigningAlgorithmEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigCompressionEnum {
 
     /// DISABLED
@@ -279,6 +248,33 @@ pub enum As2ConfigCompressionEnum {
 impl Default for As2ConfigCompressionEnum {
     fn default() -> Self {
         As2ConfigCompressionEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigEncryptionAlgorithmEnum {
+
+    /// AES128_CBC
+    #[serde(rename = "AES128_CBC")]
+    Aes128cbc,
+
+    /// AES192_CBC
+    #[serde(rename = "AES192_CBC")]
+    Aes192cbc,
+
+    /// AES256_CBC
+    #[serde(rename = "AES256_CBC")]
+    Aes256cbc,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for As2ConfigEncryptionAlgorithmEnum {
+    fn default() -> Self {
+        As2ConfigEncryptionAlgorithmEnum::Aes128cbc
     }
 }
 
@@ -337,29 +333,33 @@ impl Default for As2ConfigMdnSigningAlgorithmEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum As2ConfigEncryptionAlgorithmEnum {
-
-    /// AES128_CBC
-    #[serde(rename = "AES128_CBC")]
-    Aes128cbc,
-
-    /// AES192_CBC
-    #[serde(rename = "AES192_CBC")]
-    Aes192cbc,
-
-    /// AES256_CBC
-    #[serde(rename = "AES256_CBC")]
-    Aes256cbc,
+pub enum As2ConfigSigningAlgorithmEnum {
 
     /// NONE
     #[serde(rename = "NONE")]
     None,
 
+    /// SHA1
+    #[serde(rename = "SHA1")]
+    Sha1,
+
+    /// SHA256
+    #[serde(rename = "SHA256")]
+    Sha256,
+
+    /// SHA384
+    #[serde(rename = "SHA384")]
+    Sha384,
+
+    /// SHA512
+    #[serde(rename = "SHA512")]
+    Sha512,
+
 }
 
-impl Default for As2ConfigEncryptionAlgorithmEnum {
+impl Default for As2ConfigSigningAlgorithmEnum {
     fn default() -> Self {
-        As2ConfigEncryptionAlgorithmEnum::Aes128cbc
+        As2ConfigSigningAlgorithmEnum::None
     }
 }
 

@@ -1308,6 +1308,25 @@ pub struct MonitoringConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum MonitoringConfigurationConfigurationTypeEnum {
+
+    /// CUSTOM
+    #[serde(rename = "CUSTOM")]
+    Custom,
+
+    /// DEFAULT
+    #[serde(rename = "DEFAULT")]
+    Default,
+
+}
+
+impl Default for MonitoringConfigurationConfigurationTypeEnum {
+    fn default() -> Self {
+        MonitoringConfigurationConfigurationTypeEnum::Custom
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum MonitoringConfigurationLogLevelEnum {
 
     /// DEBUG
@@ -1358,25 +1377,6 @@ pub enum MonitoringConfigurationMetricsLevelEnum {
 impl Default for MonitoringConfigurationMetricsLevelEnum {
     fn default() -> Self {
         MonitoringConfigurationMetricsLevelEnum::Application
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum MonitoringConfigurationConfigurationTypeEnum {
-
-    /// CUSTOM
-    #[serde(rename = "CUSTOM")]
-    Custom,
-
-    /// DEFAULT
-    #[serde(rename = "DEFAULT")]
-    Default,
-
-}
-
-impl Default for MonitoringConfigurationConfigurationTypeEnum {
-    fn default() -> Self {
-        MonitoringConfigurationConfigurationTypeEnum::Custom
     }
 }
 

@@ -341,6 +341,45 @@ pub struct CfnAlarm {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum AlarmComparisonOperatorEnum {
+
+    /// GreaterThanOrEqualToThreshold
+    #[serde(rename = "GreaterThanOrEqualToThreshold")]
+    Greaterthanorequaltothreshold,
+
+    /// GreaterThanThreshold
+    #[serde(rename = "GreaterThanThreshold")]
+    Greaterthanthreshold,
+
+    /// GreaterThanUpperThreshold
+    #[serde(rename = "GreaterThanUpperThreshold")]
+    Greaterthanupperthreshold,
+
+    /// LessThanLowerOrGreaterThanUpperThreshold
+    #[serde(rename = "LessThanLowerOrGreaterThanUpperThreshold")]
+    Lessthanlowerorgreaterthanupperthreshold,
+
+    /// LessThanLowerThreshold
+    #[serde(rename = "LessThanLowerThreshold")]
+    Lessthanlowerthreshold,
+
+    /// LessThanOrEqualToThreshold
+    #[serde(rename = "LessThanOrEqualToThreshold")]
+    Lessthanorequaltothreshold,
+
+    /// LessThanThreshold
+    #[serde(rename = "LessThanThreshold")]
+    Lessthanthreshold,
+
+}
+
+impl Default for AlarmComparisonOperatorEnum {
+    fn default() -> Self {
+        AlarmComparisonOperatorEnum::Greaterthanorequaltothreshold
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum AlarmStatisticEnum {
 
     /// Average
@@ -487,45 +526,6 @@ pub enum AlarmUnitEnum {
 impl Default for AlarmUnitEnum {
     fn default() -> Self {
         AlarmUnitEnum::Bits
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AlarmComparisonOperatorEnum {
-
-    /// GreaterThanOrEqualToThreshold
-    #[serde(rename = "GreaterThanOrEqualToThreshold")]
-    Greaterthanorequaltothreshold,
-
-    /// GreaterThanThreshold
-    #[serde(rename = "GreaterThanThreshold")]
-    Greaterthanthreshold,
-
-    /// GreaterThanUpperThreshold
-    #[serde(rename = "GreaterThanUpperThreshold")]
-    Greaterthanupperthreshold,
-
-    /// LessThanLowerOrGreaterThanUpperThreshold
-    #[serde(rename = "LessThanLowerOrGreaterThanUpperThreshold")]
-    Lessthanlowerorgreaterthanupperthreshold,
-
-    /// LessThanLowerThreshold
-    #[serde(rename = "LessThanLowerThreshold")]
-    Lessthanlowerthreshold,
-
-    /// LessThanOrEqualToThreshold
-    #[serde(rename = "LessThanOrEqualToThreshold")]
-    Lessthanorequaltothreshold,
-
-    /// LessThanThreshold
-    #[serde(rename = "LessThanThreshold")]
-    Lessthanthreshold,
-
-}
-
-impl Default for AlarmComparisonOperatorEnum {
-    fn default() -> Self {
-        AlarmComparisonOperatorEnum::Greaterthanorequaltothreshold
     }
 }
 

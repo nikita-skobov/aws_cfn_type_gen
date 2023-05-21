@@ -678,25 +678,6 @@ pub struct LustreConfiguration {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum LustreConfigurationDriveCacheTypeEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// READ
-    #[serde(rename = "READ")]
-    Read,
-
-}
-
-impl Default for LustreConfigurationDriveCacheTypeEnum {
-    fn default() -> Self {
-        LustreConfigurationDriveCacheTypeEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum LustreConfigurationAutoImportPolicyEnum {
 
     /// NEW
@@ -766,6 +747,25 @@ pub enum LustreConfigurationDeploymentTypeEnum {
 impl Default for LustreConfigurationDeploymentTypeEnum {
     fn default() -> Self {
         LustreConfigurationDeploymentTypeEnum::Persistent1
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LustreConfigurationDriveCacheTypeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// READ
+    #[serde(rename = "READ")]
+    Read,
+
+}
+
+impl Default for LustreConfigurationDriveCacheTypeEnum {
+    fn default() -> Self {
+        LustreConfigurationDriveCacheTypeEnum::None
     }
 }
 

@@ -451,29 +451,6 @@ pub struct ClusterConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ClusterConfigWarmTypeEnum {
-
-    /// ultrawarm1.large.search
-    #[serde(rename = "ultrawarm1.large.search")]
-    Ultrawarm1largesearch,
-
-    /// ultrawarm1.medium.search
-    #[serde(rename = "ultrawarm1.medium.search")]
-    Ultrawarm1mediumsearch,
-
-    /// ultrawarm1.xlarge.search
-    #[serde(rename = "ultrawarm1.xlarge.search")]
-    Ultrawarm1xlargesearch,
-
-}
-
-impl Default for ClusterConfigWarmTypeEnum {
-    fn default() -> Self {
-        ClusterConfigWarmTypeEnum::Ultrawarm1largesearch
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum ClusterConfigDedicatedMasterTypeEnum {
 
     /// c4.2xlarge.search
@@ -1252,6 +1229,29 @@ pub enum ClusterConfigInstanceTypeEnum {
 impl Default for ClusterConfigInstanceTypeEnum {
     fn default() -> Self {
         ClusterConfigInstanceTypeEnum::C42xlargesearch
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ClusterConfigWarmTypeEnum {
+
+    /// ultrawarm1.large.search
+    #[serde(rename = "ultrawarm1.large.search")]
+    Ultrawarm1largesearch,
+
+    /// ultrawarm1.medium.search
+    #[serde(rename = "ultrawarm1.medium.search")]
+    Ultrawarm1mediumsearch,
+
+    /// ultrawarm1.xlarge.search
+    #[serde(rename = "ultrawarm1.xlarge.search")]
+    Ultrawarm1xlargesearch,
+
+}
+
+impl Default for ClusterConfigWarmTypeEnum {
+    fn default() -> Self {
+        ClusterConfigWarmTypeEnum::Ultrawarm1largesearch
     }
 }
 

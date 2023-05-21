@@ -332,6 +332,25 @@ pub struct CfnRecordSet {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetFailoverEnum {
+
+    /// PRIMARY
+    #[serde(rename = "PRIMARY")]
+    Primary,
+
+    /// SECONDARY
+    #[serde(rename = "SECONDARY")]
+    Secondary,
+
+}
+
+impl Default for RecordSetFailoverEnum {
+    fn default() -> Self {
+        RecordSetFailoverEnum::Primary
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum RecordSetRegionEnum {
 
     /// af-south-1
@@ -498,25 +517,6 @@ pub enum RecordSetTypeEnum {
 impl Default for RecordSetTypeEnum {
     fn default() -> Self {
         RecordSetTypeEnum::A
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetFailoverEnum {
-
-    /// PRIMARY
-    #[serde(rename = "PRIMARY")]
-    Primary,
-
-    /// SECONDARY
-    #[serde(rename = "SECONDARY")]
-    Secondary,
-
-}
-
-impl Default for RecordSetFailoverEnum {
-    fn default() -> Self {
-        RecordSetFailoverEnum::Primary
     }
 }
 

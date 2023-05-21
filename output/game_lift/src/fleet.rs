@@ -313,25 +313,6 @@ pub struct CfnFleet {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum FleetNewGameSessionProtectionPolicyEnum {
-
-    /// FullProtection
-    #[serde(rename = "FullProtection")]
-    Fullprotection,
-
-    /// NoProtection
-    #[serde(rename = "NoProtection")]
-    Noprotection,
-
-}
-
-impl Default for FleetNewGameSessionProtectionPolicyEnum {
-    fn default() -> Self {
-        FleetNewGameSessionProtectionPolicyEnum::Fullprotection
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetComputeTypeEnum {
 
     /// ANYWHERE
@@ -347,25 +328,6 @@ pub enum FleetComputeTypeEnum {
 impl Default for FleetComputeTypeEnum {
     fn default() -> Self {
         FleetComputeTypeEnum::Anywhere
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FleetFleetTypeEnum {
-
-    /// ON_DEMAND
-    #[serde(rename = "ON_DEMAND")]
-    Ondemand,
-
-    /// SPOT
-    #[serde(rename = "SPOT")]
-    Spot,
-
-}
-
-impl Default for FleetFleetTypeEnum {
-    fn default() -> Self {
-        FleetFleetTypeEnum::Ondemand
     }
 }
 
@@ -833,6 +795,44 @@ pub enum FleetEC2InstanceTypeEnum {
 impl Default for FleetEC2InstanceTypeEnum {
     fn default() -> Self {
         FleetEC2InstanceTypeEnum::C32xlarge
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FleetFleetTypeEnum {
+
+    /// ON_DEMAND
+    #[serde(rename = "ON_DEMAND")]
+    Ondemand,
+
+    /// SPOT
+    #[serde(rename = "SPOT")]
+    Spot,
+
+}
+
+impl Default for FleetFleetTypeEnum {
+    fn default() -> Self {
+        FleetFleetTypeEnum::Ondemand
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FleetNewGameSessionProtectionPolicyEnum {
+
+    /// FullProtection
+    #[serde(rename = "FullProtection")]
+    Fullprotection,
+
+    /// NoProtection
+    #[serde(rename = "NoProtection")]
+    Noprotection,
+
+}
+
+impl Default for FleetNewGameSessionProtectionPolicyEnum {
+    fn default() -> Self {
+        FleetNewGameSessionProtectionPolicyEnum::Fullprotection
     }
 }
 

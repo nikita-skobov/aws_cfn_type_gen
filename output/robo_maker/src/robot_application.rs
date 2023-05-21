@@ -133,6 +133,29 @@ pub struct RobotSoftwareSuite {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotSoftwareSuiteNameEnum {
+
+    /// General
+    #[serde(rename = "General")]
+    General,
+
+    /// ROS
+    #[serde(rename = "ROS")]
+    Ros,
+
+    /// ROS2
+    #[serde(rename = "ROS2")]
+    Ros2,
+
+}
+
+impl Default for RobotSoftwareSuiteNameEnum {
+    fn default() -> Self {
+        RobotSoftwareSuiteNameEnum::General
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum RobotSoftwareSuiteVersionEnum {
 
     /// Dashing
@@ -156,29 +179,6 @@ pub enum RobotSoftwareSuiteVersionEnum {
 impl Default for RobotSoftwareSuiteVersionEnum {
     fn default() -> Self {
         RobotSoftwareSuiteVersionEnum::Dashing
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RobotSoftwareSuiteNameEnum {
-
-    /// General
-    #[serde(rename = "General")]
-    General,
-
-    /// ROS
-    #[serde(rename = "ROS")]
-    Ros,
-
-    /// ROS2
-    #[serde(rename = "ROS2")]
-    Ros2,
-
-}
-
-impl Default for RobotSoftwareSuiteNameEnum {
-    fn default() -> Self {
-        RobotSoftwareSuiteNameEnum::General
     }
 }
 

@@ -574,25 +574,6 @@ pub struct EndpointInput {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum EndpointInputS3InputModeEnum {
-
-    /// File
-    #[serde(rename = "File")]
-    File,
-
-    /// Pipe
-    #[serde(rename = "Pipe")]
-    Pipe,
-
-}
-
-impl Default for EndpointInputS3InputModeEnum {
-    fn default() -> Self {
-        EndpointInputS3InputModeEnum::File
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointInputS3DataDistributionTypeEnum {
 
     /// FullyReplicated
@@ -608,6 +589,25 @@ pub enum EndpointInputS3DataDistributionTypeEnum {
 impl Default for EndpointInputS3DataDistributionTypeEnum {
     fn default() -> Self {
         EndpointInputS3DataDistributionTypeEnum::Fullyreplicated
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointInputS3InputModeEnum {
+
+    /// File
+    #[serde(rename = "File")]
+    File,
+
+    /// Pipe
+    #[serde(rename = "Pipe")]
+    Pipe,
+
+}
+
+impl Default for EndpointInputS3InputModeEnum {
+    fn default() -> Self {
+        EndpointInputS3InputModeEnum::File
     }
 }
 

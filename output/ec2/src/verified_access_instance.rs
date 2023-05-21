@@ -377,25 +377,6 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
-
-    /// iam-identity-center
-    #[serde(rename = "iam-identity-center")]
-    Iamidentitycenter,
-
-    /// oidc
-    #[serde(rename = "oidc")]
-    Oidc,
-
-}
-
-impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
-    fn default() -> Self {
-        VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
 
     /// device
@@ -411,6 +392,25 @@ pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
 impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
     fn default() -> Self {
         VerifiedAccessTrustProviderTrustProviderTypeEnum::Device
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
+
+    /// iam-identity-center
+    #[serde(rename = "iam-identity-center")]
+    Iamidentitycenter,
+
+    /// oidc
+    #[serde(rename = "oidc")]
+    Oidc,
+
+}
+
+impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
+    fn default() -> Self {
+        VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
     }
 }
 

@@ -136,6 +136,33 @@ pub struct CfnCertificateAuthority {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateAuthorityKeyAlgorithmEnum {
+
+    /// EC_prime256v1
+    #[serde(rename = "EC_prime256v1")]
+    Ecprime256v1,
+
+    /// EC_secp384r1
+    #[serde(rename = "EC_secp384r1")]
+    Ecsecp384r1,
+
+    /// RSA_2048
+    #[serde(rename = "RSA_2048")]
+    Rsa2048,
+
+    /// RSA_4096
+    #[serde(rename = "RSA_4096")]
+    Rsa4096,
+
+}
+
+impl Default for CertificateAuthorityKeyAlgorithmEnum {
+    fn default() -> Self {
+        CertificateAuthorityKeyAlgorithmEnum::Ecprime256v1
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum CertificateAuthorityKeyStorageSecurityStandardEnum {
 
     /// FIPS_140_2_LEVEL_2_OR_HIGHER
@@ -224,33 +251,6 @@ pub enum CertificateAuthorityUsageModeEnum {
 impl Default for CertificateAuthorityUsageModeEnum {
     fn default() -> Self {
         CertificateAuthorityUsageModeEnum::Generalpurpose
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CertificateAuthorityKeyAlgorithmEnum {
-
-    /// EC_prime256v1
-    #[serde(rename = "EC_prime256v1")]
-    Ecprime256v1,
-
-    /// EC_secp384r1
-    #[serde(rename = "EC_secp384r1")]
-    Ecsecp384r1,
-
-    /// RSA_2048
-    #[serde(rename = "RSA_2048")]
-    Rsa2048,
-
-    /// RSA_4096
-    #[serde(rename = "RSA_4096")]
-    Rsa4096,
-
-}
-
-impl Default for CertificateAuthorityKeyAlgorithmEnum {
-    fn default() -> Self {
-        CertificateAuthorityKeyAlgorithmEnum::Ecprime256v1
     }
 }
 

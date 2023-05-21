@@ -178,25 +178,6 @@ pub struct CfnTypeActivation {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TypeActivationVersionBumpEnum {
-
-    /// MAJOR
-    #[serde(rename = "MAJOR")]
-    Major,
-
-    /// MINOR
-    #[serde(rename = "MINOR")]
-    Minor,
-
-}
-
-impl Default for TypeActivationVersionBumpEnum {
-    fn default() -> Self {
-        TypeActivationVersionBumpEnum::Major
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum TypeActivationTypeEnum {
 
     /// HOOK
@@ -216,6 +197,25 @@ pub enum TypeActivationTypeEnum {
 impl Default for TypeActivationTypeEnum {
     fn default() -> Self {
         TypeActivationTypeEnum::Hook
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TypeActivationVersionBumpEnum {
+
+    /// MAJOR
+    #[serde(rename = "MAJOR")]
+    Major,
+
+    /// MINOR
+    #[serde(rename = "MINOR")]
+    Minor,
+
+}
+
+impl Default for TypeActivationVersionBumpEnum {
+    fn default() -> Self {
+        TypeActivationVersionBumpEnum::Major
     }
 }
 

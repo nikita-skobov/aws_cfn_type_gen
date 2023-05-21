@@ -240,29 +240,6 @@ pub struct WorkspaceProperties {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum WorkspacePropertiesRunningModeEnum {
-
-    /// ALWAYS_ON
-    #[serde(rename = "ALWAYS_ON")]
-    Alwayson,
-
-    /// AUTO_STOP
-    #[serde(rename = "AUTO_STOP")]
-    Autostop,
-
-    /// MANUAL
-    #[serde(rename = "MANUAL")]
-    Manual,
-
-}
-
-impl Default for WorkspacePropertiesRunningModeEnum {
-    fn default() -> Self {
-        WorkspacePropertiesRunningModeEnum::Alwayson
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum WorkspacePropertiesComputeTypeNameEnum {
 
     /// GRAPHICS
@@ -306,6 +283,29 @@ pub enum WorkspacePropertiesComputeTypeNameEnum {
 impl Default for WorkspacePropertiesComputeTypeNameEnum {
     fn default() -> Self {
         WorkspacePropertiesComputeTypeNameEnum::Graphics
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WorkspacePropertiesRunningModeEnum {
+
+    /// ALWAYS_ON
+    #[serde(rename = "ALWAYS_ON")]
+    Alwayson,
+
+    /// AUTO_STOP
+    #[serde(rename = "AUTO_STOP")]
+    Autostop,
+
+    /// MANUAL
+    #[serde(rename = "MANUAL")]
+    Manual,
+
+}
+
+impl Default for WorkspacePropertiesRunningModeEnum {
+    fn default() -> Self {
+        WorkspacePropertiesRunningModeEnum::Alwayson
     }
 }
 

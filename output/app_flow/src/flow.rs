@@ -510,883 +510,17 @@ pub struct ConnectorOperator {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorDatadogEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
+pub enum ConnectorOperatorAmplitudeEnum {
 
     /// BETWEEN
     #[serde(rename = "BETWEEN")]
     Between,
 
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
 }
 
-impl Default for ConnectorOperatorDatadogEnum {
+impl Default for ConnectorOperatorAmplitudeEnum {
     fn default() -> Self {
-        ConnectorOperatorDatadogEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorS3Enum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL_TO
-    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
-    Greaterthanorequalto,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL_TO
-    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
-    Lessthanorequalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// NOT_EQUAL_TO
-    #[serde(rename = "NOT_EQUAL_TO")]
-    Notequalto,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorS3Enum {
-    fn default() -> Self {
-        ConnectorOperatorS3Enum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorSalesforceEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// CONTAINS
-    #[serde(rename = "CONTAINS")]
-    Contains,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL_TO
-    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
-    Greaterthanorequalto,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL_TO
-    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
-    Lessthanorequalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// NOT_EQUAL_TO
-    #[serde(rename = "NOT_EQUAL_TO")]
-    Notequalto,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorSalesforceEnum {
-    fn default() -> Self {
-        ConnectorOperatorSalesforceEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorVeevaEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// CONTAINS
-    #[serde(rename = "CONTAINS")]
-    Contains,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL_TO
-    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
-    Greaterthanorequalto,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL_TO
-    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
-    Lessthanorequalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// NOT_EQUAL_TO
-    #[serde(rename = "NOT_EQUAL_TO")]
-    Notequalto,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorVeevaEnum {
-    fn default() -> Self {
-        ConnectorOperatorVeevaEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorSAPODataEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// CONTAINS
-    #[serde(rename = "CONTAINS")]
-    Contains,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL_TO
-    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
-    Greaterthanorequalto,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL_TO
-    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
-    Lessthanorequalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// NOT_EQUAL_TO
-    #[serde(rename = "NOT_EQUAL_TO")]
-    Notequalto,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorSAPODataEnum {
-    fn default() -> Self {
-        ConnectorOperatorSAPODataEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorTrendmicroEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorTrendmicroEnum {
-    fn default() -> Self {
-        ConnectorOperatorTrendmicroEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorZendeskEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorZendeskEnum {
-    fn default() -> Self {
-        ConnectorOperatorZendeskEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorMarketoEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorMarketoEnum {
-    fn default() -> Self {
-        ConnectorOperatorMarketoEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorSingularEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorSingularEnum {
-    fn default() -> Self {
-        ConnectorOperatorSingularEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorInforNexusEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorInforNexusEnum {
-    fn default() -> Self {
-        ConnectorOperatorInforNexusEnum::Addition
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorSlackEnum {
-
-    /// ADDITION
-    #[serde(rename = "ADDITION")]
-    Addition,
-
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
-
-    /// DIVISION
-    #[serde(rename = "DIVISION")]
-    Division,
-
-    /// EQUAL_TO
-    #[serde(rename = "EQUAL_TO")]
-    Equalto,
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL_TO
-    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
-    Greaterthanorequalto,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL_TO
-    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
-    Lessthanorequalto,
-
-    /// MASK_ALL
-    #[serde(rename = "MASK_ALL")]
-    Maskall,
-
-    /// MASK_FIRST_N
-    #[serde(rename = "MASK_FIRST_N")]
-    Maskfirstn,
-
-    /// MASK_LAST_N
-    #[serde(rename = "MASK_LAST_N")]
-    Masklastn,
-
-    /// MULTIPLICATION
-    #[serde(rename = "MULTIPLICATION")]
-    Multiplication,
-
-    /// NO_OP
-    #[serde(rename = "NO_OP")]
-    Noop,
-
-    /// PROJECTION
-    #[serde(rename = "PROJECTION")]
-    Projection,
-
-    /// SUBTRACTION
-    #[serde(rename = "SUBTRACTION")]
-    Subtraction,
-
-    /// VALIDATE_NON_NEGATIVE
-    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
-    Validatenonnegative,
-
-    /// VALIDATE_NON_NULL
-    #[serde(rename = "VALIDATE_NON_NULL")]
-    Validatenonnull,
-
-    /// VALIDATE_NON_ZERO
-    #[serde(rename = "VALIDATE_NON_ZERO")]
-    Validatenonzero,
-
-    /// VALIDATE_NUMERIC
-    #[serde(rename = "VALIDATE_NUMERIC")]
-    Validatenumeric,
-
-}
-
-impl Default for ConnectorOperatorSlackEnum {
-    fn default() -> Self {
-        ConnectorOperatorSlackEnum::Addition
+        ConnectorOperatorAmplitudeEnum::Between
     }
 }
 
@@ -1486,6 +620,77 @@ impl Default for ConnectorOperatorCustomConnectorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorDatadogEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorDatadogEnum {
+    fn default() -> Self {
+        ConnectorOperatorDatadogEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum ConnectorOperatorDynatraceEnum {
 
     /// ADDITION
@@ -1557,17 +762,448 @@ impl Default for ConnectorOperatorDynatraceEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorAmplitudeEnum {
+pub enum ConnectorOperatorGoogleAnalyticsEnum {
 
     /// BETWEEN
     #[serde(rename = "BETWEEN")]
     Between,
 
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
 }
 
-impl Default for ConnectorOperatorAmplitudeEnum {
+impl Default for ConnectorOperatorGoogleAnalyticsEnum {
     fn default() -> Self {
-        ConnectorOperatorAmplitudeEnum::Between
+        ConnectorOperatorGoogleAnalyticsEnum::Between
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorInforNexusEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorInforNexusEnum {
+    fn default() -> Self {
+        ConnectorOperatorInforNexusEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorMarketoEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorMarketoEnum {
+    fn default() -> Self {
+        ConnectorOperatorMarketoEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorS3Enum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL_TO
+    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
+    Greaterthanorequalto,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL_TO
+    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
+    Lessthanorequalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// NOT_EQUAL_TO
+    #[serde(rename = "NOT_EQUAL_TO")]
+    Notequalto,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorS3Enum {
+    fn default() -> Self {
+        ConnectorOperatorS3Enum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorSAPODataEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL_TO
+    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
+    Greaterthanorequalto,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL_TO
+    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
+    Lessthanorequalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// NOT_EQUAL_TO
+    #[serde(rename = "NOT_EQUAL_TO")]
+    Notequalto,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorSAPODataEnum {
+    fn default() -> Self {
+        ConnectorOperatorSAPODataEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorSalesforceEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL_TO
+    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
+    Greaterthanorequalto,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL_TO
+    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
+    Lessthanorequalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// NOT_EQUAL_TO
+    #[serde(rename = "NOT_EQUAL_TO")]
+    Notequalto,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorSalesforceEnum {
+    fn default() -> Self {
+        ConnectorOperatorSalesforceEnum::Addition
     }
 }
 
@@ -1667,21 +1303,385 @@ impl Default for ConnectorOperatorServiceNowEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ConnectorOperatorGoogleAnalyticsEnum {
+pub enum ConnectorOperatorSingularEnum {
 
-    /// BETWEEN
-    #[serde(rename = "BETWEEN")]
-    Between,
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
 
     /// PROJECTION
     #[serde(rename = "PROJECTION")]
     Projection,
 
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
 }
 
-impl Default for ConnectorOperatorGoogleAnalyticsEnum {
+impl Default for ConnectorOperatorSingularEnum {
     fn default() -> Self {
-        ConnectorOperatorGoogleAnalyticsEnum::Between
+        ConnectorOperatorSingularEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorSlackEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL_TO
+    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
+    Greaterthanorequalto,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL_TO
+    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
+    Lessthanorequalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorSlackEnum {
+    fn default() -> Self {
+        ConnectorOperatorSlackEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorTrendmicroEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorTrendmicroEnum {
+    fn default() -> Self {
+        ConnectorOperatorTrendmicroEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorVeevaEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// BETWEEN
+    #[serde(rename = "BETWEEN")]
+    Between,
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// EQUAL_TO
+    #[serde(rename = "EQUAL_TO")]
+    Equalto,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL_TO
+    #[serde(rename = "GREATER_THAN_OR_EQUAL_TO")]
+    Greaterthanorequalto,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL_TO
+    #[serde(rename = "LESS_THAN_OR_EQUAL_TO")]
+    Lessthanorequalto,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// NOT_EQUAL_TO
+    #[serde(rename = "NOT_EQUAL_TO")]
+    Notequalto,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorVeevaEnum {
+    fn default() -> Self {
+        ConnectorOperatorVeevaEnum::Addition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorOperatorZendeskEnum {
+
+    /// ADDITION
+    #[serde(rename = "ADDITION")]
+    Addition,
+
+    /// DIVISION
+    #[serde(rename = "DIVISION")]
+    Division,
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// MASK_ALL
+    #[serde(rename = "MASK_ALL")]
+    Maskall,
+
+    /// MASK_FIRST_N
+    #[serde(rename = "MASK_FIRST_N")]
+    Maskfirstn,
+
+    /// MASK_LAST_N
+    #[serde(rename = "MASK_LAST_N")]
+    Masklastn,
+
+    /// MULTIPLICATION
+    #[serde(rename = "MULTIPLICATION")]
+    Multiplication,
+
+    /// NO_OP
+    #[serde(rename = "NO_OP")]
+    Noop,
+
+    /// PROJECTION
+    #[serde(rename = "PROJECTION")]
+    Projection,
+
+    /// SUBTRACTION
+    #[serde(rename = "SUBTRACTION")]
+    Subtraction,
+
+    /// VALIDATE_NON_NEGATIVE
+    #[serde(rename = "VALIDATE_NON_NEGATIVE")]
+    Validatenonnegative,
+
+    /// VALIDATE_NON_NULL
+    #[serde(rename = "VALIDATE_NON_NULL")]
+    Validatenonnull,
+
+    /// VALIDATE_NON_ZERO
+    #[serde(rename = "VALIDATE_NON_ZERO")]
+    Validatenonzero,
+
+    /// VALIDATE_NUMERIC
+    #[serde(rename = "VALIDATE_NUMERIC")]
+    Validatenumeric,
+
+}
+
+impl Default for ConnectorOperatorZendeskEnum {
+    fn default() -> Self {
+        ConnectorOperatorZendeskEnum::Addition
     }
 }
 
@@ -2498,29 +2498,6 @@ pub struct PrefixConfig {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum PrefixConfigPrefixTypeEnum {
-
-    /// FILENAME
-    #[serde(rename = "FILENAME")]
-    Filename,
-
-    /// PATH
-    #[serde(rename = "PATH")]
-    Path,
-
-    /// PATH_AND_FILENAME
-    #[serde(rename = "PATH_AND_FILENAME")]
-    Pathandfilename,
-
-}
-
-impl Default for PrefixConfigPrefixTypeEnum {
-    fn default() -> Self {
-        PrefixConfigPrefixTypeEnum::Filename
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum PrefixConfigPrefixFormatEnum {
 
     /// DAY
@@ -2548,6 +2525,29 @@ pub enum PrefixConfigPrefixFormatEnum {
 impl Default for PrefixConfigPrefixFormatEnum {
     fn default() -> Self {
         PrefixConfigPrefixFormatEnum::Day
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PrefixConfigPrefixTypeEnum {
+
+    /// FILENAME
+    #[serde(rename = "FILENAME")]
+    Filename,
+
+    /// PATH
+    #[serde(rename = "PATH")]
+    Path,
+
+    /// PATH_AND_FILENAME
+    #[serde(rename = "PATH_AND_FILENAME")]
+    Pathandfilename,
+
+}
+
+impl Default for PrefixConfigPrefixTypeEnum {
+    fn default() -> Self {
+        PrefixConfigPrefixTypeEnum::Filename
     }
 }
 
@@ -3035,6 +3035,29 @@ pub struct SalesforceDestinationProperties {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
+pub enum SalesforceDestinationPropertiesDataTransferApiEnum {
+
+    /// AUTOMATIC
+    #[serde(rename = "AUTOMATIC")]
+    Automatic,
+
+    /// BULKV2
+    #[serde(rename = "BULKV2")]
+    Bulkv2,
+
+    /// REST_SYNC
+    #[serde(rename = "REST_SYNC")]
+    Restsync,
+
+}
+
+impl Default for SalesforceDestinationPropertiesDataTransferApiEnum {
+    fn default() -> Self {
+        SalesforceDestinationPropertiesDataTransferApiEnum::Automatic
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
 pub enum SalesforceDestinationPropertiesWriteOperationTypeEnum {
 
     /// DELETE
@@ -3058,29 +3081,6 @@ pub enum SalesforceDestinationPropertiesWriteOperationTypeEnum {
 impl Default for SalesforceDestinationPropertiesWriteOperationTypeEnum {
     fn default() -> Self {
         SalesforceDestinationPropertiesWriteOperationTypeEnum::Delete
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SalesforceDestinationPropertiesDataTransferApiEnum {
-
-    /// AUTOMATIC
-    #[serde(rename = "AUTOMATIC")]
-    Automatic,
-
-    /// BULKV2
-    #[serde(rename = "BULKV2")]
-    Bulkv2,
-
-    /// REST_SYNC
-    #[serde(rename = "REST_SYNC")]
-    Restsync,
-
-}
-
-impl Default for SalesforceDestinationPropertiesDataTransferApiEnum {
-    fn default() -> Self {
-        SalesforceDestinationPropertiesDataTransferApiEnum::Automatic
     }
 }
 
