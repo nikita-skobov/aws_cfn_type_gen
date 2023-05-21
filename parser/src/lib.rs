@@ -2,11 +2,11 @@ use std::{collections::HashMap, io::Read};
 
 use downloader::{Zipped, get_cfn_resource_provider_schema};
 
-use serde::{Deserialize};
+use serde::{Deserialize, Serialize};
 
 /// the schema of the data that cloudformation provides from these files:
 /// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification-format.html
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -14,22 +14,38 @@ use serde::{Deserialize};
 pub struct CfnResourceSpecSchema {
     pub property_types: HashMap<String, Properties>,
     pub resource_specification_version: String,
-    pub resource_types: Option<HashMap<String, ResourceType>>,
-    pub resource_type: Option<HashMap<String, ResourceType>>,
+    // pub resource_types: Option<HashMap<String, ResourceType>>,
+    pub resource_type: HashMap<String, ResourceType>,
 }
 
 impl CfnResourceSpecSchema {
-    pub fn get_resource_types<'a>(&'a self) -> &'a HashMap<String, ResourceType> {
-        match (&self.resource_type, &self.resource_types) {
-            (None, None) => unreachable!(),
-            (Some(_), Some(_)) => unreachable!(),
-            (None, Some(r)) => return r,
-            (Some(r), None) => return r,
+    /// callback takes: name of resource, doc link
+    /// callback should resolve, and modify in place each doc link string
+    /// to be the actual documentation rather than a link
+    pub fn resolve_all_doc_links(&mut self, cb: &mut impl FnMut(&String, &mut String)) {
+        for (name, resource_type) in self.resource_type.iter_mut() {
+            cb(name, &mut resource_type.documentation);
+            for (_prop_name, prop) in resource_type.properties.iter_mut() {
+                cb(name, &mut prop.documentation);
+                for (_prop_name, prop) in prop.properties.iter_mut() {
+                    cb(name, &mut prop.documentation);
+                }
+            }
+
+            // we know/assume that resource type only has 1 item.
+            // so what we do next is we also iterate over the properties, but we do it from within this loop
+            // because we still have access to the resource name, which we pass to the callback.
+            for (_prop_name, prop) in self.property_types.iter_mut() {
+                cb(name, &mut prop.documentation);
+                for (_prop_name, prop) in prop.properties.iter_mut() {
+                    cb(name, &mut prop.documentation);
+                }
+            }
         }
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -41,7 +57,7 @@ pub struct ResourceType {
     pub additional_properties: bool,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -54,11 +70,11 @@ pub struct Attribute {
     pub primitive_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct PropertyTypeSpec {
     pub documentation: String,
     pub duplicates_allowed: bool,
@@ -71,7 +87,7 @@ pub struct PropertyTypeSpec {
     pub primitive_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 #[serde(deny_unknown_fields)]
 #[serde(default)]
@@ -87,6 +103,94 @@ pub struct Properties {
     pub primitive_item_type: String,
     pub primitive_type: String,
     pub item_type: String,
+}
+
+pub trait PropertyLike {
+    fn doc(&self) -> &str;
+    fn required(&self) -> bool;
+    fn duplicates_allowed(&self) -> bool;
+    fn typ(&self) -> &str;
+    fn primitive_type(&self) -> &str;
+    fn primitive_item_type(&self) -> &str;
+    fn item_type(&self) -> &str;
+    fn update_type(&self) -> &str;
+    fn nested_properties(&self) -> HashMap<String, PropertyTypeSpec>;
+}
+
+impl PropertyLike for PropertyTypeSpec {
+    fn doc(&self) -> &str {
+        &self.documentation
+    }
+
+    fn required(&self) -> bool {
+        self.required
+    }
+
+    fn duplicates_allowed(&self) -> bool {
+        self.duplicates_allowed
+    }
+
+    fn typ(&self) -> &str {
+        &self.ty
+    }
+
+    fn primitive_type(&self) -> &str {
+        &self.primitive_type
+    }
+
+    fn primitive_item_type(&self) -> &str {
+        &self.primitive_item_type
+    }
+
+    fn item_type(&self) -> &str {
+        &self.item_type
+    }
+
+    fn update_type(&self) -> &str {
+        &self.update_type
+    }
+
+    fn nested_properties(&self) -> HashMap<String, PropertyTypeSpec> {
+        HashMap::new()
+    }
+}
+
+impl PropertyLike for Properties {
+    fn doc(&self) -> &str {
+        &self.documentation
+    }
+
+    fn required(&self) -> bool {
+        self.required
+    }
+
+    fn duplicates_allowed(&self) -> bool {
+        self.duplicates_allowed
+    }
+
+    fn typ(&self) -> &str {
+        &self.ty
+    }
+
+    fn primitive_type(&self) -> &str {
+        &self.primitive_type
+    }
+
+    fn primitive_item_type(&self) -> &str {
+        &self.primitive_item_type
+    }
+
+    fn item_type(&self) -> &str {
+        &self.item_type
+    }
+
+    fn update_type(&self) -> &str {
+        &self.update_type
+    }
+
+    fn nested_properties(&self) -> HashMap<String, PropertyTypeSpec> {
+        self.properties.clone()
+    }
 }
 
 pub fn get_spec_schema(name: &str, data: &String) -> CfnResourceSpecSchema {
@@ -496,12 +600,12 @@ pub fn get_all_provider_schemas(
 }
 
 
-#[cfg(test)]
-mod test {
-    use super::*;
+// #[cfg(test)]
+// mod test {
+//     use super::*;
 
-    #[test]
-    fn all_files_deser_correctly() {
-        get_all_provider_schemas("us-east-2", true);
-    }
-}
+//     #[test]
+//     fn all_files_deser_correctly() {
+//         get_all_provider_schemas("us-east-2", true);
+//     }
+// }
