@@ -22,42 +22,6 @@ pub struct CfnRepository {
 
 
     /// 
-    /// The name to use for the repository. The repository name may be specified on its own       (such as nginx-web-app) or it can be prepended with a namespace to group       the repository into a category (such as project-a/nginx-web-app). If you       don't specify a name, AWS CloudFormation generates a unique physical ID and uses       that ID for the repository name. For more information, see Name       type.
-    /// 
-    /// The repository name must start with a letter and can only contain lowercase letters,       numbers, hyphens, underscores, and forward slashes.
-    /// 
-    /// NoteIf you specify a name, you cannot perform updates that require replacement of this         resource. You can perform updates that require no or some interruption. If you must         replace the resource, specify a new name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: (?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: Option<String>,
-
-
-    /// 
-    /// The tag mutability setting for the repository. If this parameter is omitted, the       default setting of MUTABLE will be used which will allow image tags to be       overwritten. If IMMUTABLE is specified, all image tags within the       repository will be immutable which will prevent them from being overwritten.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IMMUTABLE | MUTABLE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageTagMutability")]
-    pub image_tag_mutability: Option<String>,
-
-
-    /// 
     /// Creates or updates a lifecycle policy. For information about lifecycle policy syntax,       see Lifecycle policy template.
     /// 
     /// Required: No
@@ -82,6 +46,28 @@ pub struct CfnRepository {
 
 
     /// 
+    /// The name to use for the repository. The repository name may be specified on its own       (such as nginx-web-app) or it can be prepended with a namespace to group       the repository into a category (such as project-a/nginx-web-app). If you       don't specify a name, AWS CloudFormation generates a unique physical ID and uses       that ID for the repository name. For more information, see Name       type.
+    /// 
+    /// The repository name must start with a letter and can only contain lowercase letters,       numbers, hyphens, underscores, and forward slashes.
+    /// 
+    /// NoteIf you specify a name, you cannot perform updates that require replacement of this         resource. You can perform updates that require no or some interruption. If you must         replace the resource, specify a new name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: (?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: Option<String>,
+
+
+    /// 
     /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
     /// 
     /// Required: No
@@ -91,6 +77,20 @@ pub struct CfnRepository {
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfiguration")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
+
+
+    /// 
+    /// The tag mutability setting for the repository. If this parameter is omitted, the       default setting of MUTABLE will be used which will allow image tags to be       overwritten. If IMMUTABLE is specified, all image tags within the       repository will be immutable which will prevent them from being overwritten.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IMMUTABLE | MUTABLE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageTagMutability")]
+    pub image_tag_mutability: Option<RepositoryImageTagMutabilityEnum>,
 
 
     /// 
@@ -105,6 +105,27 @@ pub struct CfnRepository {
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RepositoryImageTagMutabilityEnum {
+
+    /// IMMUTABLE
+    #[serde(rename = "IMMUTABLE")]
+    Immutable,
+
+    /// MUTABLE
+    #[serde(rename = "MUTABLE")]
+    Mutable,
+
+}
+
+impl Default for RepositoryImageTagMutabilityEnum {
+    fn default() -> Self {
+        RepositoryImageTagMutabilityEnum::Immutable
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRepository {
     fn type_string() -> &'static str {
@@ -129,17 +150,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -149,7 +159,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// The image scanning configuration for a repository.
@@ -169,6 +192,8 @@ pub struct ImageScanningConfiguration {
     pub scan_on_push: Option<bool>,
 
 }
+
+
 
 
 /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
@@ -195,7 +220,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
+    pub encryption_type: EncryptionConfigurationEncryptionTypeEnum,
 
 
     /// 
@@ -216,23 +241,30 @@ pub struct EncryptionConfiguration {
 }
 
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EncryptionConfigurationEncryptionTypeEnum {
+
+    /// AES256
+    #[serde(rename = "AES256")]
+    Aes256,
+
+    /// KMS
+    #[serde(rename = "KMS")]
+    Kms,
+
+}
+
+impl Default for EncryptionConfigurationEncryptionTypeEnum {
+    fn default() -> Self {
+        EncryptionConfigurationEncryptionTypeEnum::Aes256
+    }
+}
+
+
+
 /// The LifecyclePolicy property type specifies a lifecycle policy. For       information about lifecycle policy syntax, see Lifecycle policy         template in the Amazon ECR User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LifecyclePolicy {
-
-
-    /// 
-    /// The AWS account ID associated with the registry that contains the repository. If you       do  not specify a registry, the default registry is assumed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9]{12}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegistryId")]
-    pub registry_id: Option<String>,
 
 
     /// 
@@ -250,4 +282,20 @@ pub struct LifecyclePolicy {
     #[serde(rename = "LifecyclePolicyText")]
     pub lifecycle_policy_text: Option<String>,
 
+
+    /// 
+    /// The AWS account ID associated with the registry that contains the repository. If you       do  not specify a registry, the default registry is assumed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [0-9]{12}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegistryId")]
+    pub registry_id: Option<String>,
+
 }
+
+

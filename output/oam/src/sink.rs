@@ -10,17 +10,15 @@ pub struct CfnSink {
 
 
     /// 
-    /// An array of key-value pairs to apply to the sink.
+    /// A name for the sink.
     /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -38,17 +36,21 @@ pub struct CfnSink {
 
 
     /// 
-    /// A name for the sink.
+    /// An array of key-value pairs to apply to the sink.
     /// 
-    /// Required: Yes
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Map of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSink {
     fn type_string() -> &'static str {

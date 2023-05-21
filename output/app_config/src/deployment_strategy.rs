@@ -10,6 +10,22 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
+    /// Total amount of time for a deployment to last.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1440
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeploymentDurationInMinutes")]
+    pub deployment_duration_in_minutes: f64,
+
+
+    /// 
     /// Specifies the amount of time AWS AppConfig monitors for Amazon CloudWatch alarms after the     configuration has been deployed to 100% of its targets, before considering the deployment     to be complete. If an alarm is triggered during this time, AWS AppConfig rolls back     the deployment. You must configure permissions for AWS AppConfig to roll back based     on CloudWatch alarms. For more information, see Configuring permissions for rollback based on Amazon CloudWatch alarms in the               AWS AppConfig User Guide.
     /// 
     /// Required: No
@@ -26,31 +42,33 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
-    /// A name for the deployment strategy.
+    /// Save the deployment strategy to a Systems Manager (SSM) document.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
+    /// Allowed values: NONE | SSM_DOCUMENT
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "ReplicateTo")]
+    pub replicate_to: DeploymentStrategyReplicateToEnum,
 
 
     /// 
-    /// Assigns metadata to an AWS AppConfig resource. Tags help organize and categorize     your AWS AppConfig resources. Each tag consists of a key and an optional value, both     of which you define. You can specify a maximum of 50 tags for a resource.
+    /// A description of the deployment strategy.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tags
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -76,23 +94,35 @@ pub struct CfnDeploymentStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrowthType")]
-    pub growth_type: Option<String>,
+    pub growth_type: Option<DeploymentStrategyGrowthTypeEnum>,
 
 
     /// 
-    /// Total amount of time for a deployment to last.
+    /// Assigns metadata to an AWS AppConfig resource. Tags help organize and categorize     your AWS AppConfig resources. Each tag consists of a key and an optional value, both     of which you define. You can specify a maximum of 50 tags for a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tags
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
+
+
+    /// 
+    /// A name for the deployment strategy.
     /// 
     /// Required: Yes
     ///
-    /// Type: Double
+    /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 1440
+    /// Maximum: 64
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeploymentDurationInMinutes")]
-    pub deployment_duration_in_minutes: f64,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -106,37 +136,47 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "GrowthFactor")]
     pub growth_factor: f64,
 
-
-    /// 
-    /// A description of the deployment strategy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+}
 
 
-    /// 
-    /// Save the deployment strategy to a Systems Manager (SSM) document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | SSM_DOCUMENT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicateTo")]
-    pub replicate_to: String,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeploymentStrategyReplicateToEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SSM_DOCUMENT
+    #[serde(rename = "SSM_DOCUMENT")]
+    Ssmdocument,
 
 }
+
+impl Default for DeploymentStrategyReplicateToEnum {
+    fn default() -> Self {
+        DeploymentStrategyReplicateToEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeploymentStrategyGrowthTypeEnum {
+
+    /// EXPONENTIAL
+    #[serde(rename = "EXPONENTIAL")]
+    Exponential,
+
+    /// LINEAR
+    #[serde(rename = "LINEAR")]
+    Linear,
+
+}
+
+impl Default for DeploymentStrategyGrowthTypeEnum {
+    fn default() -> Self {
+        DeploymentStrategyGrowthTypeEnum::Exponential
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnDeploymentStrategy {
     fn type_string() -> &'static str {
@@ -178,3 +218,5 @@ pub struct Tags {
     pub value: Option<String>,
 
 }
+
+

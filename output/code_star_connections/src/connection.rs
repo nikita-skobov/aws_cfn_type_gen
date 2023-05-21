@@ -8,38 +8,6 @@ pub struct CfnConnection {
 
 
     /// 
-    /// The name of the connection. Connection names must be unique in an AWS user account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectionName")]
-    pub connection_name: String,
-
-
-    /// 
-    /// The name of the external provider where your third-party code repository is    configured.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Bitbucket | GitHub | GitHubEnterpriseServer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProviderType")]
-    pub provider_type: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the host associated with the connection.
     /// 
     /// Required: No
@@ -70,7 +38,64 @@ pub struct CfnConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The name of the external provider where your third-party code repository is    configured.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Bitbucket | GitHub | GitHubEnterpriseServer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProviderType")]
+    pub provider_type: Option<ConnectionProviderTypeEnum>,
+
+
+    /// 
+    /// The name of the connection. Connection names must be unique in an AWS user account.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConnectionName")]
+    pub connection_name: String,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectionProviderTypeEnum {
+
+    /// Bitbucket
+    #[serde(rename = "Bitbucket")]
+    Bitbucket,
+
+    /// GitHub
+    #[serde(rename = "GitHub")]
+    Github,
+
+    /// GitHubEnterpriseServer
+    #[serde(rename = "GitHubEnterpriseServer")]
+    Githubenterpriseserver,
+
+}
+
+impl Default for ConnectionProviderTypeEnum {
+    fn default() -> Self {
+        ConnectionProviderTypeEnum::Bitbucket
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnConnection {
     fn type_string() -> &'static str {
@@ -95,17 +120,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -115,4 +129,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

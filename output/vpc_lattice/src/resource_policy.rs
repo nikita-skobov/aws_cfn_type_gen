@@ -30,6 +30,8 @@ pub struct CfnResourcePolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string() -> &'static str {
         "AWS::VpcLattice::ResourcePolicy"

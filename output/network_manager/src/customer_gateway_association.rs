@@ -8,42 +8,6 @@ pub struct CfnCustomerGatewayAssociation {
 
 
     /// 
-    /// The ID of the link.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LinkId")]
-    pub link_id: Option<String>,
-
-
-    /// 
-    /// The ID of the global network.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
-
-
-    /// 
     /// The ID of the device.
     /// 
     /// Required: Yes
@@ -78,7 +42,45 @@ pub struct CfnCustomerGatewayAssociation {
     #[serde(rename = "CustomerGatewayArn")]
     pub customer_gateway_arn: String,
 
+
+    /// 
+    /// The ID of the global network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GlobalNetworkId")]
+    pub global_network_id: String,
+
+
+    /// 
+    /// The ID of the link.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LinkId")]
+    pub link_id: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCustomerGatewayAssociation {
     fn type_string() -> &'static str {

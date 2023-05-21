@@ -10,6 +10,18 @@ pub struct CfnDBProxy {
 
 
     /// 
+    /// A Boolean parameter that specifies whether Transport Layer Security (TLS) encryption is required for connections to the proxy.     By enabling this setting, you can enforce encrypted TLS connections to the proxy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequireTLS")]
+    pub require_tls: Option<bool>,
+
+
+    /// 
     /// The authorization mechanism that the proxy uses.
     /// 
     /// Required: Yes
@@ -19,6 +31,30 @@ pub struct CfnDBProxy {
     /// Update requires: No interruption
     #[serde(rename = "Auth")]
     pub auth: Vec<AuthFormat>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBProxyName")]
+    pub dbproxy_name: String,
 
 
     /// 
@@ -48,15 +84,15 @@ pub struct CfnDBProxy {
 
 
     /// 
-    /// The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+    /// Whether the proxy includes detailed information about SQL statements in its logs.     This information helps you to debug issues involving SQL behavior or the performance     and scalability of the proxy connections. The debug information includes the text of     SQL statements that you submit through the proxy. Thus, only enable this setting     when needed for debugging, and only when you have security measures in place to     safeguard any sensitive information that appears in the logs.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DebugLogging")]
+    pub debug_logging: Option<bool>,
 
 
     /// 
@@ -74,27 +110,15 @@ pub struct CfnDBProxy {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// A Boolean parameter that specifies whether Transport Layer Security (TLS) encryption is required for connections to the proxy.     By enabling this setting, you can enforce encrypted TLS connections to the proxy.
+    /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of TagFormat
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RequireTLS")]
-    pub require_tls: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagFormat>>,
 
 
     /// 
@@ -108,31 +132,9 @@ pub struct CfnDBProxy {
     #[serde(rename = "VpcSubnetIds")]
     pub vpc_subnet_ids: Vec<String>,
 
-
-    /// 
-    /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagFormat
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagFormat>>,
-
-
-    /// 
-    /// Whether the proxy includes detailed information about SQL statements in its logs.     This information helps you to debug issues involving SQL behavior or the performance     and scalability of the proxy connections. The debug information includes the text of     SQL statements that you submit through the proxy. Thus, only enable this setting     when needed for debugging, and only when you have security measures in place to     safeguard any sensitive information that appears in the logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DebugLogging")]
-    pub debug_logging: Option<bool>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBProxy {
     fn type_string() -> &'static str {
@@ -148,6 +150,18 @@ impl cfn_resources::CfnResource for CfnDBProxy {
 /// Specifies the details of authentication used by a proxy to log in as a specific       database user.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthFormat {
+
+
+    /// 
+    /// Specifies the details of authentication used by a proxy to log in as a specific database user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientPasswordAuthType")]
+    pub client_password_auth_type: Option<String>,
 
 
     /// 
@@ -173,7 +187,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMAuth")]
-    pub iamauth: Option<String>,
+    pub iamauth: Option<AuthFormatIAMAuthEnum>,
 
 
     /// 
@@ -189,18 +203,6 @@ pub struct AuthFormat {
 
 
     /// 
-    /// Specifies the details of authentication used by a proxy to log in as a specific database user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientPasswordAuthType")]
-    pub client_password_auth_type: Option<String>,
-
-
-    /// 
     /// The type of authentication that the proxy uses for connections from the proxy to the       underlying database.
     /// 
     /// Valid Values: SECRETS
@@ -211,9 +213,49 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthScheme")]
-    pub auth_scheme: Option<String>,
+    pub auth_scheme: Option<AuthFormatAuthSchemeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthFormatAuthSchemeEnum {
+
+    /// SECRETS
+    #[serde(rename = "SECRETS")]
+    Secrets,
+
+}
+
+impl Default for AuthFormatAuthSchemeEnum {
+    fn default() -> Self {
+        AuthFormatAuthSchemeEnum::Secrets
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthFormatIAMAuthEnum {
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// REQUIRED
+    #[serde(rename = "REQUIRED")]
+    Required,
+
+}
+
+impl Default for AuthFormatIAMAuthEnum {
+    fn default() -> Self {
+        AuthFormatIAMAuthEnum::Enabled
+    }
+}
+
 
 
 /// Metadata assigned to a DB proxy consisting of a key-value pair.
@@ -245,3 +287,5 @@ pub struct TagFormat {
     pub key: Option<String>,
 
 }
+
+

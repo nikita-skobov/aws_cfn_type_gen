@@ -6,18 +6,6 @@ pub struct CfnNetworkAcl {
 
 
     /// 
-    /// The tags for the network ACL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the VPC for the network ACL.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnNetworkAcl {
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
 
+
+    /// 
+    /// The tags for the network ACL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnNetworkAcl {
     fn type_string() -> &'static str {
@@ -74,3 +76,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

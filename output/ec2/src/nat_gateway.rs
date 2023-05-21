@@ -12,17 +12,21 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
+    /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 31
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecondaryPrivateIpAddresses")]
-    pub secondary_private_ip_addresses: Option<Vec<String>>,
+    #[serde(rename = "SecondaryPrivateIpAddressCount")]
+    pub secondary_private_ip_address_count: Option<i64>,
 
 
     /// 
@@ -35,6 +39,18 @@ pub struct CfnNatGateway {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryAllocationIds")]
     pub secondary_allocation_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the subnet in which the NAT gateway is located.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 
     /// 
@@ -62,44 +78,6 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// The tags for the NAT gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the subnet in which the NAT gateway is located.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
-    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: private | public
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectivityType")]
-    pub connectivity_type: Option<String>,
-
-
-    /// 
     /// The maximum amount of time to wait (in seconds) before forcibly releasing the IP addresses if connections are still in progress. Default value is 350 seconds.
     /// 
     /// Required: No
@@ -116,23 +94,66 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
+    /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 31
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    pub secondary_private_ip_address_count: Option<i64>,
+    #[serde(rename = "SecondaryPrivateIpAddresses")]
+    pub secondary_private_ip_addresses: Option<Vec<String>>,
+
+
+    /// 
+    /// The tags for the NAT gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: private | public
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConnectivityType")]
+    pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NatGatewayConnectivityTypeEnum {
+
+    /// private
+    #[serde(rename = "private")]
+    Private,
+
+    /// public
+    #[serde(rename = "public")]
+    Public,
+
+}
+
+impl Default for NatGatewayConnectivityTypeEnum {
+    fn default() -> Self {
+        NatGatewayConnectivityTypeEnum::Private
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnNatGateway {
     fn type_string() -> &'static str {
@@ -157,17 +178,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -177,4 +187,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

@@ -6,30 +6,6 @@ pub struct CfnConfiguration {
 
 
     /// 
-    /// The type of broker engine. Note: Currently, Amazon MQ only supports ACTIVEMQ for creating and editing broker configurations.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineType")]
-    pub engine_type: String,
-
-
-    /// 
-    /// The description of the configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Create tags when creating the configuration.
     /// 
     /// Required: No
@@ -39,18 +15,6 @@ pub struct CfnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsEntry>>,
-
-
-    /// 
-    /// The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: String,
 
 
     /// 
@@ -66,15 +30,27 @@ pub struct CfnConfiguration {
 
 
     /// 
-    /// Optional. The authentication strategy associated with the configuration. The        default is SIMPLE.
+    /// The description of the configuration.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "AuthenticationStrategy")]
-    pub authentication_strategy: Option<String>,
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: String,
 
 
     /// 
@@ -88,7 +64,33 @@ pub struct CfnConfiguration {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// Optional. The authentication strategy associated with the configuration. The        default is SIMPLE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthenticationStrategy")]
+    pub authentication_strategy: Option<String>,
+
+
+    /// 
+    /// The type of broker engine. Note: Currently, Amazon MQ only supports ACTIVEMQ for creating and editing broker configurations.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EngineType")]
+    pub engine_type: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfiguration {
     fn type_string() -> &'static str {
@@ -130,3 +132,5 @@ pub struct TagsEntry {
     pub key: String,
 
 }
+
+

@@ -18,24 +18,6 @@ pub struct CfnTransitGatewayRouteTableAttachment {
 
 
     /// 
-    /// The ID of the transit gateway peering.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: ^peering-([0-9a-f]{8,17})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeeringId")]
-    pub peering_id: String,
-
-
-    /// 
     /// The ARN of the transit gateway attachment route table. For example, "TransitGatewayRouteTableArn": "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456".
     /// 
     /// Required: Yes
@@ -64,7 +46,27 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The ID of the transit gateway peering.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: ^peering-([0-9a-f]{8,17})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeeringId")]
+    pub peering_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTableAttachment {
     fn type_string() -> &'static str {
@@ -75,6 +77,57 @@ impl cfn_resources::CfnResource for CfnTransitGatewayRouteTableAttachment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProposedSegmentChange {
+
+
+    /// 
+    /// The list of key-value tags that changed for the segment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the segment to change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SegmentName")]
+    pub segment_name: Option<String>,
+
+
+    /// 
+    /// The rule number in the policy document that applies to this change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -112,50 +165,3 @@ pub struct Tag {
 }
 
 
-/// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProposedSegmentChange {
-
-
-    /// 
-    /// The name of the segment to change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SegmentName")]
-    pub segment_name: Option<String>,
-
-
-    /// 
-    /// The rule number in the policy document that applies to this change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
-
-
-    /// 
-    /// The list of key-value tags that changed for the segment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-}

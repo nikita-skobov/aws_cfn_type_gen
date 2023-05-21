@@ -10,6 +10,26 @@ pub struct CfnModuleDefaultVersion {
 
 
     /// 
+    /// The name of the module.
+    /// 
+    /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 10
+    ///
+    /// Maximum: 204
+    ///
+    /// Pattern: [A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}(::MODULE){0,1}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModuleName")]
+    pub module_name: Option<String>,
+
+
+    /// 
     /// The ID for the specific version of the module.
     /// 
     /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
@@ -46,27 +66,9 @@ pub struct CfnModuleDefaultVersion {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
-    /// The name of the module.
-    /// 
-    /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 10
-    ///
-    /// Maximum: 204
-    ///
-    /// Pattern: [A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}(::MODULE){0,1}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModuleName")]
-    pub module_name: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
     fn type_string() -> &'static str {

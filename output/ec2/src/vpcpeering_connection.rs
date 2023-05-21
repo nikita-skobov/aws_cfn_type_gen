@@ -24,20 +24,6 @@ pub struct CfnVPCPeeringConnection {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in     another AWS account.
-    /// 
-    /// This is required when you are peering a VPC in a different AWS     account.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeerRoleArn")]
-    pub peer_role_arn: Option<String>,
-
-
-    /// 
     /// The ID of the VPC with which you are creating the VPC peering connection. You must 			specify this parameter in the request.
     /// 
     /// Required: Yes
@@ -47,6 +33,18 @@ pub struct CfnVPCPeeringConnection {
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcId")]
     pub peer_vpc_id: String,
+
+
+    /// 
+    /// Any tags assigned to the resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -64,6 +62,20 @@ pub struct CfnVPCPeeringConnection {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in     another AWS account.
+    /// 
+    /// This is required when you are peering a VPC in a different AWS     account.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeerRoleArn")]
+    pub peer_role_arn: Option<String>,
+
+
+    /// 
     /// The AWS account ID of the owner of the accepter VPC.
     /// 
     /// Default: Your AWS account ID
@@ -76,19 +88,9 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "PeerOwnerId")]
     pub peer_owner_id: Option<String>,
 
-
-    /// 
-    /// Any tags assigned to the resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVPCPeeringConnection {
     fn type_string() -> &'static str {
@@ -134,3 +136,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

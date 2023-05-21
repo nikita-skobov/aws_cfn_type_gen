@@ -8,33 +8,41 @@ pub struct CfnProfile {
 
 
     /// 
-    /// A session policy that applies to the trust boundary of the vended session credentials.
+    /// Sets the maximum number of seconds that vended temporary credentials through CreateSession will be valid for, between 900 and 3600.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SessionPolicy")]
-    pub session_policy: Option<String>,
+    #[serde(rename = "DurationSeconds")]
+    pub duration_seconds: Option<f64>,
 
 
     /// 
-    /// The name of the profile.
+    /// A list of managed policy ARNs that apply to the vended session credentials.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[ a-zA-Z0-9-_]*$
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "ManagedPolicyArns")]
+    pub managed_policy_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Specifies whether instance properties are required in temporary credential requests with this profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequireInstanceProperties")]
+    pub require_instance_properties: Option<bool>,
 
 
     /// 
@@ -66,29 +74,21 @@ pub struct CfnProfile {
 
 
     /// 
-    /// A list of managed policy ARNs that apply to the vended session credentials.
+    /// The name of the profile.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[ a-zA-Z0-9-_]*$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ManagedPolicyArns")]
-    pub managed_policy_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Sets the maximum number of seconds that vended temporary credentials through CreateSession will be valid for, between 900 and 3600.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationSeconds")]
-    pub duration_seconds: Option<f64>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -104,17 +104,19 @@ pub struct CfnProfile {
 
 
     /// 
-    /// Specifies whether instance properties are required in temporary credential requests with this profile.
+    /// A session policy that applies to the trust boundary of the vended session credentials.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RequireInstanceProperties")]
-    pub require_instance_properties: Option<bool>,
+    #[serde(rename = "SessionPolicy")]
+    pub session_policy: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProfile {
     fn type_string() -> &'static str {
@@ -160,3 +162,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

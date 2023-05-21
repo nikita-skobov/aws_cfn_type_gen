@@ -5,6 +5,50 @@
 pub struct CfnJob {
 
 
+    /// 
+    /// The number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure    of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+    /// 
+    /// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+    /// 
+    /// The value that can be allocated for MaxCapacity depends on whether you are    running a Python shell job or an Apache Spark ETL job:
+    /// 
+    /// When you specify a Python shell job (JobCommand.Name="pythonshell"), you can      allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: Option<f64>,
+
+
+    /// 
+    /// The number of workers of a defined workerType that are allocated when a job runs.
+    /// 
+    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfWorkers")]
+    pub number_of_workers: Option<i64>,
+
+
+    /// 
+    /// The tags to use with this job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
     /// Specifies configuration properties of a notification.
     ///
     /// Required: No
@@ -29,82 +73,6 @@ pub struct CfnJob {
 
 
     /// 
-    /// The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
-    /// 
-    /// For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker.For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: G.025X | G.1X | G.2X | Standard
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkerType")]
-    pub worker_type: Option<String>,
-
-
-    /// 
-    /// The tags to use with this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
-    /// The name of the SecurityConfiguration structure to be used with this       job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityConfiguration")]
-    pub security_configuration: Option<String>,
-
-
-    /// 
-    /// The default arguments for this job, specified as name-value pairs.
-    /// 
-    /// You can specify arguments here that your own job-execution script consumes, in       addition to arguments that AWS Glue itself consumes.
-    /// 
-    /// For information about how to specify and consume your own job arguments, see Calling AWS Glue APIs in Python in the AWS Glue Developer         Guide.
-    /// 
-    /// For information about the key-value pairs that AWS Glue consumes to set up your job,       see Special Parameters         Used by AWS Glue in the AWS Glue Developer       Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultArguments")]
-    pub default_arguments: Option<serde_json::Value>,
-
-
-    /// 
-    /// The maximum number of concurrent runs that are allowed for this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ExecutionProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecutionProperty")]
-    pub execution_property: Option<ExecutionProperty>,
-
-
-    /// 
     /// The code that executes a job.
     /// 
     /// Required: Yes
@@ -114,18 +82,6 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "Command")]
     pub command: JobCommand,
-
-
-    /// 
-    /// The connections used for this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConnectionsList
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Connections")]
-    pub connections: Option<ConnectionsList>,
 
 
     /// 
@@ -153,35 +109,21 @@ pub struct CfnJob {
 
 
     /// 
-    /// The number of workers of a defined workerType that are allocated when a job runs.
+    /// The default arguments for this job, specified as name-value pairs.
     /// 
-    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// You can specify arguments here that your own job-execution script consumes, in       addition to arguments that AWS Glue itself consumes.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfWorkers")]
-    pub number_of_workers: Option<i64>,
-
-
+    /// For information about how to specify and consume your own job arguments, see Calling AWS Glue APIs in Python in the AWS Glue Developer         Guide.
     /// 
-    /// The number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure    of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-    /// 
-    /// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
-    /// 
-    /// The value that can be allocated for MaxCapacity depends on whether you are    running a Python shell job or an Apache Spark ETL job:
-    /// 
-    /// When you specify a Python shell job (JobCommand.Name="pythonshell"), you can      allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.
+    /// For information about the key-value pairs that AWS Glue consumes to set up your job,       see Special Parameters         Used by AWS Glue in the AWS Glue Developer       Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Double
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: Option<f64>,
+    #[serde(rename = "DefaultArguments")]
+    pub default_arguments: Option<serde_json::Value>,
 
 
     /// 
@@ -202,15 +144,34 @@ pub struct CfnJob {
     pub name: Option<String>,
 
 
-    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
-    ///
+    /// 
+    /// A description of the job.
+    /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Timeout")]
-    pub timeout: Option<i64>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The connections used for this job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConnectionsList
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Connections")]
+    pub connections: Option<ConnectionsList>,
 
 
     /// 
@@ -227,6 +188,35 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionClass")]
     pub execution_class: Option<String>,
+
+
+    /// 
+    /// The name of the SecurityConfiguration structure to be used with this       job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityConfiguration")]
+    pub security_configuration: Option<String>,
+
+
+    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Timeout")]
+    pub timeout: Option<i64>,
 
 
     /// 
@@ -252,21 +242,31 @@ pub struct CfnJob {
 
 
     /// 
-    /// A description of the job.
+    /// The maximum number of concurrent runs that are allowed for this job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ExecutionProperty
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecutionProperty")]
+    pub execution_property: Option<ExecutionProperty>,
+
+
+    /// 
+    /// The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
+    /// 
+    /// For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker.For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Allowed values: G.025X | G.1X | G.2X | Standard
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "WorkerType")]
+    pub worker_type: Option<JobWorkerTypeEnum>,
 
 
     /// 
@@ -296,6 +296,35 @@ pub struct CfnJob {
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JobWorkerTypeEnum {
+
+    /// G.025X
+    #[serde(rename = "G.025X")]
+    G025x,
+
+    /// G.1X
+    #[serde(rename = "G.1X")]
+    G1x,
+
+    /// G.2X
+    #[serde(rename = "G.2X")]
+    G2x,
+
+    /// Standard
+    #[serde(rename = "Standard")]
+    Standard,
+
+}
+
+impl Default for JobWorkerTypeEnum {
+    fn default() -> Self {
+        JobWorkerTypeEnum::G025x
+    }
+}
+
+
 impl cfn_resources::CfnResource for CfnJob {
     fn type_string() -> &'static str {
         "AWS::Glue::Job"
@@ -307,23 +336,24 @@ impl cfn_resources::CfnResource for CfnJob {
 }
 
 
-/// An execution property of a job.
+/// Specifies configuration properties of a notification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ExecutionProperty {
+pub struct NotificationProperty {
 
 
-    /// 
-    /// The maximum number of concurrent runs allowed for the job. The default is 1. An error       is returned when this threshold is reached. The maximum value you can specify is       controlled by a service limit.
-    /// 
+    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+    ///
     /// Required: No
     ///
-    /// Type: Double
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxConcurrentRuns")]
-    pub max_concurrent_runs: Option<f64>,
+    #[serde(rename = "NotifyDelayAfter")]
+    pub notify_delay_after: Option<i64>,
 
 }
+
+
 
 
 /// Specifies code executed when a job is run.
@@ -373,6 +403,8 @@ pub struct JobCommand {
 }
 
 
+
+
 /// Specifies the connections used by a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionsList {
@@ -392,19 +424,24 @@ pub struct ConnectionsList {
 }
 
 
-/// Specifies configuration properties of a notification.
+
+
+/// An execution property of a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotificationProperty {
+pub struct ExecutionProperty {
 
 
-    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
-    ///
+    /// 
+    /// The maximum number of concurrent runs allowed for the job. The default is 1. An error       is returned when this threshold is reached. The maximum value you can specify is       controlled by a service limit.
+    /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotifyDelayAfter")]
-    pub notify_delay_after: Option<i64>,
+    #[serde(rename = "MaxConcurrentRuns")]
+    pub max_concurrent_runs: Option<f64>,
 
 }
+
+

@@ -6,6 +6,18 @@ pub struct CfnIPAM {
 
 
     /// 
+    /// The IPAM's default resource discovery association ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultResourceDiscoveryAssociationId")]
+    pub default_resource_discovery_association_id: Option<String>,
+
+
+    /// 
     /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
     /// 
     /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
@@ -17,18 +29,6 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "OperatingRegions")]
     pub operating_regions: Option<Vec<IpamOperatingRegion>>,
-
-
-    /// 
-    /// The IPAM's default resource discovery association ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultResourceDiscoveryAssociationId")]
-    pub default_resource_discovery_association_id: Option<String>,
 
 
     /// 
@@ -44,18 +44,6 @@ pub struct CfnIPAM {
 
 
     /// 
-    /// The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value.   For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The description for the IPAM.
     /// 
     /// Required: No
@@ -66,7 +54,21 @@ pub struct CfnIPAM {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value.   For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPAM {
     fn type_string() -> &'static str {
@@ -100,6 +102,8 @@ pub struct IpamOperatingRegion {
 }
 
 
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -112,17 +116,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -132,4 +125,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

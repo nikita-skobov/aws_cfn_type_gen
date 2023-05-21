@@ -6,18 +6,6 @@ pub struct CfnIPAMResourceDiscovery {
 
 
     /// 
-    /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The resource discovery description.
     /// 
     /// Required: No
@@ -40,7 +28,21 @@ pub struct CfnIPAMResourceDiscovery {
     #[serde(rename = "OperatingRegions")]
     pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
+
+    /// 
+    /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {
     fn type_string() -> &'static str {
@@ -72,6 +74,8 @@ pub struct IpamOperatingRegion {
     pub region_name: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -107,3 +111,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

@@ -6,24 +6,6 @@ pub struct CfnModelPackageGroup {
 
 
     /// 
-    /// The name of the model group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelPackageGroupName")]
-    pub model_package_group_name: String,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -66,7 +48,27 @@ pub struct CfnModelPackageGroup {
     #[serde(rename = "ModelPackageGroupPolicy")]
     pub model_package_group_policy: Option<serde_json::Value>,
 
+
+    /// 
+    /// The name of the model group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelPackageGroupName")]
+    pub model_package_group_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnModelPackageGroup {
     fn type_string() -> &'static str {
@@ -112,3 +114,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

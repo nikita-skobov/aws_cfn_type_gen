@@ -6,15 +6,15 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// The environment of the robot application.
+    /// A map that contains tag keys and tag values that are attached to the robot     application.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Environment")]
-    pub environment: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -72,17 +72,19 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// A map that contains tag keys and tag values that are attached to the robot     application.
+    /// The environment of the robot application.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Environment")]
+    pub environment: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRobotApplication {
     fn type_string() -> &'static str {
@@ -92,63 +94,6 @@ impl cfn_resources::CfnResource for CfnRobotApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Information about a source configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceConfig {
-
-
-    /// 
-    /// The target processor architecture for the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Architecture")]
-    pub architecture: String,
-
-
-    /// 
-    /// The s3 object key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
-
-
-    /// 
-    /// The Amazon S3 bucket name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [a-z0-9][a-z0-9.\-]*[a-z0-9]
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
-
 }
 
 
@@ -168,7 +113,7 @@ pub struct RobotSoftwareSuite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    pub version: Option<String>,
+    pub version: Option<RobotSoftwareSuiteVersionEnum>,
 
 
     /// 
@@ -182,6 +127,140 @@ pub struct RobotSoftwareSuite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: RobotSoftwareSuiteNameEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotSoftwareSuiteVersionEnum {
+
+    /// Dashing
+    #[serde(rename = "Dashing")]
+    Dashing,
+
+    /// Foxy
+    #[serde(rename = "Foxy")]
+    Foxy,
+
+    /// Kinetic
+    #[serde(rename = "Kinetic")]
+    Kinetic,
+
+    /// Melodic
+    #[serde(rename = "Melodic")]
+    Melodic,
+
+}
+
+impl Default for RobotSoftwareSuiteVersionEnum {
+    fn default() -> Self {
+        RobotSoftwareSuiteVersionEnum::Dashing
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotSoftwareSuiteNameEnum {
+
+    /// General
+    #[serde(rename = "General")]
+    General,
+
+    /// ROS
+    #[serde(rename = "ROS")]
+    Ros,
+
+    /// ROS2
+    #[serde(rename = "ROS2")]
+    Ros2,
+
+}
+
+impl Default for RobotSoftwareSuiteNameEnum {
+    fn default() -> Self {
+        RobotSoftwareSuiteNameEnum::General
+    }
+}
+
+
+
+/// Information about a source configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SourceConfig {
+
+
+    /// 
+    /// The Amazon S3 bucket name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [a-z0-9][a-z0-9.\-]*[a-z0-9]
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Bucket")]
+    pub s3_bucket: String,
+
+
+    /// 
+    /// The target processor architecture for the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Architecture")]
+    pub architecture: SourceConfigArchitectureEnum,
+
+
+    /// 
+    /// The s3 object key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceConfigArchitectureEnum {
+
+    /// ARM64
+    #[serde(rename = "ARM64")]
+    Arm64,
+
+    /// ARMHF
+    #[serde(rename = "ARMHF")]
+    Armhf,
+
+    /// X86_64
+    #[serde(rename = "X86_64")]
+    X8664,
+
+}
+
+impl Default for SourceConfigArchitectureEnum {
+    fn default() -> Self {
+        SourceConfigArchitectureEnum::Arm64
+    }
+}
+

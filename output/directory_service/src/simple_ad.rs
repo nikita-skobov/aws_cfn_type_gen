@@ -20,34 +20,6 @@ pub struct CfnSimpleAD {
 
 
     /// 
-    /// The size of the directory. For valid values, see CreateDirectory in    the AWS Directory Service API Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Large | Small
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Size")]
-    pub size: String,
-
-
-    /// 
-    /// The fully qualified name for the directory, such as corp.example.com.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// A description for the directory.
     /// 
     /// Required: No
@@ -75,6 +47,34 @@ pub struct CfnSimpleAD {
     /// Update requires: No interruption
     #[serde(rename = "EnableSso")]
     pub enable_sso: Option<bool>,
+
+
+    /// 
+    /// The size of the directory. For valid values, see CreateDirectory in    the AWS Directory Service API Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Large | Small
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Size")]
+    pub size: SimpleADSizeEnum,
+
+
+    /// 
+    /// The fully qualified name for the directory, such as corp.example.com.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -120,6 +120,27 @@ pub struct CfnSimpleAD {
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SimpleADSizeEnum {
+
+    /// Large
+    #[serde(rename = "Large")]
+    Large,
+
+    /// Small
+    #[serde(rename = "Small")]
+    Small,
+
+}
+
+impl Default for SimpleADSizeEnum {
+    fn default() -> Self {
+        SimpleADSizeEnum::Large
+    }
+}
+
+
 impl cfn_resources::CfnResource for CfnSimpleAD {
     fn type_string() -> &'static str {
         "AWS::DirectoryService::SimpleAD"
@@ -162,3 +183,5 @@ pub struct VpcSettings {
     pub vpc_id: String,
 
 }
+
+

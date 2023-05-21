@@ -6,15 +6,15 @@ pub struct CfnFeature {
 
 
     /// 
-    /// An optional description of the feature.
+    /// The name for the feature. It can include up to 127 characters.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -32,6 +32,30 @@ pub struct CfnFeature {
 
 
     /// 
+    /// The name or ARN of the project that is to contain the new feature.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Project")]
+    pub project: String,
+
+
+    /// 
+    /// Specify users that should always be served a specific variation of a feature. Each user       is specified by a key-value pair . For each key, specify a user by entering their user ID,       account ID, or some other identifier. For the value, specify the name of the variation that       they are to be served.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of EntityOverride
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntityOverrides")]
+    pub entity_overrides: Option<Vec<EntityOverride>>,
+
+
+    /// 
     /// The name of the variation to use as the default variation. The default       variation is served to users who are not allocated to any ongoing launches       or experiments of this feature.
     /// 
     /// This variation must also be listed in the Variations structure.
@@ -45,6 +69,30 @@ pub struct CfnFeature {
     /// Update requires: No interruption
     #[serde(rename = "DefaultVariation")]
     pub default_variation: Option<String>,
+
+
+    /// 
+    /// An optional description of the feature.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Specify ALL_RULES to activate the traffic allocation specified by any       ongoing launches or experiments. Specify DEFAULT_VARIATION to serve the default       variation to all users instead.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluationStrategy")]
+    pub evaluation_strategy: Option<String>,
 
 
     /// 
@@ -66,55 +114,9 @@ pub struct CfnFeature {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Specify users that should always be served a specific variation of a feature. Each user       is specified by a key-value pair . For each key, specify a user by entering their user ID,       account ID, or some other identifier. For the value, specify the name of the variation that       they are to be served.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of EntityOverride
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntityOverrides")]
-    pub entity_overrides: Option<Vec<EntityOverride>>,
-
-
-    /// 
-    /// The name for the feature. It can include up to 127 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The name or ARN of the project that is to contain the new feature.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Project")]
-    pub project: String,
-
-
-    /// 
-    /// Specify ALL_RULES to activate the traffic allocation specified by any       ongoing launches or experiments. Specify DEFAULT_VARIATION to serve the default       variation to all users instead.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluationStrategy")]
-    pub evaluation_strategy: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFeature {
     fn type_string() -> &'static str {
@@ -130,6 +132,18 @@ impl cfn_resources::CfnResource for CfnFeature {
 /// This structure contains the name and variation value of one variation of a feature. It       can contain only one of the following parameters: BooleanValue, DoubleValue, LongValue       or StringValue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VariationObject {
+
+
+    /// 
+    /// The value assigned to this variation, if the variation type is a long.
+    ///
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LongValue")]
+    pub long_value: Option<f64>,
 
 
     /// 
@@ -157,30 +171,6 @@ pub struct VariationObject {
 
 
     /// 
-    /// The value assigned to this variation, if the variation type is a double.
-    ///
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DoubleValue")]
-    pub double_value: Option<f64>,
-
-
-    /// 
-    /// The value assigned to this variation, if the variation type is a long.
-    ///
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LongValue")]
-    pub long_value: Option<f64>,
-
-
-    /// 
     /// The value assigned to this variation, if the variation type is a string.
     ///
     /// Required: No
@@ -191,7 +181,54 @@ pub struct VariationObject {
     #[serde(rename = "StringValue")]
     pub string_value: Option<String>,
 
+
+    /// 
+    /// The value assigned to this variation, if the variation type is a double.
+    ///
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DoubleValue")]
+    pub double_value: Option<f64>,
+
 }
+
+
+
+
+/// A set of key-value pairs that specify users who should always be served a specific       variation of a feature. Each key specifies a user using their user ID, account ID, or some       other identifier. The value specifies the name of the variation that the user is to be       served.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EntityOverride {
+
+
+    /// 
+    /// The entity ID to be served the variation specified in Variation.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntityId")]
+    pub entity_id: Option<String>,
+
+
+    /// 
+    /// The name of the variation to serve to the user session that matches the EntityId.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variation")]
+    pub variation: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -206,17 +243,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -226,35 +252,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
 
 
-/// A set of key-value pairs that specify users who should always be served a specific       variation of a feature. Each key specifies a user using their user ID, account ID, or some       other identifier. The value specifies the name of the variation that the user is to be       served.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EntityOverride {
-
-
-    /// 
-    /// The name of the variation to serve to the user session that matches the EntityId.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variation")]
-    pub variation: Option<String>,
-
-
-    /// 
-    /// The entity ID to be served the variation specified in Variation.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntityId")]
-    pub entity_id: Option<String>,
-
-}

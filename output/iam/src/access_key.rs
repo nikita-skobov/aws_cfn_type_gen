@@ -28,18 +28,6 @@ pub struct CfnAccessKey {
 
 
     /// 
-    /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Serial")]
-    pub serial: Option<i64>,
-
-
-    /// 
     /// The status of the access key. Active means that the key is valid for API     calls, while Inactive means it is not.
     /// 
     /// Required: No
@@ -50,9 +38,42 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: Option<String>,
+    pub status: Option<AccessKeyStatusEnum>,
+
+
+    /// 
+    /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Serial")]
+    pub serial: Option<i64>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AccessKeyStatusEnum {
+
+    /// Active
+    #[serde(rename = "Active")]
+    Active,
+
+    /// Inactive
+    #[serde(rename = "Inactive")]
+    Inactive,
+
+}
+
+impl Default for AccessKeyStatusEnum {
+    fn default() -> Self {
+        AccessKeyStatusEnum::Active
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAccessKey {
     fn type_string() -> &'static str {

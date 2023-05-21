@@ -5,40 +5,6 @@
 pub struct CfnNotificationRule {
 
 
-    /// 
-    /// A list of tags to apply to this notification rule. Key names cannot start with "aws".
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedBy")]
-    pub created_by: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetAddress")]
-    pub target_address: Option<String>,
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -48,20 +14,6 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "EventTypeId")]
     pub event_type_id: Option<String>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and AWS Chatbot clients to associate with the    notification rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Target
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Vec<Target>,
 
 
     /// 
@@ -75,19 +27,18 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: Option<String>,
+    pub status: Option<NotificationRuleStatusEnum>,
 
 
-    /// 
-    /// A list of event types associated with this notification rule. For a complete list of event types and IDs, see      Notification concepts     in the Developer Tools Console User Guide.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: List of String
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EventTypeIds")]
-    pub event_type_ids: Vec<String>,
+    #[serde(rename = "CreatedBy")]
+    pub created_by: Option<String>,
 
 
     /// 
@@ -109,17 +60,29 @@ pub struct CfnNotificationRule {
 
 
     /// 
-    /// The level of detail to include in the notifications for this resource. BASIC will include only the     contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information     provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
+    /// A list of tags to apply to this notification rule. Key names cannot start with "aws".
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and AWS Chatbot clients to associate with the    notification rule.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of Target
     ///
-    /// Allowed values: BASIC | FULL
+    /// Maximum: 10
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DetailType")]
-    pub detail_type: String,
+    #[serde(rename = "Targets")]
+    pub targets: Vec<Target>,
 
 
     /// 
@@ -135,7 +98,84 @@ pub struct CfnNotificationRule {
     #[serde(rename = "Resource")]
     pub resource: String,
 
+
+    /// 
+    /// The level of detail to include in the notifications for this resource. BASIC will include only the     contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information     provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BASIC | FULL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DetailType")]
+    pub detail_type: NotificationRuleDetailTypeEnum,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetAddress")]
+    pub target_address: Option<String>,
+
+
+    /// 
+    /// A list of event types associated with this notification rule. For a complete list of event types and IDs, see      Notification concepts     in the Developer Tools Console User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventTypeIds")]
+    pub event_type_ids: Vec<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NotificationRuleDetailTypeEnum {
+
+    /// BASIC
+    #[serde(rename = "BASIC")]
+    Basic,
+
+    /// FULL
+    #[serde(rename = "FULL")]
+    Full,
+
+}
+
+impl Default for NotificationRuleDetailTypeEnum {
+    fn default() -> Self {
+        NotificationRuleDetailTypeEnum::Basic
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NotificationRuleStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for NotificationRuleStatusEnum {
+    fn default() -> Self {
+        NotificationRuleStatusEnum::Disabled
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnNotificationRule {
     fn type_string() -> &'static str {
@@ -185,3 +225,5 @@ pub struct Target {
     pub target_type: String,
 
 }
+
+

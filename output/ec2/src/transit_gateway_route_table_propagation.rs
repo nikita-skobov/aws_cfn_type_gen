@@ -32,6 +32,8 @@ pub struct CfnTransitGatewayRouteTablePropagation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTablePropagation {
     fn type_string() -> &'static str {
         "AWS::EC2::TransitGatewayRouteTablePropagation"

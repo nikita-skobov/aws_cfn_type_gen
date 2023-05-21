@@ -8,21 +8,45 @@ pub struct CfnStream {
 
 
     /// 
-    /// The name of the ledger.
+    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: KinesisConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KinesisConfiguration")]
+    pub kinesis_configuration: KinesisConfiguration,
+
+
+    /// 
+    /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
+    /// 
+    /// The ExclusiveEndTime must be in ISO 8601 date and time format     and in Universal Coordinated Time (UTC). For example:     2019-06-13T21:36:34Z.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExclusiveEndTime")]
+    pub exclusive_end_time: Option<String>,
+
+
+    /// 
+    /// The inclusive start date and time from which to start streaming journal data. This     parameter must be in ISO 8601 date and time format and in Universal     Coordinated Time (UTC). For example: 2019-06-13T21:36:34Z.
+    /// 
+    /// The InclusiveStartTime cannot be in the future and must be before       ExclusiveEndTime.
+    /// 
+    /// If you provide an InclusiveStartTime that is before the ledger's       CreationDateTime, QLDB effectively defaults it to the ledger's       CreationDateTime.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "LedgerName")]
-    pub ledger_name: String,
+    #[serde(rename = "InclusiveStartTime")]
+    pub inclusive_start_time: String,
 
 
     /// 
@@ -46,20 +70,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a     journal stream to write data records to a Kinesis Data Streams resource.
     /// 
     /// To pass a role to QLDB when requesting a journal stream, you must have permissions to     perform the iam:PassRole action on the IAM role resource. This is required for     all journal stream requests.
@@ -78,47 +88,39 @@ pub struct CfnStream {
 
 
     /// 
-    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KinesisConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KinesisConfiguration")]
-    pub kinesis_configuration: KinesisConfiguration,
-
-
-    /// 
-    /// The inclusive start date and time from which to start streaming journal data. This     parameter must be in ISO 8601 date and time format and in Universal     Coordinated Time (UTC). For example: 2019-06-13T21:36:34Z.
-    /// 
-    /// The InclusiveStartTime cannot be in the future and must be before       ExclusiveEndTime.
-    /// 
-    /// If you provide an InclusiveStartTime that is before the ledger's       CreationDateTime, QLDB effectively defaults it to the ledger's       CreationDateTime.
+    /// The name of the ledger.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "InclusiveStartTime")]
-    pub inclusive_start_time: String,
+    #[serde(rename = "LedgerName")]
+    pub ledger_name: String,
 
 
     /// 
-    /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
+    /// An array of key-value pairs to apply to this resource.
     /// 
-    /// The ExclusiveEndTime must be in ISO 8601 date and time format     and in Universal Coordinated Time (UTC). For example:     2019-06-13T21:36:34Z.
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExclusiveEndTime")]
-    pub exclusive_end_time: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStream {
     fn type_string() -> &'static str {
@@ -137,22 +139,6 @@ pub struct KinesisConfiguration {
 
 
     /// 
-    /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the     number of records sent per API call.
-    /// 
-    /// Default: True
-    /// 
-    /// ImportantRecord aggregation has important implications for processing records and requires       de-aggregation in your stream consumer. To learn more, see KPL Key Concepts and        Consumer        De-aggregation in the Amazon Kinesis Data Streams Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AggregationEnabled")]
-    pub aggregation_enabled: Option<bool>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
     /// 
     /// Required: No
@@ -167,7 +153,25 @@ pub struct KinesisConfiguration {
     #[serde(rename = "StreamArn")]
     pub stream_arn: Option<String>,
 
+
+    /// 
+    /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the     number of records sent per API call.
+    /// 
+    /// Default: True
+    /// 
+    /// ImportantRecord aggregation has important implications for processing records and requires       de-aggregation in your stream consumer. To learn more, see KPL Key Concepts and        Consumer        De-aggregation in the Amazon Kinesis Data Streams Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AggregationEnabled")]
+    pub aggregation_enabled: Option<bool>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -182,17 +186,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -202,4 +195,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

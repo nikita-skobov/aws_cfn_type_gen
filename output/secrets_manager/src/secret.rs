@@ -16,30 +16,6 @@ pub struct CfnSecret {
 
 
     /// 
-    /// A custom type that specifies a Region and the KmsKeyId for a replica secret.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ReplicaRegion
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicaRegions")]
-    pub replica_regions: Option<Vec<ReplicaRegion>>,
-
-
-    /// 
-    /// The description of the secret.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The text to encrypt and store in the secret. We recommend you use a JSON structure of    key/value pairs for your secret value. To generate a random password, use GenerateSecretString instead.    If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
     /// 
     /// Required: No
@@ -49,36 +25,6 @@ pub struct CfnSecret {
     /// Update requires: No interruption
     #[serde(rename = "SecretString")]
     pub secret_string: Option<String>,
-
-
-    /// 
-    /// A structure that specifies how to generate a password to encrypt and store in the secret. To include a specific string    in the secret, use SecretString instead. If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
-    /// 
-    /// We recommend that you specify the maximum length and include every character type that the    system you are generating a password for can support.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GenerateSecretString
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GenerateSecretString")]
-    pub generate_secret_string: Option<GenerateSecretString>,
-
-
-    /// 
-    /// The name of the new secret.
-    /// 
-    /// The secret name can contain ASCII letters, numbers, and the following characters:    /_+=.@-
-    /// 
-    /// Do not end your secret name with a hyphen followed by six characters. If you do so, you     risk confusion and unexpected results when searching for a secret by partial ARN. Secrets Manager     automatically adds a hyphen and six random characters after the secret name at the end of the ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -106,6 +52,32 @@ pub struct CfnSecret {
 
 
     /// 
+    /// The description of the secret.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A structure that specifies how to generate a password to encrypt and store in the secret. To include a specific string    in the secret, use SecretString instead. If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
+    /// 
+    /// We recommend that you specify the maximum length and include every character type that the    system you are generating a password for can support.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GenerateSecretString
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GenerateSecretString")]
+    pub generate_secret_string: Option<GenerateSecretString>,
+
+
+    /// 
     /// The ARN, key ID, or alias of the AWS KMS key that Secrets Manager uses to    encrypt the secret value in the secret. An alias is always prefixed by alias/, for example alias/aws/secretsmanager.   For more information, see About aliases.
     /// 
     /// To use a AWS KMS key in a different account, use the key ARN or the alias ARN.
@@ -122,7 +94,37 @@ pub struct CfnSecret {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
+
+    /// 
+    /// A custom type that specifies a Region and the KmsKeyId for a replica secret.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ReplicaRegion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicaRegions")]
+    pub replica_regions: Option<Vec<ReplicaRegion>>,
+
+
+    /// 
+    /// The name of the new secret.
+    /// 
+    /// The secret name can contain ASCII letters, numbers, and the following characters:    /_+=.@-
+    /// 
+    /// Do not end your secret name with a hyphen followed by six characters. If you do so, you     risk confusion and unexpected results when searching for a secret by partial ARN. Secrets Manager     automatically adds a hyphen and six random characters after the secret name at the end of the ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSecret {
     fn type_string() -> &'static str {
@@ -133,6 +135,174 @@ impl cfn_resources::CfnResource for CfnSecret {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Generates a random password. We recommend that you specify the maximum length and include    every character type that the system you are generating a password for can support.
+///
+/// Required permissions:    secretsmanager:GetRandomPassword. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GenerateSecretString {
+
+
+    /// 
+    /// A string of the characters that you don't want in the password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeCharacters")]
+    pub exclude_characters: Option<String>,
+
+
+    /// 
+    /// Specifies whether to exclude numbers from the password. If you don't    include this switch, the password can contain numbers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeNumbers")]
+    pub exclude_numbers: Option<bool>,
+
+
+    /// 
+    /// The JSON key name for the key/value pair, where the value is the generated password. This    pair is added to the JSON structure specified by the SecretStringTemplate    parameter. If you specify this parameter, then you must also specify     SecretStringTemplate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GenerateStringKey")]
+    pub generate_string_key: Option<String>,
+
+
+    /// 
+    /// Specifies whether to exclude the following punctuation characters from the password:    ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~.    If you don't include this switch, the password can contain punctuation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludePunctuation")]
+    pub exclude_punctuation: Option<bool>,
+
+
+    /// 
+    /// The length of the password. If you don't include this parameter, the    default length is 32 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PasswordLength")]
+    pub password_length: Option<i64>,
+
+
+    /// 
+    /// A template that the generated string must match. When you make a change to this property, a new secret version is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretStringTemplate")]
+    pub secret_string_template: Option<String>,
+
+
+    /// 
+    /// Specifies whether to include the space character. If you    include this switch, the password can contain space characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeSpace")]
+    pub include_space: Option<bool>,
+
+
+    /// 
+    /// Specifies whether to exclude lowercase letters from the password. If    you don't include this switch, the password can contain lowercase letters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeLowercase")]
+    pub exclude_lowercase: Option<bool>,
+
+
+    /// 
+    /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.    If you don't include this switch, the password contains at least one of every character type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequireEachIncludedType")]
+    pub require_each_included_type: Option<bool>,
+
+
+    /// 
+    /// Specifies whether to exclude uppercase letters from the password. If you    don't include this switch, the password can contain uppercase letters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeUppercase")]
+    pub exclude_uppercase: Option<bool>,
+
+}
+
+
 
 
 /// Specifies a Region and the KmsKeyId for a replica secret.
@@ -166,165 +336,3 @@ pub struct ReplicaRegion {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-/// Generates a random password. We recommend that you specify the maximum length and include    every character type that the system you are generating a password for can support.
-///
-/// Required permissions:    secretsmanager:GetRandomPassword. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GenerateSecretString {
-
-
-    /// 
-    /// A template that the generated string must match. When you make a change to this property, a new secret version is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretStringTemplate")]
-    pub secret_string_template: Option<String>,
-
-
-    /// 
-    /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.    If you don't include this switch, the password contains at least one of every character type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequireEachIncludedType")]
-    pub require_each_included_type: Option<bool>,
-
-
-    /// 
-    /// The length of the password. If you don't include this parameter, the    default length is 32 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PasswordLength")]
-    pub password_length: Option<i64>,
-
-
-    /// 
-    /// The JSON key name for the key/value pair, where the value is the generated password. This    pair is added to the JSON structure specified by the SecretStringTemplate    parameter. If you specify this parameter, then you must also specify     SecretStringTemplate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GenerateStringKey")]
-    pub generate_string_key: Option<String>,
-
-
-    /// 
-    /// Specifies whether to exclude uppercase letters from the password. If you    don't include this switch, the password can contain uppercase letters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeUppercase")]
-    pub exclude_uppercase: Option<bool>,
-
-
-    /// 
-    /// Specifies whether to exclude the following punctuation characters from the password:    ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~.    If you don't include this switch, the password can contain punctuation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludePunctuation")]
-    pub exclude_punctuation: Option<bool>,
-
-
-    /// 
-    /// A string of the characters that you don't want in the password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeCharacters")]
-    pub exclude_characters: Option<String>,
-
-
-    /// 
-    /// Specifies whether to exclude numbers from the password. If you don't    include this switch, the password can contain numbers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeNumbers")]
-    pub exclude_numbers: Option<bool>,
-
-
-    /// 
-    /// Specifies whether to exclude lowercase letters from the password. If    you don't include this switch, the password can contain lowercase letters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeLowercase")]
-    pub exclude_lowercase: Option<bool>,
-
-
-    /// 
-    /// Specifies whether to include the space character. If you    include this switch, the password can contain space characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeSpace")]
-    pub include_space: Option<bool>,
-
-}

@@ -20,15 +20,15 @@ pub struct CfnDHCPOptions {
 
 
     /// 
-    /// The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and     multicast are not currently supported).
+    /// The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS.      The default is AmazonProvidedDNS. To have your instance receive a custom      DNS hostname as specified in DomainName, you must set this property to a      custom DNS server.
     /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: Integer
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NetbiosNodeType")]
-    pub netbios_node_type: Option<i64>,
+    #[serde(rename = "DomainNameServers")]
+    pub domain_name_servers: Option<Vec<String>>,
 
 
     /// 
@@ -44,30 +44,6 @@ pub struct CfnDHCPOptions {
 
 
     /// 
-    /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
-
-
-    /// 
-    /// The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS.      The default is AmazonProvidedDNS. To have your instance receive a custom      DNS hostname as specified in DomainName, you must set this property to a      custom DNS server.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainNameServers")]
-    pub domain_name_servers: Option<Vec<String>>,
-
-
-    /// 
     /// Any tags assigned to the DHCP options set.
     /// 
     /// Required: No
@@ -78,7 +54,33 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and     multicast are not currently supported).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetbiosNodeType")]
+    pub netbios_node_type: Option<i64>,
+
+
+    /// 
+    /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDHCPOptions {
     fn type_string() -> &'static str {
@@ -103,17 +105,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -123,4 +114,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

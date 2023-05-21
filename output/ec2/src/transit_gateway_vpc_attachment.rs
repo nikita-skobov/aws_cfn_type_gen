@@ -18,32 +18,6 @@ pub struct CfnTransitGatewayVpcAttachment {
 
 
     /// 
-    /// The tags for the VPC attachment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The VPC attachment options, in JSON or YAML.
-    /// 
-    /// ApplianceModeSupport - Set to enable or disable. The default is disable.            DnsSupport - Set to enable or disable. The default is enable.            Ipv6Support - Set to enable or disable. The default is disable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Options
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Options")]
-    pub options: Option<Options>,
-
-
-    /// 
     /// The IDs of one or more subnets to remove.
     /// 
     /// Required: No
@@ -68,15 +42,17 @@ pub struct CfnTransitGatewayVpcAttachment {
 
 
     /// 
-    /// The ID of the transit gateway.
+    /// The VPC attachment options, in JSON or YAML.
     /// 
-    /// Required: Yes
+    /// ApplianceModeSupport - Set to enable or disable. The default is disable.            DnsSupport - Set to enable or disable. The default is enable.            Ipv6Support - Set to enable or disable. The default is disable.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Options
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayId")]
-    pub transit_gateway_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Options")]
+    pub options: Option<Options>,
 
 
     /// 
@@ -90,7 +66,33 @@ pub struct CfnTransitGatewayVpcAttachment {
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
 
+
+    /// 
+    /// The tags for the VPC attachment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the transit gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayId")]
+    pub transit_gateway_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayVpcAttachment {
     fn type_string() -> &'static str {
@@ -100,55 +102,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayVpcAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Describes the VPC attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Options {
-
-
-    /// 
-    /// Indicates whether DNS support is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsSupport")]
-    pub dns_support: Option<String>,
-
-
-    /// 
-    /// Indicates whether appliance mode support is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplianceModeSupport")]
-    pub appliance_mode_support: Option<String>,
-
-
-    /// 
-    /// Indicates whether IPv6 support is disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Support")]
-    pub ipv6_support: Option<String>,
-
 }
 
 
@@ -164,17 +117,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -184,4 +126,125 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
+
+
+/// Describes the VPC attachment options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Options {
+
+
+    /// 
+    /// Indicates whether IPv6 support is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6Support")]
+    pub ipv6_support: Option<OptionsIpv6SupportEnum>,
+
+
+    /// 
+    /// Indicates whether DNS support is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsSupport")]
+    pub dns_support: Option<OptionsDnsSupportEnum>,
+
+
+    /// 
+    /// Indicates whether appliance mode support is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplianceModeSupport")]
+    pub appliance_mode_support: Option<OptionsApplianceModeSupportEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsIpv6SupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsIpv6SupportEnum {
+    fn default() -> Self {
+        OptionsIpv6SupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsDnsSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsDnsSupportEnum {
+    fn default() -> Self {
+        OptionsDnsSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsApplianceModeSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsApplianceModeSupportEnum {
+    fn default() -> Self {
+        OptionsApplianceModeSupportEnum::Disable
+    }
+}
+

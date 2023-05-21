@@ -10,18 +10,6 @@ pub struct CfnWarmPool {
 
 
     /// 
-    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceReusePolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceReusePolicy")]
-    pub instance_reuse_policy: Option<InstanceReusePolicy>,
-
-
-    /// 
     /// The name of the Auto Scaling group.
     /// 
     /// Required: Yes
@@ -44,21 +32,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PoolState")]
-    pub pool_state: Option<String>,
-
-
-    /// 
-    /// Specifies the minimum number of instances to maintain in the warm pool. This helps you       to ensure that there is always a certain number of warmed instances available to handle       traffic spikes. Defaults to 0 if not specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinSize")]
-    pub min_size: Option<i64>,
+    pub pool_state: Option<WarmPoolPoolStateEnum>,
 
 
     /// 
@@ -78,7 +52,58 @@ pub struct CfnWarmPool {
     #[serde(rename = "MaxGroupPreparedCapacity")]
     pub max_group_prepared_capacity: Option<i64>,
 
+
+    /// 
+    /// Specifies the minimum number of instances to maintain in the warm pool. This helps you       to ensure that there is always a certain number of warmed instances available to handle       traffic spikes. Defaults to 0 if not specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinSize")]
+    pub min_size: Option<i64>,
+
+
+    /// 
+    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceReusePolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceReusePolicy")]
+    pub instance_reuse_policy: Option<InstanceReusePolicy>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WarmPoolPoolStateEnum {
+
+    /// Hibernated
+    #[serde(rename = "Hibernated")]
+    Hibernated,
+
+    /// Running
+    #[serde(rename = "Running")]
+    Running,
+
+    /// Stopped
+    #[serde(rename = "Stopped")]
+    Stopped,
+
+}
+
+impl Default for WarmPoolPoolStateEnum {
+    fn default() -> Self {
+        WarmPoolPoolStateEnum::Hibernated
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnWarmPool {
     fn type_string() -> &'static str {
@@ -110,3 +135,5 @@ pub struct InstanceReusePolicy {
     pub reuse_on_scale_in: Option<bool>,
 
 }
+
+

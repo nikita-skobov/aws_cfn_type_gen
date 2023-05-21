@@ -10,6 +10,18 @@ pub struct CfnDBSecurityGroupIngress {
 
 
     /// 
+    /// The name of the DB security group to add authorization to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBSecurityGroupName")]
+    pub dbsecurity_group_name: String,
+
+
+    /// 
     /// AWS account number of the owner of the EC2 security group     specified in the EC2SecurityGroupName parameter.     The AWS access key ID isn't an acceptable value.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
     /// 
     /// Required: No
@@ -19,18 +31,6 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     pub ec2_security_group_owner_id: Option<String>,
-
-
-    /// 
-    /// Id of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EC2SecurityGroupId")]
-    pub ec2_security_group_id: Option<String>,
 
 
     /// 
@@ -46,15 +46,15 @@ pub struct CfnDBSecurityGroupIngress {
 
 
     /// 
-    /// The name of the DB security group to add authorization to.
+    /// Id of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBSecurityGroupName")]
-    pub dbsecurity_group_name: String,
+    #[serde(rename = "EC2SecurityGroupId")]
+    pub ec2_security_group_id: Option<String>,
 
 
     /// 
@@ -69,6 +69,8 @@ pub struct CfnDBSecurityGroupIngress {
     pub ec2_security_group_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBSecurityGroupIngress {
     fn type_string() -> &'static str {

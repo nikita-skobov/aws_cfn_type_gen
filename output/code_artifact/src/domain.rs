@@ -24,6 +24,18 @@ pub struct CfnDomain {
 
 
     /// 
+    /// The document that defines the resource policy that is set on a domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsPolicyDocument")]
+    pub permissions_policy_document: Option<serde_json::Value>,
+
+
+    /// 
     /// A string that specifies the name of the requested domain.
     /// 
     /// Required: Yes
@@ -42,18 +54,6 @@ pub struct CfnDomain {
 
 
     /// 
-    /// The document that defines the resource policy that is set on a domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsPolicyDocument")]
-    pub permissions_policy_document: Option<serde_json::Value>,
-
-
-    /// 
     /// A list of tags to be applied to the domain.
     /// 
     /// Required: No
@@ -65,6 +65,8 @@ pub struct CfnDomain {
     pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDomain {
     fn type_string() -> &'static str {
@@ -110,3 +112,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

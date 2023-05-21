@@ -6,22 +6,6 @@ pub struct CfnPortfolioPrincipalAssociation {
 
 
     /// 
-    /// The ARN of the principal (IAM user, role, or group).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrincipalARN")]
-    pub principal_arn: String,
-
-
-    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -40,6 +24,36 @@ pub struct CfnPortfolioPrincipalAssociation {
 
 
     /// 
+    /// The ARN of the principal (IAM user, role, or group).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrincipalARN")]
+    pub principal_arn: String,
+
+
+    /// 
+    /// The principal type. The supported value is IAM.
+    /// 
+    /// Allowed Values: IAM
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrincipalType")]
+    pub principal_type: PortfolioPrincipalAssociationPrincipalTypeEnum,
+
+
+    /// 
     /// The language code.
     /// 
     /// jp - Japanese                        zh - Chinese
@@ -54,21 +68,24 @@ pub struct CfnPortfolioPrincipalAssociation {
     #[serde(rename = "AcceptLanguage")]
     pub accept_language: Option<String>,
 
+}
 
-    /// 
-    /// The principal type. The supported value is IAM.
-    /// 
-    /// Allowed Values: IAM
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrincipalType")]
-    pub principal_type: String,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PortfolioPrincipalAssociationPrincipalTypeEnum {
+
+    /// IAM
+    #[serde(rename = "IAM")]
+    Iam,
 
 }
+
+impl Default for PortfolioPrincipalAssociationPrincipalTypeEnum {
+    fn default() -> Self {
+        PortfolioPrincipalAssociationPrincipalTypeEnum::Iam
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPortfolioPrincipalAssociation {
     fn type_string() -> &'static str {

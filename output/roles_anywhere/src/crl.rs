@@ -8,48 +8,6 @@ pub struct CfnCRL {
 
 
     /// 
-    /// The x509 v3 specified certificate revocation list (CRL).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CrlData")]
-    pub crl_data: String,
-
-
-    /// 
-    /// Specifies whether the certificate revocation list (CRL) is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The name of the certificate revocation list (CRL).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[ a-zA-Z0-9-_]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.
     /// 
     /// Required: No
@@ -80,7 +38,51 @@ pub struct CfnCRL {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The name of the certificate revocation list (CRL).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[ a-zA-Z0-9-_]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Specifies whether the certificate revocation list (CRL) is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The x509 v3 specified certificate revocation list (CRL).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CrlData")]
+    pub crl_data: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCRL {
     fn type_string() -> &'static str {
@@ -105,17 +107,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -125,4 +116,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

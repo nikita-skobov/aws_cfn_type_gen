@@ -20,7 +20,7 @@ pub struct CfnPortfolio {
 
 
     /// 
-    /// The name to use for display purposes.
+    /// The name of the portfolio provider.
     /// 
     /// Required: Yes
     ///
@@ -28,11 +28,11 @@ pub struct CfnPortfolio {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 100
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: String,
+    #[serde(rename = "ProviderName")]
+    pub provider_name: String,
 
 
     /// 
@@ -50,22 +50,6 @@ pub struct CfnPortfolio {
 
 
     /// 
-    /// The name of the portfolio provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProviderName")]
-    pub provider_name: String,
-
-
-    /// 
     /// The language code.
     /// 
     /// jp - Japanese                        zh - Chinese
@@ -80,7 +64,25 @@ pub struct CfnPortfolio {
     #[serde(rename = "AcceptLanguage")]
     pub accept_language: Option<String>,
 
+
+    /// 
+    /// The name to use for display purposes.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPortfolio {
     fn type_string() -> &'static str {
@@ -126,3 +128,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

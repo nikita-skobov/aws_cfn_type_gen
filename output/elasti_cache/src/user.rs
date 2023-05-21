@@ -6,29 +6,17 @@ pub struct CfnUser {
 
 
     /// 
-    /// Access permissions string used for this user.
+    /// The username of the user.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: .*\S.*
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessString")]
-    pub access_string: Option<String>,
-
-
-    /// 
-    /// Indicates a password is not required for this user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NoPasswordRequired")]
-    pub no_password_required: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 
     /// 
@@ -45,15 +33,46 @@ pub struct CfnUser {
     pub engine: String,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// Indicates a password is not required for this user.
+    /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "NoPasswordRequired")]
+    pub no_password_required: Option<bool>,
+
+
+    /// 
+    /// The ID of the user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Pattern: [a-zA-Z][a-zA-Z0-9\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserId")]
+    pub user_id: String,
+
+
+    /// 
+    /// Access permissions string used for this user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessString")]
+    pub access_string: Option<String>,
 
 
     /// 
@@ -82,36 +101,19 @@ pub struct CfnUser {
     pub passwords: Option<Vec<String>>,
 
 
-    /// 
-    /// The ID of the user.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: String
+    /// Required: No
     ///
-    /// Minimum: 1
+    /// Type: List of Tag
     ///
-    /// Pattern: [a-zA-Z][a-zA-Z0-9\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserId")]
-    pub user_id: String,
-
-
-    /// 
-    /// The username of the user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUser {
     fn type_string() -> &'static str {
@@ -122,6 +124,64 @@ impl cfn_resources::CfnResource for CfnUser {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Specifies the authentication mode to use.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthenticationMode {
+
+
+    /// 
+    /// Specifies the authentication type. Possible options are IAM authentication, password and no password.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: iam | no-password-required | password
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: AuthenticationModeTypeEnum,
+
+
+    /// 
+    /// Specifies the passwords to use for authentication if Type is set to password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Passwords")]
+    pub passwords: Option<Vec<String>>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthenticationModeTypeEnum {
+
+    /// iam
+    #[serde(rename = "iam")]
+    Iam,
+
+    /// no-password-required
+    #[serde(rename = "no-password-required")]
+    Nopasswordrequired,
+
+    /// password
+    #[serde(rename = "password")]
+    Password,
+
+}
+
+impl Default for AuthenticationModeTypeEnum {
+    fn default() -> Self {
+        AuthenticationModeTypeEnum::Iam
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -159,34 +219,3 @@ pub struct Tag {
 }
 
 
-/// Specifies the authentication mode to use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticationMode {
-
-
-    /// 
-    /// Specifies the passwords to use for authentication if Type is set to password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Passwords")]
-    pub passwords: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies the authentication type. Possible options are IAM authentication, password and no password.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: iam | no-password-required | password
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-}

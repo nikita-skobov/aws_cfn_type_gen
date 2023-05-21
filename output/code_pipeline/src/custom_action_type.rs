@@ -6,6 +6,24 @@ pub struct CfnCustomActionType {
 
 
     /// 
+    /// The provider of the service used in the custom action, such as CodeDeploy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 35
+    ///
+    /// Pattern: [0-9A-Za-z_-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Provider")]
+    pub provider: String,
+
+
+    /// 
     /// The tags for the custom action.
     /// 
     /// Required: No
@@ -18,20 +36,6 @@ pub struct CfnCustomActionType {
 
 
     /// 
-    /// The category of the custom action, such as a build action or a test       action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Approval | Build | Deploy | Invoke | Source | Test
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Category")]
-    pub category: String,
-
-
-    /// 
     /// The details of the input artifact for the action, such as its commit ID.
     /// 
     /// Required: Yes
@@ -41,6 +45,36 @@ pub struct CfnCustomActionType {
     /// Update requires: Replacement
     #[serde(rename = "InputArtifactDetails")]
     pub input_artifact_details: ArtifactDetails,
+
+
+    /// 
+    /// The version identifier of the custom action.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 9
+    ///
+    /// Pattern: [0-9A-Za-z_-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: String,
+
+
+    /// 
+    /// URLs that provide users information about this custom action.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Settings
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Settings")]
+    pub settings: Option<Settings>,
 
 
     /// 
@@ -72,53 +106,56 @@ pub struct CfnCustomActionType {
 
 
     /// 
-    /// The version identifier of the custom action.
+    /// The category of the custom action, such as a build action or a test       action.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 9
-    ///
-    /// Pattern: [0-9A-Za-z_-]+
+    /// Allowed values: Approval | Build | Deploy | Invoke | Source | Test
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: String,
-
-
-    /// 
-    /// The provider of the service used in the custom action, such as CodeDeploy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 35
-    ///
-    /// Pattern: [0-9A-Za-z_-]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Provider")]
-    pub provider: String,
-
-
-    /// 
-    /// URLs that provide users information about this custom action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Settings
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Settings")]
-    pub settings: Option<Settings>,
+    #[serde(rename = "Category")]
+    pub category: CustomActionTypeCategoryEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CustomActionTypeCategoryEnum {
+
+    /// Approval
+    #[serde(rename = "Approval")]
+    Approval,
+
+    /// Build
+    #[serde(rename = "Build")]
+    Build,
+
+    /// Deploy
+    #[serde(rename = "Deploy")]
+    Deploy,
+
+    /// Invoke
+    #[serde(rename = "Invoke")]
+    Invoke,
+
+    /// Source
+    #[serde(rename = "Source")]
+    Source,
+
+    /// Test
+    #[serde(rename = "Test")]
+    Test,
+
+}
+
+impl Default for CustomActionTypeCategoryEnum {
+    fn default() -> Self {
+        CustomActionTypeCategoryEnum::Approval
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCustomActionType {
     fn type_string() -> &'static str {
@@ -153,22 +190,6 @@ pub struct Settings {
 
 
     /// 
-    /// The URL of a sign-up page where users can sign up for an external service and       perform initial configuration of the action provided by that service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ThirdPartyConfigurationUrl")]
-    pub third_party_configuration_url: Option<String>,
-
-
-    /// 
     /// The URL returned to the CodePipeline console that contains a link to the       top-level landing page for the external system, such as the console page for CodeDeploy. This link is shown on the pipeline view page in the CodePipeline console       and provides a link to the execution entity of the external action.
     /// 
     /// Required: No
@@ -199,12 +220,84 @@ pub struct Settings {
     #[serde(rename = "EntityUrlTemplate")]
     pub entity_url_template: Option<String>,
 
+
+    /// 
+    /// The URL of a sign-up page where users can sign up for an external service and       perform initial configuration of the action provided by that service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThirdPartyConfigurationUrl")]
+    pub third_party_configuration_url: Option<String>,
+
 }
+
+
 
 
 /// The configuration properties for the custom action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigurationProperties {
+
+
+    /// 
+    /// Whether the configuration property is a key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: bool,
+
+
+    /// 
+    /// The description of the action configuration property that is displayed to       users.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 160
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Whether the configuration property is secret. Secrets are hidden from all calls       except for GetJobDetails, GetThirdPartyJobDetails,         PollForJobs, and PollForThirdPartyJobs.
+    /// 
+    /// When updating a pipeline, passing * * * * * without changing any other values of       the action preserves the previous value of the secret.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Secret")]
+    pub secret: bool,
+
+
+    /// 
+    /// Whether the configuration property is a required value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Required")]
+    pub required: bool,
 
 
     /// 
@@ -218,7 +311,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<ConfigurationPropertiesTypeEnum>,
 
 
     /// 
@@ -250,82 +343,74 @@ pub struct ConfigurationProperties {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// Whether the configuration property is secret. Secrets are hidden from all calls       except for GetJobDetails, GetThirdPartyJobDetails,         PollForJobs, and PollForThirdPartyJobs.
-    /// 
-    /// When updating a pipeline, passing * * * * * without changing any other values of       the action preserves the previous value of the secret.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Secret")]
-    pub secret: bool,
+}
 
 
-    /// 
-    /// The description of the action configuration property that is displayed to       users.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 160
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConfigurationPropertiesTypeEnum {
 
+    /// Boolean
+    #[serde(rename = "Boolean")]
+    Boolean,
 
-    /// 
-    /// Whether the configuration property is a required value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Required")]
-    pub required: bool,
+    /// Number
+    #[serde(rename = "Number")]
+    Number,
 
-
-    /// 
-    /// Whether the configuration property is a key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: bool,
+    /// String
+    #[serde(rename = "String")]
+    String,
 
 }
+
+impl Default for ConfigurationPropertiesTypeEnum {
+    fn default() -> Self {
+        ConfigurationPropertiesTypeEnum::Boolean
+    }
+}
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 
 
 /// Returns information about the details of an artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ArtifactDetails {
-
-
-    /// 
-    /// The maximum number of artifacts allowed for the action type.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MaximumCount")]
-    pub maximum_count: i64,
 
 
     /// 
@@ -343,39 +428,22 @@ pub struct ArtifactDetails {
     #[serde(rename = "MinimumCount")]
     pub minimum_count: i64,
 
+
+    /// 
+    /// The maximum number of artifacts allowed for the action type.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MaximumCount")]
+    pub maximum_count: i64,
+
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}

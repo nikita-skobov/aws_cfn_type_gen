@@ -32,6 +32,8 @@ pub struct CfnSlackWorkspaceConfiguration {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSlackWorkspaceConfiguration {
     fn type_string() -> &'static str {
         "AWS::SupportApp::SlackWorkspaceConfiguration"

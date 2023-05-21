@@ -8,21 +8,15 @@ pub struct CfnRule {
 
 
     /// 
-    /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
+    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Predicate
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Predicates")]
+    pub predicates: Option<Vec<Predicate>>,
 
 
     /// 
@@ -44,17 +38,25 @@ pub struct CfnRule {
 
 
     /// 
-    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
+    /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Predicate
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Predicates")]
-    pub predicates: Option<Vec<Predicate>>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRule {
     fn type_string() -> &'static str {
@@ -87,20 +89,6 @@ pub struct Predicate {
 
 
     /// 
-    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
     /// 
     /// Required: Yes
@@ -117,4 +105,59 @@ pub struct Predicate {
     #[serde(rename = "DataId")]
     pub data_id: String,
 
+
+    /// 
+    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PredicateTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PredicateTypeEnum {
+
+    /// ByteMatch
+    #[serde(rename = "ByteMatch")]
+    Bytematch,
+
+    /// GeoMatch
+    #[serde(rename = "GeoMatch")]
+    Geomatch,
+
+    /// IPMatch
+    #[serde(rename = "IPMatch")]
+    Ipmatch,
+
+    /// RegexMatch
+    #[serde(rename = "RegexMatch")]
+    Regexmatch,
+
+    /// SizeConstraint
+    #[serde(rename = "SizeConstraint")]
+    Sizeconstraint,
+
+    /// SqlInjectionMatch
+    #[serde(rename = "SqlInjectionMatch")]
+    Sqlinjectionmatch,
+
+    /// XssMatch
+    #[serde(rename = "XssMatch")]
+    Xssmatch,
+
+}
+
+impl Default for PredicateTypeEnum {
+    fn default() -> Self {
+        PredicateTypeEnum::Bytematch
+    }
+}
+

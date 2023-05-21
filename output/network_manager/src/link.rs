@@ -6,15 +6,23 @@ pub struct CfnLink {
 
 
     /// 
-    /// The tags for the link.
+    /// The type of the link.
+    /// 
+    /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
 
 
     /// 
@@ -33,46 +41,6 @@ pub struct CfnLink {
     /// Update requires: Replacement
     #[serde(rename = "SiteId")]
     pub site_id: String,
-
-
-    /// 
-    /// A description of the link.
-    /// 
-    /// Constraints: Maximum length of 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The provider of the link.
-    /// 
-    /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Provider")]
-    pub provider: Option<String>,
 
 
     /// 
@@ -106,7 +74,39 @@ pub struct CfnLink {
 
 
     /// 
-    /// The type of the link.
+    /// A description of the link.
+    /// 
+    /// Constraints: Maximum length of 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The tags for the link.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The provider of the link.
     /// 
     /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
     /// 
@@ -121,10 +121,12 @@ pub struct CfnLink {
     /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    #[serde(rename = "Provider")]
+    pub provider: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLink {
     fn type_string() -> &'static str {
@@ -149,17 +151,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -169,7 +160,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// Describes bandwidth information.
@@ -201,3 +205,5 @@ pub struct Bandwidth {
     pub upload_speed: Option<i64>,
 
 }
+
+

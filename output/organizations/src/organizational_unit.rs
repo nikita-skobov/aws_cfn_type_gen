@@ -12,20 +12,6 @@ pub struct CfnOrganizationalUnit {
 
 
     /// 
-    /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for an OU, then the entire request fails and the OU is not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The friendly name of this OU.
     /// 
     /// The regex pattern   that is used to validate this parameter is a string of any of the characters in the ASCII   character range.
@@ -43,6 +29,20 @@ pub struct CfnOrganizationalUnit {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for an OU, then the entire request fails and the OU is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -67,6 +67,8 @@ pub struct CfnOrganizationalUnit {
     pub parent_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnOrganizationalUnit {
     fn type_string() -> &'static str {
@@ -112,3 +114,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

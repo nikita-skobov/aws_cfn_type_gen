@@ -6,18 +6,6 @@ pub struct CfnAccessPolicy {
 
 
     /// 
-    /// The name of the policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The JSON policy document without any whitespaces.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnAccessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: String,
+
+
+    /// 
+    /// The name of the policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -53,6 +53,8 @@ pub struct CfnAccessPolicy {
     pub cfn_type: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAccessPolicy {
     fn type_string() -> &'static str {

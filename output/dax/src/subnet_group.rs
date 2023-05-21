@@ -42,6 +42,8 @@ pub struct CfnSubnetGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string() -> &'static str {
         "AWS::DAX::SubnetGroup"

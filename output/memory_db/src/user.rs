@@ -6,30 +6,6 @@ pub struct CfnUser {
 
 
     /// 
-    /// The name of the user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
-
-
-    /// 
-    /// Access permissions string used for this user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessString")]
-    pub access_string: Option<String>,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -41,6 +17,18 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 
     /// 
@@ -58,7 +46,21 @@ pub struct CfnUser {
     #[serde(rename = "AuthenticationMode")]
     pub authentication_mode: Option<AuthenticationMode>,
 
+
+    /// 
+    /// Access permissions string used for this user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessString")]
+    pub access_string: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUser {
     fn type_string() -> &'static str {
@@ -80,24 +82,26 @@ pub struct AuthenticationMode {
     ///
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
     #[serde(rename = "Passwords")]
     pub passwords: Option<Vec<String>>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -133,3 +137,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

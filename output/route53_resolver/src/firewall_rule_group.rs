@@ -48,6 +48,8 @@ pub struct CfnFirewallRuleGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnFirewallRuleGroup {
     fn type_string() -> &'static str {
         "AWS::Route53Resolver::FirewallRuleGroup"
@@ -62,6 +64,20 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroup {
 /// A single firewall rule in a rule group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FirewallRule {
+
+
+    /// 
+    /// The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CNAME
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockOverrideDnsType")]
+    pub block_override_dns_type: Option<FirewallRuleBlockOverrideDnsTypeEnum>,
 
 
     /// 
@@ -81,15 +97,19 @@ pub struct FirewallRule {
 
 
     /// 
-    /// The priority of the rule in the rule group. This value must be unique within the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
+    /// The way that you want DNS Firewall to block the request. Used for the rule action setting BLOCK.
     /// 
-    /// Required: Yes
+    /// NODATA - Respond indicating that the query was successful, but no response is available for it.                        NXDOMAIN - Respond indicating that the domain name that's in the query doesn't exist.                        OVERRIDE - Provide a custom override in the response. This option requires custom handling details in the rule's BlockOverride* settings.
+    /// 
+    /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Allowed values: NODATA | NXDOMAIN | OVERRIDE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
+    #[serde(rename = "BlockResponse")]
+    pub block_response: Option<FirewallRuleBlockResponseEnum>,
 
 
     /// 
@@ -105,23 +125,19 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: FirewallRuleActionEnum,
 
 
     /// 
-    /// The way that you want DNS Firewall to block the request. Used for the rule action setting BLOCK.
-    /// 
-    /// NODATA - Respond indicating that the query was successful, but no response is available for it.                        NXDOMAIN - Respond indicating that the domain name that's in the query doesn't exist.                        OVERRIDE - Provide a custom override in the response. This option requires custom handling details in the rule's BlockOverride* settings.
+    /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: NODATA | NXDOMAIN | OVERRIDE
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BlockResponse")]
-    pub block_response: Option<String>,
+    #[serde(rename = "BlockOverrideTtl")]
+    pub block_override_ttl: Option<i64>,
 
 
     /// 
@@ -141,31 +157,80 @@ pub struct FirewallRule {
 
 
     /// 
-    /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
+    /// The priority of the rule in the rule group. This value must be unique within the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BlockOverrideTtl")]
-    pub block_override_ttl: Option<i64>,
-
-
-    /// 
-    /// The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CNAME
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockOverrideDnsType")]
-    pub block_override_dns_type: Option<String>,
+    #[serde(rename = "Priority")]
+    pub priority: i64,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FirewallRuleActionEnum {
+
+    /// ALERT
+    #[serde(rename = "ALERT")]
+    Alert,
+
+    /// ALLOW
+    #[serde(rename = "ALLOW")]
+    Allow,
+
+    /// BLOCK
+    #[serde(rename = "BLOCK")]
+    Block,
+
+}
+
+impl Default for FirewallRuleActionEnum {
+    fn default() -> Self {
+        FirewallRuleActionEnum::Alert
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FirewallRuleBlockOverrideDnsTypeEnum {
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+}
+
+impl Default for FirewallRuleBlockOverrideDnsTypeEnum {
+    fn default() -> Self {
+        FirewallRuleBlockOverrideDnsTypeEnum::Cname
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FirewallRuleBlockResponseEnum {
+
+    /// NODATA
+    #[serde(rename = "NODATA")]
+    Nodata,
+
+    /// NXDOMAIN
+    #[serde(rename = "NXDOMAIN")]
+    Nxdomain,
+
+    /// OVERRIDE
+    #[serde(rename = "OVERRIDE")]
+    Override,
+
+}
+
+impl Default for FirewallRuleBlockResponseEnum {
+    fn default() -> Self {
+        FirewallRuleBlockResponseEnum::Nodata
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -180,17 +245,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -200,4 +254,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

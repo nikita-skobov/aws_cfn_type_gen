@@ -6,6 +6,20 @@ pub struct CfnLabel {
 
 
     /// 
+    /// The label name.
+    /// 
+    /// Pattern: ^[0-9a-z_-]+$
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -34,21 +48,9 @@ pub struct CfnLabel {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// The label name.
-    /// 
-    /// Pattern: ^[0-9a-z_-]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLabel {
     fn type_string() -> &'static str {
@@ -94,3 +96,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

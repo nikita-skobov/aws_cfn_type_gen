@@ -30,6 +30,8 @@ pub struct CfnLoggerDefinitionVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
     fn type_string() -> &'static str {
         "AWS::Greengrass::LoggerDefinitionVersion"
@@ -61,18 +63,6 @@ pub struct Logger {
 
 
     /// 
-    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Component")]
-    pub component: String,
-
-
-    /// 
     /// The storage mechanism for log events. Valid values are FileSystem or AWSCloudWatch. 				 When AWSCloudWatch is used, log events are sent to CloudWatch Logs. 				 When FileSystem is used, log events are stored on the local file system.
     /// 
     /// Required: Yes
@@ -82,6 +72,18 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
+
+
+    /// 
+    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Component")]
+    pub component: String,
 
 
     /// 
@@ -108,3 +110,5 @@ pub struct Logger {
     pub level: String,
 
 }
+
+

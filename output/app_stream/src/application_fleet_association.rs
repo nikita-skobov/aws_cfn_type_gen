@@ -32,6 +32,8 @@ pub struct CfnApplicationFleetAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
     fn type_string() -> &'static str {
         "AWS::AppStream::ApplicationFleetAssociation"

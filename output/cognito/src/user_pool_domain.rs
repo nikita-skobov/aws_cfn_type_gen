@@ -26,6 +26,18 @@ pub struct CfnUserPoolDomain {
 
 
     /// 
+    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomDomainConfigType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomDomainConfig")]
+    pub custom_domain_config: Option<CustomDomainConfigType>,
+
+
+    /// 
     /// The user pool ID for the user pool where you want to associate a user pool domain.
     /// 
     /// Required: Yes
@@ -42,19 +54,9 @@ pub struct CfnUserPoolDomain {
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
 
-
-    /// 
-    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomDomainConfigType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomDomainConfig")]
-    pub custom_domain_config: Option<CustomDomainConfigType>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUserPoolDomain {
     fn type_string() -> &'static str {
@@ -90,3 +92,5 @@ pub struct CustomDomainConfigType {
     pub certificate_arn: Option<String>,
 
 }
+
+

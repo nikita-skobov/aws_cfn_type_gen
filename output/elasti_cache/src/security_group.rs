@@ -7,17 +7,6 @@
 pub struct CfnSecurityGroup {
 
 
-    /// A tag that can be added to an ElastiCache security group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your security groups. A tag with a null Value is permitted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
     /// 
     /// A description for the cache security group.
     /// 
@@ -29,7 +18,20 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
+
+    /// A tag that can be added to an ElastiCache security group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your security groups. A tag with a null Value is permitted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSecurityGroup {
     fn type_string() -> &'static str {
@@ -75,3 +77,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

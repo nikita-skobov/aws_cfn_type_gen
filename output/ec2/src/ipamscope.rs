@@ -8,15 +8,15 @@ pub struct CfnIPAMScope {
 
 
     /// 
-    /// The description of the scope.
+    /// The ID of the IPAM for which you're creating this scope.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "IpamId")]
+    pub ipam_id: String,
 
 
     /// 
@@ -32,17 +32,19 @@ pub struct CfnIPAMScope {
 
 
     /// 
-    /// The ID of the IPAM for which you're creating this scope.
+    /// The description of the scope.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpamId")]
-    pub ipam_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPAMScope {
     fn type_string() -> &'static str {
@@ -67,17 +69,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -87,4 +78,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

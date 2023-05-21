@@ -6,24 +6,6 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// A list of "PipelineActivity" objects. Activities perform transformations on your messages,      such as removing, renaming or adding message attributes; filtering messages based on attribute      values; invoking your Lambda functions on messages for advanced processing; or performing      mathematical transformations to normalize device data.
-    /// 
-    /// The list can be 2-25 PipelineActivity objects and must      contain both a channel and a datastore activity. Each entry in the      list must contain only one activity, for example:
-    /// 
-    /// pipelineActivities = [  {   "channel": { ... }  },  {   "lambda": { ... }  },  ...    ]
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Activity
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineActivities")]
-    pub pipeline_activities: Vec<Activity>,
-
-
-    /// 
     /// The name of the pipeline.
     /// 
     /// Required: No
@@ -56,7 +38,27 @@ pub struct CfnPipeline {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// A list of "PipelineActivity" objects. Activities perform transformations on your messages,      such as removing, renaming or adding message attributes; filtering messages based on attribute      values; invoking your Lambda functions on messages for advanced processing; or performing      mathematical transformations to normalize device data.
+    /// 
+    /// The list can be 2-25 PipelineActivity objects and must      contain both a channel and a datastore activity. Each entry in the      list must contain only one activity, for example:
+    /// 
+    /// pipelineActivities = [  {   "channel": { ... }  },  {   "lambda": { ... }  },  ...    ]
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Activity
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineActivities")]
+    pub pipeline_activities: Vec<Activity>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string() -> &'static str {
@@ -69,174 +71,61 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 
-/// An activity that performs a transformation on a message.
+/// An activity that computes an arithmetic expression using the message's attributes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Activity {
+pub struct Math {
 
 
     /// 
-    /// Adds data from the AWS IoT device registry to your message.
+    /// The name of the attribute that contains the result of the math operation.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: DeviceRegistryEnrich
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeviceRegistryEnrich")]
-    pub device_registry_enrich: Option<DeviceRegistryEnrich>,
+    #[serde(rename = "Attribute")]
+    pub attribute: String,
 
 
     /// 
-    /// Computes an arithmetic expression using the message's attributes and adds    it to the message.
+    /// The next activity in the pipeline.
     /// 
     /// Required: No
     ///
-    /// Type: Math
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Next")]
+    pub next: Option<String>,
+
+
+    /// 
+    /// An expression that uses one or more existing attributes and must return an integer value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
     #[serde(rename = "Math")]
-    pub math: Option<Math>,
+    pub math: String,
 
 
     /// 
-    /// Adds information from the AWS IoT Device Shadows service to a message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeviceShadowEnrich
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeviceShadowEnrich")]
-    pub device_shadow_enrich: Option<DeviceShadowEnrich>,
-
-
-    /// 
-    /// Adds other attributes based on existing attributes in the message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AddAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AddAttributes")]
-    pub add_attributes: Option<AddAttributes>,
-
-
-    /// 
-    /// Removes attributes from a message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RemoveAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RemoveAttributes")]
-    pub remove_attributes: Option<RemoveAttributes>,
-
-
-    /// 
-    /// Specifies where to store the processed message data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Datastore
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Datastore")]
-    pub datastore: Option<Datastore>,
-
-
-    /// 
-    /// Runs a Lambda function to modify the message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Lambda
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Lambda")]
-    pub lambda: Option<Lambda>,
-
-
-    /// 
-    /// Determines the source of the messages to be processed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Channel
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Channel")]
-    pub channel: Option<Channel>,
-
-
-    /// 
-    /// Creates a new message using only the specified attributes from the original message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SelectAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SelectAttributes")]
-    pub select_attributes: Option<SelectAttributes>,
-
-
-    /// 
-    /// Filters a message based on its attributes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Filter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Filter")]
-    pub filter: Option<Filter>,
-
-}
-
-
-/// An activity that runs a Lambda function to modify the message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Lambda {
-
-
-    /// 
-    /// The name of the Lambda function that is run on the message.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[a-zA-Z0-9_-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaName")]
-    pub lambda_name: String,
-
-
-    /// 
-    /// The next activity in the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Next")]
-    pub next: Option<String>,
-
-
-    /// 
-    /// The name of the 'lambda' activity.
+    /// The name of the 'math' activity.
     /// 
     /// Required: Yes
     ///
@@ -250,78 +139,9 @@ pub struct Lambda {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// The number of messages passed to the Lambda function for processing.
-    /// 
-    /// The AWS Lambda function must be able to process all of these messages within     five minutes, which is the maximum timeout duration for Lambda functions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BatchSize")]
-    pub batch_size: i64,
-
 }
 
 
-/// An activity that adds other attributes based on existing attributes in the message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AddAttributes {
-
-
-    /// 
-    /// The next activity in the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Next")]
-    pub next: Option<String>,
-
-
-    /// 
-    /// The name of the 'addAttributes' activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A list of 1-50 "AttributeNameMapping"     objects that map an existing attribute to a new attribute.
-    /// 
-    /// NoteThe existing attributes remain in the message,   so if you want to remove the originals,   use "RemoveAttributeActivity".
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: std::collections::HashMap<String, String>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -359,23 +179,54 @@ pub struct Tag {
 }
 
 
-/// An activity that removes attributes from a message.
+
+
+/// The datastore activity that specifies where to store the processed data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RemoveAttributes {
+pub struct Datastore {
 
 
     /// 
-    /// A list of 1-50 attributes to remove from the message.
+    /// The name of the datastore activity.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Vec<String>,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The name of the data store where processed messages are stored.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: (^(?!_{2}))(^[a-zA-Z0-9_]+$)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatastoreName")]
+    pub datastore_name: String,
+
+}
+
+
+
+
+/// An activity that removes attributes from a message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RemoveAttributes {
 
 
     /// 
@@ -395,6 +246,20 @@ pub struct RemoveAttributes {
 
 
     /// 
+    /// A list of 1-50 attributes to remove from the message.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attributes")]
+    pub attributes: Vec<String>,
+
+
+    /// 
     /// The name of the 'removeAttributes' activity.
     /// 
     /// Required: Yes
@@ -410,6 +275,192 @@ pub struct RemoveAttributes {
     pub name: String,
 
 }
+
+
+
+
+/// An activity that performs a transformation on a message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Activity {
+
+
+    /// 
+    /// Determines the source of the messages to be processed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Channel
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Channel")]
+    pub channel: Option<Channel>,
+
+
+    /// 
+    /// Adds other attributes based on existing attributes in the message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AddAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddAttributes")]
+    pub add_attributes: Option<AddAttributes>,
+
+
+    /// 
+    /// Specifies where to store the processed message data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Datastore
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Datastore")]
+    pub datastore: Option<Datastore>,
+
+
+    /// 
+    /// Filters a message based on its attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Filter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filter")]
+    pub filter: Option<Filter>,
+
+
+    /// 
+    /// Computes an arithmetic expression using the message's attributes and adds    it to the message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Math
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Math")]
+    pub math: Option<Math>,
+
+
+    /// 
+    /// Adds information from the AWS IoT Device Shadows service to a message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeviceShadowEnrich
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceShadowEnrich")]
+    pub device_shadow_enrich: Option<DeviceShadowEnrich>,
+
+
+    /// 
+    /// Creates a new message using only the specified attributes from the original message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SelectAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SelectAttributes")]
+    pub select_attributes: Option<SelectAttributes>,
+
+
+    /// 
+    /// Removes attributes from a message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RemoveAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RemoveAttributes")]
+    pub remove_attributes: Option<RemoveAttributes>,
+
+
+    /// 
+    /// Runs a Lambda function to modify the message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Lambda
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Lambda")]
+    pub lambda: Option<Lambda>,
+
+
+    /// 
+    /// Adds data from the AWS IoT device registry to your message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeviceRegistryEnrich
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceRegistryEnrich")]
+    pub device_registry_enrich: Option<DeviceRegistryEnrich>,
+
+}
+
+
+
+
+/// Creates a new message using only the specified attributes     from the original message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SelectAttributes {
+
+
+    /// 
+    /// The name of the 'selectAttributes' activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The next activity in the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Next")]
+    pub next: Option<String>,
+
+
+    /// 
+    /// A list of the attributes to select from the message.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attributes")]
+    pub attributes: Vec<String>,
+
+}
+
+
 
 
 /// Determines the source of the messages to be processed.
@@ -436,22 +487,6 @@ pub struct Channel {
 
 
     /// 
-    /// The next activity in the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Next")]
-    pub next: Option<String>,
-
-
-    /// 
     /// The name of the 'channel' activity.
     /// 
     /// Required: Yes
@@ -466,13 +501,6 @@ pub struct Channel {
     #[serde(rename = "Name")]
     pub name: String,
 
-}
-
-
-/// An activity that adds information from the AWS IoT Device Shadows service to a message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeviceShadowEnrich {
-
 
     /// 
     /// The next activity in the pipeline.
@@ -489,108 +517,14 @@ pub struct DeviceShadowEnrich {
     #[serde(rename = "Next")]
     pub next: Option<String>,
 
-
-    /// 
-    /// The name of the IoT device whose shadow information is added to      the message.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThingName")]
-    pub thing_name: String,
-
-
-    /// 
-    /// The name of the 'deviceShadowEnrich' activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The name of the attribute that is added to the message.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attribute")]
-    pub attribute: String,
-
-
-    /// 
-    /// The ARN of the role that allows access to the device's shadow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
 }
+
+
 
 
 /// An activity that adds data from the AWS IoT device registry to your message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeviceRegistryEnrich {
-
-
-    /// 
-    /// The next activity in the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Next")]
-    pub next: Option<String>,
-
-
-    /// 
-    /// The name of the attribute that is added to the message.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attribute")]
-    pub attribute: String,
 
 
     /// 
@@ -626,6 +560,38 @@ pub struct DeviceRegistryEnrich {
 
 
     /// 
+    /// The next activity in the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Next")]
+    pub next: Option<String>,
+
+
+    /// 
+    /// The name of the attribute that is added to the message.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attribute")]
+    pub attribute: String,
+
+
+    /// 
     /// The ARN of the role that allows access to the device's registry information.
     /// 
     /// Required: Yes
@@ -641,6 +607,97 @@ pub struct DeviceRegistryEnrich {
     pub role_arn: String,
 
 }
+
+
+
+
+/// An activity that adds information from the AWS IoT Device Shadows service to a message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeviceShadowEnrich {
+
+
+    /// 
+    /// The name of the IoT device whose shadow information is added to      the message.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThingName")]
+    pub thing_name: String,
+
+
+    /// 
+    /// The name of the 'deviceShadowEnrich' activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The next activity in the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Next")]
+    pub next: Option<String>,
+
+
+    /// 
+    /// The ARN of the role that allows access to the device's shadow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The name of the attribute that is added to the message.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attribute")]
+    pub attribute: String,
+
+}
+
+
 
 
 /// An activity that filters a message based on its attributes.
@@ -698,23 +755,66 @@ pub struct Filter {
 }
 
 
-/// Creates a new message using only the specified attributes     from the original message.
+
+
+/// An activity that adds other attributes based on existing attributes in the message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SelectAttributes {
+pub struct AddAttributes {
 
 
     /// 
-    /// A list of the attributes to select from the message.
+    /// The next activity in the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Next")]
+    pub next: Option<String>,
+
+
+    /// 
+    /// A list of 1-50 "AttributeNameMapping"     objects that map an existing attribute to a new attribute.
+    /// 
+    /// NoteThe existing attributes remain in the message,   so if you want to remove the originals,   use "RemoveAttributeActivity".
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    pub attributes: Vec<String>,
+    pub attributes: std::collections::HashMap<String, String>,
+
+
+    /// 
+    /// The name of the 'addAttributes' activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// An activity that runs a Lambda function to modify the message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Lambda {
 
 
     /// 
@@ -734,46 +834,7 @@ pub struct SelectAttributes {
 
 
     /// 
-    /// The name of the 'selectAttributes' activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-/// An activity that computes an arithmetic expression using the message's attributes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Math {
-
-
-    /// 
-    /// An expression that uses one or more existing attributes and must return an integer value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Math")]
-    pub math: String,
-
-
-    /// 
-    /// The name of the 'math' activity.
+    /// The name of the 'lambda' activity.
     /// 
     /// Required: Yes
     ///
@@ -789,7 +850,25 @@ pub struct Math {
 
 
     /// 
-    /// The name of the attribute that contains the result of the math operation.
+    /// The number of messages passed to the Lambda function for processing.
+    /// 
+    /// The AWS Lambda function must be able to process all of these messages within     five minutes, which is the maximum timeout duration for Lambda functions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BatchSize")]
+    pub batch_size: i64,
+
+
+    /// 
+    /// The name of the Lambda function that is run on the message.
     /// 
     /// Required: Yes
     ///
@@ -797,67 +876,14 @@ pub struct Math {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[a-zA-Z0-9_-]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Attribute")]
-    pub attribute: String,
-
-
-    /// 
-    /// The next activity in the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Next")]
-    pub next: Option<String>,
+    #[serde(rename = "LambdaName")]
+    pub lambda_name: String,
 
 }
 
 
-/// The datastore activity that specifies where to store the processed data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Datastore {
-
-
-    /// 
-    /// The name of the datastore activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The name of the data store where processed messages are stored.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: (^(?!_{2}))(^[a-zA-Z0-9_]+$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatastoreName")]
-    pub datastore_name: String,
-
-}

@@ -6,15 +6,15 @@ pub struct CfnAttributeGroup {
 
 
     /// 
-    /// Key-value pairs you can use to associate with the attribute group.
+    /// A nested object      in a JSON or YAML template      that supports arbitrary definitions.      Represents the attributes      in an attribute group      that describes an application and its components.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Map of String
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Attributes")]
+    pub attributes: serde_json::Value,
 
 
     /// 
@@ -29,6 +29,18 @@ pub struct CfnAttributeGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// Key-value pairs you can use to associate with the attribute group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -48,19 +60,9 @@ pub struct CfnAttributeGroup {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// A nested object      in a JSON or YAML template      that supports arbitrary definitions.      Represents the attributes      in an attribute group      that describes an application and its components.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: serde_json::Value,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAttributeGroup {
     fn type_string() -> &'static str {

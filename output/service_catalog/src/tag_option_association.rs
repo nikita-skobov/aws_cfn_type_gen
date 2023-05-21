@@ -30,6 +30,8 @@ pub struct CfnTagOptionAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTagOptionAssociation {
     fn type_string() -> &'static str {
         "AWS::ServiceCatalog::TagOptionAssociation"

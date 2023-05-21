@@ -8,18 +8,6 @@ pub struct CfnTransitGatewayMulticastDomain {
 
 
     /// 
-    /// The tags for the transit gateway multicast domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the transit gateway.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnTransitGatewayMulticastDomain {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: String,
+
+
+    /// 
+    /// The tags for the transit gateway multicast domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -45,6 +45,8 @@ pub struct CfnTransitGatewayMulticastDomain {
     pub options: Option<Options>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomain {
     fn type_string() -> &'static str {
@@ -92,6 +94,8 @@ pub struct Tag {
 }
 
 
+
+
 /// The options for the transit gateway multicast domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Options {
@@ -108,21 +112,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Igmpv2Support")]
-    pub igmpv2_support: Option<String>,
-
-
-    /// 
-    /// Specify whether to enable support for statically configuring multicast group sources for a domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StaticSourcesSupport")]
-    pub static_sources_support: Option<String>,
+    pub igmpv2_support: Option<OptionsIgmpv2SupportEnum>,
 
 
     /// 
@@ -136,6 +126,79 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoAcceptSharedAssociations")]
-    pub auto_accept_shared_associations: Option<String>,
+    pub auto_accept_shared_associations: Option<OptionsAutoAcceptSharedAssociationsEnum>,
+
+
+    /// 
+    /// Specify whether to enable support for statically configuring multicast group sources for a domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StaticSourcesSupport")]
+    pub static_sources_support: Option<OptionsStaticSourcesSupportEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsAutoAcceptSharedAssociationsEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsAutoAcceptSharedAssociationsEnum {
+    fn default() -> Self {
+        OptionsAutoAcceptSharedAssociationsEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsStaticSourcesSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsStaticSourcesSupportEnum {
+    fn default() -> Self {
+        OptionsStaticSourcesSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsIgmpv2SupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for OptionsIgmpv2SupportEnum {
+    fn default() -> Self {
+        OptionsIgmpv2SupportEnum::Disable
+    }
+}
+

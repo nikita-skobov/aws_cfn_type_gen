@@ -48,6 +48,8 @@ pub struct CfnTrackerConsumer {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTrackerConsumer {
     fn type_string() -> &'static str {
         "AWS::Location::TrackerConsumer"

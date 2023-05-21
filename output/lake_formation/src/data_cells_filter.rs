@@ -18,34 +18,6 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
-    /// 
-    /// A database in the Data Catalog.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
-
-
-    /// 
-    /// Catalog id string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
-    /// 
-    /// The ID of the catalog to which the table belongs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableCatalogId")]
-    pub table_catalog_id: String,
-
-
-    /// 
     /// A wildcard with exclusions. You must specify either a ColumnNames list or the ColumnWildCard.
     /// 
     /// Required: No
@@ -58,15 +30,17 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// A PartiQL predicate.
+    /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
-    /// Required: No
+    /// A database in the Data Catalog.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: RowFilter
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "RowFilter")]
-    pub row_filter: Option<RowFilter>,
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
 
 
     /// 
@@ -84,6 +58,32 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
+    /// Catalog id string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
+    /// 
+    /// The ID of the catalog to which the table belongs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TableCatalogId")]
+    pub table_catalog_id: String,
+
+
+    /// 
+    /// A PartiQL predicate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RowFilter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RowFilter")]
+    pub row_filter: Option<RowFilter>,
+
+
+    /// 
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
     /// The name given by the user to the data filter cell.
@@ -97,6 +97,8 @@ pub struct CfnDataCellsFilter {
     pub name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDataCellsFilter {
     fn type_string() -> &'static str {
@@ -140,6 +142,8 @@ pub struct RowFilter {
 }
 
 
+
+
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ColumnWildcard {
@@ -157,3 +161,5 @@ pub struct ColumnWildcard {
     pub excluded_column_names: Option<Vec<String>>,
 
 }
+
+

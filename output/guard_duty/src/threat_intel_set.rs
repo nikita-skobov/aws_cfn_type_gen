@@ -22,6 +22,20 @@ pub struct CfnThreatIntelSet {
 
 
     /// 
+    /// The tags to be added to a new threat list resource. Each tag consists of a key and          an optional value, both of which you define.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The unique ID of the detector of the GuardDuty account that you want to create a    threatIntelSet for.
     /// 
     /// Required: Yes
@@ -35,6 +49,18 @@ pub struct CfnThreatIntelSet {
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
     pub detector_id: String,
+
+
+    /// 
+    /// A Boolean value that indicates whether GuardDuty is to start using the uploaded    ThreatIntelSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Activate")]
+    pub activate: bool,
 
 
     /// 
@@ -54,32 +80,6 @@ pub struct CfnThreatIntelSet {
 
 
     /// 
-    /// The tags to be added to a new threat list resource. Each tag consists of a key and          an optional value, both of which you define.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A Boolean value that indicates whether GuardDuty is to start using the uploaded    ThreatIntelSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Activate")]
-    pub activate: bool,
-
-
-    /// 
     /// The format of the file that contains the ThreatIntelSet.
     /// 
     /// Required: Yes
@@ -90,9 +90,46 @@ pub struct CfnThreatIntelSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Format")]
-    pub format: String,
+    pub format: ThreatIntelSetFormatEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ThreatIntelSetFormatEnum {
+
+    /// ALIEN_VAULT
+    #[serde(rename = "ALIEN_VAULT")]
+    Alienvault,
+
+    /// FIRE_EYE
+    #[serde(rename = "FIRE_EYE")]
+    Fireeye,
+
+    /// OTX_CSV
+    #[serde(rename = "OTX_CSV")]
+    Otxcsv,
+
+    /// PROOF_POINT
+    #[serde(rename = "PROOF_POINT")]
+    Proofpoint,
+
+    /// STIX
+    #[serde(rename = "STIX")]
+    Stix,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
+
+}
+
+impl Default for ThreatIntelSetFormatEnum {
+    fn default() -> Self {
+        ThreatIntelSetFormatEnum::Alienvault
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnThreatIntelSet {
     fn type_string() -> &'static str {
@@ -117,17 +154,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -137,4 +163,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

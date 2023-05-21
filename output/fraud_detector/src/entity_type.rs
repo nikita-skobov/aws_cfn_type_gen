@@ -6,6 +6,20 @@ pub struct CfnEntityType {
 
 
     /// 
+    /// The entity type name.
+    /// 
+    /// Pattern: ^[0-9a-z_-]+$
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The entity type description.
     /// 
     /// Required: No
@@ -32,21 +46,9 @@ pub struct CfnEntityType {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The entity type name.
-    /// 
-    /// Pattern: ^[0-9a-z_-]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEntityType {
     fn type_string() -> &'static str {
@@ -92,3 +94,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

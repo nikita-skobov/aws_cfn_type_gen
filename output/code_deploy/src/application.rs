@@ -46,9 +46,34 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
-    pub compute_platform: Option<String>,
+    pub compute_platform: Option<ApplicationComputePlatformEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ApplicationComputePlatformEnum {
+
+    /// ECS
+    #[serde(rename = "ECS")]
+    Ecs,
+
+    /// Lambda
+    #[serde(rename = "Lambda")]
+    Lambda,
+
+    /// Server
+    #[serde(rename = "Server")]
+    Server,
+
+}
+
+impl Default for ApplicationComputePlatformEnum {
+    fn default() -> Self {
+        ApplicationComputePlatformEnum::Ecs
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -73,17 +98,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -93,4 +107,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

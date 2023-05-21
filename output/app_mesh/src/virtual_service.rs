@@ -10,32 +10,6 @@ pub struct CfnVirtualService {
 
 
     /// 
-    /// Optional metadata that you can apply to the virtual service to assist with     categorization and organization. Each tag consists of a key and an optional value, both of     which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have       a maximum length of 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name to use for the virtual service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VirtualServiceName")]
-    pub virtual_service_name: String,
-
-
-    /// 
     /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then        the account that you specify must share the mesh with your account before you can create        the resource in the service mesh. For more information about mesh sharing, see Working with shared meshes.
     /// 
     /// Required: No
@@ -49,6 +23,20 @@ pub struct CfnVirtualService {
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
     pub mesh_owner: Option<String>,
+
+
+    /// 
+    /// Optional metadata that you can apply to the virtual service to assist with     categorization and organization. Each tag consists of a key and an optional value, both of     which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have       a maximum length of 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -68,6 +56,18 @@ pub struct CfnVirtualService {
 
 
     /// 
+    /// The name to use for the virtual service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VirtualServiceName")]
+    pub virtual_service_name: String,
+
+
+    /// 
     /// The virtual service specification to apply.
     /// 
     /// Required: Yes
@@ -79,6 +79,8 @@ pub struct CfnVirtualService {
     pub spec: VirtualServiceSpec,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVirtualService {
     fn type_string() -> &'static str {
@@ -112,6 +114,8 @@ pub struct VirtualRouterServiceProvider {
     pub virtual_router_name: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -149,6 +153,8 @@ pub struct Tag {
 }
 
 
+
+
 /// An object that represents the provider for a virtual service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualServiceProvider {
@@ -180,6 +186,8 @@ pub struct VirtualServiceProvider {
 }
 
 
+
+
 /// An object that represents the specification of a virtual service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualServiceSpec {
@@ -197,6 +205,8 @@ pub struct VirtualServiceSpec {
     pub provider: Option<VirtualServiceProvider>,
 
 }
+
+
 
 
 /// An object that represents a virtual node service provider.
@@ -220,3 +230,5 @@ pub struct VirtualNodeServiceProvider {
     pub virtual_node_name: String,
 
 }
+
+

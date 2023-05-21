@@ -6,6 +6,20 @@ pub struct CfnApiCache {
 
 
     /// 
+    /// TTL in seconds for cache entries.
+    /// 
+    /// Valid values are 1–3,600 seconds.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ttl")]
+    pub ttl: f64,
+
+
+    /// 
     /// Transit encryption flag when connecting to cache. You cannot update this setting after     creation.
     /// 
     /// Required: No
@@ -30,18 +44,6 @@ pub struct CfnApiCache {
 
 
     /// 
-    /// At-rest encryption flag for cache. You cannot update this setting after creation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AtRestEncryptionEnabled")]
-    pub at_rest_encryption_enabled: Option<bool>,
-
-
-    /// 
     /// The cache instance type. Valid values are
     /// 
     /// SMALL                                MEDIUM                                LARGE                                XLARGE                                LARGE_2X                                LARGE_4X                                LARGE_8X (not available in all regions)                        LARGE_12X
@@ -62,17 +64,15 @@ pub struct CfnApiCache {
 
 
     /// 
-    /// TTL in seconds for cache entries.
+    /// At-rest encryption flag for cache. You cannot update this setting after creation.
     /// 
-    /// Valid values are 1–3,600 seconds.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Double
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Ttl")]
-    pub ttl: f64,
+    #[serde(rename = "AtRestEncryptionEnabled")]
+    pub at_rest_encryption_enabled: Option<bool>,
 
 
     /// 
@@ -89,6 +89,8 @@ pub struct CfnApiCache {
     pub api_caching_behavior: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApiCache {
     fn type_string() -> &'static str {

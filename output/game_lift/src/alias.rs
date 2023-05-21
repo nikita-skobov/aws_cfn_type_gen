@@ -6,6 +6,34 @@ pub struct CfnAlias {
 
 
     /// 
+    /// A human-readable description of the alias.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The routing configuration, including routing type and fleet target, for the alias.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RoutingStrategy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoutingStrategy")]
+    pub routing_strategy: RoutingStrategy,
+
+
+    /// 
     /// A descriptive label that is associated with an alias. Alias names do not need to be unique.
     /// 
     /// Required: Yes
@@ -22,35 +50,9 @@ pub struct CfnAlias {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// The routing configuration, including routing type and fleet target, for the alias.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RoutingStrategy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoutingStrategy")]
-    pub routing_strategy: RoutingStrategy,
-
-
-    /// 
-    /// A human-readable description of the alias.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAlias {
     fn type_string() -> &'static str {
@@ -66,18 +68,6 @@ impl cfn_resources::CfnResource for CfnAlias {
 /// The routing configuration for a fleet alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RoutingStrategy {
-
-
-    /// 
-    /// The message text to be used with a terminal routing strategy. If you specify    TERMINAL for the Type property, you must specify this    property.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
 
 
     /// 
@@ -109,6 +99,39 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: RoutingStrategyTypeEnum,
+
+
+    /// 
+    /// The message text to be used with a terminal routing strategy. If you specify    TERMINAL for the Type property, you must specify this    property.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RoutingStrategyTypeEnum {
+
+    /// SIMPLE
+    #[serde(rename = "SIMPLE")]
+    Simple,
+
+    /// TERMINAL
+    #[serde(rename = "TERMINAL")]
+    Terminal,
+
+}
+
+impl Default for RoutingStrategyTypeEnum {
+    fn default() -> Self {
+        RoutingStrategyTypeEnum::Simple
+    }
+}
+

@@ -32,6 +32,8 @@ pub struct CfnVPCDHCPOptionsAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnVPCDHCPOptionsAssociation {
     fn type_string() -> &'static str {
         "AWS::EC2::VPCDHCPOptionsAssociation"

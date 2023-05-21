@@ -10,15 +10,27 @@ pub struct CfnExperimentTemplate {
 
 
     /// 
-    /// The targets for the experiment.
+    /// The tags to apply to the experiment template.
     /// 
     /// Required: Yes
     ///
-    /// Type: Map of ExperimentTemplateTarget
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: std::collections::HashMap<String, String>,
+
+
+    /// 
+    /// The stop conditions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ExperimentTemplateStopCondition
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: std::collections::HashMap<String, ExperimentTemplateTarget>,
+    #[serde(rename = "StopConditions")]
+    pub stop_conditions: Vec<ExperimentTemplateStopCondition>,
 
 
     /// 
@@ -34,19 +46,27 @@ pub struct CfnExperimentTemplate {
 
 
     /// 
-    /// A description for the experiment template.
+    /// The targets for the experiment.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\s\S]+
+    /// Type: Map of ExperimentTemplateTarget
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: String,
+    #[serde(rename = "Targets")]
+    pub targets: std::collections::HashMap<String, ExperimentTemplateTarget>,
+
+
+    /// 
+    /// The actions for the experiment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of ExperimentTemplateAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Actions")]
+    pub actions: Option<std::collections::HashMap<String, ExperimentTemplateAction>>,
 
 
     /// 
@@ -68,41 +88,23 @@ pub struct CfnExperimentTemplate {
 
 
     /// 
-    /// The stop conditions.
+    /// A description for the experiment template.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of ExperimentTemplateStopCondition
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\s\S]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StopConditions")]
-    pub stop_conditions: Vec<ExperimentTemplateStopCondition>,
-
-
-    /// 
-    /// The actions for the experiment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of ExperimentTemplateAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Actions")]
-    pub actions: Option<std::collections::HashMap<String, ExperimentTemplateAction>>,
-
-
-    /// 
-    /// The tags to apply to the experiment template.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: std::collections::HashMap<String, String>,
+    #[serde(rename = "Description")]
+    pub description: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnExperimentTemplate {
     fn type_string() -> &'static str {
@@ -112,106 +114,6 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The S3Configuration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Configuration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
-
-}
-
-
-/// Specifies the configuration for experiment logging.
-///
-/// For more information, see Experiment logging    in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ExperimentTemplateLogConfiguration {
-
-
-    /// 
-    /// The schema version. The supported value is 1.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogSchemaVersion")]
-    pub log_schema_version: i64,
-
-
-    /// 
-    /// The configuration for experiment logging to Amazon CloudWatch Logs. The supported field     is LogGroupArn. For example:
-    /// 
-    /// {"LogGroupArn": "aws:arn:logs:region_name:account_id:log-group:log_group_name"}
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudWatchLogsConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogsConfiguration")]
-    pub cloud_watch_logs_configuration: Option<CloudWatchLogsConfiguration>,
-
-
-    /// 
-    /// The configuration for experiment logging to Amazon S3. The following fields are     supported:
-    /// 
-    /// bucketName - The name of the destination bucket.prefix - An optional bucket prefix.
-    /// 
-    /// For example:
-    /// 
-    /// {"BucketName": "my-s3-bucket", "Prefix": "log-folder"}
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3Configuration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Configuration")]
-    pub s3_configuration: Option<S3Configuration>,
-
-}
-
-
-/// The CloudWatchLogsConfiguration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CloudWatchLogsConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroupArn")]
-    pub log_group_arn: String,
-
 }
 
 
@@ -258,81 +160,26 @@ pub struct ExperimentTemplateStopCondition {
 }
 
 
-/// Specifies an action for an experiment template.
-///
-/// For more information, see Actions     in the AWS Fault Injection Simulator User Guide.
+
+
+/// The CloudWatchLogsConfiguration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ExperimentTemplateAction {
+pub struct CloudWatchLogsConfiguration {
 
 
-    /// 
-    /// The parameters for the action, if applicable.
-    /// 
-    /// Required: No
+    /// Property description not available.
     ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The ID of the action. The format of the action ID is: aws:service-name:action-type.
-    /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\S]+
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ActionId")]
-    pub action_id: String,
-
-
-    /// 
-    /// A description for the action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\s\S]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The targets for the action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The name of the action that must be completed before the current action starts. Omit this parameter to run the action at the start of the experiment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartAfter")]
-    pub start_after: Option<Vec<String>>,
+    #[serde(rename = "LogGroupArn")]
+    pub log_group_arn: String,
 
 }
+
+
 
 
 /// Specifies a target for an experiment. You must specify at least one Amazon Resource Name (ARN) or      at least one resource tag. You cannot specify both ARNs and tags.
@@ -359,6 +206,20 @@ pub struct ExperimentTemplateTarget {
 
 
     /// 
+    /// The Amazon Resource Names (ARNs) of the resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceArns")]
+    pub resource_arns: Option<Vec<String>>,
+
+
+    /// 
     /// Scopes the identified resources to a specific count of the resources at random, or a percentage of the resources. All identified resources are included in the target.
     /// 
     /// ALL - Run the action on all identified targets. This is the default.               COUNT(n) - Run the action on the specified number of targets, chosen from the identified targets at random.         For example, COUNT(1) selects one of the targets.               PERCENT(n) - Run the action on the specified percentage of targets, chosen from the identified targets         at random. For example, PERCENT(25) selects 25% of the targets.
@@ -377,15 +238,15 @@ pub struct ExperimentTemplateTarget {
 
 
     /// 
-    /// The filters to apply to identify target resources using specific attributes.
+    /// The tags for the target resources.
     /// 
     /// Required: No
     ///
-    /// Type: List of ExperimentTemplateTargetFilter
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Filters")]
-    pub filters: Option<Vec<ExperimentTemplateTargetFilter>>,
+    #[serde(rename = "ResourceTags")]
+    pub resource_tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -401,31 +262,105 @@ pub struct ExperimentTemplateTarget {
 
 
     /// 
-    /// The Amazon Resource Names (ARNs) of the resources.
+    /// The filters to apply to identify target resources using specific attributes.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
+    /// Type: List of ExperimentTemplateTargetFilter
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceArns")]
-    pub resource_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The tags for the target resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTags")]
-    pub resource_tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Filters")]
+    pub filters: Option<Vec<ExperimentTemplateTargetFilter>>,
 
 }
+
+
+
+
+/// The S3Configuration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Configuration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
+
+}
+
+
+
+
+/// Specifies the configuration for experiment logging.
+///
+/// For more information, see Experiment logging    in the AWS Fault Injection Simulator User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ExperimentTemplateLogConfiguration {
+
+
+    /// 
+    /// The schema version. The supported value is 1.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogSchemaVersion")]
+    pub log_schema_version: i64,
+
+
+    /// 
+    /// The configuration for experiment logging to Amazon S3. The following fields are     supported:
+    /// 
+    /// bucketName - The name of the destination bucket.prefix - An optional bucket prefix.
+    /// 
+    /// For example:
+    /// 
+    /// {"BucketName": "my-s3-bucket", "Prefix": "log-folder"}
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3Configuration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Configuration")]
+    pub s3_configuration: Option<S3Configuration>,
+
+
+    /// 
+    /// The configuration for experiment logging to Amazon CloudWatch Logs. The supported field     is LogGroupArn. For example:
+    /// 
+    /// {"LogGroupArn": "aws:arn:logs:region_name:account_id:log-group:log_group_name"}
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudWatchLogsConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogsConfiguration")]
+    pub cloud_watch_logs_configuration: Option<CloudWatchLogsConfiguration>,
+
+}
+
+
 
 
 /// Specifies a filter used for the target resource input in an experiment template.
@@ -463,3 +398,84 @@ pub struct ExperimentTemplateTargetFilter {
     pub values: Vec<String>,
 
 }
+
+
+
+
+/// Specifies an action for an experiment template.
+///
+/// For more information, see Actions     in the AWS Fault Injection Simulator User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ExperimentTemplateAction {
+
+
+    /// 
+    /// The targets for the action.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The ID of the action. The format of the action ID is: aws:service-name:action-type.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\S]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActionId")]
+    pub action_id: String,
+
+
+    /// 
+    /// The parameters for the action, if applicable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A description for the action.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\s\S]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name of the action that must be completed before the current action starts. Omit this parameter to run the action at the start of the experiment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartAfter")]
+    pub start_after: Option<Vec<String>>,
+
+}
+
+

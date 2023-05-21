@@ -8,18 +8,6 @@ pub struct CfnTransitGatewayRouteTableAssociation {
 
 
     /// 
-    /// The ID of the attachment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayAttachmentId")]
-    pub transit_gateway_attachment_id: String,
-
-
-    /// 
     /// The ID of the route table for the transit gateway.
     /// 
     /// Required: Yes
@@ -30,7 +18,21 @@ pub struct CfnTransitGatewayRouteTableAssociation {
     #[serde(rename = "TransitGatewayRouteTableId")]
     pub transit_gateway_route_table_id: String,
 
+
+    /// 
+    /// The ID of the attachment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayAttachmentId")]
+    pub transit_gateway_attachment_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTableAssociation {
     fn type_string() -> &'static str {

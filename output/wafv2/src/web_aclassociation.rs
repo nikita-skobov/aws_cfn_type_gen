@@ -10,6 +10,24 @@ pub struct CfnWebACLAssociation {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with the     resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WebACLArn")]
+    pub web_aclarn: String,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL.
     /// 
     /// The ARN must be in one of the following formats:
@@ -30,25 +48,9 @@ pub struct CfnWebACLAssociation {
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with the     resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WebACLArn")]
-    pub web_aclarn: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWebACLAssociation {
     fn type_string() -> &'static str {

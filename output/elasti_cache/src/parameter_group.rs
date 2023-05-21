@@ -5,18 +5,15 @@
 pub struct CfnParameterGroup {
 
 
-    /// 
-    /// The name of the cache parameter group family that this cache parameter group is compatible with.
-    /// 
-    /// Valid values are:   memcached1.4 |    memcached1.5 |       memcached1.6 |   redis2.6 |   redis2.8 |   redis3.2 |   redis4.0 |   redis5.0 |       redis6.x |      redis7
-    /// 
-    /// Required: Yes
+    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
     ///
-    /// Type: String
+    /// Required: No
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CacheParameterGroupFamily")]
-    pub cache_parameter_group_family: String,
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -47,17 +44,22 @@ pub struct CfnParameterGroup {
     pub description: String,
 
 
-    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
+    /// 
+    /// The name of the cache parameter group family that this cache parameter group is compatible with.
+    /// 
+    /// Valid values are:   memcached1.4 |    memcached1.5 |       memcached1.6 |   redis2.6 |   redis2.8 |   redis3.2 |   redis4.0 |   redis5.0 |       redis6.x |      redis7
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
+    /// Type: String
     ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "CacheParameterGroupFamily")]
+    pub cache_parameter_group_family: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnParameterGroup {
     fn type_string() -> &'static str {
@@ -82,17 +84,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -102,4 +93,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

@@ -6,32 +6,6 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// The name of the subnet group to be used for the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: String,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A list of Amazon VPC subnet IDs for the subnet group.
     /// 
     /// Required: Yes
@@ -54,7 +28,35 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the subnet group to be used for the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string() -> &'static str {
@@ -79,17 +81,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -99,4 +90,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

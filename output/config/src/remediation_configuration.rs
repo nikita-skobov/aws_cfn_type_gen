@@ -6,38 +6,6 @@ pub struct CfnRemediationConfiguration {
 
 
     /// 
-    /// The name of the AWS Config rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigRuleName")]
-    pub config_rule_name: String,
-
-
-    /// 
-    /// An object of the RemediationParameterValue. For more information, see RemediationParameterValue.
-    /// 
-    /// NoteThe type is a map of strings to RemediationParameterValue.
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
     /// The remediation is triggered automatically.
     /// 
     /// Required: No
@@ -62,6 +30,40 @@ pub struct CfnRemediationConfiguration {
 
 
     /// 
+    /// Target ID is the name of the SSM document.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetId")]
+    pub target_id: String,
+
+
+    /// 
+    /// The name of the AWS Config rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigRuleName")]
+    pub config_rule_name: String,
+
+
+    /// 
     /// Version of the target. For example, version of the SSM document.
     /// 
     /// NoteIf you make backward incompatible changes to the SSM document, 			you must call PutRemediationConfiguration API again to ensure the remediations can run.
@@ -73,6 +75,60 @@ pub struct CfnRemediationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TargetVersion")]
     pub target_version: Option<String>,
+
+
+    /// 
+    /// An object of the RemediationParameterValue. For more information, see RemediationParameterValue.
+    /// 
+    /// NoteThe type is a map of strings to RemediationParameterValue.
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds.
+    /// 
+    /// For example, if you specify RetryAttemptSeconds as 50 seconds and MaximumAutomaticAttempts as 5, 		AWS Config will run auto-remediations 5 times within 50 seconds before throwing an exception.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetryAttemptSeconds")]
+    pub retry_attempt_seconds: Option<i64>,
+
+
+    /// 
+    /// The type of the target. Target executes remediation. For example, SSM document.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SSM_DOCUMENT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetType")]
+    pub target_type: RemediationConfigurationTargetTypeEnum,
+
+
+    /// 
+    /// The type of a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceType")]
+    pub resource_type: Option<String>,
 
 
     /// 
@@ -92,63 +148,24 @@ pub struct CfnRemediationConfiguration {
     #[serde(rename = "MaximumAutomaticAttempts")]
     pub maximum_automatic_attempts: Option<i64>,
 
-
-    /// 
-    /// The type of a resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: Option<String>,
+}
 
 
-    /// 
-    /// The type of the target. Target executes remediation. For example, SSM document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SSM_DOCUMENT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetType")]
-    pub target_type: String,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RemediationConfigurationTargetTypeEnum {
 
-
-    /// 
-    /// Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds.
-    /// 
-    /// For example, if you specify RetryAttemptSeconds as 50 seconds and MaximumAutomaticAttempts as 5, 		AWS Config will run auto-remediations 5 times within 50 seconds before throwing an exception.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetryAttemptSeconds")]
-    pub retry_attempt_seconds: Option<i64>,
-
-
-    /// 
-    /// Target ID is the name of the SSM document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetId")]
-    pub target_id: String,
+    /// SSM_DOCUMENT
+    #[serde(rename = "SSM_DOCUMENT")]
+    Ssmdocument,
 
 }
+
+impl Default for RemediationConfigurationTargetTypeEnum {
+    fn default() -> Self {
+        RemediationConfigurationTargetTypeEnum::Ssmdocument
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRemediationConfiguration {
     fn type_string() -> &'static str {
@@ -159,6 +176,29 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The static value of the resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StaticValue {
+
+
+    /// 
+    /// A list of values. For example, the ARN of the assumed role.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+}
+
+
 
 
 /// An ExecutionControls object.
@@ -180,25 +220,6 @@ pub struct ExecutionControls {
 }
 
 
-/// The dynamic value of the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourceValue {
-
-
-    /// 
-    /// The value is a resource ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: RESOURCE_ID
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-}
 
 
 /// The value is either a dynamic (resource) value or a static value. You must select either a dynamic value or a static value.
@@ -232,25 +253,44 @@ pub struct RemediationParameterValue {
 }
 
 
-/// The static value of the resource.
+
+
+/// The dynamic value of the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StaticValue {
+pub struct ResourceValue {
 
 
     /// 
-    /// A list of values. For example, the ARN of the assumed role.
+    /// The value is a resource ID.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 25
+    /// Allowed values: RESOURCE_ID
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
+    #[serde(rename = "Value")]
+    pub value: Option<ResourceValueValueEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResourceValueValueEnum {
+
+    /// RESOURCE_ID
+    #[serde(rename = "RESOURCE_ID")]
+    Resourceid,
+
+}
+
+impl Default for ResourceValueValueEnum {
+    fn default() -> Self {
+        ResourceValueValueEnum::Resourceid
+    }
+}
+
 
 
 /// AWS Systems Manager (SSM) specific remediation controls.
@@ -290,3 +330,5 @@ pub struct SsmControls {
     pub error_percentage: Option<i64>,
 
 }
+
+

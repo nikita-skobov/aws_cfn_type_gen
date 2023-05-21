@@ -12,6 +12,18 @@ pub struct CfnServiceNetworkServiceAssociation {
 
 
     /// 
+    /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN if the  resources specified in the operation are in different accounts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceNetworkIdentifier")]
+    pub service_network_identifier: Option<String>,
+
+
+    /// 
     /// The tags for the association.
     /// 
     /// Required: No
@@ -21,6 +33,17 @@ pub struct CfnServiceNetworkServiceAssociation {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: DnsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsEntry")]
+    pub dns_entry: Option<DnsEntry>,
 
 
     /// 
@@ -34,30 +57,9 @@ pub struct CfnServiceNetworkServiceAssociation {
     #[serde(rename = "ServiceIdentifier")]
     pub service_identifier: Option<String>,
 
-
-    /// 
-    /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN if the  resources specified in the operation are in different accounts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceNetworkIdentifier")]
-    pub service_network_identifier: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: DnsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsEntry")]
-    pub dns_entry: Option<DnsEntry>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
     fn type_string() -> &'static str {
@@ -105,6 +107,8 @@ pub struct Tag {
 }
 
 
+
+
 /// DNS information about the service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DnsEntry {
@@ -134,3 +138,5 @@ pub struct DnsEntry {
     pub hosted_zone_id: Option<String>,
 
 }
+
+

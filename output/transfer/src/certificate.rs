@@ -6,33 +6,43 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The file that contains the private key for the certificate that's being imported.
+    /// Specifies whether this certificate is used for signing or encryption.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ENCRYPTION | SIGNING
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Usage")]
+    pub usage: CertificateUsageEnum,
+
+
+    /// 
+    /// Key-value pairs that can be used to group and search for certificates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// An optional date that specifies when the certificate becomes inactive.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrivateKey")]
-    pub private_key: Option<String>,
-
-
-    /// 
-    /// The list of certificates that make up the chain for the certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2097152
-    ///
-    /// Pattern: ^[\u0009\u000A\u000D\u0020-\u00FF]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateChain")]
-    pub certificate_chain: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "InactiveDate")]
+    pub inactive_date: Option<String>,
 
 
     /// 
@@ -54,29 +64,45 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// An optional date that specifies when the certificate becomes inactive.
+    /// The list of certificates that make up the chain for the certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2097152
+    ///
+    /// Pattern: ^[\u0009\u000A\u000D\u0020-\u00FF]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateChain")]
+    pub certificate_chain: Option<String>,
+
+
+    /// 
+    /// The file that contains the private key for the certificate that's being imported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateKey")]
+    pub private_key: Option<String>,
+
+
+    /// 
+    /// An optional date that specifies when the certificate becomes active.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InactiveDate")]
-    pub inactive_date: Option<String>,
-
-
-    /// 
-    /// Key-value pairs that can be used to group and search for certificates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ActiveDate")]
+    pub active_date: Option<String>,
 
 
     /// 
@@ -96,33 +122,28 @@ pub struct CfnCertificate {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// An optional date that specifies when the certificate becomes active.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActiveDate")]
-    pub active_date: Option<String>,
+}
 
 
-    /// 
-    /// Specifies whether this certificate is used for signing or encryption.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ENCRYPTION | SIGNING
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Usage")]
-    pub usage: String,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateUsageEnum {
+
+    /// ENCRYPTION
+    #[serde(rename = "ENCRYPTION")]
+    Encryption,
+
+    /// SIGNING
+    #[serde(rename = "SIGNING")]
+    Signing,
 
 }
+
+impl Default for CertificateUsageEnum {
+    fn default() -> Self {
+        CertificateUsageEnum::Encryption
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {
@@ -168,3 +189,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

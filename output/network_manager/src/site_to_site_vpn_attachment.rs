@@ -5,6 +5,28 @@
 pub struct CfnSiteToSiteVpnAttachment {
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreNetworkId")]
+    pub core_network_id: String,
+
+
     /// 
     /// The ARN of the site-to-site VPN attachment.
     /// 
@@ -22,29 +44,9 @@ pub struct CfnSiteToSiteVpnAttachment {
     #[serde(rename = "VpnConnectionArn")]
     pub vpn_connection_arn: String,
 
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
     fn type_string() -> &'static str {
@@ -75,18 +77,6 @@ pub struct ProposedSegmentChange {
 
 
     /// 
-    /// The rule number in the policy document that applies to this change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
-
-
-    /// 
     /// The name of the segment to change.
     /// 
     /// Required: No
@@ -103,7 +93,21 @@ pub struct ProposedSegmentChange {
     #[serde(rename = "SegmentName")]
     pub segment_name: Option<String>,
 
+
+    /// 
+    /// The rule number in the policy document that applies to this change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -118,17 +122,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -138,4 +131,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

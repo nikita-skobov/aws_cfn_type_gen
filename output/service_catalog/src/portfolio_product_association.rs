@@ -26,24 +26,6 @@ pub struct CfnPortfolioProductAssociation {
 
 
     /// 
-    /// The portfolio identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PortfolioId")]
-    pub portfolio_id: String,
-
-
-    /// 
     /// The identifier of the source portfolio.
     /// 
     /// Required: No
@@ -62,6 +44,24 @@ pub struct CfnPortfolioProductAssociation {
 
 
     /// 
+    /// The portfolio identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PortfolioId")]
+    pub portfolio_id: String,
+
+
+    /// 
     /// The language code.
     /// 
     /// jp - Japanese                        zh - Chinese
@@ -77,6 +77,8 @@ pub struct CfnPortfolioProductAssociation {
     pub accept_language: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPortfolioProductAssociation {
     fn type_string() -> &'static str {

@@ -19,6 +19,17 @@ pub struct CfnDisk {
     pub disk_name: String,
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Location")]
+    pub location: Option<Location>,
+
+
     /// 
     /// An array of add-ons for the disk.
     /// 
@@ -31,6 +42,18 @@ pub struct CfnDisk {
     /// Update requires: No interruption
     #[serde(rename = "AddOns")]
     pub add_ons: Option<Vec<AddOn>>,
+
+
+    /// 
+    /// The size of the disk in GB.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "SizeInGb")]
+    pub size_in_gb: i64,
 
 
     /// 
@@ -50,18 +73,6 @@ pub struct CfnDisk {
 
 
     /// 
-    /// The size of the disk in GB.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "SizeInGb")]
-    pub size_in_gb: i64,
-
-
-    /// 
     /// The AWS Region and Availability Zone location for the disk (for     example, us-east-1a).
     /// 
     /// Required: No
@@ -72,18 +83,9 @@ pub struct CfnDisk {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: Option<Location>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDisk {
     fn type_string() -> &'static str {
@@ -94,6 +96,33 @@ impl cfn_resources::CfnResource for CfnDisk {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoSnapshotAddOn {
+
+
+    /// 
+    /// The daily time when an automatic snapshot will be created.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be in HH:00 format, and in an hourly increment.            Specified in Coordinated Universal Time (UTC).            The snapshot will be automatically created between the time specified and up to 45        minutes after.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotTimeOfDay")]
+    pub snapshot_time_of_day: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -131,6 +160,8 @@ pub struct Tag {
 }
 
 
+
+
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Location {
@@ -160,9 +191,37 @@ pub struct Location {
 }
 
 
+
+
 /// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AddOn {
+
+
+    /// 
+    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoSnapshotAddOn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoSnapshotAddOnRequest")]
+    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
+
+
+    /// 
+    /// The status of the add-on.
+    /// 
+    /// Valid Values: Enabled | Disabled
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<AddOnStatusEnum>,
 
 
     /// 
@@ -178,55 +237,25 @@ pub struct AddOn {
     #[serde(rename = "AddOnType")]
     pub add_on_type: String,
 
-
-    /// 
-    /// The status of the add-on.
-    /// 
-    /// Valid Values: Enabled | Disabled
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoSnapshotAddOn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoSnapshotAddOnRequest")]
-    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
-
 }
 
 
-/// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoSnapshotAddOn {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AddOnStatusEnum {
 
+    /// Enabled
+    #[serde(rename = "Enabled")]
+    Enabled,
 
-    /// 
-    /// The daily time when an automatic snapshot will be created.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be in HH:00 format, and in an hourly increment.            Specified in Coordinated Universal Time (UTC).            The snapshot will be automatically created between the time specified and up to 45        minutes after.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotTimeOfDay")]
-    pub snapshot_time_of_day: Option<String>,
+    /// Disabled
+    #[serde(rename = "Disabled")]
+    Disabled,
 
 }
+
+impl Default for AddOnStatusEnum {
+    fn default() -> Self {
+        AddOnStatusEnum::Enabled
+    }
+}
+

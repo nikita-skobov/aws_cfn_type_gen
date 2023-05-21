@@ -6,6 +6,36 @@ pub struct CfnIPSet {
 
 
     /// 
+    /// The format of the file that contains the IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Format")]
+    pub format: IPSetFormatEnum,
+
+
+    /// 
+    /// The unique ID of the detector of the GuardDuty account that you want to create an IPSet    for.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DetectorId")]
+    pub detector_id: String,
+
+
+    /// 
     /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
     /// 
     /// For more information, see Tag.
@@ -38,22 +68,6 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The unique ID of the detector of the GuardDuty account that you want to create an IPSet    for.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DetectorId")]
-    pub detector_id: String,
-
-
-    /// 
     /// The URI of the file that contains the IPSet.
     /// 
     /// Required: Yes
@@ -70,20 +84,6 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The format of the file that contains the IPSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Format")]
-    pub format: String,
-
-
-    /// 
     /// Indicates whether or not uses the             IPSet.
     /// 
     /// Required: Yes
@@ -95,6 +95,43 @@ pub struct CfnIPSet {
     pub activate: bool,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPSetFormatEnum {
+
+    /// ALIEN_VAULT
+    #[serde(rename = "ALIEN_VAULT")]
+    Alienvault,
+
+    /// FIRE_EYE
+    #[serde(rename = "FIRE_EYE")]
+    Fireeye,
+
+    /// OTX_CSV
+    #[serde(rename = "OTX_CSV")]
+    Otxcsv,
+
+    /// PROOF_POINT
+    #[serde(rename = "PROOF_POINT")]
+    Proofpoint,
+
+    /// STIX
+    #[serde(rename = "STIX")]
+    Stix,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
+
+}
+
+impl Default for IPSetFormatEnum {
+    fn default() -> Self {
+        IPSetFormatEnum::Alienvault
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnIPSet {
     fn type_string() -> &'static str {
@@ -119,17 +156,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -139,4 +165,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

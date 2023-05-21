@@ -14,6 +14,28 @@ pub struct CfnAlias {
 
 
     /// 
+    /// Specifies the alias name. This value must begin with alias/ followed by a    name, such as alias/ExampleAlias.
+    /// 
+    /// NoteIf you change the value of the AliasName property, the existing alias is     deleted and a new alias is created for the specified KMS key. This change can disrupt     applications that use the alias. It can also allow or deny access to a KMS key affected by     attribute-based access control (ABAC).
+    /// 
+    /// The alias must be string of 1-256 characters. It can contain only alphanumeric characters,    forward slashes (/), underscores (_), and dashes (-). The alias name cannot begin with     alias/aws/. The alias/aws/ prefix is reserved for AWS managed keys.
+    /// 
+    /// Pattern: ^alias/[a-zA-Z0-9/_-]+$
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 256
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AliasName")]
+    pub alias_name: String,
+
+
+    /// 
     /// Associates the alias with the specified customer managed key. The    KMS key must be in the same AWS account and Region.
     /// 
     /// A valid key ID is required. If you supply a null or empty string value, this operation    returns an error.
@@ -40,29 +62,9 @@ pub struct CfnAlias {
     #[serde(rename = "TargetKeyId")]
     pub target_key_id: String,
 
-
-    /// 
-    /// Specifies the alias name. This value must begin with alias/ followed by a    name, such as alias/ExampleAlias.
-    /// 
-    /// NoteIf you change the value of the AliasName property, the existing alias is     deleted and a new alias is created for the specified KMS key. This change can disrupt     applications that use the alias. It can also allow or deny access to a KMS key affected by     attribute-based access control (ABAC).
-    /// 
-    /// The alias must be string of 1-256 characters. It can contain only alphanumeric characters,    forward slashes (/), underscores (_), and dashes (-). The alias name cannot begin with     alias/aws/. The alias/aws/ prefix is reserved for AWS managed keys.
-    /// 
-    /// Pattern: ^alias/[a-zA-Z0-9/_-]+$
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 256
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AliasName")]
-    pub alias_name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAlias {
     fn type_string() -> &'static str {

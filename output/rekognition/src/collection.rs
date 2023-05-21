@@ -6,18 +6,6 @@ pub struct CfnCollection {
 
 
     /// 
-    /// A set of tags (key-value pairs) that you want to attach to the collection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// ID for the collection that you are creating.
     /// 
     /// Required: Yes
@@ -34,7 +22,21 @@ pub struct CfnCollection {
     #[serde(rename = "CollectionId")]
     pub collection_id: String,
 
+
+    /// 
+    /// A set of tags (key-value pairs) that you want to attach to the collection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCollection {
     fn type_string() -> &'static str {
@@ -80,3 +82,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

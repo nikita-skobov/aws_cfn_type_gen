@@ -6,19 +6,53 @@ pub struct CfnLocationEFS {
 
 
     /// 
-    /// Specifies an AWS Identity and Access Management (IAM) role that DataSync    assumes when mounting the Amazon EFS file system.
+    /// Specifies whether you want DataSync to use Transport Layer Security (TLS) 1.2    encryption when it copies data to or from the Amazon EFS file system.
+    /// 
+    /// If you specify an access point using AccessPointArn or an IAM    role using FileSystemAccessRoleArn, you must set this parameter to     TLS1_2.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$
+    /// Allowed values: NONE | TLS1_2
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FileSystemAccessRoleArn")]
-    pub file_system_access_role_arn: Option<String>,
+    #[serde(rename = "InTransitEncryption")]
+    pub in_transit_encryption: Option<LocationEFSInTransitEncryptionEnum>,
+
+
+    /// 
+    /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses    to access the Amazon EFS file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]+:[0-9]{12}:access-point/fsap-[0-9a-f]{8,40}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AccessPointArn")]
+    pub access_point_arn: Option<String>,
+
+
+    /// 
+    /// Specifies a mount path for your Amazon EFS file system. This is where DataSync reads or writes data (depending on if this is a source or destination location).    By default, DataSync uses the root directory, but you can also include    subdirectories.
+    /// 
+    /// NoteYou must specify a value with forward slashes (for example,     /path/to/folder).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\p{Zs}]*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
 
 
     /// 
@@ -36,19 +70,19 @@ pub struct CfnLocationEFS {
 
 
     /// 
-    /// Specifies whether you want DataSync to use Transport Layer Security (TLS) 1.2    encryption when it copies data to or from the Amazon EFS file system.
-    /// 
-    /// If you specify an access point using AccessPointArn or an IAM    role using FileSystemAccessRoleArn, you must set this parameter to     TLS1_2.
+    /// Specifies an AWS Identity and Access Management (IAM) role that DataSync    assumes when mounting the Amazon EFS file system.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: NONE | TLS1_2
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InTransitEncryption")]
-    pub in_transit_encryption: Option<String>,
+    #[serde(rename = "FileSystemAccessRoleArn")]
+    pub file_system_access_role_arn: Option<String>,
 
 
     /// 
@@ -78,41 +112,28 @@ pub struct CfnLocationEFS {
     #[serde(rename = "Ec2Config")]
     pub ec2_config: Ec2Config,
 
-
-    /// 
-    /// Specifies a mount path for your Amazon EFS file system. This is where DataSync reads or writes data (depending on if this is a source or destination location).    By default, DataSync uses the root directory, but you can also include    subdirectories.
-    /// 
-    /// NoteYou must specify a value with forward slashes (for example,     /path/to/folder).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\p{Zs}]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
+}
 
 
-    /// 
-    /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses    to access the Amazon EFS file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]+:[0-9]{12}:access-point/fsap-[0-9a-f]{8,40}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessPointArn")]
-    pub access_point_arn: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LocationEFSInTransitEncryptionEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// TLS1_2
+    #[serde(rename = "TLS1_2")]
+    Tls12,
 
 }
+
+impl Default for LocationEFSInTransitEncryptionEnum {
+    fn default() -> Self {
+        LocationEFSInTransitEncryptionEnum::None
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnLocationEFS {
     fn type_string() -> &'static str {
@@ -160,6 +181,8 @@ pub struct Tag {
 }
 
 
+
+
 /// The subnet and security groups that AWS DataSync uses to access your Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ec2Config {
@@ -201,3 +224,5 @@ pub struct Ec2Config {
     pub subnet_arn: String,
 
 }
+
+

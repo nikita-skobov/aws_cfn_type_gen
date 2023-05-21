@@ -8,15 +8,17 @@ pub struct CfnScalingPolicy {
 
 
     /// 
-    /// A step scaling policy.
+    /// The namespace of the AWS service that provides the resource, or a       custom-resource.
     /// 
     /// Required: No
     ///
-    /// Type: StepScalingPolicyConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "StepScalingPolicyConfiguration")]
-    pub step_scaling_policy_configuration: Option<StepScalingPolicyConfiguration>,
+    /// Allowed values: appstream | cassandra | comprehend | custom-resource | dynamodb | ec2 | ecs | elasticache | elasticmapreduce | kafka | lambda | neptune | rds | sagemaker
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceNamespace")]
+    pub service_namespace: Option<ScalingPolicyServiceNamespaceEnum>,
 
 
     /// 
@@ -36,19 +38,27 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    pub policy_type: String,
+    pub policy_type: ScalingPolicyPolicyTypeEnum,
 
 
     /// 
-    /// A target tracking scaling policy.
+    /// The name of the scaling policy.
     /// 
-    /// Required: No
+    /// Updates to the name of a target tracking scaling policy are not supported, unless you also    update the metric used for scaling. To change only a target tracking scaling policy's name,    first delete the policy by removing the existing     AWS::ApplicationAutoScaling::ScalingPolicy resource from the template and    updating the stack. Then, recreate the resource with the same settings and a different    name.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: TargetTrackingScalingPolicyConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetTrackingScalingPolicyConfiguration")]
-    pub target_tracking_scaling_policy_configuration: Option<TargetTrackingScalingPolicyConfiguration>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: \p{Print}+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
 
 
     /// 
@@ -64,7 +74,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScalableDimension")]
-    pub scalable_dimension: Option<String>,
+    pub scalable_dimension: Option<ScalingPolicyScalableDimensionEnum>,
 
 
     /// 
@@ -82,17 +92,15 @@ pub struct CfnScalingPolicy {
 
 
     /// 
-    /// The namespace of the AWS service that provides the resource, or a       custom-resource.
+    /// A step scaling policy.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: StepScalingPolicyConfiguration
     ///
-    /// Allowed values: appstream | cassandra | comprehend | custom-resource | dynamodb | ec2 | ecs | elasticache | elasticmapreduce | kafka | lambda | neptune | rds | sagemaker
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceNamespace")]
-    pub service_namespace: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "StepScalingPolicyConfiguration")]
+    pub step_scaling_policy_configuration: Option<StepScalingPolicyConfiguration>,
 
 
     /// 
@@ -116,25 +124,200 @@ pub struct CfnScalingPolicy {
 
 
     /// 
-    /// The name of the scaling policy.
+    /// A target tracking scaling policy.
     /// 
-    /// Updates to the name of a target tracking scaling policy are not supported, unless you also    update the metric used for scaling. To change only a target tracking scaling policy's name,    first delete the policy by removing the existing     AWS::ApplicationAutoScaling::ScalingPolicy resource from the template and    updating the stack. Then, recreate the resource with the same settings and a different    name.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: TargetTrackingScalingPolicyConfiguration
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: \p{Print}+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "TargetTrackingScalingPolicyConfiguration")]
+    pub target_tracking_scaling_policy_configuration: Option<TargetTrackingScalingPolicyConfiguration>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingPolicyServiceNamespaceEnum {
+
+    /// appstream
+    #[serde(rename = "appstream")]
+    Appstream,
+
+    /// cassandra
+    #[serde(rename = "cassandra")]
+    Cassandra,
+
+    /// comprehend
+    #[serde(rename = "comprehend")]
+    Comprehend,
+
+    /// custom-resource
+    #[serde(rename = "custom-resource")]
+    Customresource,
+
+    /// dynamodb
+    #[serde(rename = "dynamodb")]
+    Dynamodb,
+
+    /// ec2
+    #[serde(rename = "ec2")]
+    Ec2,
+
+    /// ecs
+    #[serde(rename = "ecs")]
+    Ecs,
+
+    /// elasticache
+    #[serde(rename = "elasticache")]
+    Elasticache,
+
+    /// elasticmapreduce
+    #[serde(rename = "elasticmapreduce")]
+    Elasticmapreduce,
+
+    /// kafka
+    #[serde(rename = "kafka")]
+    Kafka,
+
+    /// lambda
+    #[serde(rename = "lambda")]
+    Lambda,
+
+    /// neptune
+    #[serde(rename = "neptune")]
+    Neptune,
+
+    /// rds
+    #[serde(rename = "rds")]
+    Rds,
+
+    /// sagemaker
+    #[serde(rename = "sagemaker")]
+    Sagemaker,
+
+}
+
+impl Default for ScalingPolicyServiceNamespaceEnum {
+    fn default() -> Self {
+        ScalingPolicyServiceNamespaceEnum::Appstream
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingPolicyScalableDimensionEnum {
+
+    /// appstream:fleet:DesiredCapacity
+    #[serde(rename = "appstream:fleet:DesiredCapacity")]
+    Appstreamfleetdesiredcapacity,
+
+    /// cassandra:table:ReadCapacityUnits
+    #[serde(rename = "cassandra:table:ReadCapacityUnits")]
+    Cassandratablereadcapacityunits,
+
+    /// cassandra:table:WriteCapacityUnits
+    #[serde(rename = "cassandra:table:WriteCapacityUnits")]
+    Cassandratablewritecapacityunits,
+
+    /// comprehend:document-classifier-endpoint:DesiredInferenceUnits
+    #[serde(rename = "comprehend:document-classifier-endpoint:DesiredInferenceUnits")]
+    Comprehenddocumentclassifierendpointdesiredinferenceunits,
+
+    /// comprehend:entity-recognizer-endpoint:DesiredInferenceUnits
+    #[serde(rename = "comprehend:entity-recognizer-endpoint:DesiredInferenceUnits")]
+    Comprehendentityrecognizerendpointdesiredinferenceunits,
+
+    /// custom-resource:ResourceType:Property
+    #[serde(rename = "custom-resource:ResourceType:Property")]
+    Customresourceresourcetypeproperty,
+
+    /// dynamodb:index:ReadCapacityUnits
+    #[serde(rename = "dynamodb:index:ReadCapacityUnits")]
+    Dynamodbindexreadcapacityunits,
+
+    /// dynamodb:index:WriteCapacityUnits
+    #[serde(rename = "dynamodb:index:WriteCapacityUnits")]
+    Dynamodbindexwritecapacityunits,
+
+    /// dynamodb:table:ReadCapacityUnits
+    #[serde(rename = "dynamodb:table:ReadCapacityUnits")]
+    Dynamodbtablereadcapacityunits,
+
+    /// dynamodb:table:WriteCapacityUnits
+    #[serde(rename = "dynamodb:table:WriteCapacityUnits")]
+    Dynamodbtablewritecapacityunits,
+
+    /// ec2:spot-fleet-request:TargetCapacity
+    #[serde(rename = "ec2:spot-fleet-request:TargetCapacity")]
+    Ec2spotfleetrequesttargetcapacity,
+
+    /// ecs:service:DesiredCount
+    #[serde(rename = "ecs:service:DesiredCount")]
+    Ecsservicedesiredcount,
+
+    /// elasticache:replication-group:NodeGroups
+    #[serde(rename = "elasticache:replication-group:NodeGroups")]
+    Elasticachereplicationgroupnodegroups,
+
+    /// elasticache:replication-group:Replicas
+    #[serde(rename = "elasticache:replication-group:Replicas")]
+    Elasticachereplicationgroupreplicas,
+
+    /// elasticmapreduce:instancegroup:InstanceCount
+    #[serde(rename = "elasticmapreduce:instancegroup:InstanceCount")]
+    Elasticmapreduceinstancegroupinstancecount,
+
+    /// kafka:broker-storage:VolumeSize
+    #[serde(rename = "kafka:broker-storage:VolumeSize")]
+    Kafkabrokerstoragevolumesize,
+
+    /// lambda:function:ProvisionedConcurrency
+    #[serde(rename = "lambda:function:ProvisionedConcurrency")]
+    Lambdafunctionprovisionedconcurrency,
+
+    /// neptune:cluster:ReadReplicaCount
+    #[serde(rename = "neptune:cluster:ReadReplicaCount")]
+    Neptuneclusterreadreplicacount,
+
+    /// rds:cluster:ReadReplicaCount
+    #[serde(rename = "rds:cluster:ReadReplicaCount")]
+    Rdsclusterreadreplicacount,
+
+    /// sagemaker:variant:DesiredInstanceCount
+    #[serde(rename = "sagemaker:variant:DesiredInstanceCount")]
+    Sagemakervariantdesiredinstancecount,
+
+    /// sagemaker:variant:DesiredProvisionedConcurrency
+    #[serde(rename = "sagemaker:variant:DesiredProvisionedConcurrency")]
+    Sagemakervariantdesiredprovisionedconcurrency,
+
+}
+
+impl Default for ScalingPolicyScalableDimensionEnum {
+    fn default() -> Self {
+        ScalingPolicyScalableDimensionEnum::Appstreamfleetdesiredcapacity
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingPolicyPolicyTypeEnum {
+
+    /// StepScaling
+    #[serde(rename = "StepScaling")]
+    Stepscaling,
+
+    /// TargetTrackingScaling
+    #[serde(rename = "TargetTrackingScaling")]
+    Targettrackingscaling,
+
+}
+
+impl Default for ScalingPolicyPolicyTypeEnum {
+    fn default() -> Self {
+        ScalingPolicyPolicyTypeEnum::Stepscaling
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnScalingPolicy {
     fn type_string() -> &'static str {
@@ -145,6 +328,243 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Contains customized metric specification information for a target tracking scaling policy    for Application Auto Scaling.
+///
+/// For information about the available metrics for a service, see AWS services that publish CloudWatch metrics in the Amazon     CloudWatch User Guide.
+///
+/// To create your customized metric specification:
+///
+/// For an example of how creating new metrics can be useful, see Scaling based on Amazon SQS    in the Amazon EC2 Auto Scaling User Guide. This topic mentions Auto    Scaling groups, but the same scenario for Amazon SQS can apply to the target tracking scaling    policies that you create for a Spot Fleet by using Application Auto Scaling.
+///
+/// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts.
+///
+/// CustomizedMetricSpecification is a property of the AWS::ApplicationAutoScaling::ScalingPolicy TargetTrackingScalingPolicyConfiguration    property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CustomizedMetricSpecification {
+
+
+    /// 
+    /// The dimensions of the metric.
+    /// 
+    /// Conditional: If you published your metric with dimensions, you must specify the same     dimensions in your scaling policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MetricDimension
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Dimensions")]
+    pub dimensions: Option<Vec<MetricDimension>>,
+
+
+    /// 
+    /// The namespace of the metric.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Namespace")]
+    pub namespace: String,
+
+
+    /// 
+    /// The name of the metric. To get the exact metric name, namespace, and dimensions, inspect     the Metric object that's returned by a call to ListMetrics.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+
+    /// 
+    /// The statistic of the metric.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Average | Maximum | Minimum | SampleCount | Sum
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statistic")]
+    pub statistic: CustomizedMetricSpecificationStatisticEnum,
+
+
+    /// 
+    /// The unit of the metric. For a complete list of the units that CloudWatch supports, see the       MetricDatum data     type in the Amazon CloudWatch API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CustomizedMetricSpecificationStatisticEnum {
+
+    /// Average
+    #[serde(rename = "Average")]
+    Average,
+
+    /// Maximum
+    #[serde(rename = "Maximum")]
+    Maximum,
+
+    /// Minimum
+    #[serde(rename = "Minimum")]
+    Minimum,
+
+    /// SampleCount
+    #[serde(rename = "SampleCount")]
+    Samplecount,
+
+    /// Sum
+    #[serde(rename = "Sum")]
+    Sum,
+
+}
+
+impl Default for CustomizedMetricSpecificationStatisticEnum {
+    fn default() -> Self {
+        CustomizedMetricSpecificationStatisticEnum::Average
+    }
+}
+
+
+
+/// StepScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a step scaling    policy configuration for Application Auto Scaling.
+///
+/// For more information, see Step scaling policies in the Application Auto Scaling User     Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StepScalingPolicyConfiguration {
+
+
+    /// 
+    /// A set of adjustments that enable you to scale based on the size of the alarm     breach.
+    /// 
+    /// At least one step adjustment is required if you are adding a new step scaling policy     configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of StepAdjustment
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StepAdjustments")]
+    pub step_adjustments: Option<Vec<StepAdjustment>>,
+
+
+    /// 
+    /// The amount of time, in seconds, to wait for a previous scaling activity to take effect. If    not specified, the default value is 300. For more information, see Cooldown period in the Application Auto Scaling User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cooldown")]
+    pub cooldown: Option<i64>,
+
+
+    /// 
+    /// The minimum value to scale by when the adjustment type is       PercentChangeInCapacity. For example, suppose that you create a step     scaling policy to scale out an Amazon ECS service by 25 percent and you specify a       MinAdjustmentMagnitude of 2. If the service has 4 tasks and the scaling     policy is performed, 25 percent of 4 is 1. However, because you specified a       MinAdjustmentMagnitude of 2, Application Auto Scaling scales out the service by 2     tasks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinAdjustmentMagnitude")]
+    pub min_adjustment_magnitude: Option<i64>,
+
+
+    /// 
+    /// Specifies whether the ScalingAdjustment value in the     StepAdjustment property is an absolute number or a percentage of the current    capacity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ChangeInCapacity | ExactCapacity | PercentChangeInCapacity
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdjustmentType")]
+    pub adjustment_type: Option<StepScalingPolicyConfigurationAdjustmentTypeEnum>,
+
+
+    /// 
+    /// The aggregation type for the CloudWatch metrics. Valid values are Minimum,       Maximum, and Average. If the aggregation type is null, the     value is treated as Average.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Average | Maximum | Minimum
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricAggregationType")]
+    pub metric_aggregation_type: Option<StepScalingPolicyConfigurationMetricAggregationTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StepScalingPolicyConfigurationMetricAggregationTypeEnum {
+
+    /// Average
+    #[serde(rename = "Average")]
+    Average,
+
+    /// Maximum
+    #[serde(rename = "Maximum")]
+    Maximum,
+
+    /// Minimum
+    #[serde(rename = "Minimum")]
+    Minimum,
+
+}
+
+impl Default for StepScalingPolicyConfigurationMetricAggregationTypeEnum {
+    fn default() -> Self {
+        StepScalingPolicyConfigurationMetricAggregationTypeEnum::Average
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StepScalingPolicyConfigurationAdjustmentTypeEnum {
+
+    /// ChangeInCapacity
+    #[serde(rename = "ChangeInCapacity")]
+    Changeincapacity,
+
+    /// ExactCapacity
+    #[serde(rename = "ExactCapacity")]
+    Exactcapacity,
+
+    /// PercentChangeInCapacity
+    #[serde(rename = "PercentChangeInCapacity")]
+    Percentchangeincapacity,
+
+}
+
+impl Default for StepScalingPolicyConfigurationAdjustmentTypeEnum {
+    fn default() -> Self {
+        StepScalingPolicyConfigurationAdjustmentTypeEnum::Changeincapacity
+    }
+}
+
 
 
 /// StepAdjustment specifies a step adjustment for the StepAdjustments    property of the AWS::ApplicationAutoScaling::ScalingPolicy StepScalingPolicyConfiguration property    type.
@@ -200,21 +620,11 @@ pub struct StepAdjustment {
 }
 
 
+
+
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::ApplicationAutoScaling::ScalingPolicy CustomizedMetricSpecification property    type. Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDimension {
-
-
-    /// 
-    /// The name of the dimension.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -228,163 +638,21 @@ pub struct MetricDimension {
     #[serde(rename = "Value")]
     pub value: String,
 
-}
-
-
-/// StepScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a step scaling    policy configuration for Application Auto Scaling.
-///
-/// For more information, see Step scaling policies in the Application Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StepScalingPolicyConfiguration {
-
 
     /// 
-    /// The aggregation type for the CloudWatch metrics. Valid values are Minimum,       Maximum, and Average. If the aggregation type is null, the     value is treated as Average.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Average | Maximum | Minimum
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricAggregationType")]
-    pub metric_aggregation_type: Option<String>,
-
-
-    /// 
-    /// Specifies whether the ScalingAdjustment value in the     StepAdjustment property is an absolute number or a percentage of the current    capacity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ChangeInCapacity | ExactCapacity | PercentChangeInCapacity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdjustmentType")]
-    pub adjustment_type: Option<String>,
-
-
-    /// 
-    /// The minimum value to scale by when the adjustment type is       PercentChangeInCapacity. For example, suppose that you create a step     scaling policy to scale out an Amazon ECS service by 25 percent and you specify a       MinAdjustmentMagnitude of 2. If the service has 4 tasks and the scaling     policy is performed, 25 percent of 4 is 1. However, because you specified a       MinAdjustmentMagnitude of 2, Application Auto Scaling scales out the service by 2     tasks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinAdjustmentMagnitude")]
-    pub min_adjustment_magnitude: Option<i64>,
-
-
-    /// 
-    /// A set of adjustments that enable you to scale based on the size of the alarm     breach.
-    /// 
-    /// At least one step adjustment is required if you are adding a new step scaling policy     configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of StepAdjustment
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StepAdjustments")]
-    pub step_adjustments: Option<Vec<StepAdjustment>>,
-
-
-    /// 
-    /// The amount of time, in seconds, to wait for a previous scaling activity to take effect. If    not specified, the default value is 300. For more information, see Cooldown period in the Application Auto Scaling User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cooldown")]
-    pub cooldown: Option<i64>,
-
-}
-
-
-/// Contains customized metric specification information for a target tracking scaling policy    for Application Auto Scaling.
-///
-/// For information about the available metrics for a service, see AWS services that publish CloudWatch metrics in the Amazon     CloudWatch User Guide.
-///
-/// To create your customized metric specification:
-///
-/// For an example of how creating new metrics can be useful, see Scaling based on Amazon SQS    in the Amazon EC2 Auto Scaling User Guide. This topic mentions Auto    Scaling groups, but the same scenario for Amazon SQS can apply to the target tracking scaling    policies that you create for a Spot Fleet by using Application Auto Scaling.
-///
-/// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts.
-///
-/// CustomizedMetricSpecification is a property of the AWS::ApplicationAutoScaling::ScalingPolicy TargetTrackingScalingPolicyConfiguration    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomizedMetricSpecification {
-
-
-    /// 
-    /// The dimensions of the metric.
-    /// 
-    /// Conditional: If you published your metric with dimensions, you must specify the same     dimensions in your scaling policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MetricDimension
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Dimensions")]
-    pub dimensions: Option<Vec<MetricDimension>>,
-
-
-    /// 
-    /// The namespace of the metric.
+    /// The name of the dimension.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: String,
-
-
-    /// 
-    /// The statistic of the metric.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Average | Maximum | Minimum | SampleCount | Sum
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statistic")]
-    pub statistic: String,
-
-
-    /// 
-    /// The name of the metric. To get the exact metric name, namespace, and dimensions, inspect     the Metric object that's returned by a call to ListMetrics.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-
-    /// 
-    /// The unit of the metric. For a complete list of the units that CloudWatch supports, see the       MetricDatum data     type in the Amazon CloudWatch API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
+
+
 
 
 /// TargetTrackingScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a target    tracking scaling policy configuration for Application Auto Scaling. Use a target tracking    scaling policy to adjust the capacity of the specified scalable target in response to actual    workloads, so that resource utilization remains at or near the target utilization value.
@@ -392,30 +660,6 @@ pub struct CustomizedMetricSpecification {
 /// For more information, see Target     tracking scaling policies in the Application Auto Scaling User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetTrackingScalingPolicyConfiguration {
-
-
-    /// 
-    /// A customized metric. You can specify either a predefined metric or a customized     metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomizedMetricSpecification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomizedMetricSpecification")]
-    pub customized_metric_specification: Option<CustomizedMetricSpecification>,
-
-
-    /// 
-    /// The amount of time, in seconds, to wait for a previous scale-out activity to take effect.    For more information and for default values, see Define cooldown periods in the Application Auto Scaling User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScaleOutCooldown")]
-    pub scale_out_cooldown: Option<i64>,
 
 
     /// 
@@ -443,6 +687,18 @@ pub struct TargetTrackingScalingPolicyConfiguration {
 
 
     /// 
+    /// A customized metric. You can specify either a predefined metric or a customized     metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomizedMetricSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomizedMetricSpecification")]
+    pub customized_metric_specification: Option<CustomizedMetricSpecification>,
+
+
+    /// 
     /// Indicates whether scale in by the target tracking scaling policy is disabled. If the     value is true, scale in is disabled and the target tracking scaling policy     won't remove capacity from the scalable target. Otherwise, scale in is enabled and the     target tracking scaling policy can remove capacity from the scalable target. The default     value is false.
     /// 
     /// Required: No
@@ -465,7 +721,21 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     #[serde(rename = "PredefinedMetricSpecification")]
     pub predefined_metric_specification: Option<PredefinedMetricSpecification>,
 
+
+    /// 
+    /// The amount of time, in seconds, to wait for a previous scale-out activity to take effect.    For more information and for default values, see Define cooldown periods in the Application Auto Scaling User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScaleOutCooldown")]
+    pub scale_out_cooldown: Option<i64>,
+
 }
+
+
 
 
 /// Contains predefined metric specification information for a target tracking scaling policy    for Application Auto Scaling.
@@ -486,7 +756,7 @@ pub struct PredefinedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedMetricType")]
-    pub predefined_metric_type: String,
+    pub predefined_metric_type: PredefinedMetricSpecificationPredefinedMetricTypeEnum,
 
 
     /// 
@@ -515,3 +785,104 @@ pub struct PredefinedMetricSpecification {
     pub resource_label: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PredefinedMetricSpecificationPredefinedMetricTypeEnum {
+
+    /// ALBRequestCountPerTarget
+    #[serde(rename = "ALBRequestCountPerTarget")]
+    Albrequestcountpertarget,
+
+    /// AppStreamAverageCapacityUtilization
+    #[serde(rename = "AppStreamAverageCapacityUtilization")]
+    Appstreamaveragecapacityutilization,
+
+    /// CassandraReadCapacityUtilization
+    #[serde(rename = "CassandraReadCapacityUtilization")]
+    Cassandrareadcapacityutilization,
+
+    /// CassandraWriteCapacityUtilization
+    #[serde(rename = "CassandraWriteCapacityUtilization")]
+    Cassandrawritecapacityutilization,
+
+    /// ComprehendInferenceUtilization
+    #[serde(rename = "ComprehendInferenceUtilization")]
+    Comprehendinferenceutilization,
+
+    /// DynamoDBReadCapacityUtilization
+    #[serde(rename = "DynamoDBReadCapacityUtilization")]
+    Dynamodbreadcapacityutilization,
+
+    /// DynamoDBWriteCapacityUtilization
+    #[serde(rename = "DynamoDBWriteCapacityUtilization")]
+    Dynamodbwritecapacityutilization,
+
+    /// EC2SpotFleetRequestAverageCPUUtilization
+    #[serde(rename = "EC2SpotFleetRequestAverageCPUUtilization")]
+    Ec2spotfleetrequestaveragecpuutilization,
+
+    /// EC2SpotFleetRequestAverageNetworkIn
+    #[serde(rename = "EC2SpotFleetRequestAverageNetworkIn")]
+    Ec2spotfleetrequestaveragenetworkin,
+
+    /// EC2SpotFleetRequestAverageNetworkOut
+    #[serde(rename = "EC2SpotFleetRequestAverageNetworkOut")]
+    Ec2spotfleetrequestaveragenetworkout,
+
+    /// ECSServiceAverageCPUUtilization
+    #[serde(rename = "ECSServiceAverageCPUUtilization")]
+    Ecsserviceaveragecpuutilization,
+
+    /// ECSServiceAverageMemoryUtilization
+    #[serde(rename = "ECSServiceAverageMemoryUtilization")]
+    Ecsserviceaveragememoryutilization,
+
+    /// ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage
+    #[serde(rename = "ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage")]
+    Elasticachedatabasememoryusagecountedforevictpercentage,
+
+    /// ElastiCachePrimaryEngineCPUUtilization
+    #[serde(rename = "ElastiCachePrimaryEngineCPUUtilization")]
+    Elasticacheprimaryenginecpuutilization,
+
+    /// ElastiCacheReplicaEngineCPUUtilization
+    #[serde(rename = "ElastiCacheReplicaEngineCPUUtilization")]
+    Elasticachereplicaenginecpuutilization,
+
+    /// KafkaBrokerStorageUtilization
+    #[serde(rename = "KafkaBrokerStorageUtilization")]
+    Kafkabrokerstorageutilization,
+
+    /// LambdaProvisionedConcurrencyUtilization
+    #[serde(rename = "LambdaProvisionedConcurrencyUtilization")]
+    Lambdaprovisionedconcurrencyutilization,
+
+    /// NeptuneReaderAverageCPUUtilization
+    #[serde(rename = "NeptuneReaderAverageCPUUtilization")]
+    Neptunereaderaveragecpuutilization,
+
+    /// RDSReaderAverageCPUUtilization
+    #[serde(rename = "RDSReaderAverageCPUUtilization")]
+    Rdsreaderaveragecpuutilization,
+
+    /// RDSReaderAverageDatabaseConnections
+    #[serde(rename = "RDSReaderAverageDatabaseConnections")]
+    Rdsreaderaveragedatabaseconnections,
+
+    /// SageMakerVariantInvocationsPerInstance
+    #[serde(rename = "SageMakerVariantInvocationsPerInstance")]
+    Sagemakervariantinvocationsperinstance,
+
+    /// SageMakerVariantProvisionedConcurrencyUtilization
+    #[serde(rename = "SageMakerVariantProvisionedConcurrencyUtilization")]
+    Sagemakervariantprovisionedconcurrencyutilization,
+
+}
+
+impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
+    fn default() -> Self {
+        PredefinedMetricSpecificationPredefinedMetricTypeEnum::Albrequestcountpertarget
+    }
+}
+

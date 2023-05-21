@@ -28,6 +28,38 @@ pub struct CfnLedger {
 
 
     /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
+    /// 
+    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
+    /// 
+    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW_ALL | STANDARD
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsMode")]
+    pub permissions_mode: LedgerPermissionsModeEnum,
+
+
+    /// 
     /// Specifies whether the ledger is protected from being deleted by any user. If not defined during    ledger creation, this feature is enabled (true) by default.
     /// 
     /// If deletion protection is enabled, you must first disable it before you can delete the    ledger. You can disable it by calling the UpdateLedger operation to set this parameter to false.
@@ -66,39 +98,28 @@ pub struct CfnLedger {
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
 
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+}
 
 
-    /// 
-    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
-    /// 
-    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
-    /// 
-    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALLOW_ALL | STANDARD
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsMode")]
-    pub permissions_mode: String,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LedgerPermissionsModeEnum {
+
+    /// ALLOW_ALL
+    #[serde(rename = "ALLOW_ALL")]
+    Allowall,
+
+    /// STANDARD
+    #[serde(rename = "STANDARD")]
+    Standard,
 
 }
+
+impl Default for LedgerPermissionsModeEnum {
+    fn default() -> Self {
+        LedgerPermissionsModeEnum::Allowall
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnLedger {
     fn type_string() -> &'static str {
@@ -123,17 +144,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -143,4 +153,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

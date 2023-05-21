@@ -8,6 +8,22 @@ pub struct CfnVirtualMFADevice {
 
 
     /// 
+    /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
+    /// 
+    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The path for the virtual MFA device. For more information about paths, see IAM         identifiers in the IAM User Guide.
     /// 
     /// This parameter is optional. If it is not included, it defaults to a slash (/).
@@ -42,22 +58,6 @@ pub struct CfnVirtualMFADevice {
 
 
     /// 
-    /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
-    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the virtual MFA device, which must be unique. Use with path to uniquely       identify a virtual MFA device.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
@@ -75,6 +75,8 @@ pub struct CfnVirtualMFADevice {
     pub virtual_mfa_device_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVirtualMFADevice {
     fn type_string() -> &'static str {
@@ -99,17 +101,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -119,4 +110,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

@@ -6,6 +6,24 @@ pub struct CfnLocationFSxLustre {
 
 
     /// 
+    /// The ARNs of the security groups that are used to configure the FSx for Lustre file system.
+    /// 
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
+    /// 
+    /// Length constraints: Maximum length of 128.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupArns")]
+    pub security_group_arns: Vec<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
     /// 
     /// Required: No
@@ -36,24 +54,6 @@ pub struct CfnLocationFSxLustre {
 
 
     /// 
-    /// The ARNs of the security groups that are used to configure the FSx for Lustre file system.
-    /// 
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
-    /// Length constraints: Maximum length of 128.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupArns")]
-    pub security_group_arns: Vec<String>,
-
-
-    /// 
     /// A subdirectory in the location's path. This subdirectory in the FSx for Lustre    file system is used to read data from the FSx for Lustre source location or write    data to the FSx for Lustre destination.
     /// 
     /// Required: No
@@ -69,6 +69,8 @@ pub struct CfnLocationFSxLustre {
     pub subdirectory: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocationFSxLustre {
     fn type_string() -> &'static str {
@@ -114,3 +116,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

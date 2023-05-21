@@ -8,6 +8,24 @@ pub struct CfnEnvironmentTemplate {
 
 
     /// 
+    /// The name of the environment template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// When included, indicates that the environment template is for customer provisioned and managed infrastructure.
     /// 
     /// Required: No
@@ -18,7 +36,23 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Provisioning")]
-    pub provisioning: Option<String>,
+    pub provisioning: Option<EnvironmentTemplateProvisioningEnum>,
+
+
+    /// 
+    /// An optional list of metadata items that you can associate with the AWS Proton environment template. A tag is a key-value pair.
+    /// 
+    /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -54,22 +88,6 @@ pub struct CfnEnvironmentTemplate {
 
 
     /// 
-    /// An optional list of metadata items that you can associate with the AWS Proton environment template. A tag is a key-value pair.
-    /// 
-    /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The customer provided encryption key for the environment template.
     /// 
     /// Required: No
@@ -86,25 +104,24 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "EncryptionKey")]
     pub encryption_key: Option<String>,
 
+}
 
-    /// 
-    /// The name of the environment template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EnvironmentTemplateProvisioningEnum {
+
+    /// CUSTOMER_MANAGED
+    #[serde(rename = "CUSTOMER_MANAGED")]
+    Customermanaged,
 
 }
+
+impl Default for EnvironmentTemplateProvisioningEnum {
+    fn default() -> Self {
+        EnvironmentTemplateProvisioningEnum::Customermanaged
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEnvironmentTemplate {
     fn type_string() -> &'static str {
@@ -150,3 +167,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

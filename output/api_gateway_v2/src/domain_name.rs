@@ -8,30 +8,6 @@ pub struct CfnDomainName {
 
 
     /// 
-    /// The collection of tags associated with a domain name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
-    /// The mutual TLS authentication configuration for a custom domain name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MutualTlsAuthentication
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MutualTlsAuthentication")]
-    pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
-
-
-    /// 
     /// The custom domain name for your API in Amazon API Gateway. Uppercase letters are          not supported.
     /// 
     /// Required: Yes
@@ -41,6 +17,18 @@ pub struct CfnDomainName {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: String,
+
+
+    /// 
+    /// The collection of tags associated with a domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -54,7 +42,21 @@ pub struct CfnDomainName {
     #[serde(rename = "DomainNameConfigurations")]
     pub domain_name_configurations: Option<Vec<DomainNameConfiguration>>,
 
+
+    /// 
+    /// The mutual TLS authentication configuration for a custom domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MutualTlsAuthentication
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MutualTlsAuthentication")]
+    pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDomainName {
     fn type_string() -> &'static str {
@@ -75,15 +77,15 @@ pub struct DomainNameConfiguration {
 
 
     /// 
-    /// The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
+    /// An AWS-managed certificate that will be used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecurityPolicy")]
-    pub security_policy: Option<String>,
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: Option<String>,
 
 
     /// 
@@ -99,15 +101,15 @@ pub struct DomainNameConfiguration {
 
 
     /// 
-    /// An AWS-managed certificate that will be used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
+    /// The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: Option<String>,
+    #[serde(rename = "SecurityPolicy")]
+    pub security_policy: Option<String>,
 
 
     /// 
@@ -134,6 +136,8 @@ pub struct DomainNameConfiguration {
     pub certificate_name: Option<String>,
 
 }
+
+
 
 
 /// If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.
@@ -165,3 +169,5 @@ pub struct MutualTlsAuthentication {
     pub truststore_uri: Option<String>,
 
 }
+
+

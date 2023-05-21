@@ -8,74 +8,6 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
-    /// 
-    /// Example address strings:
-    /// 
-    /// To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.               To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify         192.0.2.0/24.               To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.               To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.
-    /// 
-    /// For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
-    /// 
-    /// Example JSON Addresses specifications:
-    /// 
-    /// Empty array: "Addresses": []                       Array with one address: "Addresses": ["192.0.2.44/32"]                       Array with three addresses: "Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]                       INVALID specification: "Addresses": [""] INVALID
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Addresses")]
-    pub addresses: Vec<String>,
-
-
-    /// 
-    /// The version of the IP addresses, either IPV4 or IPV6.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPAddressVersion")]
-    pub ipaddress_version: String,
-
-
-    /// 
-    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional      application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an      AWS AppSync GraphQL API, an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
-    /// 
-    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Scope")]
-    pub scope: String,
-
-
-    /// 
-    /// A description of the IP set that helps with identification.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[\w+=:#@/\-,\.][\w+=:#@/\-,\.\s]+[\w+=:#@/\-,\.]$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The name of the IP set. You cannot change the name of an IPSet after you create it.
     /// 
     /// Required: No
@@ -106,7 +38,96 @@ pub struct CfnIPSet {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
+    /// 
+    /// Example address strings:
+    /// 
+    /// To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.               To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify         192.0.2.0/24.               To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.               To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.
+    /// 
+    /// For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+    /// 
+    /// Example JSON Addresses specifications:
+    /// 
+    /// Empty array: "Addresses": []                       Array with one address: "Addresses": ["192.0.2.44/32"]                       Array with three addresses: "Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]                       INVALID specification: "Addresses": [""] INVALID
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Addresses")]
+    pub addresses: Vec<String>,
+
+
+    /// 
+    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional      application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an      AWS AppSync GraphQL API, an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
+    /// 
+    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Scope")]
+    pub scope: String,
+
+
+    /// 
+    /// The version of the IP addresses, either IPV4 or IPV6.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPAddressVersion")]
+    pub ipaddress_version: IPSetIPAddressVersionEnum,
+
+
+    /// 
+    /// A description of the IP set that helps with identification.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[\w+=:#@/\-,\.][\w+=:#@/\-,\.\s]+[\w+=:#@/\-,\.]$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPSetIPAddressVersionEnum {
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for IPSetIPAddressVersionEnum {
+    fn default() -> Self {
+        IPSetIPAddressVersionEnum::Ipv4
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnIPSet {
     fn type_string() -> &'static str {
@@ -152,3 +173,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

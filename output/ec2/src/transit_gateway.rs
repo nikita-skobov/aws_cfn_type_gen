@@ -14,124 +14,6 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// Enable or disable automatic association with the default association route table. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultRouteTableAssociation")]
-    pub default_route_table_association: Option<String>,
-
-
-    /// 
-    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpnEcmpSupport")]
-    pub vpn_ecmp_support: Option<String>,
-
-
-    /// 
-    /// Indicates whether multicast is enabled on the transit gateway
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MulticastSupport")]
-    pub multicast_support: Option<String>,
-
-
-    /// 
-    /// The tags for the transit gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The description of the transit gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The ID of the default association route table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssociationDefaultRouteTableId")]
-    pub association_default_route_table_id: Option<String>,
-
-
-    /// 
-    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoAcceptSharedAttachments")]
-    pub auto_accept_shared_attachments: Option<String>,
-
-
-    /// 
-    /// The transit gateway CIDR blocks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TransitGatewayCidrBlocks")]
-    pub transit_gateway_cidr_blocks: Option<Vec<String>>,
-
-
-    /// 
-    /// Enable or disable DNS support. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsSupport")]
-    pub dns_support: Option<String>,
-
-
-    /// 
     /// The ID of the default propagation route table.
     /// 
     /// Required: No
@@ -156,6 +38,20 @@ pub struct CfnTransitGateway {
 
 
     /// 
+    /// Indicates whether multicast is enabled on the transit gateway
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MulticastSupport")]
+    pub multicast_support: Option<TransitGatewayMulticastSupportEnum>,
+
+
+    /// 
     /// Enable or disable automatic propagation of routes to the default propagation route table. Enabled by default.
     /// 
     /// Required: No
@@ -166,9 +62,229 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteTablePropagation")]
-    pub default_route_table_propagation: Option<String>,
+    pub default_route_table_propagation: Option<TransitGatewayDefaultRouteTablePropagationEnum>,
+
+
+    /// 
+    /// The description of the transit gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoAcceptSharedAttachments")]
+    pub auto_accept_shared_attachments: Option<TransitGatewayAutoAcceptSharedAttachmentsEnum>,
+
+
+    /// 
+    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpnEcmpSupport")]
+    pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
+
+
+    /// 
+    /// Enable or disable automatic association with the default association route table. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultRouteTableAssociation")]
+    pub default_route_table_association: Option<TransitGatewayDefaultRouteTableAssociationEnum>,
+
+
+    /// 
+    /// The transit gateway CIDR blocks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransitGatewayCidrBlocks")]
+    pub transit_gateway_cidr_blocks: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the default association route table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssociationDefaultRouteTableId")]
+    pub association_default_route_table_id: Option<String>,
+
+
+    /// 
+    /// The tags for the transit gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Enable or disable DNS support. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsSupport")]
+    pub dns_support: Option<TransitGatewayDnsSupportEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayDefaultRouteTablePropagationEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayDefaultRouteTablePropagationEnum {
+    fn default() -> Self {
+        TransitGatewayDefaultRouteTablePropagationEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayAutoAcceptSharedAttachmentsEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayAutoAcceptSharedAttachmentsEnum {
+    fn default() -> Self {
+        TransitGatewayAutoAcceptSharedAttachmentsEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayMulticastSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayMulticastSupportEnum {
+    fn default() -> Self {
+        TransitGatewayMulticastSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayDefaultRouteTableAssociationEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
+    fn default() -> Self {
+        TransitGatewayDefaultRouteTableAssociationEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayDnsSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayDnsSupportEnum {
+    fn default() -> Self {
+        TransitGatewayDnsSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayVpnEcmpSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayVpnEcmpSupportEnum {
+    fn default() -> Self {
+        TransitGatewayVpnEcmpSupportEnum::Disable
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnTransitGateway {
     fn type_string() -> &'static str {
@@ -214,3 +330,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

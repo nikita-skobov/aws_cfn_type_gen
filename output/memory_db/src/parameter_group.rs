@@ -6,18 +6,6 @@ pub struct CfnParameterGroup {
 
 
     /// 
-    /// The name of the parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: String,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -32,15 +20,15 @@ pub struct CfnParameterGroup {
 
 
     /// 
-    /// A description of the parameter group.
+    /// The name of the parameter group.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "ParameterGroupName")]
+    pub parameter_group_name: String,
 
 
     /// 
@@ -66,7 +54,21 @@ pub struct CfnParameterGroup {
     #[serde(rename = "Family")]
     pub family: String,
 
+
+    /// 
+    /// A description of the parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnParameterGroup {
     fn type_string() -> &'static str {
@@ -112,3 +114,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

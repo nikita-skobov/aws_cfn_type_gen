@@ -8,6 +8,18 @@ pub struct CfnBillingGroup {
 
 
     /// 
+    /// The properties of the billing group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BillingGroupProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BillingGroupProperties")]
+    pub billing_group_properties: Option<BillingGroupProperties>,
+
+
+    /// 
     /// Metadata which can be used to manage the billing group.
     /// 
     /// Required: No
@@ -30,19 +42,9 @@ pub struct CfnBillingGroup {
     #[serde(rename = "BillingGroupName")]
     pub billing_group_name: Option<String>,
 
-
-    /// 
-    /// The properties of the billing group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BillingGroupProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BillingGroupProperties")]
-    pub billing_group_properties: Option<BillingGroupProperties>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnBillingGroup {
     fn type_string() -> &'static str {
@@ -53,6 +55,27 @@ impl cfn_resources::CfnResource for CfnBillingGroup {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The properties of a billing group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BillingGroupProperties {
+
+
+    /// 
+    /// The description of the billing group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BillingGroupDescription")]
+    pub billing_group_description: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -90,20 +113,3 @@ pub struct Tag {
 }
 
 
-/// The properties of a billing group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BillingGroupProperties {
-
-
-    /// 
-    /// The description of the billing group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BillingGroupDescription")]
-    pub billing_group_description: Option<String>,
-
-}

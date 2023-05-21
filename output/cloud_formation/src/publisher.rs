@@ -42,6 +42,8 @@ pub struct CfnPublisher {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnPublisher {
     fn type_string() -> &'static str {
         "AWS::CloudFormation::Publisher"

@@ -54,6 +54,8 @@ pub struct CfnVolume {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnVolume {
     fn type_string() -> &'static str {
         "AWS::OpsWorks::Volume"

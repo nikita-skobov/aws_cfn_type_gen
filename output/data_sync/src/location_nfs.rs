@@ -6,6 +6,26 @@ pub struct CfnLocationNFS {
 
 
     /// 
+    /// The name of the NFS server. This value is the IP address or Domain Name Service (DNS)    name of the NFS server. An agent that is installed on-premises uses this hostname to mount the    NFS server in a network.
+    /// 
+    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
+    /// 
+    /// NoteThis name must either be DNS-compliant or must be an IP version 4 (IPv4)     address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: Option<String>,
+
+
+    /// 
     /// The subdirectory in the NFS file system that is used to read data from the NFS source    location or write data to the NFS destination. The NFS path should be a path that's    exported by the NFS server, or a subdirectory of that path. The path should be such that it    can be mounted by other NFS clients in your network.
     /// 
     /// To see all the paths exported by your NFS server, run "showmount -e     nfs-server-name" from an NFS client that has access to your server. You can specify    any directory that appears in the results, and any subdirectory of that directory. Ensure that    the NFS export is accessible without Kerberos authentication.
@@ -30,37 +50,15 @@ pub struct CfnLocationNFS {
 
 
     /// 
-    /// Contains a list of Amazon Resource Names (ARNs) of agents that are used to connect to    an NFS server.
-    /// 
-    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: OnPremConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnPremConfig")]
-    pub on_prem_config: OnPremConfig,
-
-
-    /// 
-    /// The name of the NFS server. This value is the IP address or Domain Name Service (DNS)    name of the NFS server. An agent that is installed on-premises uses this hostname to mount the    NFS server in a network.
-    /// 
-    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
-    /// 
-    /// NoteThis name must either be DNS-compliant or must be an IP version 4 (IPv4)     address.
+    /// The NFS mount options that DataSync can use to mount your NFS share.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: MountOptions
     ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "MountOptions")]
+    pub mount_options: Option<MountOptions>,
 
 
     /// 
@@ -78,17 +76,21 @@ pub struct CfnLocationNFS {
 
 
     /// 
-    /// The NFS mount options that DataSync can use to mount your NFS share.
+    /// Contains a list of Amazon Resource Names (ARNs) of agents that are used to connect to    an NFS server.
     /// 
-    /// Required: No
+    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: MountOptions
+    /// Type: OnPremConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MountOptions")]
-    pub mount_options: Option<MountOptions>,
+    #[serde(rename = "OnPremConfig")]
+    pub on_prem_config: OnPremConfig,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocationNFS {
     fn type_string() -> &'static str {
@@ -98,27 +100,6 @@ impl cfn_resources::CfnResource for CfnLocationNFS {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OnPremConfig {
-
-
-    /// 
-    /// ARNs of the agents to use for an NFS location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
 }
 
 
@@ -157,6 +138,31 @@ pub struct Tag {
 }
 
 
+
+
+/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnPremConfig {
+
+
+    /// 
+    /// ARNs of the agents to use for an NFS location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+}
+
+
+
+
 /// The NFS mount options that DataSync can use to mount your NFS share.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MountOptions {
@@ -179,6 +185,35 @@ pub struct MountOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    pub version: Option<String>,
+    pub version: Option<MountOptionsVersionEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MountOptionsVersionEnum {
+
+    /// AUTOMATIC
+    #[serde(rename = "AUTOMATIC")]
+    Automatic,
+
+    /// NFS3
+    #[serde(rename = "NFS3")]
+    Nfs3,
+
+    /// NFS4_0
+    #[serde(rename = "NFS4_0")]
+    Nfs40,
+
+    /// NFS4_1
+    #[serde(rename = "NFS4_1")]
+    Nfs41,
+
+}
+
+impl Default for MountOptionsVersionEnum {
+    fn default() -> Self {
+        MountOptionsVersionEnum::Automatic
+    }
+}
+

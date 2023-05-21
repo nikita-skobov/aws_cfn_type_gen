@@ -14,17 +14,15 @@ pub struct CfnLink {
 
 
     /// 
-    /// An array of key-value pairs to apply to the link.
+    /// The ARN of the sink in the monitoring account that you want to link to.    You can use ListSinks to    find the ARNs of sinks.
     /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "SinkIdentifier")]
+    pub sink_identifier: String,
 
 
     /// 
@@ -44,18 +42,6 @@ pub struct CfnLink {
 
 
     /// 
-    /// The ARN of the sink in the monitoring account that you want to link to.    You can use ListSinks to    find the ARNs of sinks.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SinkIdentifier")]
-    pub sink_identifier: String,
-
-
-    /// 
     /// An array of strings that define which types of data that the source account shares with the monitoring   account. Valid values are AWS::CloudWatch::Metric | AWS::Logs::LogGroup | AWS::XRay::Trace.
     /// 
     /// Required: Yes
@@ -66,7 +52,23 @@ pub struct CfnLink {
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Vec<String>,
 
+
+    /// 
+    /// An array of key-value pairs to apply to the link.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLink {
     fn type_string() -> &'static str {

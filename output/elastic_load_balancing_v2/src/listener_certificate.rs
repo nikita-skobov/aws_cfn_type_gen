@@ -30,6 +30,8 @@ pub struct CfnListenerCertificate {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnListenerCertificate {
     fn type_string() -> &'static str {
         "AWS::ElasticLoadBalancingV2::ListenerCertificate"
@@ -58,3 +60,5 @@ pub struct Certificate {
     pub certificate_arn: Option<String>,
 
 }
+
+

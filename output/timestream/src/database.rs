@@ -6,19 +6,17 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// The identifier of the AWS KMS key used to encrypt the data stored in the    database.
+    /// The name of the Timestream database.
+    /// 
+    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
 
 
     /// 
@@ -34,19 +32,23 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// The name of the Timestream database.
-    /// 
-    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
+    /// The identifier of the AWS KMS key used to encrypt the data stored in the    database.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDatabase {
     fn type_string() -> &'static str {
@@ -92,3 +94,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

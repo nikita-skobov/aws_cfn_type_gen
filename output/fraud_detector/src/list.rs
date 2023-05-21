@@ -8,20 +8,6 @@ pub struct CfnList {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The variable type of the list. For more information, see Variable types
     /// 
     /// Required: No
@@ -52,6 +38,32 @@ pub struct CfnList {
 
 
     /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The elements in the list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Elements")]
+    pub elements: Option<Vec<String>>,
+
+
+    /// 
     /// The description of the list.
     /// 
     /// Required: No
@@ -66,19 +78,9 @@ pub struct CfnList {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// The elements in the list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Elements")]
-    pub elements: Option<Vec<String>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnList {
     fn type_string() -> &'static str {
@@ -103,17 +105,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -123,4 +114,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

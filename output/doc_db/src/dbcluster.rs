@@ -6,41 +6,6 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// The name of the cluster parameter group to associate with this       cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBClusterParameterGroupName")]
-    pub dbcluster_parameter_group_name: Option<String>,
-
-
-    /// 
-    /// Specifies whether the cluster is encrypted.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StorageEncrypted")]
-    pub storage_encrypted: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RestoreType")]
-    pub restore_type: Option<String>,
-
-
-    /// 
     /// The tags to be assigned to the cluster.
     /// 
     /// Required: No
@@ -50,126 +15,6 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The cluster identifier. This parameter is stored as a lowercase       string.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must contain from 1 to 63 letters, numbers, or hyphens.                         The first character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
-    /// 
-    /// Example: my-cluster
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// The version number of the database engine to use. The --engine-version will default to the latest major engine version. For production workloads, we recommend explicitly declaring this parameter with the intended major engine version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// The list of log types that need to be enabled for exporting to Amazon CloudWatch       Logs. You can enable audit logs or profiler logs. For more information, see       Auditing Amazon DocumentDB Events       and Profiling Amazon DocumentDB Operations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableCloudwatchLogsExports")]
-    pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
-
-
-    /// 
-    /// The number of days for which automated backups are retained. You       must specify a minimum value of 1.
-    /// 
-    /// Default: 1
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be a value from 1 to 35.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupRetentionPeriod")]
-    pub backup_retention_period: Option<i64>,
-
-
-    /// 
-    /// A list of EC2 VPC security groups to associate with this cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies the port that the database engine is listening on.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The name of the master user for the cluster.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be from 1 to 63 letters or numbers.               The first character must be a letter.               Cannot be a reserved word for the chosen database engine.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MasterUsername")]
-    pub master_username: Option<String>,
-
-
-    /// 
-    /// The AWS KMS key identifier for an encrypted cluster.
-    /// 
-    /// The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS KMS encryption key. If you are creating a cluster using the same AWS account that owns the AWS KMS encryption key that is used to encrypt the new cluster, you can use the AWS KMS key alias instead of the ARN for the AWS KMS encryption key.
-    /// 
-    /// If an encryption key is not specified in KmsKeyId:
-    /// 
-    /// If the StorageEncrypted parameter is           true, Amazon DocumentDB uses your default encryption key.
-    /// 
-    /// AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Regions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -201,15 +46,38 @@ pub struct CfnDBCluster {
     pub use_latest_restorable_time: Option<bool>,
 
 
-    /// Property description not available.
+    /// 
+    /// The number of days for which automated backups are retained. You       must specify a minimum value of 1.
+    /// 
+    /// Default: 1
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be a value from 1 to 35.
+    /// 
+    /// Required: No
     ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupRetentionPeriod")]
+    pub backup_retention_period: Option<i64>,
+
+
+    /// 
+    /// A subnet group to associate with this cluster.
+    /// 
+    /// Constraints: Must match the name of an existing       DBSubnetGroup. Must not be default.
+    /// 
+    /// Example: mySubnetgroup
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceDBClusterIdentifier")]
-    pub source_dbcluster_identifier: Option<String>,
+    #[serde(rename = "DBSubnetGroupName")]
+    pub dbsubnet_group_name: Option<String>,
 
 
     /// 
@@ -226,16 +94,45 @@ pub struct CfnDBCluster {
     pub master_user_password: Option<String>,
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceDBClusterIdentifier")]
+    pub source_dbcluster_identifier: Option<String>,
+
+
     /// 
-    /// Protects clusters from being accidentally deleted. If enabled, the     cluster cannot be deleted unless it is modified and      DeletionProtection is disabled.
+    /// The daily time range during which automated backups are created if       automated backups are enabled using the BackupRetentionPeriod parameter.
+    /// 
+    /// The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be in the format hh24:mi-hh24:mi.               Must be in Universal Coordinated Time (UTC).               Must not conflict with the preferred maintenance window.                         Must be at least 30 minutes.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeletionProtection")]
-    pub deletion_protection: Option<bool>,
+    #[serde(rename = "PreferredBackupWindow")]
+    pub preferred_backup_window: Option<String>,
+
+
+    /// 
+    /// A list of Amazon EC2 Availability Zones that instances in the       cluster can be created in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZones")]
+    pub availability_zones: Option<Vec<String>>,
 
 
     /// Property description not available.
@@ -247,6 +144,59 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToSnapshot")]
     pub copy_tags_to_snapshot: Option<bool>,
+
+
+    /// 
+    /// The version number of the database engine to use. The --engine-version will default to the latest major engine version. For production workloads, we recommend explicitly declaring this parameter with the intended major engine version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
+
+
+    /// 
+    /// The cluster identifier. This parameter is stored as a lowercase       string.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain from 1 to 63 letters, numbers, or hyphens.                         The first character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Example: my-cluster
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterIdentifier")]
+    pub dbcluster_identifier: Option<String>,
+
+
+    /// 
+    /// Specifies the port that the database engine is listening on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RestoreToTime")]
+    pub restore_to_time: Option<String>,
 
 
     /// 
@@ -270,15 +220,43 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// A list of Amazon EC2 Availability Zones that instances in the       cluster can be created in.
+    /// The list of log types that need to be enabled for exporting to Amazon CloudWatch       Logs. You can enable audit logs or profiler logs. For more information, see       Auditing Amazon DocumentDB Events       and Profiling Amazon DocumentDB Operations.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableCloudwatchLogsExports")]
+    pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the master user for the cluster.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be from 1 to 63 letters or numbers.               The first character must be a letter.               Cannot be a reserved word for the chosen database engine.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZones")]
-    pub availability_zones: Option<Vec<String>>,
+    #[serde(rename = "MasterUsername")]
+    pub master_username: Option<String>,
+
+
+    /// 
+    /// Specifies whether the cluster is encrypted.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StorageEncrypted")]
+    pub storage_encrypted: Option<bool>,
 
 
     /// Property description not available.
@@ -288,44 +266,68 @@ pub struct CfnDBCluster {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RestoreToTime")]
-    pub restore_to_time: Option<String>,
+    #[serde(rename = "RestoreType")]
+    pub restore_type: Option<String>,
 
 
     /// 
-    /// A subnet group to associate with this cluster.
-    /// 
-    /// Constraints: Must match the name of an existing       DBSubnetGroup. Must not be default.
-    /// 
-    /// Example: mySubnetgroup
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSubnetGroupName")]
-    pub dbsubnet_group_name: Option<String>,
-
-
-    /// 
-    /// The daily time range during which automated backups are created if       automated backups are enabled using the BackupRetentionPeriod parameter.
-    /// 
-    /// The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be in the format hh24:mi-hh24:mi.               Must be in Universal Coordinated Time (UTC).               Must not conflict with the preferred maintenance window.                         Must be at least 30 minutes.
+    /// The name of the cluster parameter group to associate with this       cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PreferredBackupWindow")]
-    pub preferred_backup_window: Option<String>,
+    #[serde(rename = "DBClusterParameterGroupName")]
+    pub dbcluster_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// The AWS KMS key identifier for an encrypted cluster.
+    /// 
+    /// The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS KMS encryption key. If you are creating a cluster using the same AWS account that owns the AWS KMS encryption key that is used to encrypt the new cluster, you can use the AWS KMS key alias instead of the ARN for the AWS KMS encryption key.
+    /// 
+    /// If an encryption key is not specified in KmsKeyId:
+    /// 
+    /// If the StorageEncrypted parameter is           true, Amazon DocumentDB uses your default encryption key.
+    /// 
+    /// AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Regions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// Protects clusters from being accidentally deleted. If enabled, the     cluster cannot be deleted unless it is modified and      DeletionProtection is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtection")]
+    pub deletion_protection: Option<bool>,
+
+
+    /// 
+    /// A list of EC2 VPC security groups to associate with this cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBCluster {
     fn type_string() -> &'static str {
@@ -371,3 +373,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

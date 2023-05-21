@@ -6,6 +6,18 @@ pub struct CfnCollection {
 
 
     /// 
+    /// A description of the collection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the collection.
     /// 
     /// Collection names must meet the following criteria:
@@ -46,19 +58,9 @@ pub struct CfnCollection {
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
 
-
-    /// 
-    /// A description of the collection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCollection {
     fn type_string() -> &'static str {
@@ -104,3 +106,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

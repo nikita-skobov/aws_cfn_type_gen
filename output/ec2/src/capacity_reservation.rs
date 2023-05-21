@@ -6,19 +6,15 @@ pub struct CfnCapacityReservation {
 
 
     /// 
-    /// Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings:
+    /// The Availability Zone in which to create the Capacity Reservation.
     /// 
-    /// default - The Capacity Reservation is created on hardware that is shared with other AWS accounts.                        dedicated - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single AWS account.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: dedicated | default
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "Tenancy")]
-    pub tenancy: Option<String>,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: String,
 
 
     /// 
@@ -32,7 +28,21 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstancePlatform")]
-    pub instance_platform: String,
+    pub instance_platform: CapacityReservationInstancePlatformEnum,
+
+
+    /// 
+    /// The number of instances for which to reserve capacity.
+    /// 
+    /// Valid range: 1 - 1000
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceCount")]
+    pub instance_count: i64,
 
 
     /// 
@@ -48,19 +58,31 @@ pub struct CfnCapacityReservation {
 
 
     /// 
-    /// The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity 			is released and you can no longer launch instances into it. The Capacity Reservation's state changes to 				expired when it reaches its end date and time.
+    /// Deprecated.
     /// 
-    /// You must provide an EndDate value if EndDateType is 				limited. Omit EndDate if EndDateType is 				unlimited.
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EphemeralStorage")]
+    pub ephemeral_storage: Option<bool>,
+
+
     /// 
-    /// If the EndDateType is limited, the Capacity Reservation is cancelled within an hour from the specified time. For example, if you specify 			5/31/2019, 13:30:55, the Capacity Reservation is guaranteed to end between 13:30:55 and 14:30:55 on 5/31/2019.
+    /// Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings:
+    /// 
+    /// default - The Capacity Reservation is created on hardware that is shared with other AWS accounts.                        dedicated - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single AWS account.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndDate")]
-    pub end_date: Option<String>,
+    /// Allowed values: dedicated | default
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tenancy")]
+    pub tenancy: Option<CapacityReservationTenancyEnum>,
 
 
     /// 
@@ -78,47 +100,47 @@ pub struct CfnCapacityReservation {
 
 
     /// 
-    /// Indicates the type of instance launches that the Capacity Reservation accepts. The options 			include:
+    /// Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end 			types:
     /// 
-    /// open - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, 				and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying 				any additional parameters.                        targeted - The Capacity Reservation only accepts instances that have matching attributes 					(instance type, platform, and Availability Zone), and explicitly target the 					Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.
-    /// 
-    /// Default: open
+    /// unlimited - The Capacity Reservation remains active until you explicitly cancel it. Do not 					provide an EndDate if the EndDateType is 						unlimited.                        limited - The Capacity Reservation expires automatically at a specified date and time. You must 					provide an EndDate value if the EndDateType value is 						limited.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: open | targeted
+    /// Allowed values: limited | unlimited
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndDateType")]
+    pub end_date_type: Option<CapacityReservationEndDateTypeEnum>,
+
+
+    /// 
+    /// Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides 			dedicated throughput to Amazon EBS and an optimized configuration stack to provide 			optimal I/O performance. This optimization isn't available with all instance types. 			Additional usage charges apply when using an EBS- optimized instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InstanceMatchCriteria")]
-    pub instance_match_criteria: Option<String>,
+    #[serde(rename = "EbsOptimized")]
+    pub ebs_optimized: Option<bool>,
 
 
     /// 
-    /// The Availability Zone in which to create the Capacity Reservation.
+    /// The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity 			is released and you can no longer launch instances into it. The Capacity Reservation's state changes to 				expired when it reaches its end date and time.
     /// 
-    /// Required: Yes
+    /// You must provide an EndDate value if EndDateType is 				limited. Omit EndDate if EndDateType is 				unlimited.
+    /// 
+    /// If the EndDateType is limited, the Capacity Reservation is cancelled within an hour from the specified time. For example, if you specify 			5/31/2019, 13:30:55, the Capacity Reservation is guaranteed to end between 13:30:55 and 14:30:55 on 5/31/2019.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
-
-
-    /// 
-    /// The number of instances for which to reserve capacity.
-    /// 
-    /// Valid range: 1 - 1000
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceCount")]
-    pub instance_count: i64,
+    #[serde(rename = "EndDate")]
+    pub end_date: Option<String>,
 
 
     /// 
@@ -148,45 +170,161 @@ pub struct CfnCapacityReservation {
 
 
     /// 
-    /// Deprecated.
+    /// Indicates the type of instance launches that the Capacity Reservation accepts. The options 			include:
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EphemeralStorage")]
-    pub ephemeral_storage: Option<bool>,
-
-
+    /// open - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, 				and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying 				any additional parameters.                        targeted - The Capacity Reservation only accepts instances that have matching attributes 					(instance type, platform, and Availability Zone), and explicitly target the 					Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.
     /// 
-    /// Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end 			types:
-    /// 
-    /// unlimited - The Capacity Reservation remains active until you explicitly cancel it. Do not 					provide an EndDate if the EndDateType is 						unlimited.                        limited - The Capacity Reservation expires automatically at a specified date and time. You must 					provide an EndDate value if the EndDateType value is 						limited.
+    /// Default: open
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: limited | unlimited
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndDateType")]
-    pub end_date_type: Option<String>,
-
-
-    /// 
-    /// Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides 			dedicated throughput to Amazon EBS and an optimized configuration stack to provide 			optimal I/O performance. This optimization isn't available with all instance types. 			Additional usage charges apply when using an EBS- optimized instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Allowed values: open | targeted
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EbsOptimized")]
-    pub ebs_optimized: Option<bool>,
+    #[serde(rename = "InstanceMatchCriteria")]
+    pub instance_match_criteria: Option<CapacityReservationInstanceMatchCriteriaEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CapacityReservationEndDateTypeEnum {
+
+    /// limited
+    #[serde(rename = "limited")]
+    Limited,
+
+    /// unlimited
+    #[serde(rename = "unlimited")]
+    Unlimited,
+
+}
+
+impl Default for CapacityReservationEndDateTypeEnum {
+    fn default() -> Self {
+        CapacityReservationEndDateTypeEnum::Limited
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CapacityReservationInstancePlatformEnum {
+
+    /// Linux with SQL Server Enterprise
+    #[serde(rename = "Linux with SQL Server Enterprise")]
+    Linuxwithsqlserverenterprise,
+
+    /// Linux with SQL Server Standard
+    #[serde(rename = "Linux with SQL Server Standard")]
+    Linuxwithsqlserverstandard,
+
+    /// Linux with SQL Server Web
+    #[serde(rename = "Linux with SQL Server Web")]
+    Linuxwithsqlserverweb,
+
+    /// Linux/UNIX
+    #[serde(rename = "Linux/UNIX")]
+    Linuxunix,
+
+    /// Red Hat Enterprise Linux
+    #[serde(rename = "Red Hat Enterprise Linux")]
+    Redhatenterpriselinux,
+
+    /// RHEL with HA
+    #[serde(rename = "RHEL with HA")]
+    Rhelwithha,
+
+    /// RHEL with HA and SQL Server Enterprise
+    #[serde(rename = "RHEL with HA and SQL Server Enterprise")]
+    Rhelwithhaandsqlserverenterprise,
+
+    /// RHEL with HA and SQL Server Standard
+    #[serde(rename = "RHEL with HA and SQL Server Standard")]
+    Rhelwithhaandsqlserverstandard,
+
+    /// RHEL with SQL Server Enterprise
+    #[serde(rename = "RHEL with SQL Server Enterprise")]
+    Rhelwithsqlserverenterprise,
+
+    /// RHEL with SQL Server Standard
+    #[serde(rename = "RHEL with SQL Server Standard")]
+    Rhelwithsqlserverstandard,
+
+    /// RHEL with SQL Server Web
+    #[serde(rename = "RHEL with SQL Server Web")]
+    Rhelwithsqlserverweb,
+
+    /// SUSE Linux
+    #[serde(rename = "SUSE Linux")]
+    Suselinux,
+
+    /// Windows
+    #[serde(rename = "Windows")]
+    Windows,
+
+    /// Windows with SQL Server
+    #[serde(rename = "Windows with SQL Server")]
+    Windowswithsqlserver,
+
+    /// Windows with SQL Server Enterprise
+    #[serde(rename = "Windows with SQL Server Enterprise")]
+    Windowswithsqlserverenterprise,
+
+    /// Windows with SQL Server Standard
+    #[serde(rename = "Windows with SQL Server Standard")]
+    Windowswithsqlserverstandard,
+
+    /// Windows with SQL Server Web
+    #[serde(rename = "Windows with SQL Server Web")]
+    Windowswithsqlserverweb,
+
+}
+
+impl Default for CapacityReservationInstancePlatformEnum {
+    fn default() -> Self {
+        CapacityReservationInstancePlatformEnum::Linuxwithsqlserverenterprise
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CapacityReservationTenancyEnum {
+
+    /// dedicated
+    #[serde(rename = "dedicated")]
+    Dedicated,
+
+    /// default
+    #[serde(rename = "default")]
+    Default,
+
+}
+
+impl Default for CapacityReservationTenancyEnum {
+    fn default() -> Self {
+        CapacityReservationTenancyEnum::Dedicated
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CapacityReservationInstanceMatchCriteriaEnum {
+
+    /// open
+    #[serde(rename = "open")]
+    Open,
+
+    /// targeted
+    #[serde(rename = "targeted")]
+    Targeted,
+
+}
+
+impl Default for CapacityReservationInstanceMatchCriteriaEnum {
+    fn default() -> Self {
+        CapacityReservationInstanceMatchCriteriaEnum::Open
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCapacityReservation {
     fn type_string() -> &'static str {
@@ -197,6 +335,394 @@ impl cfn_resources::CfnResource for CfnCapacityReservation {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// An array of key-value pairs to apply to this resource.
+///
+/// For more information, see Tag.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TagSpecification {
+
+
+    /// 
+    /// The tags to apply to the resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of resource to tag. Specify capacity-reservation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: capacity-reservation | capacity-reservation-fleet | carrier-gateway | client-vpn-endpoint | coip-pool | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-gpu | elastic-ip | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | instance-event-window | internet-gateway | ipam | ipam-pool | ipam-resource-discovery | ipam-resource-discovery-association | ipam-scope | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway | local-gateway-route-table | local-gateway-route-table-virtual-interface-group-association | local-gateway-route-table-vpc-association | local-gateway-virtual-interface | local-gateway-virtual-interface-group | natgateway | network-acl | network-insights-access-scope | network-insights-access-scope-analysis | network-insights-analysis | network-insights-path | network-interface | placement-group | prefix-list | replace-root-volume-task | reserved-instances | route-table | security-group | security-group-rule | snapshot | spot-fleet-request | spot-instances-request | subnet | subnet-cidr-reservation | traffic-mirror-filter | traffic-mirror-filter-rule | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-connect-peer | transit-gateway-multicast-domain | transit-gateway-policy-table | transit-gateway-route-table | transit-gateway-route-table-announcement | verified-access-endpoint | verified-access-group | verified-access-instance | verified-access-policy | verified-access-trust-provider | volume | vpc | vpc-block-public-access-exclusion | vpc-endpoint | vpc-endpoint-connection | vpc-endpoint-connection-device-type | vpc-endpoint-service | vpc-endpoint-service-permission | vpc-flow-log | vpc-peering-connection | vpn-connection | vpn-connection-device-type | vpn-gateway
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceType")]
+    pub resource_type: Option<TagSpecificationResourceTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TagSpecificationResourceTypeEnum {
+
+    /// capacity-reservation
+    #[serde(rename = "capacity-reservation")]
+    Capacityreservation,
+
+    /// capacity-reservation-fleet
+    #[serde(rename = "capacity-reservation-fleet")]
+    Capacityreservationfleet,
+
+    /// carrier-gateway
+    #[serde(rename = "carrier-gateway")]
+    Carriergateway,
+
+    /// client-vpn-endpoint
+    #[serde(rename = "client-vpn-endpoint")]
+    Clientvpnendpoint,
+
+    /// coip-pool
+    #[serde(rename = "coip-pool")]
+    Coippool,
+
+    /// customer-gateway
+    #[serde(rename = "customer-gateway")]
+    Customergateway,
+
+    /// dedicated-host
+    #[serde(rename = "dedicated-host")]
+    Dedicatedhost,
+
+    /// dhcp-options
+    #[serde(rename = "dhcp-options")]
+    Dhcpoptions,
+
+    /// egress-only-internet-gateway
+    #[serde(rename = "egress-only-internet-gateway")]
+    Egressonlyinternetgateway,
+
+    /// elastic-gpu
+    #[serde(rename = "elastic-gpu")]
+    Elasticgpu,
+
+    /// elastic-ip
+    #[serde(rename = "elastic-ip")]
+    Elasticip,
+
+    /// export-image-task
+    #[serde(rename = "export-image-task")]
+    Exportimagetask,
+
+    /// export-instance-task
+    #[serde(rename = "export-instance-task")]
+    Exportinstancetask,
+
+    /// fleet
+    #[serde(rename = "fleet")]
+    Fleet,
+
+    /// fpga-image
+    #[serde(rename = "fpga-image")]
+    Fpgaimage,
+
+    /// host-reservation
+    #[serde(rename = "host-reservation")]
+    Hostreservation,
+
+    /// image
+    #[serde(rename = "image")]
+    Image,
+
+    /// import-image-task
+    #[serde(rename = "import-image-task")]
+    Importimagetask,
+
+    /// import-snapshot-task
+    #[serde(rename = "import-snapshot-task")]
+    Importsnapshottask,
+
+    /// instance
+    #[serde(rename = "instance")]
+    Instance,
+
+    /// instance-event-window
+    #[serde(rename = "instance-event-window")]
+    Instanceeventwindow,
+
+    /// internet-gateway
+    #[serde(rename = "internet-gateway")]
+    Internetgateway,
+
+    /// ipam
+    #[serde(rename = "ipam")]
+    Ipam,
+
+    /// ipam-pool
+    #[serde(rename = "ipam-pool")]
+    Ipampool,
+
+    /// ipam-resource-discovery
+    #[serde(rename = "ipam-resource-discovery")]
+    Ipamresourcediscovery,
+
+    /// ipam-resource-discovery-association
+    #[serde(rename = "ipam-resource-discovery-association")]
+    Ipamresourcediscoveryassociation,
+
+    /// ipam-scope
+    #[serde(rename = "ipam-scope")]
+    Ipamscope,
+
+    /// ipv4pool-ec2
+    #[serde(rename = "ipv4pool-ec2")]
+    Ipv4poolec2,
+
+    /// ipv6pool-ec2
+    #[serde(rename = "ipv6pool-ec2")]
+    Ipv6poolec2,
+
+    /// key-pair
+    #[serde(rename = "key-pair")]
+    Keypair,
+
+    /// launch-template
+    #[serde(rename = "launch-template")]
+    Launchtemplate,
+
+    /// local-gateway
+    #[serde(rename = "local-gateway")]
+    Localgateway,
+
+    /// local-gateway-route-table
+    #[serde(rename = "local-gateway-route-table")]
+    Localgatewayroutetable,
+
+    /// local-gateway-route-table-virtual-interface-group-association
+    #[serde(rename = "local-gateway-route-table-virtual-interface-group-association")]
+    Localgatewayroutetablevirtualinterfacegroupassociation,
+
+    /// local-gateway-route-table-vpc-association
+    #[serde(rename = "local-gateway-route-table-vpc-association")]
+    Localgatewayroutetablevpcassociation,
+
+    /// local-gateway-virtual-interface
+    #[serde(rename = "local-gateway-virtual-interface")]
+    Localgatewayvirtualinterface,
+
+    /// local-gateway-virtual-interface-group
+    #[serde(rename = "local-gateway-virtual-interface-group")]
+    Localgatewayvirtualinterfacegroup,
+
+    /// natgateway
+    #[serde(rename = "natgateway")]
+    Natgateway,
+
+    /// network-acl
+    #[serde(rename = "network-acl")]
+    Networkacl,
+
+    /// network-insights-access-scope
+    #[serde(rename = "network-insights-access-scope")]
+    Networkinsightsaccessscope,
+
+    /// network-insights-access-scope-analysis
+    #[serde(rename = "network-insights-access-scope-analysis")]
+    Networkinsightsaccessscopeanalysis,
+
+    /// network-insights-analysis
+    #[serde(rename = "network-insights-analysis")]
+    Networkinsightsanalysis,
+
+    /// network-insights-path
+    #[serde(rename = "network-insights-path")]
+    Networkinsightspath,
+
+    /// network-interface
+    #[serde(rename = "network-interface")]
+    Networkinterface,
+
+    /// placement-group
+    #[serde(rename = "placement-group")]
+    Placementgroup,
+
+    /// prefix-list
+    #[serde(rename = "prefix-list")]
+    Prefixlist,
+
+    /// replace-root-volume-task
+    #[serde(rename = "replace-root-volume-task")]
+    Replacerootvolumetask,
+
+    /// reserved-instances
+    #[serde(rename = "reserved-instances")]
+    Reservedinstances,
+
+    /// route-table
+    #[serde(rename = "route-table")]
+    Routetable,
+
+    /// security-group
+    #[serde(rename = "security-group")]
+    Securitygroup,
+
+    /// security-group-rule
+    #[serde(rename = "security-group-rule")]
+    Securitygrouprule,
+
+    /// snapshot
+    #[serde(rename = "snapshot")]
+    Snapshot,
+
+    /// spot-fleet-request
+    #[serde(rename = "spot-fleet-request")]
+    Spotfleetrequest,
+
+    /// spot-instances-request
+    #[serde(rename = "spot-instances-request")]
+    Spotinstancesrequest,
+
+    /// subnet
+    #[serde(rename = "subnet")]
+    Subnet,
+
+    /// subnet-cidr-reservation
+    #[serde(rename = "subnet-cidr-reservation")]
+    Subnetcidrreservation,
+
+    /// traffic-mirror-filter
+    #[serde(rename = "traffic-mirror-filter")]
+    Trafficmirrorfilter,
+
+    /// traffic-mirror-filter-rule
+    #[serde(rename = "traffic-mirror-filter-rule")]
+    Trafficmirrorfilterrule,
+
+    /// traffic-mirror-session
+    #[serde(rename = "traffic-mirror-session")]
+    Trafficmirrorsession,
+
+    /// traffic-mirror-target
+    #[serde(rename = "traffic-mirror-target")]
+    Trafficmirrortarget,
+
+    /// transit-gateway
+    #[serde(rename = "transit-gateway")]
+    Transitgateway,
+
+    /// transit-gateway-attachment
+    #[serde(rename = "transit-gateway-attachment")]
+    Transitgatewayattachment,
+
+    /// transit-gateway-connect-peer
+    #[serde(rename = "transit-gateway-connect-peer")]
+    Transitgatewayconnectpeer,
+
+    /// transit-gateway-multicast-domain
+    #[serde(rename = "transit-gateway-multicast-domain")]
+    Transitgatewaymulticastdomain,
+
+    /// transit-gateway-policy-table
+    #[serde(rename = "transit-gateway-policy-table")]
+    Transitgatewaypolicytable,
+
+    /// transit-gateway-route-table
+    #[serde(rename = "transit-gateway-route-table")]
+    Transitgatewayroutetable,
+
+    /// transit-gateway-route-table-announcement
+    #[serde(rename = "transit-gateway-route-table-announcement")]
+    Transitgatewayroutetableannouncement,
+
+    /// verified-access-endpoint
+    #[serde(rename = "verified-access-endpoint")]
+    Verifiedaccessendpoint,
+
+    /// verified-access-group
+    #[serde(rename = "verified-access-group")]
+    Verifiedaccessgroup,
+
+    /// verified-access-instance
+    #[serde(rename = "verified-access-instance")]
+    Verifiedaccessinstance,
+
+    /// verified-access-policy
+    #[serde(rename = "verified-access-policy")]
+    Verifiedaccesspolicy,
+
+    /// verified-access-trust-provider
+    #[serde(rename = "verified-access-trust-provider")]
+    Verifiedaccesstrustprovider,
+
+    /// volume
+    #[serde(rename = "volume")]
+    Volume,
+
+    /// vpc
+    #[serde(rename = "vpc")]
+    Vpc,
+
+    /// vpc-block-public-access-exclusion
+    #[serde(rename = "vpc-block-public-access-exclusion")]
+    Vpcblockpublicaccessexclusion,
+
+    /// vpc-endpoint
+    #[serde(rename = "vpc-endpoint")]
+    Vpcendpoint,
+
+    /// vpc-endpoint-connection
+    #[serde(rename = "vpc-endpoint-connection")]
+    Vpcendpointconnection,
+
+    /// vpc-endpoint-connection-device-type
+    #[serde(rename = "vpc-endpoint-connection-device-type")]
+    Vpcendpointconnectiondevicetype,
+
+    /// vpc-endpoint-service
+    #[serde(rename = "vpc-endpoint-service")]
+    Vpcendpointservice,
+
+    /// vpc-endpoint-service-permission
+    #[serde(rename = "vpc-endpoint-service-permission")]
+    Vpcendpointservicepermission,
+
+    /// vpc-flow-log
+    #[serde(rename = "vpc-flow-log")]
+    Vpcflowlog,
+
+    /// vpc-peering-connection
+    #[serde(rename = "vpc-peering-connection")]
+    Vpcpeeringconnection,
+
+    /// vpn-connection
+    #[serde(rename = "vpn-connection")]
+    Vpnconnection,
+
+    /// vpn-connection-device-type
+    #[serde(rename = "vpn-connection-device-type")]
+    Vpnconnectiondevicetype,
+
+    /// vpn-gateway
+    #[serde(rename = "vpn-gateway")]
+    Vpngateway,
+
+}
+
+impl Default for TagSpecificationResourceTypeEnum {
+    fn default() -> Self {
+        TagSpecificationResourceTypeEnum::Capacityreservation
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -234,36 +760,3 @@ pub struct Tag {
 }
 
 
-/// An array of key-value pairs to apply to this resource.
-///
-/// For more information, see Tag.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TagSpecification {
-
-
-    /// 
-    /// The type of resource to tag. Specify capacity-reservation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: capacity-reservation | capacity-reservation-fleet | carrier-gateway | client-vpn-endpoint | coip-pool | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-gpu | elastic-ip | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | instance-event-window | internet-gateway | ipam | ipam-pool | ipam-resource-discovery | ipam-resource-discovery-association | ipam-scope | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway | local-gateway-route-table | local-gateway-route-table-virtual-interface-group-association | local-gateway-route-table-vpc-association | local-gateway-virtual-interface | local-gateway-virtual-interface-group | natgateway | network-acl | network-insights-access-scope | network-insights-access-scope-analysis | network-insights-analysis | network-insights-path | network-interface | placement-group | prefix-list | replace-root-volume-task | reserved-instances | route-table | security-group | security-group-rule | snapshot | spot-fleet-request | spot-instances-request | subnet | subnet-cidr-reservation | traffic-mirror-filter | traffic-mirror-filter-rule | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-connect-peer | transit-gateway-multicast-domain | transit-gateway-policy-table | transit-gateway-route-table | transit-gateway-route-table-announcement | verified-access-endpoint | verified-access-group | verified-access-instance | verified-access-policy | verified-access-trust-provider | volume | vpc | vpc-block-public-access-exclusion | vpc-endpoint | vpc-endpoint-connection | vpc-endpoint-connection-device-type | vpc-endpoint-service | vpc-endpoint-service-permission | vpc-flow-log | vpc-peering-connection | vpn-connection | vpn-connection-device-type | vpn-gateway
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceType")]
-    pub resource_type: Option<String>,
-
-
-    /// 
-    /// The tags to apply to the resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-}

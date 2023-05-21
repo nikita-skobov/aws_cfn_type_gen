@@ -6,17 +6,19 @@ pub struct CfnAggregationAuthorization {
 
 
     /// 
-    /// An array of tag object.
+    /// The region authorized to collect aggregated data.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthorizedAwsRegion")]
+    pub authorized_aws_region: String,
 
 
     /// 
@@ -34,21 +36,21 @@ pub struct CfnAggregationAuthorization {
 
 
     /// 
-    /// The region authorized to collect aggregated data.
+    /// An array of tag object.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 1
+    /// Maximum: 50
     ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthorizedAwsRegion")]
-    pub authorized_aws_region: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAggregationAuthorization {
     fn type_string() -> &'static str {
@@ -94,3 +96,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

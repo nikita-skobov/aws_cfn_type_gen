@@ -6,6 +6,18 @@ pub struct CfnCertificate {
 
 
     /// 
+    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificatePem")]
+    pub certificate_pem: Option<String>,
+
+
+    /// 
     /// The status of the certificate.
     /// 
     /// Valid values are ACTIVE, INACTIVE, REVOKED, PENDING_TRANSFER, and     PENDING_ACTIVATION.
@@ -19,18 +31,6 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: String,
-
-
-    /// 
-    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CACertificatePem")]
-    pub cacertificate_pem: Option<String>,
 
 
     /// 
@@ -62,17 +62,19 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
+    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificatePem")]
-    pub certificate_pem: Option<String>,
+    #[serde(rename = "CACertificatePem")]
+    pub cacertificate_pem: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {

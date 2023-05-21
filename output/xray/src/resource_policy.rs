@@ -6,15 +6,15 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// The resource-based policy document, which can be up to 5kb in size.
+    /// The name of the resource-based policy. Must be unique within a specific AWS account.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyDocument")]
-    pub policy_document: String,
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// The name of the resource-based policy. Must be unique within a specific AWS account.
+    /// The resource-based policy document, which can be up to 5kb in size.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDocument")]
+    pub policy_document: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string() -> &'static str {

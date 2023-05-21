@@ -8,18 +8,6 @@ pub struct CfnNotificationChannel {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnsRoleName")]
-    pub sns_role_name: String,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the SNS topic that collects notifications from AWS Firewall Manager.
     /// 
     /// Required: Yes
@@ -30,7 +18,21 @@ pub struct CfnNotificationChannel {
     #[serde(rename = "SnsTopicArn")]
     pub sns_topic_arn: String,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsRoleName")]
+    pub sns_role_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnNotificationChannel {
     fn type_string() -> &'static str {

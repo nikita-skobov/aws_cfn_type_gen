@@ -18,18 +18,6 @@ pub struct CfnPrimaryTaskSet {
 
 
     /// 
-    /// The short name or full Amazon Resource Name (ARN) of the service that the task set exists in.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Service")]
-    pub service: String,
-
-
-    /// 
     /// The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service that the task 			set exists in.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnPrimaryTaskSet {
     #[serde(rename = "Cluster")]
     pub cluster: String,
 
+
+    /// 
+    /// The short name or full Amazon Resource Name (ARN) of the service that the task set exists in.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Service")]
+    pub service: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPrimaryTaskSet {
     fn type_string() -> &'static str {

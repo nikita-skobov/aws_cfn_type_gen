@@ -39,6 +39,8 @@ pub struct CfnApplicationEntitlementAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnApplicationEntitlementAssociation {
     fn type_string() -> &'static str {
         "AWS::AppStream::ApplicationEntitlementAssociation"

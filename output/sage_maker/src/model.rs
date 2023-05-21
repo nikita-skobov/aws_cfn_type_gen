@@ -6,6 +6,30 @@ pub struct CfnModel {
 
 
     /// 
+    /// The location of the primary docker image containing inference code, associated       artifacts, and custom environment map that the inference code uses when the model is       deployed for predictions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ContainerDefinition
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrimaryContainer")]
+    pub primary_container: Option<ContainerDefinition>,
+
+
+    /// 
+    /// Specifies details of how containers in a multi-container endpoint are called.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InferenceExecutionConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InferenceExecutionConfig")]
+    pub inference_execution_config: Option<InferenceExecutionConfig>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume to access model       artifacts and docker image for deployment on ML compute instances or for batch transform       jobs. Deploying on ML compute instances is part of model hosting. For more information,       see SageMaker         Roles.
     /// 
     /// NoteTo be able to pass this role to SageMaker, the caller of this API must have the           iam:PassRole permission.
@@ -42,18 +66,6 @@ pub struct CfnModel {
 
 
     /// 
-    /// Isolates the model container. No inbound or outbound network calls can be made to or       from the model container.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnableNetworkIsolation")]
-    pub enable_network_isolation: Option<bool>,
-
-
-    /// 
     /// A VpcConfig object that specifies the VPC that you want your model to connect       to. Control access to and from your model container by configuring the VPC.         VpcConfig is used in hosting services and in batch transform. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Data in Batch         Transform Jobs by Using an Amazon Virtual Private Cloud.
     /// 
     /// Required: No
@@ -66,29 +78,15 @@ pub struct CfnModel {
 
 
     /// 
-    /// Specifies details of how containers in a multi-container endpoint are called.
+    /// Isolates the model container. No inbound or outbound network calls can be made to or       from the model container.
     /// 
     /// Required: No
     ///
-    /// Type: InferenceExecutionConfig
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InferenceExecutionConfig")]
-    pub inference_execution_config: Option<InferenceExecutionConfig>,
-
-
-    /// 
-    /// Specifies the containers in the inference pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ContainerDefinition
-    ///
-    /// Maximum: 15
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Containers")]
-    pub containers: Option<Vec<ContainerDefinition>>,
+    #[serde(rename = "EnableNetworkIsolation")]
+    pub enable_network_isolation: Option<bool>,
 
 
     /// 
@@ -108,17 +106,21 @@ pub struct CfnModel {
 
 
     /// 
-    /// The location of the primary docker image containing inference code, associated       artifacts, and custom environment map that the inference code uses when the model is       deployed for predictions.
+    /// Specifies the containers in the inference pipeline.
     /// 
     /// Required: No
     ///
-    /// Type: ContainerDefinition
+    /// Type: List of ContainerDefinition
+    ///
+    /// Maximum: 15
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PrimaryContainer")]
-    pub primary_container: Option<ContainerDefinition>,
+    #[serde(rename = "Containers")]
+    pub containers: Option<Vec<ContainerDefinition>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnModel {
     fn type_string() -> &'static str {
@@ -129,6 +131,43 @@ impl cfn_resources::CfnResource for CfnModel {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConfig {
+
+
+    /// 
+    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+
+    /// 
+    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
+
+}
+
+
 
 
 /// Specifies an authentication configuration for the private docker registry where your       model image is hosted. Specify a value for this property only if you specified         Vpc as the value for the RepositoryAccessMode field of the         ImageConfig object that you passed to a call to         CreateModel and the private Docker registry where the model image is       hosted requires authentication.
@@ -156,207 +195,6 @@ pub struct RepositoryAuthConfig {
 }
 
 
-/// Describes the container, as part of model definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ContainerDefinition {
-
-
-    /// 
-    /// The name or Amazon Resource Name (ARN) of the model package to use to create the       model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 176
-    ///
-    /// Pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:[a-z\-]*\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)(\/[0-9]{1,5})?$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelPackageName")]
-    pub model_package_name: Option<String>,
-
-
-    /// 
-    /// The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a       Docker registry that is accessible from the same VPC that you configure for your       endpoint. If you are using your own custom algorithm instead of an algorithm provided by       SageMaker, the inference code must meet SageMaker requirements. SageMaker supports both         registry/repository[:tag] and registry/repository[@digest]       image path formats. For more information, see Using Your Own Algorithms with       Amazon SageMaker.
-    /// 
-    /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\S]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Image")]
-    pub image: Option<String>,
-
-
-    /// 
-    /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a       private Docker registry, see Use a         Private Docker Registry for Real-Time Inference Containers.
-    /// 
-    /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ImageConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ImageConfig")]
-    pub image_config: Option<ImageConfig>,
-
-
-    /// 
-    /// The inference specification name in the model package version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InferenceSpecificationName")]
-    pub inference_specification_name: Option<String>,
-
-
-    /// 
-    /// The S3 path where the model artifacts, which result from model training, are stored.       This path must point to a single gzip compressed tar archive (.tar.gz suffix). The S3       path is required for SageMaker built-in algorithms, but not if you use your own algorithms.       For more information on built-in algorithms, see Common         Parameters.
-    /// 
-    /// NoteThe model artifacts must be in an S3 bucket that is in the same region as the         model or endpoint you are creating.
-    /// 
-    /// If you provide a value for this parameter, SageMaker uses AWS Security Token       Service to download model artifacts from the S3 path you provide. AWS STS       is activated in your AWS account by default. If you previously       deactivated AWS STS for a region, you need to reactivate AWS STS for that region. For more information, see Activating and         Deactivating AWS STS in an AWS Region in the                   AWS Identity and Access Management User         Guide.
-    /// 
-    /// ImportantIf you use a built-in algorithm to create a model, SageMaker requires that you provide         a S3 path to the model artifacts in ModelDataUrl.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelDataUrl")]
-    pub model_data_url: Option<String>,
-
-
-    /// 
-    /// Specifies additional configuration for multi-model endpoints.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MultiModelConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MultiModelConfig")]
-    pub multi_model_config: Option<MultiModelConfig>,
-
-
-    /// 
-    /// This parameter is ignored for models that contain only a       PrimaryContainer.
-    /// 
-    /// When a ContainerDefinition is part of an inference pipeline, the value of       the parameter uniquely identifies the container for the purposes of logging and metrics.       For information, see Use Logs and Metrics         to Monitor an Inference Pipeline. If you don't specify a value for this       parameter for a ContainerDefinition that is part of an inference pipeline,       a unique name is automatically assigned based on the position of the         ContainerDefinition in the pipeline. If you specify a value for the         ContainerHostName for any ContainerDefinition that is part       of an inference pipeline, you must specify a value for the         ContainerHostName parameter of every ContainerDefinition       in that pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerHostname")]
-    pub container_hostname: Option<String>,
-
-
-    /// 
-    /// Whether the container hosts a single model or multiple models.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: MultiModel | SingleModel
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Mode")]
-    pub mode: Option<String>,
-
-
-    /// 
-    /// The environment variables to set in the Docker container. Each key and value in the         Environment string to string map can have length of up to 1024. We       support up to 16 entries in the map.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Environment")]
-    pub environment: Option<serde_json::Value>,
-
-}
-
-
-/// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ImageConfig {
-
-
-    /// 
-    /// (Optional) Specifies an authentication configuration for the private docker registry       where your model image is hosted. Specify a value for this property only if you       specified Vpc as the value for the RepositoryAccessMode field,       and the private Docker registry where the model image is hosted requires       authentication.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RepositoryAuthConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RepositoryAuthConfig")]
-    pub repository_auth_config: Option<RepositoryAuthConfig>,
-
-
-    /// 
-    /// Set this to one of the following values:
-    /// 
-    /// Platform - The model image is hosted in Amazon ECR.                        Vpc - The model image is hosted in a private Docker registry in           your VPC.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Platform | Vpc
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RepositoryAccessMode")]
-    pub repository_access_mode: String,
-
-}
-
-
-/// Specifies details about how containers in a multi-container endpoint are run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InferenceExecutionConfig {
-
-
-    /// 
-    /// How containers in a multi-container are run. The following values are valid.
-    /// 
-    /// Serial - Containers run as a serial pipeline.               Direct - Only the individual container that you specify is           run.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Mode")]
-    pub mode: String,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -394,6 +232,255 @@ pub struct Tag {
 }
 
 
+
+
+/// Describes the container, as part of model definition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContainerDefinition {
+
+
+    /// 
+    /// The name or Amazon Resource Name (ARN) of the model package to use to create the       model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 176
+    ///
+    /// Pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:[a-z\-]*\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)(\/[0-9]{1,5})?$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelPackageName")]
+    pub model_package_name: Option<String>,
+
+
+    /// 
+    /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a       private Docker registry, see Use a         Private Docker Registry for Real-Time Inference Containers.
+    /// 
+    /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageConfig")]
+    pub image_config: Option<ImageConfig>,
+
+
+    /// 
+    /// Specifies additional configuration for multi-model endpoints.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MultiModelConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MultiModelConfig")]
+    pub multi_model_config: Option<MultiModelConfig>,
+
+
+    /// 
+    /// The inference specification name in the model package version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InferenceSpecificationName")]
+    pub inference_specification_name: Option<String>,
+
+
+    /// 
+    /// Whether the container hosts a single model or multiple models.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: MultiModel | SingleModel
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Mode")]
+    pub mode: Option<ContainerDefinitionModeEnum>,
+
+
+    /// 
+    /// The environment variables to set in the Docker container. Each key and value in the         Environment string to string map can have length of up to 1024. We       support up to 16 entries in the map.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Environment")]
+    pub environment: Option<serde_json::Value>,
+
+
+    /// 
+    /// The S3 path where the model artifacts, which result from model training, are stored.       This path must point to a single gzip compressed tar archive (.tar.gz suffix). The S3       path is required for SageMaker built-in algorithms, but not if you use your own algorithms.       For more information on built-in algorithms, see Common         Parameters.
+    /// 
+    /// NoteThe model artifacts must be in an S3 bucket that is in the same region as the         model or endpoint you are creating.
+    /// 
+    /// If you provide a value for this parameter, SageMaker uses AWS Security Token       Service to download model artifacts from the S3 path you provide. AWS STS       is activated in your AWS account by default. If you previously       deactivated AWS STS for a region, you need to reactivate AWS STS for that region. For more information, see Activating and         Deactivating AWS STS in an AWS Region in the                   AWS Identity and Access Management User         Guide.
+    /// 
+    /// ImportantIf you use a built-in algorithm to create a model, SageMaker requires that you provide         a S3 path to the model artifacts in ModelDataUrl.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelDataUrl")]
+    pub model_data_url: Option<String>,
+
+
+    /// 
+    /// This parameter is ignored for models that contain only a       PrimaryContainer.
+    /// 
+    /// When a ContainerDefinition is part of an inference pipeline, the value of       the parameter uniquely identifies the container for the purposes of logging and metrics.       For information, see Use Logs and Metrics         to Monitor an Inference Pipeline. If you don't specify a value for this       parameter for a ContainerDefinition that is part of an inference pipeline,       a unique name is automatically assigned based on the position of the         ContainerDefinition in the pipeline. If you specify a value for the         ContainerHostName for any ContainerDefinition that is part       of an inference pipeline, you must specify a value for the         ContainerHostName parameter of every ContainerDefinition       in that pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerHostname")]
+    pub container_hostname: Option<String>,
+
+
+    /// 
+    /// The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a       Docker registry that is accessible from the same VPC that you configure for your       endpoint. If you are using your own custom algorithm instead of an algorithm provided by       SageMaker, the inference code must meet SageMaker requirements. SageMaker supports both         registry/repository[:tag] and registry/repository[@digest]       image path formats. For more information, see Using Your Own Algorithms with       Amazon SageMaker.
+    /// 
+    /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\S]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Image")]
+    pub image: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ContainerDefinitionModeEnum {
+
+    /// MultiModel
+    #[serde(rename = "MultiModel")]
+    Multimodel,
+
+    /// SingleModel
+    #[serde(rename = "SingleModel")]
+    Singlemodel,
+
+}
+
+impl Default for ContainerDefinitionModeEnum {
+    fn default() -> Self {
+        ContainerDefinitionModeEnum::Multimodel
+    }
+}
+
+
+
+/// Specifies details about how containers in a multi-container endpoint are run.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InferenceExecutionConfig {
+
+
+    /// 
+    /// How containers in a multi-container are run. The following values are valid.
+    /// 
+    /// Serial - Containers run as a serial pipeline.               Direct - Only the individual container that you specify is           run.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Mode")]
+    pub mode: String,
+
+}
+
+
+
+
+/// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ImageConfig {
+
+
+    /// 
+    /// (Optional) Specifies an authentication configuration for the private docker registry       where your model image is hosted. Specify a value for this property only if you       specified Vpc as the value for the RepositoryAccessMode field,       and the private Docker registry where the model image is hosted requires       authentication.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RepositoryAuthConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RepositoryAuthConfig")]
+    pub repository_auth_config: Option<RepositoryAuthConfig>,
+
+
+    /// 
+    /// Set this to one of the following values:
+    /// 
+    /// Platform - The model image is hosted in Amazon ECR.                        Vpc - The model image is hosted in a private Docker registry in           your VPC.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Platform | Vpc
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RepositoryAccessMode")]
+    pub repository_access_mode: ImageConfigRepositoryAccessModeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ImageConfigRepositoryAccessModeEnum {
+
+    /// Platform
+    #[serde(rename = "Platform")]
+    Platform,
+
+    /// Vpc
+    #[serde(rename = "Vpc")]
+    Vpc,
+
+}
+
+impl Default for ImageConfigRepositoryAccessModeEnum {
+    fn default() -> Self {
+        ImageConfigRepositoryAccessModeEnum::Platform
+    }
+}
+
+
+
 /// Specifies additional configuration for hosting multi-model endpoints.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MultiModelConfig {
@@ -413,36 +500,3 @@ pub struct MultiModelConfig {
 }
 
 
-/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfig {
-
-
-    /// 
-    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
-
-    /// 
-    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-}

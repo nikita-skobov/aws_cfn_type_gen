@@ -35,6 +35,8 @@ pub struct CfnLocation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnLocation {
     fn type_string() -> &'static str {
         "AWS::GameLift::Location"
@@ -79,3 +81,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

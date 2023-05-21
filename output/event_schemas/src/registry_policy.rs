@@ -6,15 +6,15 @@ pub struct CfnRegistryPolicy {
 
 
     /// 
-    /// The revision ID of the policy.
+    /// A resource-based policy.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RevisionId")]
-    pub revision_id: Option<String>,
+    #[serde(rename = "Policy")]
+    pub policy: serde_json::Value,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnRegistryPolicy {
 
 
     /// 
-    /// A resource-based policy.
+    /// The revision ID of the policy.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: serde_json::Value,
+    #[serde(rename = "RevisionId")]
+    pub revision_id: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRegistryPolicy {
     fn type_string() -> &'static str {

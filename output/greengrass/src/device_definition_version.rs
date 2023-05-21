@@ -6,18 +6,6 @@ pub struct CfnDeviceDefinitionVersion {
 
 
     /// 
-    /// The ID of the device definition associated with this version. This value is a GUID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceDefinitionId")]
-    pub device_definition_id: String,
-
-
-    /// 
     /// The devices in this version.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnDeviceDefinitionVersion {
     #[serde(rename = "Devices")]
     pub devices: Vec<Device>,
 
+
+    /// 
+    /// The ID of the device definition associated with this version. This value is a GUID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceDefinitionId")]
+    pub device_definition_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
     fn type_string() -> &'static str {
@@ -49,18 +51,6 @@ pub struct Device {
 
 
     /// 
-    /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
     /// The ARN of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
     /// 
     /// Required: Yes
@@ -70,6 +60,18 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
@@ -96,3 +98,5 @@ pub struct Device {
     pub sync_shadow: Option<bool>,
 
 }
+
+

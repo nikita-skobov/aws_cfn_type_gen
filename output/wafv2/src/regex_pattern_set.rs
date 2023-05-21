@@ -26,6 +26,20 @@ pub struct CfnRegexPatternSet {
 
 
     /// 
+    /// Key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
+    /// 
+    /// NoteTo modify tags on existing resources, use the AWS WAF APIs or command line interface. With AWS CloudFormation, you can only add tags to AWS WAF resources during resource creation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The name of the set. You cannot change the name after you create the set.
     /// 
     /// Required: No
@@ -44,18 +58,6 @@ pub struct CfnRegexPatternSet {
 
 
     /// 
-    /// The regular expression patterns in the set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegularExpressionList")]
-    pub regular_expression_list: Vec<String>,
-
-
-    /// 
     /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional    application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AWS AppSync GraphQL API,    an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
     /// 
     /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
@@ -70,19 +72,19 @@ pub struct CfnRegexPatternSet {
 
 
     /// 
-    /// Key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
+    /// The regular expression patterns in the set.
     /// 
-    /// NoteTo modify tags on existing resources, use the AWS WAF APIs or command line interface. With AWS CloudFormation, you can only add tags to AWS WAF resources during resource creation.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "RegularExpressionList")]
+    pub regular_expression_list: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRegexPatternSet {
     fn type_string() -> &'static str {
@@ -128,3 +130,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

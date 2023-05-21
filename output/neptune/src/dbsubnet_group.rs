@@ -54,6 +54,8 @@ pub struct CfnDBSubnetGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDBSubnetGroup {
     fn type_string() -> &'static str {
         "AWS::Neptune::DBSubnetGroup"
@@ -98,3 +100,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

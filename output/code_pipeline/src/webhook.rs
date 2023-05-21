@@ -8,6 +8,62 @@ pub struct CfnWebhook {
 
 
     /// 
+    /// Properties that configure the authentication applied to incoming webhook trigger       requests. The required properties depend on the authentication type. For GITHUB_HMAC,       only the SecretToken property must be set. For IP, only the         AllowedIPRange property must be set to a valid CIDR range. For       UNAUTHENTICATED, no properties can be set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: WebhookAuthConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationConfiguration")]
+    pub authentication_configuration: WebhookAuthConfiguration,
+
+
+    /// 
+    /// A list of rules applied to the body/payload sent in the POST request to a webhook       URL. All defined rules must pass for the request to be accepted and the pipeline       started.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of WebhookFilterRule
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filters")]
+    pub filters: Vec<WebhookFilterRule>,
+
+
+    /// 
+    /// Configures a connection between the webhook that was created and the external tool       with events to be detected.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegisterWithThirdParty")]
+    pub register_with_third_party: Option<bool>,
+
+
+    /// 
+    /// The name of the pipeline you want to connect to the webhook.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [A-Za-z0-9.@\-_]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetPipeline")]
+    pub target_pipeline: String,
+
+
+    /// 
     /// The version number of the pipeline to be connected to the trigger request.
     /// 
     /// Required: Yes
@@ -26,15 +82,21 @@ pub struct CfnWebhook {
 
 
     /// 
-    /// Configures a connection between the webhook that was created and the external tool       with events to be detected.
+    /// The name of the webhook.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegisterWithThirdParty")]
-    pub register_with_third_party: Option<bool>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [A-Za-z0-9.@\-_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -68,71 +130,34 @@ pub struct CfnWebhook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Authentication")]
-    pub authentication: String,
-
-
-    /// 
-    /// Properties that configure the authentication applied to incoming webhook trigger       requests. The required properties depend on the authentication type. For GITHUB_HMAC,       only the SecretToken property must be set. For IP, only the         AllowedIPRange property must be set to a valid CIDR range. For       UNAUTHENTICATED, no properties can be set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: WebhookAuthConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationConfiguration")]
-    pub authentication_configuration: WebhookAuthConfiguration,
-
-
-    /// 
-    /// A list of rules applied to the body/payload sent in the POST request to a webhook       URL. All defined rules must pass for the request to be accepted and the pipeline       started.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of WebhookFilterRule
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Filters")]
-    pub filters: Vec<WebhookFilterRule>,
-
-
-    /// 
-    /// The name of the pipeline you want to connect to the webhook.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [A-Za-z0-9.@\-_]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetPipeline")]
-    pub target_pipeline: String,
-
-
-    /// 
-    /// The name of the webhook.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [A-Za-z0-9.@\-_]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    pub authentication: WebhookAuthenticationEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WebhookAuthenticationEnum {
+
+    /// GITHUB_HMAC
+    #[serde(rename = "GITHUB_HMAC")]
+    Githubhmac,
+
+    /// IP
+    #[serde(rename = "IP")]
+    Ip,
+
+    /// UNAUTHENTICATED
+    #[serde(rename = "UNAUTHENTICATED")]
+    Unauthenticated,
+
+}
+
+impl Default for WebhookAuthenticationEnum {
+    fn default() -> Self {
+        WebhookAuthenticationEnum::Githubhmac
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnWebhook {
     fn type_string() -> &'static str {
@@ -143,6 +168,47 @@ impl cfn_resources::CfnResource for CfnWebhook {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The authentication applied to incoming webhook trigger requests.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WebhookAuthConfiguration {
+
+
+    /// 
+    /// The property used to configure acceptance of webhooks in an IP address range. For       IP, only the AllowedIPRange property must be set. This property must be set       to a valid CIDR range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowedIPRange")]
+    pub allowed_iprange: Option<String>,
+
+
+    /// 
+    /// The property used to configure GitHub authentication. For GITHUB_HMAC, only the         SecretToken property must be set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretToken")]
+    pub secret_token: Option<String>,
+
+}
+
+
 
 
 /// The event criteria that specify when a webhook notification is sent to your       URL.
@@ -184,40 +250,3 @@ pub struct WebhookFilterRule {
 }
 
 
-/// The authentication applied to incoming webhook trigger requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct WebhookAuthConfiguration {
-
-
-    /// 
-    /// The property used to configure acceptance of webhooks in an IP address range. For       IP, only the AllowedIPRange property must be set. This property must be set       to a valid CIDR range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowedIPRange")]
-    pub allowed_iprange: Option<String>,
-
-
-    /// 
-    /// The property used to configure GitHub authentication. For GITHUB_HMAC, only the         SecretToken property must be set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretToken")]
-    pub secret_token: Option<String>,
-
-}

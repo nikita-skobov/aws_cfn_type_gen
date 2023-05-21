@@ -6,20 +6,6 @@ pub struct CfnPortfolioShare {
 
 
     /// 
-    /// The AWS account ID. For example, 123456789012.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[0-9]{12}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
-
-
-    /// 
     /// The language code.
     /// 
     /// jp - Japanese                        zh - Chinese
@@ -48,6 +34,20 @@ pub struct CfnPortfolioShare {
 
 
     /// 
+    /// The AWS account ID. For example, 123456789012.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[0-9]{12}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AccountId")]
+    pub account_id: String,
+
+
+    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -65,6 +65,8 @@ pub struct CfnPortfolioShare {
     pub portfolio_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPortfolioShare {
     fn type_string() -> &'static str {

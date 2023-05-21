@@ -6,18 +6,6 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// The metadata for the database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DatabaseInput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatabaseInput")]
-    pub database_input: DatabaseInput,
-
-
-    /// 
     /// The AWS account ID for the account in which to create the catalog object.
     /// 
     /// Note To specify the account ID, you can use the Ref intrinsic function         with the AWS::AccountId pseudo parameter. For example: !Ref           AWS::AccountId
@@ -36,7 +24,21 @@ pub struct CfnDatabase {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
+
+    /// 
+    /// The metadata for the database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DatabaseInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatabaseInput")]
+    pub database_input: DatabaseInput,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDatabase {
     fn type_string() -> &'static str {
@@ -46,60 +48,6 @@ impl cfn_resources::CfnResource for CfnDatabase {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The AWS Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataLakePrincipal {
-
-
-    /// 
-    /// An identifier for the AWS Lake Formation principal.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataLakePrincipalIdentifier")]
-    pub data_lake_principal_identifier: Option<String>,
-
-}
-
-
-/// the permissions granted to a principal
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PrincipalPrivileges {
-
-
-    /// 
-    /// The principal who is granted permissions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataLakePrincipal
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: Option<DataLakePrincipal>,
-
-
-    /// 
-    /// The permissions that are granted to the principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permissions")]
-    pub permissions: Option<Vec<String>>,
-
 }
 
 
@@ -134,33 +82,64 @@ pub struct DatabaseIdentifier {
 }
 
 
-/// The FederatedDatabase property type specifies Property description not available. for an AWS::Glue::Database.
+
+
+/// the permissions granted to a principal
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FederatedDatabase {
+pub struct PrincipalPrivileges {
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The principal who is granted permissions.
+    /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: DataLakePrincipal
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Identifier")]
-    pub identifier: Option<String>,
+    #[serde(rename = "Principal")]
+    pub principal: Option<DataLakePrincipal>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The permissions that are granted to the principal.
+    /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConnectionName")]
-    pub connection_name: Option<String>,
+    #[serde(rename = "Permissions")]
+    pub permissions: Option<Vec<String>>,
 
 }
+
+
+
+
+/// The AWS Lake Formation principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataLakePrincipal {
+
+
+    /// 
+    /// An identifier for the AWS Lake Formation principal.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataLakePrincipalIdentifier")]
+    pub data_lake_principal_identifier: Option<String>,
+
+}
+
+
 
 
 /// The structure used to create or update a database.
@@ -168,27 +147,22 @@ pub struct FederatedDatabase {
 pub struct DatabaseInput {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: FederatedDatabase
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FederatedDatabase")]
-    pub federated_database: Option<FederatedDatabase>,
-
-
     /// 
-    /// A DatabaseIdentifier structure that describes a target database for resource linking.
+    /// The location of the database (for example, an HDFS path).
     /// 
     /// Required: No
     ///
-    /// Type: DatabaseIdentifier
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetDatabase")]
-    pub target_database: Option<DatabaseIdentifier>,
+    #[serde(rename = "LocationUri")]
+    pub location_uri: Option<String>,
 
 
     /// 
@@ -207,6 +181,29 @@ pub struct DatabaseInput {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: FederatedDatabase
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FederatedDatabase")]
+    pub federated_database: Option<FederatedDatabase>,
+
+
+    /// 
+    /// These key-value pairs define parameters and properties    of the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -240,32 +237,47 @@ pub struct DatabaseInput {
 
 
     /// 
-    /// The location of the database (for example, an HDFS path).
+    /// A DatabaseIdentifier structure that describes a target database for resource linking.
     /// 
+    /// Required: No
+    ///
+    /// Type: DatabaseIdentifier
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetDatabase")]
+    pub target_database: Option<DatabaseIdentifier>,
+
+}
+
+
+
+
+/// The FederatedDatabase property type specifies Property description not available. for an AWS::Glue::Database.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FederatedDatabase {
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "LocationUri")]
-    pub location_uri: Option<String>,
+    #[serde(rename = "ConnectionName")]
+    pub connection_name: Option<String>,
 
 
-    /// 
-    /// These key-value pairs define parameters and properties    of the database.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
+    #[serde(rename = "Identifier")]
+    pub identifier: Option<String>,
 
 }
+
+

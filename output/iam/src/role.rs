@@ -6,60 +6,6 @@ pub struct CfnRole {
 
 
     /// 
-    /// A name for the IAM role, up to 64 characters in length. For valid     values, see the RoleName parameter for the CreateRole action in the IAM User Guide.
-    /// 
-    /// This parameter allows (per its regex       pattern) a string of characters consisting of upper and lowercase alphanumeric     characters with no spaces. You can also include any of the following characters: _+=,.@-.     The role name must be unique within the account. Role names are not distinguished by case.     For example, you cannot create roles named both "Role1" and "role1".
-    /// 
-    /// If you don't specify a name, AWS CloudFormation generates a unique physical ID and     uses that ID for the role name.
-    /// 
-    /// If you specify a name, you must specify the CAPABILITY_NAMED_IAM value to     acknowledge your template's capabilities. For more information, see Acknowledging IAM Resources in AWS CloudFormation     Templates.
-    /// 
-    /// ImportantNaming an IAM resource can cause an unrecoverable error if you reuse       the same template in multiple Regions. To prevent this, we recommend using        Fn::Join and AWS::Region to create a Region-specific name,       as in the following example: {"Fn::Join": ["", [{"Ref": "AWS::Region"}, {"Ref":        "MyResourceName"}]]}.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleName")]
-    pub role_name: Option<String>,
-
-
-    /// 
-    /// A list of tags that are attached to the role. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Adds or updates an inline policy document that is embedded in the specified IAM role.
-    /// 
-    /// When you embed an inline policy in a role, the inline policy is used as part of the     role's access (permissions) policy. The role's trust policy is created at the same time as     the role. You can update a role's trust policy later. For more information about IAM roles, go to Using Roles to Delegate Permissions and       Federate Identities.
-    /// 
-    /// A role can also have an attached managed policy. For information about policies, see       Managed Policies and Inline Policies in the IAM User       Guide.
-    /// 
-    /// For information about limits on the number of inline policies that you can embed with a     role, see Limitations on IAM Entities in the IAM User Guide.
-    /// 
-    /// NoteIf an external policy (such as AWS::IAM::Policy or        AWS::IAM::ManagedPolicy) has a Ref to a role and if a       resource (such as AWS::ECS::Service) also has a Ref to the       same role, add a DependsOn attribute to the resource to make the resource       depend on the external policy. This dependency ensures that the role's policy is       available throughout the resource's lifecycle. For example, when you delete a stack with       an AWS::ECS::Service resource, the DependsOn attribute ensures       that AWS CloudFormation deletes the AWS::ECS::Service resource before       deleting its role's policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Policy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policies")]
-    pub policies: Option<Vec<Policy>>,
-
-
-    /// 
     /// The ARN of the policy used to set the permissions boundary for the role.
     /// 
     /// For more information about permissions boundaries, see Permissions boundaries for IAM       identities in the IAM User Guide.
@@ -71,48 +17,6 @@ pub struct CfnRole {
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
     pub permissions_boundary: Option<String>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the role.
-    /// 
-    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagedPolicyArns")]
-    pub managed_policy_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssumeRolePolicyDocument")]
-    pub assume_role_policy_document: serde_json::Value,
-
-
-    /// 
-    /// A description of the role that you provide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -154,7 +58,105 @@ pub struct CfnRole {
     #[serde(rename = "Path")]
     pub path: Option<String>,
 
+
+    /// 
+    /// A description of the role that you provide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A list of tags that are attached to the role. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the role.
+    /// 
+    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagedPolicyArns")]
+    pub managed_policy_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Adds or updates an inline policy document that is embedded in the specified IAM role.
+    /// 
+    /// When you embed an inline policy in a role, the inline policy is used as part of the     role's access (permissions) policy. The role's trust policy is created at the same time as     the role. You can update a role's trust policy later. For more information about IAM roles, go to Using Roles to Delegate Permissions and       Federate Identities.
+    /// 
+    /// A role can also have an attached managed policy. For information about policies, see       Managed Policies and Inline Policies in the IAM User       Guide.
+    /// 
+    /// For information about limits on the number of inline policies that you can embed with a     role, see Limitations on IAM Entities in the IAM User Guide.
+    /// 
+    /// NoteIf an external policy (such as AWS::IAM::Policy or        AWS::IAM::ManagedPolicy) has a Ref to a role and if a       resource (such as AWS::ECS::Service) also has a Ref to the       same role, add a DependsOn attribute to the resource to make the resource       depend on the external policy. This dependency ensures that the role's policy is       available throughout the resource's lifecycle. For example, when you delete a stack with       an AWS::ECS::Service resource, the DependsOn attribute ensures       that AWS CloudFormation deletes the AWS::ECS::Service resource before       deleting its role's policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Policy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policies")]
+    pub policies: Option<Vec<Policy>>,
+
+
+    /// 
+    /// A name for the IAM role, up to 64 characters in length. For valid     values, see the RoleName parameter for the CreateRole action in the IAM User Guide.
+    /// 
+    /// This parameter allows (per its regex       pattern) a string of characters consisting of upper and lowercase alphanumeric     characters with no spaces. You can also include any of the following characters: _+=,.@-.     The role name must be unique within the account. Role names are not distinguished by case.     For example, you cannot create roles named both "Role1" and "role1".
+    /// 
+    /// If you don't specify a name, AWS CloudFormation generates a unique physical ID and     uses that ID for the role name.
+    /// 
+    /// If you specify a name, you must specify the CAPABILITY_NAMED_IAM value to     acknowledge your template's capabilities. For more information, see Acknowledging IAM Resources in AWS CloudFormation     Templates.
+    /// 
+    /// ImportantNaming an IAM resource can cause an unrecoverable error if you reuse       the same template in multiple Regions. To prevent this, we recommend using        Fn::Join and AWS::Region to create a Region-specific name,       as in the following example: {"Fn::Join": ["", [{"Ref": "AWS::Region"}, {"Ref":        "MyResourceName"}]]}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleName")]
+    pub role_name: Option<String>,
+
+
+    /// 
+    /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssumeRolePolicyDocument")]
+    pub assume_role_policy_document: serde_json::Value,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRole {
     fn type_string() -> &'static str {
@@ -202,6 +204,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Contains information about an attached policy.
 ///
 /// An attached policy is a managed policy that has been attached to a user, group, or     role.
@@ -241,3 +245,5 @@ pub struct Policy {
     pub policy_name: String,
 
 }
+
+

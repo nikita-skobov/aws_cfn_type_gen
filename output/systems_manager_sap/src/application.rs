@@ -6,29 +6,17 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The SAP instance number of the application.
+    /// The Amazon EC2 instances on which your SAP application is running.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Pattern: [0-9]{2}
+    /// Maximum: 1
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SapInstanceNumber")]
-    pub sap_instance_number: Option<String>,
-
-
-    /// 
-    /// The tags on the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Instances")]
+    pub instances: Option<Vec<String>>,
 
 
     /// 
@@ -42,35 +30,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationType")]
-    pub application_type: String,
-
-
-    /// 
-    /// The System ID of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [A-Z][A-Z0-9]{2}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Sid")]
-    pub sid: Option<String>,
-
-
-    /// 
-    /// The credentials of the SAP application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Credential
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Credentials")]
-    pub credentials: Option<Vec<Credential>>,
+    pub application_type: ApplicationApplicationTypeEnum,
 
 
     /// 
@@ -88,19 +48,76 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The Amazon EC2 instances on which your SAP application is running.
+    /// The System ID of the application.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 1
+    /// Pattern: [A-Z][A-Z0-9]{2}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Instances")]
-    pub instances: Option<Vec<String>>,
+    #[serde(rename = "Sid")]
+    pub sid: Option<String>,
+
+
+    /// 
+    /// The tags on the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The SAP instance number of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [0-9]{2}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SapInstanceNumber")]
+    pub sap_instance_number: Option<String>,
+
+
+    /// 
+    /// The credentials of the SAP application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Credential
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Credentials")]
+    pub credentials: Option<Vec<Credential>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ApplicationApplicationTypeEnum {
+
+    /// HANA
+    #[serde(rename = "HANA")]
+    Hana,
+
+}
+
+impl Default for ApplicationApplicationTypeEnum {
+    fn default() -> Self {
+        ApplicationApplicationTypeEnum::Hana
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -156,6 +173,8 @@ pub struct Credential {
 }
 
 
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -189,3 +208,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

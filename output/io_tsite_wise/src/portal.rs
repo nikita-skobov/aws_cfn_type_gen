@@ -6,6 +6,44 @@ pub struct CfnPortal {
 
 
     /// 
+    /// A description for the portal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortalDescription")]
+    pub portal_description: Option<String>,
+
+
+    /// 
+    /// The email address that sends alarm notifications.
+    /// 
+    /// ImportantIf you use the AWS IoT Events managed Lambda      function to manage your emails, you must verify the sender email      address in Amazon SES.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationSenderEmail")]
+    pub notification_sender_email: Option<String>,
+
+
+    /// 
+    /// A friendly name for the portal.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortalName")]
+    pub portal_name: String,
+
+
+    /// 
     /// A list of key-value pairs that contain metadata for the portal. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
@@ -36,18 +74,6 @@ pub struct CfnPortal {
 
 
     /// 
-    /// A description for the portal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortalDescription")]
-    pub portal_description: Option<String>,
-
-
-    /// 
     /// The AWS administrator's contact email address.
     /// 
     /// Required: Yes
@@ -57,20 +83,6 @@ pub struct CfnPortal {
     /// Update requires: No interruption
     #[serde(rename = "PortalContactEmail")]
     pub portal_contact_email: String,
-
-
-    /// 
-    /// The email address that sends alarm notifications.
-    /// 
-    /// ImportantIf you use the AWS IoT Events managed Lambda      function to manage your emails, you must verify the sender email      address in Amazon SES.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationSenderEmail")]
-    pub notification_sender_email: Option<String>,
 
 
     /// 
@@ -96,19 +108,9 @@ pub struct CfnPortal {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
-    /// A friendly name for the portal.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortalName")]
-    pub portal_name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPortal {
     fn type_string() -> &'static str {
@@ -127,18 +129,6 @@ pub struct Alarms {
 
 
     /// 
-    /// The ARN of the Lambda function that manages alarm notifications. For more    information, see Managing alarm     notifications in the         AWS IoT Events Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationLambdaArn")]
-    pub notification_lambda_arn: Option<String>,
-
-
-    /// 
     /// The ARN of the IAM role that allows the alarm to perform actions and access AWS    resources and services, such as AWS IoT Events.
     /// 
     /// Required: No
@@ -149,7 +139,21 @@ pub struct Alarms {
     #[serde(rename = "AlarmRoleArn")]
     pub alarm_role_arn: Option<String>,
 
+
+    /// 
+    /// The ARN of the Lambda function that manages alarm notifications. For more    information, see Managing alarm     notifications in the         AWS IoT Events Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationLambdaArn")]
+    pub notification_lambda_arn: Option<String>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -185,3 +189,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

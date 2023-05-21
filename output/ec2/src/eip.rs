@@ -10,17 +10,19 @@ pub struct CfnEIP {
 
 
     /// 
-    /// Any tags assigned to the Elastic IP address.
+    /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
     /// 
-    /// ImportantUpdates to the Tags property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// Use DescribeAvailabilityZones to view the network border groups.
+    /// 
+    /// You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 Classic,    you receive an InvalidParameterCombination error.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkBorderGroup")]
+    pub network_border_group: Option<String>,
 
 
     /// 
@@ -36,7 +38,21 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    pub domain: Option<String>,
+    pub domain: Option<EIPDomainEnum>,
+
+
+    /// 
+    /// The ID of the instance.
+    /// 
+    /// ImportantUpdates to the InstanceId property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceId")]
+    pub instance_id: Option<String>,
 
 
     /// 
@@ -54,6 +70,20 @@ pub struct CfnEIP {
 
 
     /// 
+    /// Any tags assigned to the Elastic IP address.
+    /// 
+    /// ImportantUpdates to the Tags property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The Elastic IP address you are accepting for transfer. You can only accept one transferred address. For more information on Elastic IP address transfers, see Transfer Elastic IP addresses in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// Required: No
@@ -64,37 +94,28 @@ pub struct CfnEIP {
     #[serde(rename = "TransferAddress")]
     pub transfer_address: Option<String>,
 
-
-    /// 
-    /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
-    /// 
-    /// Use DescribeAvailabilityZones to view the network border groups.
-    /// 
-    /// You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 Classic,    you receive an InvalidParameterCombination error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkBorderGroup")]
-    pub network_border_group: Option<String>,
+}
 
 
-    /// 
-    /// The ID of the instance.
-    /// 
-    /// ImportantUpdates to the InstanceId property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EIPDomainEnum {
+
+    /// standard
+    #[serde(rename = "standard")]
+    Standard,
+
+    /// vpc
+    #[serde(rename = "vpc")]
+    Vpc,
 
 }
+
+impl Default for EIPDomainEnum {
+    fn default() -> Self {
+        EIPDomainEnum::Standard
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEIP {
     fn type_string() -> &'static str {
@@ -140,3 +161,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

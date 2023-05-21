@@ -6,6 +6,18 @@ pub struct CfnDBSecurityGroup {
 
 
     /// 
+    /// Provides the description of the DB security group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupDescription")]
+    pub group_description: String,
+
+
+    /// 
     /// The identifier of an Amazon VPC. This property indicates the VPC that this DB security       group belongs to.
     /// 
     /// ImportantThe EC2VpcId property is for backward compatibility with older         regions, and is no longer recommended for providing security information to an RDS         DB instance.
@@ -20,15 +32,15 @@ pub struct CfnDBSecurityGroup {
 
 
     /// 
-    /// Provides the description of the DB security group.
+    /// Ingress rules to be applied to the DB security group.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of Ingress
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupDescription")]
-    pub group_description: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DBSecurityGroupIngress")]
+    pub dbsecurity_group_ingress: Vec<Ingress>,
 
 
     /// 
@@ -42,19 +54,9 @@ pub struct CfnDBSecurityGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Ingress rules to be applied to the DB security group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Ingress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBSecurityGroupIngress")]
-    pub dbsecurity_group_ingress: Vec<Ingress>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBSecurityGroup {
     fn type_string() -> &'static str {
@@ -102,21 +104,11 @@ pub struct Tag {
 }
 
 
+
+
 /// The Ingress property type specifies an individual ingress rule within an         AWS::RDS::DBSecurityGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ingress {
-
-
-    /// 
-    /// AWS account number of the owner of the EC2 security group     specified in the EC2SecurityGroupName parameter.     The AWS access key ID isn't an acceptable value.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EC2SecurityGroupOwnerId")]
-    pub ec2_security_group_owner_id: Option<String>,
 
 
     /// 
@@ -154,4 +146,18 @@ pub struct Ingress {
     #[serde(rename = "EC2SecurityGroupName")]
     pub ec2_security_group_name: Option<String>,
 
+
+    /// 
+    /// AWS account number of the owner of the EC2 security group     specified in the EC2SecurityGroupName parameter.     The AWS access key ID isn't an acceptable value.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EC2SecurityGroupOwnerId")]
+    pub ec2_security_group_owner_id: Option<String>,
+
 }
+
+

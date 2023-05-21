@@ -6,18 +6,6 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
 
 
     /// 
-    /// The tags assigned to the association.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the VPC.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
     #[serde(rename = "LocalGatewayRouteTableId")]
     pub local_gateway_route_table_id: String,
 
+
+    /// 
+    /// The tags assigned to the association.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRouteTableVPCAssociation {
     fn type_string() -> &'static str {
@@ -86,3 +88,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

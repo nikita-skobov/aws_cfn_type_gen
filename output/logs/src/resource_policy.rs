@@ -6,18 +6,6 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// The name of the resource policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
-
-
-    /// 
     /// The details of the policy. It must be formatted in JSON, and you must use backslashes to escape characters that need to be escaped in JSON strings, such as double quote marks.
     /// 
     /// Required: Yes
@@ -32,7 +20,21 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: String,
 
+
+    /// 
+    /// The name of the resource policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string() -> &'static str {

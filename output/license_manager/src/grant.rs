@@ -8,18 +8,6 @@ pub struct CfnGrant {
 
 
     /// 
-    /// Grant name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GrantName")]
-    pub grant_name: Option<String>,
-
-
-    /// 
     /// Home Region of the grant.
     /// 
     /// Required: No
@@ -29,6 +17,18 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
     pub home_region: Option<String>,
+
+
+    /// 
+    /// Granted license status.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
 
 
     /// 
@@ -50,6 +50,18 @@ pub struct CfnGrant {
 
 
     /// 
+    /// License ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LicenseArn")]
+    pub license_arn: Option<String>,
+
+
+    /// 
     /// Allowed operations for the grant.
     /// 
     /// Required: No
@@ -62,29 +74,19 @@ pub struct CfnGrant {
 
 
     /// 
-    /// Granted license status.
+    /// Grant name.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// License ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LicenseArn")]
-    pub license_arn: Option<String>,
+    #[serde(rename = "GrantName")]
+    pub grant_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGrant {
     fn type_string() -> &'static str {

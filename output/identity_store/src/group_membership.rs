@@ -5,6 +5,17 @@
 pub struct CfnGroupMembership {
 
 
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IdentityStoreId")]
+    pub identity_store_id: String,
+
+
     /// 
     /// An object containing the identifier of a group member. Setting MemberId's UserId field     to a specific User's ID indicates we should consider that User as a group member.
     /// 
@@ -23,22 +34,13 @@ pub struct CfnGroupMembership {
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "IdentityStoreId")]
-    pub identity_store_id: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
     pub group_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGroupMembership {
     fn type_string() -> &'static str {
@@ -67,3 +69,5 @@ pub struct MemberId {
     pub user_id: String,
 
 }
+
+

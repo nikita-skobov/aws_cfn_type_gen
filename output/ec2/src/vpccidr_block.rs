@@ -8,39 +8,39 @@ pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// The ID of the VPC.
+    /// The netmask length of the IPv4 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    #[serde(rename = "Ipv4NetmaskLength")]
+    pub ipv4_netmask_length: Option<i64>,
 
 
     /// 
-    /// The ID of an IPv6 address pool from which to allocate the IPv6 CIDR block.
+    /// Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv6Pool")]
-    pub ipv6_pool: Option<String>,
+    #[serde(rename = "Ipv6IpamPoolId")]
+    pub ipv6_ipam_pool_id: Option<String>,
 
 
     /// 
-    /// Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// The netmask length of the IPv6 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv4IpamPoolId")]
-    pub ipv4_ipam_pool_id: Option<String>,
+    #[serde(rename = "Ipv6NetmaskLength")]
+    pub ipv6_netmask_length: Option<i64>,
 
 
     /// 
@@ -58,27 +58,15 @@ pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// The netmask length of the IPv4 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// The ID of an IPv6 address pool from which to allocate the IPv6 CIDR block.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv4NetmaskLength")]
-    pub ipv4_netmask_length: Option<i64>,
-
-
-    /// 
-    /// The netmask length of the IPv6 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv6NetmaskLength")]
-    pub ipv6_netmask_length: Option<i64>,
+    #[serde(rename = "Ipv6Pool")]
+    pub ipv6_pool: Option<String>,
 
 
     /// 
@@ -94,15 +82,15 @@ pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// The ID of the VPC.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv6IpamPoolId")]
-    pub ipv6_ipam_pool_id: Option<String>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 
     /// 
@@ -116,7 +104,21 @@ pub struct CfnVPCCidrBlock {
     #[serde(rename = "AmazonProvidedIpv6CidrBlock")]
     pub amazon_provided_ipv6_cidr_block: Option<bool>,
 
+
+    /// 
+    /// Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ipv4IpamPoolId")]
+    pub ipv4_ipam_pool_id: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVPCCidrBlock {
     fn type_string() -> &'static str {

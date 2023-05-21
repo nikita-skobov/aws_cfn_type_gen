@@ -32,6 +32,8 @@ pub struct CfnMultiRegionAccessPointPolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnMultiRegionAccessPointPolicy {
     fn type_string() -> &'static str {
         "AWS::S3::MultiRegionAccessPointPolicy"
@@ -60,3 +62,5 @@ pub struct PolicyStatus {
     pub is_public: String,
 
 }
+
+

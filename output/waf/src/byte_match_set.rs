@@ -36,6 +36,8 @@ pub struct CfnByteMatchSet {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnByteMatchSet {
     fn type_string() -> &'static str {
         "AWS::WAF::ByteMatchSet"
@@ -87,46 +89,55 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: FieldToMatchTypeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FieldToMatchTypeEnum {
+
+    /// ALL_QUERY_ARGS
+    #[serde(rename = "ALL_QUERY_ARGS")]
+    Allqueryargs,
+
+    /// BODY
+    #[serde(rename = "BODY")]
+    Body,
+
+    /// HEADER
+    #[serde(rename = "HEADER")]
+    Header,
+
+    /// METHOD
+    #[serde(rename = "METHOD")]
+    Method,
+
+    /// QUERY_STRING
+    #[serde(rename = "QUERY_STRING")]
+    Querystring,
+
+    /// SINGLE_QUERY_ARG
+    #[serde(rename = "SINGLE_QUERY_ARG")]
+    Singlequeryarg,
+
+    /// URI
+    #[serde(rename = "URI")]
+    Uri,
+
+}
+
+impl Default for FieldToMatchTypeEnum {
+    fn default() -> Self {
+        FieldToMatchTypeEnum::Allqueryargs
+    }
+}
+
 
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ByteMatchTuple {
-
-
-    /// 
-    /// The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you 			specified in FieldToMatch. The maximum length of the value is 50 bytes.
-    /// 
-    /// You must specify this property or the TargetStringBase64 property.
-    /// 
-    /// Valid values depend on the values that you specified for FieldToMatch:
-    /// 
-    /// HEADER: The value that you want AWS WAF to search for in the request header that you specified in          FieldToMatch, for example, the value of the User-Agent or Referer header.                        METHOD: The HTTP method, which indicates the type of operation specified in the request.          Amazon CloudFront supports the following methods: DELETE, GET, HEAD, OPTIONS, 				PATCH, POST, and PUT.                        QUERY_STRING: The value that you want AWS WAF to search for in the query string, which is the part 				of a URL that appears after a ? character.                        URI: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, 				for example, /images/daily-ad.jpg.                        BODY: The part of a request that contains any additional data that you want to send to your web server 				as the HTTP request body, such as data from a form. The request body immediately follows the request headers. 				Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection. 				To allow or block requests based on the length of the body, you can create a size constraint set.        		       		        SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters. 		      		                ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but instead of        inspecting a single parameter, AWS WAF inspects all parameters within the query        string for the value or regex pattern that you specify in        TargetString.
-    /// 
-    /// If TargetString includes alphabetic characters A-Z and a-z, note that the value is case sensitive.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetString")]
-    pub target_string: Option<String>,
-
-
-    /// 
-    /// The part of a web request that you want to inspect, such as a specified header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -162,7 +173,19 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PositionalConstraint")]
-    pub positional_constraint: String,
+    pub positional_constraint: ByteMatchTuplePositionalConstraintEnum,
+
+
+    /// 
+    /// The part of a web request that you want to inspect, such as a specified header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -228,6 +251,94 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
-    pub text_transformation: String,
+    pub text_transformation: ByteMatchTupleTextTransformationEnum,
+
+
+    /// 
+    /// The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you 			specified in FieldToMatch. The maximum length of the value is 50 bytes.
+    /// 
+    /// You must specify this property or the TargetStringBase64 property.
+    /// 
+    /// Valid values depend on the values that you specified for FieldToMatch:
+    /// 
+    /// HEADER: The value that you want AWS WAF to search for in the request header that you specified in          FieldToMatch, for example, the value of the User-Agent or Referer header.                        METHOD: The HTTP method, which indicates the type of operation specified in the request.          Amazon CloudFront supports the following methods: DELETE, GET, HEAD, OPTIONS, 				PATCH, POST, and PUT.                        QUERY_STRING: The value that you want AWS WAF to search for in the query string, which is the part 				of a URL that appears after a ? character.                        URI: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, 				for example, /images/daily-ad.jpg.                        BODY: The part of a request that contains any additional data that you want to send to your web server 				as the HTTP request body, such as data from a form. The request body immediately follows the request headers. 				Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection. 				To allow or block requests based on the length of the body, you can create a size constraint set.        		       		        SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters. 		      		                ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but instead of        inspecting a single parameter, AWS WAF inspects all parameters within the query        string for the value or regex pattern that you specify in        TargetString.
+    /// 
+    /// If TargetString includes alphabetic characters A-Z and a-z, note that the value is case sensitive.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetString")]
+    pub target_string: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ByteMatchTupleTextTransformationEnum {
+
+    /// CMD_LINE
+    #[serde(rename = "CMD_LINE")]
+    Cmdline,
+
+    /// COMPRESS_WHITE_SPACE
+    #[serde(rename = "COMPRESS_WHITE_SPACE")]
+    Compresswhitespace,
+
+    /// HTML_ENTITY_DECODE
+    #[serde(rename = "HTML_ENTITY_DECODE")]
+    Htmlentitydecode,
+
+    /// LOWERCASE
+    #[serde(rename = "LOWERCASE")]
+    Lowercase,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// URL_DECODE
+    #[serde(rename = "URL_DECODE")]
+    Urldecode,
+
+}
+
+impl Default for ByteMatchTupleTextTransformationEnum {
+    fn default() -> Self {
+        ByteMatchTupleTextTransformationEnum::Cmdline
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ByteMatchTuplePositionalConstraintEnum {
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// CONTAINS_WORD
+    #[serde(rename = "CONTAINS_WORD")]
+    Containsword,
+
+    /// ENDS_WITH
+    #[serde(rename = "ENDS_WITH")]
+    Endswith,
+
+    /// EXACTLY
+    #[serde(rename = "EXACTLY")]
+    Exactly,
+
+    /// STARTS_WITH
+    #[serde(rename = "STARTS_WITH")]
+    Startswith,
+
+}
+
+impl Default for ByteMatchTuplePositionalConstraintEnum {
+    fn default() -> Self {
+        ByteMatchTuplePositionalConstraintEnum::Contains
+    }
+}
+

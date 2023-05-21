@@ -20,6 +20,18 @@ pub struct CfnEndpointAuthorization {
 
 
     /// 
+    /// The virtual private cloud (VPC) identifiers to grant access to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcIds")]
+    pub vpc_ids: Option<Vec<String>>,
+
+
+    /// 
     /// The cluster identifier.
     /// 
     /// Required: Yes
@@ -44,19 +56,9 @@ pub struct CfnEndpointAuthorization {
     #[serde(rename = "Force")]
     pub force: Option<bool>,
 
-
-    /// 
-    /// The virtual private cloud (VPC) identifiers to grant access to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcIds")]
-    pub vpc_ids: Option<Vec<String>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEndpointAuthorization {
     fn type_string() -> &'static str {

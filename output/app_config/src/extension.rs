@@ -10,22 +10,6 @@ pub struct CfnExtension {
 
 
     /// 
-    /// Information about the extension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Adds one or more tags for the specified extension. Tags are metadata that help you     categorize resources in different ways, for example, by purpose, owner, or environment.     Each tag consists of a key and an optional value, both of which you define.
     /// 
     /// Required: No
@@ -35,6 +19,22 @@ pub struct CfnExtension {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A name for the extension. Each extension name in your account must be unique. Extension     versions use the same name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -62,22 +62,6 @@ pub struct CfnExtension {
 
 
     /// 
-    /// A name for the extension. Each extension name in your account must be unique. Extension     versions use the same name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The actions defined in the extension.
     /// 
     /// Required: Yes
@@ -88,7 +72,25 @@ pub struct CfnExtension {
     #[serde(rename = "Actions")]
     pub actions: serde_json::Value,
 
+
+    /// 
+    /// Information about the extension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnExtension {
     fn type_string() -> &'static str {
@@ -99,6 +101,43 @@ impl cfn_resources::CfnResource for CfnExtension {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Parameter {
+
+
+    /// 
+    /// A parameter value must be specified in the extension association.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Required")]
+    pub required: bool,
+
+
+    /// 
+    /// Information about the parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -136,36 +175,3 @@ pub struct Tag {
 }
 
 
-/// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Parameter {
-
-
-    /// 
-    /// A parameter value must be specified in the extension association.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Required")]
-    pub required: bool,
-
-
-    /// 
-    /// Information about the parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-}

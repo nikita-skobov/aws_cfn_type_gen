@@ -18,18 +18,6 @@ pub struct CfnGateway {
 
 
     /// 
-    /// The gateway's platform. You can only specify one platform in a gateway.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: GatewayPlatform
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GatewayPlatform")]
-    pub gateway_platform: GatewayPlatform,
-
-
-    /// 
     /// A list of key-value pairs that contain metadata for the gateway. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
@@ -54,7 +42,21 @@ pub struct CfnGateway {
     #[serde(rename = "GatewayName")]
     pub gateway_name: String,
 
+
+    /// 
+    /// The gateway's platform. You can only specify one platform in a gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: GatewayPlatform
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GatewayPlatform")]
+    pub gateway_platform: GatewayPlatform,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGateway {
     fn type_string() -> &'static str {
@@ -86,21 +88,32 @@ pub struct GreengrassV2 {
 }
 
 
+
+
+/// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Greengrass {
+
+
+    /// 
+    /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupArn")]
+    pub group_arn: String,
+
+}
+
+
+
+
 /// Contains a gateway's platform information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GatewayPlatform {
-
-
-    /// 
-    /// A gateway that runs on AWS IoT Greengrass V2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GreengrassV2
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GreengrassV2")]
-    pub greengrass_v2: Option<GreengrassV2>,
 
 
     /// 
@@ -114,7 +127,21 @@ pub struct GatewayPlatform {
     #[serde(rename = "Greengrass")]
     pub greengrass: Option<Greengrass>,
 
+
+    /// 
+    /// A gateway that runs on AWS IoT Greengrass V2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GreengrassV2
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GreengrassV2")]
+    pub greengrass_v2: Option<GreengrassV2>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -152,40 +179,11 @@ pub struct Tag {
 }
 
 
-/// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Greengrass {
-
-
-    /// 
-    /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupArn")]
-    pub group_arn: String,
-
-}
 
 
 /// Contains a summary of a gateway capability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GatewayCapabilitySummary {
-
-
-    /// 
-    /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapabilityConfiguration")]
-    pub capability_configuration: Option<String>,
 
 
     /// 
@@ -201,4 +199,18 @@ pub struct GatewayCapabilitySummary {
     #[serde(rename = "CapabilityNamespace")]
     pub capability_namespace: String,
 
+
+    /// 
+    /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapabilityConfiguration")]
+    pub capability_configuration: Option<String>,
+
 }
+
+

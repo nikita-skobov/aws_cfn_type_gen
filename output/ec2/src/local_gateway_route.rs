@@ -6,15 +6,15 @@ pub struct CfnLocalGatewayRoute {
 
 
     /// 
-    /// The ID of the network interface.
+    /// The ID of the local gateway route table.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "LocalGatewayRouteTableId")]
+    pub local_gateway_route_table_id: String,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnLocalGatewayRoute {
 
 
     /// 
-    /// The ID of the local gateway route table.
+    /// The ID of the network interface.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalGatewayRouteTableId")]
-    pub local_gateway_route_table_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: Option<String>,
 
 
     /// 
@@ -53,6 +53,8 @@ pub struct CfnLocalGatewayRoute {
     pub destination_cidr_block: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRoute {
     fn type_string() -> &'static str {

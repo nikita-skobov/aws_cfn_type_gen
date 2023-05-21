@@ -10,6 +10,58 @@ pub struct CfnVPC {
 
 
     /// 
+    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDnsSupport")]
+    pub enable_dns_support: Option<bool>,
+
+
+    /// 
+    /// Indicates whether the instances launched in the VPC get DNS hostnames. If enabled,     instances in the VPC get DNS hostnames; otherwise, they do not. Disabled by default for     nondefault VPCs. For more information, see DNS attributes in your       VPC.
+    /// 
+    /// You can only enable DNS hostnames if you've enabled DNS support.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDnsHostnames")]
+    pub enable_dns_hostnames: Option<bool>,
+
+
+    /// 
+    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// 
+    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ipv4IpamPoolId")]
+    pub ipv4_ipam_pool_id: Option<String>,
+
+
+    /// 
+    /// The tags for the VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The allowed tenancy of instances launched into the VPC.
     /// 
     /// default: An instance launched into the VPC runs on shared hardware        by default, unless you explicitly specify a different tenancy during instance        launch.            dedicated: An instance launched into the VPC runs on dedicated        hardware by default, unless you explicitly specify a tenancy of host         during instance launch. You cannot specify a tenancy of default during         instance launch.
@@ -24,19 +76,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceTenancy")]
-    pub instance_tenancy: Option<String>,
-
-
-    /// 
-    /// The tags for the VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    pub instance_tenancy: Option<VPCInstanceTenancyEnum>,
 
 
     /// 
@@ -64,47 +104,32 @@ pub struct CfnVPC {
     #[serde(rename = "CidrBlock")]
     pub cidr_block: Option<String>,
 
-
-    /// 
-    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
-    /// 
-    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv4IpamPoolId")]
-    pub ipv4_ipam_pool_id: Option<String>,
+}
 
 
-    /// 
-    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDnsSupport")]
-    pub enable_dns_support: Option<bool>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VPCInstanceTenancyEnum {
 
+    /// dedicated
+    #[serde(rename = "dedicated")]
+    Dedicated,
 
-    /// 
-    /// Indicates whether the instances launched in the VPC get DNS hostnames. If enabled,     instances in the VPC get DNS hostnames; otherwise, they do not. Disabled by default for     nondefault VPCs. For more information, see DNS attributes in your       VPC.
-    /// 
-    /// You can only enable DNS hostnames if you've enabled DNS support.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDnsHostnames")]
-    pub enable_dns_hostnames: Option<bool>,
+    /// default
+    #[serde(rename = "default")]
+    Default,
+
+    /// host
+    #[serde(rename = "host")]
+    Host,
 
 }
+
+impl Default for VPCInstanceTenancyEnum {
+    fn default() -> Self {
+        VPCInstanceTenancyEnum::Dedicated
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnVPC {
     fn type_string() -> &'static str {
@@ -129,17 +154,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -149,4 +163,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

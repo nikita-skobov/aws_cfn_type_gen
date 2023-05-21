@@ -6,31 +6,41 @@ pub struct CfnStack {
 
 
     /// 
-    /// The name of the stack.
+    /// The URL that users are redirected to after their streaming session ends.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The stack name to display.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
+    /// Maximum: 1000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
+    #[serde(rename = "RedirectURL")]
+    pub redirect_url: Option<String>,
+
+
+    /// 
+    /// The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of UserSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserSettings")]
+    pub user_settings: Option<Vec<UserSetting>>,
+
+
+    /// 
+    /// The storage connectors to enable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of StorageConnector
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StorageConnectors")]
+    pub storage_connectors: Option<Vec<StorageConnector>>,
 
 
     /// 
@@ -43,6 +53,55 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The persistent application settings for users of the stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ApplicationSettings
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationSettings")]
+    pub application_settings: Option<ApplicationSettings>,
+
+
+    /// 
+    /// The stack attributes to delete.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttributesToDelete")]
+    pub attributes_to_delete: Option<Vec<String>>,
+
+
+    /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
+    ///
+    /// Required: No
+    ///
+    /// Type: StreamingExperienceSettings
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StreamingExperienceSettings")]
+    pub streaming_experience_settings: Option<StreamingExperienceSettings>,
+
+
+    /// 
+    /// The name of the stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -60,15 +119,45 @@ pub struct CfnStack {
 
 
     /// 
-    /// The stack attributes to delete.
+    /// The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AccessEndpoint
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessEndpoints")]
+    pub access_endpoints: Option<Vec<AccessEndpoint>>,
+
+
+    /// 
+    /// The stack name to display.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// 
+    /// The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains that you want to host embedded AppStream 2.0 streaming sessions.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
+    /// Maximum: 20
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "AttributesToDelete")]
-    pub attributes_to_delete: Option<Vec<String>>,
+    #[serde(rename = "EmbedHostDomains")]
+    pub embed_host_domains: Option<Vec<String>>,
 
 
     /// 
@@ -86,43 +175,6 @@ pub struct CfnStack {
 
 
     /// 
-    /// The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains that you want to host embedded AppStream 2.0 streaming sessions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EmbedHostDomains")]
-    pub embed_host_domains: Option<Vec<String>>,
-
-
-    /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-    ///
-    /// Required: No
-    ///
-    /// Type: StreamingExperienceSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StreamingExperienceSettings")]
-    pub streaming_experience_settings: Option<StreamingExperienceSettings>,
-
-
-    /// 
-    /// The persistent application settings for users of the stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ApplicationSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationSettings")]
-    pub application_settings: Option<ApplicationSettings>,
-
-
-    /// 
     /// The description to display.
     /// 
     /// Required: No
@@ -135,59 +187,9 @@ pub struct CfnStack {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of UserSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserSettings")]
-    pub user_settings: Option<Vec<UserSetting>>,
-
-
-    /// 
-    /// The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AccessEndpoint
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessEndpoints")]
-    pub access_endpoints: Option<Vec<AccessEndpoint>>,
-
-
-    /// 
-    /// The URL that users are redirected to after their streaming session ends.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedirectURL")]
-    pub redirect_url: Option<String>,
-
-
-    /// 
-    /// The storage connectors to enable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of StorageConnector
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StorageConnectors")]
-    pub storage_connectors: Option<Vec<StorageConnector>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStack {
     fn type_string() -> &'static str {
@@ -197,156 +199,6 @@ impl cfn_resources::CfnResource for CfnStack {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Specifies an action and whether the action is enabled or disabled for users during their streaming sessions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct UserSetting {
-
-
-    /// 
-    /// Indicates whether the action is enabled or disabled.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permission")]
-    pub permission: String,
-
-
-    /// 
-    /// The action that is enabled or disabled.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE | CLIPBOARD_COPY_TO_LOCAL_DEVICE | DOMAIN_PASSWORD_SIGNIN | DOMAIN_SMART_CARD_SIGNIN | FILE_DOWNLOAD | FILE_UPLOAD | PRINTING_TO_LOCAL_DEVICE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: String,
-
-}
-
-
-/// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessEndpoint {
-
-
-    /// 
-    /// The identifier (ID) of the VPC in which the interface endpoint is used.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpceId")]
-    pub vpce_id: String,
-
-
-    /// 
-    /// The type of interface endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: STREAMING
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndpointType")]
-    pub endpoint_type: String,
-
-}
-
-
-/// The persistent application settings for users of a stack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ApplicationSettings {
-
-
-    /// 
-    /// Enables or disables persistent application settings for users during their streaming sessions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-
-    /// 
-    /// The path prefix for the S3 bucket where users’ persistent application settings are stored. You can allow the same persistent application settings to be used across multiple stacks by specifying the same settings group for each stack.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SettingsGroup")]
-    pub settings_group: Option<String>,
-
-}
-
-
-/// A connector that enables persistent storage for users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StorageConnector {
-
-
-    /// 
-    /// The type of storage connector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GOOGLE_DRIVE | HOMEFOLDERS | ONE_DRIVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectorType")]
-    pub connector_type: String,
-
-
-    /// 
-    /// The names of the domains for the account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domains")]
-    pub domains: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN of the storage connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceIdentifier")]
-    pub resource_identifier: Option<String>,
-
 }
 
 
@@ -385,6 +237,103 @@ pub struct Tag {
 }
 
 
+
+
+/// Specifies an action and whether the action is enabled or disabled for users during their streaming sessions.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct UserSetting {
+
+
+    /// 
+    /// Indicates whether the action is enabled or disabled.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Permission")]
+    pub permission: UserSettingPermissionEnum,
+
+
+    /// 
+    /// The action that is enabled or disabled.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE | CLIPBOARD_COPY_TO_LOCAL_DEVICE | DOMAIN_PASSWORD_SIGNIN | DOMAIN_SMART_CARD_SIGNIN | FILE_DOWNLOAD | FILE_UPLOAD | PRINTING_TO_LOCAL_DEVICE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: UserSettingActionEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserSettingPermissionEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for UserSettingPermissionEnum {
+    fn default() -> Self {
+        UserSettingPermissionEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserSettingActionEnum {
+
+    /// CLIPBOARD_COPY_FROM_LOCAL_DEVICE
+    #[serde(rename = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE")]
+    Clipboardcopyfromlocaldevice,
+
+    /// CLIPBOARD_COPY_TO_LOCAL_DEVICE
+    #[serde(rename = "CLIPBOARD_COPY_TO_LOCAL_DEVICE")]
+    Clipboardcopytolocaldevice,
+
+    /// DOMAIN_PASSWORD_SIGNIN
+    #[serde(rename = "DOMAIN_PASSWORD_SIGNIN")]
+    Domainpasswordsignin,
+
+    /// DOMAIN_SMART_CARD_SIGNIN
+    #[serde(rename = "DOMAIN_SMART_CARD_SIGNIN")]
+    Domainsmartcardsignin,
+
+    /// FILE_DOWNLOAD
+    #[serde(rename = "FILE_DOWNLOAD")]
+    Filedownload,
+
+    /// FILE_UPLOAD
+    #[serde(rename = "FILE_UPLOAD")]
+    Fileupload,
+
+    /// PRINTING_TO_LOCAL_DEVICE
+    #[serde(rename = "PRINTING_TO_LOCAL_DEVICE")]
+    Printingtolocaldevice,
+
+}
+
+impl Default for UserSettingActionEnum {
+    fn default() -> Self {
+        UserSettingActionEnum::Clipboardcopyfromlocaldevice
+    }
+}
+
+
+
 /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamingExperienceSettings {
@@ -400,6 +349,186 @@ pub struct StreamingExperienceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredProtocol")]
-    pub preferred_protocol: Option<String>,
+    pub preferred_protocol: Option<StreamingExperienceSettingsPreferredProtocolEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StreamingExperienceSettingsPreferredProtocolEnum {
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+    /// UDP
+    #[serde(rename = "UDP")]
+    Udp,
+
+}
+
+impl Default for StreamingExperienceSettingsPreferredProtocolEnum {
+    fn default() -> Self {
+        StreamingExperienceSettingsPreferredProtocolEnum::Tcp
+    }
+}
+
+
+
+/// A connector that enables persistent storage for users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StorageConnector {
+
+
+    /// 
+    /// The names of the domains for the account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Domains")]
+    pub domains: Option<Vec<String>>,
+
+
+    /// 
+    /// The type of storage connector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GOOGLE_DRIVE | HOMEFOLDERS | ONE_DRIVE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectorType")]
+    pub connector_type: StorageConnectorConnectorTypeEnum,
+
+
+    /// 
+    /// The ARN of the storage connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceIdentifier")]
+    pub resource_identifier: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StorageConnectorConnectorTypeEnum {
+
+    /// GOOGLE_DRIVE
+    #[serde(rename = "GOOGLE_DRIVE")]
+    Googledrive,
+
+    /// HOMEFOLDERS
+    #[serde(rename = "HOMEFOLDERS")]
+    Homefolders,
+
+    /// ONE_DRIVE
+    #[serde(rename = "ONE_DRIVE")]
+    Onedrive,
+
+}
+
+impl Default for StorageConnectorConnectorTypeEnum {
+    fn default() -> Self {
+        StorageConnectorConnectorTypeEnum::Googledrive
+    }
+}
+
+
+
+/// The persistent application settings for users of a stack.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ApplicationSettings {
+
+
+    /// 
+    /// Enables or disables persistent application settings for users during their streaming sessions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// The path prefix for the S3 bucket where users’ persistent application settings are stored. You can allow the same persistent application settings to be used across multiple stacks by specifying the same settings group for each stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SettingsGroup")]
+    pub settings_group: Option<String>,
+
+}
+
+
+
+
+/// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessEndpoint {
+
+
+    /// 
+    /// The identifier (ID) of the VPC in which the interface endpoint is used.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpceId")]
+    pub vpce_id: String,
+
+
+    /// 
+    /// The type of interface endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: STREAMING
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointType")]
+    pub endpoint_type: AccessEndpointEndpointTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AccessEndpointEndpointTypeEnum {
+
+    /// STREAMING
+    #[serde(rename = "STREAMING")]
+    Streaming,
+
+}
+
+impl Default for AccessEndpointEndpointTypeEnum {
+    fn default() -> Self {
+        AccessEndpointEndpointTypeEnum::Streaming
+    }
+}
+

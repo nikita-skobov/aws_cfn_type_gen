@@ -8,18 +8,6 @@ pub struct CfnThingPrincipalAttachment {
 
 
     /// 
-    /// The principal, which can be a certificate ARN (as returned from the       CreateCertificate operation) or an Amazon Cognito ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Principal")]
-    pub principal: String,
-
-
-    /// 
     /// The name of the AWS IoT thing.
     /// 
     /// Required: Yes
@@ -30,7 +18,21 @@ pub struct CfnThingPrincipalAttachment {
     #[serde(rename = "ThingName")]
     pub thing_name: String,
 
+
+    /// 
+    /// The principal, which can be a certificate ARN (as returned from the       CreateCertificate operation) or an Amazon Cognito ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Principal")]
+    pub principal: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnThingPrincipalAttachment {
     fn type_string() -> &'static str {

@@ -6,6 +6,18 @@ pub struct CfnChannel {
 
 
     /// 
+    /// Where channel data is stored.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ChannelStorage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelStorage")]
+    pub channel_storage: Option<ChannelStorage>,
+
+
+    /// 
     /// Metadata which can be used to manage the channel.
     /// 
     /// For more information, see Tag.
@@ -19,18 +31,6 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Where channel data is stored.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ChannelStorage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelStorage")]
-    pub channel_storage: Option<ChannelStorage>,
 
 
     /// 
@@ -64,6 +64,8 @@ pub struct CfnChannel {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnChannel {
     fn type_string() -> &'static str {
         "AWS::IoTAnalytics::Channel"
@@ -73,6 +75,39 @@ impl cfn_resources::CfnResource for CfnChannel {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Where channel data is stored. You may choose one of serviceManagedS3,     customerManagedS3 storage. If not specified, the default is     serviceManagedS3. This can't be changed after creation of the channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ChannelStorage {
+
+
+    /// 
+    /// Used to store channel data in an S3 bucket managed by AWS IoT Analytics. You can't change the choice    of S3 storage after the data store is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceManagedS3")]
+    pub service_managed_s3: Option<serde_json::Value>,
+
+
+    /// 
+    /// Used to store channel data in an S3 bucket that you manage. If customer managed storage is    selected, the retentionPeriod parameter is ignored. You can't change the choice    of S3 storage after the data store is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomerManagedS3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomerManagedS3")]
+    pub customer_managed_s3: Option<CustomerManagedS3>,
+
+}
+
+
 
 
 /// Used to store channel data in an S3 bucket that you manage.
@@ -134,37 +169,6 @@ pub struct CustomerManagedS3 {
 }
 
 
-/// How long, in days, message data is kept.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RetentionPeriod {
-
-
-    /// 
-    /// If true, message data is kept indefinitely.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unlimited")]
-    pub unlimited: Option<bool>,
-
-
-    /// 
-    /// The number of days that message data is kept. The unlimited parameter must be    false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfDays")]
-    pub number_of_days: Option<i64>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -202,32 +206,38 @@ pub struct Tag {
 }
 
 
-/// Where channel data is stored. You may choose one of serviceManagedS3,     customerManagedS3 storage. If not specified, the default is     serviceManagedS3. This can't be changed after creation of the channel.
+
+
+/// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ChannelStorage {
+pub struct RetentionPeriod {
 
 
     /// 
-    /// Used to store channel data in an S3 bucket managed by AWS IoT Analytics. You can't change the choice    of S3 storage after the data store is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceManagedS3")]
-    pub service_managed_s3: Option<serde_json::Value>,
-
-
-    /// 
-    /// Used to store channel data in an S3 bucket that you manage. If customer managed storage is    selected, the retentionPeriod parameter is ignored. You can't change the choice    of S3 storage after the data store is created.
+    /// If true, message data is kept indefinitely.
     /// 
     /// Required: No
     ///
-    /// Type: CustomerManagedS3
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CustomerManagedS3")]
-    pub customer_managed_s3: Option<CustomerManagedS3>,
+    #[serde(rename = "Unlimited")]
+    pub unlimited: Option<bool>,
+
+
+    /// 
+    /// The number of days that message data is kept. The unlimited parameter must be    false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfDays")]
+    pub number_of_days: Option<i64>,
 
 }
+
+

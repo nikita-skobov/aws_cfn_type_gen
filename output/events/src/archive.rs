@@ -6,54 +6,6 @@ pub struct CfnArchive {
 
 
     /// 
-    /// The name for the archive to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 48
-    ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ArchiveName")]
-    pub archive_name: Option<String>,
-
-
-    /// 
-    /// The number of days to retain events for. Default value is 0. If set to 0, events are    retained indefinitely
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetentionDays")]
-    pub retention_days: Option<i64>,
-
-
-    /// 
-    /// A description for the archive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// An event pattern to use to filter events sent to the archive.
     /// 
     /// Required: No
@@ -82,7 +34,57 @@ pub struct CfnArchive {
     #[serde(rename = "SourceArn")]
     pub source_arn: String,
 
+
+    /// 
+    /// The number of days to retain events for. Default value is 0. If set to 0, events are    retained indefinitely
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionDays")]
+    pub retention_days: Option<i64>,
+
+
+    /// 
+    /// The name for the archive to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 48
+    ///
+    /// Pattern: [\.\-_A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ArchiveName")]
+    pub archive_name: Option<String>,
+
+
+    /// 
+    /// A description for the archive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnArchive {
     fn type_string() -> &'static str {

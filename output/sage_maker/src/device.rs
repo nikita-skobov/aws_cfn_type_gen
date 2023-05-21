@@ -6,20 +6,6 @@ pub struct CfnDevice {
 
 
     /// 
-    /// An array of key-value pairs that contain metadata to help you categorize and organize       your devices. Each tag consists of a key and a value, both of which you define.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the fleet the device belongs to.
     /// 
     /// Required: Yes
@@ -38,6 +24,20 @@ pub struct CfnDevice {
 
 
     /// 
+    /// An array of key-value pairs that contain metadata to help you categorize and organize       your devices. Each tag consists of a key and a value, both of which you define.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Edge device you want to create.
     /// 
     /// Required: No
@@ -49,6 +49,8 @@ pub struct CfnDevice {
     pub device: Option<Box<Device>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDevice {
     fn type_string() -> &'static str {
@@ -96,9 +98,27 @@ pub struct Tag {
 }
 
 
+
+
 /// Information of a particular device.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Device {
+
+
+    /// 
+    /// AWS Internet of Things (IoT) object name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [a-zA-Z0-9:_-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IotThingName")]
+    pub iot_thing_name: Option<String>,
 
 
     /// 
@@ -136,20 +156,6 @@ pub struct Device {
     #[serde(rename = "DeviceName")]
     pub device_name: String,
 
-
-    /// 
-    /// AWS Internet of Things (IoT) object name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [a-zA-Z0-9:_-]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IotThingName")]
-    pub iot_thing_name: Option<String>,
-
 }
+
+

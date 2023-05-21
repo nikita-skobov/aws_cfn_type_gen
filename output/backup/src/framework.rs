@@ -8,15 +8,33 @@ pub struct CfnFramework {
 
 
     /// 
-    /// A list of tags with which to tag your framework.
+    /// An optional description of the framework with a maximum 1,024 characters.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: .*\S.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FrameworkTags")]
-    pub framework_tags: Option<Vec<Tag>>,
+    #[serde(rename = "FrameworkDescription")]
+    pub framework_description: Option<String>,
+
+
+    /// 
+    /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of FrameworkControl
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FrameworkControls")]
+    pub framework_controls: Vec<FrameworkControl>,
 
 
     /// 
@@ -38,35 +56,19 @@ pub struct CfnFramework {
 
 
     /// 
-    /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of FrameworkControl
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FrameworkControls")]
-    pub framework_controls: Vec<FrameworkControl>,
-
-
-    /// 
-    /// An optional description of the framework with a maximum 1,024 characters.
+    /// A list of tags with which to tag your framework.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: .*\S.*
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FrameworkDescription")]
-    pub framework_description: Option<String>,
+    #[serde(rename = "FrameworkTags")]
+    pub framework_tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFramework {
     fn type_string() -> &'static str {
@@ -79,56 +81,9 @@ impl cfn_resources::CfnResource for CfnFramework {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
 /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FrameworkControl {
-
-
-    /// 
-    /// A list of ParameterName and ParameterValue pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ControlInputParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ControlInputParameters")]
-    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
 
 
     /// 
@@ -144,6 +99,18 @@ pub struct FrameworkControl {
 
 
     /// 
+    /// A list of ParameterName and ParameterValue pairs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ControlInputParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ControlInputParameters")]
+    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
+
+
+    /// 
     /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
     /// 
     /// Required: No
@@ -155,6 +122,8 @@ pub struct FrameworkControl {
     pub control_scope: Option<ControlScope>,
 
 }
+
+
 
 
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
@@ -188,9 +157,23 @@ pub struct ControlInputParameter {
 }
 
 
+
+
 /// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ControlScope {
+
+
+    /// 
+    /// Describes whether the control scope includes one or more types of resources, such as       EFS or RDS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceTypes")]
+    pub compliance_resource_types: Option<Vec<String>>,
 
 
     /// 
@@ -218,16 +201,43 @@ pub struct ControlScope {
     #[serde(rename = "ComplianceResourceIds")]
     pub compliance_resource_ids: Option<Vec<String>>,
 
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
 
     /// 
-    /// Describes whether the control scope includes one or more types of resources, such as       EFS or RDS.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceTypes")]
-    pub compliance_resource_types: Option<Vec<String>>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
+
+

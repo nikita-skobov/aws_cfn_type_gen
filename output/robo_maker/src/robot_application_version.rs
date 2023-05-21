@@ -42,6 +42,8 @@ pub struct CfnRobotApplicationVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnRobotApplicationVersion {
     fn type_string() -> &'static str {
         "AWS::RoboMaker::RobotApplicationVersion"

@@ -32,30 +32,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The endpoint URL of the Amazon API Gateway proxy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ApiGatewayProxyInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiGatewayProxy")]
-    pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
-
-
-    /// 
-    /// The name of the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The tags assigned to the application.
     /// 
     /// Required: No
@@ -78,7 +54,33 @@ pub struct CfnApplication {
     #[serde(rename = "EnvironmentIdentifier")]
     pub environment_identifier: String,
 
+
+    /// 
+    /// The name of the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The endpoint URL of the Amazon API Gateway proxy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ApiGatewayProxyInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiGatewayProxy")]
+    pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -89,6 +91,41 @@ impl cfn_resources::CfnResource for CfnApplication {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A wrapper object holding the Amazon API Gateway endpoint input.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ApiGatewayProxyInput {
+
+
+    /// 
+    /// The type of endpoint to use for the API Gateway proxy. If no value is specified in    the request, the value is set to REGIONAL by default.
+    /// 
+    /// If the value is set to PRIVATE in the request, this creates a private API    endpoint that is isolated from the public internet. The private endpoint can only be accessed    by using Amazon Virtual Private Cloud (Amazon VPC) interface endpoints for the Amazon API Gateway that has been granted access.   For more information about creating a private connection with Refactor Spaces and interface   endpoint (AWS PrivateLink) availability, see Access    Refactor Spaces using an interface endpoint (AWS PrivateLink).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointType")]
+    pub endpoint_type: Option<String>,
+
+
+    /// 
+    /// The name of the API Gateway stage. The name defaults to prod.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StageName")]
+    pub stage_name: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -126,34 +163,3 @@ pub struct Tag {
 }
 
 
-/// A wrapper object holding the Amazon API Gateway endpoint input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ApiGatewayProxyInput {
-
-
-    /// 
-    /// The type of endpoint to use for the API Gateway proxy. If no value is specified in    the request, the value is set to REGIONAL by default.
-    /// 
-    /// If the value is set to PRIVATE in the request, this creates a private API    endpoint that is isolated from the public internet. The private endpoint can only be accessed    by using Amazon Virtual Private Cloud (Amazon VPC) interface endpoints for the Amazon API Gateway that has been granted access.   For more information about creating a private connection with Refactor Spaces and interface   endpoint (AWS PrivateLink) availability, see Access    Refactor Spaces using an interface endpoint (AWS PrivateLink).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointType")]
-    pub endpoint_type: Option<String>,
-
-
-    /// 
-    /// The name of the API Gateway stage. The name defaults to prod.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StageName")]
-    pub stage_name: Option<String>,
-
-}

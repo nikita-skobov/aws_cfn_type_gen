@@ -6,29 +6,27 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The type of schema.
+    /// The name of the schema.
     /// 
-    /// Valid types include OpenApi3 and JSONSchemaDraft4.
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaName")]
+    pub schema_name: Option<String>,
+
+
+    /// 
+    /// The source of the schema definition.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// Tags associated with the schema.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagsEntry>>,
+    #[serde(rename = "Content")]
+    pub content: String,
 
 
     /// 
@@ -56,29 +54,33 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The name of the schema.
+    /// The type of schema.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaName")]
-    pub schema_name: Option<String>,
-
-
-    /// 
-    /// The source of the schema definition.
+    /// Valid types include OpenApi3 and JSONSchemaDraft4.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Content")]
-    pub content: String,
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
+    /// Tags associated with the schema.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagsEntry>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSchema {
     fn type_string() -> &'static str {
@@ -120,3 +122,5 @@ pub struct TagsEntry {
     pub value: String,
 
 }
+
+

@@ -6,15 +6,89 @@ pub struct CfnScheduledQuery {
 
 
     /// 
-    /// Notification configuration for the scheduled query. A notification is sent by Timestream    when a query run finishes, when the state is updated or when you delete it.
+    /// A name for the query. Scheduled query names must be unique within each Region.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScheduledQueryName")]
+    pub scheduled_query_name: Option<String>,
+
+
+    /// 
+    /// Using a ClientToken makes the call to CreateScheduledQuery idempotent, in other words,    making the same request repeatedly will produce the same result. Making multiple identical    CreateScheduledQuery requests has the same effect as making a single request.
+    /// 
+    /// If CreateScheduledQuery is called without a ClientToken, the Query SDK      generates a ClientToken on your behalf.         After 8 hours, any request with the same ClientToken is treated as a new      request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientToken")]
+    pub client_token: Option<String>,
+
+
+    /// 
+    /// The ARN for the IAM role that Timestream will assume when running the scheduled query.
     /// 
     /// Required: Yes
     ///
-    /// Type: NotificationConfiguration
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NotificationConfiguration")]
-    pub notification_configuration: NotificationConfiguration,
+    #[serde(rename = "ScheduledQueryExecutionRoleArn")]
+    pub scheduled_query_execution_role_arn: String,
+
+
+    /// 
+    /// Schedule configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ScheduleConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScheduleConfiguration")]
+    pub schedule_configuration: ScheduleConfiguration,
+
+
+    /// 
+    /// A list of key-value pairs to label the scheduled query.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Scheduled query target store configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TargetConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetConfiguration")]
+    pub target_configuration: Option<TargetConfiguration>,
+
+
+    /// 
+    /// Configuration for error reporting. Error reports will be generated when a problem is    encountered when writing the query results.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ErrorReportConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ErrorReportConfiguration")]
+    pub error_report_configuration: ErrorReportConfiguration,
 
 
     /// 
@@ -32,42 +106,6 @@ pub struct CfnScheduledQuery {
 
 
     /// 
-    /// Schedule configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScheduleConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduleConfiguration")]
-    pub schedule_configuration: ScheduleConfiguration,
-
-
-    /// 
-    /// A name for the query. Scheduled query names must be unique within each Region.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduledQueryName")]
-    pub scheduled_query_name: Option<String>,
-
-
-    /// 
-    /// Scheduled query target store configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TargetConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetConfiguration")]
-    pub target_configuration: Option<TargetConfiguration>,
-
-
-    /// 
     /// The Amazon KMS key used to encrypt the scheduled query resource, at-rest. If the Amazon    KMS key is not specified, the scheduled query resource will be encrypted with a Timestream    owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN.    When using an alias name, prefix the name with alias/
     /// 
     /// If ErrorReportConfiguration uses SSE_KMS as encryption type, the same    KmsKeyId is used to encrypt the error report at rest.
@@ -82,55 +120,19 @@ pub struct CfnScheduledQuery {
 
 
     /// 
-    /// Configuration for error reporting. Error reports will be generated when a problem is    encountered when writing the query results.
+    /// Notification configuration for the scheduled query. A notification is sent by Timestream    when a query run finishes, when the state is updated or when you delete it.
     /// 
     /// Required: Yes
     ///
-    /// Type: ErrorReportConfiguration
+    /// Type: NotificationConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ErrorReportConfiguration")]
-    pub error_report_configuration: ErrorReportConfiguration,
-
-
-    /// 
-    /// The ARN for the IAM role that Timestream will assume when running the scheduled query.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduledQueryExecutionRoleArn")]
-    pub scheduled_query_execution_role_arn: String,
-
-
-    /// 
-    /// A list of key-value pairs to label the scheduled query.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Using a ClientToken makes the call to CreateScheduledQuery idempotent, in other words,    making the same request repeatedly will produce the same result. Making multiple identical    CreateScheduledQuery requests has the same effect as making a single request.
-    /// 
-    /// If CreateScheduledQuery is called without a ClientToken, the Query SDK      generates a ClientToken on your behalf.         After 8 hours, any request with the same ClientToken is treated as a new      request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientToken")]
-    pub client_token: Option<String>,
+    #[serde(rename = "NotificationConfiguration")]
+    pub notification_configuration: NotificationConfiguration,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnScheduledQuery {
     fn type_string() -> &'static str {
@@ -140,41 +142,6 @@ impl cfn_resources::CfnResource for CfnScheduledQuery {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
 }
 
 
@@ -195,6 +162,135 @@ pub struct SnsConfiguration {
     pub topic_arn: String,
 
 }
+
+
+
+
+/// MixedMeasureMappings are mappings that can be used to ingest data into a mixture of narrow    and multi measures in the derived table.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MixedMeasureMapping {
+
+
+    /// 
+    /// Type of the value that is to be read from sourceColumn. If the mapping is for MULTI, use    MeasureValueType.MULTI.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeasureValueType")]
+    pub measure_value_type: String,
+
+
+    /// 
+    /// Required when measureValueType is MULTI. Attribute mappings for MULTI value    measures.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MultiMeasureAttributeMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MultiMeasureAttributeMappings")]
+    pub multi_measure_attribute_mappings: Option<Vec<MultiMeasureAttributeMapping>>,
+
+
+    /// 
+    /// Refers to the value of measure_name in a result row. This field is required if    MeasureNameColumn is provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeasureName")]
+    pub measure_name: Option<String>,
+
+
+    /// 
+    /// This field refers to the source column from which measure-value is to be read for result    materialization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceColumn")]
+    pub source_column: Option<String>,
+
+
+    /// 
+    /// Target measure name to be used. If not provided, the target measure name by default would    be measure-name if provided, or sourceColumn otherwise.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetMeasureName")]
+    pub target_measure_name: Option<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+
+
+/// Configuration of the schedule of the query.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScheduleConfiguration {
+
+
+    /// 
+    /// An expression that denotes when to trigger the scheduled query run. This can be a cron    expression or a rate expression.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScheduleExpression")]
+    pub schedule_expression: String,
+
+}
+
+
 
 
 /// Only one of MixedMeasureMappings or MultiMeasureMappings is to be provided.    MultiMeasureMappings can be used to ingest data as multi measures in the derived table.
@@ -228,54 +324,120 @@ pub struct MultiMeasureMappings {
 }
 
 
-/// This type is used to map column(s) from the query result to a dimension in the destination    table.
+
+
+/// Configuration used for writing the output of a query.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DimensionMapping {
+pub struct TargetConfiguration {
 
 
     /// 
-    /// Column name from query result.
+    /// Configuration needed to write data into the Timestream database and table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: TimestreamConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimestreamConfiguration")]
+    pub timestream_configuration: TimestreamConfiguration,
+
+}
+
+
+
+
+/// Configuration to write data into Timestream database and table. This configuration allows    the user to map the query result select columns into the destination table columns.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimestreamConfiguration {
+
+
+    /// 
+    /// Specifies how to map measures to multi-measure records.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MixedMeasureMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MixedMeasureMappings")]
+    pub mixed_measure_mappings: Option<Vec<MixedMeasureMapping>>,
+
+
+    /// 
+    /// This is to allow mapping column(s) from the query result to the dimension in the    destination table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of DimensionMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DimensionMappings")]
+    pub dimension_mappings: Vec<DimensionMapping>,
+
+
+    /// 
+    /// Name of Timestream database to which the query result will be written.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
 
 
     /// 
-    /// Type for the dimension: VARCHAR
+    /// Column from query result that should be used as the time column in destination table.    Column type for this should be TIMESTAMP.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DimensionValueType")]
-    pub dimension_value_type: String,
-
-}
-
-
-/// Configuration required for error reporting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ErrorReportConfiguration {
+    #[serde(rename = "TimeColumn")]
+    pub time_column: String,
 
 
     /// 
-    /// The S3 configuration for the error reports.
+    /// Name of Timestream table that the query result will be written to. The table should be    within the same database that is provided in Timestream configuration.
     /// 
     /// Required: Yes
     ///
-    /// Type: S3Configuration
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3Configuration")]
-    pub s3_configuration: S3Configuration,
+    #[serde(rename = "TableName")]
+    pub table_name: String,
+
+
+    /// 
+    /// Name of the measure column. Also see MultiMeasureMappings and     MixedMeasureMappings for how measure name properties on those relate to     MeasureNameColumn.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeasureNameColumn")]
+    pub measure_name_column: Option<String>,
+
+
+    /// 
+    /// Multi-measure mappings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MultiMeasureMappings
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MultiMeasureMappings")]
+    pub multi_measure_mappings: Option<MultiMeasureMappings>,
 
 }
+
+
 
 
 /// Notification configuration for a scheduled query. A notification is sent by Timestream    when a scheduled query is created, its state is updated or when it is deleted.
@@ -297,9 +459,77 @@ pub struct NotificationConfiguration {
 }
 
 
+
+
+/// Configuration required for error reporting.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ErrorReportConfiguration {
+
+
+    /// 
+    /// The S3 configuration for the error reports.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3Configuration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Configuration")]
+    pub s3_configuration: S3Configuration,
+
+}
+
+
+
+
+/// This type is used to map column(s) from the query result to a dimension in the destination    table.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DimensionMapping {
+
+
+    /// 
+    /// Type for the dimension: VARCHAR
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DimensionValueType")]
+    pub dimension_value_type: String,
+
+
+    /// 
+    /// Column name from query result.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
 /// Attribute mapping for MULTI value measures.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MultiMeasureAttributeMapping {
+
+
+    /// 
+    /// Source column from where the attribute value is to be read.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceColumn")]
+    pub source_column: String,
 
 
     /// 
@@ -325,215 +555,9 @@ pub struct MultiMeasureAttributeMapping {
     #[serde(rename = "MeasureValueType")]
     pub measure_value_type: String,
 
-
-    /// 
-    /// Source column from where the attribute value is to be read.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceColumn")]
-    pub source_column: String,
-
 }
 
 
-/// MixedMeasureMappings are mappings that can be used to ingest data into a mixture of narrow    and multi measures in the derived table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MixedMeasureMapping {
-
-
-    /// 
-    /// This field refers to the source column from which measure-value is to be read for result    materialization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceColumn")]
-    pub source_column: Option<String>,
-
-
-    /// 
-    /// Type of the value that is to be read from sourceColumn. If the mapping is for MULTI, use    MeasureValueType.MULTI.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeasureValueType")]
-    pub measure_value_type: String,
-
-
-    /// 
-    /// Refers to the value of measure_name in a result row. This field is required if    MeasureNameColumn is provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeasureName")]
-    pub measure_name: Option<String>,
-
-
-    /// 
-    /// Target measure name to be used. If not provided, the target measure name by default would    be measure-name if provided, or sourceColumn otherwise.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetMeasureName")]
-    pub target_measure_name: Option<String>,
-
-
-    /// 
-    /// Required when measureValueType is MULTI. Attribute mappings for MULTI value    measures.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MultiMeasureAttributeMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MultiMeasureAttributeMappings")]
-    pub multi_measure_attribute_mappings: Option<Vec<MultiMeasureAttributeMapping>>,
-
-}
-
-
-/// Configuration used for writing the output of a query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetConfiguration {
-
-
-    /// 
-    /// Configuration needed to write data into the Timestream database and table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: TimestreamConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimestreamConfiguration")]
-    pub timestream_configuration: TimestreamConfiguration,
-
-}
-
-
-/// Configuration of the schedule of the query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScheduleConfiguration {
-
-
-    /// 
-    /// An expression that denotes when to trigger the scheduled query run. This can be a cron    expression or a rate expression.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
-
-}
-
-
-/// Configuration to write data into Timestream database and table. This configuration allows    the user to map the query result select columns into the destination table columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TimestreamConfiguration {
-
-
-    /// 
-    /// Name of the measure column. Also see MultiMeasureMappings and     MixedMeasureMappings for how measure name properties on those relate to     MeasureNameColumn.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeasureNameColumn")]
-    pub measure_name_column: Option<String>,
-
-
-    /// 
-    /// Name of Timestream database to which the query result will be written.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
-
-
-    /// 
-    /// Multi-measure mappings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MultiMeasureMappings
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MultiMeasureMappings")]
-    pub multi_measure_mappings: Option<MultiMeasureMappings>,
-
-
-    /// 
-    /// This is to allow mapping column(s) from the query result to the dimension in the    destination table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of DimensionMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DimensionMappings")]
-    pub dimension_mappings: Vec<DimensionMapping>,
-
-
-    /// 
-    /// Specifies how to map measures to multi-measure records.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MixedMeasureMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MixedMeasureMappings")]
-    pub mixed_measure_mappings: Option<Vec<MixedMeasureMapping>>,
-
-
-    /// 
-    /// Name of Timestream table that the query result will be written to. The table should be    within the same database that is provided in Timestream configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableName")]
-    pub table_name: String,
-
-
-    /// 
-    /// Column from query result that should be used as the time column in destination table.    Column type for this should be TIMESTAMP.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeColumn")]
-    pub time_column: String,
-
-}
 
 
 /// Details on S3 location for error reports that result from running a query.
@@ -588,6 +612,27 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionOption")]
-    pub encryption_option: Option<String>,
+    pub encryption_option: Option<S3ConfigurationEncryptionOptionEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3ConfigurationEncryptionOptionEnum {
+
+    /// SSE_KMS
+    #[serde(rename = "SSE_KMS")]
+    Ssekms,
+
+    /// SSE_S3
+    #[serde(rename = "SSE_S3")]
+    Sses3,
+
+}
+
+impl Default for S3ConfigurationEncryptionOptionEnum {
+    fn default() -> Self {
+        S3ConfigurationEncryptionOptionEnum::Ssekms
+    }
+}
+

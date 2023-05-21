@@ -38,6 +38,8 @@ pub struct CfnIPSet {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnIPSet {
     fn type_string() -> &'static str {
         "AWS::WAFRegional::IPSet"
@@ -65,7 +67,7 @@ pub struct IPSetDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: IPSetDescriptorTypeEnum,
 
 
     /// 
@@ -94,3 +96,24 @@ pub struct IPSetDescriptor {
     pub value: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPSetDescriptorTypeEnum {
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for IPSetDescriptorTypeEnum {
+    fn default() -> Self {
+        IPSetDescriptorTypeEnum::Ipv4
+    }
+}
+

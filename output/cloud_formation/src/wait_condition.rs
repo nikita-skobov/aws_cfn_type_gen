@@ -8,19 +8,17 @@ pub struct CfnWaitCondition {
 
 
     /// 
-    /// A reference to the wait condition handle used to signal this wait condition. Use the Ref intrinsic  function to specify an AWS::CloudFormation::WaitConditionHandle resource.
-    /// 
-    /// Anytime you add a WaitCondition resource during a stack update, you must associate the wait  condition with a new WaitConditionHandle resource. Don't reuse an old wait condition handle that has already been  defined in the template. If you reuse a wait condition handle, the wait condition might evaluate old signals from a  previous create or update stack command.
+    /// The number of success signals that CloudFormation must receive before it continues the stack creation  process. When the wait condition receives the requisite number of success signals, CloudFormation resumes  the creation of the stack. If the wait condition doesn't receive the specified number of success signals before the  Timeout period expires, CloudFormation assumes that the wait condition has failed and rolls the stack  back.
     /// 
     /// Updates aren't supported.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Handle")]
-    pub handle: Option<String>,
+    #[serde(rename = "Count")]
+    pub count: Option<i64>,
 
 
     /// 
@@ -38,19 +36,23 @@ pub struct CfnWaitCondition {
 
 
     /// 
-    /// The number of success signals that CloudFormation must receive before it continues the stack creation  process. When the wait condition receives the requisite number of success signals, CloudFormation resumes  the creation of the stack. If the wait condition doesn't receive the specified number of success signals before the  Timeout period expires, CloudFormation assumes that the wait condition has failed and rolls the stack  back.
+    /// A reference to the wait condition handle used to signal this wait condition. Use the Ref intrinsic  function to specify an AWS::CloudFormation::WaitConditionHandle resource.
+    /// 
+    /// Anytime you add a WaitCondition resource during a stack update, you must associate the wait  condition with a new WaitConditionHandle resource. Don't reuse an old wait condition handle that has already been  defined in the template. If you reuse a wait condition handle, the wait condition might evaluate old signals from a  previous create or update stack command.
     /// 
     /// Updates aren't supported.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Count")]
-    pub count: Option<i64>,
+    #[serde(rename = "Handle")]
+    pub handle: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWaitCondition {
     fn type_string() -> &'static str {

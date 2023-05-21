@@ -34,9 +34,30 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: IndexTypeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IndexTypeEnum {
+
+    /// AGGREGATOR
+    #[serde(rename = "AGGREGATOR")]
+    Aggregator,
+
+    /// LOCAL
+    #[serde(rename = "LOCAL")]
+    Local,
+
+}
+
+impl Default for IndexTypeEnum {
+    fn default() -> Self {
+        IndexTypeEnum::Aggregator
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnIndex {
     fn type_string() -> &'static str {

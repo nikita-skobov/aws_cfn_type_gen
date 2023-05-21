@@ -6,22 +6,6 @@ pub struct CfnLayerVersionPermission {
 
 
     /// 
-    /// The API action that grants access to the layer. For example, lambda:GetLayerVersion.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 22
-    ///
-    /// Pattern: lambda:GetLayerVersion
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: String,
-
-
-    /// 
     /// With the principal set to *, grant permission to all accounts in the specified    organization.
     /// 
     /// Required: No
@@ -35,6 +19,22 @@ pub struct CfnLayerVersionPermission {
     /// Update requires: Replacement
     #[serde(rename = "OrganizationId")]
     pub organization_id: Option<String>,
+
+
+    /// 
+    /// The API action that grants access to the layer. For example, lambda:GetLayerVersion.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 22
+    ///
+    /// Pattern: lambda:GetLayerVersion
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: String,
 
 
     /// 
@@ -69,6 +69,8 @@ pub struct CfnLayerVersionPermission {
     pub layer_version_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLayerVersionPermission {
     fn type_string() -> &'static str {

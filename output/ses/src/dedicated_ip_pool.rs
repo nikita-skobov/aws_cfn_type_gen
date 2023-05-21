@@ -36,6 +36,8 @@ pub struct CfnDedicatedIpPool {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDedicatedIpPool {
     fn type_string() -> &'static str {
         "AWS::SES::DedicatedIpPool"

@@ -6,6 +6,30 @@ pub struct CfnRepository {
 
 
     /// 
+    /// A list of tags to be applied to the repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A list of upstream repositories to associate with the repository. The order of the upstream repositories     in the list determines their priority order when AWS CodeArtifact looks for a requested package version. For more     information, see Working with upstream repositories.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Upstreams")]
+    pub upstreams: Option<Vec<String>>,
+
+
+    /// 
     /// The 12-digit account number of the AWS account that owns the domain that contains the repository. It does not include     dashes or spaces.
     /// 
     /// Required: No
@@ -24,6 +48,18 @@ pub struct CfnRepository {
 
 
     /// 
+    /// An array of external connections associated with the repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExternalConnections")]
+    pub external_connections: Option<Vec<String>>,
+
+
+    /// 
     /// A text description of the repository.
     /// 
     /// Required: No
@@ -37,30 +73,6 @@ pub struct CfnRepository {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// The document that defines the resource policy that is set on a repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsPolicyDocument")]
-    pub permissions_policy_document: Option<serde_json::Value>,
-
-
-    /// 
-    /// A list of upstream repositories to associate with the repository. The order of the upstream repositories     in the list determines their priority order when AWS CodeArtifact looks for a requested package version. For more     information, see Working with upstream repositories.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Upstreams")]
-    pub upstreams: Option<Vec<String>>,
 
 
     /// 
@@ -82,30 +94,6 @@ pub struct CfnRepository {
 
 
     /// 
-    /// A list of tags to be applied to the repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// An array of external connections associated with the repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExternalConnections")]
-    pub external_connections: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the domain that contains the repository.
     /// 
     /// Required: Yes
@@ -122,7 +110,21 @@ pub struct CfnRepository {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
+
+    /// 
+    /// The document that defines the resource policy that is set on a repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsPolicyDocument")]
+    pub permissions_policy_document: Option<serde_json::Value>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRepository {
     fn type_string() -> &'static str {
@@ -168,3 +170,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

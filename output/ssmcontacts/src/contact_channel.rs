@@ -6,54 +6,6 @@ pub struct CfnContactChannel {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the contact you are adding the contact channel     to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContactId")]
-    pub contact_id: String,
-
-
-    /// 
-    /// The details that Incident Manager uses when trying to engage the contact channel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelAddress")]
-    pub channel_address: String,
-
-
-    /// 
-    /// The name of the contact channel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[\p{L}\p{Z}\p{N}_.\-]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelName")]
-    pub channel_name: String,
-
-
-    /// 
     /// If you want to activate the channel at a later time, you can choose to defer activation.     Incident Manager can't engage your contact channel until it has been activated.
     /// 
     /// Required: No
@@ -78,9 +30,82 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ChannelType")]
-    pub channel_type: String,
+    pub channel_type: ContactChannelChannelTypeEnum,
+
+
+    /// 
+    /// The name of the contact channel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[\p{L}\p{Z}\p{N}_.\-]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelName")]
+    pub channel_name: String,
+
+
+    /// 
+    /// The details that Incident Manager uses when trying to engage the contact channel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelAddress")]
+    pub channel_address: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the contact you are adding the contact channel     to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContactId")]
+    pub contact_id: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ContactChannelChannelTypeEnum {
+
+    /// EMAIL
+    #[serde(rename = "EMAIL")]
+    Email,
+
+    /// SMS
+    #[serde(rename = "SMS")]
+    Sms,
+
+    /// VOICE
+    #[serde(rename = "VOICE")]
+    Voice,
+
+}
+
+impl Default for ContactChannelChannelTypeEnum {
+    fn default() -> Self {
+        ContactChannelChannelTypeEnum::Email
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnContactChannel {
     fn type_string() -> &'static str {

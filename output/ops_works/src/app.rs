@@ -8,54 +8,6 @@ pub struct CfnApp {
 
 
     /// 
-    /// The app's short name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Shortname")]
-    pub shortname: Option<String>,
-
-
-    /// 
-    /// One or more user-defined key/value pairs to be added to the stack attributes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// A Source object that specifies the app repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Source
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppSource")]
-    pub app_source: Option<Source>,
-
-
-    /// 
-    /// An SslConfiguration object with the SSL configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SslConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SslConfiguration")]
-    pub ssl_configuration: Option<SslConfiguration>,
-
-
-    /// 
     /// The app name.
     /// 
     /// Required: Yes
@@ -65,44 +17,6 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The app type. Each supported type is associated with a particular layer. For example, PHP      applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances    that are members of the corresponding layer. If your app isn't one of the standard types, or    you prefer to implement your own Deploy recipes, specify other.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: aws-flow-ruby | java | nodejs | other | php | rails | static
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The app's data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DataSource
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataSources")]
-    pub data_sources: Option<Vec<DataSource>>,
-
-
-    /// 
-    /// Whether to enable SSL for the app.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableSsl")]
-    pub enable_ssl: Option<bool>,
 
 
     /// 
@@ -127,6 +41,44 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
     pub domains: Option<Vec<String>>,
+
+
+    /// 
+    /// The app type. Each supported type is associated with a particular layer. For example, PHP      applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances    that are members of the corresponding layer. If your app isn't one of the standard types, or    you prefer to implement your own Deploy recipes, specify other.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: aws-flow-ruby | java | nodejs | other | php | rails | static
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: AppTypeEnum,
+
+
+    /// 
+    /// A Source object that specifies the app repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Source
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppSource")]
+    pub app_source: Option<Source>,
+
+
+    /// 
+    /// One or more user-defined key/value pairs to be added to the stack attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attributes")]
+    pub attributes: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -156,7 +108,96 @@ pub struct CfnApp {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// An SslConfiguration object with the SSL configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SslConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SslConfiguration")]
+    pub ssl_configuration: Option<SslConfiguration>,
+
+
+    /// 
+    /// The app's short name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Shortname")]
+    pub shortname: Option<String>,
+
+
+    /// 
+    /// The app's data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DataSource
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataSources")]
+    pub data_sources: Option<Vec<DataSource>>,
+
+
+    /// 
+    /// Whether to enable SSL for the app.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableSsl")]
+    pub enable_ssl: Option<bool>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AppTypeEnum {
+
+    /// aws-flow-ruby
+    #[serde(rename = "aws-flow-ruby")]
+    Awsflowruby,
+
+    /// java
+    #[serde(rename = "java")]
+    Java,
+
+    /// nodejs
+    #[serde(rename = "nodejs")]
+    Nodejs,
+
+    /// other
+    #[serde(rename = "other")]
+    Other,
+
+    /// php
+    #[serde(rename = "php")]
+    Php,
+
+    /// rails
+    #[serde(rename = "rails")]
+    Rails,
+
+    /// static
+    #[serde(rename = "static")]
+    Static,
+
+}
+
+impl Default for AppTypeEnum {
+    fn default() -> Self {
+        AppTypeEnum::Awsflowruby
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnApp {
     fn type_string() -> &'static str {
@@ -172,18 +213,6 @@ impl cfn_resources::CfnResource for CfnApp {
 /// Describes an app's SSL configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SslConfiguration {
-
-
-    /// 
-    /// The private key; the contents of the certificate's domain.kex file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PrivateKey")]
-    pub private_key: Option<String>,
 
 
     /// 
@@ -209,7 +238,21 @@ pub struct SslConfiguration {
     #[serde(rename = "Chain")]
     pub chain: Option<String>,
 
+
+    /// 
+    /// The private key; the contents of the certificate's domain.kex file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrivateKey")]
+    pub private_key: Option<String>,
+
 }
+
+
 
 
 /// Describes an app's data source.
@@ -218,15 +261,15 @@ pub struct DataSource {
 
 
     /// 
-    /// The database name.
+    /// The data source's ARN.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
 
 
     /// 
@@ -242,34 +285,24 @@ pub struct DataSource {
 
 
     /// 
-    /// The data source's ARN.
+    /// The database name.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
 
 }
+
+
 
 
 /// Represents an app's environment variable.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EnvironmentVariable {
-
-
-    /// 
-    /// (Required) The environment variable's name, which can consist of up to 64 characters and must be specified.      The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -282,6 +315,18 @@ pub struct EnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// (Required) The environment variable's name, which can consist of up to 64 characters and must be specified.      The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
@@ -298,37 +343,11 @@ pub struct EnvironmentVariable {
 }
 
 
+
+
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Source {
-
-
-    /// 
-    /// The repository type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: archive | git | s3 | svn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
-    /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
-    /// 
-    /// "Parameters" : { "GitSSHKey" : { "Description" : "Change SSH key newlines to       commas.", "Type" : "CommaDelimitedList", "NoEcho" : "true" }, ...       "CustomCookbooksSource": { "Revision" : { "Ref": "GitRevision"}, "SshKey" : { "Fn::Join"       : [ "\n", { "Ref": "GitSSHKey"} ] }, "Type": "git", "Url": { "Ref": "GitURL"} }       ...
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SshKey")]
-    pub ssh_key: Option<String>,
 
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-stack-source.html#cfn-opsworks-custcookbooksource-pw
@@ -373,4 +392,61 @@ pub struct Source {
     #[serde(rename = "Username")]
     pub username: Option<String>,
 
+
+    /// 
+    /// The repository type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: archive | git | s3 | svn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<SourceTypeEnum>,
+
+
+    /// 
+    /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
+    /// 
+    /// "Parameters" : { "GitSSHKey" : { "Description" : "Change SSH key newlines to       commas.", "Type" : "CommaDelimitedList", "NoEcho" : "true" }, ...       "CustomCookbooksSource": { "Revision" : { "Ref": "GitRevision"}, "SshKey" : { "Fn::Join"       : [ "\n", { "Ref": "GitSSHKey"} ] }, "Type": "git", "Url": { "Ref": "GitURL"} }       ...
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SshKey")]
+    pub ssh_key: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceTypeEnum {
+
+    /// archive
+    #[serde(rename = "archive")]
+    Archive,
+
+    /// git
+    #[serde(rename = "git")]
+    Git,
+
+    /// s3
+    #[serde(rename = "s3")]
+    S3,
+
+    /// svn
+    #[serde(rename = "svn")]
+    Svn,
+
+}
+
+impl Default for SourceTypeEnum {
+    fn default() -> Self {
+        SourceTypeEnum::Archive
+    }
+}
+

@@ -6,26 +6,6 @@ pub struct CfnFleet {
 
 
     /// 
-    /// The instance type to use when launching fleet instances. The following instance types are available for non-Elastic fleets:
-    /// 
-    /// stream.standard.small               stream.standard.medium               stream.standard.large               stream.compute.large               stream.compute.xlarge               stream.compute.2xlarge               stream.compute.4xlarge               stream.compute.8xlarge               stream.memory.large               stream.memory.xlarge               stream.memory.2xlarge               stream.memory.4xlarge               stream.memory.8xlarge               stream.memory.z1d.large               stream.memory.z1d.xlarge               stream.memory.z1d.2xlarge               stream.memory.z1d.3xlarge               stream.memory.z1d.6xlarge               stream.memory.z1d.12xlarge               stream.graphics-design.large               stream.graphics-design.xlarge               stream.graphics-design.2xlarge               stream.graphics-design.4xlarge               stream.graphics-desktop.2xlarge               stream.graphics.g4dn.xlarge               stream.graphics.g4dn.2xlarge               stream.graphics.g4dn.4xlarge               stream.graphics.g4dn.8xlarge               stream.graphics.g4dn.12xlarge               stream.graphics.g4dn.16xlarge               stream.graphics-pro.4xlarge               stream.graphics-pro.8xlarge               stream.graphics-pro.16xlarge
-    /// 
-    /// The following instance types are available for Elastic fleets:
-    /// 
-    /// stream.standard.small            stream.standard.medium
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
     /// The amount of time that users can be idle (inactive) before they are disconnected       from their streaming session and the DisconnectTimeoutInSeconds time       interval begins. Users are notified before they are disconnected due to inactivity. If       they try to reconnect to the streaming session before the time interval specified in       DisconnectTimeoutInSeconds elapses, they are connected to their       previous session. Users are considered idle when they stop providing keyboard or mouse       input during their streaming session. File uploads and downloads, audio in, audio out,       and pixels changing do not qualify as user activity. If users continue to be idle after       the time interval in IdleDisconnectTimeoutInSeconds elapses, they are       disconnected.
     /// 
     /// To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value between 60 and 3600.
@@ -39,6 +19,28 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "IdleDisconnectTimeoutInSeconds")]
     pub idle_disconnect_timeout_in_seconds: Option<i64>,
+
+
+    /// The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionScriptS3Location")]
+    pub session_script_s3_location: Option<S3Location>,
+
+
+    /// The maximum number of concurrent sessions that can be run on an Elastic fleet. This setting is     required for Elastic fleets, but is not used for other fleet types.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxConcurrentSessions")]
+    pub max_concurrent_sessions: Option<i64>,
 
 
     /// 
@@ -55,85 +57,6 @@ pub struct CfnFleet {
     pub display_name: Option<String>,
 
 
-    /// 
-    /// The name of the image used to create the fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageName")]
-    pub image_name: Option<String>,
-
-
-    /// The maximum number of concurrent sessions that can be run on an Elastic fleet. This setting is     required for Elastic fleets, but is not used for other fleet types.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxConcurrentSessions")]
-    pub max_concurrent_sessions: Option<i64>,
-
-
-    /// 
-    /// A unique name for the fleet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The desired capacity for the fleet. This is not allowed for Elastic fleets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ComputeCapacity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComputeCapacity")]
-    pub compute_capacity: Option<ComputeCapacity>,
-
-
-    /// 
-    /// The VPC configuration for the fleet. This is required for Elastic fleets, but not required for other fleet types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcConfig")]
-    pub vpc_config: Option<VpcConfig>,
-
-
-    /// 
-    /// The fleet type.
-    /// 
-    /// ALWAYS_ON                   Provides users with instant-on access to their apps.             You are charged for all running instances in your fleet, even if no users are streaming apps.                        ON_DEMAND                   Provide users with access to applications after they connect, which takes one to two minutes.             You are charged for instance streaming when users are connected and a             small hourly fee for instances that are not streaming apps.                       ELASTIC                 The pool of streaming instances is managed by Amazon AppStream 2.0. When a          user selects their application or desktop to launch, they will start streaming          after the app block has been downloaded and mounted to a streaming          instance.
-    /// 
-    /// Allowed Values: ALWAYS_ON | ELASTIC | ON_DEMAND
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FleetType")]
-    pub fleet_type: Option<String>,
-
-
     /// The USB device filter strings that specify which USB devices a user can redirect to the fleet streaming session, when using the Windows native client. This is allowed but not required for Elastic fleets.
     ///
     /// Required: No
@@ -145,23 +68,10 @@ pub struct CfnFleet {
     pub usb_device_filter_strings: Option<Vec<String>>,
 
 
-    /// The platform of the fleet. Platform is a required setting for Elastic fleets, and is not used     for other fleet types.
-    ///
-    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AMAZON_LINUX2 | WINDOWS | WINDOWS_SERVER_2016 | WINDOWS_SERVER_2019
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Platform")]
-    pub platform: Option<String>,
-
-
     /// 
-    /// The ARN of the public, private, or shared image to use.
+    /// The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security Token Service AssumeRole API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the appstream_machine_role credential profile on the instance.
+    /// 
+    /// For more information, see Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances in the Amazon AppStream 2.0 Administration Guide.
     /// 
     /// Required: No
     ///
@@ -170,45 +80,8 @@ pub struct CfnFleet {
     /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageArn")]
-    pub image_arn: Option<String>,
-
-
-    /// The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.
-    ///
-    /// Required: No
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionScriptS3Location")]
-    pub session_script_s3_location: Option<S3Location>,
-
-
-    /// 
-    /// An array of key-value pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
-    /// 
-    /// Specify a value between 600 and 360000.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxUserDurationInSeconds")]
-    pub max_user_duration_in_seconds: Option<i64>,
+    #[serde(rename = "IamRoleArn")]
+    pub iam_role_arn: Option<String>,
 
 
     /// 
@@ -236,9 +109,92 @@ pub struct CfnFleet {
 
 
     /// 
-    /// The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security Token Service AssumeRole API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the appstream_machine_role credential profile on the instance.
+    /// The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to the streaming session after a disconnection or network interruption within this time interval, they are connected to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
     /// 
-    /// For more information, see Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances in the Amazon AppStream 2.0 Administration Guide.
+    /// Specify a value between 60 and 360000.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisconnectTimeoutInSeconds")]
+    pub disconnect_timeout_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The fleet type.
+    /// 
+    /// ALWAYS_ON                   Provides users with instant-on access to their apps.             You are charged for all running instances in your fleet, even if no users are streaming apps.                        ON_DEMAND                   Provide users with access to applications after they connect, which takes one to two minutes.             You are charged for instance streaming when users are connected and a             small hourly fee for instances that are not streaming apps.                       ELASTIC                 The pool of streaming instances is managed by Amazon AppStream 2.0. When a          user selects their application or desktop to launch, they will start streaming          after the app block has been downloaded and mounted to a streaming          instance.
+    /// 
+    /// Allowed Values: ALWAYS_ON | ELASTIC | ON_DEMAND
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FleetType")]
+    pub fleet_type: Option<FleetFleetTypeEnum>,
+
+
+    /// 
+    /// A unique name for the fleet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// The platform of the fleet. Platform is a required setting for Elastic fleets, and is not used     for other fleet types.
+    ///
+    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AMAZON_LINUX2 | WINDOWS | WINDOWS_SERVER_2016 | WINDOWS_SERVER_2019
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Platform")]
+    pub platform: Option<FleetPlatformEnum>,
+
+
+    /// 
+    /// The desired capacity for the fleet. This is not allowed for Elastic fleets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ComputeCapacity
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComputeCapacity")]
+    pub compute_capacity: Option<ComputeCapacity>,
+
+
+    /// 
+    /// The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+    /// 
+    /// Specify a value between 600 and 360000.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxUserDurationInSeconds")]
+    pub max_user_duration_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The ARN of the public, private, or shared image to use.
     /// 
     /// Required: No
     ///
@@ -247,8 +203,8 @@ pub struct CfnFleet {
     /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: Option<String>,
+    #[serde(rename = "ImageArn")]
+    pub image_arn: Option<String>,
 
 
     /// 
@@ -264,21 +220,39 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamView")]
-    pub stream_view: Option<String>,
+    pub stream_view: Option<FleetStreamViewEnum>,
 
 
     /// 
-    /// The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to the streaming session after a disconnection or network interruption within this time interval, they are connected to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+    /// The instance type to use when launching fleet instances. The following instance types are available for non-Elastic fleets:
     /// 
-    /// Specify a value between 60 and 360000.
+    /// stream.standard.small               stream.standard.medium               stream.standard.large               stream.compute.large               stream.compute.xlarge               stream.compute.2xlarge               stream.compute.4xlarge               stream.compute.8xlarge               stream.memory.large               stream.memory.xlarge               stream.memory.2xlarge               stream.memory.4xlarge               stream.memory.8xlarge               stream.memory.z1d.large               stream.memory.z1d.xlarge               stream.memory.z1d.2xlarge               stream.memory.z1d.3xlarge               stream.memory.z1d.6xlarge               stream.memory.z1d.12xlarge               stream.graphics-design.large               stream.graphics-design.xlarge               stream.graphics-design.2xlarge               stream.graphics-design.4xlarge               stream.graphics-desktop.2xlarge               stream.graphics.g4dn.xlarge               stream.graphics.g4dn.2xlarge               stream.graphics.g4dn.4xlarge               stream.graphics.g4dn.8xlarge               stream.graphics.g4dn.12xlarge               stream.graphics.g4dn.16xlarge               stream.graphics-pro.4xlarge               stream.graphics-pro.8xlarge               stream.graphics-pro.16xlarge
+    /// 
+    /// The following instance types are available for Elastic fleets:
+    /// 
+    /// stream.standard.small            stream.standard.medium
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
+
+    /// 
+    /// An array of key-value pairs.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisconnectTimeoutInSeconds")]
-    pub disconnect_timeout_in_seconds: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -294,7 +268,104 @@ pub struct CfnFleet {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The name of the image used to create the fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageName")]
+    pub image_name: Option<String>,
+
+
+    /// 
+    /// The VPC configuration for the fleet. This is required for Elastic fleets, but not required for other fleet types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcConfig")]
+    pub vpc_config: Option<VpcConfig>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FleetPlatformEnum {
+
+    /// AMAZON_LINUX2
+    #[serde(rename = "AMAZON_LINUX2")]
+    Amazonlinux2,
+
+    /// WINDOWS
+    #[serde(rename = "WINDOWS")]
+    Windows,
+
+    /// WINDOWS_SERVER_2016
+    #[serde(rename = "WINDOWS_SERVER_2016")]
+    Windowsserver2016,
+
+    /// WINDOWS_SERVER_2019
+    #[serde(rename = "WINDOWS_SERVER_2019")]
+    Windowsserver2019,
+
+}
+
+impl Default for FleetPlatformEnum {
+    fn default() -> Self {
+        FleetPlatformEnum::Amazonlinux2
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FleetFleetTypeEnum {
+
+    /// ALWAYS_ON
+    #[serde(rename = "ALWAYS_ON")]
+    Alwayson,
+
+    /// ELASTIC
+    #[serde(rename = "ELASTIC")]
+    Elastic,
+
+    /// ON_DEMAND
+    #[serde(rename = "ON_DEMAND")]
+    Ondemand,
+
+}
+
+impl Default for FleetFleetTypeEnum {
+    fn default() -> Self {
+        FleetFleetTypeEnum::Alwayson
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FleetStreamViewEnum {
+
+    /// APP
+    #[serde(rename = "APP")]
+    App,
+
+    /// DESKTOP
+    #[serde(rename = "DESKTOP")]
+    Desktop,
+
+}
+
+impl Default for FleetStreamViewEnum {
+    fn default() -> Self {
+        FleetStreamViewEnum::App
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnFleet {
     fn type_string() -> &'static str {
@@ -305,6 +376,62 @@ impl cfn_resources::CfnResource for CfnFleet {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The desired capacity for a fleet.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComputeCapacity {
+
+
+    /// 
+    /// The desired number of streaming instances.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DesiredInstances")]
+    pub desired_instances: i64,
+
+}
+
+
+
+
+/// The VPC configuration information for the fleet.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConfig {
+
+
+    /// 
+    /// The identifiers of the security groups for the fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The identifiers of the subnets to which a network interface is attached from the fleet instance. Fleet instances can use one or two subnets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+}
+
+
 
 
 /// The name of the directory and organizational unit (OU) to use to join a fleet to a Microsoft Active Directory domain.
@@ -340,24 +467,11 @@ pub struct DomainJoinInfo {
 }
 
 
+
+
 /// Describes the S3 location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
-    /// The S3 key of the S3 object.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
 
 
     /// The S3 bucket of the S3 object.
@@ -376,40 +490,24 @@ pub struct S3Location {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
+
+    /// The S3 key of the S3 object.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
+
 }
 
 
-/// The VPC configuration information for the fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfig {
-
-
-    /// 
-    /// The identifiers of the subnets to which a network interface is attached from the fleet instance. Fleet instances can use one or two subnets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The identifiers of the security groups for the fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -424,17 +522,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -444,23 +531,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// The desired capacity for a fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ComputeCapacity {
-
 
     /// 
-    /// The desired number of streaming instances.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DesiredInstances")]
-    pub desired_instances: i64,
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
+
+

@@ -34,6 +34,8 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnEnclaveCertificateIamRoleAssociation {
     fn type_string() -> &'static str {
         "AWS::EC2::EnclaveCertificateIamRoleAssociation"

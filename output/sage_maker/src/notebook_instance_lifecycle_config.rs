@@ -6,17 +6,19 @@ pub struct CfnNotebookInstanceLifecycleConfig {
 
 
     /// 
-    /// A shell script that runs every time you start a notebook instance, including when you       create the notebook instance. The shell script must be a base64-encoded string.
+    /// The name of the lifecycle configuration.
     /// 
     /// Required: No
     ///
-    /// Type: List of NotebookInstanceLifecycleHook
+    /// Type: String
     ///
-    /// Maximum: 1
+    /// Maximum: 63
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnStart")]
-    pub on_start: Option<Vec<NotebookInstanceLifecycleHook>>,
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NotebookInstanceLifecycleConfigName")]
+    pub notebook_instance_lifecycle_config_name: Option<String>,
 
 
     /// 
@@ -34,21 +36,21 @@ pub struct CfnNotebookInstanceLifecycleConfig {
 
 
     /// 
-    /// The name of the lifecycle configuration.
+    /// A shell script that runs every time you start a notebook instance, including when you       create the notebook instance. The shell script must be a base64-encoded string.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of NotebookInstanceLifecycleHook
     ///
-    /// Maximum: 63
+    /// Maximum: 1
     ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NotebookInstanceLifecycleConfigName")]
-    pub notebook_instance_lifecycle_config_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "OnStart")]
+    pub on_start: Option<Vec<NotebookInstanceLifecycleHook>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnNotebookInstanceLifecycleConfig {
     fn type_string() -> &'static str {
@@ -84,3 +86,5 @@ pub struct NotebookInstanceLifecycleHook {
     pub content: Option<String>,
 
 }
+
+

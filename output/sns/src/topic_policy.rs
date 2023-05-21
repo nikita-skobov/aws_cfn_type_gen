@@ -6,18 +6,6 @@ pub struct CfnTopicPolicy {
 
 
     /// 
-    /// A policy document that contains permissions to add to the specified SNS topics.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyDocument")]
-    pub policy_document: serde_json::Value,
-
-
-    /// 
     /// The Amazon Resource Names (ARN) of the topics to which you want to add the policy. You     can use the       Ref      function to specify an       AWS::SNS::Topic      resource.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnTopicPolicy {
     #[serde(rename = "Topics")]
     pub topics: Vec<String>,
 
+
+    /// 
+    /// A policy document that contains permissions to add to the specified SNS topics.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDocument")]
+    pub policy_document: serde_json::Value,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTopicPolicy {
     fn type_string() -> &'static str {

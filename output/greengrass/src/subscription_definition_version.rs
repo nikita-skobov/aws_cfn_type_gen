@@ -6,18 +6,6 @@ pub struct CfnSubscriptionDefinitionVersion {
 
 
     /// 
-    /// The ID of the subscription definition associated with this version. This value is a GUID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubscriptionDefinitionId")]
-    pub subscription_definition_id: String,
-
-
-    /// 
     /// The subscriptions in this version.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnSubscriptionDefinitionVersion {
     #[serde(rename = "Subscriptions")]
     pub subscriptions: Vec<Subscription>,
 
+
+    /// 
+    /// The ID of the subscription definition associated with this version. This value is a GUID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubscriptionDefinitionId")]
+    pub subscription_definition_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSubscriptionDefinitionVersion {
     fn type_string() -> &'static str {
@@ -96,3 +98,5 @@ pub struct Subscription {
     pub id: String,
 
 }
+
+

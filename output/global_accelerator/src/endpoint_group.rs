@@ -6,47 +6,33 @@ pub struct CfnEndpointGroup {
 
 
     /// 
-    /// If the protocol is HTTP/S, then this value provides the ping path that Global Accelerator uses for the destination on the 			endpoints for health checks. The default is slash (/).
+    /// The Amazon Resource Name (ARN) of the listener.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Maximum: 255
     ///
-    /// Pattern: ^/[-a-zA-Z0-9@:%_\\+.~#?&/=]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckPath")]
-    pub health_check_path: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "ListenerArn")]
+    pub listener_arn: String,
 
 
     /// 
-    /// Allows you to override the destination ports used to route traffic to an endpoint. 			Using a port override lets you map a list of external destination ports (that your 			users send traffic to) to a list of internal destination ports that you want an application 			endpoint to receive traffic on.
+    /// The time—10 seconds or 30 seconds—between health checks for each endpoint. The default value is 30.
     /// 
     /// Required: No
     ///
-    /// Type: List of PortOverride
+    /// Type: Integer
     ///
-    /// Maximum: 10
+    /// Minimum: 10
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortOverrides")]
-    pub port_overrides: Option<Vec<PortOverride>>,
-
-
-    /// 
-    /// The list of endpoint objects.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EndpointConfiguration
-    ///
-    /// Maximum: 10
+    /// Maximum: 30
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointConfigurations")]
-    pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
+    #[serde(rename = "HealthCheckIntervalSeconds")]
+    pub health_check_interval_seconds: Option<i64>,
 
 
     /// 
@@ -66,17 +52,49 @@ pub struct CfnEndpointGroup {
 
 
     /// 
-    /// The AWS Regions where the endpoint group is located.
+    /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an 			unhealthy endpoint to healthy. The default value is 3.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThresholdCount")]
+    pub threshold_count: Option<i64>,
+
+
+    /// 
+    /// Allows you to override the destination ports used to route traffic to an endpoint. 			Using a port override lets you map a list of external destination ports (that your 			users send traffic to) to a list of internal destination ports that you want an application 			endpoint to receive traffic on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PortOverride
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortOverrides")]
+    pub port_overrides: Option<Vec<PortOverride>>,
+
+
+    /// 
+    /// If the protocol is HTTP/S, then this value provides the ping path that Global Accelerator uses for the destination on the 			endpoints for health checks. The default is slash (/).
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Maximum: 255
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointGroupRegion")]
-    pub endpoint_group_region: String,
+    /// Pattern: ^/[-a-zA-Z0-9@:%_\\+.~#?&/=]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckPath")]
+    pub health_check_path: Option<String>,
 
 
     /// 
@@ -98,36 +116,6 @@ pub struct CfnEndpointGroup {
 
 
     /// 
-    /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an 			unhealthy endpoint to healthy. The default value is 3.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThresholdCount")]
-    pub threshold_count: Option<i64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the listener.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
-
-
-    /// 
     /// The protocol that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group. The default 			value is TCP.
     /// 
     /// Required: No
@@ -138,25 +126,62 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckProtocol")]
-    pub health_check_protocol: Option<String>,
+    pub health_check_protocol: Option<EndpointGroupHealthCheckProtocolEnum>,
 
 
     /// 
-    /// The time—10 seconds or 30 seconds—between health checks for each endpoint. The default value is 30.
+    /// The AWS Regions where the endpoint group is located.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointGroupRegion")]
+    pub endpoint_group_region: String,
+
+
+    /// 
+    /// The list of endpoint objects.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of EndpointConfiguration
     ///
-    /// Minimum: 10
-    ///
-    /// Maximum: 30
+    /// Maximum: 10
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HealthCheckIntervalSeconds")]
-    pub health_check_interval_seconds: Option<i64>,
+    #[serde(rename = "EndpointConfigurations")]
+    pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointGroupHealthCheckProtocolEnum {
+
+    /// HTTP
+    #[serde(rename = "HTTP")]
+    Http,
+
+    /// HTTPS
+    #[serde(rename = "HTTPS")]
+    Https,
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+}
+
+impl Default for EndpointGroupHealthCheckProtocolEnum {
+    fn default() -> Self {
+        EndpointGroupHealthCheckProtocolEnum::Http
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEndpointGroup {
     fn type_string() -> &'static str {
@@ -169,25 +194,52 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 }
 
 
-/// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
+/// Override specific listener ports used to route traffic to endpoints that are part of an endpoint group. 			For example, you can create a port override in which the listener 			receives user traffic on ports 80 and 443, but your accelerator routes that traffic to ports 1080 			and 1443, respectively, on the endpoints.
+///
+/// For more information, see 			Port overrides in the AWS Global Accelerator Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EndpointConfiguration {
+pub struct PortOverride {
 
 
     /// 
-    /// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon 			Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address 			allocation ID. For Amazon EC2 instances, this is the EC2 instance ID. A resource must be valid and active 			when you add it as an endpoint.
-    /// 
-    /// An Application Load Balancer can be either internal or internet-facing.
+    /// The endpoint port that you want a listener port to be mapped to. This is the port on the endpoint, 		  such as the Application Load Balancer or Amazon EC2 instance.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Integer
     ///
-    /// Maximum: 255
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointId")]
-    pub endpoint_id: String,
+    #[serde(rename = "EndpointPort")]
+    pub endpoint_port: i64,
+
+
+    /// 
+    /// The listener port that you want to map to a specific endpoint port. This is the port that user traffic 		  arrives to the Global Accelerator on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ListenerPort")]
+    pub listener_port: i64,
+
+}
+
+
+
+
+/// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EndpointConfiguration {
 
 
     /// 
@@ -204,6 +256,22 @@ pub struct EndpointConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
     pub weight: Option<i64>,
+
+
+    /// 
+    /// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon 			Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address 			allocation ID. For Amazon EC2 instances, this is the EC2 instance ID. A resource must be valid and active 			when you add it as an endpoint.
+    /// 
+    /// An Application Load Balancer can be either internal or internet-facing.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointId")]
+    pub endpoint_id: String,
 
 
     /// 
@@ -224,42 +292,3 @@ pub struct EndpointConfiguration {
 }
 
 
-/// Override specific listener ports used to route traffic to endpoints that are part of an endpoint group. 			For example, you can create a port override in which the listener 			receives user traffic on ports 80 and 443, but your accelerator routes that traffic to ports 1080 			and 1443, respectively, on the endpoints.
-///
-/// For more information, see 			Port overrides in the AWS Global Accelerator Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PortOverride {
-
-
-    /// 
-    /// The listener port that you want to map to a specific endpoint port. This is the port that user traffic 		  arrives to the Global Accelerator on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ListenerPort")]
-    pub listener_port: i64,
-
-
-    /// 
-    /// The endpoint port that you want a listener port to be mapped to. This is the port on the endpoint, 		  such as the Application Load Balancer or Amazon EC2 instance.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndpointPort")]
-    pub endpoint_port: i64,
-
-}

@@ -10,19 +10,67 @@ pub struct CfnRecordSet {
 
 
     /// 
-    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
+    /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
     /// 
-    /// If you're creating resource records sets for a private hosted zone, note the 			following:
-    /// 
-    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
+    /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
     /// 
     /// Required: No
     ///
-    /// Type: AliasTarget
+    /// Type: CidrRoutingConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AliasTarget")]
-    pub alias_target: Option<AliasTarget>,
+    #[serde(rename = "CidrRoutingConfig")]
+    pub cidr_routing_config: Option<CidrRoutingConfig>,
+
+
+    /// 
+    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
+    /// 
+    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SetIdentifier")]
+    pub set_identifier: Option<String>,
+
+
+    /// 
+    /// The resource record cache time to live (TTL), in seconds. Note the following:
+    /// 
+    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: Option<String>,
+
+
+    /// 
+    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
+    /// 
+    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
+    /// 
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneName")]
+    pub hosted_zone_name: Option<String>,
 
 
     /// 
@@ -48,21 +96,63 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Failover")]
-    pub failover: Option<String>,
+    pub failover: Option<RecordSetFailoverEnum>,
 
 
     /// 
-    /// Optional: Any comments you want to include about a change batch 			request.
+    /// One or more values that correspond with the value that you specified for the Type property. For example, if you specified 			A for Type, you specify one or more IP addresses in IPv4 format for ResourceRecords. 			For information about the format of values for each record type, see 			Supported DNS Resource Record Types 			in the Amazon Route 53 Developer Guide.
+    /// 
+    /// Note the following:
+    /// 
+    /// You can specify more than one value for all record types except CNAME and SOA.The maximum length of a value is 4000 characters.If you're creating an alias record, omit ResourceRecords.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 256
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
+    #[serde(rename = "ResourceRecords")]
+    pub resource_records: Option<Vec<String>>,
+
+
+    /// 
+    /// Weighted resource record sets only: Among resource record sets 			that have the same combination of DNS name and type, a value that determines the 			proportion of DNS queries that Amazon Route 53 responds to using the current resource 			record set. Route 53 calculates the sum of the weights for the resource record sets that 			have the same combination of DNS name and type. Route 53 then responds to queries based 			on the ratio of a resource's weight to the total. Note the following:
+    /// 
+    /// You must specify a value for the Weight element for every 					weighted resource record set.               You can only specify one ResourceRecord per weighted resource 					record set.               You can't create latency, failover, or geolocation resource record sets that 					have the same values for the Name and Type elements as 					weighted resource record sets.               You can create a maximum of 100 weighted resource record sets that have the 					same values for the Name and Type elements.               For weighted (but not weighted alias) resource record sets, if you set 						Weight to 0 for a resource record set, Route 53 					never responds to queries with the applicable value for that resource record 					set. However, if you set Weight to 0 for all resource 					record sets that have the same combination of DNS name and type, traffic is 					routed to all resources with equal probability.        The effect of setting Weight to 0 is different when 					you associate health checks with weighted resource record sets. For more 					information, see Options for Configuring Route 53 Active-Active and Active-Passive 						Failover in the Amazon Route 53 Developer 					Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+
+    /// 
+    /// The DNS record type. For information about different record types and how data is 			encoded for them, see Supported DNS Resource 				Record Types in the Amazon Route 53 Developer 			Guide.
+    /// 
+    /// Valid values for basic resource record sets: A | AAAA | 				CAA | CNAME | DS |MX | 				NAPTR | NS | PTR | SOA | 				SPF | SRV | TXT
+    /// 
+    /// Values for weighted, latency, geolocation, and failover resource record sets: 				A | AAAA | CAA | CNAME | 				MX | NAPTR | PTR | SPF | 				SRV | TXT. When creating a group of weighted, latency, 			geolocation, or failover resource record sets, specify the same value for all of the 			resource record sets in the group.
+    /// 
+    /// Valid values for multivalue answer resource record sets: A | 				AAAA | MX | NAPTR | PTR | 				SPF | SRV | TXT
+    /// 
+    /// NoteSPF records were formerly used to verify the identity of the sender of email 				messages. However, we no longer recommend that you create resource record sets for 				which the value of Type is SPF. RFC 7208, Sender 					Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 					1, has been updated to say, "...[I]ts existence and mechanism defined 				in [RFC4408] have led to some interoperability issues. Accordingly, its use is no 				longer appropriate for SPF version 1; implementations are not to use it." In RFC 				7208, see section 14.1, The SPF DNS Record Type.
+    /// 
+    /// Values for alias resource record sets:
+    /// 
+    /// Amazon API Gateway custom regional APIs and 						edge-optimized APIs:          A                                CloudFront distributions:          A                If IPv6 is enabled for the distribution, create two resource record sets to 					route traffic to your distribution, one with a value of A and one 					with a value of AAAA.                         Amazon API Gateway environment that has a regionalized 						subdomain: A                                ELB load balancers:          A | AAAA                                Amazon S3 buckets:          A                                Amazon Virtual Private Cloud interface VPC 						endpoints          A                                Another resource record set in this hosted 						zone: Specify the type of the resource record set that you're 					creating the alias for. All values are supported except NS and 						SOA.        NoteIf you're creating an alias record that has the same name as the hosted 						zone (known as the zone apex), you can't route traffic to a record for which 						the value of Type is CNAME. This is because the 						alias record must have the same type as the record you're routing traffic 						to, and creating a CNAME record for the zone apex isn't supported even for 						an alias record.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: A | AAAA | CAA | CNAME | DS | MX | NAPTR | NS | PTR | SOA | SPF | SRV | TXT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: RecordSetTypeEnum,
 
 
     /// 
@@ -87,132 +177,6 @@ pub struct CfnRecordSet {
     /// Update requires: No interruption
     #[serde(rename = "GeoLocation")]
     pub geo_location: Option<GeoLocation>,
-
-
-    /// 
-    /// One or more values that correspond with the value that you specified for the Type property. For example, if you specified 			A for Type, you specify one or more IP addresses in IPv4 format for ResourceRecords. 			For information about the format of values for each record type, see 			Supported DNS Resource Record Types 			in the Amazon Route 53 Developer Guide.
-    /// 
-    /// Note the following:
-    /// 
-    /// You can specify more than one value for all record types except CNAME and SOA.The maximum length of a value is 4000 characters.If you're creating an alias record, omit ResourceRecords.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceRecords")]
-    pub resource_records: Option<Vec<String>>,
-
-
-    /// 
-    /// The resource record cache time to live (TTL), in seconds. Note the following:
-    /// 
-    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: Option<String>,
-
-
-    /// 
-    /// The ID of the hosted zone that you want to create records in.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
-
-
-    /// 
-    /// Weighted resource record sets only: Among resource record sets 			that have the same combination of DNS name and type, a value that determines the 			proportion of DNS queries that Amazon Route 53 responds to using the current resource 			record set. Route 53 calculates the sum of the weights for the resource record sets that 			have the same combination of DNS name and type. Route 53 then responds to queries based 			on the ratio of a resource's weight to the total. Note the following:
-    /// 
-    /// You must specify a value for the Weight element for every 					weighted resource record set.               You can only specify one ResourceRecord per weighted resource 					record set.               You can't create latency, failover, or geolocation resource record sets that 					have the same values for the Name and Type elements as 					weighted resource record sets.               You can create a maximum of 100 weighted resource record sets that have the 					same values for the Name and Type elements.               For weighted (but not weighted alias) resource record sets, if you set 						Weight to 0 for a resource record set, Route 53 					never responds to queries with the applicable value for that resource record 					set. However, if you set Weight to 0 for all resource 					record sets that have the same combination of DNS name and type, traffic is 					routed to all resources with equal probability.        The effect of setting Weight to 0 is different when 					you associate health checks with weighted resource record sets. For more 					information, see Options for Configuring Route 53 Active-Active and Active-Passive 						Failover in the Amazon Route 53 Developer 					Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-
-    /// 
-    /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
-    /// 
-    /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CidrRoutingConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CidrRoutingConfig")]
-    pub cidr_routing_config: Option<CidrRoutingConfig>,
-
-
-    /// 
-    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
-    /// 
-    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneName")]
-    pub hosted_zone_name: Option<String>,
-
-
-    /// 
-    /// Multivalue answer resource record sets only: To route traffic 			approximately randomly to multiple resources, such as web servers, create one multivalue 			answer record for each resource and specify true for 				MultiValueAnswer. Note the following:
-    /// 
-    /// If you associate a health check with a multivalue answer resource record set, 					Amazon Route 53 responds to DNS queries with the corresponding IP address only 					when the health check is healthy.               If you don't associate a health check with a multivalue answer record, Route 					53 always considers the record to be healthy.               Route 53 responds to DNS queries with up to eight healthy records; if you have 					eight or fewer healthy records, Route 53 responds to all DNS queries with all 					the healthy records.               If you have more than eight healthy records, Route 53 responds to different 					DNS resolvers with different combinations of healthy records.               When all records are unhealthy, Route 53 responds to DNS queries with up to 					eight unhealthy records.               If a resource becomes unavailable after a resolver caches a response, client 					software typically tries another of the IP addresses in the response.
-    /// 
-    /// You can't create multivalue answer alias records.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MultiValueAnswer")]
-    pub multi_value_answer: Option<bool>,
-
-
-    /// 
-    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
-    /// 
-    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SetIdentifier")]
-    pub set_identifier: Option<String>,
 
 
     /// 
@@ -242,49 +206,35 @@ pub struct CfnRecordSet {
 
 
     /// 
-    /// Latency-based resource record sets only: The Amazon EC2 Region 			where you created the resource that this resource record set refers to. The resource 			typically is an AWS resource, such as an EC2 instance or an ELB load 			balancer, and is referred to by an IP address or a DNS domain name, depending on the 			record type.
+    /// The ID of the hosted zone that you want to create records in.
     /// 
-    /// When Amazon Route 53 receives a DNS query for a domain name and type for which you 			have created latency resource record sets, Route 53 selects the latency resource record 			set that has the lowest latency between the end user and the associated Amazon EC2 			Region. Route 53 then returns the value that is associated with the selected resource 			record set.
-    /// 
-    /// Note the following:
-    /// 
-    /// You can only specify one ResourceRecord per latency resource 					record set.               You can only create one latency resource record set for each Amazon EC2 					Region.               You aren't required to create latency resource record sets for all Amazon EC2 					Regions. Route 53 will choose the region with the best latency from among the 					regions that you create latency resource record sets for.               You can't create non-latency resource record sets that have the same values 					for the Name and Type elements as latency resource 					record sets.
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-west-1 | us-west-2
+    /// Maximum: 32
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
 
 
     /// 
-    /// The DNS record type. For information about different record types and how data is 			encoded for them, see Supported DNS Resource 				Record Types in the Amazon Route 53 Developer 			Guide.
+    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
     /// 
-    /// Valid values for basic resource record sets: A | AAAA | 				CAA | CNAME | DS |MX | 				NAPTR | NS | PTR | SOA | 				SPF | SRV | TXT
+    /// If you're creating resource records sets for a private hosted zone, note the 			following:
     /// 
-    /// Values for weighted, latency, geolocation, and failover resource record sets: 				A | AAAA | CAA | CNAME | 				MX | NAPTR | PTR | SPF | 				SRV | TXT. When creating a group of weighted, latency, 			geolocation, or failover resource record sets, specify the same value for all of the 			resource record sets in the group.
+    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
     /// 
-    /// Valid values for multivalue answer resource record sets: A | 				AAAA | MX | NAPTR | PTR | 				SPF | SRV | TXT
-    /// 
-    /// NoteSPF records were formerly used to verify the identity of the sender of email 				messages. However, we no longer recommend that you create resource record sets for 				which the value of Type is SPF. RFC 7208, Sender 					Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 					1, has been updated to say, "...[I]ts existence and mechanism defined 				in [RFC4408] have led to some interoperability issues. Accordingly, its use is no 				longer appropriate for SPF version 1; implementations are not to use it." In RFC 				7208, see section 14.1, The SPF DNS Record Type.
-    /// 
-    /// Values for alias resource record sets:
-    /// 
-    /// Amazon API Gateway custom regional APIs and 						edge-optimized APIs:          A                                CloudFront distributions:          A                If IPv6 is enabled for the distribution, create two resource record sets to 					route traffic to your distribution, one with a value of A and one 					with a value of AAAA.                         Amazon API Gateway environment that has a regionalized 						subdomain: A                                ELB load balancers:          A | AAAA                                Amazon S3 buckets:          A                                Amazon Virtual Private Cloud interface VPC 						endpoints          A                                Another resource record set in this hosted 						zone: Specify the type of the resource record set that you're 					creating the alias for. All values are supported except NS and 						SOA.        NoteIf you're creating an alias record that has the same name as the hosted 						zone (known as the zone apex), you can't route traffic to a record for which 						the value of Type is CNAME. This is because the 						alias record must have the same type as the record you're routing traffic 						to, and creating a CNAME record for the zone apex isn't supported even for 						an alias record.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: A | AAAA | CAA | CNAME | DS | MX | NAPTR | NS | PTR | SOA | SPF | SRV | TXT
+    /// Type: AliasTarget
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "AliasTarget")]
+    pub alias_target: Option<AliasTarget>,
 
 
     /// 
@@ -328,7 +278,248 @@ pub struct CfnRecordSet {
     #[serde(rename = "HealthCheckId")]
     pub health_check_id: Option<String>,
 
+
+    /// 
+    /// Optional: Any comments you want to include about a change batch 			request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
+
+
+    /// 
+    /// Multivalue answer resource record sets only: To route traffic 			approximately randomly to multiple resources, such as web servers, create one multivalue 			answer record for each resource and specify true for 				MultiValueAnswer. Note the following:
+    /// 
+    /// If you associate a health check with a multivalue answer resource record set, 					Amazon Route 53 responds to DNS queries with the corresponding IP address only 					when the health check is healthy.               If you don't associate a health check with a multivalue answer record, Route 					53 always considers the record to be healthy.               Route 53 responds to DNS queries with up to eight healthy records; if you have 					eight or fewer healthy records, Route 53 responds to all DNS queries with all 					the healthy records.               If you have more than eight healthy records, Route 53 responds to different 					DNS resolvers with different combinations of healthy records.               When all records are unhealthy, Route 53 responds to DNS queries with up to 					eight unhealthy records.               If a resource becomes unavailable after a resolver caches a response, client 					software typically tries another of the IP addresses in the response.
+    /// 
+    /// You can't create multivalue answer alias records.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MultiValueAnswer")]
+    pub multi_value_answer: Option<bool>,
+
+
+    /// 
+    /// Latency-based resource record sets only: The Amazon EC2 Region 			where you created the resource that this resource record set refers to. The resource 			typically is an AWS resource, such as an EC2 instance or an ELB load 			balancer, and is referred to by an IP address or a DNS domain name, depending on the 			record type.
+    /// 
+    /// When Amazon Route 53 receives a DNS query for a domain name and type for which you 			have created latency resource record sets, Route 53 selects the latency resource record 			set that has the lowest latency between the end user and the associated Amazon EC2 			Region. Route 53 then returns the value that is associated with the selected resource 			record set.
+    /// 
+    /// Note the following:
+    /// 
+    /// You can only specify one ResourceRecord per latency resource 					record set.               You can only create one latency resource record set for each Amazon EC2 					Region.               You aren't required to create latency resource record sets for all Amazon EC2 					Regions. Route 53 will choose the region with the best latency from among the 					regions that you create latency resource record sets for.               You can't create non-latency resource record sets that have the same values 					for the Name and Type elements as latency resource 					record sets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-west-1 | us-west-2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: Option<RecordSetRegionEnum>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetFailoverEnum {
+
+    /// PRIMARY
+    #[serde(rename = "PRIMARY")]
+    Primary,
+
+    /// SECONDARY
+    #[serde(rename = "SECONDARY")]
+    Secondary,
+
+}
+
+impl Default for RecordSetFailoverEnum {
+    fn default() -> Self {
+        RecordSetFailoverEnum::Primary
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetTypeEnum {
+
+    /// A
+    #[serde(rename = "A")]
+    A,
+
+    /// AAAA
+    #[serde(rename = "AAAA")]
+    Aaaa,
+
+    /// CAA
+    #[serde(rename = "CAA")]
+    Caa,
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+    /// DS
+    #[serde(rename = "DS")]
+    Ds,
+
+    /// MX
+    #[serde(rename = "MX")]
+    Mx,
+
+    /// NAPTR
+    #[serde(rename = "NAPTR")]
+    Naptr,
+
+    /// NS
+    #[serde(rename = "NS")]
+    Ns,
+
+    /// PTR
+    #[serde(rename = "PTR")]
+    Ptr,
+
+    /// SOA
+    #[serde(rename = "SOA")]
+    Soa,
+
+    /// SPF
+    #[serde(rename = "SPF")]
+    Spf,
+
+    /// SRV
+    #[serde(rename = "SRV")]
+    Srv,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
+
+}
+
+impl Default for RecordSetTypeEnum {
+    fn default() -> Self {
+        RecordSetTypeEnum::A
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetRegionEnum {
+
+    /// af-south-1
+    #[serde(rename = "af-south-1")]
+    Afsouth1,
+
+    /// ap-east-1
+    #[serde(rename = "ap-east-1")]
+    Apeast1,
+
+    /// ap-northeast-1
+    #[serde(rename = "ap-northeast-1")]
+    Apnortheast1,
+
+    /// ap-northeast-2
+    #[serde(rename = "ap-northeast-2")]
+    Apnortheast2,
+
+    /// ap-northeast-3
+    #[serde(rename = "ap-northeast-3")]
+    Apnortheast3,
+
+    /// ap-south-1
+    #[serde(rename = "ap-south-1")]
+    Apsouth1,
+
+    /// ap-southeast-1
+    #[serde(rename = "ap-southeast-1")]
+    Apsoutheast1,
+
+    /// ap-southeast-2
+    #[serde(rename = "ap-southeast-2")]
+    Apsoutheast2,
+
+    /// ap-southeast-3
+    #[serde(rename = "ap-southeast-3")]
+    Apsoutheast3,
+
+    /// ca-central-1
+    #[serde(rename = "ca-central-1")]
+    Cacentral1,
+
+    /// cn-north-1
+    #[serde(rename = "cn-north-1")]
+    Cnnorth1,
+
+    /// cn-northwest-1
+    #[serde(rename = "cn-northwest-1")]
+    Cnnorthwest1,
+
+    /// eu-central-1
+    #[serde(rename = "eu-central-1")]
+    Eucentral1,
+
+    /// eu-north-1
+    #[serde(rename = "eu-north-1")]
+    Eunorth1,
+
+    /// eu-south-1
+    #[serde(rename = "eu-south-1")]
+    Eusouth1,
+
+    /// eu-west-1
+    #[serde(rename = "eu-west-1")]
+    Euwest1,
+
+    /// eu-west-2
+    #[serde(rename = "eu-west-2")]
+    Euwest2,
+
+    /// eu-west-3
+    #[serde(rename = "eu-west-3")]
+    Euwest3,
+
+    /// me-south-1
+    #[serde(rename = "me-south-1")]
+    Mesouth1,
+
+    /// sa-east-1
+    #[serde(rename = "sa-east-1")]
+    Saeast1,
+
+    /// us-east-1
+    #[serde(rename = "us-east-1")]
+    Useast1,
+
+    /// us-east-2
+    #[serde(rename = "us-east-2")]
+    Useast2,
+
+    /// us-west-1
+    #[serde(rename = "us-west-1")]
+    Uswest1,
+
+    /// us-west-2
+    #[serde(rename = "us-west-2")]
+    Uswest2,
+
+}
+
+impl Default for RecordSetRegionEnum {
+    fn default() -> Self {
+        RecordSetRegionEnum::Afsouth1
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRecordSet {
     fn type_string() -> &'static str {
@@ -341,27 +532,52 @@ impl cfn_resources::CfnResource for CfnRecordSet {
 }
 
 
-/// A complex type that contains information about a geographic location.
+/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
+///
+/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GeoLocation {
+pub struct CidrRoutingConfig {
 
 
     /// 
-    /// For geolocation resource record sets, the two-letter code for a country.
+    /// The CIDR collection location name.
     /// 
-    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2
+    /// Maximum: 16
+    ///
+    /// Pattern: [0-9A-Za-z_\-\*]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CountryCode")]
-    pub country_code: Option<String>,
+    #[serde(rename = "LocationName")]
+    pub location_name: String,
+
+
+    /// 
+    /// The CIDR collection ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CollectionId")]
+    pub collection_id: String,
+
+}
+
+
+
+
+/// A complex type that contains information about a geographic location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GeoLocation {
 
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-geolocation.html#cfn-route53-recordset-geolocation-continentcode
@@ -386,48 +602,27 @@ pub struct GeoLocation {
     #[serde(rename = "SubdivisionCode")]
     pub subdivision_code: Option<String>,
 
-}
-
-
-/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
-///
-/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CidrRoutingConfig {
-
 
     /// 
-    /// The CIDR collection ID.
+    /// For geolocation resource record sets, the two-letter code for a country.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CollectionId")]
-    pub collection_id: String,
-
-
+    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
     /// 
-    /// The CIDR collection location name.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 16
-    ///
-    /// Pattern: [0-9A-Za-z_\-\*]+
+    /// Maximum: 2
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LocationName")]
-    pub location_name: String,
+    #[serde(rename = "CountryCode")]
+    pub country_code: Option<String>,
 
 }
+
+
 
 
 /// Alias records only: Information about the AWS resource, such as a CloudFront distribution or 			an Amazon S3 bucket, that you want to route traffic to.
@@ -435,6 +630,24 @@ pub struct CidrRoutingConfig {
 /// When creating records for a private hosted zone, note the following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AliasTarget {
+
+
+    /// 
+    /// Applies only to alias, failover alias, geolocation alias, latency alias, and 				weighted alias resource record sets: When 				EvaluateTargetHealth is true, an alias resource record set 			inherits the health of the referenced AWS resource, such as an ELB load 			balancer or another resource record set in the hosted zone.
+    /// 
+    /// Note the following:
+    /// 
+    /// CloudFront distributions                  You can't set EvaluateTargetHealth to true when 						the alias target is a CloudFront distribution.                       Elastic Beanstalk environments that have regionalized subdomains                  If you specify an Elastic Beanstalk environment in DNSName 						and the environment contains an ELB load balancer, Elastic Load Balancing 						routes queries only to the healthy Amazon EC2 instances that are registered 						with the load balancer. (An environment automatically contains an ELB load 						balancer if it includes more than one Amazon EC2 instance.) If you set 							EvaluateTargetHealth to true and either no 						Amazon EC2 instances are healthy or the load balancer itself is unhealthy, 						Route 53 routes queries to other available resources that are healthy, if 						any.          If the environment contains a single Amazon EC2 instance, there are no 						special requirements.                       ELB load balancers                  Health checking behavior depends on the type of load balancer:                                                                     Classic Load Balancers: If you 								specify an ELB Classic Load Balancer in DNSName, 								Elastic Load Balancing routes queries only to the healthy Amazon EC2 								instances that are registered with the load balancer. If you set 									EvaluateTargetHealth to true and 								either no EC2 instances are healthy or the load balancer itself is 								unhealthy, Route 53 routes queries to other resources.                                      Application and Network Load 									Balancers: If you specify an ELB Application or 								Network Load Balancer and you set EvaluateTargetHealth 								to true, Route 53 routes queries to the load balancer 								based on the health of the target groups that are associated with 								the load balancer:                                                                      For an Application or Network Load Balancer to be 										considered healthy, every target group that contains targets 										must contain at least one healthy target. If any target 										group contains only unhealthy targets, the load balancer is 										considered unhealthy, and Route 53 routes queries to other 										resources.                              A target group that has no registered targets is 										considered unhealthy.                                   NoteWhen you create a load balancer, you configure settings for Elastic 							Load Balancing health checks; they're not Route 53 health checks, but 							they perform a similar function. Do not create Route 53 health checks 							for the EC2 instances that you register with an ELB load balancer. 						                       S3 buckets                  There are no special requirements for setting 							EvaluateTargetHealth to true when the alias 						target is an S3 bucket.                       Other records in the same hosted zone                  If the AWS resource that you specify in 							DNSName is a record or a group of records (for example, a 						group of weighted records) but is not another alias record, we recommend 						that you associate a health check with all of the records in the alias 						target. For more information, see What Happens When You Omit Health Checks? in the 							Amazon Route 53 Developer Guide.
+    /// 
+    /// For more information and examples, see Amazon Route 53 Health Checks 				and DNS Failover in the Amazon Route 53 Developer 			Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluateTargetHealth")]
+    pub evaluate_target_health: Option<bool>,
 
 
     /// 
@@ -468,22 +681,6 @@ pub struct AliasTarget {
     #[serde(rename = "DNSName")]
     pub dnsname: String,
 
-
-    /// 
-    /// Applies only to alias, failover alias, geolocation alias, latency alias, and 				weighted alias resource record sets: When 				EvaluateTargetHealth is true, an alias resource record set 			inherits the health of the referenced AWS resource, such as an ELB load 			balancer or another resource record set in the hosted zone.
-    /// 
-    /// Note the following:
-    /// 
-    /// CloudFront distributions                  You can't set EvaluateTargetHealth to true when 						the alias target is a CloudFront distribution.                       Elastic Beanstalk environments that have regionalized subdomains                  If you specify an Elastic Beanstalk environment in DNSName 						and the environment contains an ELB load balancer, Elastic Load Balancing 						routes queries only to the healthy Amazon EC2 instances that are registered 						with the load balancer. (An environment automatically contains an ELB load 						balancer if it includes more than one Amazon EC2 instance.) If you set 							EvaluateTargetHealth to true and either no 						Amazon EC2 instances are healthy or the load balancer itself is unhealthy, 						Route 53 routes queries to other available resources that are healthy, if 						any.          If the environment contains a single Amazon EC2 instance, there are no 						special requirements.                       ELB load balancers                  Health checking behavior depends on the type of load balancer:                                                                     Classic Load Balancers: If you 								specify an ELB Classic Load Balancer in DNSName, 								Elastic Load Balancing routes queries only to the healthy Amazon EC2 								instances that are registered with the load balancer. If you set 									EvaluateTargetHealth to true and 								either no EC2 instances are healthy or the load balancer itself is 								unhealthy, Route 53 routes queries to other resources.                                      Application and Network Load 									Balancers: If you specify an ELB Application or 								Network Load Balancer and you set EvaluateTargetHealth 								to true, Route 53 routes queries to the load balancer 								based on the health of the target groups that are associated with 								the load balancer:                                                                      For an Application or Network Load Balancer to be 										considered healthy, every target group that contains targets 										must contain at least one healthy target. If any target 										group contains only unhealthy targets, the load balancer is 										considered unhealthy, and Route 53 routes queries to other 										resources.                              A target group that has no registered targets is 										considered unhealthy.                                   NoteWhen you create a load balancer, you configure settings for Elastic 							Load Balancing health checks; they're not Route 53 health checks, but 							they perform a similar function. Do not create Route 53 health checks 							for the EC2 instances that you register with an ELB load balancer. 						                       S3 buckets                  There are no special requirements for setting 							EvaluateTargetHealth to true when the alias 						target is an S3 bucket.                       Other records in the same hosted zone                  If the AWS resource that you specify in 							DNSName is a record or a group of records (for example, a 						group of weighted records) but is not another alias record, we recommend 						that you associate a health check with all of the records in the alias 						target. For more information, see What Happens When You Omit Health Checks? in the 							Amazon Route 53 Developer Guide.
-    /// 
-    /// For more information and examples, see Amazon Route 53 Health Checks 				and DNS Failover in the Amazon Route 53 Developer 			Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluateTargetHealth")]
-    pub evaluate_target_health: Option<bool>,
-
 }
+
+

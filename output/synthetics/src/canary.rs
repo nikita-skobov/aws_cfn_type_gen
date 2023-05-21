@@ -10,6 +10,34 @@ pub struct CfnCanary {
 
 
     /// 
+    /// A structure that contains information about how often the canary is to run, and when     these runs are to stop.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Schedule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schedule")]
+    pub schedule: Schedule,
+
+
+    /// 
+    /// The number of days to retain data about successful runs of this canary. If you omit      this field, the default of 31 days is used. The valid range is 1 to 455 days.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SuccessRetentionPeriod")]
+    pub success_retention_period: Option<i64>,
+
+
+    /// 
     /// The list of key-value pairs that are associated with the canary.
     /// 
     /// Required: No
@@ -19,6 +47,34 @@ pub struct CfnCanary {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies the runtime version to use for the canary. For more information about     runtime versions, see       Canary Runtime Versions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuntimeVersion")]
+    pub runtime_version: String,
+
+
+    /// 
+    /// A structure that contains the configuration for canary artifacts, including      the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ArtifactConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ArtifactConfig")]
+    pub artifact_config: Option<ArtifactConfig>,
 
 
     /// 
@@ -58,6 +114,32 @@ pub struct CfnCanary {
 
 
     /// 
+    /// A structure that contains input information for a canary run. If you omit       this structure, the       frequency of the canary is used as canary's timeout value, up to a maximum of 900 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RunConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RunConfig")]
+    pub run_config: Option<RunConfig>,
+
+
+    /// 
+    /// Specify TRUE to have the canary start making runs immediately after it is created.
+    /// 
+    /// A canary that you create using CloudFormation can't be used to monitor the    CloudFormation stack that creates the canary or to roll back that stack if there is a failure.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartCanaryAfterCreation")]
+    pub start_canary_after_creation: Option<bool>,
+
+
+    /// 
     /// The number of days to retain data about failed runs of this canary. If you omit      this field, the default of 31 days is used. The valid range is 1 to 455 days.
     /// 
     /// Required: No
@@ -71,6 +153,42 @@ pub struct CfnCanary {
     /// Update requires: No interruption
     #[serde(rename = "FailureRetentionPeriod")]
     pub failure_retention_period: Option<i64>,
+
+
+    /// 
+    /// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VPCConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VPCConfig")]
+    pub vpcconfig: Option<VPCConfig>,
+
+
+    /// 
+    /// If this canary performs visual monitoring by comparing screenshots, this structure contains the ID of the canary run to use as the baseline for screenshots, and the coordinates    of any parts of the screen to ignore during the visual monitoring comparison.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VisualReference
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VisualReference")]
+    pub visual_reference: Option<VisualReference>,
+
+
+    /// 
+    /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Code
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Code")]
+    pub code: Code,
 
 
     /// 
@@ -92,125 +210,9 @@ pub struct CfnCanary {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// Specify TRUE to have the canary start making runs immediately after it is created.
-    /// 
-    /// A canary that you create using CloudFormation can't be used to monitor the    CloudFormation stack that creates the canary or to roll back that stack if there is a failure.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartCanaryAfterCreation")]
-    pub start_canary_after_creation: Option<bool>,
-
-
-    /// 
-    /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Code
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Code")]
-    pub code: Code,
-
-
-    /// 
-    /// The number of days to retain data about successful runs of this canary. If you omit      this field, the default of 31 days is used. The valid range is 1 to 455 days.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SuccessRetentionPeriod")]
-    pub success_retention_period: Option<i64>,
-
-
-    /// 
-    /// If this canary performs visual monitoring by comparing screenshots, this structure contains the ID of the canary run to use as the baseline for screenshots, and the coordinates    of any parts of the screen to ignore during the visual monitoring comparison.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VisualReference
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VisualReference")]
-    pub visual_reference: Option<VisualReference>,
-
-
-    /// 
-    /// A structure that contains input information for a canary run. If you omit       this structure, the       frequency of the canary is used as canary's timeout value, up to a maximum of 900 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RunConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RunConfig")]
-    pub run_config: Option<RunConfig>,
-
-
-    /// 
-    /// A structure that contains information about how often the canary is to run, and when     these runs are to stop.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Schedule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: Schedule,
-
-
-    /// 
-    /// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VPCConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VPCConfig")]
-    pub vpcconfig: Option<VPCConfig>,
-
-
-    /// 
-    /// A structure that contains the configuration for canary artifacts, including      the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ArtifactConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ArtifactConfig")]
-    pub artifact_config: Option<ArtifactConfig>,
-
-
-    /// 
-    /// Specifies the runtime version to use for the canary. For more information about     runtime versions, see       Canary Runtime Versions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuntimeVersion")]
-    pub runtime_version: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCanary {
     fn type_string() -> &'static str {
@@ -220,233 +222,6 @@ impl cfn_resources::CfnResource for CfnCanary {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VPCConfig {
-
-
-    /// 
-    /// The ID of the VPC where this canary is to run.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
-
-    /// 
-    /// The IDs of the subnets where this canary is to run.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
-    /// The IDs of the security groups for this canary.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-}
-
-
-/// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Code {
-
-
-    /// 
-    /// If you input your canary script directly into the canary instead of referring to an S3     location, the value of this parameter is the script in plain text. It can be     up to 5 MB.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Script")]
-    pub script: Option<String>,
-
-
-    /// 
-    /// If your canary script is located in S3, specify the bucket name here. The bucket     must already exist.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Bucket")]
-    pub s3_bucket: Option<String>,
-
-
-    /// 
-    /// The S3 version ID of your script.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3ObjectVersion")]
-    pub s3_object_version: Option<String>,
-
-
-    /// 
-    /// The S3 key of your script. For more information, see Working with Amazon S3 Objects.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Key")]
-    pub s3_key: Option<String>,
-
-
-    /// 
-    /// The entry point to use for the source code when running the canary. For canaries that use the      syn-python-selenium-1.0 runtime     or a syn-nodejs.puppeteer runtime earlier than syn-nodejs.puppeteer-3.4,      the handler must be specified as         fileName.handler. For      syn-python-selenium-1.1, syn-nodejs.puppeteer-3.4, and later runtimes, the handler can be specified as               fileName.functionName       , or       you can specify a folder where canary scripts reside as         folder/fileName.functionName       .
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^([0-9a-zA-Z_-]+\/)*[0-9A-Za-z_\\-]+\.[A-Za-z_][A-Za-z0-9_]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Handler")]
-    pub handler: String,
-
-
-    /// 
-    /// The ARN of the Lambda layer where Synthetics stores the canary script code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceLocationArn")]
-    pub source_location_arn: Option<String>,
-
-}
-
-
-/// A structure that contains the configuration      of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.      Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3      or later. For more information, see     Encrypting canary artifacts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Encryption {
-
-
-    /// 
-    /// The ARN of the customer-managed AWS KMS key to use, if you specify SSE-KMS     for EncryptionMode
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
-
-
-    /// The encryption method to use      for artifacts created by this canary. Specify SSE_S3 to use     server-side encryption (SSE) with an Amazon S3-managed     key. Specify SSE-KMS to use server-side encryption with a customer-managed AWS KMS key.
-    /// 
-    /// If you omit this parameter, an       AWS-managed AWS KMS key is used.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionMode")]
-    pub encryption_mode: Option<String>,
-
-}
-
-
-/// A structure representing a screenshot that is used as a baseline during visual monitoring comparisons made by the canary.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BaseScreenshot {
-
-
-    /// Coordinates that define the part of a screen to ignore during screenshot comparisons. To obtain the coordinates to use here, use the      CloudWatch Logs console to draw the boundaries on the screen. For more information, see {LINK}
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IgnoreCoordinates")]
-    pub ignore_coordinates: Option<Vec<String>>,
-
-
-    /// The name of the screenshot. This is generated the first time the canary is run after the UpdateCanary operation that     specified for this canary to perform visual monitoring.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScreenshotName")]
-    pub screenshot_name: String,
-
-}
-
-
-/// A structure that contains the configuration for canary artifacts,    including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ArtifactConfig {
-
-
-    /// A structure that contains the configuration    of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.    Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3    or later. For more information, see    Encrypting canary artifacts.
-    ///
-    /// Required: No
-    ///
-    /// Type: S3Encryption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Encryption")]
-    pub s3_encryption: Option<S3Encryption>,
-
 }
 
 
@@ -493,6 +268,8 @@ pub struct Schedule {
 }
 
 
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -528,35 +305,86 @@ pub struct Tag {
 }
 
 
-/// Defines the screenshots to use as the baseline for comparisons during visual monitoring comparisons during future runs of this canary. If you omit this      parameter, no changes are made to any baseline screenshots that the canary might be using already.
-///
-/// Visual monitoring is supported only on canaries running the syn-puppeteer-node-3.2       runtime or later. For more information, see         Visual monitoring and          Visual monitoring blueprint
+
+
+/// A structure representing a screenshot that is used as a baseline during visual monitoring comparisons made by the canary.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VisualReference {
+pub struct BaseScreenshot {
 
 
-    /// Specifies which canary run to use the screenshots from as the baseline for future visual monitoring with this canary. Valid values are      nextrun to use the screenshots from the next run after this update is made, lastrun to use the screenshots from the most recent run      before this update was made, or the value of Id in the       CanaryRun from any past run of this canary.
+    /// The name of the screenshot. This is generated the first time the canary is run after the UpdateCanary operation that     specified for this canary to perform visual monitoring.
     ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BaseCanaryRunId")]
-    pub base_canary_run_id: String,
+    #[serde(rename = "ScreenshotName")]
+    pub screenshot_name: String,
 
 
-    /// An array of screenshots that are used as the baseline for comparisons during visual monitoring.
+    /// Coordinates that define the part of a screen to ignore during screenshot comparisons. To obtain the coordinates to use here, use the      CloudWatch Logs console to draw the boundaries on the screen. For more information, see {LINK}
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IgnoreCoordinates")]
+    pub ignore_coordinates: Option<Vec<String>>,
+
+}
+
+
+
+
+/// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VPCConfig {
+
+
+    /// 
+    /// The IDs of the security groups for this canary.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+
+    /// 
+    /// The ID of the VPC where this canary is to run.
     /// 
     /// Required: No
     ///
-    /// Type: List of BaseScreenshot
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BaseScreenshots")]
-    pub base_screenshots: Option<Vec<BaseScreenshot>>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
+
+
+    /// 
+    /// The IDs of the subnets where this canary is to run.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 }
+
+
 
 
 /// A structure that contains input information for a canary run. This structure     is required.
@@ -564,20 +392,33 @@ pub struct VisualReference {
 pub struct RunConfig {
 
 
+    /// The maximum amount of memory that the    canary can use while running. This value must be a multiple of 64. The range is 960 to 3008.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 960
+    ///
+    /// Maximum: 3008
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MemoryInMB")]
+    pub memory_in_mb: Option<i64>,
+
+
     /// 
-    /// Specifies the keys and values to use for any environment variables     used in the canary script. Use the following format:
+    /// Specifies whether this canary is to use active AWS X-Ray tracing when it runs. Active tracing      enables this canary run to be displayed in the ServiceLens and X-Ray service maps even if the      canary does not hit an endpoint that has X-Ray tracing enabled. Using X-Ray tracing      incurs charges. For more information, see      Canaries and X-Ray tracing.
     /// 
-    /// { "key1" : "value1", "key2" : "value2", ...}
-    /// 
-    /// Keys must start with a letter and be at least two characters. The total size     of your environment variables cannot exceed 4 KB. You can't specify any Lambda     reserved environment variables as the keys for your environment variables. For      more information about reserved keys, see       Runtime environment variables.
+    /// You can enable active tracing only for canaries that use version syn-nodejs-2.0 or later      for their canary runtime.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnvironmentVariables")]
-    pub environment_variables: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "ActiveTracing")]
+    pub active_tracing: Option<bool>,
 
 
     /// 
@@ -599,31 +440,210 @@ pub struct RunConfig {
 
 
     /// 
-    /// Specifies whether this canary is to use active AWS X-Ray tracing when it runs. Active tracing      enables this canary run to be displayed in the ServiceLens and X-Ray service maps even if the      canary does not hit an endpoint that has X-Ray tracing enabled. Using X-Ray tracing      incurs charges. For more information, see      Canaries and X-Ray tracing.
+    /// Specifies the keys and values to use for any environment variables     used in the canary script. Use the following format:
     /// 
-    /// You can enable active tracing only for canaries that use version syn-nodejs-2.0 or later      for their canary runtime.
+    /// { "key1" : "value1", "key2" : "value2", ...}
+    /// 
+    /// Keys must start with a letter and be at least two characters. The total size     of your environment variables cannot exceed 4 KB. You can't specify any Lambda     reserved environment variables as the keys for your environment variables. For      more information about reserved keys, see       Runtime environment variables.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ActiveTracing")]
-    pub active_tracing: Option<bool>,
-
-
-    /// The maximum amount of memory that the    canary can use while running. This value must be a multiple of 64. The range is 960 to 3008.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 960
-    ///
-    /// Maximum: 3008
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MemoryInMB")]
-    pub memory_in_mb: Option<i64>,
+    #[serde(rename = "EnvironmentVariables")]
+    pub environment_variables: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
+
+
+/// A structure that contains the configuration for canary artifacts,    including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ArtifactConfig {
+
+
+    /// A structure that contains the configuration    of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.    Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3    or later. For more information, see    Encrypting canary artifacts.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Encryption
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Encryption")]
+    pub s3_encryption: Option<S3Encryption>,
+
+}
+
+
+
+
+/// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Code {
+
+
+    /// 
+    /// If you input your canary script directly into the canary instead of referring to an S3     location, the value of this parameter is the script in plain text. It can be     up to 5 MB.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Script")]
+    pub script: Option<String>,
+
+
+    /// 
+    /// If your canary script is located in S3, specify the bucket name here. The bucket     must already exist.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Bucket")]
+    pub s3_bucket: Option<String>,
+
+
+    /// 
+    /// The ARN of the Lambda layer where Synthetics stores the canary script code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceLocationArn")]
+    pub source_location_arn: Option<String>,
+
+
+    /// 
+    /// The S3 key of your script. For more information, see Working with Amazon S3 Objects.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Key")]
+    pub s3_key: Option<String>,
+
+
+    /// 
+    /// The entry point to use for the source code when running the canary. For canaries that use the      syn-python-selenium-1.0 runtime     or a syn-nodejs.puppeteer runtime earlier than syn-nodejs.puppeteer-3.4,      the handler must be specified as         fileName.handler. For      syn-python-selenium-1.1, syn-nodejs.puppeteer-3.4, and later runtimes, the handler can be specified as               fileName.functionName       , or       you can specify a folder where canary scripts reside as         folder/fileName.functionName       .
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^([0-9a-zA-Z_-]+\/)*[0-9A-Za-z_\\-]+\.[A-Za-z_][A-Za-z0-9_]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Handler")]
+    pub handler: String,
+
+
+    /// 
+    /// The S3 version ID of your script.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3ObjectVersion")]
+    pub s3_object_version: Option<String>,
+
+}
+
+
+
+
+/// Defines the screenshots to use as the baseline for comparisons during visual monitoring comparisons during future runs of this canary. If you omit this      parameter, no changes are made to any baseline screenshots that the canary might be using already.
+///
+/// Visual monitoring is supported only on canaries running the syn-puppeteer-node-3.2       runtime or later. For more information, see         Visual monitoring and          Visual monitoring blueprint
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VisualReference {
+
+
+    /// An array of screenshots that are used as the baseline for comparisons during visual monitoring.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of BaseScreenshot
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BaseScreenshots")]
+    pub base_screenshots: Option<Vec<BaseScreenshot>>,
+
+
+    /// Specifies which canary run to use the screenshots from as the baseline for future visual monitoring with this canary. Valid values are      nextrun to use the screenshots from the next run after this update is made, lastrun to use the screenshots from the most recent run      before this update was made, or the value of Id in the       CanaryRun from any past run of this canary.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BaseCanaryRunId")]
+    pub base_canary_run_id: String,
+
+}
+
+
+
+
+/// A structure that contains the configuration      of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.      Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3      or later. For more information, see     Encrypting canary artifacts.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Encryption {
+
+
+    /// 
+    /// The ARN of the customer-managed AWS KMS key to use, if you specify SSE-KMS     for EncryptionMode
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
+
+
+    /// The encryption method to use      for artifacts created by this canary. Specify SSE_S3 to use     server-side encryption (SSE) with an Amazon S3-managed     key. Specify SSE-KMS to use server-side encryption with a customer-managed AWS KMS key.
+    /// 
+    /// If you omit this parameter, an       AWS-managed AWS KMS key is used.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionMode")]
+    pub encryption_mode: Option<String>,
+
+}
+
+

@@ -6,18 +6,6 @@ pub struct CfnProfilingGroup {
 
 
     /// 
-    /// A list of tags to add to the created profiling group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// Adds anomaly notifications for a profiling group.
     /// 
     /// Required: No
@@ -42,6 +30,30 @@ pub struct CfnProfilingGroup {
 
 
     /// 
+    /// A list of tags to add to the created profiling group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The compute platform of the profiling group. Use AWSLambda if your     application runs on AWS Lambda. Use Default if your application runs on a     compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises     server, or a different platform. If not specified, Default is used. This     property is immutable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComputePlatform")]
+    pub compute_platform: Option<String>,
+
+
+    /// 
     /// The agent permissions attached to this profiling group. This action group grants       ConfigureAgent and PostAgentProfile permissions to perform     actions required by the profiling agent. The Json consists of key     Principals.
     /// 
     /// Principals: A list of string ARNs for the roles and users you want     to grant access to the profiling group. Wildcards are not supported in the ARNs. You are     allowed to provide up to 50 ARNs. An empty list is not permitted. This is a required key.
@@ -56,19 +68,9 @@ pub struct CfnProfilingGroup {
     #[serde(rename = "AgentPermissions")]
     pub agent_permissions: Option<AgentPermissions>,
 
-
-    /// 
-    /// The compute platform of the profiling group. Use AWSLambda if your     application runs on AWS Lambda. Use Default if your application runs on a     compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises     server, or a different platform. If not specified, Default is used. This     property is immutable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComputePlatform")]
-    pub compute_platform: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProfilingGroup {
     fn type_string() -> &'static str {
@@ -78,55 +80,6 @@ impl cfn_resources::CfnResource for CfnProfilingGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Channel {
-
-
-    /// 
-    /// The channel URI.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "channelUri")]
-    pub channel_uri: String,
-
-
-    /// 
-    /// The channel ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "channelId")]
-    pub channel_id: Option<String>,
-
-}
-
-
-/// The AgentPermissions property type specifies Property description not available. for an AWS::CodeGuruProfiler::ProfilingGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AgentPermissions {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principals")]
-    pub principals: Vec<String>,
-
 }
 
 
@@ -163,3 +116,58 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Channel {
+
+
+    /// 
+    /// The channel URI.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "channelUri")]
+    pub channel_uri: String,
+
+
+    /// 
+    /// The channel ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "channelId")]
+    pub channel_id: Option<String>,
+
+}
+
+
+
+
+/// The AgentPermissions property type specifies Property description not available. for an AWS::CodeGuruProfiler::ProfilingGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AgentPermissions {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principals")]
+    pub principals: Vec<String>,
+
+}
+
+

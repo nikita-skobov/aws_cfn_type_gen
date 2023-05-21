@@ -20,35 +20,35 @@ pub struct CfnUser {
 
 
     /// 
-    /// The type of landing directory (folder) that you want your users' home directory to be when they log in to the server.   If you set it to PATH, the user will see the absolute Amazon S3 bucket or EFS paths as is in their file transfer   protocol clients. If you set it LOGICAL, you need to provide mappings in the HomeDirectoryMappings for   how you want to make Amazon S3 or Amazon EFS paths visible to your users.
+    /// Logical directory mappings that specify what Amazon S3 paths and keys should be visible     to your user and how you want to make them visible. You will need to specify the       "Entry" and "Target" pair, where Entry shows how     the path is made visible and Target is the actual Amazon S3 path. If you only     specify a target, it will be displayed as is. You will need to also make sure that your IAM     role provides access to paths in Target. The following is an example.
+    /// 
+    /// '[ { "Entry": "/", "Target":       "/bucket3/customized-reports/" } ]'
+    /// 
+    /// In most cases, you can use this value instead of the session policy to lock your user     down to the designated home directory ("chroot"). To do this, you can set       Entry to '/' and set Target to the HomeDirectory parameter     value.
+    /// 
+    /// NoteIf the target of a logical directory entry does not exist in Amazon S3, the entry       will be ignored. As a workaround, you can use the Amazon S3 API to create 0 byte objects       as place holders for your directory. If using the CLI, use the s3api call       instead of s3 so you can use the put-object operation. For example, you use       the following: AWS s3api put-object --bucket bucketname --key        path/to/folder/. Make sure that the end of the key name ends in a '/' for it       to be considered a folder.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of HomeDirectoryMapEntry
     ///
-    /// Allowed values: LOGICAL | PATH
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HomeDirectoryType")]
-    pub home_directory_type: Option<String>,
+    #[serde(rename = "HomeDirectoryMappings")]
+    pub home_directory_mappings: Option<Vec<HomeDirectoryMapEntry>>,
 
 
     /// 
-    /// The landing directory (folder) for a user when they log in to the server using the client.
-    /// 
-    /// A HomeDirectory example is /bucket_name/home/mydirectory.
+    /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^$|/.*
+    /// Type: PosixProfile
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HomeDirectory")]
-    pub home_directory: Option<String>,
+    #[serde(rename = "PosixProfile")]
+    pub posix_profile: Option<PosixProfile>,
 
 
     /// 
@@ -104,35 +104,31 @@ pub struct CfnUser {
 
 
     /// 
-    /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
+    /// Key-value pairs that can be used to group and search for users. Tags are metadata attached    to users for any purpose.
     /// 
     /// Required: No
     ///
-    /// Type: PosixProfile
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PosixProfile")]
-    pub posix_profile: Option<PosixProfile>,
-
-
-    /// 
-    /// Logical directory mappings that specify what Amazon S3 paths and keys should be visible     to your user and how you want to make them visible. You will need to specify the       "Entry" and "Target" pair, where Entry shows how     the path is made visible and Target is the actual Amazon S3 path. If you only     specify a target, it will be displayed as is. You will need to also make sure that your IAM     role provides access to paths in Target. The following is an example.
-    /// 
-    /// '[ { "Entry": "/", "Target":       "/bucket3/customized-reports/" } ]'
-    /// 
-    /// In most cases, you can use this value instead of the session policy to lock your user     down to the designated home directory ("chroot"). To do this, you can set       Entry to '/' and set Target to the HomeDirectory parameter     value.
-    /// 
-    /// NoteIf the target of a logical directory entry does not exist in Amazon S3, the entry       will be ignored. As a workaround, you can use the Amazon S3 API to create 0 byte objects       as place holders for your directory. If using the CLI, use the s3api call       instead of s3 so you can use the put-object operation. For example, you use       the following: AWS s3api put-object --bucket bucketname --key        path/to/folder/. Make sure that the end of the key name ends in a '/' for it       to be considered a folder.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of HomeDirectoryMapEntry
+    /// Type: List of Tag
     ///
     /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HomeDirectoryMappings")]
-    pub home_directory_mappings: Option<Vec<HomeDirectoryMapEntry>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of landing directory (folder) that you want your users' home directory to be when they log in to the server.   If you set it to PATH, the user will see the absolute Amazon S3 bucket or EFS paths as is in their file transfer   protocol clients. If you set it LOGICAL, you need to provide mappings in the HomeDirectoryMappings for   how you want to make Amazon S3 or Amazon EFS paths visible to your users.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LOGICAL | PATH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HomeDirectoryType")]
+    pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
 
     /// 
@@ -154,19 +150,44 @@ pub struct CfnUser {
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for users. Tags are metadata attached    to users for any purpose.
+    /// The landing directory (folder) for a user when they log in to the server using the client.
+    /// 
+    /// A HomeDirectory example is /bucket_name/home/mydirectory.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^$|/.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "HomeDirectory")]
+    pub home_directory: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserHomeDirectoryTypeEnum {
+
+    /// LOGICAL
+    #[serde(rename = "LOGICAL")]
+    Logical,
+
+    /// PATH
+    #[serde(rename = "PATH")]
+    Path,
+
+}
+
+impl Default for UserHomeDirectoryTypeEnum {
+    fn default() -> Self {
+        UserHomeDirectoryTypeEnum::Logical
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnUser {
     fn type_string() -> &'static str {
@@ -214,23 +235,6 @@ pub struct Tag {
 }
 
 
-/// Provides information about the public Secure Shell (SSH) key that is associated with a    Transfer Family user account for the specific file transfer protocol-enabled server (as identified by     ServerId). The information returned includes the date the key was imported, the    public key contents, and the public key ID. A user can store more than one SSH public key    associated with their user name on a specific server.
-///
-/// SshPublicKeyBody
-///
-/// Specifies the content of the SSH public key as specified by the PublicKeyId.
-///
-/// AWS Transfer Family accepts RSA, ECDSA, and ED25519 keys.
-///
-/// Type: String
-///
-/// Length Constraints: Maximum length of 2048.
-///
-/// Required: Yes
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SshPublicKey {
-
-}
 
 
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
@@ -272,33 +276,11 @@ pub struct HomeDirectoryMapEntry {
 }
 
 
+
+
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PosixProfile {
-
-
-    /// 
-    /// The POSIX user ID used for all EFS operations by this user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Uid")]
-    pub uid: f64,
-
-
-    /// 
-    /// The POSIX group ID used for all EFS operations by this user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Gid")]
-    pub gid: f64,
 
 
     /// 
@@ -314,4 +296,51 @@ pub struct PosixProfile {
     #[serde(rename = "SecondaryGids")]
     pub secondary_gids: Option<Vec<f64>>,
 
+
+    /// 
+    /// The POSIX group ID used for all EFS operations by this user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Gid")]
+    pub gid: f64,
+
+
+    /// 
+    /// The POSIX user ID used for all EFS operations by this user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Uid")]
+    pub uid: f64,
+
 }
+
+
+
+
+/// Provides information about the public Secure Shell (SSH) key that is associated with a    Transfer Family user account for the specific file transfer protocol-enabled server (as identified by     ServerId). The information returned includes the date the key was imported, the    public key contents, and the public key ID. A user can store more than one SSH public key    associated with their user name on a specific server.
+///
+/// SshPublicKeyBody
+///
+/// Specifies the content of the SSH public key as specified by the PublicKeyId.
+///
+/// AWS Transfer Family accepts RSA, ECDSA, and ED25519 keys.
+///
+/// Type: String
+///
+/// Length Constraints: Maximum length of 2048.
+///
+/// Required: Yes
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SshPublicKey {
+
+}
+
+

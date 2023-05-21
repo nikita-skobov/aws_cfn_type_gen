@@ -6,18 +6,6 @@ pub struct CfnContactList {
 
 
     /// 
-    /// The tags associated with a contact list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the contact list.
     /// 
     /// Required: No
@@ -42,6 +30,18 @@ pub struct CfnContactList {
 
 
     /// 
+    /// The tags associated with a contact list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// A description of what the contact list is about.
     /// 
     /// Required: No
@@ -53,6 +53,8 @@ pub struct CfnContactList {
     pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnContactList {
     fn type_string() -> &'static str {
@@ -71,6 +73,18 @@ pub struct Topic {
 
 
     /// 
+    /// The name of the topic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TopicName")]
+    pub topic_name: String,
+
+
+    /// 
     /// The default subscription status to be applied to a contact if the contact has not       noted their preference for subscribing to a topic.
     /// 
     /// Required: Yes
@@ -80,18 +94,6 @@ pub struct Topic {
     /// Update requires: No interruption
     #[serde(rename = "DefaultSubscriptionStatus")]
     pub default_subscription_status: String,
-
-
-    /// 
-    /// The name of the topic the contact will see.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: String,
 
 
     /// 
@@ -107,17 +109,19 @@ pub struct Topic {
 
 
     /// 
-    /// The name of the topic.
+    /// The name of the topic the contact will see.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TopicName")]
-    pub topic_name: String,
+    #[serde(rename = "DisplayName")]
+    pub display_name: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -132,17 +136,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -152,4 +145,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

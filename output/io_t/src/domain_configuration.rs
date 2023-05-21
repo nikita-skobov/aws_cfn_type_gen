@@ -6,29 +6,29 @@ pub struct CfnDomainConfiguration {
 
 
     /// 
-    /// The type of service delivered by the endpoint.
-    /// 
-    /// Note        AWS IoT Core currently supports only the DATA service type.
+    /// An object that specifies the authorization service for a domain.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: AuthorizerConfig
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceType")]
-    pub service_type: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerConfig")]
+    pub authorizer_config: Option<AuthorizerConfig>,
 
 
     /// 
-    /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority.      This value is not required for AWS-managed domains.
+    /// Metadata which can be used to manage the domain configuration.
+    /// 
+    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ValidationCertificateArn")]
-    pub validation_certificate_arn: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -56,52 +56,29 @@ pub struct CfnDomainConfiguration {
 
 
     /// 
-    /// The name of the domain.
+    /// The type of service delivered by the endpoint.
+    /// 
+    /// Note        AWS IoT Core currently supports only the DATA service type.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
+    #[serde(rename = "ServiceType")]
+    pub service_type: Option<String>,
 
 
     /// 
-    /// An object that specifies the authorization service for a domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthorizerConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerConfig")]
-    pub authorizer_config: Option<AuthorizerConfig>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: TlsConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TlsConfig")]
-    pub tls_config: Option<TlsConfig>,
-
-
-    /// 
-    /// Metadata which can be used to manage the domain configuration.
-    /// 
-    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
+    /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority.      This value is not required for AWS-managed domains.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "ValidationCertificateArn")]
+    pub validation_certificate_arn: Option<String>,
 
 
     /// 
@@ -117,7 +94,32 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "DomainConfigurationStatus")]
     pub domain_configuration_status: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: TlsConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TlsConfig")]
+    pub tls_config: Option<TlsConfig>,
+
+
+    /// 
+    /// The name of the domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDomainConfiguration {
     fn type_string() -> &'static str {
@@ -127,49 +129,6 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// An object that contains information about a server certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServerCertificateSummary {
-
-
-    /// 
-    /// Details that explain the status of the server certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCertificateStatusDetail")]
-    pub server_certificate_status_detail: Option<String>,
-
-
-    /// 
-    /// The status of the server certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCertificateStatus")]
-    pub server_certificate_status: Option<String>,
-
-
-    /// 
-    /// The ARN of the server certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCertificateArn")]
-    pub server_certificate_arn: Option<String>,
-
 }
 
 
@@ -189,6 +148,86 @@ pub struct TlsConfig {
     pub security_policy: Option<String>,
 
 }
+
+
+
+
+/// An object that contains information about a server certificate.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServerCertificateSummary {
+
+
+    /// 
+    /// The ARN of the server certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCertificateArn")]
+    pub server_certificate_arn: Option<String>,
+
+
+    /// 
+    /// The status of the server certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCertificateStatus")]
+    pub server_certificate_status: Option<String>,
+
+
+    /// 
+    /// Details that explain the status of the server certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCertificateStatusDetail")]
+    pub server_certificate_status_detail: Option<String>,
+
+}
+
+
+
+
+/// An object that specifies the authorization service for a domain.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthorizerConfig {
+
+
+    /// 
+    /// The name of the authorization service for a domain configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultAuthorizerName")]
+    pub default_authorizer_name: Option<String>,
+
+
+    /// 
+    /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowAuthorizerOverride")]
+    pub allow_authorizer_override: Option<bool>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -226,32 +265,3 @@ pub struct Tag {
 }
 
 
-/// An object that specifies the authorization service for a domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthorizerConfig {
-
-
-    /// 
-    /// The name of the authorization service for a domain configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAuthorizerName")]
-    pub default_authorizer_name: Option<String>,
-
-
-    /// 
-    /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowAuthorizerOverride")]
-    pub allow_authorizer_override: Option<bool>,
-
-}

@@ -60,6 +60,8 @@ pub struct CfnClientVpnRoute {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnClientVpnRoute {
     fn type_string() -> &'static str {
         "AWS::EC2::ClientVpnRoute"

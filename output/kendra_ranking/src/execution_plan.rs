@@ -8,38 +8,6 @@ pub struct CfnExecutionPlan {
 
 
     /// 
-    /// A description for the rescore execution plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^\P{C}*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// A list of key-value pairs that identify or categorize your       rescore execution plan. You can also use tags to help control       access to the rescore execution plan. Tag keys and values can       consist of Unicode letters, digits, white space. They can also       consist of underscore, period, colon, equal, plus, and asperand.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A name for the rescore execution plan.
     /// 
     /// Required: Yes
@@ -58,6 +26,24 @@ pub struct CfnExecutionPlan {
 
 
     /// 
+    /// A description for the rescore execution plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: ^\P{C}*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
     /// 
     /// Required: No
@@ -68,7 +54,23 @@ pub struct CfnExecutionPlan {
     #[serde(rename = "CapacityUnits")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
+
+    /// 
+    /// A list of key-value pairs that identify or categorize your       rescore execution plan. You can also use tags to help control       access to the rescore execution plan. Tag keys and values can       consist of Unicode letters, digits, white space. They can also       consist of underscore, period, colon, equal, plus, and asperand.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnExecutionPlan {
     fn type_string() -> &'static str {
@@ -93,17 +95,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -113,7 +104,20 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
 
 
 /// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
@@ -137,3 +141,5 @@ pub struct CapacityUnitsConfiguration {
     pub rescore_capacity_units: i64,
 
 }
+
+

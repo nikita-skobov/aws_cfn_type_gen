@@ -10,6 +10,48 @@ pub struct CfnScheduledAction {
 
 
     /// 
+    /// The recurring schedule for this action. This format consists of five fields separated       by white spaces: [Minute] [Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value       must be in quotes (for example, "30 0 1 1,6,12 *"). For more information       about this format, see Crontab.
+    /// 
+    /// When StartTime and EndTime are specified with         Recurrence, they form the boundaries of when the recurring action       starts and stops.
+    /// 
+    /// Cron expressions use Universal Coordinated Time (UTC) by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Recurrence")]
+    pub recurrence: Option<String>,
+
+
+    /// 
+    /// The maximum size of the Auto Scaling group.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxSize")]
+    pub max_size: Option<i64>,
+
+
+    /// 
+    /// Specifies the time zone for a cron expression. If a time zone is not provided, UTC is       used by default.
+    /// 
+    /// Valid values are the canonical names of the IANA time zones, derived from the IANA       Time Zone Database (such as Etc/GMT+9 or Pacific/Tahiti). For       more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeZone")]
+    pub time_zone: Option<String>,
+
+
+    /// 
     /// The desired capacity is the initial capacity of the Auto Scaling group after the scheduled       action runs and the capacity it attempts to maintain. It can scale beyond this capacity       if you add more scaling conditions.
     /// 
     /// NoteYou must specify at least one of the following properties: MaxSize,           MinSize, or DesiredCapacity.
@@ -38,18 +80,6 @@ pub struct CfnScheduledAction {
 
 
     /// 
-    /// The minimum size of the Auto Scaling group.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinSize")]
-    pub min_size: Option<i64>,
-
-
-    /// 
     /// The name of the Auto Scaling group.
     /// 
     /// Required: Yes
@@ -68,36 +98,6 @@ pub struct CfnScheduledAction {
 
 
     /// 
-    /// The recurring schedule for this action. This format consists of five fields separated       by white spaces: [Minute] [Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value       must be in quotes (for example, "30 0 1 1,6,12 *"). For more information       about this format, see Crontab.
-    /// 
-    /// When StartTime and EndTime are specified with         Recurrence, they form the boundaries of when the recurring action       starts and stops.
-    /// 
-    /// Cron expressions use Universal Coordinated Time (UTC) by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Recurrence")]
-    pub recurrence: Option<String>,
-
-
-    /// 
-    /// Specifies the time zone for a cron expression. If a time zone is not provided, UTC is       used by default.
-    /// 
-    /// Valid values are the canonical names of the IANA time zones, derived from the IANA       Time Zone Database (such as Etc/GMT+9 or Pacific/Tahiti). For       more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeZone")]
-    pub time_zone: Option<String>,
-
-
-    /// 
     /// The date and time for the recurring schedule to end, in UTC. For example,         "2021-06-01T00:00:00Z".
     /// 
     /// Required: No
@@ -110,17 +110,19 @@ pub struct CfnScheduledAction {
 
 
     /// 
-    /// The maximum size of the Auto Scaling group.
+    /// The minimum size of the Auto Scaling group.
     /// 
     /// Required: Conditional
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxSize")]
-    pub max_size: Option<i64>,
+    #[serde(rename = "MinSize")]
+    pub min_size: Option<i64>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnScheduledAction {
     fn type_string() -> &'static str {

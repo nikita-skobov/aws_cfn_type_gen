@@ -6,6 +6,32 @@ pub struct CfnEntitlement {
 
 
     /// 
+    /// The attributes of the entitlement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Attribute
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attributes")]
+    pub attributes: Vec<Attribute>,
+
+
+    /// 
+    /// The description of the entitlement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the stack.
     /// 
     /// Required: Yes
@@ -44,35 +70,30 @@ pub struct CfnEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppVisibility")]
-    pub app_visibility: String,
-
-
-    /// 
-    /// The description of the entitlement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The attributes of the entitlement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Attribute
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Vec<Attribute>,
+    pub app_visibility: EntitlementAppVisibilityEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EntitlementAppVisibilityEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// ASSOCIATED
+    #[serde(rename = "ASSOCIATED")]
+    Associated,
+
+}
+
+impl Default for EntitlementAppVisibilityEnum {
+    fn default() -> Self {
+        EntitlementAppVisibilityEnum::All
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEntitlement {
     fn type_string() -> &'static str {
@@ -90,6 +111,17 @@ impl cfn_resources::CfnResource for CfnEntitlement {
 pub struct Attribute {
 
 
+    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
     /// A supported AWS IAM SAML PrincipalTag attribute that is matched to a value when a user     identity federates to an AppStream 2.0 SAML application.
     /// 
     /// The following are supported values:
@@ -104,15 +136,6 @@ pub struct Attribute {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
 }
+
+

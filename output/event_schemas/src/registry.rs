@@ -18,18 +18,6 @@ pub struct CfnRegistry {
 
 
     /// 
-    /// A description of the registry to be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The name of the schema registry.
     /// 
     /// Required: No
@@ -40,7 +28,21 @@ pub struct CfnRegistry {
     #[serde(rename = "RegistryName")]
     pub registry_name: Option<String>,
 
+
+    /// 
+    /// A description of the registry to be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRegistry {
     fn type_string() -> &'static str {
@@ -82,3 +84,5 @@ pub struct TagsEntry {
     pub key: String,
 
 }
+
+

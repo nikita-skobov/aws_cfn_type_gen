@@ -6,6 +6,22 @@ pub struct CfnLaunchTemplateConstraint {
 
 
     /// 
+    /// The language code.
+    /// 
+    /// jp - Japanese                        zh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
+
+
+    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -21,18 +37,6 @@ pub struct CfnLaunchTemplateConstraint {
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
-
-
-    /// 
-    /// The constraint rules.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: String,
 
 
     /// 
@@ -68,21 +72,19 @@ pub struct CfnLaunchTemplateConstraint {
 
 
     /// 
-    /// The language code.
+    /// The constraint rules.
     /// 
-    /// jp - Japanese                        zh - Chinese
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 100
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
+    #[serde(rename = "Rules")]
+    pub rules: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLaunchTemplateConstraint {
     fn type_string() -> &'static str {

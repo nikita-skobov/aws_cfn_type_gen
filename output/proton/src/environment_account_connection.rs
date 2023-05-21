@@ -6,7 +6,7 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// The IAM service role that's associated with the environment account connection.
+    /// The name of the environment that's associated with the environment account connection.
     /// 
     /// Required: No
     ///
@@ -14,13 +14,45 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 200
+    /// Maximum: 100
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+    #[serde(rename = "EnvironmentName")]
+    pub environment_name: Option<String>,
+
+
+    /// 
+    /// The ID of the management account that's connected to the environment account connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^\d{12}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagementAccountId")]
+    pub management_account_id: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):iam::\d{12}:role/([\w+=,.@-]{1,512}[/:])*([\w+=,.@-]{1,64})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CodebuildRoleArn")]
+    pub codebuild_role_arn: Option<String>,
 
 
     /// 
@@ -46,21 +78,17 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
+    /// The environment account that's connected to the environment account connection.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):iam::\d{12}:role/([\w+=,.@-]{1,512}[/:])*([\w+=,.@-]{1,64})$
+    /// Pattern: ^\d{12}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CodebuildRoleArn")]
-    pub codebuild_role_arn: Option<String>,
+    #[serde(rename = "EnvironmentAccountId")]
+    pub environment_account_id: Option<String>,
 
 
     /// 
@@ -80,35 +108,7 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// The ID of the management account that's connected to the environment account connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^\d{12}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagementAccountId")]
-    pub management_account_id: Option<String>,
-
-
-    /// 
-    /// The environment account that's connected to the environment account connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^\d{12}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentAccountId")]
-    pub environment_account_id: Option<String>,
-
-
-    /// 
-    /// The name of the environment that's associated with the environment account connection.
+    /// The IAM service role that's associated with the environment account connection.
     /// 
     /// Required: No
     ///
@@ -116,15 +116,17 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 100
+    /// Maximum: 200
     ///
-    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnvironmentName")]
-    pub environment_name: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
     fn type_string() -> &'static str {
@@ -149,17 +151,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -169,4 +160,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

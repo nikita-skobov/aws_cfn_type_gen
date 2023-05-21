@@ -8,15 +8,33 @@ pub struct CfnConnectAttachment {
 
 
     /// 
-    /// The ID of the core network where the Connect attachment is located.
+    /// The Region where the edge is located.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [\s\S]*
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
+    #[serde(rename = "EdgeLocation")]
+    pub edge_location: String,
+
+
+    /// 
+    /// Options for connecting an attachment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ConnectAttachmentOptions
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Options")]
+    pub options: ConnectAttachmentOptions,
 
 
     /// 
@@ -38,15 +56,15 @@ pub struct CfnConnectAttachment {
 
 
     /// 
-    /// Options for connecting an attachment.
+    /// The ID of the core network where the Connect attachment is located.
     /// 
     /// Required: Yes
     ///
-    /// Type: ConnectAttachmentOptions
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Options")]
-    pub options: ConnectAttachmentOptions,
+    #[serde(rename = "CoreNetworkId")]
+    pub core_network_id: String,
 
 
     /// Property description not available.
@@ -59,25 +77,9 @@ pub struct CfnConnectAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The Region where the edge is located.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EdgeLocation")]
-    pub edge_location: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConnectAttachment {
     fn type_string() -> &'static str {
@@ -88,6 +90,44 @@ impl cfn_resources::CfnResource for CfnConnectAttachment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes a core network Connect attachment options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConnectAttachmentOptions {
+
+
+    /// 
+    /// The protocol used for the attachment connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GRE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<ConnectAttachmentOptionsProtocolEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectAttachmentOptionsProtocolEnum {
+
+    /// GRE
+    #[serde(rename = "GRE")]
+    Gre,
+
+}
+
+impl Default for ConnectAttachmentOptionsProtocolEnum {
+    fn default() -> Self {
+        ConnectAttachmentOptionsProtocolEnum::Gre
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -125,25 +165,6 @@ pub struct Tag {
 }
 
 
-/// Describes a core network Connect attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConnectAttachmentOptions {
-
-
-    /// 
-    /// The protocol used for the attachment connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GRE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
-
-}
 
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
@@ -152,15 +173,15 @@ pub struct ProposedSegmentChange {
 
 
     /// 
-    /// The list of key-value tags that changed for the segment.
+    /// The rule number in the policy document that applies to this change.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
 
 
     /// 
@@ -182,14 +203,16 @@ pub struct ProposedSegmentChange {
 
 
     /// 
-    /// The rule number in the policy document that applies to this change.
+    /// The list of key-value tags that changed for the segment.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+

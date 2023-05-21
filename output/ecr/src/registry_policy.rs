@@ -20,6 +20,8 @@ pub struct CfnRegistryPolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnRegistryPolicy {
     fn type_string() -> &'static str {
         "AWS::ECR::RegistryPolicy"

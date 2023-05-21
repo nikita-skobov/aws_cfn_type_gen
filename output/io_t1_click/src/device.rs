@@ -6,18 +6,6 @@ pub struct CfnDevice {
 
 
     /// 
-    /// The ID of the device, such as G030PX0312744DWM.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceId")]
-    pub device_id: String,
-
-
-    /// 
     /// A Boolean value indicating whether the device is enabled (true) or not (false).
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnDevice {
     #[serde(rename = "Enabled")]
     pub enabled: bool,
 
+
+    /// 
+    /// The ID of the device, such as G030PX0312744DWM.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceId")]
+    pub device_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDevice {
     fn type_string() -> &'static str {

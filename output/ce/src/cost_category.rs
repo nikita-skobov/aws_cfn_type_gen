@@ -22,27 +22,15 @@ pub struct CfnCostCategory {
 
 
     /// 
-    /// The unique name of the Cost Category.
+    /// The default value for the cost category.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The rule schema version in this particular Cost Category.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RuleVersion")]
-    pub rule_version: String,
+    #[serde(rename = "DefaultValue")]
+    pub default_value: Option<String>,
 
 
     /// 
@@ -60,17 +48,31 @@ pub struct CfnCostCategory {
 
 
     /// 
-    /// The default value for the cost category.
+    /// The rule schema version in this particular Cost Category.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: Option<String>,
+    #[serde(rename = "RuleVersion")]
+    pub rule_version: String,
+
+
+    /// 
+    /// The unique name of the Cost Category.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCostCategory {
     fn type_string() -> &'static str {

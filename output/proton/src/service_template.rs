@@ -18,22 +18,6 @@ pub struct CfnServiceTemplate {
 
 
     /// 
-    /// The service template name as displayed in the developer interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// 
     /// If pipelineProvisioning is true, a service pipeline is included    in the service template. Otherwise, a service pipeline isn't included in    the service template.
     /// 
     /// Required: No
@@ -44,7 +28,7 @@ pub struct CfnServiceTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PipelineProvisioning")]
-    pub pipeline_provisioning: Option<String>,
+    pub pipeline_provisioning: Option<ServiceTemplatePipelineProvisioningEnum>,
 
 
     /// 
@@ -64,7 +48,7 @@ pub struct CfnServiceTemplate {
 
 
     /// 
-    /// The customer provided service template encryption key that's used to encrypt data.
+    /// The service template name as displayed in the developer interface.
     /// 
     /// Required: No
     ///
@@ -72,13 +56,11 @@ pub struct CfnServiceTemplate {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 200
+    /// Maximum: 100
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EncryptionKey")]
-    pub encryption_key: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
 
 
     /// 
@@ -98,7 +80,42 @@ pub struct CfnServiceTemplate {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The customer provided service template encryption key that's used to encrypt data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncryptionKey")]
+    pub encryption_key: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ServiceTemplatePipelineProvisioningEnum {
+
+    /// CUSTOMER_MANAGED
+    #[serde(rename = "CUSTOMER_MANAGED")]
+    Customermanaged,
+
+}
+
+impl Default for ServiceTemplatePipelineProvisioningEnum {
+    fn default() -> Self {
+        ServiceTemplatePipelineProvisioningEnum::Customermanaged
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnServiceTemplate {
     fn type_string() -> &'static str {
@@ -123,17 +140,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -143,4 +149,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

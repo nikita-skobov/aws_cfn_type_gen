@@ -24,6 +24,8 @@ pub struct CfnCustomResource {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnCustomResource {
     fn type_string() -> &'static str {
         "AWS::CloudFormation::CustomResource"

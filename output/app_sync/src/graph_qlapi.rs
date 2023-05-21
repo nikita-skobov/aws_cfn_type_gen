@@ -5,40 +5,6 @@
 pub struct CfnGraphQLApi {
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-ownercontact
-    #[serde(rename = "OwnerContact")]
-    pub owner_contact: Option<String>,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-apitype
-    #[serde(rename = "ApiType")]
-    pub api_type: Option<String>,
-
-
-    /// 
-    /// The OpenID Connect configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OpenIDConnectConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OpenIDConnectConfig")]
-    pub open_idconnect_config: Option<OpenIDConnectConfig>,
-
-
-    /// 
-    /// An arbitrary set of tags (key-value pairs) for this GraphQL API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
     /// 
     /// A LambdaAuthorizerConfig holds configuration on how to authorize AWS AppSync API     access when using the AWS_LAMBDA authorizer mode. Be aware that an AWS AppSync API     may have only one Lambda authorizer configured at a time.
     /// 
@@ -49,71 +15,6 @@ pub struct CfnGraphQLApi {
     /// Update requires: No interruption
     #[serde(rename = "LambdaAuthorizerConfig")]
     pub lambda_authorizer_config: Option<LambdaAuthorizerConfig>,
-
-
-    /// 
-    /// The Amazon CloudWatch Logs configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LogConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogConfig")]
-    pub log_config: Option<LogConfig>,
-
-
-    /// 
-    /// Security configuration for your GraphQL API. For allowed values (such as API_KEY,       AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT, or       AWS_LAMBDA), see Security in the AWS AppSync Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-mergedapiexecutionrolearn
-    #[serde(rename = "MergedApiExecutionRoleArn")]
-    pub merged_api_execution_role_arn: Option<String>,
-
-
-    /// 
-    /// Sets the scope of the GraphQL API to public (GLOBAL) or private (PRIVATE). By     default, the scope is set to Global if no value is provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Visibility")]
-    pub visibility: Option<String>,
-
-
-    /// 
-    /// A flag indicating whether to use AWS X-Ray tracing for this       GraphqlApi.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "XrayEnabled")]
-    pub xray_enabled: Option<bool>,
-
-
-    /// 
-    /// The API name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -129,6 +30,47 @@ pub struct CfnGraphQLApi {
 
 
     /// 
+    /// Sets the scope of the GraphQL API to public (GLOBAL) or private (PRIVATE). By     default, the scope is set to Global if no value is provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Visibility")]
+    pub visibility: Option<String>,
+
+
+    /// 
+    /// Security configuration for your GraphQL API. For allowed values (such as API_KEY,       AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT, or       AWS_LAMBDA), see Security in the AWS AppSync Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: String,
+
+
+    /// 
+    /// The API name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-ownercontact
+    #[serde(rename = "OwnerContact")]
+    pub owner_contact: Option<String>,
+
+
+    /// 
     /// Optional authorization configuration for using Amazon Cognito user pools with your GraphQL endpoint.
     /// 
     /// Required: No
@@ -139,7 +81,67 @@ pub struct CfnGraphQLApi {
     #[serde(rename = "UserPoolConfig")]
     pub user_pool_config: Option<UserPoolConfig>,
 
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-apitype
+    #[serde(rename = "ApiType")]
+    pub api_type: Option<String>,
+
+
+    /// 
+    /// The Amazon CloudWatch Logs configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LogConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogConfig")]
+    pub log_config: Option<LogConfig>,
+
+
+    /// 
+    /// The OpenID Connect configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OpenIDConnectConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OpenIDConnectConfig")]
+    pub open_idconnect_config: Option<OpenIDConnectConfig>,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-mergedapiexecutionrolearn
+    #[serde(rename = "MergedApiExecutionRoleArn")]
+    pub merged_api_execution_role_arn: Option<String>,
+
+
+    /// 
+    /// A flag indicating whether to use AWS X-Ray tracing for this       GraphqlApi.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "XrayEnabled")]
+    pub xray_enabled: Option<bool>,
+
+
+    /// 
+    /// An arbitrary set of tags (key-value pairs) for this GraphQL API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGraphQLApi {
     fn type_string() -> &'static str {
@@ -152,80 +154,11 @@ impl cfn_resources::CfnResource for CfnGraphQLApi {
 }
 
 
-/// Describes an additional authentication provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AdditionalAuthenticationProvider {
-
-
-    /// 
-    /// The Amazon Cognito user pool configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CognitoUserPoolConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolConfig")]
-    pub user_pool_config: Option<CognitoUserPoolConfig>,
-
-
-    /// 
-    /// The authentication type for API key, AWS Identity and Access Management, OIDC, Amazon Cognito user pools, or AWS Lambda.
-    /// 
-    /// Valid Values: API_KEY | AWS_IAM | OPENID_CONNECT |       AMAZON_COGNITO_USER_POOLS | AWS_LAMBDA
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
-
-
-    /// 
-    /// The OIDC configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OpenIDConnectConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OpenIDConnectConfig")]
-    pub open_idconnect_config: Option<OpenIDConnectConfig>,
-
-
-    /// 
-    /// Configuration for AWS Lambda function authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaAuthorizerConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaAuthorizerConfig")]
-    pub lambda_authorizer_config: Option<LambdaAuthorizerConfig>,
-
-}
-
-
 /// The OpenIDConnectConfig property type specifies the optional authorization configuration for     using an OpenID Connect compliant service with your GraphQL endpoint for an AWS AppSync GraphQL     API.
 ///
 /// OpenIDConnectConfig is a property of the AWS::AppSync::GraphQLApi property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OpenIDConnectConfig {
-
-
-    /// 
-    /// The issuer for the OIDC configuration. The issuer returned by discovery must exactly     match the value of iss in the ID token.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Issuer")]
-    pub issuer: Option<String>,
 
 
     /// 
@@ -241,6 +174,18 @@ pub struct OpenIDConnectConfig {
 
 
     /// 
+    /// The client identifier of the Relying party at the OpenID identity provider. This identifier is typically     obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular     expression so that AWS AppSync can validate against multiple client identifiers at a time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientId")]
+    pub client_id: Option<String>,
+
+
+    /// 
     /// The number of milliseconds that a token is valid after it's issued to a user.
     /// 
     /// Required: No
@@ -253,126 +198,36 @@ pub struct OpenIDConnectConfig {
 
 
     /// 
-    /// The client identifier of the Relying party at the OpenID identity provider. This identifier is typically     obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular     expression so that AWS AppSync can validate against multiple client identifiers at a time.
+    /// The issuer for the OIDC configuration. The issuer returned by discovery must exactly     match the value of iss in the ID token.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: Option<String>,
+    #[serde(rename = "Issuer")]
+    pub issuer: Option<String>,
 
 }
 
 
-/// The UserPoolConfig property type specifies the optional authorization configuration for using       Amazon Cognito user pools with your GraphQL endpoint for an AWS AppSync GraphQL API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct UserPoolConfig {
-
-
-    /// 
-    /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppIdClientRegex")]
-    pub app_id_client_regex: Option<String>,
-
-
-    /// 
-    /// The AWS Region in which the user pool was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: Option<String>,
-
-
-    /// 
-    /// The action that you want your GraphQL API to take when a request that uses Amazon Cognito user pool     authentication doesn't match the Amazon Cognito user pool configuration.
-    /// 
-    /// When specifying Amazon Cognito user pools as the default authentication, you must set the value for       DefaultAction to ALLOW if specifying       AdditionalAuthenticationProviders.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAction")]
-    pub default_action: Option<String>,
-
-
-    /// 
-    /// The user pool ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolId")]
-    pub user_pool_id: Option<String>,
-
-}
-
-
-/// The LogConfig property type specifies the logging configuration when writing GraphQL operations     and tracing to Amazon CloudWatch for an AWS AppSync GraphQL API.
-///
-/// LogConfig is a property of the AWS::AppSync::GraphQLApi property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LogConfig {
-
-
-    /// 
-    /// The service role that AWS AppSync will assume to publish to Amazon CloudWatch Logs in your     account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogsRoleArn")]
-    pub cloud_watch_logs_role_arn: Option<String>,
-
-
-    /// 
-    /// The field logging level. Values can be NONE, ERROR, or ALL.
-    /// 
-    /// NONE: No field-level logs are        captured.                        ERROR: Logs the following information only for        the fields that are in error:                                                         The error section in the server response.                     Field-level errors.                     The generated request/response functions that got resolved for error           fields.                                  ALL: The following information is logged for        all fields in the query:                                               Field-level tracing information.                     The generated request/response functions that got resolved for each           field.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldLogLevel")]
-    pub field_log_level: Option<String>,
-
-
-    /// 
-    /// Set to TRUE to exclude sections that contain information such as headers, context, and     evaluated mapping templates, regardless of logging level.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeVerboseContent")]
-    pub exclude_verbose_content: Option<bool>,
-
-}
 
 
 /// Configuration for AWS Lambda function authorization.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LambdaAuthorizerConfig {
+
+
+    /// 
+    /// A regular expression for validation of tokens before the Lambda function is called.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityValidationExpression")]
+    pub identity_validation_expression: Option<String>,
 
 
     /// 
@@ -402,19 +257,9 @@ pub struct LambdaAuthorizerConfig {
     #[serde(rename = "AuthorizerUri")]
     pub authorizer_uri: Option<String>,
 
-
-    /// 
-    /// A regular expression for validation of tokens before the Lambda function is called.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdentityValidationExpression")]
-    pub identity_validation_expression: Option<String>,
-
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -429,17 +274,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -449,12 +283,164 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
-/// Describes an Amazon Cognito user pool configuration.
+
+
+/// The LogConfig property type specifies the logging configuration when writing GraphQL operations     and tracing to Amazon CloudWatch for an AWS AppSync GraphQL API.
+///
+/// LogConfig is a property of the AWS::AppSync::GraphQLApi property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CognitoUserPoolConfig {
+pub struct LogConfig {
+
+
+    /// 
+    /// The field logging level. Values can be NONE, ERROR, or ALL.
+    /// 
+    /// NONE: No field-level logs are        captured.                        ERROR: Logs the following information only for        the fields that are in error:                                                         The error section in the server response.                     Field-level errors.                     The generated request/response functions that got resolved for error           fields.                                  ALL: The following information is logged for        all fields in the query:                                               Field-level tracing information.                     The generated request/response functions that got resolved for each           field.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldLogLevel")]
+    pub field_log_level: Option<String>,
+
+
+    /// 
+    /// The service role that AWS AppSync will assume to publish to Amazon CloudWatch Logs in your     account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogsRoleArn")]
+    pub cloud_watch_logs_role_arn: Option<String>,
+
+
+    /// 
+    /// Set to TRUE to exclude sections that contain information such as headers, context, and     evaluated mapping templates, regardless of logging level.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeVerboseContent")]
+    pub exclude_verbose_content: Option<bool>,
+
+}
+
+
+
+
+/// Describes an additional authentication provider.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AdditionalAuthenticationProvider {
+
+
+    /// 
+    /// The authentication type for API key, AWS Identity and Access Management, OIDC, Amazon Cognito user pools, or AWS Lambda.
+    /// 
+    /// Valid Values: API_KEY | AWS_IAM | OPENID_CONNECT |       AMAZON_COGNITO_USER_POOLS | AWS_LAMBDA
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: AdditionalAuthenticationProviderAuthenticationTypeEnum,
+
+
+    /// 
+    /// The OIDC configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OpenIDConnectConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OpenIDConnectConfig")]
+    pub open_idconnect_config: Option<OpenIDConnectConfig>,
+
+
+    /// 
+    /// Configuration for AWS Lambda function authorization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaAuthorizerConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LambdaAuthorizerConfig")]
+    pub lambda_authorizer_config: Option<LambdaAuthorizerConfig>,
+
+
+    /// 
+    /// The Amazon Cognito user pool configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CognitoUserPoolConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolConfig")]
+    pub user_pool_config: Option<CognitoUserPoolConfig>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AdditionalAuthenticationProviderAuthenticationTypeEnum {
+
+    /// API_KEY
+    #[serde(rename = "API_KEY")]
+    Apikey,
+
+    /// AWS_IAM
+    #[serde(rename = "AWS_IAM")]
+    Awsiam,
+
+    /// OPENID_CONNECT
+    #[serde(rename = "OPENID_CONNECT")]
+    Openidconnect,
+
+    /// AMAZON_COGNITO_USER_POOLS
+    #[serde(rename = "AMAZON_COGNITO_USER_POOLS")]
+    Amazoncognitouserpools,
+
+    /// AWS_LAMBDA
+    #[serde(rename = "AWS_LAMBDA")]
+    Awslambda,
+
+}
+
+impl Default for AdditionalAuthenticationProviderAuthenticationTypeEnum {
+    fn default() -> Self {
+        AdditionalAuthenticationProviderAuthenticationTypeEnum::Apikey
+    }
+}
+
+
+
+/// The UserPoolConfig property type specifies the optional authorization configuration for using       Amazon Cognito user pools with your GraphQL endpoint for an AWS AppSync GraphQL API.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct UserPoolConfig {
 
 
     /// 
@@ -482,6 +468,20 @@ pub struct CognitoUserPoolConfig {
 
 
     /// 
+    /// The action that you want your GraphQL API to take when a request that uses Amazon Cognito user pool     authentication doesn't match the Amazon Cognito user pool configuration.
+    /// 
+    /// When specifying Amazon Cognito user pools as the default authentication, you must set the value for       DefaultAction to ALLOW if specifying       AdditionalAuthenticationProviders.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultAction")]
+    pub default_action: Option<String>,
+
+
+    /// 
     /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
     /// 
     /// Required: No
@@ -493,3 +493,50 @@ pub struct CognitoUserPoolConfig {
     pub app_id_client_regex: Option<String>,
 
 }
+
+
+
+
+/// Describes an Amazon Cognito user pool configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CognitoUserPoolConfig {
+
+
+    /// 
+    /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppIdClientRegex")]
+    pub app_id_client_regex: Option<String>,
+
+
+    /// 
+    /// The AWS Region in which the user pool was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: Option<String>,
+
+
+    /// 
+    /// The user pool ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolId")]
+    pub user_pool_id: Option<String>,
+
+}
+
+

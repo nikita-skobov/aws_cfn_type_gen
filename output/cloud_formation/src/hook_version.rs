@@ -6,15 +6,21 @@ pub struct CfnHookVersion {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
+    /// The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of   Organization::Service::Hook.
     /// 
-    /// Required: No
+    /// NoteThe following organization namespaces are reserved and can't be used in your hook type names:                                                                                       Alexa                                      AMZN                                      Amazon                                      ASK                                      AWS                                      Custom                                      Dev
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 10
+    ///
+    /// Maximum: 196
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: Option<String>,
+    #[serde(rename = "TypeName")]
+    pub type_name: String,
 
 
     /// 
@@ -34,21 +40,15 @@ pub struct CfnHookVersion {
 
 
     /// 
-    /// The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of   Organization::Service::Hook.
+    /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
     /// 
-    /// NoteThe following organization namespaces are reserved and can't be used in your hook type names:                                                                                       Alexa                                      AMZN                                      Amazon                                      ASK                                      AWS                                      Custom                                      Dev
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 10
-    ///
-    /// Maximum: 196
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "TypeName")]
-    pub type_name: String,
+    #[serde(rename = "ExecutionRoleArn")]
+    pub execution_role_arn: Option<String>,
 
 
     /// 
@@ -64,6 +64,8 @@ pub struct CfnHookVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnHookVersion {
     fn type_string() -> &'static str {
         "AWS::CloudFormation::HookVersion"
@@ -78,24 +80,6 @@ impl cfn_resources::CfnResource for CfnHookVersion {
 /// The LoggingConfig property type specifies logging configuration information for an  extension.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoggingConfig {
-
-
-    /// 
-    /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\.\-_/#A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
 
 
     /// 
@@ -115,4 +99,24 @@ pub struct LoggingConfig {
     #[serde(rename = "LogRoleArn")]
     pub log_role_arn: Option<String>,
 
+
+    /// 
+    /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\.\-_/#A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
+
 }
+
+

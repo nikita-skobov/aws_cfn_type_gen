@@ -8,15 +8,41 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The tags.
+    /// The attributes.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of TargetGroupAttribute
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "TargetGroupAttributes")]
+    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
+
+
+    /// 
+    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Matcher
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Matcher")]
+    pub matcher: Option<Matcher>,
+
+
+    /// 
+    /// The name of the target group.
+    /// 
+    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -32,15 +58,57 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
+    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
+
+
+    /// 
+    /// The tags.
     /// 
     /// Required: No
     ///
-    /// Type: Matcher
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Matcher")]
-    pub matcher: Option<Matcher>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<TargetGroupProtocolEnum>,
+
+
+    /// 
+    /// The approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300.    If the target group protocol is TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds.    If the target group protocol is GENEVE, the default is 10 seconds.    If the target type is lambda, the default is 35 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 300
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckIntervalSeconds")]
+    pub health_check_interval_seconds: Option<i64>,
 
 
     /// 
@@ -64,44 +132,6 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckEnabled")]
-    pub health_check_enabled: Option<bool>,
-
-
-    /// 
-    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckPort")]
-    pub health_check_port: Option<String>,
-
-
-    /// 
-    /// The type of IP address used for this target group. The possible values are     ipv4 and ipv6. This is an optional parameter. If not specified,    the IP address type defaults to ipv4.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ipv4 | ipv6
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<String>,
-
-
-    /// 
     /// The number of consecutive health check successes required before considering a target healthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For target groups    with a protocol of GENEVE, the default is 5. If the target type    is lambda, the default is 5.
     /// 
     /// Required: No
@@ -115,50 +145,6 @@ pub struct CfnTargetGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthyThresholdCount")]
     pub healthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// The amount of time, in seconds, during which no response from a target means a failed    health check. The range is 2–120 seconds. For target groups with a protocol of HTTP, the    default is 6 seconds. For target groups with a protocol of TCP, TLS or HTTPS, the default    is 10 seconds. For target groups with a protocol of GENEVE, the default is 5 seconds. If    the target type is lambda, the default is 30 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 120
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckTimeoutSeconds")]
-    pub health_check_timeout_seconds: Option<i64>,
-
-
-    /// 
-    /// The name of the target group.
-    /// 
-    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
 
 
     /// 
@@ -194,19 +180,15 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300.    If the target group protocol is TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds.    If the target group protocol is GENEVE, the default is 10 seconds.    If the target type is lambda, the default is 35 seconds.
+    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 300
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HealthCheckIntervalSeconds")]
-    pub health_check_interval_seconds: Option<i64>,
+    #[serde(rename = "HealthCheckEnabled")]
+    pub health_check_enabled: Option<bool>,
 
 
     /// 
@@ -222,7 +204,21 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetType")]
-    pub target_type: Option<String>,
+    pub target_type: Option<TargetGroupTargetTypeEnum>,
+
+
+    /// 
+    /// The protocol the load balancer uses when performing health checks on targets. For    Application Load Balancers, the default is HTTP. For Network Load Balancers and Gateway Load    Balancers, the default is TCP. The TCP protocol is not supported for health checks if the    protocol of the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP protocols are    not supported for health checks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckProtocol")]
+    pub health_check_protocol: Option<TargetGroupHealthCheckProtocolEnum>,
 
 
     /// 
@@ -238,43 +234,173 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
+    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
     /// 
-    /// Required: Conditional
+    /// Required: No
     ///
     /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckPort")]
+    pub health_check_port: Option<String>,
+
+
+    /// 
+    /// The amount of time, in seconds, during which no response from a target means a failed    health check. The range is 2–120 seconds. For target groups with a protocol of HTTP, the    default is 6 seconds. For target groups with a protocol of TCP, TLS or HTTPS, the default    is 10 seconds. For target groups with a protocol of GENEVE, the default is 5 seconds. If    the target type is lambda, the default is 30 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 120
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckTimeoutSeconds")]
+    pub health_check_timeout_seconds: Option<i64>,
+
+
+    /// 
+    /// The type of IP address used for this target group. The possible values are     ipv4 and ipv6. This is an optional parameter. If not specified,    the IP address type defaults to ipv4.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipv4 | ipv6
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
-
-    /// 
-    /// The protocol the load balancer uses when performing health checks on targets. For    Application Load Balancers, the default is HTTP. For Network Load Balancers and Gateway Load    Balancers, the default is TCP. The TCP protocol is not supported for health checks if the    protocol of the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP protocols are    not supported for health checks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckProtocol")]
-    pub health_check_protocol: Option<String>,
-
-
-    /// 
-    /// The attributes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TargetGroupAttribute
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupAttributes")]
-    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<TargetGroupIpAddressTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupTargetTypeEnum {
+
+    /// alb
+    #[serde(rename = "alb")]
+    Alb,
+
+    /// instance
+    #[serde(rename = "instance")]
+    Instance,
+
+    /// ip
+    #[serde(rename = "ip")]
+    Ip,
+
+    /// lambda
+    #[serde(rename = "lambda")]
+    Lambda,
+
+}
+
+impl Default for TargetGroupTargetTypeEnum {
+    fn default() -> Self {
+        TargetGroupTargetTypeEnum::Alb
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupIpAddressTypeEnum {
+
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+    /// ipv6
+    #[serde(rename = "ipv6")]
+    Ipv6,
+
+}
+
+impl Default for TargetGroupIpAddressTypeEnum {
+    fn default() -> Self {
+        TargetGroupIpAddressTypeEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupHealthCheckProtocolEnum {
+
+    /// GENEVE
+    #[serde(rename = "GENEVE")]
+    Geneve,
+
+    /// HTTP
+    #[serde(rename = "HTTP")]
+    Http,
+
+    /// HTTPS
+    #[serde(rename = "HTTPS")]
+    Https,
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+    /// TCP_UDP
+    #[serde(rename = "TCP_UDP")]
+    Tcpudp,
+
+    /// TLS
+    #[serde(rename = "TLS")]
+    Tls,
+
+    /// UDP
+    #[serde(rename = "UDP")]
+    Udp,
+
+}
+
+impl Default for TargetGroupHealthCheckProtocolEnum {
+    fn default() -> Self {
+        TargetGroupHealthCheckProtocolEnum::Geneve
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetGroupProtocolEnum {
+
+    /// GENEVE
+    #[serde(rename = "GENEVE")]
+    Geneve,
+
+    /// HTTP
+    #[serde(rename = "HTTP")]
+    Http,
+
+    /// HTTPS
+    #[serde(rename = "HTTPS")]
+    Https,
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+    /// TCP_UDP
+    #[serde(rename = "TCP_UDP")]
+    Tcpudp,
+
+    /// TLS
+    #[serde(rename = "TLS")]
+    Tls,
+
+    /// UDP
+    #[serde(rename = "UDP")]
+    Udp,
+
+}
+
+impl Default for TargetGroupProtocolEnum {
+    fn default() -> Self {
+        TargetGroupProtocolEnum::Geneve
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnTargetGroup {
     fn type_string() -> &'static str {
@@ -287,9 +413,64 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
 }
 
 
+/// Specifies the HTTP codes that healthy targets must use when responding to an HTTP health     check.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Matcher {
+
+
+    /// 
+    /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
+    /// 
+    /// For Network Load Balancers, you can specify values between 200 and 599, with the    default value being 200-399. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
+    /// 
+    /// For Gateway Load Balancers, this must be "200–399".
+    /// 
+    /// Note that when using shorthand syntax, some values such as commas need to be    escaped.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpCode")]
+    pub http_code: Option<String>,
+
+
+    /// 
+    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GrpcCode")]
+    pub grpc_code: Option<String>,
+
+}
+
+
+
+
 /// Specifies a target to add to a target group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetDescription {
+
+
+    /// 
+    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 
     /// 
@@ -325,23 +506,9 @@ pub struct TargetDescription {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
-    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -379,21 +546,11 @@ pub struct Tag {
 }
 
 
+
+
 /// Specifies a target group attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetGroupAttribute {
-
-
-    /// 
-    /// The value of the attribute.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
 
 
     /// 
@@ -435,41 +592,18 @@ pub struct TargetGroupAttribute {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
-}
-
-
-/// Specifies the HTTP codes that healthy targets must use when responding to an HTTP health     check.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Matcher {
-
 
     /// 
-    /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
-    /// 
-    /// For Network Load Balancers, you can specify values between 200 and 599, with the    default value being 200-399. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
-    /// 
-    /// For Gateway Load Balancers, this must be "200–399".
-    /// 
-    /// Note that when using shorthand syntax, some values such as commas need to be    escaped.
+    /// The value of the attribute.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HttpCode")]
-    pub http_code: Option<String>,
-
-
-    /// 
-    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GrpcCode")]
-    pub grpc_code: Option<String>,
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
+
+

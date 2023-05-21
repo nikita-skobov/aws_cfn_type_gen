@@ -22,6 +22,8 @@ pub struct CfnResolverDNSSECConfig {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResolverDNSSECConfig {
     fn type_string() -> &'static str {
         "AWS::Route53Resolver::ResolverDNSSECConfig"

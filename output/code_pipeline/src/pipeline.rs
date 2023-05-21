@@ -6,41 +6,15 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// Specifies the tags applied to the pipeline.
+    /// Represents information about a stage and its definition.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Indicates whether to rerun the CodePipeline pipeline after you update it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Type: List of StageDeclaration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RestartExecutionOnUpdate")]
-    pub restart_execution_on_update: Option<bool>,
-
-
-    /// 
-    /// The S3 bucket where artifacts for the pipeline are stored.
-    /// 
-    /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: ArtifactStore
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ArtifactStore")]
-    pub artifact_store: Option<ArtifactStore>,
+    #[serde(rename = "Stages")]
+    pub stages: Vec<StageDeclaration>,
 
 
     /// 
@@ -56,45 +30,15 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
+    /// Specifies the tags applied to the pipeline.
     /// 
-    /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
-    /// 
-    /// Required: Conditional
+    /// Required: No
     ///
-    /// Type: List of ArtifactStoreMap
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ArtifactStores")]
-    pub artifact_stores: Option<Vec<ArtifactStoreMap>>,
-
-
-    /// 
-    /// Represents information about a stage and its definition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of StageDeclaration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Stages")]
-    pub stages: Vec<StageDeclaration>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) for CodePipeline to use to either perform       actions with no actionRoleArn, or to use to assume roles for actions with       an actionRoleArn.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws(-[\w]+)*:iam::[0-9]{12}:role/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -114,7 +58,65 @@ pub struct CfnPipeline {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
+    /// 
+    /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: List of ArtifactStoreMap
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ArtifactStores")]
+    pub artifact_stores: Option<Vec<ArtifactStoreMap>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) for CodePipeline to use to either perform       actions with no actionRoleArn, or to use to assume roles for actions with       an actionRoleArn.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws(-[\w]+)*:iam::[0-9]{12}:role/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The S3 bucket where artifacts for the pipeline are stored.
+    /// 
+    /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: ArtifactStore
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ArtifactStore")]
+    pub artifact_store: Option<ArtifactStore>,
+
+
+    /// 
+    /// Indicates whether to rerun the CodePipeline pipeline after you update it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RestartExecutionOnUpdate")]
+    pub restart_execution_on_update: Option<bool>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string() -> &'static str {
@@ -127,96 +129,41 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 
-/// Represents information about an action type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ActionTypeId {
-
-
-    /// 
-    /// A string that describes the action version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: String,
-
-
-    /// 
-    /// A category defines what kind of action can be taken in the stage, and constrains the    provider type for the action. Valid categories are limited to one of the values    below.
-    /// 
-    /// Source        Build        Test        Deploy        Invoke        Approval
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Category")]
-    pub category: String,
-
-
-    /// 
-    /// The creator of the action being called. There are three valid values for the         Owner field in the action category section within your pipeline       structure: AWS, ThirdParty, and Custom. For more       information, see Valid Action Types and Providers in CodePipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Owner")]
-    pub owner: String,
-
-
-    /// 
-    /// The provider of the service being called by the action. Valid providers are       determined by the action category. For example, an action in the Deploy category type       might have a provider of CodeDeploy, which would be specified as CodeDeploy. For       more information, see Valid Action Types and Providers in CodePipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Provider")]
-    pub provider: String,
-
-}
-
-
-/// Represents information about the key used to encrypt data in the artifact store, such    as an AWS Key Management Service (AWS KMS) key.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
-/// EncryptionKey is a property of the ArtifactStore property type.
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionKey {
+pub struct Tag {
 
 
     /// 
-    /// The ID used to identify the key. For an AWS KMS key, you can use the key ID, the       key ARN, or the alias ARN.
-    /// 
-    /// NoteAliases are recognized only in the account that created the AWS KMS         key. For cross-account actions, you can only use the key ID or key ARN to identify         the key. Cross-account actions involve using the role from the other account         (AccountB), so specifying the key ID will use the key from the other account         (AccountB).
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 
     /// 
-    /// The type of encryption key, such as an AWS KMS key. When creating or       updating a pipeline, the value must be set to 'KMS'.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
+
+
 
 
 /// Represents information about the output of an action.
@@ -248,21 +195,65 @@ pub struct OutputArtifact {
 }
 
 
+
+
+/// Reserved for future use.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BlockerDeclaration {
+
+
+    /// 
+    /// Reserved for future use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Reserved for future use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Schedule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: BlockerDeclarationTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BlockerDeclarationTypeEnum {
+
+    /// Schedule
+    #[serde(rename = "Schedule")]
+    Schedule,
+
+}
+
+impl Default for BlockerDeclarationTypeEnum {
+    fn default() -> Self {
+        BlockerDeclarationTypeEnum::Schedule
+    }
+}
+
+
+
 /// The S3 bucket where artifacts for the pipeline are stored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ArtifactStore {
-
-
-    /// 
-    /// The encryption key used to encrypt the data in the artifact store, such as an AWS Key    Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.    To see an example artifact store encryption key field, see the example structure here: AWS::CodePipeline::Pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EncryptionKey
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionKey")]
-    pub encryption_key: Option<EncryptionKey>,
 
 
     /// 
@@ -276,7 +267,7 @@ pub struct ArtifactStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: ArtifactStoreTypeEnum,
 
 
     /// 
@@ -296,30 +287,49 @@ pub struct ArtifactStore {
     #[serde(rename = "Location")]
     pub location: String,
 
+
+    /// 
+    /// The encryption key used to encrypt the data in the artifact store, such as an AWS Key    Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.    To see an example artifact store encryption key field, see the example structure here: AWS::CodePipeline::Pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EncryptionKey
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionKey")]
+    pub encryption_key: Option<EncryptionKey>,
+
 }
 
 
-/// Reserved for future use.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ArtifactStoreTypeEnum {
+
+    /// S3
+    #[serde(rename = "S3")]
+    S3,
+
+}
+
+impl Default for ArtifactStoreTypeEnum {
+    fn default() -> Self {
+        ArtifactStoreTypeEnum::S3
+    }
+}
+
+
+
+/// Represents information about an artifact to be worked on, such as a test or build       artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BlockerDeclaration {
+pub struct InputArtifact {
 
 
     /// 
-    /// Reserved for future use.
+    /// The name of the artifact to be worked on (for example, "My App").
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Schedule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
+    /// Artifacts are the files that are worked on by actions in the pipeline. See the       action configuration for each action for details about artifact parameters. For example,       the S3 source action input artifact is a file name (or file path), and the files are       generally provided as a ZIP file. Example artifact name: SampleApp_Windows.zip
     /// 
-    /// Reserved for future use.
+    /// The input artifact of an action must exactly match the output artifact declared in       a preceding action, but the input artifact does not have to be the next action in strict       sequence from the action that provided the output artifact. Actions in parallel can       declare different output artifacts, which are in turn consumed by different following       actions.
     /// 
     /// Required: Yes
     ///
@@ -329,11 +339,111 @@ pub struct BlockerDeclaration {
     ///
     /// Maximum: 100
     ///
+    /// Pattern: [a-zA-Z0-9_\-]+
+    ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
 
 }
+
+
+
+
+/// Represents information about an action type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ActionTypeId {
+
+
+    /// 
+    /// A category defines what kind of action can be taken in the stage, and constrains the    provider type for the action. Valid categories are limited to one of the values    below.
+    /// 
+    /// Source        Build        Test        Deploy        Invoke        Approval
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Category")]
+    pub category: String,
+
+
+    /// 
+    /// The provider of the service being called by the action. Valid providers are       determined by the action category. For example, an action in the Deploy category type       might have a provider of CodeDeploy, which would be specified as CodeDeploy. For       more information, see Valid Action Types and Providers in CodePipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Provider")]
+    pub provider: String,
+
+
+    /// 
+    /// The creator of the action being called. There are three valid values for the         Owner field in the action category section within your pipeline       structure: AWS, ThirdParty, and Custom. For more       information, see Valid Action Types and Providers in CodePipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Owner")]
+    pub owner: String,
+
+
+    /// 
+    /// A string that describes the action version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: String,
+
+}
+
+
+
+
+/// Represents information about the key used to encrypt data in the artifact store, such    as an AWS Key Management Service (AWS KMS) key.
+///
+/// EncryptionKey is a property of the ArtifactStore property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EncryptionKey {
+
+
+    /// 
+    /// The type of encryption key, such as an AWS KMS key. When creating or       updating a pipeline, the value must be set to 'KMS'.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
+    /// The ID used to identify the key. For an AWS KMS key, you can use the key ID, the       key ARN, or the alias ARN.
+    /// 
+    /// NoteAliases are recognized only in the account that created the AWS KMS         key. For cross-account actions, you can only use the key ID or key ARN to identify         the key. Cross-account actions involve using the role from the other account         (AccountB), so specifying the key ID will use the key from the other account         (AccountB).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: String,
+
+}
+
+
 
 
 /// Represents information about a stage and its definition.
@@ -354,6 +464,18 @@ pub struct StageDeclaration {
 
 
     /// 
+    /// Reserved for future use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of BlockerDeclaration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Blockers")]
+    pub blockers: Option<Vec<BlockerDeclaration>>,
+
+
+    /// 
     /// The name of the stage.
     /// 
     /// Required: Yes
@@ -370,72 +492,14 @@ pub struct StageDeclaration {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// Reserved for future use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of BlockerDeclaration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Blockers")]
-    pub blockers: Option<Vec<BlockerDeclaration>>,
-
 }
+
+
 
 
 /// Represents information about an action declaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionDeclaration {
-
-
-    /// 
-    /// The name or ID of the artifact consumed by the action, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of input artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference    in the AWS CodePipeline User Guide.
-    /// 
-    /// NoteFor a CodeBuild action with multiple input artifacts, one of your input sources must be     designated the PrimarySource. For more information, see the CodeBuild action      reference page in the AWS CodePipeline User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InputArtifact
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputArtifacts")]
-    pub input_artifacts: Option<Vec<InputArtifact>>,
-
-
-    /// 
-    /// The order in which actions are run.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 999
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RunOrder")]
-    pub run_order: Option<i64>,
-
-
-    /// 
-    /// The action declaration's name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [A-Za-z0-9.@\-_]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -454,34 +518,6 @@ pub struct ActionDeclaration {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     pub namespace: Option<String>,
-
-
-    /// 
-    /// The name or ID of the result of the action declaration, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of output artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference in the AWS CodePipeline User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of OutputArtifact
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputArtifacts")]
-    pub output_artifacts: Option<Vec<OutputArtifact>>,
-
-
-    /// 
-    /// The action declaration's AWS Region, such as us-east-1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 4
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: Option<String>,
 
 
     /// 
@@ -519,6 +555,18 @@ pub struct ActionDeclaration {
 
 
     /// 
+    /// The name or ID of the result of the action declaration, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of output artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference in the AWS CodePipeline User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of OutputArtifact
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputArtifacts")]
+    pub output_artifacts: Option<Vec<OutputArtifact>>,
+
+
+    /// 
     /// Specifies the action type and the provider of the action.
     /// 
     /// Required: Yes
@@ -529,51 +577,41 @@ pub struct ActionDeclaration {
     #[serde(rename = "ActionTypeId")]
     pub action_type_id: ActionTypeId,
 
-}
 
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+    /// 
+    /// The order in which actions are run.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 999
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RunOrder")]
+    pub run_order: Option<i64>,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The action declaration's AWS Region, such as us-east-1.
     /// 
-    /// Required: Yes
-    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Minimum: 4
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: Option<String>,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// The name of the pipeline in which you want to disable the flow of artifacts from       one stage to another.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StageTransition {
-
-
-    /// 
-    /// The name of the stage where you want to disable the inbound or outbound transition       of artifacts.
+    /// The action declaration's name.
     /// 
     /// Required: Yes
     ///
@@ -586,28 +624,26 @@ pub struct StageTransition {
     /// Pattern: [A-Za-z0-9.@\-_]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StageName")]
-    pub stage_name: String,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
-    /// The reason given to the user that a stage is disabled, such as waiting for manual       approval or manual tests. This message is displayed in the pipeline console       UI.
+    /// The name or ID of the artifact consumed by the action, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of input artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference    in the AWS CodePipeline User Guide.
     /// 
-    /// Required: Yes
+    /// NoteFor a CodeBuild action with multiple input artifacts, one of your input sources must be     designated the PrimarySource. For more information, see the CodeBuild action      reference page in the AWS CodePipeline User Guide.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Pattern: [a-zA-Z0-9!@ \(\)\.\*\?\-]+
+    /// Type: List of InputArtifact
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Reason")]
-    pub reason: String,
+    #[serde(rename = "InputArtifacts")]
+    pub input_artifacts: Option<Vec<InputArtifact>>,
 
 }
+
+
 
 
 /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
@@ -647,17 +683,33 @@ pub struct ArtifactStoreMap {
 }
 
 
-/// Represents information about an artifact to be worked on, such as a test or build       artifact.
+
+
+/// The name of the pipeline in which you want to disable the flow of artifacts from       one stage to another.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InputArtifact {
+pub struct StageTransition {
 
 
     /// 
-    /// The name of the artifact to be worked on (for example, "My App").
+    /// The reason given to the user that a stage is disabled, such as waiting for manual       approval or manual tests. This message is displayed in the pipeline console       UI.
     /// 
-    /// Artifacts are the files that are worked on by actions in the pipeline. See the       action configuration for each action for details about artifact parameters. For example,       the S3 source action input artifact is a file name (or file path), and the files are       generally provided as a ZIP file. Example artifact name: SampleApp_Windows.zip
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Pattern: [a-zA-Z0-9!@ \(\)\.\*\?\-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Reason")]
+    pub reason: String,
+
+
     /// 
-    /// The input artifact of an action must exactly match the output artifact declared in       a preceding action, but the input artifact does not have to be the next action in strict       sequence from the action that provided the output artifact. Actions in parallel can       declare different output artifacts, which are in turn consumed by different following       actions.
+    /// The name of the stage where you want to disable the inbound or outbound transition       of artifacts.
     /// 
     /// Required: Yes
     ///
@@ -667,10 +719,12 @@ pub struct InputArtifact {
     ///
     /// Maximum: 100
     ///
-    /// Pattern: [a-zA-Z0-9_\-]+
+    /// Pattern: [A-Za-z0-9.@\-_]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "StageName")]
+    pub stage_name: String,
 
 }
+
+

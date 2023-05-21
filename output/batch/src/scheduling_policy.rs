@@ -18,6 +18,18 @@ pub struct CfnSchedulingPolicy {
 
 
     /// 
+    /// The fair share policy of the scheduling policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FairsharePolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FairsharePolicy")]
+    pub fairshare_policy: Option<FairsharePolicy>,
+
+
+    /// 
     /// The tags that you apply to the scheduling policy to help you categorize and organize your resources. Each tag  consists of a key and an optional value. For more information, see Tagging AWS Resources in         AWS General   Reference.
     /// 
     /// These tags can be updated or removed using the TagResource and UntagResource API operations.
@@ -30,19 +42,9 @@ pub struct CfnSchedulingPolicy {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
-    /// The fair share policy of the scheduling policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FairsharePolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FairsharePolicy")]
-    pub fairshare_policy: Option<FairsharePolicy>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSchedulingPolicy {
     fn type_string() -> &'static str {
@@ -61,18 +63,6 @@ pub struct FairsharePolicy {
 
 
     /// 
-    /// An array of SharedIdentifier objects that contain the weights for the fair  share identifiers for the fair share policy. Fair share identifiers that aren't included have a  default weight of 1.0.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ShareAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShareDistribution")]
-    pub share_distribution: Option<Vec<ShareAttributes>>,
-
-
-    /// 
     /// The amount of time (in seconds) to use to calculate a fair share percentage for each fair  share identifier in use. A value of zero (0) indicates that only current usage is measured. The  decay allows for more recently run jobs to have more weight than jobs that ran earlier. The  maximum supported value is 604800 (1 week).
     /// 
     /// Required: No
@@ -82,6 +72,18 @@ pub struct FairsharePolicy {
     /// Update requires: No interruption
     #[serde(rename = "ShareDecaySeconds")]
     pub share_decay_seconds: Option<f64>,
+
+
+    /// 
+    /// An array of SharedIdentifier objects that contain the weights for the fair  share identifiers for the fair share policy. Fair share identifiers that aren't included have a  default weight of 1.0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ShareAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShareDistribution")]
+    pub share_distribution: Option<Vec<ShareAttributes>>,
 
 
     /// 
@@ -104,9 +106,25 @@ pub struct FairsharePolicy {
 }
 
 
+
+
 /// Specifies the weights for the fair share identifiers for the fair share policy. Fair share  identifiers that aren't included have a default weight of 1.0.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShareAttributes {
+
+
+    /// 
+    /// The weight factor for the fair share identifier. The default value is 1.0. A lower value has  a higher priority for compute resources. For example, jobs that use a share identifier with a  weight factor of 0.125 (1/8) get 8 times the compute resources of jobs that use a share  identifier with a weight factor of 1.
+    /// 
+    /// The smallest supported value is 0.0001, and the largest supported value is 999.9999.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WeightFactor")]
+    pub weight_factor: Option<f64>,
 
 
     /// 
@@ -124,18 +142,6 @@ pub struct ShareAttributes {
     #[serde(rename = "ShareIdentifier")]
     pub share_identifier: Option<String>,
 
-
-    /// 
-    /// The weight factor for the fair share identifier. The default value is 1.0. A lower value has  a higher priority for compute resources. For example, jobs that use a share identifier with a  weight factor of 0.125 (1/8) get 8 times the compute resources of jobs that use a share  identifier with a weight factor of 1.
-    /// 
-    /// The smallest supported value is 0.0001, and the largest supported value is 999.9999.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WeightFactor")]
-    pub weight_factor: Option<f64>,
-
 }
+
+

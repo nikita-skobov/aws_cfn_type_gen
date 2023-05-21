@@ -6,18 +6,6 @@ pub struct CfnReplicationSet {
 
 
     /// 
-    /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeletionProtected")]
-    pub deletion_protected: Option<bool>,
-
-
-    /// 
     /// Specifies the Regions of the replication set.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnReplicationSet {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtected")]
+    pub deletion_protected: Option<bool>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnReplicationSet {
     fn type_string() -> &'static str {
@@ -50,56 +52,6 @@ impl cfn_resources::CfnResource for CfnReplicationSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RegionConfiguration {
-
-
-    /// 
-    /// The KMS key ID to use to encrypt your replication set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SseKmsKeyId")]
-    pub sse_kms_key_id: String,
-
-}
-
-
-/// The ReplicationRegion property type specifies the Region and KMS key to       add to the replication set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ReplicationRegion {
-
-
-    /// 
-    /// Specifies the Region configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RegionConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegionConfiguration")]
-    pub region_configuration: Option<RegionConfiguration>,
-
-
-    /// 
-    /// Specifies the region name to add to the replication set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegionName")]
-    pub region_name: Option<String>,
-
 }
 
 
@@ -136,3 +88,59 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// The ReplicationRegion property type specifies the Region and KMS key to       add to the replication set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReplicationRegion {
+
+
+    /// 
+    /// Specifies the region name to add to the replication set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegionName")]
+    pub region_name: Option<String>,
+
+
+    /// 
+    /// Specifies the Region configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RegionConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegionConfiguration")]
+    pub region_configuration: Option<RegionConfiguration>,
+
+}
+
+
+
+
+/// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RegionConfiguration {
+
+
+    /// 
+    /// The KMS key ID to use to encrypt your replication set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SseKmsKeyId")]
+    pub sse_kms_key_id: String,
+
+}
+
+

@@ -6,6 +6,8 @@ pub struct CfnLogAnomalyDetectionIntegration {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnLogAnomalyDetectionIntegration {
     fn type_string() -> &'static str {
         "AWS::DevOpsGuru::LogAnomalyDetectionIntegration"

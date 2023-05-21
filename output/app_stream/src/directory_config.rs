@@ -30,18 +30,6 @@ pub struct CfnDirectoryConfig {
 
 
     /// 
-    /// The distinguished names of the organizational units for computer accounts.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationalUnitDistinguishedNames")]
-    pub organizational_unit_distinguished_names: Vec<String>,
-
-
-    /// 
     /// The credentials for the service account used by the streaming instance to connect to    the directory. Do not use this parameter directly. Use ServiceAccountCredentials as an input parameter with noEcho as shown in     the Parameters. For best practices information, see Do Not Embed Credentials in Your Templates.
     /// 
     /// Required: Yes
@@ -52,7 +40,21 @@ pub struct CfnDirectoryConfig {
     #[serde(rename = "ServiceAccountCredentials")]
     pub service_account_credentials: ServiceAccountCredentials,
 
+
+    /// 
+    /// The distinguished names of the organizational units for computer accounts.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationalUnitDistinguishedNames")]
+    pub organizational_unit_distinguished_names: Vec<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDirectoryConfig {
     fn type_string() -> &'static str {
@@ -102,23 +104,11 @@ pub struct ServiceAccountCredentials {
 }
 
 
+
+
 /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CertificateBasedAuthProperties {
-
-
-    /// 
-    /// The status of the certificate-based authentication properties. Fallback is turned on by default when certificate-based authentication is Enabled. Fallback allows users to log in using their AD     domain password if certificate-based authentication is unsuccessful, or to unlock a     desktop lock screen. Enabled_no_directory_login_fallback enables certificate-based     authentication, but does not allow users to log in using their AD domain password. Users     will be disconnected to re-authenticate using certificates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED | ENABLED_NO_DIRECTORY_LOGIN_FALLBACK
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
 
 
     /// 
@@ -134,4 +124,43 @@ pub struct CertificateBasedAuthProperties {
     #[serde(rename = "CertificateAuthorityArn")]
     pub certificate_authority_arn: Option<String>,
 
+
+    /// 
+    /// The status of the certificate-based authentication properties. Fallback is turned on by default when certificate-based authentication is Enabled. Fallback allows users to log in using their AD     domain password if certificate-based authentication is unsuccessful, or to unlock a     desktop lock screen. Enabled_no_directory_login_fallback enables certificate-based     authentication, but does not allow users to log in using their AD domain password. Users     will be disconnected to re-authenticate using certificates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED | ENABLED_NO_DIRECTORY_LOGIN_FALLBACK
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<CertificateBasedAuthPropertiesStatusEnum>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateBasedAuthPropertiesStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+    /// ENABLED_NO_DIRECTORY_LOGIN_FALLBACK
+    #[serde(rename = "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK")]
+    Enablednodirectoryloginfallback,
+
+}
+
+impl Default for CertificateBasedAuthPropertiesStatusEnum {
+    fn default() -> Self {
+        CertificateBasedAuthPropertiesStatusEnum::Disabled
+    }
+}
+

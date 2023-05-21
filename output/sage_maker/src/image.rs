@@ -6,36 +6,6 @@ pub struct CfnImage {
 
 
     /// 
-    /// The display name of the image.
-    /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of       128.
-    /// 
-    /// Pattern: ^\S(.*\S)?$
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageDisplayName")]
-    pub image_display_name: Option<String>,
-
-
-    /// 
-    /// A list of key-value pairs to apply to this resource.
-    /// 
-    /// Array Members: Minimum number of 0 items. Maximum number of 50       items.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform       tasks on your behalf.
     /// 
     /// Length Constraints: Minimum length of 20. Maximum length of       2048.
@@ -49,6 +19,38 @@ pub struct CfnImage {
     /// Update requires: No interruption
     #[serde(rename = "ImageRoleArn")]
     pub image_role_arn: String,
+
+
+    /// 
+    /// The description of the image.
+    /// 
+    /// Length Constraints: Minimum length of 1. Maximum length of       512.
+    /// 
+    /// Pattern: .*
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageDescription")]
+    pub image_description: Option<String>,
+
+
+    /// 
+    /// The display name of the image.
+    /// 
+    /// Length Constraints: Minimum length of 1. Maximum length of       128.
+    /// 
+    /// Pattern: ^\S(.*\S)?$
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageDisplayName")]
+    pub image_display_name: Option<String>,
 
 
     /// 
@@ -68,21 +70,21 @@ pub struct CfnImage {
 
 
     /// 
-    /// The description of the image.
+    /// A list of key-value pairs to apply to this resource.
     /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of       512.
-    /// 
-    /// Pattern: .*
+    /// Array Members: Minimum number of 0 items. Maximum number of 50       items.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageDescription")]
-    pub image_description: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnImage {
     fn type_string() -> &'static str {
@@ -128,3 +130,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

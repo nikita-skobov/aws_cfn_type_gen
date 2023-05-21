@@ -6,6 +6,70 @@ pub struct CfnRotation {
 
 
     /// 
+    /// The name for the rotation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\s\.]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
+    /// 
+    /// The order in which you list the contacts is their shift order in the rotation       schedule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactIds")]
+    pub contact_ids: Vec<String>,
+
+
+    /// 
+    /// The time zone to base the rotation’s activity on, in Internet Assigned Numbers       Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For       more information, see the Time Zone         Database on the IANA website.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[:a-zA-Z0-9_\-\s\.\\/]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeZoneId")]
+    pub time_zone_id: String,
+
+
+    /// 
+    /// Information about the rule that specifies when shift team members rotate.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RecurrenceSettings
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Recurrence")]
+    pub recurrence: RecurrenceSettings,
+
+
+    /// 
     /// Optional metadata to assign to the rotation. Tags enable you to categorize a resource       in different ways, such as by purpose, owner, or environment. For more information, see         Tagging Incident Manager resources in the Incident Manager User         Guide.
     /// 
     /// Required: No
@@ -28,71 +92,9 @@ pub struct CfnRotation {
     #[serde(rename = "StartTime")]
     pub start_time: String,
 
-
-    /// 
-    /// The time zone to base the rotation’s activity on, in Internet Assigned Numbers       Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For       more information, see the Time Zone         Database on the IANA website.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[:a-zA-Z0-9_\-\s\.\\/]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeZoneId")]
-    pub time_zone_id: String,
-
-
-    /// 
-    /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
-    /// 
-    /// The order in which you list the contacts is their shift order in the rotation       schedule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContactIds")]
-    pub contact_ids: Vec<String>,
-
-
-    /// 
-    /// Information about the rule that specifies when shift team members rotate.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RecurrenceSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Recurrence")]
-    pub recurrence: RecurrenceSettings,
-
-
-    /// 
-    /// The name for the rotation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\s\.]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRotation {
     fn type_string() -> &'static str {
@@ -140,6 +142,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Information about rotations that recur weekly.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WeeklySetting {
@@ -168,125 +172,50 @@ pub struct WeeklySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    pub day_of_week: String,
+    pub day_of_week: WeeklySettingDayOfWeekEnum,
 
 }
 
 
-/// Information about when an on-call shift begins and ends.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CoverageTime {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WeeklySettingDayOfWeekEnum {
 
+    /// FRI
+    #[serde(rename = "FRI")]
+    Fri,
 
-    /// 
-    /// Information about when an on-call rotation shift ends.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndTime")]
-    pub end_time: String,
+    /// MON
+    #[serde(rename = "MON")]
+    Mon,
 
+    /// SAT
+    #[serde(rename = "SAT")]
+    Sat,
 
-    /// 
-    /// Information about when an on-call rotation shift begins.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartTime")]
-    pub start_time: String,
+    /// SUN
+    #[serde(rename = "SUN")]
+    Sun,
 
-}
+    /// THU
+    #[serde(rename = "THU")]
+    Thu,
 
+    /// TUE
+    #[serde(rename = "TUE")]
+    Tue,
 
-/// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RecurrenceSettings {
-
-
-    /// 
-    /// The number of days, weeks, or months a single rotation lasts.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecurrenceMultiplier")]
-    pub recurrence_multiplier: i64,
-
-
-    /// 
-    /// Information about on-call rotations that recur daily.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DailySettings")]
-    pub daily_settings: Option<Vec<String>>,
-
-
-    /// 
-    /// The number of contacts, or shift team members designated to be on call concurrently       during a shift. For example, in an on-call schedule that contains ten contacts, a value of         2 designates that two of them are on call at any given time.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfOnCalls")]
-    pub number_of_on_calls: i64,
-
-
-    /// 
-    /// Information about on-call rotations that recur weekly.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of WeeklySetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WeeklySettings")]
-    pub weekly_settings: Option<Vec<WeeklySetting>>,
-
-
-    /// 
-    /// Information about the days of the week included in on-call rotation coverage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ShiftCoverage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShiftCoverages")]
-    pub shift_coverages: Option<Vec<ShiftCoverage>>,
-
-
-    /// 
-    /// Information about on-call rotations that recur monthly.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MonthlySetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MonthlySettings")]
-    pub monthly_settings: Option<Vec<MonthlySetting>>,
+    /// WED
+    #[serde(rename = "WED")]
+    Wed,
 
 }
+
+impl Default for WeeklySettingDayOfWeekEnum {
+    fn default() -> Self {
+        WeeklySettingDayOfWeekEnum::Fri
+    }
+}
+
 
 
 /// Information about on-call rotations that recur monthly.
@@ -324,6 +253,95 @@ pub struct MonthlySetting {
 }
 
 
+
+
+/// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RecurrenceSettings {
+
+
+    /// 
+    /// The number of days, weeks, or months a single rotation lasts.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecurrenceMultiplier")]
+    pub recurrence_multiplier: i64,
+
+
+    /// 
+    /// Information about on-call rotations that recur daily.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DailySettings")]
+    pub daily_settings: Option<Vec<String>>,
+
+
+    /// 
+    /// Information about on-call rotations that recur monthly.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MonthlySetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MonthlySettings")]
+    pub monthly_settings: Option<Vec<MonthlySetting>>,
+
+
+    /// 
+    /// Information about the days of the week included in on-call rotation coverage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ShiftCoverage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShiftCoverages")]
+    pub shift_coverages: Option<Vec<ShiftCoverage>>,
+
+
+    /// 
+    /// Information about on-call rotations that recur weekly.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of WeeklySetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WeeklySettings")]
+    pub weekly_settings: Option<Vec<WeeklySetting>>,
+
+
+    /// 
+    /// The number of contacts, or shift team members designated to be on call concurrently       during a shift. For example, in an on-call schedule that contains ten contacts, a value of         2 designates that two of them are on call at any given time.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfOnCalls")]
+    pub number_of_on_calls: i64,
+
+}
+
+
+
+
 /// Information about the days of the week that the on-call rotation coverage includes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShiftCoverage {
@@ -353,3 +371,38 @@ pub struct ShiftCoverage {
     pub coverage_times: Vec<CoverageTime>,
 
 }
+
+
+
+
+/// Information about when an on-call shift begins and ends.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CoverageTime {
+
+
+    /// 
+    /// Information about when an on-call rotation shift ends.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndTime")]
+    pub end_time: String,
+
+
+    /// 
+    /// Information about when an on-call rotation shift begins.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartTime")]
+    pub start_time: String,
+
+}
+
+

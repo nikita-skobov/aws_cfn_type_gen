@@ -6,67 +6,15 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The port used by the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The name of the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
-
-
-    /// 
-    /// The daily time range (in UTC) during which MemoryDB begins taking a daily     snapshot of your shard. Example: 05:00-09:00 If you do not specify this parameter, MemoryDB automatically chooses an appropriate time range.
+    /// The Redis engine version used by the cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnapshotWindow")]
-    pub snapshot_window: Option<String>,
-
-
-    /// 
-    /// The number of replicas to apply to each shard.
-    /// 
-    /// Default value: 1
-    /// 
-    /// Maximum value: 5
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumReplicasPerShard")]
-    pub num_replicas_per_shard: Option<i64>,
-
-
-    /// 
-    /// The number of days for which MemoryDB retains automatic snapshots before     deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was     taken today is retained for 5 days before being deleted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotRetentionLimit")]
-    pub snapshot_retention_limit: Option<i64>,
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
 
 
     /// 
@@ -82,18 +30,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The ID of the KMS key used to encrypt the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
     /// A flag to indicate if In-transit encryption is enabled.
     /// 
     /// Required: No
@@ -103,31 +39,6 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "TLSEnabled")]
     pub tlsenabled: Option<bool>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataTiering")]
-    pub data_tiering: Option<String>,
 
 
     /// 
@@ -142,28 +53,39 @@ pub struct CfnCluster {
     pub num_shards: Option<i64>,
 
 
-    /// 
-    /// When set to true, the cluster will automatically receive minor engine     version upgrades after launch.
-    /// 
-    /// Required: No
+    /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.
     ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// The name of the subnet group used by the cluster.
-    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: Option<String>,
+    #[serde(rename = "DataTiering")]
+    pub data_tiering: Option<String>,
+
+
+    /// 
+    /// When you pass the logical ID of this resource to the intrinsic Ref function, Ref returns the ARN of the SNS topic,      such as arn:aws:memorydb:us-east-1:123456789012:mySNSTopic
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsTopicArn")]
+    pub sns_topic_arn: Option<String>,
+
+
+    /// 
+    /// The port used by the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 
     /// 
@@ -179,63 +101,15 @@ pub struct CfnCluster {
 
 
     /// 
-    /// A list of Amazon Resource Names (ARN) that uniquely identify the RDB snapshot files     stored in Amazon S3. The snapshot files are used to populate the new cluster. The Amazon S3 object name in the ARN cannot contain any commas.
+    /// The number of days for which MemoryDB retains automatic snapshots before     deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was     taken today is retained for 5 days before being deleted.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotArns")]
-    pub snapshot_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The user-supplied name of a final cluster snapshot. This is the unique     name that identifies the snapshot. MemoryDB creates the snapshot, and then     deletes the cluster immediately afterward.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FinalSnapshotName")]
-    pub final_snapshot_name: Option<String>,
-
-
-    /// 
-    /// The name of a snapshot from which to restore data into the new cluster.     The snapshot status changes to restoring while the new cluster is being     created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotName")]
-    pub snapshot_name: Option<String>,
-
-
-    /// 
-    /// A list of security group names to associate with this cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The Redis engine version used by the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
+    #[serde(rename = "SnapshotRetentionLimit")]
+    pub snapshot_retention_limit: Option<i64>,
 
 
     /// 
@@ -252,6 +126,30 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ACLName")]
     pub aclname: String,
+
+
+    /// 
+    /// The daily time range (in UTC) during which MemoryDB begins taking a daily     snapshot of your shard. Example: 05:00-09:00 If you do not specify this parameter, MemoryDB automatically chooses an appropriate time range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotWindow")]
+    pub snapshot_window: Option<String>,
+
+
+    /// 
+    /// A list of security group names to associate with this cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -279,15 +177,105 @@ pub struct CfnCluster {
 
 
     /// 
-    /// When you pass the logical ID of this resource to the intrinsic Ref function, Ref returns the ARN of the SNS topic,      such as arn:aws:memorydb:us-east-1:123456789012:mySNSTopic
+    /// The number of replicas to apply to each shard.
+    /// 
+    /// Default value: 1
+    /// 
+    /// Maximum value: 5
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumReplicasPerShard")]
+    pub num_replicas_per_shard: Option<i64>,
+
+
+    /// 
+    /// The name of the subnet group used by the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: Option<String>,
+
+
+    /// 
+    /// The name of a snapshot from which to restore data into the new cluster.     The snapshot status changes to restoring while the new cluster is being     created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotName")]
+    pub snapshot_name: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
+
+
+    /// 
+    /// The user-supplied name of a final cluster snapshot. This is the unique     name that identifies the snapshot. MemoryDB creates the snapshot, and then     deletes the cluster immediately afterward.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: Option<String>,
+    #[serde(rename = "FinalSnapshotName")]
+    pub final_snapshot_name: Option<String>,
+
+
+    /// 
+    /// The name of the parameter group used by the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterGroupName")]
+    pub parameter_group_name: Option<String>,
+
+
+    /// 
+    /// The ID of the KMS key used to encrypt the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -305,17 +293,31 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The name of the parameter group used by the cluster.
+    /// When set to true, the cluster will automatically receive minor engine     version upgrades after launch.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: Option<String>,
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARN) that uniquely identify the RDB snapshot files     stored in Amazon S3. The snapshot files are used to populate the new cluster. The Amazon S3 object name in the ARN cannot contain any commas.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotArns")]
+    pub snapshot_arns: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCluster {
     fn type_string() -> &'static str {
@@ -340,17 +342,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -360,24 +351,25 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// Represents the information required for client programs to connect to the cluster and     its nodes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Endpoint {
-
-
-    /// 
-    /// The DNS hostname of the node.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<String>,
 
 
     /// 
@@ -391,4 +383,18 @@ pub struct Endpoint {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
+
+    /// 
+    /// The DNS hostname of the node.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Address")]
+    pub address: Option<String>,
+
 }
+
+

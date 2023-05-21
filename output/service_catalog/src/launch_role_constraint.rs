@@ -56,6 +56,22 @@ pub struct CfnLaunchRoleConstraint {
 
 
     /// 
+    /// You are required to specify either the RoleArn or the LocalRoleName but can't use both.
+    /// 
+    /// If you specify the LocalRoleName property, when an account uses the launch constraint, the IAM role with that name in the account will be used. This allows launch-role constraints to be account-agnostic so the administrator can create fewer resources per shared account.
+    /// 
+    /// The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LocalRoleName")]
+    pub local_role_name: Option<String>,
+
+
+    /// 
     /// The description of the constraint.
     /// 
     /// Required: No
@@ -84,23 +100,9 @@ pub struct CfnLaunchRoleConstraint {
     #[serde(rename = "AcceptLanguage")]
     pub accept_language: Option<String>,
 
-
-    /// 
-    /// You are required to specify either the RoleArn or the LocalRoleName but can't use both.
-    /// 
-    /// If you specify the LocalRoleName property, when an account uses the launch constraint, the IAM role with that name in the account will be used. This allows launch-role constraints to be account-agnostic so the administrator can create fewer resources per shared account.
-    /// 
-    /// The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LocalRoleName")]
-    pub local_role_name: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLaunchRoleConstraint {
     fn type_string() -> &'static str {

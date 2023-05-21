@@ -20,20 +20,6 @@ pub struct CfnHookTypeConfig {
 
 
     /// 
-    /// The Amazon Resource Number (ARN) for the hook to set Configuration for.
-    /// 
-    /// You must specify either TypeName and Configuration or TypeARN and   Configuration.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TypeArn")]
-    pub type_arn: Option<String>,
-
-
-    /// 
     /// Specifies the activated hook type configuration, in this AWS account and AWS Region.
     /// 
     /// Defaults to default alias. Hook types currently support default configuration alias.
@@ -64,7 +50,23 @@ pub struct CfnHookTypeConfig {
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
 
+
+    /// 
+    /// The Amazon Resource Number (ARN) for the hook to set Configuration for.
+    /// 
+    /// You must specify either TypeName and Configuration or TypeARN and   Configuration.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TypeArn")]
+    pub type_arn: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnHookTypeConfig {
     fn type_string() -> &'static str {

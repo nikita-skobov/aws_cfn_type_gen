@@ -42,6 +42,8 @@ pub struct CfnDomainName {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDomainName {
     fn type_string() -> &'static str {
         "AWS::AppSync::DomainName"

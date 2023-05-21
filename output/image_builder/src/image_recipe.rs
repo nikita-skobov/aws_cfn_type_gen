@@ -6,6 +6,30 @@ pub struct CfnImageRecipe {
 
 
     /// 
+    /// The components of the image recipe. Components are orchestration documents that define a 			sequence of steps for downloading, installing, configuring, and testing software packages. 			They also define validation and security hardening steps. A component is defined using a 			YAML document format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ComponentConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Components")]
+    pub components: Vec<ComponentConfiguration>,
+
+
+    /// 
+    /// The block device mappings to apply when creating images from this recipe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InstanceBlockDeviceMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BlockDeviceMappings")]
+    pub block_device_mappings: Option<Vec<InstanceBlockDeviceMapping>>,
+
+
+    /// 
     /// The working directory to be used during build and test workflows.
     /// 
     /// Required: No
@@ -22,57 +46,15 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// The tags of the image recipe.
+    /// Before you create a new AMI, Image Builder launches temporary Amazon EC2 instances to build and test 			your image configuration. Instance configuration adds a layer of control over those 			instances. You can define settings and add scripts to run when an instance is launched 			from your AMI.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: AdditionalInstanceConfiguration
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The components of the image recipe. Components are orchestration documents that define a 			sequence of steps for downloading, installing, configuring, and testing software packages. 			They also define validation and security hardening steps. A component is defined using a 			YAML document format.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of ComponentConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Components")]
-    pub components: Vec<ComponentConfiguration>,
-
-
-    /// 
-    /// The semantic version of the image recipe.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: String,
-
-
-    /// 
-    /// The description of the image recipe.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalInstanceConfiguration")]
+    pub additional_instance_configuration: Option<AdditionalInstanceConfiguration>,
 
 
     /// 
@@ -90,15 +72,29 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// The block device mappings to apply when creating images from this recipe.
+    /// The tags of the image recipe.
     /// 
     /// Required: No
     ///
-    /// Type: List of InstanceBlockDeviceMapping
+    /// Type: Map of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BlockDeviceMappings")]
-    pub block_device_mappings: Option<Vec<InstanceBlockDeviceMapping>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The semantic version of the image recipe.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: String,
 
 
     /// 
@@ -118,17 +114,23 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// Before you create a new AMI, Image Builder launches temporary Amazon EC2 instances to build and test 			your image configuration. Instance configuration adds a layer of control over those 			instances. You can define settings and add scripts to run when an instance is launched 			from your AMI.
+    /// The description of the image recipe.
     /// 
     /// Required: No
     ///
-    /// Type: AdditionalInstanceConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalInstanceConfiguration")]
-    pub additional_instance_configuration: Option<AdditionalInstanceConfiguration>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnImageRecipe {
     fn type_string() -> &'static str {
@@ -141,167 +143,21 @@ impl cfn_resources::CfnResource for CfnImageRecipe {
 }
 
 
-/// The image recipe EBS instance block device specification includes the Amazon     EBS-specific block device mapping specifications for the image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EbsInstanceBlockDeviceSpecification {
-
-
-    /// 
-    /// Use to configure device encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
-    /// Overrides the volume size of the device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeSize")]
-    pub volume_size: Option<i64>,
-
-
-    /// 
-    /// Configures delete on termination of the associated device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeleteOnTermination")]
-    pub delete_on_termination: Option<bool>,
-
-
-    /// 
-    /// For GP3 volumes only – The throughput in MiB/s 			that the volume supports.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 125
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Throughput")]
-    pub throughput: Option<i64>,
-
-
-    /// 
-    /// Use to configure device IOPS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 100
-    ///
-    /// Maximum: 64000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Iops")]
-    pub iops: Option<i64>,
-
-
-    /// 
-    /// The snapshot that defines the device contents.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotId")]
-    pub snapshot_id: Option<String>,
-
-
-    /// 
-    /// Overrides the volume type of the device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: gp2 | gp3 | io1 | io2 | sc1 | st1 | standard
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
-
-
-    /// 
-    /// Use to configure the KMS key to use when encrypting the device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-}
-
-
-/// Configuration details of the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ComponentConfiguration {
-
-
-    /// 
-    /// A group of parameter settings that Image Builder uses to configure the component for a specific 			recipe.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ComponentParameter
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<Vec<ComponentParameter>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the component.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):component/[a-z0-9-_]+/(?:(?:([0-9]+|x)\.([0-9]+|x)\.([0-9]+|x))|(?:[0-9]+\.[0-9]+\.[0-9]+/[0-9]+))$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComponentArn")]
-    pub component_arn: Option<String>,
-
-}
-
-
 /// Contains a key/value pair that sets the named component parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentParameter {
+
+
+    /// 
+    /// Sets the value for the named component parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: Vec<String>,
 
 
     /// 
@@ -321,19 +177,9 @@ pub struct ComponentParameter {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// Sets the value for the named component parameter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: Vec<String>,
-
 }
+
+
 
 
 /// In addition to your infrastructure configuration, these settings provide an extra 			layer of control over your build instances. You can also specify commands to run on 			launch for all of your build instances.
@@ -379,13 +225,110 @@ pub struct AdditionalInstanceConfiguration {
 }
 
 
-/// Defines block device mappings for the instance used to configure your image.
+
+
+/// Configuration details of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InstanceBlockDeviceMapping {
+pub struct ComponentConfiguration {
 
 
     /// 
-    /// The device to which these mappings apply.
+    /// The Amazon Resource Name (ARN) of the component.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):component/[a-z0-9-_]+/(?:(?:([0-9]+|x)\.([0-9]+|x)\.([0-9]+|x))|(?:[0-9]+\.[0-9]+\.[0-9]+/[0-9]+))$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComponentArn")]
+    pub component_arn: Option<String>,
+
+
+    /// 
+    /// A group of parameter settings that Image Builder uses to configure the component for a specific 			recipe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ComponentParameter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<Vec<ComponentParameter>>,
+
+}
+
+
+
+
+/// The image recipe EBS instance block device specification includes the Amazon     EBS-specific block device mapping specifications for the image.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EbsInstanceBlockDeviceSpecification {
+
+
+    /// 
+    /// Configures delete on termination of the associated device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeleteOnTermination")]
+    pub delete_on_termination: Option<bool>,
+
+
+    /// 
+    /// Use to configure device IOPS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 100
+    ///
+    /// Maximum: 64000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Iops")]
+    pub iops: Option<i64>,
+
+
+    /// 
+    /// For GP3 volumes only – The throughput in MiB/s 			that the volume supports.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 125
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Throughput")]
+    pub throughput: Option<i64>,
+
+
+    /// 
+    /// Overrides the volume size of the device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 16000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeSize")]
+    pub volume_size: Option<i64>,
+
+
+    /// 
+    /// The snapshot that defines the device contents.
     /// 
     /// Required: No
     ///
@@ -396,8 +339,98 @@ pub struct InstanceBlockDeviceMapping {
     /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeviceName")]
-    pub device_name: Option<String>,
+    #[serde(rename = "SnapshotId")]
+    pub snapshot_id: Option<String>,
+
+
+    /// 
+    /// Use to configure device encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
+
+
+    /// 
+    /// Overrides the volume type of the device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: gp2 | gp3 | io1 | io2 | sc1 | st1 | standard
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<EbsInstanceBlockDeviceSpecificationVolumeTypeEnum>,
+
+
+    /// 
+    /// Use to configure the KMS key to use when encrypting the device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
+
+    /// gp2
+    #[serde(rename = "gp2")]
+    Gp2,
+
+    /// gp3
+    #[serde(rename = "gp3")]
+    Gp3,
+
+    /// io1
+    #[serde(rename = "io1")]
+    Io1,
+
+    /// io2
+    #[serde(rename = "io2")]
+    Io2,
+
+    /// sc1
+    #[serde(rename = "sc1")]
+    Sc1,
+
+    /// st1
+    #[serde(rename = "st1")]
+    St1,
+
+    /// standard
+    #[serde(rename = "standard")]
+    Standard,
+
+}
+
+impl Default for EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
+    fn default() -> Self {
+        EbsInstanceBlockDeviceSpecificationVolumeTypeEnum::Gp2
+    }
+}
+
+
+
+/// Defines block device mappings for the instance used to configure your image.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceBlockDeviceMapping {
 
 
     /// 
@@ -433,6 +466,22 @@ pub struct InstanceBlockDeviceMapping {
 
 
     /// 
+    /// The device to which these mappings apply.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceName")]
+    pub device_name: Option<String>,
+
+
+    /// 
     /// Use to manage Amazon EBS-specific configuration for this mapping.
     /// 
     /// Required: No
@@ -444,6 +493,8 @@ pub struct InstanceBlockDeviceMapping {
     pub ebs: Option<EbsInstanceBlockDeviceSpecification>,
 
 }
+
+
 
 
 /// Contains settings for the Systems Manager agent on your build instance.
@@ -463,3 +514,5 @@ pub struct SystemsManagerAgent {
     pub uninstall_after_build: Option<bool>,
 
 }
+
+

@@ -6,15 +6,15 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// A customer-assigned name for the certificate. Identifiers must begin with a letter and     must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or     contain two consecutive hyphens.
+    /// The location of an imported Oracle Wallet certificate for use with SSL. An example       is: filebase64("${path.root}/rds-ca-2019-root.sso")
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificateIdentifier")]
-    pub certificate_identifier: Option<String>,
+    #[serde(rename = "CertificateWallet")]
+    pub certificate_wallet: Option<String>,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The location of an imported Oracle Wallet certificate for use with SSL. An example       is: filebase64("${path.root}/rds-ca-2019-root.sso")
+    /// A customer-assigned name for the certificate. Identifiers must begin with a letter and     must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or     contain two consecutive hyphens.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificateWallet")]
-    pub certificate_wallet: Option<String>,
+    #[serde(rename = "CertificateIdentifier")]
+    pub certificate_identifier: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {

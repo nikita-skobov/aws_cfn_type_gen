@@ -6,52 +6,6 @@ pub struct CfnTheme {
 
 
     /// 
-    /// Describes the properties that can be overriden to customize a theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ThemeValues
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Overrides")]
-    pub overrides: Option<Vec<ThemeValues>>,
-
-
-    /// 
-    /// The name of the theme.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppId")]
-    pub app_id: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentName")]
-    pub environment_name: Option<String>,
-
-
-    /// 
     /// A list of key-value pairs that defines the properties of the theme.
     /// 
     /// Required: Yes
@@ -74,7 +28,55 @@ pub struct CfnTheme {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnvironmentName")]
+    pub environment_name: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppId")]
+    pub app_id: Option<String>,
+
+
+    /// 
+    /// The name of the theme.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Describes the properties that can be overriden to customize a theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ThemeValues
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Overrides")]
+    pub overrides: Option<Vec<ThemeValues>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTheme {
     fn type_string() -> &'static str {
@@ -93,18 +95,6 @@ pub struct ThemeValues {
 
 
     /// 
-    /// The value of the property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ThemeValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<ThemeValue>,
-
-
-    /// 
     /// The name of the property.
     /// 
     /// Required: No
@@ -115,7 +105,21 @@ pub struct ThemeValues {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
+
+    /// 
+    /// The value of the property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThemeValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<ThemeValue>,
+
 }
+
+
 
 
 /// The ThemeValue property specifies the configuration of a theme's    properties.
@@ -147,3 +151,5 @@ pub struct ThemeValue {
     pub value: Option<String>,
 
 }
+
+

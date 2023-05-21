@@ -6,18 +6,6 @@ pub struct CfnSqlInjectionMatchSet {
 
 
     /// 
-    /// Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of SqlInjectionMatchTuple
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SqlInjectionMatchTuples")]
-    pub sql_injection_match_tuples: Option<Vec<SqlInjectionMatchTuple>>,
-
-
-    /// 
     /// The name, if any, of the SqlInjectionMatchSet.
     /// 
     /// Required: Yes
@@ -34,7 +22,21 @@ pub struct CfnSqlInjectionMatchSet {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of SqlInjectionMatchTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SqlInjectionMatchTuples")]
+    pub sql_injection_match_tuples: Option<Vec<SqlInjectionMatchTuple>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
     fn type_string() -> &'static str {
@@ -47,9 +49,40 @@ impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
 }
 
 
+/// Specifies where in a web request to look for TargetString.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FieldToMatch {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
+    #[serde(rename = "Data")]
+    pub data: Option<String>,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+}
+
+
+
+
 /// Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SqlInjectionMatchTuple {
+
+
+    /// 
+    /// The part of a web request that you want to inspect, such as a specified header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -97,35 +130,43 @@ pub struct SqlInjectionMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
-    pub text_transformation: String,
-
-
-    /// 
-    /// The part of a web request that you want to inspect, such as a specified header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
+    pub text_transformation: SqlInjectionMatchTupleTextTransformationEnum,
 
 }
 
 
-/// Specifies where in a web request to look for TargetString.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FieldToMatch {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SqlInjectionMatchTupleTextTransformationEnum {
 
+    /// CMD_LINE
+    #[serde(rename = "CMD_LINE")]
+    Cmdline,
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
-    #[serde(rename = "Data")]
-    pub data: Option<String>,
+    /// COMPRESS_WHITE_SPACE
+    #[serde(rename = "COMPRESS_WHITE_SPACE")]
+    Compresswhitespace,
 
+    /// HTML_ENTITY_DECODE
+    #[serde(rename = "HTML_ENTITY_DECODE")]
+    Htmlentitydecode,
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// LOWERCASE
+    #[serde(rename = "LOWERCASE")]
+    Lowercase,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// URL_DECODE
+    #[serde(rename = "URL_DECODE")]
+    Urldecode,
 
 }
+
+impl Default for SqlInjectionMatchTupleTextTransformationEnum {
+    fn default() -> Self {
+        SqlInjectionMatchTupleTextTransformationEnum::Cmdline
+    }
+}
+

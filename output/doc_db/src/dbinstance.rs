@@ -24,29 +24,19 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.
+    /// The Amazon EC2 Availability Zone that the instance is created in.
     /// 
-    /// Default: false
+    /// Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
+    /// 
+    /// Example: us-east-1d
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
-    /// 
-    /// Required: Yes
-    ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
@@ -74,33 +64,6 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// The Amazon EC2 Availability Zone that the instance is created in.
-    /// 
-    /// Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
-    /// 
-    /// Example: us-east-1d
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnablePerformanceInsights")]
-    pub enable_performance_insights: Option<bool>,
-
-
-    /// 
     /// The time range each week during which system maintenance can occur, in Universal       Coordinated Time (UTC).
     /// 
     /// Format: ddd:hh24:mi-ddd:hh24:mi
@@ -119,7 +82,46 @@ pub struct CfnDBInstance {
     #[serde(rename = "PreferredMaintenanceWindow")]
     pub preferred_maintenance_window: Option<String>,
 
+
+    /// 
+    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBInstanceClass")]
+    pub dbinstance_class: String,
+
+
+    /// 
+    /// This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.
+    /// 
+    /// Default: false
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnablePerformanceInsights")]
+    pub enable_performance_insights: Option<bool>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBInstance {
     fn type_string() -> &'static str {
@@ -144,17 +146,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -164,4 +155,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

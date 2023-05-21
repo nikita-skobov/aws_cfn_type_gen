@@ -66,6 +66,8 @@ pub struct CfnServiceLinkedRole {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnServiceLinkedRole {
     fn type_string() -> &'static str {
         "AWS::IAM::ServiceLinkedRole"

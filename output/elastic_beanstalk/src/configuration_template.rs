@@ -22,6 +22,62 @@ pub struct CfnConfigurationTemplate {
 
 
     /// 
+    /// The name of the Elastic Beanstalk application to associate with this configuration    template.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationName")]
+    pub application_name: String,
+
+
+    /// 
+    /// Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these    values override the values obtained from the solution stack or the source configuration    template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the             AWS Elastic Beanstalk Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConfigurationOptionSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionSettings")]
+    pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
+
+
+    /// 
+    /// An optional description for this configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom     Platforms in the         AWS Elastic Beanstalk Developer Guide.
+    /// 
+    /// NoteIf you specify PlatformArn, then don't specify      SolutionStackName.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PlatformArn")]
+    pub platform_arn: Option<String>,
+
+
+    /// 
     /// An Elastic Beanstalk configuration template to base this one on. If specified, Elastic Beanstalk uses the configuration values from the specified    configuration template to create a new configuration.
     /// 
     /// Values specified in OptionSettings override any values obtained from the     SourceConfiguration.
@@ -40,20 +96,6 @@ pub struct CfnConfigurationTemplate {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom     Platforms in the         AWS Elastic Beanstalk Developer Guide.
-    /// 
-    /// NoteIf you specify PlatformArn, then don't specify      SolutionStackName.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PlatformArn")]
-    pub platform_arn: Option<String>,
-
-
-    /// 
     /// The ID of an environment whose settings you want to use to create the configuration    template. You must specify EnvironmentId if you don't specify     PlatformArn, SolutionStackName, or     SourceConfiguration.
     /// 
     /// Required: Conditional
@@ -64,49 +106,9 @@ pub struct CfnConfigurationTemplate {
     #[serde(rename = "EnvironmentId")]
     pub environment_id: Option<String>,
 
-
-    /// 
-    /// Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these    values override the values obtained from the solution stack or the source configuration    template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the             AWS Elastic Beanstalk Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConfigurationOptionSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionSettings")]
-    pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
-
-
-    /// 
-    /// The name of the Elastic Beanstalk application to associate with this configuration    template.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationName")]
-    pub application_name: String,
-
-
-    /// 
-    /// An optional description for this configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfigurationTemplate {
     fn type_string() -> &'static str {
@@ -141,6 +143,18 @@ pub struct ConfigurationOptionSetting {
 
 
     /// 
+    /// The name of the configuration option.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionName")]
+    pub option_name: String,
+
+
+    /// 
     /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
     /// 
     /// Required: No
@@ -167,40 +181,14 @@ pub struct ConfigurationOptionSetting {
     #[serde(rename = "Namespace")]
     pub namespace: String,
 
-
-    /// 
-    /// The name of the configuration option.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionName")]
-    pub option_name: String,
-
 }
+
+
 
 
 /// An AWS Elastic Beanstalk configuration template to base a new one on. You can use it to    define a AWS::ElasticBeanstalk::ConfigurationTemplate resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceConfiguration {
-
-
-    /// 
-    /// The name of the configuration template.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
 
 
     /// 
@@ -218,4 +206,22 @@ pub struct SourceConfiguration {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
+
+    /// 
+    /// The name of the configuration template.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
+
 }
+
+

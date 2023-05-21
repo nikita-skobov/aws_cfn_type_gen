@@ -8,20 +8,6 @@ pub struct CfnAgreement {
 
 
     /// 
-    /// The current status of the agreement, either ACTIVE or    INACTIVE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ACTIVE | INACTIVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
     /// A unique identifier for the AS2 local profile.
     /// 
     /// Required: Yes
@@ -37,6 +23,24 @@ pub struct CfnAgreement {
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
     pub local_profile_id: String,
+
+
+    /// 
+    /// A unique identifier for the partner profile used in the agreement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 19
+    ///
+    /// Maximum: 19
+    ///
+    /// Pattern: ^p-([0-9a-f]{17})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PartnerProfileId")]
+    pub partner_profile_id: String,
 
 
     /// 
@@ -56,7 +60,35 @@ pub struct CfnAgreement {
 
 
     /// 
-    /// A unique identifier for the partner profile used in the agreement.
+    /// The current status of the agreement, either ACTIVE or    INACTIVE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ACTIVE | INACTIVE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<AgreementStatusEnum>,
+
+
+    /// 
+    /// Key-value pairs that can be used to group and search for agreements.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
     /// 
     /// Required: Yes
     ///
@@ -66,11 +98,11 @@ pub struct CfnAgreement {
     ///
     /// Maximum: 19
     ///
-    /// Pattern: ^p-([0-9a-f]{17})$
+    /// Pattern: ^s-([0-9a-f]{17})$
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PartnerProfileId")]
-    pub partner_profile_id: String,
+    /// Update requires: Replacement
+    #[serde(rename = "ServerId")]
+    pub server_id: String,
 
 
     /// 
@@ -108,39 +140,28 @@ pub struct CfnAgreement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 19
-    ///
-    /// Maximum: 19
-    ///
-    /// Pattern: ^s-([0-9a-f]{17})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerId")]
-    pub server_id: String,
+}
 
 
-    /// 
-    /// Key-value pairs that can be used to group and search for agreements.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AgreementStatusEnum {
+
+    /// ACTIVE
+    #[serde(rename = "ACTIVE")]
+    Active,
+
+    /// INACTIVE
+    #[serde(rename = "INACTIVE")]
+    Inactive,
 
 }
+
+impl Default for AgreementStatusEnum {
+    fn default() -> Self {
+        AgreementStatusEnum::Active
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAgreement {
     fn type_string() -> &'static str {
@@ -186,3 +207,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

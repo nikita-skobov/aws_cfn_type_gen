@@ -8,18 +8,6 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from. 			If the WebACL is associated with an Amazon CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of IPSetDescriptor
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPSetDescriptors")]
-    pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
-
-
-    /// 
     /// The name of the IPSet. You can't change the name of an IPSet after you create it.
     /// 
     /// Required: Yes
@@ -36,7 +24,21 @@ pub struct CfnIPSet {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from. 			If the WebACL is associated with an Amazon CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of IPSetDescriptor
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPSetDescriptors")]
+    pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPSet {
     fn type_string() -> &'static str {
@@ -52,20 +54,6 @@ impl cfn_resources::CfnResource for CfnIPSet {
 /// Specifies the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) that web requests originate from.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IPSetDescriptor {
-
-
-    /// 
-    /// Specify IPV4 or IPV6.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 
     /// 
@@ -93,4 +81,39 @@ pub struct IPSetDescriptor {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// Specify IPV4 or IPV6.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: IPSetDescriptorTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPSetDescriptorTypeEnum {
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for IPSetDescriptorTypeEnum {
+    fn default() -> Self {
+        IPSetDescriptorTypeEnum::Ipv4
+    }
+}
+

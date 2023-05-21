@@ -32,6 +32,8 @@ pub struct CfnVPCEndpointServicePermissions {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnVPCEndpointServicePermissions {
     fn type_string() -> &'static str {
         "AWS::EC2::VPCEndpointServicePermissions"

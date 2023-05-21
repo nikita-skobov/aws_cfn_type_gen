@@ -6,129 +6,15 @@ pub struct CfnStudio {
 
 
     /// 
-    /// The ID of the Workspace security group associated with the Amazon EMR Studio.     The Workspace security group allows outbound network traffic to resources in the Engine     security group and to the internet.
+    /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have     a maximum of 5 subnets. The subnets must belong to the VPC specified by VpcId.     Studio users can create a Workspace in any of the specified subnets.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkspaceSecurityGroupId")]
-    pub workspace_security_group_id: String,
-
-
-    /// 
-    /// A detailed description of the Amazon EMR Studio.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// A descriptive name for the Amazon EMR Studio.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The ID of the Amazon EMR Studio Engine security group. The Engine security group     allows inbound network traffic from the Workspace security group, and it must be in the     same VPC specified by VpcId.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineSecurityGroupId")]
-    pub engine_security_group_id: String,
-
-
-    /// 
-    /// The Amazon S3 location to back up EMR Studio Workspaces and notebook files.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultS3Location")]
-    pub default_s3_location: String,
-
-
-    /// 
-    /// The name of your identity provider's RelayState parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdpRelayStateParameterName")]
-    pub idp_relay_state_parameter_name: Option<String>,
-
-
-    /// 
-    /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the     Studio.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -150,61 +36,21 @@ pub struct CfnStudio {
 
 
     /// 
-    /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have     a maximum of 5 subnets. The subnets must belong to the VPC specified by VpcId.     Studio users can create a Workspace in any of the specified subnets.
+    /// The ID of the Workspace security group associated with the Amazon EMR Studio.     The Workspace security group allows outbound network traffic to resources in the Engine     security group and to the internet.
     /// 
     /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM user role that will be assumed by users and groups logged in to a Studio. The     permissions attached to this IAM role can be scoped down for each user or group using     session policies. You only need to specify UserRole when you set AuthMode to SSO.
-    /// 
-    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 10280
+    /// Maximum: 256
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UserRole")]
-    pub user_role: Option<String>,
-
-
-    /// 
-    /// Specifies whether the Studio authenticates users using IAM Identity Center or IAM.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IAM | SSO
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthMode")]
-    pub auth_mode: String,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "WorkspaceSecurityGroupId")]
+    pub workspace_security_group_id: String,
 
 
     /// 
@@ -224,7 +70,182 @@ pub struct CfnStudio {
     #[serde(rename = "ServiceRole")]
     pub service_role: String,
 
+
+    /// 
+    /// A descriptive name for the Amazon EMR Studio.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// A detailed description of the Amazon EMR Studio.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The ID of the Amazon EMR Studio Engine security group. The Engine security group     allows inbound network traffic from the Workspace security group, and it must be in the     same VPC specified by VpcId.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EngineSecurityGroupId")]
+    pub engine_security_group_id: String,
+
+
+    /// 
+    /// The name of your identity provider's RelayState parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdpRelayStateParameterName")]
+    pub idp_relay_state_parameter_name: Option<String>,
+
+
+    /// 
+    /// Specifies whether the Studio authenticates users using IAM Identity Center or IAM.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IAM | SSO
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthMode")]
+    pub auth_mode: StudioAuthModeEnum,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The Amazon S3 location to back up EMR Studio Workspaces and notebook files.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultS3Location")]
+    pub default_s3_location: String,
+
+
+    /// 
+    /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the     Studio.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM user role that will be assumed by users and groups logged in to a Studio. The     permissions attached to this IAM role can be scoped down for each user or group using     session policies. You only need to specify UserRole when you set AuthMode to SSO.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserRole")]
+    pub user_role: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StudioAuthModeEnum {
+
+    /// IAM
+    #[serde(rename = "IAM")]
+    Iam,
+
+    /// SSO
+    #[serde(rename = "SSO")]
+    Sso,
+
+}
+
+impl Default for StudioAuthModeEnum {
+    fn default() -> Self {
+        StudioAuthModeEnum::Iam
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnStudio {
     fn type_string() -> &'static str {
@@ -270,3 +291,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

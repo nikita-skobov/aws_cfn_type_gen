@@ -18,15 +18,15 @@ pub struct CfnMemberInvitation {
 
 
     /// 
-    /// The ARN of the behavior graph to invite the account to contribute data to.
+    /// Whether to send an invitation email to the member account. If set to true, the member account does not receive an invitation email.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "GraphArn")]
-    pub graph_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DisableEmailNotification")]
+    pub disable_email_notification: Option<bool>,
 
 
     /// 
@@ -42,15 +42,15 @@ pub struct CfnMemberInvitation {
 
 
     /// 
-    /// Whether to send an invitation email to the member account. If set to true, the member account does not receive an invitation email.
+    /// The ARN of the behavior graph to invite the account to contribute data to.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisableEmailNotification")]
-    pub disable_email_notification: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "GraphArn")]
+    pub graph_arn: String,
 
 
     /// 
@@ -65,6 +65,8 @@ pub struct CfnMemberInvitation {
     pub member_email_address: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMemberInvitation {
     fn type_string() -> &'static str {

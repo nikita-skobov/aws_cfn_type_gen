@@ -40,6 +40,8 @@ pub struct CfnResolverQueryLoggingConfig {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfig {
     fn type_string() -> &'static str {
         "AWS::Route53Resolver::ResolverQueryLoggingConfig"

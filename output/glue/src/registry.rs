@@ -6,6 +6,18 @@ pub struct CfnRegistry {
 
 
     /// 
+    /// A description of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the registry.
     /// 
     /// Required: Yes
@@ -28,19 +40,9 @@ pub struct CfnRegistry {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// A description of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRegistry {
     fn type_string() -> &'static str {
@@ -86,3 +88,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

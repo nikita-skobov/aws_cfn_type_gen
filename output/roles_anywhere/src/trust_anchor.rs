@@ -8,17 +8,15 @@ pub struct CfnTrustAnchor {
 
 
     /// 
-    /// The tags to attach to the trust anchor.
+    /// Indicates whether the trust anchor is enabled.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
 
 
     /// 
@@ -40,15 +38,17 @@ pub struct CfnTrustAnchor {
 
 
     /// 
-    /// Indicates whether the trust anchor is enabled.
+    /// The tags to attach to the trust anchor.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -64,6 +64,8 @@ pub struct CfnTrustAnchor {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTrustAnchor {
     fn type_string() -> &'static str {
         "AWS::RolesAnywhere::TrustAnchor"
@@ -75,39 +77,62 @@ impl cfn_resources::CfnResource for CfnTrustAnchor {
 }
 
 
-/// The data field of the trust anchor depending on its type.
+/// The trust anchor type and its related certificate data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceData {
+pub struct Source {
 
 
     /// 
-    /// The root certificate of the AWS Private Certificate Authority specified by this ARN is used in trust     validation for temporary credential requests. Included for trust anchors of type AWS_ACM_PCA.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcmPcaArn")]
-    pub acm_pca_arn: Option<String>,
-
-
-    /// 
-    /// The PEM-encoded data for the certificate anchor. Included for trust anchors of type CERTIFICATE_BUNDLE.
+    /// The type of the TrustAnchor.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 8000
+    /// Allowed values: AWS_ACM_PCA | CERTIFICATE_BUNDLE | SELF_SIGNED_REPOSITORY
     ///
     /// Update requires: No interruption
-    #[serde(rename = "X509CertificateData")]
-    pub x509_certificate_data: Option<String>,
+    #[serde(rename = "SourceType")]
+    pub source_type: Option<SourceSourceTypeEnum>,
+
+
+    /// 
+    /// The data field of the trust anchor depending on its type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SourceData
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceData")]
+    pub source_data: Option<SourceData>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceSourceTypeEnum {
+
+    /// AWS_ACM_PCA
+    #[serde(rename = "AWS_ACM_PCA")]
+    Awsacmpca,
+
+    /// CERTIFICATE_BUNDLE
+    #[serde(rename = "CERTIFICATE_BUNDLE")]
+    Certificatebundle,
+
+    /// SELF_SIGNED_REPOSITORY
+    #[serde(rename = "SELF_SIGNED_REPOSITORY")]
+    Selfsignedrepository,
+
+}
+
+impl Default for SourceSourceTypeEnum {
+    fn default() -> Self {
+        SourceSourceTypeEnum::Awsacmpca
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -145,34 +170,40 @@ pub struct Tag {
 }
 
 
-/// The trust anchor type and its related certificate data.
+
+
+/// The data field of the trust anchor depending on its type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Source {
+pub struct SourceData {
 
 
     /// 
-    /// The type of the TrustAnchor.
+    /// The PEM-encoded data for the certificate anchor. Included for trust anchors of type CERTIFICATE_BUNDLE.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: AWS_ACM_PCA | CERTIFICATE_BUNDLE | SELF_SIGNED_REPOSITORY
+    /// Minimum: 1
+    ///
+    /// Maximum: 8000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceType")]
-    pub source_type: Option<String>,
+    #[serde(rename = "X509CertificateData")]
+    pub x509_certificate_data: Option<String>,
 
 
     /// 
-    /// The data field of the trust anchor depending on its type.
+    /// The root certificate of the AWS Private Certificate Authority specified by this ARN is used in trust     validation for temporary credential requests. Included for trust anchors of type AWS_ACM_PCA.
     /// 
     /// Required: No
     ///
-    /// Type: SourceData
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceData")]
-    pub source_data: Option<SourceData>,
+    #[serde(rename = "AcmPcaArn")]
+    pub acm_pca_arn: Option<String>,
 
 }
+
+

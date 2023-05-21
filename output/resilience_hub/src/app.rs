@@ -20,6 +20,22 @@ pub struct CfnApp {
 
 
     /// 
+    /// A JSON string that provides information about your application structure. To learn more    about the appTemplateBody template, see the sample template provided in the    Examples section.
+    /// 
+    /// The appTemplateBody JSON string has the following structure:
+    /// 
+    /// resources     The list of logical resources that needs to be included in the AWS Resilience Hub application.     Type: Array     NoteDon't add the resources that you want to exclude.     Each resources array item includes the following fields:                                        logicalResourceId             The logical identifier of the resource.       Type: Object       Each logicalResourceId object includes the following fields:                                                              identifier         The identifier of the resource.         Type: String                logicalStackName         The name of the AWS CloudFormation stack this resource belongs to.         Type: String                resourceGroupName         The name of the resource group this resource belongs to.         Type: String                terraformSourceName                 The name of the Terraform S3 state file this resource belongs to.         Type: String                eksSourceName                 The name of the Amazon Elastic Kubernetes Service cluster and namespace this resource belongs to.NoteThis parameter accepts values in "eks-cluster/namespace" format.         Type: String                    type       The type of resource.       Type: string            name       The name of the resource.       Type: String            additionalInfo       Additional configuration parameters for an AWS Resilience Hub application.        If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see        Configure the application configuration parameters.       NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"              appComponents     The list of Application Components (AppComponent) that this resource belongs to. If an AppComponent is not part of the AWS Resilience Hub application, it will be added.     Type: Array     Each appComponents array item includes the following fields:                                             name       The name of the AppComponent.       Type: String            type       The type of AppComponent. For more information about the types of AppComponent, see Grouping resources in an AppComponent.       Type: String            resourceNames       The list of included resources that are assigned to the AppComponent.       Type: Array of strings            additionalInfo       Additional configuration parameters for an AWS Resilience Hub application.        If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see        Configure the application configuration parameters.       NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"              excludedResources     The list of logical resource identifiers to be excluded from the application.     Type: Array     NoteDon't add the resources that you want to include.     Each excludedResources array item includes the following fields:                      logicalResourceIds             The logical identifier of the resource.       Type: Object       NoteYou can configure only one of the following fields:                                                     logicalStackName                  resourceGroupName                  terraformSourceName                  eksSourceName               Each logicalResourceIds object includes the following fields:                                                              identifier         The identifier of the resource.         Type: String                logicalStackName         The name of the AWS CloudFormation stack this resource belongs to.         Type: String                resourceGroupName         The name of the resource group this resource belongs to.         Type: String                terraformSourceName                 The name of the Terraform S3 state file this resource belongs to.         Type: String                eksSourceName                 The name of the Amazon Elastic Kubernetes Service cluster and namespace this resource belongs to.NoteThis parameter accepts values in "eks-cluster/namespace" format.         Type: String                     version     The AWS Resilience Hub application version.        additionalInfo     Additional configuration parameters for an AWS Resilience Hub application.      If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see      Configure the application configuration parameters.     NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppTemplateBody")]
+    pub app_template_body: String,
+
+
+    /// 
     /// The optional description for an app.
     /// 
     /// Required: No
@@ -68,22 +84,6 @@ pub struct CfnApp {
 
 
     /// 
-    /// A JSON string that provides information about your application structure. To learn more    about the appTemplateBody template, see the sample template provided in the    Examples section.
-    /// 
-    /// The appTemplateBody JSON string has the following structure:
-    /// 
-    /// resources     The list of logical resources that needs to be included in the AWS Resilience Hub application.     Type: Array     NoteDon't add the resources that you want to exclude.     Each resources array item includes the following fields:                                        logicalResourceId             The logical identifier of the resource.       Type: Object       Each logicalResourceId object includes the following fields:                                                              identifier         The identifier of the resource.         Type: String                logicalStackName         The name of the AWS CloudFormation stack this resource belongs to.         Type: String                resourceGroupName         The name of the resource group this resource belongs to.         Type: String                terraformSourceName                 The name of the Terraform S3 state file this resource belongs to.         Type: String                eksSourceName                 The name of the Amazon Elastic Kubernetes Service cluster and namespace this resource belongs to.NoteThis parameter accepts values in "eks-cluster/namespace" format.         Type: String                    type       The type of resource.       Type: string            name       The name of the resource.       Type: String            additionalInfo       Additional configuration parameters for an AWS Resilience Hub application.        If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see        Configure the application configuration parameters.       NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"              appComponents     The list of Application Components (AppComponent) that this resource belongs to. If an AppComponent is not part of the AWS Resilience Hub application, it will be added.     Type: Array     Each appComponents array item includes the following fields:                                             name       The name of the AppComponent.       Type: String            type       The type of AppComponent. For more information about the types of AppComponent, see Grouping resources in an AppComponent.       Type: String            resourceNames       The list of included resources that are assigned to the AppComponent.       Type: Array of strings            additionalInfo       Additional configuration parameters for an AWS Resilience Hub application.        If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see        Configure the application configuration parameters.       NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"              excludedResources     The list of logical resource identifiers to be excluded from the application.     Type: Array     NoteDon't add the resources that you want to include.     Each excludedResources array item includes the following fields:                      logicalResourceIds             The logical identifier of the resource.       Type: Object       NoteYou can configure only one of the following fields:                                                     logicalStackName                  resourceGroupName                  terraformSourceName                  eksSourceName               Each logicalResourceIds object includes the following fields:                                                              identifier         The identifier of the resource.         Type: String                logicalStackName         The name of the AWS CloudFormation stack this resource belongs to.         Type: String                resourceGroupName         The name of the resource group this resource belongs to.         Type: String                terraformSourceName                 The name of the Terraform S3 state file this resource belongs to.         Type: String                eksSourceName                 The name of the Amazon Elastic Kubernetes Service cluster and namespace this resource belongs to.NoteThis parameter accepts values in "eks-cluster/namespace" format.         Type: String                     version     The AWS Resilience Hub application version.        additionalInfo     Additional configuration parameters for an AWS Resilience Hub application.      If you want to implement additionalInfo through the AWS Resilience Hub console rather than using an API call, see      Configure the application configuration parameters.     NoteCurrently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.Key: "failover-regions"Value: "[{"region":"<REGION>", "accounts":[{"id":"<ACCOUNT_ID>"}]}]"
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppTemplateBody")]
-    pub app_template_body: String,
-
-
-    /// 
     /// Assessment execution schedule with 'Daily' or 'Disabled' values.
     /// 
     /// Required: No
@@ -95,6 +95,8 @@ pub struct CfnApp {
     pub app_assessment_schedule: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApp {
     fn type_string() -> &'static str {
@@ -113,6 +115,18 @@ pub struct ResourceMapping {
 
 
     /// 
+    /// The short name of the Terraform source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TerraformSourceName")]
+    pub terraform_source_name: Option<String>,
+
+
+    /// 
     /// The name of the CloudFormation stack this resource is mapped to.
     /// 
     /// Required: No
@@ -122,18 +136,6 @@ pub struct ResourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "LogicalStackName")]
     pub logical_stack_name: Option<String>,
-
-
-    /// 
-    /// The identifier of this resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: PhysicalResourceId
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PhysicalResourceId")]
-    pub physical_resource_id: PhysicalResourceId,
 
 
     /// 
@@ -149,7 +151,19 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingType")]
-    pub mapping_type: String,
+    pub mapping_type: ResourceMappingMappingTypeEnum,
+
+
+    /// 
+    /// The identifier of this resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: PhysicalResourceId
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PhysicalResourceId")]
+    pub physical_resource_id: PhysicalResourceId,
 
 
     /// 
@@ -163,19 +177,40 @@ pub struct ResourceMapping {
     #[serde(rename = "ResourceName")]
     pub resource_name: Option<String>,
 
+}
 
-    /// 
-    /// The short name of the Terraform source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TerraformSourceName")]
-    pub terraform_source_name: Option<String>,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResourceMappingMappingTypeEnum {
+
+    /// CfnStack
+    #[serde(rename = "CfnStack")]
+    Cfnstack,
+
+    /// Resource
+    #[serde(rename = "Resource")]
+    Resource,
+
+    /// AppRegistryApp
+    #[serde(rename = "AppRegistryApp")]
+    Appregistryapp,
+
+    /// ResourceGroup
+    #[serde(rename = "ResourceGroup")]
+    Resourcegroup,
+
+    /// Terraform
+    #[serde(rename = "Terraform")]
+    Terraform,
 
 }
+
+impl Default for ResourceMappingMappingTypeEnum {
+    fn default() -> Self {
+        ResourceMappingMappingTypeEnum::Cfnstack
+    }
+}
+
 
 
 /// Defines a physical resource identifier.
@@ -184,15 +219,15 @@ pub struct PhysicalResourceId {
 
 
     /// 
-    /// The AWS Region that the physical resource is located in.
+    /// The identifier of the physical resource.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: Option<String>,
+    #[serde(rename = "Identifier")]
+    pub identifier: String,
 
 
     /// 
@@ -210,6 +245,18 @@ pub struct PhysicalResourceId {
 
 
     /// 
+    /// The AWS Region that the physical resource is located in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: Option<String>,
+
+
+    /// 
     /// The AWS account that owns the physical resource.
     /// 
     /// Required: No
@@ -220,16 +267,6 @@ pub struct PhysicalResourceId {
     #[serde(rename = "AwsAccountId")]
     pub aws_account_id: Option<String>,
 
-
-    /// 
-    /// The identifier of the physical resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Identifier")]
-    pub identifier: String,
-
 }
+
+

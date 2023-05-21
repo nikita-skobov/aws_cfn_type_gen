@@ -18,6 +18,18 @@ pub struct CfnCertificate {
 
 
     /// 
+    /// Specifies a custom configuration template to use when issuing a certificate. If this       parameter is not provided, AWS Private CA defaults to the         EndEntityCertificate/V1 template. For more information about AWS Private CA templates, see Using Templates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateArn")]
+    pub template_arn: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) for the private CA issues the certificate.
     /// 
     /// Required: Yes
@@ -56,7 +68,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SigningAlgorithm")]
-    pub signing_algorithm: String,
+    pub signing_algorithm: CertificateSigningAlgorithmEnum,
 
 
     /// 
@@ -78,18 +90,6 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// Specifies a custom configuration template to use when issuing a certificate. If this       parameter is not provided, AWS Private CA defaults to the         EndEntityCertificate/V1 template. For more information about AWS Private CA templates, see Using Templates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateArn")]
-    pub template_arn: Option<String>,
-
-
-    /// 
     /// The certificate signing request (CSR) for the certificate.
     /// 
     /// Required: Yes
@@ -102,6 +102,43 @@ pub struct CfnCertificate {
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateSigningAlgorithmEnum {
+
+    /// SHA256WITHECDSA
+    #[serde(rename = "SHA256WITHECDSA")]
+    Sha256withecdsa,
+
+    /// SHA256WITHRSA
+    #[serde(rename = "SHA256WITHRSA")]
+    Sha256withrsa,
+
+    /// SHA384WITHECDSA
+    #[serde(rename = "SHA384WITHECDSA")]
+    Sha384withecdsa,
+
+    /// SHA384WITHRSA
+    #[serde(rename = "SHA384WITHRSA")]
+    Sha384withrsa,
+
+    /// SHA512WITHECDSA
+    #[serde(rename = "SHA512WITHECDSA")]
+    Sha512withecdsa,
+
+    /// SHA512WITHRSA
+    #[serde(rename = "SHA512WITHRSA")]
+    Sha512withrsa,
+
+}
+
+impl Default for CertificateSigningAlgorithmEnum {
+    fn default() -> Self {
+        CertificateSigningAlgorithmEnum::Sha256withecdsa
+    }
+}
+
+
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {
         "AWS::ACMPCA::Certificate"
@@ -110,263 +147,6 @@ impl cfn_resources::CfnResource for CfnCertificate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Contains information about the certificate subject. The Subject field in       the certificate identifies the entity that owns or controls the public key in the       certificate. The entity can be a user, computer, device, or service. The Subject       must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Subject {
-
-
-    /// 
-    /// A subdivision or unit of the organization (such as sales or finance) with which the       certificate subject is affiliated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OrganizationalUnit")]
-    pub organizational_unit: Option<String>,
-
-
-    /// 
-    /// Concatenation that typically contains the first letter of the GivenName, the first letter of the middle name if one exists, and the       first letter of the Surname.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Initials")]
-    pub initials: Option<String>,
-
-
-    /// 
-    /// Typically a qualifier appended to the name of an individual. Examples include Jr. for       junior, Sr. for senior, and III for third.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GenerationQualifier")]
-    pub generation_qualifier: Option<String>,
-
-
-    /// 
-    /// Disambiguating information for the certificate subject.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [a-zA-Z0-9'()+-.?:/= ]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DistinguishedNameQualifier")]
-    pub distinguished_name_qualifier: Option<String>,
-
-
-    /// 
-    /// First name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GivenName")]
-    pub given_name: Option<String>,
-
-
-    /// 
-    /// State in which the subject of the certificate is located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "State")]
-    pub state: Option<String>,
-
-
-    /// 
-    /// Legal name of the organization with which the certificate subject is affiliated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Organization")]
-    pub organization: Option<String>,
-
-
-    /// 
-    /// Typically a shortened version of a longer GivenName.       For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth,       Liz, or Eliza.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Pseudonym")]
-    pub pseudonym: Option<String>,
-
-
-    /// 
-    /// For CA and end-entity certificates in a private PKI, the common name (CN) can be any       string within the length limit.
-    /// 
-    /// Note: In publicly trusted certificates, the common name must be a fully qualified       domain name (FQDN) associated with the certificate subject.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CommonName")]
-    pub common_name: Option<String>,
-
-
-    /// 
-    /// The locality (such as a city or town) in which the certificate subject is       located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Locality")]
-    pub locality: Option<String>,
-
-
-    /// 
-    /// Two-digit code that specifies the country in which the certificate subject       located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 2
-    ///
-    /// Pattern: [A-Za-z]{2}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Country")]
-    pub country: Option<String>,
-
-
-    /// 
-    /// Family name. In the US and the UK, for example, the surname of an individual is       ordered last. In Asian cultures the surname is typically ordered first.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 40
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Surname")]
-    pub surname: Option<String>,
-
-
-    /// 
-    /// A title such as Mr. or Ms., which is pre-pended to the name to refer formally to the       certificate subject.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Title")]
-    pub title: Option<String>,
-
-
-    /// 
-    /// 
-    /// 
-    /// Contains a sequence of one or more X.500 relative distinguished names (RDNs), each of 			which consists of an object identifier (OID) and a value. For more information, see 			NIST’s definition of Object Identifier (OID).
-    /// 
-    /// NoteCustom attributes cannot be used in combination with standard attributes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CustomAttribute
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomAttributes")]
-    pub custom_attributes: Option<Vec<CustomAttribute>>,
-
-
-    /// 
-    /// The certificate serial number.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [a-zA-Z0-9'()+-.?:/= ]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SerialNumber")]
-    pub serial_number: Option<String>,
-
 }
 
 
@@ -393,430 +173,6 @@ pub struct Qualifier {
 }
 
 
-/// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OtherName {
-
-
-    /// 
-    /// Specifies an OID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TypeId")]
-    pub type_id: String,
-
-
-    /// 
-    /// Specifies an OID value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// Contains X.509 extension information for a certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Extensions {
-
-
-    /// 
-    /// Defines one or more purposes for which the key contained in the certificate can be       used. Default value for each option is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KeyUsage
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyUsage")]
-    pub key_usage: Option<KeyUsage>,
-
-
-    /// 
-    /// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ExtendedKeyUsage
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExtendedKeyUsage")]
-    pub extended_key_usage: Option<Vec<ExtendedKeyUsage>>,
-
-
-    /// 
-    /// The subject alternative name extension allows identities to be bound to the subject of 			the certificate. These identities may be included in addition to or in place of the 			identity in the subject field of the certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of GeneralName
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubjectAlternativeNames")]
-    pub subject_alternative_names: Option<Vec<GeneralName>>,
-
-
-    /// 
-    /// Contains a sequence of one or more policy information terms, each of which consists of 			an object identifier (OID) and optional qualifiers. For more information, see NIST's 			definition of Object 				Identifier (OID).
-    /// 
-    /// In an end-entity certificate, these terms indicate the policy under which the 			certificate was issued and the purposes for which it may be used. In a CA certificate, 			these terms limit the set of policies for certification paths that include this 			certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PolicyInformation
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificatePolicies")]
-    pub certificate_policies: Option<Vec<PolicyInformation>>,
-
-
-    /// 
-    /// 
-    /// 
-    /// Contains a sequence of one or more X.509 extensions, each of which consists of an 			object identifier (OID), a base64-encoded value, and the critical flag. For more 			information, see the Global OID reference 				database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CustomExtension
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomExtensions")]
-    pub custom_extensions: Option<Vec<CustomExtension>>,
-
-}
-
-
-/// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GeneralName {
-
-
-    /// 
-    /// Represents GeneralName as an RFC 822 email 			address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Rfc822Name")]
-    pub rfc822_name: Option<String>,
-
-
-    /// 
-    /// Represents GeneralName as an object identifier (OID).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RegisteredId")]
-    pub registered_id: Option<String>,
-
-
-    /// 
-    /// Represents GeneralName as a DNS name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 253
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DnsName")]
-    pub dns_name: Option<String>,
-
-
-    /// 
-    /// Represents GeneralName as a URI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 253
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UniformResourceIdentifier")]
-    pub uniform_resource_identifier: Option<String>,
-
-
-    /// 
-    /// Represents GeneralName as an IPv4 or IPv6 address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 39
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: Option<String>,
-
-
-    /// 
-    /// Contains information about the certificate subject. The certificate can be one issued       by your private certificate authority (CA) or it can be your private CA certificate. The       Subject field in the certificate identifies the entity that owns or controls the public       key in the certificate. The entity can be a user, computer, device, or service. The       Subject must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN       must be unique for each entity, but your private CA can issue more than one certificate       with the same DN to the same entity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Subject
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DirectoryName")]
-    pub directory_name: Option<Subject>,
-
-
-    /// 
-    /// Represents GeneralName as an EdiPartyName object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EdiPartyName
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EdiPartyName")]
-    pub edi_party_name: Option<EdiPartyName>,
-
-
-    /// 
-    /// Represents GeneralName using an OtherName object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OtherName
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OtherName")]
-    pub other_name: Option<OtherName>,
-
-}
-
-
-/// Modifies the CertPolicyId of a PolicyInformation object with 			a qualifier. AWS Private CA supports the certification practice statement (CPS) 			qualifier.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PolicyQualifierInfo {
-
-
-    /// 
-    /// Defines the qualifier type. AWS Private CA supports the use of a URI for a CPS qualifier 			in this field.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Qualifier
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Qualifier")]
-    pub qualifier: Qualifier,
-
-
-    /// 
-    /// Identifies the qualifier modifying a CertPolicyId.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CPS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyQualifierId")]
-    pub policy_qualifier_id: String,
-
-}
-
-
-/// Length of time for which the certificate issued by your private certificate authority       (CA), or by the private CA itself, is valid in days, months, or years. You can issue a       certificate by calling the IssueCertificate operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Validity {
-
-
-    /// 
-    /// A long integer interpreted according to the value of Type, below.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: f64,
-
-
-    /// 
-    /// Specifies whether the Value parameter represents days, months, or       years.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ABSOLUTE | DAYS | END_DATE | MONTHS | YEARS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-}
-
-
-/// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KeyUsage {
-
-
-    /// 
-    /// Key can be used to sign CRLs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CRLSign")]
-    pub crlsign: Option<bool>,
-
-
-    /// 
-    /// Key can be used to sign certificates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyCertSign")]
-    pub key_cert_sign: Option<bool>,
-
-
-    /// 
-    /// Key can be used for digital signing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DigitalSignature")]
-    pub digital_signature: Option<bool>,
-
-
-    /// 
-    /// Key can be used in a key-agreement protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyAgreement")]
-    pub key_agreement: Option<bool>,
-
-
-    /// 
-    /// Key can be used for non-repudiation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NonRepudiation")]
-    pub non_repudiation: Option<bool>,
-
-
-    /// 
-    /// Key can be used only to encipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EncipherOnly")]
-    pub encipher_only: Option<bool>,
-
-
-    /// 
-    /// Key can be used only to decipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DecipherOnly")]
-    pub decipher_only: Option<bool>,
-
-
-    /// 
-    /// Key can be used to encipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyEncipherment")]
-    pub key_encipherment: Option<bool>,
-
-
-    /// 
-    /// Key can be used to decipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataEncipherment")]
-    pub data_encipherment: Option<bool>,
-
-}
 
 
 /// Contains X.509 certificate information to be placed in an issued certificate. An 				APIPassthrough or APICSRPassthrough template variant must 			be selected, or else this parameter is ignored.
@@ -852,66 +208,128 @@ pub struct ApiPassthrough {
 }
 
 
-/// Defines the X.509 CertificatePolicies extension.
+
+
+/// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PolicyInformation {
+pub struct KeyUsage {
 
 
     /// 
-    /// Modifies the given CertPolicyId with a qualifier. AWS Private CA supports the 			certification practice statement (CPS) qualifier.
+    /// Key can be used to sign CRLs.
     /// 
     /// Required: No
     ///
-    /// Type: List of PolicyQualifierInfo
-    ///
-    /// Maximum: 20
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PolicyQualifiers")]
-    pub policy_qualifiers: Option<Vec<PolicyQualifierInfo>>,
+    #[serde(rename = "CRLSign")]
+    pub crlsign: Option<bool>,
 
 
     /// 
-    /// Specifies the object identifier (OID) of the certificate policy under which the 			certificate was issued. For more information, see NIST's definition of Object Identifier 				(OID).
+    /// Key can be used to encipher data.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertPolicyId")]
-    pub cert_policy_id: String,
+    #[serde(rename = "KeyEncipherment")]
+    pub key_encipherment: Option<bool>,
+
+
+    /// 
+    /// Key can be used only to decipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DecipherOnly")]
+    pub decipher_only: Option<bool>,
+
+
+    /// 
+    /// Key can be used for digital signing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DigitalSignature")]
+    pub digital_signature: Option<bool>,
+
+
+    /// 
+    /// Key can be used to sign certificates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyCertSign")]
+    pub key_cert_sign: Option<bool>,
+
+
+    /// 
+    /// Key can be used only to encipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncipherOnly")]
+    pub encipher_only: Option<bool>,
+
+
+    /// 
+    /// Key can be used for non-repudiation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NonRepudiation")]
+    pub non_repudiation: Option<bool>,
+
+
+    /// 
+    /// Key can be used in a key-agreement protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyAgreement")]
+    pub key_agreement: Option<bool>,
+
+
+    /// 
+    /// Key can be used to decipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataEncipherment")]
+    pub data_encipherment: Option<bool>,
 
 }
+
+
 
 
 /// Defines the X.500 relative distinguished name (RDN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomAttribute {
-
-
-    /// 
-    /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectIdentifier")]
-    pub object_identifier: String,
 
 
     /// 
@@ -931,30 +349,136 @@ pub struct CustomAttribute {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectIdentifier")]
+    pub object_identifier: String,
+
 }
 
 
-/// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
+
+
+/// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ExtendedKeyUsage {
+pub struct GeneralName {
 
 
     /// 
-    /// Specifies a standard ExtendedKeyUsage as defined as in RFC 				5280.
+    /// Represents GeneralName as an IPv4 or IPv6 address.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: CERTIFICATE_TRANSPARENCY | CLIENT_AUTH | CODE_SIGNING | DOCUMENT_SIGNING | EMAIL_PROTECTION | OCSP_SIGNING | SERVER_AUTH | SMART_CARD_LOGIN | TIME_STAMPING
+    /// Minimum: 0
+    ///
+    /// Maximum: 39
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ExtendedKeyUsageType")]
-    pub extended_key_usage_type: Option<String>,
+    #[serde(rename = "IpAddress")]
+    pub ip_address: Option<String>,
 
 
     /// 
-    /// Specifies a custom ExtendedKeyUsage with an object identifier 			(OID).
+    /// Represents GeneralName using an OtherName object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OtherName
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OtherName")]
+    pub other_name: Option<OtherName>,
+
+
+    /// 
+    /// Represents GeneralName as a DNS name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 253
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DnsName")]
+    pub dns_name: Option<String>,
+
+
+    /// 
+    /// Represents GeneralName as a URI.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 253
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UniformResourceIdentifier")]
+    pub uniform_resource_identifier: Option<String>,
+
+
+    /// 
+    /// Represents GeneralName as an RFC 822 email 			address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Rfc822Name")]
+    pub rfc822_name: Option<String>,
+
+
+    /// 
+    /// Contains information about the certificate subject. The certificate can be one issued       by your private certificate authority (CA) or it can be your private CA certificate. The       Subject field in the certificate identifies the entity that owns or controls the public       key in the certificate. The entity can be a user, computer, device, or service. The       Subject must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN       must be unique for each entity, but your private CA can issue more than one certificate       with the same DN to the same entity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Subject
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DirectoryName")]
+    pub directory_name: Option<Subject>,
+
+
+    /// 
+    /// Represents GeneralName as an EdiPartyName object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EdiPartyName
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EdiPartyName")]
+    pub edi_party_name: Option<EdiPartyName>,
+
+
+    /// 
+    /// Represents GeneralName as an object identifier (OID).
     /// 
     /// Required: No
     ///
@@ -967,10 +491,511 @@ pub struct ExtendedKeyUsage {
     /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ExtendedKeyUsageObjectIdentifier")]
-    pub extended_key_usage_object_identifier: Option<String>,
+    #[serde(rename = "RegisteredId")]
+    pub registered_id: Option<String>,
 
 }
+
+
+
+
+/// Modifies the CertPolicyId of a PolicyInformation object with 			a qualifier. AWS Private CA supports the certification practice statement (CPS) 			qualifier.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PolicyQualifierInfo {
+
+
+    /// 
+    /// Identifies the qualifier modifying a CertPolicyId.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CPS
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyQualifierId")]
+    pub policy_qualifier_id: PolicyQualifierInfoPolicyQualifierIdEnum,
+
+
+    /// 
+    /// Defines the qualifier type. AWS Private CA supports the use of a URI for a CPS qualifier 			in this field.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Qualifier
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Qualifier")]
+    pub qualifier: Qualifier,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PolicyQualifierInfoPolicyQualifierIdEnum {
+
+    /// CPS
+    #[serde(rename = "CPS")]
+    Cps,
+
+}
+
+impl Default for PolicyQualifierInfoPolicyQualifierIdEnum {
+    fn default() -> Self {
+        PolicyQualifierInfoPolicyQualifierIdEnum::Cps
+    }
+}
+
+
+
+/// Contains X.509 extension information for a certificate.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Extensions {
+
+
+    /// 
+    /// 
+    /// 
+    /// Contains a sequence of one or more X.509 extensions, each of which consists of an 			object identifier (OID), a base64-encoded value, and the critical flag. For more 			information, see the Global OID reference 				database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of CustomExtension
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomExtensions")]
+    pub custom_extensions: Option<Vec<CustomExtension>>,
+
+
+    /// 
+    /// The subject alternative name extension allows identities to be bound to the subject of 			the certificate. These identities may be included in addition to or in place of the 			identity in the subject field of the certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of GeneralName
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubjectAlternativeNames")]
+    pub subject_alternative_names: Option<Vec<GeneralName>>,
+
+
+    /// 
+    /// Defines one or more purposes for which the key contained in the certificate can be       used. Default value for each option is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KeyUsage
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyUsage")]
+    pub key_usage: Option<KeyUsage>,
+
+
+    /// 
+    /// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ExtendedKeyUsage
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExtendedKeyUsage")]
+    pub extended_key_usage: Option<Vec<ExtendedKeyUsage>>,
+
+
+    /// 
+    /// Contains a sequence of one or more policy information terms, each of which consists of 			an object identifier (OID) and optional qualifiers. For more information, see NIST's 			definition of Object 				Identifier (OID).
+    /// 
+    /// In an end-entity certificate, these terms indicate the policy under which the 			certificate was issued and the purposes for which it may be used. In a CA certificate, 			these terms limit the set of policies for certification paths that include this 			certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PolicyInformation
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificatePolicies")]
+    pub certificate_policies: Option<Vec<PolicyInformation>>,
+
+}
+
+
+
+
+/// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OtherName {
+
+
+    /// 
+    /// Specifies an OID value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// Specifies an OID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TypeId")]
+    pub type_id: String,
+
+}
+
+
+
+
+/// Contains information about the certificate subject. The Subject field in       the certificate identifies the entity that owns or controls the public key in the       certificate. The entity can be a user, computer, device, or service. The Subject       must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Subject {
+
+
+    /// 
+    /// State in which the subject of the certificate is located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "State")]
+    pub state: Option<String>,
+
+
+    /// 
+    /// Typically a qualifier appended to the name of an individual. Examples include Jr. for       junior, Sr. for senior, and III for third.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GenerationQualifier")]
+    pub generation_qualifier: Option<String>,
+
+
+    /// 
+    /// A subdivision or unit of the organization (such as sales or finance) with which the       certificate subject is affiliated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OrganizationalUnit")]
+    pub organizational_unit: Option<String>,
+
+
+    /// 
+    /// Disambiguating information for the certificate subject.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [a-zA-Z0-9'()+-.?:/= ]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DistinguishedNameQualifier")]
+    pub distinguished_name_qualifier: Option<String>,
+
+
+    /// 
+    /// For CA and end-entity certificates in a private PKI, the common name (CN) can be any       string within the length limit.
+    /// 
+    /// Note: In publicly trusted certificates, the common name must be a fully qualified       domain name (FQDN) associated with the certificate subject.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CommonName")]
+    pub common_name: Option<String>,
+
+
+    /// 
+    /// 
+    /// 
+    /// Contains a sequence of one or more X.500 relative distinguished names (RDNs), each of 			which consists of an object identifier (OID) and a value. For more information, see 			NIST’s definition of Object Identifier (OID).
+    /// 
+    /// NoteCustom attributes cannot be used in combination with standard attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of CustomAttribute
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomAttributes")]
+    pub custom_attributes: Option<Vec<CustomAttribute>>,
+
+
+    /// 
+    /// The locality (such as a city or town) in which the certificate subject is       located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Locality")]
+    pub locality: Option<String>,
+
+
+    /// 
+    /// The certificate serial number.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [a-zA-Z0-9'()+-.?:/= ]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SerialNumber")]
+    pub serial_number: Option<String>,
+
+
+    /// 
+    /// Two-digit code that specifies the country in which the certificate subject       located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 2
+    ///
+    /// Pattern: [A-Za-z]{2}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Country")]
+    pub country: Option<String>,
+
+
+    /// 
+    /// Typically a shortened version of a longer GivenName.       For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth,       Liz, or Eliza.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Pseudonym")]
+    pub pseudonym: Option<String>,
+
+
+    /// 
+    /// Family name. In the US and the UK, for example, the surname of an individual is       ordered last. In Asian cultures the surname is typically ordered first.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 40
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Surname")]
+    pub surname: Option<String>,
+
+
+    /// 
+    /// A title such as Mr. or Ms., which is pre-pended to the name to refer formally to the       certificate subject.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Title")]
+    pub title: Option<String>,
+
+
+    /// 
+    /// Legal name of the organization with which the certificate subject is affiliated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Organization")]
+    pub organization: Option<String>,
+
+
+    /// 
+    /// First name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GivenName")]
+    pub given_name: Option<String>,
+
+
+    /// 
+    /// Concatenation that typically contains the first letter of the GivenName, the first letter of the middle name if one exists, and the       first letter of the Surname.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Initials")]
+    pub initials: Option<String>,
+
+}
+
+
+
+
+/// Length of time for which the certificate issued by your private certificate authority       (CA), or by the private CA itself, is valid in days, months, or years. You can issue a       certificate by calling the IssueCertificate operation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Validity {
+
+
+    /// 
+    /// Specifies whether the Value parameter represents days, months, or       years.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ABSOLUTE | DAYS | END_DATE | MONTHS | YEARS
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: ValidityTypeEnum,
+
+
+    /// 
+    /// A long integer interpreted according to the value of Type, below.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: f64,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ValidityTypeEnum {
+
+    /// ABSOLUTE
+    #[serde(rename = "ABSOLUTE")]
+    Absolute,
+
+    /// DAYS
+    #[serde(rename = "DAYS")]
+    Days,
+
+    /// END_DATE
+    #[serde(rename = "END_DATE")]
+    Enddate,
+
+    /// MONTHS
+    #[serde(rename = "MONTHS")]
+    Months,
+
+    /// YEARS
+    #[serde(rename = "YEARS")]
+    Years,
+
+}
+
+impl Default for ValidityTypeEnum {
+    fn default() -> Self {
+        ValidityTypeEnum::Absolute
+    }
+}
+
 
 
 /// 
@@ -979,20 +1004,6 @@ pub struct ExtendedKeyUsage {
 /// Extensions present in CustomExtensions follow the 				ApiPassthrough       template 				rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomExtension {
-
-
-    /// 
-    /// 
-    /// 
-    /// Specifies the critical flag of the X.509 extension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Critical")]
-    pub critical: Option<bool>,
 
 
     /// 
@@ -1034,28 +1045,116 @@ pub struct CustomExtension {
     #[serde(rename = "ObjectIdentifier")]
     pub object_identifier: String,
 
+
+    /// 
+    /// 
+    /// 
+    /// Specifies the critical flag of the X.509 extension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Critical")]
+    pub critical: Option<bool>,
+
 }
 
 
-/// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
+
+
+/// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EdiPartyName {
+pub struct ExtendedKeyUsage {
 
 
     /// 
-    /// Specifies the party name.
+    /// Specifies a standard ExtendedKeyUsage as defined as in RFC 				5280.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CERTIFICATE_TRANSPARENCY | CLIENT_AUTH | CODE_SIGNING | DOCUMENT_SIGNING | EMAIL_PROTECTION | OCSP_SIGNING | SERVER_AUTH | SMART_CARD_LOGIN | TIME_STAMPING
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExtendedKeyUsageType")]
+    pub extended_key_usage_type: Option<ExtendedKeyUsageExtendedKeyUsageTypeEnum>,
+
+
+    /// 
+    /// Specifies a custom ExtendedKeyUsage with an object identifier 			(OID).
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 256
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PartyName")]
-    pub party_name: String,
+    #[serde(rename = "ExtendedKeyUsageObjectIdentifier")]
+    pub extended_key_usage_object_identifier: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ExtendedKeyUsageExtendedKeyUsageTypeEnum {
+
+    /// CERTIFICATE_TRANSPARENCY
+    #[serde(rename = "CERTIFICATE_TRANSPARENCY")]
+    Certificatetransparency,
+
+    /// CLIENT_AUTH
+    #[serde(rename = "CLIENT_AUTH")]
+    Clientauth,
+
+    /// CODE_SIGNING
+    #[serde(rename = "CODE_SIGNING")]
+    Codesigning,
+
+    /// DOCUMENT_SIGNING
+    #[serde(rename = "DOCUMENT_SIGNING")]
+    Documentsigning,
+
+    /// EMAIL_PROTECTION
+    #[serde(rename = "EMAIL_PROTECTION")]
+    Emailprotection,
+
+    /// OCSP_SIGNING
+    #[serde(rename = "OCSP_SIGNING")]
+    Ocspsigning,
+
+    /// SERVER_AUTH
+    #[serde(rename = "SERVER_AUTH")]
+    Serverauth,
+
+    /// SMART_CARD_LOGIN
+    #[serde(rename = "SMART_CARD_LOGIN")]
+    Smartcardlogin,
+
+    /// TIME_STAMPING
+    #[serde(rename = "TIME_STAMPING")]
+    Timestamping,
+
+}
+
+impl Default for ExtendedKeyUsageExtendedKeyUsageTypeEnum {
+    fn default() -> Self {
+        ExtendedKeyUsageExtendedKeyUsageTypeEnum::Certificatetransparency
+    }
+}
+
+
+
+/// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EdiPartyName {
 
 
     /// 
@@ -1073,4 +1172,63 @@ pub struct EdiPartyName {
     #[serde(rename = "NameAssigner")]
     pub name_assigner: String,
 
+
+    /// 
+    /// Specifies the party name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PartyName")]
+    pub party_name: String,
+
 }
+
+
+
+
+/// Defines the X.509 CertificatePolicies extension.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PolicyInformation {
+
+
+    /// 
+    /// Modifies the given CertPolicyId with a qualifier. AWS Private CA supports the 			certification practice statement (CPS) qualifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PolicyQualifierInfo
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyQualifiers")]
+    pub policy_qualifiers: Option<Vec<PolicyQualifierInfo>>,
+
+
+    /// 
+    /// Specifies the object identifier (OID) of the certificate policy under which the 			certificate was issued. For more information, see NIST's definition of Object Identifier 				(OID).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertPolicyId")]
+    pub cert_policy_id: String,
+
+}
+
+

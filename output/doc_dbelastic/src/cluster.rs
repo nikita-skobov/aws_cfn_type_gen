@@ -6,6 +6,34 @@ pub struct CfnCluster {
 
 
     /// 
+    /// The password for the Elastic DocumentDB cluster administrator and can    contain any printable ASCII characters.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain from 8 to 100 characters.Cannot contain a forward slash (/), double quote ("), or the "at" symbol (@).A valid AdminUserName entry is also required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdminUserPassword")]
+    pub admin_user_password: Option<String>,
+
+
+    /// 
+    /// The authentication type used to determine where to fetch the password used for accessing the elastic cluster.    Valid types are PLAIN_TEXT or SECRET_ARN.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthType")]
+    pub auth_type: String,
+
+
+    /// 
     /// A list of EC2 VPC security groups to associate with the new    elastic cluster.
     /// 
     /// Required: No
@@ -18,6 +46,24 @@ pub struct CfnCluster {
 
 
     /// 
+    /// The name of the new elastic cluster. This parameter is stored as    a lowercase string.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain from 1 to 63 letters, numbers, or hyphens.The first character must be a letter.Cannot end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Example: my-cluster
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
+
+
+    /// 
     /// The number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64.
     /// 
     /// Required: Yes
@@ -27,6 +73,30 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ShardCapacity")]
     pub shard_capacity: i64,
+
+
+    /// 
+    /// The tags to be assigned to the new elastic cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The Amazon EC2 subnet IDs for the new elastic cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -62,30 +132,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The tags to be assigned to the new elastic cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The authentication type used to determine where to fetch the password used for accessing the elastic cluster.    Valid types are PLAIN_TEXT or SECRET_ARN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthType")]
-    pub auth_type: String,
-
-
-    /// 
     /// The number of shards assigned to the elastic cluster. Maximum is 32.
     /// 
     /// Required: Yes
@@ -95,52 +141,6 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ShardCount")]
     pub shard_count: i64,
-
-
-    /// 
-    /// The name of the new elastic cluster. This parameter is stored as    a lowercase string.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must contain from 1 to 63 letters, numbers, or hyphens.The first character must be a letter.Cannot end with a hyphen or contain two consecutive hyphens.
-    /// 
-    /// Example: my-cluster
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
-
-
-    /// 
-    /// The password for the Elastic DocumentDB cluster administrator and can    contain any printable ASCII characters.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must contain from 8 to 100 characters.Cannot contain a forward slash (/), double quote ("), or the "at" symbol (@).A valid AdminUserName entry is also required.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdminUserPassword")]
-    pub admin_user_password: Option<String>,
-
-
-    /// 
-    /// The Amazon EC2 subnet IDs for the new elastic cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -163,6 +163,8 @@ pub struct CfnCluster {
     pub preferred_maintenance_window: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCluster {
     fn type_string() -> &'static str {
@@ -208,3 +210,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

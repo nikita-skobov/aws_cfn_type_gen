@@ -10,18 +10,6 @@ pub struct CfnSecurityPolicy {
 
 
     /// 
-    /// The type of security policy. Can be either encryption or network.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
     /// The description of the security policy.
     /// 
     /// Required: No
@@ -46,6 +34,18 @@ pub struct CfnSecurityPolicy {
 
 
     /// 
+    /// The type of security policy. Can be either encryption or network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
     /// The name of the policy.
     /// 
     /// Required: Yes
@@ -57,6 +57,8 @@ pub struct CfnSecurityPolicy {
     pub name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSecurityPolicy {
     fn type_string() -> &'static str {

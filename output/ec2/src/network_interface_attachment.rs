@@ -54,6 +54,8 @@ pub struct CfnNetworkInterfaceAttachment {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnNetworkInterfaceAttachment {
     fn type_string() -> &'static str {
         "AWS::EC2::NetworkInterfaceAttachment"

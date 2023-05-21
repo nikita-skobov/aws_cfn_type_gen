@@ -32,18 +32,6 @@ pub struct CfnConfigurationSet {
 
 
     /// 
-    /// An object that defines whether or not Amazon SES can send email that you send using       the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SendingOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SendingOptions")]
-    pub sending_options: Option<SendingOptions>,
-
-
-    /// 
     /// An object that contains information about the suppression list preferences for your       account.
     /// 
     /// Required: No
@@ -53,18 +41,6 @@ pub struct CfnConfigurationSet {
     /// Update requires: No interruption
     #[serde(rename = "SuppressionOptions")]
     pub suppression_options: Option<SuppressionOptions>,
-
-
-    /// 
-    /// An object that represents the reputation settings for the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ReputationOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReputationOptions")]
-    pub reputation_options: Option<ReputationOptions>,
 
 
     /// 
@@ -80,6 +56,30 @@ pub struct CfnConfigurationSet {
 
 
     /// 
+    /// An object that defines whether or not Amazon SES can send email that you send using       the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SendingOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SendingOptions")]
+    pub sending_options: Option<SendingOptions>,
+
+
+    /// 
+    /// An object that represents the reputation settings for the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ReputationOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReputationOptions")]
+    pub reputation_options: Option<ReputationOptions>,
+
+
+    /// 
     /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
     /// 
     /// Required: No
@@ -91,6 +91,8 @@ pub struct CfnConfigurationSet {
     pub delivery_options: Option<DeliveryOptions>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfigurationSet {
     fn type_string() -> &'static str {
@@ -122,6 +124,108 @@ pub struct SendingOptions {
 }
 
 
+
+
+/// An object that contains information about the suppression list preferences for your       account.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SuppressionOptions {
+
+
+    /// 
+    /// A list that contains the reasons that email addresses are automatically added to the       suppression list for your account. This list can contain any or all of the       following:
+    /// 
+    /// COMPLAINT – Amazon SES adds an email address to the suppression           list for your account when a message sent to that address results in a           complaint.               BOUNCE – Amazon SES adds an email address to the suppression list           for your account when a message sent to that address results in a hard           bounce.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SuppressedReasons")]
+    pub suppressed_reasons: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Settings for your VDM configuration as applicable to the Dashboard.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DashboardOptions {
+
+
+    /// 
+    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
+    /// 
+    /// ENABLED – Amazon SES enables engagement metrics for the           configuration set.               DISABLED – Amazon SES disables engagement metrics for           the configuration set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngagementMetrics")]
+    pub engagement_metrics: String,
+
+}
+
+
+
+
+/// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeliveryOptions {
+
+
+    /// 
+    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS). If the value is REQUIRE, messages are only       delivered if a TLS connection can be established. If the value is OPTIONAL,       messages can be delivered in plain text if a TLS connection can't be established.
+    /// 
+    /// Valid Values: REQUIRE | OPTIONAL
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TlsPolicy")]
+    pub tls_policy: Option<DeliveryOptionsTlsPolicyEnum>,
+
+
+    /// 
+    /// The name of the dedicated IP pool to associate with the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SendingPoolName")]
+    pub sending_pool_name: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeliveryOptionsTlsPolicyEnum {
+
+    /// REQUIRE
+    #[serde(rename = "REQUIRE")]
+    Require,
+
+    /// OPTIONAL
+    #[serde(rename = "OPTIONAL")]
+    Optional,
+
+}
+
+impl Default for DeliveryOptionsTlsPolicyEnum {
+    fn default() -> Self {
+        DeliveryOptionsTlsPolicyEnum::Require
+    }
+}
+
+
+
 /// Contains information about the reputation settings for a configuration set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReputationOptions {
@@ -141,6 +245,8 @@ pub struct ReputationOptions {
     pub reputation_metrics_enabled: Option<bool>,
 
 }
+
+
 
 
 /// Settings for your VDM configuration as applicable to the Guardian.
@@ -164,58 +270,6 @@ pub struct GuardianOptions {
 }
 
 
-/// A domain that is used to redirect email recipients to an Amazon SES-operated domain. This       domain captures open and click events generated by Amazon SES emails.
-///
-/// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TrackingOptions {
-
-
-    /// 
-    /// The custom subdomain that is used to redirect email recipients to the Amazon SES event       tracking domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomRedirectDomain")]
-    pub custom_redirect_domain: Option<String>,
-
-}
-
-
-/// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeliveryOptions {
-
-
-    /// 
-    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS). If the value is REQUIRE, messages are only       delivered if a TLS connection can be established. If the value is OPTIONAL,       messages can be delivered in plain text if a TLS connection can't be established.
-    /// 
-    /// Valid Values: REQUIRE | OPTIONAL
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TlsPolicy")]
-    pub tls_policy: Option<String>,
-
-
-    /// 
-    /// The name of the dedicated IP pool to associate with the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SendingPoolName")]
-    pub sending_pool_name: Option<String>,
-
-}
 
 
 /// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
@@ -249,43 +303,26 @@ pub struct VdmOptions {
 }
 
 
-/// Settings for your VDM configuration as applicable to the Dashboard.
+
+
+/// A domain that is used to redirect email recipients to an Amazon SES-operated domain. This       domain captures open and click events generated by Amazon SES emails.
+///
+/// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DashboardOptions {
+pub struct TrackingOptions {
 
 
     /// 
-    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
+    /// The custom subdomain that is used to redirect email recipients to the Amazon SES event       tracking domain.
     /// 
-    /// ENABLED – Amazon SES enables engagement metrics for the           configuration set.               DISABLED – Amazon SES disables engagement metrics for           the configuration set.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EngagementMetrics")]
-    pub engagement_metrics: String,
+    #[serde(rename = "CustomRedirectDomain")]
+    pub custom_redirect_domain: Option<String>,
 
 }
 
 
-/// An object that contains information about the suppression list preferences for your       account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SuppressionOptions {
-
-
-    /// 
-    /// A list that contains the reasons that email addresses are automatically added to the       suppression list for your account. This list can contain any or all of the       following:
-    /// 
-    /// COMPLAINT – Amazon SES adds an email address to the suppression           list for your account when a message sent to that address results in a           complaint.               BOUNCE – Amazon SES adds an email address to the suppression list           for your account when a message sent to that address results in a hard           bounce.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SuppressedReasons")]
-    pub suppressed_reasons: Option<Vec<String>>,
-
-}

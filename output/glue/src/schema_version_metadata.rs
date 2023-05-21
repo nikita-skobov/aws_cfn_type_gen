@@ -6,18 +6,6 @@ pub struct CfnSchemaVersionMetadata {
 
 
     /// 
-    /// A metadata key in a key-value pair for metadata.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The version number of the schema.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnSchemaVersionMetadata {
     /// Update requires: Replacement
     #[serde(rename = "SchemaVersionId")]
     pub schema_version_id: String,
+
+
+    /// 
+    /// A metadata key in a key-value pair for metadata.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
@@ -41,6 +41,8 @@ pub struct CfnSchemaVersionMetadata {
     pub value: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSchemaVersionMetadata {
     fn type_string() -> &'static str {

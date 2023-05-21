@@ -6,6 +6,20 @@ pub struct CfnProject {
 
 
     /// 
+    /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage, if you choose to do so. If you choose       not to store these events, Evidently deletes them after using them to produce metrics and other experiment       results that you can view.
+    /// 
+    /// You can't specify both CloudWatchLogs and S3Destination in the same operation.
+    ///
+    /// Required: No
+    ///
+    /// Type: DataDeliveryObject
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataDelivery")]
+    pub data_delivery: Option<DataDeliveryObject>,
+
+
+    /// 
     /// An optional description of the project.
     ///
     /// Required: No
@@ -15,6 +29,18 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The name for the project. It can include up to 127 characters.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -31,18 +57,6 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "AppConfigResource")]
     pub app_config_resource: Option<AppConfigResourceObject>,
-
-
-    /// 
-    /// The name for the project. It can include up to 127 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -64,21 +78,9 @@ pub struct CfnProject {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage, if you choose to do so. If you choose       not to store these events, Evidently deletes them after using them to produce metrics and other experiment       results that you can view.
-    /// 
-    /// You can't specify both CloudWatchLogs and S3Destination in the same operation.
-    ///
-    /// Required: No
-    ///
-    /// Type: DataDeliveryObject
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataDelivery")]
-    pub data_delivery: Option<DataDeliveryObject>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string() -> &'static str {
@@ -91,35 +93,37 @@ impl cfn_resources::CfnResource for CfnProject {
 }
 
 
-/// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
+/// This is a structure that defines the configuration of how your application       integrates with AWS AppConfig to run client-side evaluation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Destination {
+pub struct AppConfigResourceObject {
 
 
     /// 
-    /// The bucket prefix in which Evidently stores evaluation events.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
-
-
+    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
     /// 
-    /// The name of the bucket in which Evidently stores evaluation events.
-    ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: String,
+
+
+    /// 
+    /// The ID of the AWS AppConfig application to use for client-side evaluation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -134,17 +138,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -154,55 +147,58 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
-/// This is a structure that defines the configuration of how your application       integrates with AWS AppConfig to run client-side evaluation.
+
+
+/// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AppConfigResourceObject {
+pub struct S3Destination {
 
 
     /// 
-    /// The ID of the AWS AppConfig application to use for client-side evaluation.
-    /// 
+    /// The name of the bucket in which Evidently stores evaluation events.
+    ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
 
 
     /// 
-    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
-    /// 
-    /// Required: Yes
+    /// The bucket prefix in which Evidently stores evaluation events.
+    ///
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
 
 }
+
+
 
 
 /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataDeliveryObject {
-
-
-    /// 
-    /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
-    ///
-    /// Required: No
-    ///
-    /// Type: S3Destination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3")]
-    pub s3: Option<S3Destination>,
 
 
     /// 
@@ -216,4 +212,18 @@ pub struct DataDeliveryObject {
     #[serde(rename = "LogGroup")]
     pub log_group: Option<String>,
 
+
+    /// 
+    /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Destination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3")]
+    pub s3: Option<S3Destination>,
+
 }
+
+

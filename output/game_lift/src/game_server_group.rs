@@ -18,63 +18,45 @@ pub struct CfnGameServerGroup {
 
 
     /// 
-    /// Configuration settings to define a scaling policy for the Auto Scaling group that is       optimized for game hosting. The scaling policy uses the metric         "PercentUtilizedGameServers" to maintain a buffer of idle game servers       that can immediately accommodate new games and players. After the Auto Scaling group is       created, update this value directly in the Auto Scaling group using the AWS console or       APIs.
+    /// A list of virtual private cloud (VPC) subnets to use with instances in the game server       group. By default, all Amazon GameLift FleetIQ-supported Availability Zones are used. You can use this       parameter to specify VPCs that you've set up. This property cannot be updated after the       game server group is created, and the corresponding Auto Scaling group will always use       the property value that is set with this request, even if the Auto Scaling group is       updated directly.
     /// 
     /// Required: No
     ///
-    /// Type: AutoScalingPolicy
+    /// Type: List of String
+    ///
+    /// Maximum: 20
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutoScalingPolicy")]
-    pub auto_scaling_policy: Option<AutoScalingPolicy>,
+    #[serde(rename = "VpcSubnets")]
+    pub vpc_subnets: Option<Vec<String>>,
 
 
     /// 
-    /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access your Amazon EC2 Auto Scaling groups.
+    /// The Amazon EC2 launch template that contains configuration settings and game server code to       be deployed to all instances in the game server group. You can specify the template       using either the template name or ID. For help with creating a launch template, see         Creating a Launch         Template for an Auto Scaling Group in the Amazon Elastic Compute Cloud Auto Scaling         User Guide. After the Auto Scaling group is created, update this value       directly in the Auto Scaling group using the AWS console or APIs.
     /// 
-    /// Required: Yes
+    /// NoteIf you specify network interfaces in your launch template, you must explicitly set         the property AssociatePublicIpAddress to "true". If no network         interface is specified in the launch template, Amazon GameLift FleetIQ uses your account's default         VPC.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^arn:.*:role\/[\w+=,.@-]+
+    /// Type: LaunchTemplate
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    #[serde(rename = "LaunchTemplate")]
+    pub launch_template: Option<LaunchTemplate>,
 
 
     /// 
-    /// The type of delete to perform. To delete a game server group, specify the     DeleteOption. Options include the following:
-    /// 
-    /// SAFE_DELETE – (default) Terminates the game server group and           Amazon EC2 Auto Scaling group only when it has no game servers that are in             UTILIZED status.                         FORCE_DELETE – Terminates the game server group, including all           active game servers regardless of their utilization status, and the Amazon EC2 Auto           Scaling group.                         RETAIN – Does a safe delete of the game server group but retains           the Amazon EC2 Auto Scaling group as is.
+    /// A flag that indicates whether instances in the game server group are protected       from early termination. Unprotected instances that have active game servers running might       be terminated during a scale-down event, causing players to be dropped from the game.       Protected instances cannot be terminated while there are active game servers running except       in the event of a forced game server group deletion (see ). An exception to this is with Spot       Instances, which can be terminated by AWS regardless of protection status.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: FORCE_DELETE | RETAIN | SAFE_DELETE
+    /// Allowed values: FULL_PROTECTION | NO_PROTECTION
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeleteOption")]
-    pub delete_option: Option<String>,
-
-
-    /// 
-    /// A list of labels to assign to the new game server group resource. Tags are    developer-defined key-value pairs. Tagging AWS resources is useful for resource    management, access management, and cost allocation. For more information, see Tagging AWS     Resources in the      AWS General Reference. Once the    resource is created, you can use TagResource, UntagResource, and ListTagsForResource to add, remove,    and view tags, respectively. The maximum tag limit may be lower than stated. See the    AWS General Reference for actual tagging limits.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "GameServerProtectionPolicy")]
+    pub game_server_protection_policy: Option<GameServerGroupGameServerProtectionPolicyEnum>,
 
 
     /// 
@@ -90,7 +72,21 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BalancingStrategy")]
-    pub balancing_strategy: Option<String>,
+    pub balancing_strategy: Option<GameServerGroupBalancingStrategyEnum>,
+
+
+    /// 
+    /// A list of labels to assign to the new game server group resource. Tags are    developer-defined key-value pairs. Tagging AWS resources is useful for resource    management, access management, and cost allocation. For more information, see Tagging AWS     Resources in the      AWS General Reference. Once the    resource is created, you can use TagResource, UntagResource, and ListTagsForResource to add, remove,    and view tags, respectively. The maximum tag limit may be lower than stated. See the    AWS General Reference for actual tagging limits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -112,34 +108,6 @@ pub struct CfnGameServerGroup {
 
 
     /// 
-    /// The set of Amazon EC2 instance types that Amazon GameLift FleetIQ can use when balancing and automatically       scaling instances in the corresponding Auto Scaling group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of InstanceDefinition
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceDefinitions")]
-    pub instance_definitions: Vec<InstanceDefinition>,
-
-
-    /// 
-    /// A list of virtual private cloud (VPC) subnets to use with instances in the game server       group. By default, all Amazon GameLift FleetIQ-supported Availability Zones are used. You can use this       parameter to specify VPCs that you've set up. This property cannot be updated after the       game server group is created, and the corresponding Auto Scaling group will always use       the property value that is set with this request, even if the Auto Scaling group is       updated directly.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSubnets")]
-    pub vpc_subnets: Option<Vec<String>>,
-
-
-    /// 
     /// The minimum number of instances allowed in the Amazon EC2 Auto Scaling group. During       automatic scaling events, Amazon GameLift FleetIQ and Amazon EC2 do not scale down the group below this       minimum. In production, this value should be set to at least 1. After the Auto Scaling       group is created, update this value directly in the Auto Scaling group using the AWS       console or APIs.
     /// 
     /// Required: No
@@ -154,31 +122,49 @@ pub struct CfnGameServerGroup {
 
 
     /// 
-    /// A flag that indicates whether instances in the game server group are protected       from early termination. Unprotected instances that have active game servers running might       be terminated during a scale-down event, causing players to be dropped from the game.       Protected instances cannot be terminated while there are active game servers running except       in the event of a forced game server group deletion (see ). An exception to this is with Spot       Instances, which can be terminated by AWS regardless of protection status.
+    /// Configuration settings to define a scaling policy for the Auto Scaling group that is       optimized for game hosting. The scaling policy uses the metric         "PercentUtilizedGameServers" to maintain a buffer of idle game servers       that can immediately accommodate new games and players. After the Auto Scaling group is       created, update this value directly in the Auto Scaling group using the AWS console or       APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoScalingPolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoScalingPolicy")]
+    pub auto_scaling_policy: Option<AutoScalingPolicy>,
+
+
+    /// 
+    /// The type of delete to perform. To delete a game server group, specify the     DeleteOption. Options include the following:
+    /// 
+    /// SAFE_DELETE – (default) Terminates the game server group and           Amazon EC2 Auto Scaling group only when it has no game servers that are in             UTILIZED status.                         FORCE_DELETE – Terminates the game server group, including all           active game servers regardless of their utilization status, and the Amazon EC2 Auto           Scaling group.                         RETAIN – Does a safe delete of the game server group but retains           the Amazon EC2 Auto Scaling group as is.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: FULL_PROTECTION | NO_PROTECTION
+    /// Allowed values: FORCE_DELETE | RETAIN | SAFE_DELETE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GameServerProtectionPolicy")]
-    pub game_server_protection_policy: Option<String>,
+    #[serde(rename = "DeleteOption")]
+    pub delete_option: Option<GameServerGroupDeleteOptionEnum>,
 
 
     /// 
-    /// The Amazon EC2 launch template that contains configuration settings and game server code to       be deployed to all instances in the game server group. You can specify the template       using either the template name or ID. For help with creating a launch template, see         Creating a Launch         Template for an Auto Scaling Group in the Amazon Elastic Compute Cloud Auto Scaling         User Guide. After the Auto Scaling group is created, update this value       directly in the Auto Scaling group using the AWS console or APIs.
+    /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access your Amazon EC2 Auto Scaling groups.
     /// 
-    /// NoteIf you specify network interfaces in your launch template, you must explicitly set         the property AssociatePublicIpAddress to "true". If no network         interface is specified in the launch template, Amazon GameLift FleetIQ uses your account's default         VPC.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: LaunchTemplate
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn:.*:role\/[\w+=,.@-]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplate")]
-    pub launch_template: Option<LaunchTemplate>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 
     /// 
@@ -194,7 +180,88 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "MaxSize")]
     pub max_size: Option<f64>,
 
+
+    /// 
+    /// The set of Amazon EC2 instance types that Amazon GameLift FleetIQ can use when balancing and automatically       scaling instances in the corresponding Auto Scaling group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of InstanceDefinition
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceDefinitions")]
+    pub instance_definitions: Vec<InstanceDefinition>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum GameServerGroupDeleteOptionEnum {
+
+    /// FORCE_DELETE
+    #[serde(rename = "FORCE_DELETE")]
+    Forcedelete,
+
+    /// RETAIN
+    #[serde(rename = "RETAIN")]
+    Retain,
+
+    /// SAFE_DELETE
+    #[serde(rename = "SAFE_DELETE")]
+    Safedelete,
+
+}
+
+impl Default for GameServerGroupDeleteOptionEnum {
+    fn default() -> Self {
+        GameServerGroupDeleteOptionEnum::Forcedelete
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum GameServerGroupGameServerProtectionPolicyEnum {
+
+    /// FULL_PROTECTION
+    #[serde(rename = "FULL_PROTECTION")]
+    Fullprotection,
+
+    /// NO_PROTECTION
+    #[serde(rename = "NO_PROTECTION")]
+    Noprotection,
+
+}
+
+impl Default for GameServerGroupGameServerProtectionPolicyEnum {
+    fn default() -> Self {
+        GameServerGroupGameServerProtectionPolicyEnum::Fullprotection
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum GameServerGroupBalancingStrategyEnum {
+
+    /// ON_DEMAND_ONLY
+    #[serde(rename = "ON_DEMAND_ONLY")]
+    Ondemandonly,
+
+    /// SPOT_ONLY
+    #[serde(rename = "SPOT_ONLY")]
+    Spotonly,
+
+    /// SPOT_PREFERRED
+    #[serde(rename = "SPOT_PREFERRED")]
+    Spotpreferred,
+
+}
+
+impl Default for GameServerGroupBalancingStrategyEnum {
+    fn default() -> Self {
+        GameServerGroupBalancingStrategyEnum::Ondemandonly
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnGameServerGroup {
     fn type_string() -> &'static str {
@@ -207,23 +274,136 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
 }
 
 
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// This data type is used with the GameLift FleetIQ and game server groups.
+///
+/// An Amazon EC2 launch template that contains configuration settings and game server code to    be deployed to all instances in a game server group. The launch template is specified    when creating a new game server group with GameServerGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LaunchTemplate {
+
+
+    /// 
+    /// A unique identifier for an existing Amazon EC2 launch template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateId")]
+    pub launch_template_id: Option<String>,
+
+
+    /// 
+    /// A readable identifier for an existing Amazon EC2 launch template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [a-zA-Z0-9\(\)\.\-/_]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateName")]
+    pub launch_template_name: Option<String>,
+
+
+    /// 
+    /// The version of the Amazon EC2 launch template to use. If no version is specified, the       default version will be used. With Amazon EC2, you can specify a default version for a launch       template. If none is set, the default is the first version created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
+}
+
+
+
+
+/// This data type is used with the Amazon GameLift FleetIQ and game server groups.
+///
+/// Settings for a target-based scaling policy as part of a GameServerGroupAutoScalingPolicy.    These settings are used to    create a target-based policy that tracks the GameLift FleetIQ metric    "PercentUtilizedGameServers" and specifies a target value for the    metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetTrackingConfiguration {
+
+
+    /// 
+    /// Desired value to use with a game server group target-based scaling policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetValue")]
+    pub target_value: f64,
+
+}
+
+
+
+
 /// This data type is used with the GameLift FleetIQ and game server groups.
 ///
 /// Configuration settings for intelligent automatic scaling that uses target tracking.    After the Auto Scaling group is created, all updates to Auto Scaling policies, including    changing this policy and adding or removing other policies, is done directly on the Auto    Scaling group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScalingPolicy {
-
-
-    /// 
-    /// Settings for a target-based scaling policy applied to Auto Scaling group.    These settings are used to create a target-based policy that tracks the GameLift    FleetIQ metric PercentUtilizedGameServers and specifies a target value    for the metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: TargetTrackingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetTrackingConfiguration")]
-    pub target_tracking_configuration: TargetTrackingConfiguration,
 
 
     /// 
@@ -239,7 +419,21 @@ pub struct AutoScalingPolicy {
     #[serde(rename = "EstimatedInstanceWarmup")]
     pub estimated_instance_warmup: Option<f64>,
 
+
+    /// 
+    /// Settings for a target-based scaling policy applied to Auto Scaling group.    These settings are used to create a target-based policy that tracks the GameLift    FleetIQ metric PercentUtilizedGameServers and specifies a target value    for the metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: TargetTrackingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetTrackingConfiguration")]
+    pub target_tracking_configuration: TargetTrackingConfiguration,
+
 }
+
+
 
 
 /// This data type is used with the Amazon GameLift FleetIQ and game server groups.
@@ -278,125 +472,371 @@ pub struct InstanceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: InstanceDefinitionInstanceTypeEnum,
 
 }
 
 
-/// This data type is used with the GameLift FleetIQ and game server groups.
-///
-/// An Amazon EC2 launch template that contains configuration settings and game server code to    be deployed to all instances in a game server group. The launch template is specified    when creating a new game server group with GameServerGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LaunchTemplate {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum InstanceDefinitionInstanceTypeEnum {
 
+    /// c4.2xlarge
+    #[serde(rename = "c4.2xlarge")]
+    C42xlarge,
 
-    /// 
-    /// A unique identifier for an existing Amazon EC2 launch template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateId")]
-    pub launch_template_id: Option<String>,
+    /// c4.4xlarge
+    #[serde(rename = "c4.4xlarge")]
+    C44xlarge,
 
+    /// c4.8xlarge
+    #[serde(rename = "c4.8xlarge")]
+    C48xlarge,
 
-    /// 
-    /// The version of the Amazon EC2 launch template to use. If no version is specified, the       default version will be used. With Amazon EC2, you can specify a default version for a launch       template. If none is set, the default is the first version created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
+    /// c4.large
+    #[serde(rename = "c4.large")]
+    C4large,
 
+    /// c4.xlarge
+    #[serde(rename = "c4.xlarge")]
+    C4xlarge,
 
-    /// 
-    /// A readable identifier for an existing Amazon EC2 launch template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [a-zA-Z0-9\(\)\.\-/_]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateName")]
-    pub launch_template_name: Option<String>,
+    /// c5.12xlarge
+    #[serde(rename = "c5.12xlarge")]
+    C512xlarge,
+
+    /// c5.18xlarge
+    #[serde(rename = "c5.18xlarge")]
+    C518xlarge,
+
+    /// c5.24xlarge
+    #[serde(rename = "c5.24xlarge")]
+    C524xlarge,
+
+    /// c5.2xlarge
+    #[serde(rename = "c5.2xlarge")]
+    C52xlarge,
+
+    /// c5.4xlarge
+    #[serde(rename = "c5.4xlarge")]
+    C54xlarge,
+
+    /// c5.9xlarge
+    #[serde(rename = "c5.9xlarge")]
+    C59xlarge,
+
+    /// c5.large
+    #[serde(rename = "c5.large")]
+    C5large,
+
+    /// c5.xlarge
+    #[serde(rename = "c5.xlarge")]
+    C5xlarge,
+
+    /// c5a.12xlarge
+    #[serde(rename = "c5a.12xlarge")]
+    C5a12xlarge,
+
+    /// c5a.16xlarge
+    #[serde(rename = "c5a.16xlarge")]
+    C5a16xlarge,
+
+    /// c5a.24xlarge
+    #[serde(rename = "c5a.24xlarge")]
+    C5a24xlarge,
+
+    /// c5a.2xlarge
+    #[serde(rename = "c5a.2xlarge")]
+    C5a2xlarge,
+
+    /// c5a.4xlarge
+    #[serde(rename = "c5a.4xlarge")]
+    C5a4xlarge,
+
+    /// c5a.8xlarge
+    #[serde(rename = "c5a.8xlarge")]
+    C5a8xlarge,
+
+    /// c5a.large
+    #[serde(rename = "c5a.large")]
+    C5alarge,
+
+    /// c5a.xlarge
+    #[serde(rename = "c5a.xlarge")]
+    C5axlarge,
+
+    /// c6g.12xlarge
+    #[serde(rename = "c6g.12xlarge")]
+    C6g12xlarge,
+
+    /// c6g.16xlarge
+    #[serde(rename = "c6g.16xlarge")]
+    C6g16xlarge,
+
+    /// c6g.2xlarge
+    #[serde(rename = "c6g.2xlarge")]
+    C6g2xlarge,
+
+    /// c6g.4xlarge
+    #[serde(rename = "c6g.4xlarge")]
+    C6g4xlarge,
+
+    /// c6g.8xlarge
+    #[serde(rename = "c6g.8xlarge")]
+    C6g8xlarge,
+
+    /// c6g.large
+    #[serde(rename = "c6g.large")]
+    C6glarge,
+
+    /// c6g.medium
+    #[serde(rename = "c6g.medium")]
+    C6gmedium,
+
+    /// c6g.xlarge
+    #[serde(rename = "c6g.xlarge")]
+    C6gxlarge,
+
+    /// m4.10xlarge
+    #[serde(rename = "m4.10xlarge")]
+    M410xlarge,
+
+    /// m4.2xlarge
+    #[serde(rename = "m4.2xlarge")]
+    M42xlarge,
+
+    /// m4.4xlarge
+    #[serde(rename = "m4.4xlarge")]
+    M44xlarge,
+
+    /// m4.large
+    #[serde(rename = "m4.large")]
+    M4large,
+
+    /// m4.xlarge
+    #[serde(rename = "m4.xlarge")]
+    M4xlarge,
+
+    /// m5.12xlarge
+    #[serde(rename = "m5.12xlarge")]
+    M512xlarge,
+
+    /// m5.16xlarge
+    #[serde(rename = "m5.16xlarge")]
+    M516xlarge,
+
+    /// m5.24xlarge
+    #[serde(rename = "m5.24xlarge")]
+    M524xlarge,
+
+    /// m5.2xlarge
+    #[serde(rename = "m5.2xlarge")]
+    M52xlarge,
+
+    /// m5.4xlarge
+    #[serde(rename = "m5.4xlarge")]
+    M54xlarge,
+
+    /// m5.8xlarge
+    #[serde(rename = "m5.8xlarge")]
+    M58xlarge,
+
+    /// m5.large
+    #[serde(rename = "m5.large")]
+    M5large,
+
+    /// m5.xlarge
+    #[serde(rename = "m5.xlarge")]
+    M5xlarge,
+
+    /// m5a.12xlarge
+    #[serde(rename = "m5a.12xlarge")]
+    M5a12xlarge,
+
+    /// m5a.16xlarge
+    #[serde(rename = "m5a.16xlarge")]
+    M5a16xlarge,
+
+    /// m5a.24xlarge
+    #[serde(rename = "m5a.24xlarge")]
+    M5a24xlarge,
+
+    /// m5a.2xlarge
+    #[serde(rename = "m5a.2xlarge")]
+    M5a2xlarge,
+
+    /// m5a.4xlarge
+    #[serde(rename = "m5a.4xlarge")]
+    M5a4xlarge,
+
+    /// m5a.8xlarge
+    #[serde(rename = "m5a.8xlarge")]
+    M5a8xlarge,
+
+    /// m5a.large
+    #[serde(rename = "m5a.large")]
+    M5alarge,
+
+    /// m5a.xlarge
+    #[serde(rename = "m5a.xlarge")]
+    M5axlarge,
+
+    /// m6g.12xlarge
+    #[serde(rename = "m6g.12xlarge")]
+    M6g12xlarge,
+
+    /// m6g.16xlarge
+    #[serde(rename = "m6g.16xlarge")]
+    M6g16xlarge,
+
+    /// m6g.2xlarge
+    #[serde(rename = "m6g.2xlarge")]
+    M6g2xlarge,
+
+    /// m6g.4xlarge
+    #[serde(rename = "m6g.4xlarge")]
+    M6g4xlarge,
+
+    /// m6g.8xlarge
+    #[serde(rename = "m6g.8xlarge")]
+    M6g8xlarge,
+
+    /// m6g.large
+    #[serde(rename = "m6g.large")]
+    M6glarge,
+
+    /// m6g.medium
+    #[serde(rename = "m6g.medium")]
+    M6gmedium,
+
+    /// m6g.xlarge
+    #[serde(rename = "m6g.xlarge")]
+    M6gxlarge,
+
+    /// r4.16xlarge
+    #[serde(rename = "r4.16xlarge")]
+    R416xlarge,
+
+    /// r4.2xlarge
+    #[serde(rename = "r4.2xlarge")]
+    R42xlarge,
+
+    /// r4.4xlarge
+    #[serde(rename = "r4.4xlarge")]
+    R44xlarge,
+
+    /// r4.8xlarge
+    #[serde(rename = "r4.8xlarge")]
+    R48xlarge,
+
+    /// r4.large
+    #[serde(rename = "r4.large")]
+    R4large,
+
+    /// r4.xlarge
+    #[serde(rename = "r4.xlarge")]
+    R4xlarge,
+
+    /// r5.12xlarge
+    #[serde(rename = "r5.12xlarge")]
+    R512xlarge,
+
+    /// r5.16xlarge
+    #[serde(rename = "r5.16xlarge")]
+    R516xlarge,
+
+    /// r5.24xlarge
+    #[serde(rename = "r5.24xlarge")]
+    R524xlarge,
+
+    /// r5.2xlarge
+    #[serde(rename = "r5.2xlarge")]
+    R52xlarge,
+
+    /// r5.4xlarge
+    #[serde(rename = "r5.4xlarge")]
+    R54xlarge,
+
+    /// r5.8xlarge
+    #[serde(rename = "r5.8xlarge")]
+    R58xlarge,
+
+    /// r5.large
+    #[serde(rename = "r5.large")]
+    R5large,
+
+    /// r5.xlarge
+    #[serde(rename = "r5.xlarge")]
+    R5xlarge,
+
+    /// r5a.12xlarge
+    #[serde(rename = "r5a.12xlarge")]
+    R5a12xlarge,
+
+    /// r5a.16xlarge
+    #[serde(rename = "r5a.16xlarge")]
+    R5a16xlarge,
+
+    /// r5a.24xlarge
+    #[serde(rename = "r5a.24xlarge")]
+    R5a24xlarge,
+
+    /// r5a.2xlarge
+    #[serde(rename = "r5a.2xlarge")]
+    R5a2xlarge,
+
+    /// r5a.4xlarge
+    #[serde(rename = "r5a.4xlarge")]
+    R5a4xlarge,
+
+    /// r5a.8xlarge
+    #[serde(rename = "r5a.8xlarge")]
+    R5a8xlarge,
+
+    /// r5a.large
+    #[serde(rename = "r5a.large")]
+    R5alarge,
+
+    /// r5a.xlarge
+    #[serde(rename = "r5a.xlarge")]
+    R5axlarge,
+
+    /// r6g.12xlarge
+    #[serde(rename = "r6g.12xlarge")]
+    R6g12xlarge,
+
+    /// r6g.16xlarge
+    #[serde(rename = "r6g.16xlarge")]
+    R6g16xlarge,
+
+    /// r6g.2xlarge
+    #[serde(rename = "r6g.2xlarge")]
+    R6g2xlarge,
+
+    /// r6g.4xlarge
+    #[serde(rename = "r6g.4xlarge")]
+    R6g4xlarge,
+
+    /// r6g.8xlarge
+    #[serde(rename = "r6g.8xlarge")]
+    R6g8xlarge,
+
+    /// r6g.large
+    #[serde(rename = "r6g.large")]
+    R6glarge,
+
+    /// r6g.medium
+    #[serde(rename = "r6g.medium")]
+    R6gmedium,
+
+    /// r6g.xlarge
+    #[serde(rename = "r6g.xlarge")]
+    R6gxlarge,
 
 }
 
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
+impl Default for InstanceDefinitionInstanceTypeEnum {
+    fn default() -> Self {
+        InstanceDefinitionInstanceTypeEnum::C42xlarge
+    }
 }
 
-
-/// This data type is used with the Amazon GameLift FleetIQ and game server groups.
-///
-/// Settings for a target-based scaling policy as part of a GameServerGroupAutoScalingPolicy.    These settings are used to    create a target-based policy that tracks the GameLift FleetIQ metric    "PercentUtilizedGameServers" and specifies a target value for the    metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetTrackingConfiguration {
-
-
-    /// 
-    /// Desired value to use with a game server group target-based scaling policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetValue")]
-    pub target_value: f64,
-
-}

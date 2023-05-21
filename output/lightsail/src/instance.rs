@@ -6,34 +6,6 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The name of the key pair to use for the instance.
-    /// 
-    /// If no key pair name is specified, the Regional Lightsail default key     pair is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KeyPairName")]
-    pub key_pair_name: Option<String>,
-
-
-    /// 
-    /// The status code and the state (for example, running) of the     instance.
-    /// 
-    /// NoteThe State property is read-only and should not be specified in a create       instance or update instance request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: State
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "State")]
-    pub state: Option<State>,
-
-
-    /// 
     /// The Availability Zone for the instance.
     /// 
     /// Required: No
@@ -46,45 +18,17 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The public ports and the monthly amount of data transfer allocated for the     instance.
+    /// The name of the instance.
     /// 
-    /// Required: No
-    ///
-    /// Type: Networking
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Networking")]
-    pub networking: Option<Networking>,
-
-
-    /// 
-    /// An array of add-ons for the instance.
-    /// 
-    /// NoteIf the instance has an add-on enabled when performing a delete instance request, the       add-on is automatically disabled before the instance is deleted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AddOn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AddOns")]
-    pub add_ons: Option<Vec<AddOn>>,
-
-
-    /// 
-    /// The optional launch script for the instance.
-    /// 
-    /// Specify a launch script to configure an instance with additional user data. For example,     you might want to specify apt-get -y update as a launch script.
-    /// 
-    /// NoteDepending on the blueprint of your instance, the command to get software on your       instance varies. Amazon Linux and CentOS use yum, Debian and Ubuntu use        apt-get, and FreeBSD uses pkg.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserData")]
-    pub user_data: Option<String>,
+    /// Pattern: \w[\w\-]*\w
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceName")]
+    pub instance_name: String,
 
 
     /// 
@@ -102,15 +46,17 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The blueprint ID for the instance (for example, os_amlinux_2016_03).
+    /// An array of add-ons for the instance.
     /// 
-    /// Required: Yes
+    /// NoteIf the instance has an add-on enabled when performing a delete instance request, the       add-on is automatically disabled before the instance is deleted.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of AddOn
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "BlueprintId")]
-    pub blueprint_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AddOns")]
+    pub add_ons: Option<Vec<AddOn>>,
 
 
     /// 
@@ -142,6 +88,32 @@ pub struct CfnInstance {
 
 
     /// 
+    /// The status code and the state (for example, running) of the     instance.
+    /// 
+    /// NoteThe State property is read-only and should not be specified in a create       instance or update instance request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: State
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "State")]
+    pub state: Option<State>,
+
+
+    /// 
+    /// The blueprint ID for the instance (for example, os_amlinux_2016_03).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "BlueprintId")]
+    pub blueprint_id: String,
+
+
+    /// 
     /// The location for the instance, such as the AWS Region and Availability     Zone.
     /// 
     /// NoteThe Location property is read-only and should not be specified in a       create instance or update instance request.
@@ -156,19 +128,49 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The name of the instance.
+    /// The public ports and the monthly amount of data transfer allocated for the     instance.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Networking
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Networking")]
+    pub networking: Option<Networking>,
+
+
+    /// 
+    /// The optional launch script for the instance.
+    /// 
+    /// Specify a launch script to configure an instance with additional user data. For example,     you might want to specify apt-get -y update as a launch script.
+    /// 
+    /// NoteDepending on the blueprint of your instance, the command to get software on your       instance varies. Amazon Linux and CentOS use yum, Debian and Ubuntu use        apt-get, and FreeBSD uses pkg.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: \w[\w\-]*\w
+    /// Update requires: No interruption
+    #[serde(rename = "UserData")]
+    pub user_data: Option<String>,
+
+
+    /// 
+    /// The name of the key pair to use for the instance.
+    /// 
+    /// If no key pair name is specified, the Regional Lightsail default key     pair is used.
+    /// 
+    /// Required: No
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceName")]
-    pub instance_name: String,
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyPairName")]
+    pub key_pair_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnInstance {
     fn type_string() -> &'static str {
@@ -178,177 +180,6 @@ impl cfn_resources::CfnResource for CfnInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Hardware is a property of the AWS::Lightsail::Instance resource. It describes the hardware properties for the     instance, such as the vCPU count, attached disks, and amount of RAM.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Hardware {
-
-
-    /// 
-    /// The amount of RAM in GB on the instance (for example, 1.0).
-    /// 
-    /// NoteThe RamSizeInGb property is read-only and should not be specified in a       create instance or update instance request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "RamSizeInGb")]
-    pub ram_size_in_gb: Option<i64>,
-
-
-    /// 
-    /// The number of vCPUs the instance has.
-    /// 
-    /// NoteThe CpuCount property is read-only and should not be specified in a       create instance or update instance request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "CpuCount")]
-    pub cpu_count: Option<i64>,
-
-
-    /// 
-    /// The disks attached to the instance.
-    /// 
-    /// The instance restarts when performing an attach disk or detach disk request. This resets     the public IP address of your instance if a static IP isn't attached to it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Disk
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Disks")]
-    pub disks: Option<Vec<Disk>>,
-
-}
-
-
-/// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoSnapshotAddOn {
-
-
-    /// 
-    /// The daily time when an automatic snapshot will be created.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be in HH:00 format, and in an hourly increment.            Specified in Coordinated Universal Time (UTC).            The snapshot will be automatically created between the time specified and up to 45        minutes after.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotTimeOfDay")]
-    pub snapshot_time_of_day: Option<String>,
-
-}
-
-
-/// MonthlyTransfer is a property of the Networking property. It describes the amount of allocated monthly data transfer     (in GB) for an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MonthlyTransfer {
-
-
-    /// 
-    /// The amount of allocated monthly data transfer (in GB) for an instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GbPerMonthAllocated")]
-    pub gb_per_month_allocated: Option<String>,
-
-}
-
-
-/// AddOn is a property of the AWS::Lightsail::Instance resource. It describes the add-ons for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AddOn {
-
-
-    /// 
-    /// The add-on type (for example, AutoSnapshot).
-    /// 
-    /// NoteAutoSnapshot is the only add-on that can be enabled for an       instance.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AddOnType")]
-    pub add_on_type: String,
-
-
-    /// 
-    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoSnapshotAddOn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoSnapshotAddOnRequest")]
-    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
-
-
-    /// 
-    /// The status of the add-on.
-    /// 
-    /// Valid Values: Enabled | Disabled
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-}
-
-
-/// Networking is a property of the AWS::Lightsail::Instance resource. It describes the public ports and the     monthly amount of data transfer allocated for the instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Networking {
-
-
-    /// 
-    /// An array of ports to open on the instance.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Port
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ports")]
-    pub ports: Vec<Port>,
-
-
-    /// 
-    /// The monthly amount of data transfer, in GB, allocated for the instance
-    /// 
-    /// Required: No
-    ///
-    /// Type: MonthlyTransfer
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "MonthlyTransfer")]
-    pub monthly_transfer: Option<MonthlyTransfer>,
-
 }
 
 
@@ -383,40 +214,23 @@ pub struct State {
 }
 
 
-/// Location is a property of the AWS::Lightsail::Instance resource. It describes the location for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Location {
-
-
-    /// 
-    /// The name of the AWS Region for the instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegionName")]
-    pub region_name: Option<String>,
-
-
-    /// 
-    /// The Availability Zone for the instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-}
 
 
 /// Disk is a property of the Hardware property. It describes a disk attached to an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Disk {
+
+
+    /// 
+    /// The resources to which the disk is attached.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "AttachedTo")]
+    pub attached_to: Option<String>,
 
 
     /// 
@@ -429,6 +243,30 @@ pub struct Disk {
     /// Update requires: Updates are not supported.
     #[serde(rename = "IOPS")]
     pub iops: Option<i64>,
+
+
+    /// 
+    /// A Boolean value indicating whether this disk is a system disk (has an operating system     loaded on it).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "IsSystemDisk")]
+    pub is_system_disk: Option<bool>,
+
+
+    /// 
+    /// The size of the disk in GB.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "SizeInGb")]
+    pub size_in_gb: Option<String>,
 
 
     /// 
@@ -458,30 +296,6 @@ pub struct Disk {
 
 
     /// 
-    /// The size of the disk in GB.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "SizeInGb")]
-    pub size_in_gb: Option<String>,
-
-
-    /// 
-    /// A Boolean value indicating whether this disk is a system disk (has an operating system     loaded on it).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "IsSystemDisk")]
-    pub is_system_disk: Option<bool>,
-
-
-    /// 
     /// The disk path.
     /// 
     /// Required: Yes
@@ -492,38 +306,132 @@ pub struct Disk {
     #[serde(rename = "Path")]
     pub path: String,
 
+}
+
+
+
+
+/// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for an     instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoSnapshotAddOn {
+
 
     /// 
-    /// The resources to which the disk is attached.
+    /// The daily time when an automatic snapshot will be created.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be in HH:00 format, and in an hourly increment.            Specified in Coordinated Universal Time (UTC).            The snapshot will be automatically created between the time specified and up to 45        minutes after.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "AttachedTo")]
-    pub attached_to: Option<String>,
+    /// Pattern: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotTimeOfDay")]
+    pub snapshot_time_of_day: Option<String>,
 
 }
 
 
-/// Port is a property of the Networking property. It describes information about ports for an     instance.
+
+
+/// MonthlyTransfer is a property of the Networking property. It describes the amount of allocated monthly data transfer     (in GB) for an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Port {
+pub struct MonthlyTransfer {
 
 
     /// 
-    /// The access direction (inbound or outbound).
-    /// 
-    /// NoteLightsail currently supports only inbound access       direction.
+    /// The amount of allocated monthly data transfer (in GB) for an instance.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccessDirection")]
-    pub access_direction: Option<String>,
+    #[serde(rename = "GbPerMonthAllocated")]
+    pub gb_per_month_allocated: Option<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Location is a property of the AWS::Lightsail::Instance resource. It describes the location for an     instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Location {
+
+
+    /// 
+    /// The Availability Zone for the instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
+    /// The name of the AWS Region for the instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegionName")]
+    pub region_name: Option<String>,
+
+}
+
+
+
+
+/// Port is a property of the Networking property. It describes information about ports for an     instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Port {
 
 
     /// 
@@ -543,27 +451,21 @@ pub struct Port {
 
 
     /// 
-    /// The common name of the port information.
+    /// The IPv4 address, or range of IPv4 addresses (in CIDR notation) that are allowed to     connect to an instance through the ports, and the protocol.
+    /// 
+    /// NoteThe ipv6Cidrs parameter lists the IPv6 addresses that are allowed to       connect to an instance.
+    /// 
+    /// Examples:
+    /// 
+    /// To allow the IP address 192.0.2.44, specify 192.0.2.44        or 192.0.2.44/32.            To allow the IP addresses 192.0.2.0 to 192.0.2.255,        specify 192.0.2.0/24.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CommonName")]
-    pub common_name: Option<String>,
-
-
-    /// 
-    /// The location from which access is allowed. For example, Anywhere       (0.0.0.0/0), or Custom if a specific IP address or range of IP     addresses is allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessFrom")]
-    pub access_from: Option<String>,
+    #[serde(rename = "Cidrs")]
+    pub cidrs: Option<Vec<String>>,
 
 
     /// 
@@ -583,6 +485,18 @@ pub struct Port {
 
 
     /// 
+    /// The common name of the port information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CommonName")]
+    pub common_name: Option<String>,
+
+
+    /// 
     /// The type of access (Public or Private).
     /// 
     /// Required: No
@@ -595,21 +509,17 @@ pub struct Port {
 
 
     /// 
-    /// The IPv4 address, or range of IPv4 addresses (in CIDR notation) that are allowed to     connect to an instance through the ports, and the protocol.
+    /// The access direction (inbound or outbound).
     /// 
-    /// NoteThe ipv6Cidrs parameter lists the IPv6 addresses that are allowed to       connect to an instance.
-    /// 
-    /// Examples:
-    /// 
-    /// To allow the IP address 192.0.2.44, specify 192.0.2.44        or 192.0.2.44/32.            To allow the IP addresses 192.0.2.0 to 192.0.2.255,        specify 192.0.2.0/24.
+    /// NoteLightsail currently supports only inbound access       direction.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Cidrs")]
-    pub cidrs: Option<Vec<String>>,
+    #[serde(rename = "AccessDirection")]
+    pub access_direction: Option<String>,
 
 
     /// 
@@ -643,6 +553,18 @@ pub struct Port {
 
 
     /// 
+    /// The location from which access is allowed. For example, Anywhere       (0.0.0.0/0), or Custom if a specific IP address or range of IP     addresses is allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessFrom")]
+    pub access_from: Option<String>,
+
+
+    /// 
     /// The IPv6 address, or range of IPv6 addresses (in CIDR notation) that are allowed to     connect to an instance through the ports, and the protocol. Only devices with an IPv6     address can connect to an instance through IPv6; otherwise, IPv4 should be used.
     /// 
     /// NoteThe cidrs parameter lists the IPv4 addresses that are allowed to connect       to an instance.
@@ -658,36 +580,155 @@ pub struct Port {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+
+
+/// Hardware is a property of the AWS::Lightsail::Instance resource. It describes the hardware properties for the     instance, such as the vCPU count, attached disks, and amount of RAM.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct Hardware {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The disks attached to the instance.
     /// 
-    /// Required: Yes
+    /// The instance restarts when performing an attach disk or detach disk request. This resets     the public IP address of your instance if a static IP isn't attached to it.
     /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Required: No
+    ///
+    /// Type: List of Disk
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "Disks")]
+    pub disks: Option<Vec<Disk>>,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The number of vCPUs the instance has.
     /// 
-    /// Required: Yes
+    /// NoteThe CpuCount property is read-only and should not be specified in a       create instance or update instance request.
     /// 
-    /// Type: String
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "CpuCount")]
+    pub cpu_count: Option<i64>,
+
+
     /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// The amount of RAM in GB on the instance (for example, 1.0).
+    /// 
+    /// NoteThe RamSizeInGb property is read-only and should not be specified in a       create instance or update instance request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RamSizeInGb")]
+    pub ram_size_in_gb: Option<i64>,
 
 }
+
+
+
+
+/// AddOn is a property of the AWS::Lightsail::Instance resource. It describes the add-ons for an     instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AddOn {
+
+
+    /// 
+    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoSnapshotAddOn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoSnapshotAddOnRequest")]
+    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
+
+
+    /// 
+    /// The add-on type (for example, AutoSnapshot).
+    /// 
+    /// NoteAutoSnapshot is the only add-on that can be enabled for an       instance.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddOnType")]
+    pub add_on_type: String,
+
+
+    /// 
+    /// The status of the add-on.
+    /// 
+    /// Valid Values: Enabled | Disabled
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<AddOnStatusEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AddOnStatusEnum {
+
+    /// Enabled
+    #[serde(rename = "Enabled")]
+    Enabled,
+
+    /// Disabled
+    #[serde(rename = "Disabled")]
+    Disabled,
+
+}
+
+impl Default for AddOnStatusEnum {
+    fn default() -> Self {
+        AddOnStatusEnum::Enabled
+    }
+}
+
+
+
+/// Networking is a property of the AWS::Lightsail::Instance resource. It describes the public ports and the     monthly amount of data transfer allocated for the instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Networking {
+
+
+    /// 
+    /// An array of ports to open on the instance.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Port
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ports")]
+    pub ports: Vec<Port>,
+
+
+    /// 
+    /// The monthly amount of data transfer, in GB, allocated for the instance
+    /// 
+    /// Required: No
+    ///
+    /// Type: MonthlyTransfer
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "MonthlyTransfer")]
+    pub monthly_transfer: Option<MonthlyTransfer>,
+
+}
+
+

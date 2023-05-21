@@ -34,6 +34,20 @@ pub struct CfnScript {
 
 
     /// 
+    /// A list of labels to assign to the new script resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The version that is associated with a build or script. Version strings do not need to    be unique.
     /// 
     /// Required: No
@@ -48,21 +62,9 @@ pub struct CfnScript {
     #[serde(rename = "Version")]
     pub version: Option<String>,
 
-
-    /// 
-    /// A list of labels to assign to the new script resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnScript {
     fn type_string() -> &'static str {
@@ -73,6 +75,73 @@ impl cfn_resources::CfnResource for CfnScript {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The location in Amazon S3 where build or script files can be stored for access by    Amazon GameLift.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Location {
+
+
+    /// 
+    /// The name of the zip file that contains the build files or script files.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift uses       this information when retrieving files from an S3 bucket that you own. Use this       parameter to specify a specific version of the file. If not set, the latest version of       the file is retrieved.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObjectVersion")]
+    pub object_version: Option<String>,
+
+
+    /// 
+    /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
+    /// 
+    /// NoteAmazon GameLift doesn't support uploading from Amazon S3 buckets with names that contain a dot         (.).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access the S3 bucket.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -110,66 +179,3 @@ pub struct Tag {
 }
 
 
-/// The location in Amazon S3 where build or script files can be stored for access by    Amazon GameLift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Location {
-
-
-    /// 
-    /// The name of the zip file that contains the build files or script files.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
-    /// 
-    /// NoteAmazon GameLift doesn't support uploading from Amazon S3 buckets with names that contain a dot         (.).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access the S3 bucket.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift uses       this information when retrieving files from an S3 bucket that you own. Use this       parameter to specify a specific version of the file. If not set, the latest version of       the file is retrieved.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ObjectVersion")]
-    pub object_version: Option<String>,
-
-}

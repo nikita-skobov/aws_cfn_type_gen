@@ -6,18 +6,6 @@ pub struct CfnApplicationCloudWatchLoggingOption {
 
 
     /// 
-    /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CloudWatchLoggingOption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLoggingOption")]
-    pub cloud_watch_logging_option: CloudWatchLoggingOption,
-
-
-    /// 
     /// The name of the application.
     /// 
     /// Required: Yes
@@ -34,7 +22,21 @@ pub struct CfnApplicationCloudWatchLoggingOption {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
+
+    /// 
+    /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CloudWatchLoggingOption
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLoggingOption")]
+    pub cloud_watch_logging_option: CloudWatchLoggingOption,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
     fn type_string() -> &'static str {
@@ -70,3 +72,5 @@ pub struct CloudWatchLoggingOption {
     pub log_stream_arn: String,
 
 }
+
+

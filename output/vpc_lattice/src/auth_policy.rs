@@ -6,18 +6,6 @@ pub struct CfnAuthPolicy {
 
 
     /// 
-    /// The ID or Amazon Resource Name (ARN) of the service network or service for which the policy  is created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceIdentifier")]
-    pub resource_identifier: String,
-
-
-    /// 
     /// The auth policy.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnAuthPolicy {
     #[serde(rename = "Policy")]
     pub policy: serde_json::Value,
 
+
+    /// 
+    /// The ID or Amazon Resource Name (ARN) of the service network or service for which the policy  is created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceIdentifier")]
+    pub resource_identifier: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAuthPolicy {
     fn type_string() -> &'static str {

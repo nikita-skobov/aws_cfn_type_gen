@@ -6,17 +6,45 @@ pub struct CfnBranch {
 
 
     /// 
-    /// Enables performance mode for the branch.
+    /// The build specification (build spec) for the branch.
     /// 
-    /// Performance mode optimizes for faster hosting performance by keeping content cached at       the edge for a longer interval. When performance mode is enabled, hosting configuration       or code changes can take up to 10 minutes to roll out.
+    /// Length Constraints: Minimum length of 1. Maximum length of    25000.
+    /// 
+    /// Pattern: (?s).+
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnablePerformanceMode")]
-    pub enable_performance_mode: Option<bool>,
+    #[serde(rename = "BuildSpec")]
+    pub build_spec: Option<String>,
+
+
+    /// 
+    /// Describes the current stage for the branch.
+    /// 
+    /// Valid Values: PRODUCTION | BETA | DEVELOPMENT | EXPERIMENTAL |    PULL_REQUEST
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Stage")]
+    pub stage: Option<BranchStageEnum>,
+
+
+    /// 
+    /// The basic authorization credentials for a branch of an Amplify app. You must       base64-encode the authorization credentials and provide them in the format         user:password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BasicAuthConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BasicAuthConfig")]
+    pub basic_auth_config: Option<BasicAuthConfig>,
 
 
     /// 
@@ -33,6 +61,44 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The name for the branch.
+    /// 
+    /// Length Constraints: Minimum length of 1. Maximum length of    255.
+    /// 
+    /// Pattern: (?s).+
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BranchName")]
+    pub branch_name: String,
+
+
+    /// 
+    /// If pull request previews are enabled for this branch, you can use this property to    specify a dedicated backend environment for your previews. For example, you could specify an    environment named prod, test, or dev that you    initialized with the Amplify CLI and mapped to this branch.
+    /// 
+    /// To enable pull request previews, set the EnablePullRequestPreview property    to true.
+    /// 
+    /// If you don't specify an environment, Amplify Hosting provides backend support for    each preview by automatically provisioning a temporary backend environment. Amplify Hosting    deletes this environment when the pull request is closed.
+    /// 
+    /// For more information about creating backend environments, see Feature Branch     Deployments and Team Workflows in the AWS Amplify Hosting     User Guide.
+    /// 
+    /// Length Constraints: Maximum length of 20.
+    /// 
+    /// Pattern: (?s).*
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PullRequestEnvironmentName")]
+    pub pull_request_environment_name: Option<String>,
 
 
     /// 
@@ -64,70 +130,6 @@ pub struct CfnBranch {
 
 
     /// 
-    /// The basic authorization credentials for a branch of an Amplify app. You must       base64-encode the authorization credentials and provide them in the format         user:password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BasicAuthConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BasicAuthConfig")]
-    pub basic_auth_config: Option<BasicAuthConfig>,
-
-
-    /// 
-    /// If pull request previews are enabled for this branch, you can use this property to    specify a dedicated backend environment for your previews. For example, you could specify an    environment named prod, test, or dev that you    initialized with the Amplify CLI and mapped to this branch.
-    /// 
-    /// To enable pull request previews, set the EnablePullRequestPreview property    to true.
-    /// 
-    /// If you don't specify an environment, Amplify Hosting provides backend support for    each preview by automatically provisioning a temporary backend environment. Amplify Hosting    deletes this environment when the pull request is closed.
-    /// 
-    /// For more information about creating backend environments, see Feature Branch     Deployments and Team Workflows in the AWS Amplify Hosting     User Guide.
-    /// 
-    /// Length Constraints: Maximum length of 20.
-    /// 
-    /// Pattern: (?s).*
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PullRequestEnvironmentName")]
-    pub pull_request_environment_name: Option<String>,
-
-
-    /// 
-    /// Describes the current stage for the branch.
-    /// 
-    /// Valid Values: PRODUCTION | BETA | DEVELOPMENT | EXPERIMENTAL |    PULL_REQUEST
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Stage")]
-    pub stage: Option<String>,
-
-
-    /// 
-    /// The name for the branch.
-    /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
-    /// Pattern: (?s).+
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BranchName")]
-    pub branch_name: String,
-
-
-    /// 
     /// Specifies whether Amplify Hosting creates a preview for each pull request that is made    for this branch. If this property is enabled, Amplify deploys your app to a unique    preview URL after each pull request is opened. Development and QA teams can use this preview    to test the pull request before it's merged into a production or integration branch.
     /// 
     /// To provide backend support for your preview, Amplify automatically    provisions a temporary backend environment that it deletes when the pull request is closed. If    you want to specify a dedicated backend environment for your previews, use the     PullRequestEnvironmentName property.
@@ -141,22 +143,6 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "EnablePullRequestPreview")]
     pub enable_pull_request_preview: Option<bool>,
-
-
-    /// 
-    /// The build specification (build spec) for the branch.
-    /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of    25000.
-    /// 
-    /// Pattern: (?s).+
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BuildSpec")]
-    pub build_spec: Option<String>,
 
 
     /// 
@@ -194,7 +180,54 @@ pub struct CfnBranch {
     #[serde(rename = "Framework")]
     pub framework: Option<String>,
 
+
+    /// 
+    /// Enables performance mode for the branch.
+    /// 
+    /// Performance mode optimizes for faster hosting performance by keeping content cached at       the edge for a longer interval. When performance mode is enabled, hosting configuration       or code changes can take up to 10 minutes to roll out.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnablePerformanceMode")]
+    pub enable_performance_mode: Option<bool>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BranchStageEnum {
+
+    /// PRODUCTION
+    #[serde(rename = "PRODUCTION")]
+    Production,
+
+    /// BETA
+    #[serde(rename = "BETA")]
+    Beta,
+
+    /// DEVELOPMENT
+    #[serde(rename = "DEVELOPMENT")]
+    Development,
+
+    /// EXPERIMENTAL
+    #[serde(rename = "EXPERIMENTAL")]
+    Experimental,
+
+    /// PULL_REQUEST
+    #[serde(rename = "PULL_REQUEST")]
+    Pullrequest,
+
+}
+
+impl Default for BranchStageEnum {
+    fn default() -> Self {
+        BranchStageEnum::Production
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnBranch {
     fn type_string() -> &'static str {
@@ -205,6 +238,96 @@ impl cfn_resources::CfnResource for CfnBranch {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Use the BasicAuthConfig property type to set password protection for a specific    branch.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BasicAuthConfig {
+
+
+    /// 
+    /// The password for basic authorization.
+    /// 
+    /// Length Constraints: Minimum length of 1. Maximum length of    255.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: String,
+
+
+    /// 
+    /// Enables basic authorization for the branch.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableBasicAuth")]
+    pub enable_basic_auth: Option<bool>,
+
+
+    /// 
+    /// The user name for basic authorization.
+    /// 
+    /// Length Constraints: Minimum length of 1. Maximum length of    255.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: String,
+
+}
+
+
+
+
+/// The EnvironmentVariable property type sets environment variables for a specific branch.    Environment variables are key-value pairs that are available at build time.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EnvironmentVariable {
+
+
+    /// 
+    /// The environment variable name.
+    /// 
+    /// Length Constraints: Maximum length of 255.
+    /// 
+    /// Pattern: (?s).*
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The environment variable value.
+    /// 
+    /// Length Constraints: Maximum length of 5500.
+    /// 
+    /// Pattern: (?s).*
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -242,87 +365,3 @@ pub struct Tag {
 }
 
 
-/// Use the BasicAuthConfig property type to set password protection for a specific    branch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BasicAuthConfig {
-
-
-    /// 
-    /// Enables basic authorization for the branch.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableBasicAuth")]
-    pub enable_basic_auth: Option<bool>,
-
-
-    /// 
-    /// The password for basic authorization.
-    /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: String,
-
-
-    /// 
-    /// The user name for basic authorization.
-    /// 
-    /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: String,
-
-}
-
-
-/// The EnvironmentVariable property type sets environment variables for a specific branch.    Environment variables are key-value pairs that are available at build time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EnvironmentVariable {
-
-
-    /// 
-    /// The environment variable value.
-    /// 
-    /// Length Constraints: Maximum length of 5500.
-    /// 
-    /// Pattern: (?s).*
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The environment variable name.
-    /// 
-    /// Length Constraints: Maximum length of 255.
-    /// 
-    /// Pattern: (?s).*
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}

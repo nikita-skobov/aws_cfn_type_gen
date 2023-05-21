@@ -6,60 +6,6 @@ pub struct CfnHost {
 
 
     /// 
-    /// The instance family supported by the Dedicated Host. For example,       m5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceFamily")]
-    pub instance_family: Option<String>,
-
-
-    /// 
-    /// Indicates whether host maintenance is enabled or disabled for the Dedicated       Host.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: off | on
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostMaintenance")]
-    pub host_maintenance: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS Outpost on which the       Dedicated Host is allocated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OutpostArn")]
-    pub outpost_arn: Option<String>,
-
-
-    /// 
-    /// Indicates whether to enable or disable host recovery for the Dedicated Host. Host       recovery is disabled by default. For more information, see Host recovery       in the Amazon EC2 User Guide.
-    /// 
-    /// Default: off
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: off | on
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostRecovery")]
-    pub host_recovery: Option<String>,
-
-
-    /// 
     /// The Availability Zone in which to allocate the Dedicated Host.
     /// 
     /// Required: Yes
@@ -69,6 +15,18 @@ pub struct CfnHost {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: String,
+
+
+    /// 
+    /// The instance family supported by the Dedicated Host. For example,       m5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceFamily")]
+    pub instance_family: Option<String>,
 
 
     /// 
@@ -96,9 +54,110 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoPlacement")]
-    pub auto_placement: Option<String>,
+    pub auto_placement: Option<HostAutoPlacementEnum>,
+
+
+    /// 
+    /// Indicates whether host maintenance is enabled or disabled for the Dedicated       Host.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: off | on
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostMaintenance")]
+    pub host_maintenance: Option<HostHostMaintenanceEnum>,
+
+
+    /// 
+    /// Indicates whether to enable or disable host recovery for the Dedicated Host. Host       recovery is disabled by default. For more information, see Host recovery       in the Amazon EC2 User Guide.
+    /// 
+    /// Default: off
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: off | on
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostRecovery")]
+    pub host_recovery: Option<HostHostRecoveryEnum>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Outpost on which the       Dedicated Host is allocated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OutpostArn")]
+    pub outpost_arn: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HostHostMaintenanceEnum {
+
+    /// off
+    #[serde(rename = "off")]
+    Off,
+
+    /// on
+    #[serde(rename = "on")]
+    On,
+
+}
+
+impl Default for HostHostMaintenanceEnum {
+    fn default() -> Self {
+        HostHostMaintenanceEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HostHostRecoveryEnum {
+
+    /// off
+    #[serde(rename = "off")]
+    Off,
+
+    /// on
+    #[serde(rename = "on")]
+    On,
+
+}
+
+impl Default for HostHostRecoveryEnum {
+    fn default() -> Self {
+        HostHostRecoveryEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HostAutoPlacementEnum {
+
+    /// off
+    #[serde(rename = "off")]
+    Off,
+
+    /// on
+    #[serde(rename = "on")]
+    On,
+
+}
+
+impl Default for HostAutoPlacementEnum {
+    fn default() -> Self {
+        HostAutoPlacementEnum::Off
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnHost {
     fn type_string() -> &'static str {

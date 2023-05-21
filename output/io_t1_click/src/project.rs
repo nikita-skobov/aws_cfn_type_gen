@@ -6,18 +6,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// The description of the project.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The name of the project from which to obtain information.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
     pub project_name: Option<String>,
+
+
+    /// 
+    /// The description of the project.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -41,6 +41,8 @@ pub struct CfnProject {
     pub placement_template: PlacementTemplate,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string() -> &'static str {
@@ -86,23 +88,13 @@ pub struct DeviceTemplate {
 }
 
 
+
+
 /// In AWS CloudFormation, use the PlacementTemplate property type to define the template for an AWS IoT 1-Click project.
 ///
 /// PlacementTemplate is a property of the AWS::IoT1Click::Project resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PlacementTemplate {
-
-
-    /// 
-    /// The default attributes (key-value pairs) to be applied to all placements using this    template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAttributes")]
-    pub default_attributes: Option<serde_json::Value>,
 
 
     /// 
@@ -116,4 +108,18 @@ pub struct PlacementTemplate {
     #[serde(rename = "DeviceTemplates")]
     pub device_templates: Option<serde_json::Value>,
 
+
+    /// 
+    /// The default attributes (key-value pairs) to be applied to all placements using this    template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultAttributes")]
+    pub default_attributes: Option<serde_json::Value>,
+
 }
+
+

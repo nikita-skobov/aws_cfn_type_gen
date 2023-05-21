@@ -11,17 +11,6 @@ pub struct CfnGroup {
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "IdentityStoreId")]
-    pub identity_store_id: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     pub display_name: String,
@@ -38,7 +27,20 @@ pub struct CfnGroup {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IdentityStoreId")]
+    pub identity_store_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGroup {
     fn type_string() -> &'static str {

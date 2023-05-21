@@ -6,6 +6,29 @@ pub struct CfnMissionProfile {
 
 
     /// 
+    /// Amount of time in seconds prior to contact start that you'd like to receive a CloudWatch Event indicating an upcoming pass.       For more information on CloudWatch Events, see the What Is CloudWatch Events?
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactPrePassDurationSeconds")]
+    pub contact_pre_pass_duration_seconds: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: StreamsKmsKey
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StreamsKmsKey")]
+    pub streams_kms_key: Option<StreamsKmsKey>,
+
+
+    /// 
     /// The name of the mission profile.
     /// 
     /// Required: Yes
@@ -29,17 +52,6 @@ pub struct CfnMissionProfile {
     pub dataflow_edges: Vec<DataflowEdge>,
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: StreamsKmsKey
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StreamsKmsKey")]
-    pub streams_kms_key: Option<StreamsKmsKey>,
-
-
     /// 
     /// The ARN of a tracking config objects that defines how to track the satellite through the sky during a contact.
     /// 
@@ -52,15 +64,16 @@ pub struct CfnMissionProfile {
     pub tracking_config_arn: String,
 
 
-    /// Property description not available.
+    /// 
+    /// Minimum length of a contact in seconds that Ground Station will return when listing contacts.       Ground Station will not return contacts shorter than this duration.
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StreamsKmsRole")]
-    pub streams_kms_role: Option<String>,
+    #[serde(rename = "MinimumViableContactDurationSeconds")]
+    pub minimum_viable_contact_duration_seconds: i64,
 
 
     /// 
@@ -75,16 +88,15 @@ pub struct CfnMissionProfile {
     pub contact_post_pass_duration_seconds: Option<i64>,
 
 
-    /// 
-    /// Amount of time in seconds prior to contact start that you'd like to receive a CloudWatch Event indicating an upcoming pass.       For more information on CloudWatch Events, see the What Is CloudWatch Events?
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ContactPrePassDurationSeconds")]
-    pub contact_pre_pass_duration_seconds: Option<i64>,
+    #[serde(rename = "StreamsKmsRole")]
+    pub streams_kms_role: Option<String>,
 
 
     /// 
@@ -98,19 +110,9 @@ pub struct CfnMissionProfile {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Minimum length of a contact in seconds that Ground Station will return when listing contacts.       Ground Station will not return contacts shorter than this duration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinimumViableContactDurationSeconds")]
-    pub minimum_viable_contact_duration_seconds: i64,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMissionProfile {
     fn type_string() -> &'static str {
@@ -120,66 +122,6 @@ impl cfn_resources::CfnResource for CfnMissionProfile {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// A dataflow edge defines from where and to where data will flow during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataflowEdge {
-
-
-    /// 
-    /// The ARN of the destination for this dataflow edge.       For example, specify the ARN of a dataflow endpoint config for a downlink edge or an antenna uplink config for an uplink edge.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Destination")]
-    pub destination: Option<String>,
-
-
-    /// 
-    /// The ARN of the source for this dataflow edge.       For example, specify the ARN of an antenna downlink config for a downlink edge or a dataflow endpoint config for an uplink edge.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Source")]
-    pub source: Option<String>,
-
-}
-
-
-/// The StreamsKmsKey property type specifies Property description not available. for an AWS::GroundStation::MissionProfile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StreamsKmsKey {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsAliasArn")]
-    pub kms_alias_arn: Option<String>,
-
 }
 
 
@@ -216,3 +158,69 @@ pub struct Tag {
     pub key: String,
 
 }
+
+
+
+
+/// A dataflow edge defines from where and to where data will flow during a contact.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataflowEdge {
+
+
+    /// 
+    /// The ARN of the source for this dataflow edge.       For example, specify the ARN of an antenna downlink config for a downlink edge or a dataflow endpoint config for an uplink edge.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Source")]
+    pub source: Option<String>,
+
+
+    /// 
+    /// The ARN of the destination for this dataflow edge.       For example, specify the ARN of a dataflow endpoint config for a downlink edge or an antenna uplink config for an uplink edge.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Destination")]
+    pub destination: Option<String>,
+
+}
+
+
+
+
+/// The StreamsKmsKey property type specifies Property description not available. for an AWS::GroundStation::MissionProfile.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StreamsKmsKey {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsAliasArn")]
+    pub kms_alias_arn: Option<String>,
+
+}
+
+

@@ -12,36 +12,6 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// A description of the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The parameter objects used with the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ParameterObject
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterObjects")]
-    pub parameter_objects: Vec<ParameterObject>,
-
-
-    /// 
     /// Indicates whether to validate and start the pipeline or stop an active pipeline. By    default, the value is set to true.
     /// 
     /// Required: No
@@ -54,21 +24,15 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// The name of the pipeline.
+    /// The objects that define the pipeline. These objects overwrite the existing pipeline definition. Not all objects, fields, and values    can be updated. For information about restrictions, see    Editing Your Pipeline    in the AWS Data Pipeline Developer Guide.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of PipelineObject
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineObjects")]
+    pub pipeline_objects: Option<Vec<PipelineObject>>,
 
 
     /// 
@@ -96,17 +60,55 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// The objects that define the pipeline. These objects overwrite the existing pipeline definition. Not all objects, fields, and values    can be updated. For information about restrictions, see    Editing Your Pipeline    in the AWS Data Pipeline Developer Guide.
+    /// A description of the pipeline.
     /// 
     /// Required: No
     ///
-    /// Type: List of PipelineObject
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name of the pipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The parameter objects used with the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ParameterObject
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PipelineObjects")]
-    pub pipeline_objects: Option<Vec<PipelineObject>>,
+    #[serde(rename = "ParameterObjects")]
+    pub parameter_objects: Vec<ParameterObject>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string() -> &'static str {
@@ -119,43 +121,42 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 
-/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html
+/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PipelineObject {
+pub struct ParameterAttribute {
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-name
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html#cfn-datapipeline-pipeline-parameterobjects-attribtues-key
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-fields
-    #[serde(rename = "Fields")]
-    pub fields: Vec<Field>,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-id
-    #[serde(rename = "Id")]
-    pub id: String,
-
-}
-
-
-/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ParameterValue {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html#cfn-datapipeline-pipeline-parametervalues-id
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html#cfn-datapipeline-pipeline-parametervalues-stringvalue
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html#cfn-datapipeline-pipeline-parameterobjects-attribtues-stringvalue
     #[serde(rename = "StringValue")]
     pub string_value: String,
 
 }
+
+
+
+
+/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PipelineTag {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html#cfn-datapipeline-pipeline-pipelinetags-value
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html#cfn-datapipeline-pipeline-pipelinetags-key
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects-fields.html
@@ -168,16 +169,18 @@ pub struct Field {
     pub string_value: Option<String>,
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects-fields.html#cfn-datapipeline-pipeline-pipelineobjects-fields-key
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects-fields.html#cfn-datapipeline-pipeline-pipelineobjects-fields-refvalue
     #[serde(rename = "RefValue")]
     pub ref_value: Option<String>,
 
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects-fields.html#cfn-datapipeline-pipeline-pipelineobjects-fields-key
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects.html
@@ -185,47 +188,58 @@ pub struct Field {
 pub struct ParameterObject {
 
 
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects.html#cfn-datapipeline-pipeline-parameterobjects-id
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects.html#cfn-datapipeline-pipeline-parameterobjects-attributes
     #[serde(rename = "Attributes")]
     pub attributes: Vec<ParameterAttribute>,
 
+}
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects.html#cfn-datapipeline-pipeline-parameterobjects-id
+
+
+
+/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PipelineObject {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-id
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-name
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelineobjects.html#cfn-datapipeline-pipeline-pipelineobjects-fields
+    #[serde(rename = "Fields")]
+    pub fields: Vec<Field>,
+
+}
+
+
+
+
+/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ParameterValue {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html#cfn-datapipeline-pipeline-parametervalues-stringvalue
+    #[serde(rename = "StringValue")]
+    pub string_value: String,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parametervalues.html#cfn-datapipeline-pipeline-parametervalues-id
     #[serde(rename = "Id")]
     pub id: String,
 
 }
 
 
-/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ParameterAttribute {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html#cfn-datapipeline-pipeline-parameterobjects-attribtues-stringvalue
-    #[serde(rename = "StringValue")]
-    pub string_value: String,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-parameterobjects-attributes.html#cfn-datapipeline-pipeline-parameterobjects-attribtues-key
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-/// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PipelineTag {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html#cfn-datapipeline-pipeline-pipelinetags-key
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datapipeline-pipeline-pipelinetags.html#cfn-datapipeline-pipeline-pipelinetags-value
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}

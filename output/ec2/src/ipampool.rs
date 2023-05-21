@@ -6,31 +6,17 @@ pub struct CfnIPAMPool {
 
 
     /// 
-    /// The locale of the IPAM pool. In IPAM, the locale is the AWS Region where you want to make an IPAM pool available for allocations. Only resources in the same Region as the locale of the pool can get IP address allocations from the pool. You can only allocate a CIDR for a VPC, for example, from an IPAM pool that shares a locale with the VPC’s Region. Note that once you choose a Locale for a pool, you cannot modify it. If you choose an AWS Region for locale that has not been configured as an operating Region for the IPAM, you'll get an error.
+    /// If selected, IPAM will continuously look for resources within the CIDR range of this pool      and automatically import them as allocations into your IPAM. The CIDRs that will be allocated for     these resources must not already be allocated to other resources in order for the import to succeed. IPAM will import      a CIDR regardless of its compliance with the pool's allocation rules, so a resource might be imported and subsequently      marked as noncompliant. If IPAM discovers multiple CIDRs that overlap, IPAM will import the largest CIDR only. If IPAM      discovers multiple CIDRs with matching CIDRs, IPAM will randomly import one of them only.
+    /// 
+    /// A locale must be set on the pool for this feature to work.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Locale")]
-    pub locale: Option<String>,
-
-
-    /// 
-    /// The default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is 10.0.0.0/8 and      you enter 16 here, new allocations will default to 10.0.0.0/16.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllocationDefaultNetmaskLength")]
-    pub allocation_default_netmask_length: Option<i64>,
+    #[serde(rename = "AutoImport")]
+    pub auto_import: Option<bool>,
 
 
     /// 
@@ -46,6 +32,32 @@ pub struct CfnIPAMPool {
 
 
     /// 
+    /// The locale of the IPAM pool. In IPAM, the locale is the AWS Region where you want to make an IPAM pool available for allocations. Only resources in the same Region as the locale of the pool can get IP address allocations from the pool. You can only allocate a CIDR for a VPC, for example, from an IPAM pool that shares a locale with the VPC’s Region. Note that once you choose a Locale for a pool, you cannot modify it. If you choose an AWS Region for locale that has not been configured as an operating Region for the IPAM, you'll get an error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Locale")]
+    pub locale: Option<String>,
+
+
+    /// 
+    /// Limits which service in AWS that the pool can be used in. "ec2", for example, allows users to use space for Elastic IP addresses and VPCs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ec2
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AwsService")]
+    pub aws_service: Option<IPAMPoolAwsServiceEnum>,
+
+
+    /// 
     /// The description of the IPAM pool.
     /// 
     /// Required: No
@@ -55,20 +67,6 @@ pub struct CfnIPAMPool {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// If selected, IPAM will continuously look for resources within the CIDR range of this pool      and automatically import them as allocations into your IPAM. The CIDRs that will be allocated for     these resources must not already be allocated to other resources in order for the import to succeed. IPAM will import      a CIDR regardless of its compliance with the pool's allocation rules, so a resource might be imported and subsequently      marked as noncompliant. If IPAM discovers multiple CIDRs that overlap, IPAM will import the largest CIDR only. If IPAM      discovers multiple CIDRs with matching CIDRs, IPAM will randomly import one of them only.
-    /// 
-    /// A locale must be set on the pool for this feature to work.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoImport")]
-    pub auto_import: Option<bool>,
 
 
     /// 
@@ -88,6 +86,20 @@ pub struct CfnIPAMPool {
 
 
     /// 
+    /// The address family of the pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipv4 | ipv6
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AddressFamily")]
+    pub address_family: IPAMPoolAddressFamilyEnum,
+
+
+    /// 
     /// Tags that are required for resources that use CIDRs from this IPAM pool. Resources that do not have these tags will not be allowed to allocate space from the pool. If the resources have their tags changed after they have allocated space or if the allocation tagging requirements are changed on the pool, the resource may be marked as noncompliant.
     /// 
     /// Required: No
@@ -97,6 +109,22 @@ pub struct CfnIPAMPool {
     /// Update requires: No interruption
     #[serde(rename = "AllocationResourceTags")]
     pub allocation_resource_tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The maximum netmask length possible for CIDR allocations in this IPAM pool to be compliant. The maximum netmask length must be greater than the minimum netmask length. Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllocationMaxNetmaskLength")]
+    pub allocation_max_netmask_length: Option<i64>,
 
 
     /// 
@@ -110,35 +138,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicIpSource")]
-    pub public_ip_source: Option<String>,
-
-
-    /// 
-    /// The address family of the pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ipv4 | ipv6
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AddressFamily")]
-    pub address_family: String,
-
-
-    /// 
-    /// Limits which service in AWS that the pool can be used in. "ec2", for example, allows users to use space for Elastic IP addresses and VPCs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ec2
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AwsService")]
-    pub aws_service: Option<String>,
+    pub public_ip_source: Option<IPAMPoolPublicIpSourceEnum>,
 
 
     /// 
@@ -166,18 +166,6 @@ pub struct CfnIPAMPool {
 
 
     /// 
-    /// The ID of the scope in which you would like to create the IPAM pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpamScopeId")]
-    pub ipam_scope_id: String,
-
-
-    /// 
     /// Determines if a pool is publicly advertisable. This option is not available for pools with AddressFamily set to ipv4.
     /// 
     /// Required: No
@@ -190,7 +178,7 @@ pub struct CfnIPAMPool {
 
 
     /// 
-    /// The maximum netmask length possible for CIDR allocations in this IPAM pool to be compliant. The maximum netmask length must be greater than the minimum netmask length. Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.
+    /// The default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is 10.0.0.0/8 and      you enter 16 here, new allocations will default to 10.0.0.0/16.
     /// 
     /// Required: No
     ///
@@ -201,10 +189,77 @@ pub struct CfnIPAMPool {
     /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllocationMaxNetmaskLength")]
-    pub allocation_max_netmask_length: Option<i64>,
+    #[serde(rename = "AllocationDefaultNetmaskLength")]
+    pub allocation_default_netmask_length: Option<i64>,
+
+
+    /// 
+    /// The ID of the scope in which you would like to create the IPAM pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpamScopeId")]
+    pub ipam_scope_id: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPAMPoolAddressFamilyEnum {
+
+    /// ipv4
+    #[serde(rename = "ipv4")]
+    Ipv4,
+
+    /// ipv6
+    #[serde(rename = "ipv6")]
+    Ipv6,
+
+}
+
+impl Default for IPAMPoolAddressFamilyEnum {
+    fn default() -> Self {
+        IPAMPoolAddressFamilyEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPAMPoolPublicIpSourceEnum {
+
+    /// amazon
+    #[serde(rename = "amazon")]
+    Amazon,
+
+    /// byoip
+    #[serde(rename = "byoip")]
+    Byoip,
+
+}
+
+impl Default for IPAMPoolPublicIpSourceEnum {
+    fn default() -> Self {
+        IPAMPoolPublicIpSourceEnum::Amazon
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum IPAMPoolAwsServiceEnum {
+
+    /// ec2
+    #[serde(rename = "ec2")]
+    Ec2,
+
+}
+
+impl Default for IPAMPoolAwsServiceEnum {
+    fn default() -> Self {
+        IPAMPoolAwsServiceEnum::Ec2
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnIPAMPool {
     fn type_string() -> &'static str {
@@ -234,6 +289,8 @@ pub struct ProvisionedCidr {
     pub cidr: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -269,3 +326,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

@@ -30,18 +30,6 @@ pub struct CfnGatewayResponse {
 
 
     /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
-
-
-    /// 
     /// The response type of the associated GatewayResponse.
     /// 
     /// Required: Yes
@@ -52,7 +40,19 @@ pub struct CfnGatewayResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResponseType")]
-    pub response_type: String,
+    pub response_type: GatewayResponseResponseTypeEnum,
+
+
+    /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: String,
 
 
     /// 
@@ -67,6 +67,99 @@ pub struct CfnGatewayResponse {
     pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum GatewayResponseResponseTypeEnum {
+
+    /// ACCESS_DENIED
+    #[serde(rename = "ACCESS_DENIED")]
+    Accessdenied,
+
+    /// API_CONFIGURATION_ERROR
+    #[serde(rename = "API_CONFIGURATION_ERROR")]
+    Apiconfigurationerror,
+
+    /// AUTHORIZER_CONFIGURATION_ERROR
+    #[serde(rename = "AUTHORIZER_CONFIGURATION_ERROR")]
+    Authorizerconfigurationerror,
+
+    /// AUTHORIZER_FAILURE
+    #[serde(rename = "AUTHORIZER_FAILURE")]
+    Authorizerfailure,
+
+    /// BAD_REQUEST_BODY
+    #[serde(rename = "BAD_REQUEST_BODY")]
+    Badrequestbody,
+
+    /// BAD_REQUEST_PARAMETERS
+    #[serde(rename = "BAD_REQUEST_PARAMETERS")]
+    Badrequestparameters,
+
+    /// DEFAULT_4XX
+    #[serde(rename = "DEFAULT_4XX")]
+    Default4xx,
+
+    /// DEFAULT_5XX
+    #[serde(rename = "DEFAULT_5XX")]
+    Default5xx,
+
+    /// EXPIRED_TOKEN
+    #[serde(rename = "EXPIRED_TOKEN")]
+    Expiredtoken,
+
+    /// INTEGRATION_FAILURE
+    #[serde(rename = "INTEGRATION_FAILURE")]
+    Integrationfailure,
+
+    /// INTEGRATION_TIMEOUT
+    #[serde(rename = "INTEGRATION_TIMEOUT")]
+    Integrationtimeout,
+
+    /// INVALID_API_KEY
+    #[serde(rename = "INVALID_API_KEY")]
+    Invalidapikey,
+
+    /// INVALID_SIGNATURE
+    #[serde(rename = "INVALID_SIGNATURE")]
+    Invalidsignature,
+
+    /// MISSING_AUTHENTICATION_TOKEN
+    #[serde(rename = "MISSING_AUTHENTICATION_TOKEN")]
+    Missingauthenticationtoken,
+
+    /// QUOTA_EXCEEDED
+    #[serde(rename = "QUOTA_EXCEEDED")]
+    Quotaexceeded,
+
+    /// REQUEST_TOO_LARGE
+    #[serde(rename = "REQUEST_TOO_LARGE")]
+    Requesttoolarge,
+
+    /// RESOURCE_NOT_FOUND
+    #[serde(rename = "RESOURCE_NOT_FOUND")]
+    Resourcenotfound,
+
+    /// THROTTLED
+    #[serde(rename = "THROTTLED")]
+    Throttled,
+
+    /// UNAUTHORIZED
+    #[serde(rename = "UNAUTHORIZED")]
+    Unauthorized,
+
+    /// UNSUPPORTED_MEDIA_TYPE
+    #[serde(rename = "UNSUPPORTED_MEDIA_TYPE")]
+    Unsupportedmediatype,
+
+}
+
+impl Default for GatewayResponseResponseTypeEnum {
+    fn default() -> Self {
+        GatewayResponseResponseTypeEnum::Accessdenied
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnGatewayResponse {
     fn type_string() -> &'static str {

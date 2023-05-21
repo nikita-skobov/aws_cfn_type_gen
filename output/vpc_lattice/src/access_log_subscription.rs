@@ -6,18 +6,6 @@ pub struct CfnAccessLogSubscription {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the destination. The supported destination types are  CloudWatch Log groups, Kinesis Data Firehose delivery streams, and Amazon S3 buckets.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: String,
-
-
-    /// 
     /// The ID or Amazon Resource Name (ARN) of the service network or service.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnAccessLogSubscription {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     pub resource_identifier: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the destination. The supported destination types are  CloudWatch Log groups, Kinesis Data Firehose delivery streams, and Amazon S3 buckets.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: String,
 
 
     /// 
@@ -41,6 +41,8 @@ pub struct CfnAccessLogSubscription {
     pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAccessLogSubscription {
     fn type_string() -> &'static str {
@@ -65,17 +67,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -85,4 +76,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

@@ -18,6 +18,8 @@ pub struct CfnDNSSEC {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDNSSEC {
     fn type_string() -> &'static str {
         "AWS::Route53::DNSSEC"

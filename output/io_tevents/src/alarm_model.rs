@@ -6,64 +6,6 @@ pub struct CfnAlarmModel {
 
 
     /// 
-    /// The name of the alarm model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_-]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlarmModelName")]
-    pub alarm_model_name: Option<String>,
-
-
-    /// 
-    /// The ARN of the IAM role that allows the alarm to perform actions and access AWS resources. For more information, see Amazon Resource Names (ARNs) in the         AWS General Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// A non-negative integer that reflects the severity level of the alarm.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Severity")]
-    pub severity: Option<i64>,
-
-
-    /// 
-    /// Contains information about one or more alarm actions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AlarmEventActions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmEventActions")]
-    pub alarm_event_actions: Option<AlarmEventActions>,
-
-
-    /// 
     /// Defines when your alarm is invoked.
     /// 
     /// Required: Yes
@@ -73,46 +15,6 @@ pub struct CfnAlarmModel {
     /// Update requires: No interruption
     #[serde(rename = "AlarmRule")]
     pub alarm_rule: AlarmRule,
-
-
-    /// 
-    /// The description of the alarm model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmModelDescription")]
-    pub alarm_model_description: Option<String>,
-
-
-    /// 
-    /// A list of key-value pairs that contain metadata for the alarm model. The tags help you    manage the alarm model. For more information, see Tagging your AWS IoT Events     resources in the         AWS IoT Events Developer Guide.
-    /// 
-    /// You can create up to 50 tags for one alarm model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Contains the configuration information of alarm state changes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AlarmCapabilities
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmCapabilities")]
-    pub alarm_capabilities: Option<AlarmCapabilities>,
 
 
     /// 
@@ -132,7 +34,107 @@ pub struct CfnAlarmModel {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
+
+    /// 
+    /// The ARN of the IAM role that allows the alarm to perform actions and access AWS resources. For more information, see Amazon Resource Names (ARNs) in the         AWS General Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// Contains information about one or more alarm actions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AlarmEventActions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmEventActions")]
+    pub alarm_event_actions: Option<AlarmEventActions>,
+
+
+    /// 
+    /// The description of the alarm model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmModelDescription")]
+    pub alarm_model_description: Option<String>,
+
+
+    /// 
+    /// The name of the alarm model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlarmModelName")]
+    pub alarm_model_name: Option<String>,
+
+
+    /// 
+    /// Contains the configuration information of alarm state changes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AlarmCapabilities
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmCapabilities")]
+    pub alarm_capabilities: Option<AlarmCapabilities>,
+
+
+    /// 
+    /// A non-negative integer that reflects the severity level of the alarm.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Severity")]
+    pub severity: Option<i64>,
+
+
+    /// 
+    /// A list of key-value pairs that contain metadata for the alarm model. The tags help you    manage the alarm model. For more information, see Tagging your AWS IoT Events     resources in the         AWS IoT Events Developer Guide.
+    /// 
+    /// You can create up to 50 tags for one alarm model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAlarmModel {
     fn type_string() -> &'static str {
@@ -145,23 +147,421 @@ impl cfn_resources::CfnResource for CfnAlarmModel {
 }
 
 
-/// Defines when your alarm is invoked.
+/// Sends information about the detector model instance and the event that triggered the    action to a specified asset property in AWS IoT SiteWise.
+///
+/// You must use expressions for all parameters in IotSiteWiseAction. The    expressions accept literals, operators, functions, references, and substitutions    templates.
+///
+/// You must specify either propertyAlias or both assetId and     propertyId to identify the target asset property in AWS IoT SiteWise.
+///
+/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AlarmRule {
+pub struct IotSiteWise {
 
 
     /// 
-    /// A rule that compares an input property value to a threshold value with a comparison operator.
+    /// The value to send to the asset property. This value contains timestamp, quality, and value    (TQV) information.
     /// 
     /// Required: No
     ///
-    /// Type: SimpleRule
+    /// Type: AssetPropertyValue
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SimpleRule")]
-    pub simple_rule: Option<SimpleRule>,
+    #[serde(rename = "PropertyValue")]
+    pub property_value: Option<AssetPropertyValue>,
+
+
+    /// 
+    /// A unique identifier for this entry. You can use the entry ID to track which data entry    causes an error in case of failure. The default is a new unique identifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntryId")]
+    pub entry_id: Option<String>,
+
+
+    /// 
+    /// The ID of the asset that has the specified property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetId")]
+    pub asset_id: Option<String>,
+
+
+    /// 
+    /// The ID of the asset property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PropertyId")]
+    pub property_id: Option<String>,
+
+
+    /// 
+    /// The alias of the asset property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PropertyAlias")]
+    pub property_alias: Option<String>,
 
 }
+
+
+
+
+/// Information needed to configure the payload.
+///
+/// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Payload {
+
+
+    /// 
+    /// The content of the payload. You can use a string expression that includes quoted strings     ('<string>'), variables ($variable.<variable-name>),    input values ($input.<input-name>.<path-to-datum>), string    concatenations, and quoted strings that contain ${} as the content. The    recommended maximum size of a content expression is 1 KB.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContentExpression")]
+    pub content_expression: String,
+
+
+    /// 
+    /// The value of the payload type can be either STRING or    JSON.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: JSON | STRING
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PayloadTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PayloadTypeEnum {
+
+    /// JSON
+    #[serde(rename = "JSON")]
+    Json,
+
+    /// STRING
+    #[serde(rename = "STRING")]
+    String,
+
+}
+
+impl Default for PayloadTypeEnum {
+    fn default() -> Self {
+        PayloadTypeEnum::Json
+    }
+}
+
+
+
+/// Sends an AWS IoT Events input, passing in information about the detector model instance and the    event that triggered the action.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IotEvents {
+
+
+    /// 
+    /// You can configure the action payload when you send a message to an AWS IoT Events input.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Payload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<Payload>,
+
+
+    /// 
+    /// The name of the AWS IoT Events input where the data is sent.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputName")]
+    pub input_name: String,
+
+}
+
+
+
+
+/// Defines an action to write to the Amazon DynamoDB table that you created. The default action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. A separate column of    the DynamoDB table receives one attribute-value pair in the payload that you specify.
+///
+/// You must use expressions for all parameters in DynamoDBv2Action. The expressions    accept literals, operators, functions, references, and substitution templates.
+///
+/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
+///
+/// The value for the type parameter in Payload must be     JSON.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DynamoDBv2 {
+
+
+    /// 
+    /// The name of the DynamoDB table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TableName")]
+    pub table_name: String,
+
+
+    /// 
+    /// Information needed to configure the payload.
+    /// 
+    /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Payload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<Payload>,
+
+}
+
+
+
+
+/// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InitializationConfiguration {
+
+
+    /// 
+    /// The value must be TRUE or FALSE. If FALSE, all    alarm instances created based on the alarm model are activated. The default value is     TRUE.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisabledOnInitialization")]
+    pub disabled_on_initialization: bool,
+
+}
+
+
+
+
+/// A structure that contains value information. For more information, see AssetPropertyValue in the         AWS IoT SiteWise API Reference.
+///
+/// You must use expressions for all parameters in AssetPropertyValue. The    expressions accept literals, operators, functions, references, and substitution    templates.
+///
+/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AssetPropertyValue {
+
+
+    /// 
+    /// The quality of the asset property value. The value must be 'GOOD',     'BAD', or 'UNCERTAIN'.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Quality")]
+    pub quality: Option<String>,
+
+
+    /// 
+    /// The value to send to an asset property.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: AssetPropertyVariant
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: AssetPropertyVariant,
+
+
+    /// 
+    /// The timestamp associated with the asset property value. The default is the current event    time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AssetPropertyTimestamp
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Timestamp")]
+    pub timestamp: Option<AssetPropertyTimestamp>,
+
+}
+
+
+
+
+/// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Sqs {
+
+
+    /// 
+    /// The URL of the SQS queue where the data is written.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueueUrl")]
+    pub queue_url: String,
+
+
+    /// 
+    /// Set this to TRUE if you want the data to be base-64 encoded before it is written to the    queue. Otherwise, set this to FALSE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseBase64")]
+    pub use_base64: Option<bool>,
+
+
+    /// 
+    /// You can configure the action payload when you send a message to an Amazon SQS    queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Payload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<Payload>,
+
+}
+
+
+
+
+/// Contains information about one or more alarm actions.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AlarmEventActions {
+
+
+    /// 
+    /// Specifies one or more supported actions to receive notifications when the alarm state    changes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AlarmAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmActions")]
+    pub alarm_actions: Option<Vec<AlarmAction>>,
+
+}
+
+
+
+
+/// Sends information about the detector model instance and the event that triggered the    action to an Amazon Kinesis Data Firehose delivery stream.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Firehose {
+
+
+    /// 
+    /// You can configure the action payload when you send a message to an Amazon Kinesis Data Firehose delivery    stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Payload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<Payload>,
+
+
+    /// 
+    /// The name of the Kinesis Data Firehose delivery stream where the data is written.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryStreamName")]
+    pub delivery_stream_name: String,
+
+
+    /// 
+    /// A character separator that is used to separate records written to the Kinesis Data    Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows    newline), ',' (comma).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ([\n\t])|(\r\n)|(,)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Separator")]
+    pub separator: Option<String>,
+
+}
+
+
+
+
+/// Specifies whether to get notified for alarm state changes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AcknowledgeFlow {
+
+
+    /// 
+    /// The value must be TRUE or FALSE. If TRUE, you    receive a notification when the alarm state changes. You must choose to acknowledge the    notification before the alarm state can return to NORMAL. If FALSE,    you won't receive notifications. The alarm automatically changes to the NORMAL    state when the input property value returns to the specified range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+}
+
+
 
 
 /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
@@ -199,79 +599,69 @@ pub struct Lambda {
 }
 
 
-/// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InitializationConfiguration {
 
 
-    /// 
-    /// The value must be TRUE or FALSE. If FALSE, all    alarm instances created based on the alarm model are activated. The default value is     TRUE.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisabledOnInitialization")]
-    pub disabled_on_initialization: bool,
-
-}
-
-
-/// Information needed to configure the payload.
+/// A structure that contains timestamp information. For more information, see TimeInNanos in the         AWS IoT SiteWise API Reference.
 ///
-/// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
+/// You must use expressions for all parameters in AssetPropertyTimestamp. The    expressions accept literals, operators, functions, references, and substitution    templates.
+///
+/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Payload {
+pub struct AssetPropertyTimestamp {
 
 
     /// 
-    /// The content of the payload. You can use a string expression that includes quoted strings     ('<string>'), variables ($variable.<variable-name>),    input values ($input.<input-name>.<path-to-datum>), string    concatenations, and quoted strings that contain ${} as the content. The    recommended maximum size of a content expression is 1 KB.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContentExpression")]
-    pub content_expression: String,
-
-
-    /// 
-    /// The value of the payload type can be either STRING or    JSON.
+    /// The timestamp, in seconds, in the Unix epoch format. The valid range is between    1-31556889864403199.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: JSON | STRING
+    /// Update requires: No interruption
+    #[serde(rename = "TimeInSeconds")]
+    pub time_in_seconds: String,
+
+
+    /// 
+    /// The nanosecond offset converted from timeInSeconds. The valid range is    between 0-999999999.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "OffsetInNanos")]
+    pub offset_in_nanos: Option<String>,
 
 }
+
+
+
+
+/// Defines when your alarm is invoked.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AlarmRule {
+
+
+    /// 
+    /// A rule that compares an input property value to a threshold value with a comparison operator.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SimpleRule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SimpleRule")]
+    pub simple_rule: Option<SimpleRule>,
+
+}
+
+
 
 
 /// A rule that compares an input property value to a threshold value with a comparison operator.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SimpleRule {
-
-
-    /// 
-    /// The comparison operator.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EQUAL | GREATER | GREATER_OR_EQUAL | LESS | LESS_OR_EQUAL | NOT_EQUAL
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComparisonOperator")]
-    pub comparison_operator: String,
 
 
     /// 
@@ -288,6 +678,20 @@ pub struct SimpleRule {
     /// Update requires: No interruption
     #[serde(rename = "InputProperty")]
     pub input_property: String,
+
+
+    /// 
+    /// The comparison operator.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EQUAL | GREATER | GREATER_OR_EQUAL | LESS | LESS_OR_EQUAL | NOT_EQUAL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComparisonOperator")]
+    pub comparison_operator: SimpleRuleComparisonOperatorEnum,
 
 
     /// 
@@ -308,13 +712,50 @@ pub struct SimpleRule {
 }
 
 
-/// Information required to publish the Amazon SNS message.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SimpleRuleComparisonOperatorEnum {
+
+    /// EQUAL
+    #[serde(rename = "EQUAL")]
+    Equal,
+
+    /// GREATER
+    #[serde(rename = "GREATER")]
+    Greater,
+
+    /// GREATER_OR_EQUAL
+    #[serde(rename = "GREATER_OR_EQUAL")]
+    Greaterorequal,
+
+    /// LESS
+    #[serde(rename = "LESS")]
+    Less,
+
+    /// LESS_OR_EQUAL
+    #[serde(rename = "LESS_OR_EQUAL")]
+    Lessorequal,
+
+    /// NOT_EQUAL
+    #[serde(rename = "NOT_EQUAL")]
+    Notequal,
+
+}
+
+impl Default for SimpleRuleComparisonOperatorEnum {
+    fn default() -> Self {
+        SimpleRuleComparisonOperatorEnum::Equal
+    }
+}
+
+
+
+/// Information required to publish the MQTT message through the AWS IoT message broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Sns {
+pub struct IotTopicPublish {
 
 
     /// 
-    /// The ARN of the Amazon SNS target where the message is sent.
+    /// The MQTT topic of the message. You can use a string expression that includes variables     ($variable.<variable-name>) and input values     ($input.<input-name>.<path-to-datum>) as the topic string.
     /// 
     /// Required: Yes
     ///
@@ -322,15 +763,15 @@ pub struct Sns {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2048
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetArn")]
-    pub target_arn: String,
+    #[serde(rename = "MqttTopic")]
+    pub mqtt_topic: String,
 
 
     /// 
-    /// You can configure the action payload when you send a message as an Amazon SNS push    notification.
+    /// You can configure the action payload when you publish a message to an AWS IoT Core    topic.
     /// 
     /// Required: No
     ///
@@ -341,6 +782,8 @@ pub struct Sns {
     pub payload: Option<Payload>,
 
 }
+
+
 
 
 /// A structure that contains an asset property value. For more information, see Variant    in the         AWS IoT SiteWise API Reference.
@@ -355,15 +798,15 @@ pub struct AssetPropertyVariant {
 
 
     /// 
-    /// The asset property value is a double. You must use an expression, and the evaluated result    should be a double.
+    /// The asset property value is a string. You must use an expression, and the evaluated result    should be a string.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DoubleValue")]
-    pub double_value: Option<String>,
+    #[serde(rename = "StringValue")]
+    pub string_value: Option<String>,
 
 
     /// 
@@ -379,15 +822,15 @@ pub struct AssetPropertyVariant {
 
 
     /// 
-    /// The asset property value is a string. You must use an expression, and the evaluated result    should be a string.
+    /// The asset property value is a double. You must use an expression, and the evaluated result    should be a double.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StringValue")]
-    pub string_value: Option<String>,
+    #[serde(rename = "DoubleValue")]
+    pub double_value: Option<String>,
 
 
     /// 
@@ -404,107 +847,6 @@ pub struct AssetPropertyVariant {
 }
 
 
-/// Defines an action to write to the Amazon DynamoDB table that you created. The default action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. A separate column of    the DynamoDB table receives one attribute-value pair in the payload that you specify.
-///
-/// You must use expressions for all parameters in DynamoDBv2Action. The expressions    accept literals, operators, functions, references, and substitution templates.
-///
-/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-///
-/// The value for the type parameter in Payload must be     JSON.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DynamoDBv2 {
-
-
-    /// 
-    /// Information needed to configure the payload.
-    /// 
-    /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Payload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<Payload>,
-
-
-    /// 
-    /// The name of the DynamoDB table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TableName")]
-    pub table_name: String,
-
-}
-
-
-/// Contains information about one or more alarm actions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AlarmEventActions {
-
-
-    /// 
-    /// Specifies one or more supported actions to receive notifications when the alarm state    changes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AlarmAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmActions")]
-    pub alarm_actions: Option<Vec<AlarmAction>>,
-
-}
-
-
-/// Sends information about the detector model instance and the event that triggered the    action to an Amazon Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Firehose {
-
-
-    /// 
-    /// The name of the Kinesis Data Firehose delivery stream where the data is written.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStreamName")]
-    pub delivery_stream_name: String,
-
-
-    /// 
-    /// A character separator that is used to separate records written to the Kinesis Data    Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows    newline), ',' (comma).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ([\n\t])|(\r\n)|(,)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Separator")]
-    pub separator: Option<String>,
-
-
-    /// 
-    /// You can configure the action payload when you send a message to an Amazon Kinesis Data Firehose delivery    stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Payload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<Payload>,
-
-}
 
 
 /// Specifies one of the following actions to receive notifications when the alarm state    changes.
@@ -513,15 +855,23 @@ pub struct AlarmAction {
 
 
     /// 
-    /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
+    /// Sends information about the detector model instance and the event that triggered the    action to a specified asset property in AWS IoT SiteWise.
+    /// 
+    /// You must use expressions for all parameters in IotSiteWiseAction. The    expressions accept literals, operators, functions, references, and substitutions    templates.
+    /// 
+    /// Examples                                  For literal values, the expressions must contain single quotes. For example, the value      for the propertyAlias parameter can be       '/company/windfarm/3/turbine/7/temperature'.               For references, you must specify either variables or input values. For example, the      value for the assetId parameter can be       $input.TurbineInput.assetId1.               For a substitution template, you must use ${}, and the template must be      in single quotes. A substitution template can also contain a combination of literals,      operators, functions, references, and substitution templates.        In the following example, the value for the propertyAlias parameter uses      a substitution template.                  'company/windfarm/${$input.TemperatureInput.sensorData.windfarmID}/turbine/       ${$input.TemperatureInput.sensorData.turbineID}/temperature'
+    /// 
+    /// You must specify either propertyAlias or both assetId and     propertyId to identify the target asset property in AWS IoT SiteWise.
+    /// 
+    /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Lambda
+    /// Type: IotSiteWise
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Lambda")]
-    pub lambda: Option<Lambda>,
+    #[serde(rename = "IotSiteWise")]
+    pub iot_site_wise: Option<IotSiteWise>,
 
 
     /// 
@@ -565,35 +915,15 @@ pub struct AlarmAction {
 
 
     /// 
-    /// Sends information about the detector model instance and the event that triggered the    action to a specified asset property in AWS IoT SiteWise.
-    /// 
-    /// You must use expressions for all parameters in IotSiteWiseAction. The    expressions accept literals, operators, functions, references, and substitutions    templates.
-    /// 
-    /// Examples                                  For literal values, the expressions must contain single quotes. For example, the value      for the propertyAlias parameter can be       '/company/windfarm/3/turbine/7/temperature'.               For references, you must specify either variables or input values. For example, the      value for the assetId parameter can be       $input.TurbineInput.assetId1.               For a substitution template, you must use ${}, and the template must be      in single quotes. A substitution template can also contain a combination of literals,      operators, functions, references, and substitution templates.        In the following example, the value for the propertyAlias parameter uses      a substitution template.                  'company/windfarm/${$input.TemperatureInput.sensorData.windfarmID}/turbine/       ${$input.TemperatureInput.sensorData.turbineID}/temperature'
-    /// 
-    /// You must specify either propertyAlias or both assetId and     propertyId to identify the target asset property in AWS IoT SiteWise.
-    /// 
-    /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
+    /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
     /// 
     /// Required: No
     ///
-    /// Type: IotSiteWise
+    /// Type: Lambda
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IotSiteWise")]
-    pub iot_site_wise: Option<IotSiteWise>,
-
-
-    /// 
-    /// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Sqs
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sqs")]
-    pub sqs: Option<Sqs>,
+    #[serde(rename = "Lambda")]
+    pub lambda: Option<Lambda>,
 
 
     /// 
@@ -643,16 +973,30 @@ pub struct AlarmAction {
     #[serde(rename = "IotEvents")]
     pub iot_events: Option<IotEvents>,
 
+
+    /// 
+    /// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Sqs
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sqs")]
+    pub sqs: Option<Sqs>,
+
 }
 
 
-/// Information required to publish the MQTT message through the AWS IoT message broker.
+
+
+/// Information required to publish the Amazon SNS message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IotTopicPublish {
+pub struct Sns {
 
 
     /// 
-    /// You can configure the action payload when you publish a message to an AWS IoT Core    topic.
+    /// You can configure the action payload when you send a message as an Amazon SNS push    notification.
     /// 
     /// Required: No
     ///
@@ -664,7 +1008,7 @@ pub struct IotTopicPublish {
 
 
     /// 
-    /// The MQTT topic of the message. You can use a string expression that includes variables     ($variable.<variable-name>) and input values     ($input.<input-name>.<path-to-datum>) as the topic string.
+    /// The ARN of the Amazon SNS target where the message is sent.
     /// 
     /// Required: Yes
     ///
@@ -672,232 +1016,85 @@ pub struct IotTopicPublish {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 128
+    /// Maximum: 2048
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MqttTopic")]
-    pub mqtt_topic: String,
+    #[serde(rename = "TargetArn")]
+    pub target_arn: String,
 
 }
 
 
-/// Specifies whether to get notified for alarm state changes.
+
+
+/// Contains the configuration information of alarm state changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AcknowledgeFlow {
+pub struct AlarmCapabilities {
 
 
     /// 
-    /// The value must be TRUE or FALSE. If TRUE, you    receive a notification when the alarm state changes. You must choose to acknowledge the    notification before the alarm state can return to NORMAL. If FALSE,    you won't receive notifications. The alarm automatically changes to the NORMAL    state when the input property value returns to the specified range.
+    /// Specifies whether to get notified for alarm state changes.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: AcknowledgeFlow
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "AcknowledgeFlow")]
+    pub acknowledge_flow: Option<AcknowledgeFlow>,
+
+
+    /// 
+    /// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InitializationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InitializationConfiguration")]
+    pub initialization_configuration: Option<InitializationConfiguration>,
 
 }
 
 
-/// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Sqs {
+pub struct Tag {
 
 
     /// 
-    /// You can configure the action payload when you send a message to an Amazon SQS    queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Payload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<Payload>,
-
-
-    /// 
-    /// The URL of the SQS queue where the data is written.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueueUrl")]
-    pub queue_url: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// Set this to TRUE if you want the data to be base-64 encoded before it is written to the    queue. Otherwise, set this to FALSE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseBase64")]
-    pub use_base64: Option<bool>,
-
-}
-
-
-/// Sends information about the detector model instance and the event that triggered the    action to a specified asset property in AWS IoT SiteWise.
-///
-/// You must use expressions for all parameters in IotSiteWiseAction. The    expressions accept literals, operators, functions, references, and substitutions    templates.
-///
-/// You must specify either propertyAlias or both assetId and     propertyId to identify the target asset property in AWS IoT SiteWise.
-///
-/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IotSiteWise {
-
-
-    /// 
-    /// The ID of the asset property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropertyId")]
-    pub property_id: Option<String>,
-
-
-    /// 
-    /// The value to send to the asset property. This value contains timestamp, quality, and value    (TQV) information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AssetPropertyValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropertyValue")]
-    pub property_value: Option<AssetPropertyValue>,
-
-
-    /// 
-    /// The alias of the asset property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropertyAlias")]
-    pub property_alias: Option<String>,
-
-
-    /// 
-    /// A unique identifier for this entry. You can use the entry ID to track which data entry    causes an error in case of failure. The default is a new unique identifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntryId")]
-    pub entry_id: Option<String>,
-
-
-    /// 
-    /// The ID of the asset that has the specified property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetId")]
-    pub asset_id: Option<String>,
-
-}
-
-
-/// Sends an AWS IoT Events input, passing in information about the detector model instance and the    event that triggered the action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IotEvents {
-
-
-    /// 
-    /// The name of the AWS IoT Events input where the data is sent.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputName")]
-    pub input_name: String,
-
-
     /// 
-    /// You can configure the action payload when you send a message to an AWS IoT Events input.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Payload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<Payload>,
-
-}
-
-
-/// A structure that contains value information. For more information, see AssetPropertyValue in the         AWS IoT SiteWise API Reference.
-///
-/// You must use expressions for all parameters in AssetPropertyValue. The    expressions accept literals, operators, functions, references, and substitution    templates.
-///
-/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AssetPropertyValue {
-
-
-    /// 
-    /// The value to send to an asset property.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AssetPropertyVariant
-    ///
-    /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: AssetPropertyVariant,
-
-
-    /// 
-    /// The timestamp associated with the asset property value. The default is the current event    time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AssetPropertyTimestamp
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Timestamp")]
-    pub timestamp: Option<AssetPropertyTimestamp>,
-
-
-    /// 
-    /// The quality of the asset property value. The value must be 'GOOD',     'BAD', or 'UNCERTAIN'.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Quality")]
-    pub quality: Option<String>,
+    pub value: String,
 
 }
+
+
 
 
 /// Defines an action to write to the Amazon DynamoDB table that you created. The standard action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. One column of the    DynamoDB table receives all attribute-value pairs in the payload that you specify.
@@ -909,6 +1106,68 @@ pub struct AssetPropertyValue {
 /// If the defined payload type is a string, DynamoDBAction writes non-JSON data to    the DynamoDB table as binary data. The DynamoDB console displays the data as Base64-encoded text.    The value for the payloadField parameter is     <payload-field>_raw.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DynamoDB {
+
+
+    /// 
+    /// The value of the hash key (also called the partition key).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HashKeyValue")]
+    pub hash_key_value: String,
+
+
+    /// 
+    /// The value of the range key (also called the sort key).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RangeKeyValue")]
+    pub range_key_value: Option<String>,
+
+
+    /// 
+    /// The name of the hash key (also called the partition key). The hashKeyField    value must match the partition key of the target DynamoDB table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HashKeyField")]
+    pub hash_key_field: String,
+
+
+    /// 
+    /// The name of the range key (also called the sort key). The rangeKeyField value    must match the sort key of the target DynamoDB table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RangeKeyField")]
+    pub range_key_field: Option<String>,
+
+
+    /// 
+    /// Information needed to configure the payload.
+    /// 
+    /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Payload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<Payload>,
 
 
     /// 
@@ -925,70 +1184,6 @@ pub struct DynamoDB {
     /// Update requires: No interruption
     #[serde(rename = "Operation")]
     pub operation: Option<String>,
-
-
-    /// 
-    /// The name of the hash key (also called the partition key). The hashKeyField    value must match the partition key of the target DynamoDB table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HashKeyField")]
-    pub hash_key_field: String,
-
-
-    /// 
-    /// The data type for the range key (also called the sort key), You can specify the following    values:
-    /// 
-    /// 'STRING' - The range key is a string.                        'NUMBER' - The range key is number.
-    /// 
-    /// If you don't specify rangeKeyField, the default value is     'STRING'.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RangeKeyType")]
-    pub range_key_type: Option<String>,
-
-
-    /// 
-    /// The name of the range key (also called the sort key). The rangeKeyField value    must match the sort key of the target DynamoDB table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RangeKeyField")]
-    pub range_key_field: Option<String>,
-
-
-    /// 
-    /// The value of the range key (also called the sort key).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RangeKeyValue")]
-    pub range_key_value: Option<String>,
-
-
-    /// 
-    /// The value of the hash key (also called the partition key).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HashKeyValue")]
-    pub hash_key_value: String,
 
 
     /// 
@@ -1022,20 +1217,6 @@ pub struct DynamoDB {
 
 
     /// 
-    /// Information needed to configure the payload.
-    /// 
-    /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Payload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<Payload>,
-
-
-    /// 
     /// The name of the DynamoDB table. The tableName value must match the table name of    the target DynamoDB table.
     /// 
     /// Required: Yes
@@ -1046,105 +1227,22 @@ pub struct DynamoDB {
     #[serde(rename = "TableName")]
     pub table_name: String,
 
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The data type for the range key (also called the sort key), You can specify the following    values:
     /// 
-    /// Required: Yes
+    /// 'STRING' - The range key is a string.                        'NUMBER' - The range key is number.
     /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-/// A structure that contains timestamp information. For more information, see TimeInNanos in the         AWS IoT SiteWise API Reference.
-///
-/// You must use expressions for all parameters in AssetPropertyTimestamp. The    expressions accept literals, operators, functions, references, and substitution    templates.
-///
-/// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AssetPropertyTimestamp {
-
-
-    /// 
-    /// The nanosecond offset converted from timeInSeconds. The valid range is    between 0-999999999.
+    /// If you don't specify rangeKeyField, the default value is     'STRING'.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OffsetInNanos")]
-    pub offset_in_nanos: Option<String>,
-
-
-    /// 
-    /// The timestamp, in seconds, in the Unix epoch format. The valid range is between    1-31556889864403199.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeInSeconds")]
-    pub time_in_seconds: String,
+    #[serde(rename = "RangeKeyType")]
+    pub range_key_type: Option<String>,
 
 }
 
 
-/// Contains the configuration information of alarm state changes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AlarmCapabilities {
-
-
-    /// 
-    /// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InitializationConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InitializationConfiguration")]
-    pub initialization_configuration: Option<InitializationConfiguration>,
-
-
-    /// 
-    /// Specifies whether to get notified for alarm state changes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AcknowledgeFlow
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcknowledgeFlow")]
-    pub acknowledge_flow: Option<AcknowledgeFlow>,
-
-}

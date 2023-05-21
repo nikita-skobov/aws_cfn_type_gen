@@ -22,6 +22,20 @@ pub struct CfnPlacementGroup {
 
 
     /// 
+    /// The placement strategy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: cluster | partition | spread
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Strategy")]
+    pub strategy: Option<PlacementGroupStrategyEnum>,
+
+
+    /// 
     /// The number of partitions. Valid only when Strategy is       set to partition.
     /// 
     /// Required: No
@@ -46,23 +60,53 @@ pub struct CfnPlacementGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpreadLevel")]
-    pub spread_level: Option<String>,
-
-
-    /// 
-    /// The placement strategy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: cluster | partition | spread
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Strategy")]
-    pub strategy: Option<String>,
+    pub spread_level: Option<PlacementGroupSpreadLevelEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementGroupStrategyEnum {
+
+    /// cluster
+    #[serde(rename = "cluster")]
+    Cluster,
+
+    /// partition
+    #[serde(rename = "partition")]
+    Partition,
+
+    /// spread
+    #[serde(rename = "spread")]
+    Spread,
+
+}
+
+impl Default for PlacementGroupStrategyEnum {
+    fn default() -> Self {
+        PlacementGroupStrategyEnum::Cluster
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementGroupSpreadLevelEnum {
+
+    /// host
+    #[serde(rename = "host")]
+    Host,
+
+    /// rack
+    #[serde(rename = "rack")]
+    Rack,
+
+}
+
+impl Default for PlacementGroupSpreadLevelEnum {
+    fn default() -> Self {
+        PlacementGroupSpreadLevelEnum::Host
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPlacementGroup {
     fn type_string() -> &'static str {
@@ -108,3 +152,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

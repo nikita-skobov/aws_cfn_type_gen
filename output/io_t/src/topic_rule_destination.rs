@@ -6,18 +6,6 @@ pub struct CfnTopicRuleDestination {
 
 
     /// 
-    /// Properties of the HTTP URL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HttpUrlDestinationSummary
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HttpUrlProperties")]
-    pub http_url_properties: Option<HttpUrlDestinationSummary>,
-
-
-    /// 
     /// IN_PROGRESS               A topic rule destination was created but has not been confirmed. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint.                   ENABLED               Confirmation was completed, and traffic to this destination is allowed. You can set status to DISABLED by calling UpdateTopicRuleDestination.                    DISABLED                  Confirmation was completed, and traffic to this destination is not allowed. You can set status to ENABLED by calling UpdateTopicRuleDestination.                       ERROR                  Confirmation could not be completed; for example, if the confirmation timed           out. You can call GetTopicRuleDestination for details about the           error. You can set status to IN_PROGRESS by calling             UpdateTopicRuleDestination. Calling             UpdateTopicRuleDestination causes a new confirmation challenge           to be sent to your confirmation endpoint.
     /// 
     /// Required: No
@@ -40,7 +28,21 @@ pub struct CfnTopicRuleDestination {
     #[serde(rename = "VpcProperties")]
     pub vpc_properties: Option<VpcDestinationProperties>,
 
+
+    /// 
+    /// Properties of the HTTP URL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HttpUrlDestinationSummary
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HttpUrlProperties")]
+    pub http_url_properties: Option<HttpUrlDestinationSummary>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTopicRuleDestination {
     fn type_string() -> &'static str {
@@ -59,15 +61,15 @@ pub struct VpcDestinationProperties {
 
 
     /// 
-    /// The security groups of the VPC destination.
+    /// The ID of the VPC.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Option<Vec<String>>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 
     /// 
@@ -83,6 +85,18 @@ pub struct VpcDestinationProperties {
 
 
     /// 
+    /// The security groups of the VPC destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
+
+
+    /// 
     /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
     /// 
     /// Required: No
@@ -93,19 +107,9 @@ pub struct VpcDestinationProperties {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
-    /// The ID of the VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
 }
+
+
 
 
 /// HTTP URL destination properties.
@@ -125,3 +129,5 @@ pub struct HttpUrlDestinationSummary {
     pub confirmation_url: Option<String>,
 
 }
+
+

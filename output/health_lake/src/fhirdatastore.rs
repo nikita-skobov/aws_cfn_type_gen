@@ -6,17 +6,27 @@ pub struct CfnFHIRDatastore {
 
 
     /// 
-    /// The FHIR version of the Data Store. The only supported version is R4.
+    /// The server-side encryption key configuration for a customer provided encryption key specified for creating a Data Store.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: R4
+    /// Type: SseConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DatastoreTypeVersion")]
-    pub datastore_type_version: String,
+    #[serde(rename = "SseConfiguration")]
+    pub sse_configuration: Option<SseConfiguration>,
+
+
+    /// 
+    /// The preloaded data configuration for the Data Store. Only data preloaded from Synthea is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PreloadDataConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PreloadDataConfig")]
+    pub preload_data_config: Option<PreloadDataConfig>,
 
 
     /// 
@@ -52,29 +62,36 @@ pub struct CfnFHIRDatastore {
 
 
     /// 
-    /// The server-side encryption key configuration for a customer provided encryption key specified for creating a Data Store.
+    /// The FHIR version of the Data Store. The only supported version is R4.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: SseConfiguration
+    /// Type: String
+    ///
+    /// Allowed values: R4
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SseConfiguration")]
-    pub sse_configuration: Option<SseConfiguration>,
-
-
-    /// 
-    /// The preloaded data configuration for the Data Store. Only data preloaded from Synthea is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PreloadDataConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreloadDataConfig")]
-    pub preload_data_config: Option<PreloadDataConfig>,
+    #[serde(rename = "DatastoreTypeVersion")]
+    pub datastore_type_version: FHIRDatastoreDatastoreTypeVersionEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FHIRDatastoreDatastoreTypeVersionEnum {
+
+    /// R4
+    #[serde(rename = "R4")]
+    R4,
+
+}
+
+impl Default for FHIRDatastoreDatastoreTypeVersionEnum {
+    fn default() -> Self {
+        FHIRDatastoreDatastoreTypeVersionEnum::R4
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnFHIRDatastore {
     fn type_string() -> &'static str {
@@ -84,35 +101,6 @@ impl cfn_resources::CfnResource for CfnFHIRDatastore {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CreatedAt {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Seconds")]
-    pub seconds: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Nanos")]
-    pub nanos: i64,
-
 }
 
 
@@ -151,44 +139,6 @@ pub struct Tag {
 }
 
 
-/// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PreloadDataConfig {
-
-
-    /// 
-    /// The type of preloaded data. Only Synthea preloaded data is supported.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SYNTHEA
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreloadDataType")]
-    pub preload_data_type: String,
-
-}
-
-
-/// The server-side encryption key configuration for a customer provided encryption key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SseConfiguration {
-
-
-    /// 
-    /// The server-side encryption key configuration for a customer provided encryption key (CMK).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KmsEncryptionConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsEncryptionConfig")]
-    pub kms_encryption_config: KmsEncryptionConfig,
-
-}
 
 
 /// The customer-managed-key(CMK) used when creating a Data Store. If a customer owned key is not specified, an    Amazon owned key will be used for encryption.
@@ -226,3 +176,95 @@ pub struct KmsEncryptionConfig {
     pub kms_key_id: Option<String>,
 
 }
+
+
+
+
+/// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CreatedAt {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Nanos")]
+    pub nanos: i64,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Seconds")]
+    pub seconds: String,
+
+}
+
+
+
+
+/// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PreloadDataConfig {
+
+
+    /// 
+    /// The type of preloaded data. Only Synthea preloaded data is supported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SYNTHEA
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PreloadDataType")]
+    pub preload_data_type: PreloadDataConfigPreloadDataTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PreloadDataConfigPreloadDataTypeEnum {
+
+    /// SYNTHEA
+    #[serde(rename = "SYNTHEA")]
+    Synthea,
+
+}
+
+impl Default for PreloadDataConfigPreloadDataTypeEnum {
+    fn default() -> Self {
+        PreloadDataConfigPreloadDataTypeEnum::Synthea
+    }
+}
+
+
+
+/// The server-side encryption key configuration for a customer provided encryption key.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SseConfiguration {
+
+
+    /// 
+    /// The server-side encryption key configuration for a customer provided encryption key (CMK).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: KmsEncryptionConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsEncryptionConfig")]
+    pub kms_encryption_config: KmsEncryptionConfig,
+
+}
+
+

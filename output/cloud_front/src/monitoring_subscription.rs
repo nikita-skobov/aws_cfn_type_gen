@@ -30,6 +30,8 @@ pub struct CfnMonitoringSubscription {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnMonitoringSubscription {
     fn type_string() -> &'static str {
         "AWS::CloudFront::MonitoringSubscription"
@@ -60,6 +62,8 @@ pub struct MonitoringSubscription {
 }
 
 
+
+
 /// A subscription configuration for additional CloudWatch metrics.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RealtimeMetricsSubscriptionConfig {
@@ -76,6 +80,27 @@ pub struct RealtimeMetricsSubscriptionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RealtimeMetricsSubscriptionStatus")]
-    pub realtime_metrics_subscription_status: String,
+    pub realtime_metrics_subscription_status: RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum {
+
+    /// Disabled
+    #[serde(rename = "Disabled")]
+    Disabled,
+
+    /// Enabled
+    #[serde(rename = "Enabled")]
+    Enabled,
+
+}
+
+impl Default for RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum {
+    fn default() -> Self {
+        RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum::Disabled
+    }
+}
+

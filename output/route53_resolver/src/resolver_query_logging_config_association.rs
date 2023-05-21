@@ -38,6 +38,8 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfigAssociation {
     fn type_string() -> &'static str {
         "AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation"

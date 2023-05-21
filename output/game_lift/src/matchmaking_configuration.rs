@@ -6,36 +6,6 @@ pub struct CfnMatchmakingConfiguration {
 
 
     /// 
-    /// The number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies       a match for a single 10-person team, and the additional player count is set to 2, 10 players will be selected for the match and 2 more player slots will be open for future players. This parameter is not used if FlexMatchMode is set to         STANDALONE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalPlayerCount")]
-    pub additional_player_count: Option<i64>,
-
-
-    /// 
-    /// Information to add to all events related to the matchmaking configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomEventData")]
-    pub custom_event_data: Option<String>,
-
-
-    /// 
     /// A list of labels to assign to the new matchmaking configuration resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
     /// 
     /// Required: No
@@ -47,36 +17,6 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The method used to backfill game sessions that are created with this matchmaking    configuration. Specify MANUAL when your game manages backfill requests manually    or does not use the match backfill feature. Specify AUTOMATIC to have GameLift    create a StartMatchBackfill request whenever a game session has one or more open    slots. Learn more about manual and automatic backfill in Backfill Existing Games with     FlexMatch. Automatic backfill is not    available when FlexMatchMode is set to STANDALONE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AUTOMATIC | MANUAL
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackfillMode")]
-    pub backfill_mode: Option<String>,
-
-
-    /// 
-    /// A set of custom game session properties, formatted as a single string value. This    data is passed to a game server process with a request to start a new game session.    See Start a Game Session.    This parameter is not used ifFlexMatchMode is set to STANDALONE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GameSessionData")]
-    pub game_session_data: Option<String>,
 
 
     /// 
@@ -96,24 +36,6 @@ pub struct CfnMatchmakingConfiguration {
 
 
     /// 
-    /// A unique identifier for the matchmaking rule set to use with this configuration. You can use either the rule set name or ARN       value. A matchmaking configuration can only use rule sets that are defined in the same       Region.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [a-zA-Z0-9-\.]*|^arn:.*:matchmakingruleset\/[a-zA-Z0-9-\.]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleSetName")]
-    pub rule_set_name: String,
-
-
-    /// 
     /// Indicates whether this matchmaking configuration is being used with Amazon GameLift hosting or       as a standalone matchmaking solution.
     /// 
     /// STANDALONE - FlexMatch forms matches and           returns match information, including players and team assignments, in a MatchmakingSucceeded event.                        WITH_QUEUE - FlexMatch forms matches and uses           the specified Amazon GameLift queue to start a game session for the match.
@@ -126,7 +48,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlexMatchMode")]
-    pub flex_match_mode: Option<String>,
+    pub flex_match_mode: Option<MatchmakingConfigurationFlexMatchModeEnum>,
 
 
     /// 
@@ -145,6 +67,78 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
     pub notification_target: Option<String>,
+
+
+    /// 
+    /// A set of custom properties for a game session, formatted as key-value pairs. These    properties are passed to a game server process with a request to start a new game session. See    Start a Game Session.    This parameter is not used if FlexMatchMode is set to STANDALONE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of GameProperty
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GameProperties")]
+    pub game_properties: Option<Vec<GameProperty>>,
+
+
+    /// 
+    /// The method used to backfill game sessions that are created with this matchmaking    configuration. Specify MANUAL when your game manages backfill requests manually    or does not use the match backfill feature. Specify AUTOMATIC to have GameLift    create a StartMatchBackfill request whenever a game session has one or more open    slots. Learn more about manual and automatic backfill in Backfill Existing Games with     FlexMatch. Automatic backfill is not    available when FlexMatchMode is set to STANDALONE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AUTOMATIC | MANUAL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackfillMode")]
+    pub backfill_mode: Option<MatchmakingConfigurationBackfillModeEnum>,
+
+
+    /// 
+    /// The number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies       a match for a single 10-person team, and the additional player count is set to 2, 10 players will be selected for the match and 2 more player slots will be open for future players. This parameter is not used if FlexMatchMode is set to         STANDALONE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalPlayerCount")]
+    pub additional_player_count: Option<i64>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<region>::gamesessionqueue/<queue name>. Queues can be located in any Region. Queues are used to start new       Amazon GameLift-hosted game sessions for matches that are created with this matchmaking       configuration. If FlexMatchMode is set to STANDALONE, do not       set this parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GameSessionQueueArns")]
+    pub game_session_queue_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// A unique identifier for the matchmaking rule set to use with this configuration. You can use either the rule set name or ARN       value. A matchmaking configuration can only use rule sets that are defined in the same       Region.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [a-zA-Z0-9-\.]*|^arn:.*:matchmakingruleset\/[a-zA-Z0-9-\.]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleSetName")]
+    pub rule_set_name: String,
 
 
     /// 
@@ -192,15 +186,19 @@ pub struct CfnMatchmakingConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<region>::gamesessionqueue/<queue name>. Queues can be located in any Region. Queues are used to start new       Amazon GameLift-hosted game sessions for matches that are created with this matchmaking       configuration. If FlexMatchMode is set to STANDALONE, do not       set this parameter.
+    /// Information to add to all events related to the matchmaking configuration.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GameSessionQueueArns")]
-    pub game_session_queue_arns: Option<Vec<String>>,
+    #[serde(rename = "CustomEventData")]
+    pub custom_event_data: Option<String>,
 
 
     /// 
@@ -220,19 +218,61 @@ pub struct CfnMatchmakingConfiguration {
 
 
     /// 
-    /// A set of custom properties for a game session, formatted as key-value pairs. These    properties are passed to a game server process with a request to start a new game session. See    Start a Game Session.    This parameter is not used if FlexMatchMode is set to STANDALONE.
+    /// A set of custom game session properties, formatted as a single string value. This    data is passed to a game server process with a request to start a new game session.    See Start a Game Session.    This parameter is not used ifFlexMatchMode is set to STANDALONE.
     /// 
     /// Required: No
     ///
-    /// Type: List of GameProperty
+    /// Type: String
     ///
-    /// Maximum: 16
+    /// Minimum: 1
+    ///
+    /// Maximum: 4096
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GameProperties")]
-    pub game_properties: Option<Vec<GameProperty>>,
+    #[serde(rename = "GameSessionData")]
+    pub game_session_data: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MatchmakingConfigurationFlexMatchModeEnum {
+
+    /// STANDALONE
+    #[serde(rename = "STANDALONE")]
+    Standalone,
+
+    /// WITH_QUEUE
+    #[serde(rename = "WITH_QUEUE")]
+    Withqueue,
+
+}
+
+impl Default for MatchmakingConfigurationFlexMatchModeEnum {
+    fn default() -> Self {
+        MatchmakingConfigurationFlexMatchModeEnum::Standalone
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MatchmakingConfigurationBackfillModeEnum {
+
+    /// AUTOMATIC
+    #[serde(rename = "AUTOMATIC")]
+    Automatic,
+
+    /// MANUAL
+    #[serde(rename = "MANUAL")]
+    Manual,
+
+}
+
+impl Default for MatchmakingConfigurationBackfillModeEnum {
+    fn default() -> Self {
+        MatchmakingConfigurationBackfillModeEnum::Automatic
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
     fn type_string() -> &'static str {
@@ -245,58 +285,9 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
 /// Set of key-value pairs that contain information about a game session. When included in       a game session request, these properties communicate details to be used when setting up       the new game session. For example, a game property might specify a game mode, level, or       map. Game properties are passed to the game server process when initiating a new game       session. For more information, see the Amazon GameLift Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GameProperty {
-
-
-    /// 
-    /// The game property value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 96
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -312,4 +303,57 @@ pub struct GameProperty {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The game property value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 96
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+

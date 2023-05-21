@@ -34,6 +34,8 @@ pub struct CfnResolverConfig {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResolverConfig {
     fn type_string() -> &'static str {
         "AWS::Route53Resolver::ResolverConfig"

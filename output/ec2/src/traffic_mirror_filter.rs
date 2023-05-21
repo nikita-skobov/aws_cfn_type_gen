@@ -10,17 +10,15 @@ pub struct CfnTrafficMirrorFilter {
 
 
     /// 
-    /// The network service traffic that is associated with the Traffic Mirror filter.
-    /// 
-    /// Valid values are amazon-dns.
+    /// The description of the Traffic Mirror filter.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkServices")]
-    pub network_services: Option<Vec<String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -36,17 +34,21 @@ pub struct CfnTrafficMirrorFilter {
 
 
     /// 
-    /// The description of the Traffic Mirror filter.
+    /// The network service traffic that is associated with the Traffic Mirror filter.
+    /// 
+    /// Valid values are amazon-dns.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkServices")]
+    pub network_services: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTrafficMirrorFilter {
     fn type_string() -> &'static str {
@@ -92,3 +94,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

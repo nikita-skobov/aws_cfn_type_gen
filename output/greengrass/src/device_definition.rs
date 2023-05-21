@@ -8,17 +8,19 @@ pub struct CfnDeviceDefinition {
 
 
     /// 
-    /// The device definition version to include when the device definition is created.          A device definition version contains a list of          device property types.
+    /// Application-specific metadata to attach to the device definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
     /// 
-    /// NoteTo associate a device definition version after the device definition is created, 				   create an AWS::Greengrass::DeviceDefinitionVersion 				   resource and specify the ID of this device definition.
+    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
     /// 
+    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
+    ///
     /// Required: No
     ///
-    /// Type: DeviceDefinitionVersion
+    /// Type: Json
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "InitialVersion")]
-    pub initial_version: Option<DeviceDefinitionVersion>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -34,21 +36,21 @@ pub struct CfnDeviceDefinition {
 
 
     /// 
-    /// Application-specific metadata to attach to the device definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
+    /// The device definition version to include when the device definition is created.          A device definition version contains a list of          device property types.
     /// 
-    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
+    /// NoteTo associate a device definition version after the device definition is created, 				   create an AWS::Greengrass::DeviceDefinitionVersion 				   resource and specify the ID of this device definition.
     /// 
-    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
-    ///
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: DeviceDefinitionVersion
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    /// Update requires: Replacement
+    #[serde(rename = "InitialVersion")]
+    pub initial_version: Option<DeviceDefinitionVersion>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeviceDefinition {
     fn type_string() -> &'static str {
@@ -69,18 +71,6 @@ pub struct Device {
 
 
     /// 
-    /// Indicates whether the device's local shadow is synced       with the cloud automatically.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SyncShadow")]
-    pub sync_shadow: Option<bool>,
-
-
-    /// 
     /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
     /// 
     /// Required: Yes
@@ -90,18 +80,6 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "Id")]
     pub id: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
 
 
     /// 
@@ -115,7 +93,33 @@ pub struct Device {
     #[serde(rename = "ThingArn")]
     pub thing_arn: String,
 
+
+    /// 
+    /// Indicates whether the device's local shadow is synced       with the cloud automatically.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SyncShadow")]
+    pub sync_shadow: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: String,
+
 }
+
+
 
 
 /// A device definition version contains a list of devices.
@@ -137,3 +141,5 @@ pub struct DeviceDefinitionVersion {
     pub devices: Vec<Device>,
 
 }
+
+

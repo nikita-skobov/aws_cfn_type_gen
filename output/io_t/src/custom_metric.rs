@@ -6,6 +6,18 @@ pub struct CfnCustomMetric {
 
 
     /// 
+    /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// 
     /// The type of the custom metric. Types include string-list,     ip-address-list, number-list, and number.
     /// 
     /// ImportantThe type number only takes a single metric value as an input, but when you submit the metrics value in the DeviceMetrics report, you must pass it as an array with a single value.
@@ -20,15 +32,15 @@ pub struct CfnCustomMetric {
 
 
     /// 
-    /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
+    /// Metadata that can be used to manage the custom metric.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -42,19 +54,9 @@ pub struct CfnCustomMetric {
     #[serde(rename = "MetricName")]
     pub metric_name: Option<String>,
 
-
-    /// 
-    /// Metadata that can be used to manage the custom metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCustomMetric {
     fn type_string() -> &'static str {
@@ -100,3 +102,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

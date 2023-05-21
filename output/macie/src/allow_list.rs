@@ -24,6 +24,20 @@ pub struct CfnAllowList {
 
 
     /// 
+    /// An array of key-value pairs to apply to the allow list.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// A custom name for the allow list. The name can contain 1-128 characters.
     /// 
     /// Required: Yes
@@ -46,21 +60,9 @@ pub struct CfnAllowList {
     #[serde(rename = "Criteria")]
     pub criteria: Criteria,
 
-
-    /// 
-    /// An array of key-value pairs to apply to the allow list.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAllowList {
     fn type_string() -> &'static str {
@@ -73,58 +75,11 @@ impl cfn_resources::CfnResource for CfnAllowList {
 }
 
 
-/// Specifies the location and name of an Amazon Simple Storage Service (Amazon S3)       object that lists specific, predefined text to ignore when inspecting data sources for sensitive       data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3WordsList {
-
-
-    /// 
-    /// The full name of the S3 object. This value correlates to the Key field of       an object's properties in Amazon S3. If the name includes a path, include the       complete path. For example, AllowLists/Macie/MyList.txt.
-    /// 
-    /// This value is case sensitive. In addition, don't use wildcard characters or specify       partial values for the name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ObjectKey")]
-    pub object_key: String,
-
-
-    /// 
-    /// The full name of the S3 bucket that contains the object. This value correlates to the         Name field of a bucket's properties in Amazon S3.
-    /// 
-    /// This value is case sensitive. In addition, don't use wildcard characters or specify       partial values for the name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
-
-}
-
-
 /// Specifies the criteria for an allow list, which is a list that defines specific text       or a text pattern to ignore when inspecting data sources for sensitive data. The       criteria can be:
 ///
 /// The criteria must specify either an S3 object or a regular expression. It can't       specify both.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Criteria {
-
-
-    /// 
-    /// The regular expression (regex) that defines the text pattern to       ignore. The expression can contain 1-512 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Regex")]
-    pub regex: Option<String>,
 
 
     /// 
@@ -138,7 +93,21 @@ pub struct Criteria {
     #[serde(rename = "S3WordsList")]
     pub s3_words_list: Option<S3WordsList>,
 
+
+    /// 
+    /// The regular expression (regex) that defines the text pattern to       ignore. The expression can contain 1-512 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Regex")]
+    pub regex: Option<String>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -174,3 +143,42 @@ pub struct Tag {
     pub key: String,
 
 }
+
+
+
+
+/// Specifies the location and name of an Amazon Simple Storage Service (Amazon S3)       object that lists specific, predefined text to ignore when inspecting data sources for sensitive       data.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3WordsList {
+
+
+    /// 
+    /// The full name of the S3 bucket that contains the object. This value correlates to the         Name field of a bucket's properties in Amazon S3.
+    /// 
+    /// This value is case sensitive. In addition, don't use wildcard characters or specify       partial values for the name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
+
+
+    /// 
+    /// The full name of the S3 object. This value correlates to the Key field of       an object's properties in Amazon S3. If the name includes a path, include the       complete path. For example, AllowLists/Macie/MyList.txt.
+    /// 
+    /// This value is case sensitive. In addition, don't use wildcard characters or specify       partial values for the name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObjectKey")]
+    pub object_key: String,
+
+}
+
+

@@ -32,6 +32,8 @@ pub struct CfnSamplingRule {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSamplingRule {
     fn type_string() -> &'static str {
         "AWS::XRay::SamplingRule"
@@ -46,90 +48,6 @@ impl cfn_resources::CfnResource for CfnSamplingRule {
 /// A sampling rule that services use to decide whether to instrument a request. Rule    fields can match properties of the service, or properties of a request. The service can ignore    rules that don't match its properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SamplingRule {
-
-
-    /// 
-    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
-    /// 
-    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleARN")]
-    pub rule_arn: Option<String>,
-
-
-    /// 
-    /// Matches the name that the service uses to identify itself in segments.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceName")]
-    pub service_name: String,
-
-
-    /// 
-    /// Matches the hostname from a request URL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
-
-
-    /// 
-    /// A fixed number of matching requests to instrument per second, prior to applying the    fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReservoirSize")]
-    pub reservoir_size: i64,
-
-
-    /// 
-    /// Matches the origin that the service uses to identify its type in segments.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceType")]
-    pub service_type: String,
-
-
-    /// 
-    /// Matches the HTTP method of a request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HTTPMethod")]
-    pub httpmethod: String,
 
 
     /// 
@@ -149,6 +67,20 @@ pub struct SamplingRule {
 
 
     /// 
+    /// Matches the name that the service uses to identify itself in segments.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceName")]
+    pub service_name: String,
+
+
+    /// 
     /// Matches the path from a request URL.
     /// 
     /// Required: Yes
@@ -160,6 +92,20 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "URLPath")]
     pub urlpath: String,
+
+
+    /// 
+    /// Matches the hostname from a request URL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
 
 
     /// 
@@ -176,6 +122,60 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
     pub priority: i64,
+
+
+    /// 
+    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
+    /// 
+    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleARN")]
+    pub rule_arn: Option<String>,
+
+
+    /// 
+    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: Option<i64>,
+
+
+    /// 
+    /// The percentage of matching requests to instrument, after the reservoir is    exhausted.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FixedRate")]
+    pub fixed_rate: f64,
+
+
+    /// 
+    /// Matches the HTTP method of a request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HTTPMethod")]
+    pub httpmethod: String,
 
 
     /// 
@@ -197,6 +197,20 @@ pub struct SamplingRule {
 
 
     /// 
+    /// A fixed number of matching requests to instrument per second, prior to applying the    fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReservoirSize")]
+    pub reservoir_size: i64,
+
+
+    /// 
     /// Matches the ARN of the AWS resource on which the service runs.
     /// 
     /// Required: Yes
@@ -211,31 +225,21 @@ pub struct SamplingRule {
 
 
     /// 
-    /// The percentage of matching requests to instrument, after the reservoir is    exhausted.
+    /// Matches the origin that the service uses to identify its type in segments.
     /// 
     /// Required: Yes
     ///
-    /// Type: Double
+    /// Type: String
+    ///
+    /// Maximum: 64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FixedRate")]
-    pub fixed_rate: f64,
-
-
-    /// 
-    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: Option<i64>,
+    #[serde(rename = "ServiceType")]
+    pub service_type: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -271,3 +275,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

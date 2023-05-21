@@ -6,6 +6,18 @@ pub struct CfnMultiRegionAccessPoint {
 
 
     /// 
+    /// The name of the Multi-Region Access Point.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// The PublicAccessBlock configuration that you want to apply to this Multi-Region Access    Point. You can enable the configuration options in any combination. For more information about    when Amazon S3 considers an object public, see The Meaning of "Public" in the Amazon S3 User Guide.
     /// 
     /// Required: No
@@ -28,19 +40,9 @@ pub struct CfnMultiRegionAccessPoint {
     #[serde(rename = "Regions")]
     pub regions: Vec<Region>,
 
-
-    /// 
-    /// The name of the Multi-Region Access Point.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {
     fn type_string() -> &'static str {
@@ -50,36 +52,6 @@ impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// A bucket associated with a specific Region when creating Multi-Region Access    Points.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Region {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketAccountId")]
-    pub bucket_account_id: Option<String>,
-
-
-    /// 
-    /// The name of the associated bucket for the Region.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
 }
 
 
@@ -103,17 +75,19 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
+    /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
     /// 
-    /// Enabling this setting doesn't affect existing bucket policies.
+    /// PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is        public.               PUT Object calls fail if the request includes a public ACL.               PUT Bucket calls fail if the request includes a public ACL.
+    /// 
+    /// Enabling this setting doesn't affect existing policies or ACLs.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
+    #[serde(rename = "BlockPublicAcls")]
+    pub block_public_acls: Option<bool>,
 
 
     /// 
@@ -131,18 +105,50 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
+    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
     /// 
-    /// PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is        public.               PUT Object calls fail if the request includes a public ACL.               PUT Bucket calls fail if the request includes a public ACL.
-    /// 
-    /// Enabling this setting doesn't affect existing policies or ACLs.
+    /// Enabling this setting doesn't affect existing bucket policies.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BlockPublicAcls")]
-    pub block_public_acls: Option<bool>,
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
 
 }
+
+
+
+
+/// A bucket associated with a specific Region when creating Multi-Region Access    Points.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Region {
+
+
+    /// 
+    /// The name of the associated bucket for the Region.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketAccountId")]
+    pub bucket_account_id: Option<String>,
+
+}
+
+

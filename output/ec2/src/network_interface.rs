@@ -6,6 +6,18 @@ pub struct CfnNetworkInterface {
 
 
     /// 
+    /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically       selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use       the Ipv6Addresses property and don't specify this property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6AddressCount")]
+    pub ipv6_address_count: Option<i64>,
+
+
+    /// 
     /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to       associate with the network interface. If you're specifying a number of IPv6 addresses, use       the Ipv6AddressCount property and don't specify this property.
     /// 
     /// Required: No
@@ -18,15 +30,41 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// An arbitrary set of tags (key-value pairs) for this network interface.
+    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Allowed values: branch | efa | trunk
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InterfaceType")]
+    pub interface_type: Option<NetworkInterfaceInterfaceTypeEnum>,
+
+
+    /// 
+    /// The ID of the subnet to associate with the network interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
+
+
+    /// 
+    /// Enable or disable source/destination checks, which ensure that the instance       is either the source or the destination of any traffic that it receives.       If the value is true, source/destination checks are enabled;       otherwise, they are disabled. The default value is true.       You must disable source/destination checks if the instance runs services       such as network address translation, routing, or firewalls.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "SourceDestCheck")]
+    pub source_dest_check: Option<bool>,
 
 
     /// 
@@ -42,15 +80,15 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// A description for the network interface.
+    /// Assigns private IP addresses to the network interface. You can specify a primary private       IP address by setting the value of the Primary property to true       in the PrivateIpAddressSpecification property. If you want EC2 to       automatically assign private IP addresses, use the       SecondaryPrivateIpAddressCount property and do not specify this       property.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of PrivateIpAddressSpecification
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Some interruptions
+    #[serde(rename = "PrivateIpAddresses")]
+    pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
 
     /// 
@@ -68,68 +106,6 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically       selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use       the Ipv6Addresses property and don't specify this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6AddressCount")]
-    pub ipv6_address_count: Option<i64>,
-
-
-    /// 
-    /// Assigns private IP addresses to the network interface. You can specify a primary private       IP address by setting the value of the Primary property to true       in the PrivateIpAddressSpecification property. If you want EC2 to       automatically assign private IP addresses, use the       SecondaryPrivateIpAddressCount property and do not specify this       property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PrivateIpAddressSpecification
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "PrivateIpAddresses")]
-    pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
-
-
-    /// 
-    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: branch | efa | trunk
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InterfaceType")]
-    pub interface_type: Option<String>,
-
-
-    /// 
-    /// Enable or disable source/destination checks, which ensure that the instance       is either the source or the destination of any traffic that it receives.       If the value is true, source/destination checks are enabled;       otherwise, they are disabled. The default value is true.       You must disable source/destination checks if the instance runs services       such as network address translation, routing, or firewalls.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceDestCheck")]
-    pub source_dest_check: Option<bool>,
-
-
-    /// 
-    /// The ID of the subnet to associate with the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
     /// The security group IDs associated with this network interface.
     /// 
     /// Required: No
@@ -140,7 +116,56 @@ pub struct CfnNetworkInterface {
     #[serde(rename = "GroupSet")]
     pub group_set: Option<Vec<String>>,
 
+
+    /// 
+    /// A description for the network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// An arbitrary set of tags (key-value pairs) for this network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkInterfaceInterfaceTypeEnum {
+
+    /// branch
+    #[serde(rename = "branch")]
+    Branch,
+
+    /// efa
+    #[serde(rename = "efa")]
+    Efa,
+
+    /// trunk
+    #[serde(rename = "trunk")]
+    Trunk,
+
+}
+
+impl Default for NetworkInterfaceInterfaceTypeEnum {
+    fn default() -> Self {
+        NetworkInterfaceInterfaceTypeEnum::Branch
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnNetworkInterface {
     fn type_string() -> &'static str {
@@ -184,23 +209,6 @@ pub struct PrivateIpAddressSpecification {
 }
 
 
-/// Describes the IPv6 addresses to associate with the network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InstanceIpv6Address {
-
-
-    /// 
-    /// An IPv6 address to associate with the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: String,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -236,3 +244,26 @@ pub struct Tag {
     pub key: String,
 
 }
+
+
+
+
+/// Describes the IPv6 addresses to associate with the network interface.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceIpv6Address {
+
+
+    /// 
+    /// An IPv6 address to associate with the network interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6Address")]
+    pub ipv6_address: String,
+
+}
+
+

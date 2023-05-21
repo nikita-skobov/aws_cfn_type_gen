@@ -6,18 +6,6 @@ pub struct CfnVpcAttachment {
 
 
     /// 
-    /// The subnet ARNs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetArns")]
-    pub subnet_arns: Vec<String>,
-
-
-    /// 
     /// Options for creating the VPC attachment.
     /// 
     /// Required: No
@@ -42,6 +30,18 @@ pub struct CfnVpcAttachment {
 
 
     /// 
+    /// The ARN of the VPC attachment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcArn")]
+    pub vpc_arn: String,
+
+
+    /// 
     /// The tags associated with the VPC attachment.
     /// 
     /// Required: No
@@ -54,17 +54,19 @@ pub struct CfnVpcAttachment {
 
 
     /// 
-    /// The ARN of the VPC attachment.
+    /// The subnet ARNs.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcArn")]
-    pub vpc_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetArns")]
+    pub subnet_arns: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVpcAttachment {
     fn type_string() -> &'static str {
@@ -75,6 +77,57 @@ impl cfn_resources::CfnResource for CfnVpcAttachment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProposedSegmentChange {
+
+
+    /// 
+    /// The list of key-value tags that changed for the segment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The rule number in the policy document that applies to this change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
+
+
+    /// 
+    /// The name of the segment to change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SegmentName")]
+    pub segment_name: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -112,21 +165,11 @@ pub struct Tag {
 }
 
 
+
+
 /// Describes the VPC options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcOptions {
-
-
-    /// 
-    /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplianceModeSupport")]
-    pub appliance_mode_support: Option<bool>,
 
 
     /// 
@@ -140,53 +183,18 @@ pub struct VpcOptions {
     #[serde(rename = "Ipv6Support")]
     pub ipv6_support: Option<bool>,
 
+
+    /// 
+    /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplianceModeSupport")]
+    pub appliance_mode_support: Option<bool>,
+
 }
 
 
-/// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProposedSegmentChange {
-
-
-    /// 
-    /// The rule number in the policy document that applies to this change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
-
-
-    /// 
-    /// The list of key-value tags that changed for the segment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name of the segment to change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SegmentName")]
-    pub segment_name: Option<String>,
-
-}

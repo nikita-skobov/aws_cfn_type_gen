@@ -6,24 +6,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// Name of your Amazon Kinesis Analytics application (for example,         sample-app).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [a-zA-Z0-9_.-]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationName")]
-    pub application_name: Option<String>,
-
-
-    /// 
     /// Use this parameter to configure the application input.
     /// 
     /// You can configure your application to receive input from a single streaming source. In       this configuration, you map this streaming source to an in-application stream that is       created. Your application code can then query the in-application stream like a table       (you can think of it as a constantly updating table).
@@ -42,19 +24,21 @@ pub struct CfnApplication {
 
 
     /// 
-    /// Summary description of the application.
+    /// Name of your Amazon Kinesis Analytics application (for example,         sample-app).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 1024
+    /// Maximum: 128
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationDescription")]
-    pub application_description: Option<String>,
+    /// Pattern: [a-zA-Z0-9_.-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationName")]
+    pub application_name: Option<String>,
 
 
     /// 
@@ -76,7 +60,25 @@ pub struct CfnApplication {
     #[serde(rename = "ApplicationCode")]
     pub application_code: Option<String>,
 
+
+    /// 
+    /// Summary description of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationDescription")]
+    pub application_description: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -89,128 +91,11 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 
-/// Describes the mapping of each data element in the streaming source to the       corresponding column in the in-application stream.
-///
-/// Also used to describe the format of the reference data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RecordColumn {
-
-
-    /// 
-    /// Name of the column created in the in-application input stream or reference       table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Reference to the data element in the streaming input or the reference data source.       This element is required if the RecordFormatType is JSON.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mapping")]
-    pub mapping: Option<String>,
-
-
-    /// 
-    /// Type of column created in the in-application input stream or reference table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SqlType")]
-    pub sql_type: String,
-
-}
-
-
-/// Provides a description of a processor that is used to preprocess the records in the       stream before being processed by your application code. Currently, the only input       processor available is AWS Lambda.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InputProcessingConfiguration {
-
-
-    /// 
-    /// The InputLambdaProcessor that is used to preprocess the records       in the stream before being processed by your application code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InputLambdaProcessor
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputLambdaProcessor")]
-    pub input_lambda_processor: Option<InputLambdaProcessor>,
-
-}
-
-
-/// Provides additional mapping information when the record format uses delimiters, such       as CSV. For example, the following sample records use CSV format, where the records use       the '\n' as the row delimiter and a comma (",") as the column       delimiter:
-///
-/// "name1", "address1"
-///
-/// "name2", "address2"
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CSVMappingParameters {
-
-
-    /// 
-    /// Row delimiter. For example, in a CSV format, '\n' is the typical       row delimiter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordRowDelimiter")]
-    pub record_row_delimiter: String,
-
-
-    /// 
-    /// Column delimiter. For example, in a CSV format, a comma (",") is the typical column       delimiter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordColumnDelimiter")]
-    pub record_column_delimiter: String,
-
-}
-
-
 /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.
 ///
 /// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InputSchema {
-
-
-    /// 
-    /// Specifies the format of the records on the streaming source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RecordFormat
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordFormat")]
-    pub record_format: RecordFormat,
 
 
     /// 
@@ -240,7 +125,54 @@ pub struct InputSchema {
     #[serde(rename = "RecordColumns")]
     pub record_columns: Vec<RecordColumn>,
 
+
+    /// 
+    /// Specifies the format of the records on the streaming source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RecordFormat
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordFormat")]
+    pub record_format: RecordFormat,
+
 }
+
+
+
+
+/// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MappingParameters {
+
+
+    /// 
+    /// Provides additional mapping information when the record format uses delimiters (for       example, CSV).
+    /// 
+    /// Required: No
+    ///
+    /// Type: CSVMappingParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CSVMappingParameters")]
+    pub csvmapping_parameters: Option<CSVMappingParameters>,
+
+
+    /// 
+    /// Provides additional mapping information when JSON is the record format on the       streaming source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: JSONMappingParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JSONMappingParameters")]
+    pub jsonmapping_parameters: Option<JSONMappingParameters>,
+
+}
+
+
 
 
 /// Provides additional mapping information when JSON is the record format on the       streaming source.
@@ -262,6 +194,62 @@ pub struct JSONMappingParameters {
     pub record_row_path: String,
 
 }
+
+
+
+
+/// Describes the record format and relevant mapping information that should be applied       to schematize the records on the stream.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RecordFormat {
+
+
+    /// 
+    /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MappingParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MappingParameters")]
+    pub mapping_parameters: Option<MappingParameters>,
+
+
+    /// 
+    /// The type of record format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CSV | JSON
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordFormatType")]
+    pub record_format_type: RecordFormatRecordFormatTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordFormatRecordFormatTypeEnum {
+
+    /// CSV
+    #[serde(rename = "CSV")]
+    Csv,
+
+    /// JSON
+    #[serde(rename = "JSON")]
+    Json,
+
+}
+
+impl Default for RecordFormatRecordFormatTypeEnum {
+    fn default() -> Self {
+        RecordFormatRecordFormatTypeEnum::Csv
+    }
+}
+
 
 
 /// Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You       provide the delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that       enables Amazon Kinesis Analytics to access the stream on your behalf.
@@ -305,6 +293,194 @@ pub struct KinesisFirehoseInput {
     pub role_arn: String,
 
 }
+
+
+
+
+/// When you configure the application input, you specify the streaming source, the       in-application stream name that is created, and the mapping between the two. For more       information, see Configuring Application         Input.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Input {
+
+
+    /// 
+    /// Name prefix to use when creating an in-application stream. Suppose that you specify a       prefix "MyInApplicationStream." Amazon Kinesis Analytics then creates one or more (as       per the InputParallelism count you specified) in-application streams with       names "MyInApplicationStream_001," "MyInApplicationStream_002," and so on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamePrefix")]
+    pub name_prefix: String,
+
+
+    /// 
+    /// If the streaming source is an Amazon Kinesis Firehose delivery stream, identifies the       delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access       the stream on your behalf.
+    /// 
+    /// Note: Either KinesisStreamsInput or KinesisFirehoseInput is       required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: KinesisFirehoseInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseInput")]
+    pub kinesis_firehose_input: Option<KinesisFirehoseInput>,
+
+
+    /// 
+    /// Describes the number of in-application streams to create.
+    /// 
+    /// Data from your source is routed to these in-application input streams.
+    /// 
+    /// See Configuring Application Input.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InputParallelism
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputParallelism")]
+    pub input_parallelism: Option<InputParallelism>,
+
+
+    /// 
+    /// Describes the format of the data in the streaming source, and how each data element       maps to corresponding columns in the in-application stream that is being created.
+    /// 
+    /// Also used to describe the format of the reference data source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: InputSchema
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputSchema")]
+    pub input_schema: InputSchema,
+
+
+    /// 
+    /// If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon       Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the       stream on your behalf.
+    /// 
+    /// Note: Either KinesisStreamsInput or KinesisFirehoseInput is       required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: KinesisStreamsInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisStreamsInput")]
+    pub kinesis_streams_input: Option<KinesisStreamsInput>,
+
+
+    /// 
+    /// The InputProcessingConfiguration for the input. An input       processor transforms records as they are received from the stream, before the       application's SQL code executes. Currently, the only input processing configuration       available is InputLambdaProcessor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InputProcessingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputProcessingConfiguration")]
+    pub input_processing_configuration: Option<InputProcessingConfiguration>,
+
+}
+
+
+
+
+/// Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's       Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to       access the stream on your behalf.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisStreamsInput {
+
+
+    /// 
+    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on       your behalf. You need to grant the necessary permissions to this role.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: String,
+
+
+    /// 
+    /// ARN of the input Amazon Kinesis stream to read.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
+
+}
+
+
+
+
+/// Describes the number of in-application streams to create for a given streaming source.       For information about parallelism, see Configuring Application         Input.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InputParallelism {
+
+
+    /// 
+    /// Number of in-application streams to create. For more information, see Limits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Count")]
+    pub count: Option<i64>,
+
+}
+
+
+
+
+/// Provides a description of a processor that is used to preprocess the records in the       stream before being processed by your application code. Currently, the only input       processor available is AWS Lambda.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InputProcessingConfiguration {
+
+
+    /// 
+    /// The InputLambdaProcessor that is used to preprocess the records       in the stream before being processed by your application code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InputLambdaProcessor
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputLambdaProcessor")]
+    pub input_lambda_processor: Option<InputLambdaProcessor>,
+
+}
+
+
 
 
 /// An object that contains the Amazon Resource Name (ARN) of the AWS Lambda function that is used to preprocess records in the       stream, and the ARN of the IAM role that is used to access the AWS Lambda       function.
@@ -352,44 +528,19 @@ pub struct InputLambdaProcessor {
 }
 
 
-/// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
+
+
+/// Provides additional mapping information when the record format uses delimiters, such       as CSV. For example, the following sample records use CSV format, where the records use       the '\n' as the row delimiter and a comma (",") as the column       delimiter:
+///
+/// "name1", "address1"
+///
+/// "name2", "address2"
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MappingParameters {
+pub struct CSVMappingParameters {
 
 
     /// 
-    /// Provides additional mapping information when the record format uses delimiters (for       example, CSV).
-    /// 
-    /// Required: No
-    ///
-    /// Type: CSVMappingParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CSVMappingParameters")]
-    pub csvmapping_parameters: Option<CSVMappingParameters>,
-
-
-    /// 
-    /// Provides additional mapping information when JSON is the record format on the       streaming source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JSONMappingParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JSONMappingParameters")]
-    pub jsonmapping_parameters: Option<JSONMappingParameters>,
-
-}
-
-
-/// Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's       Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to       access the stream on your behalf.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KinesisStreamsInput {
-
-
-    /// 
-    /// ARN of the input Amazon Kinesis stream to read.
+    /// Column delimiter. For example, in a CSV format, a comma (",") is the typical column       delimiter.
     /// 
     /// Required: Yes
     ///
@@ -397,17 +548,13 @@ pub struct KinesisStreamsInput {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    #[serde(rename = "RecordColumnDelimiter")]
+    pub record_column_delimiter: String,
 
 
     /// 
-    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on       your behalf. You need to grant the necessary permissions to this role.
+    /// Row delimiter. For example, in a CSV format, '\n' is the typical       row delimiter.
     /// 
     /// Required: Yes
     ///
@@ -415,134 +562,24 @@ pub struct KinesisStreamsInput {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    #[serde(rename = "RecordRowDelimiter")]
+    pub record_row_delimiter: String,
 
 }
 
 
-/// Describes the record format and relevant mapping information that should be applied       to schematize the records on the stream.
+
+
+/// Describes the mapping of each data element in the streaming source to the       corresponding column in the in-application stream.
+///
+/// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RecordFormat {
+pub struct RecordColumn {
 
 
     /// 
-    /// The type of record format.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CSV | JSON
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordFormatType")]
-    pub record_format_type: String,
-
-
-    /// 
-    /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MappingParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MappingParameters")]
-    pub mapping_parameters: Option<MappingParameters>,
-
-}
-
-
-/// Describes the number of in-application streams to create for a given streaming source.       For information about parallelism, see Configuring Application         Input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InputParallelism {
-
-
-    /// 
-    /// Number of in-application streams to create. For more information, see Limits.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Count")]
-    pub count: Option<i64>,
-
-}
-
-
-/// When you configure the application input, you specify the streaming source, the       in-application stream name that is created, and the mapping between the two. For more       information, see Configuring Application         Input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Input {
-
-
-    /// 
-    /// If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon       Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the       stream on your behalf.
-    /// 
-    /// Note: Either KinesisStreamsInput or KinesisFirehoseInput is       required.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: KinesisStreamsInput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisStreamsInput")]
-    pub kinesis_streams_input: Option<KinesisStreamsInput>,
-
-
-    /// 
-    /// If the streaming source is an Amazon Kinesis Firehose delivery stream, identifies the       delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access       the stream on your behalf.
-    /// 
-    /// Note: Either KinesisStreamsInput or KinesisFirehoseInput is       required.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: KinesisFirehoseInput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseInput")]
-    pub kinesis_firehose_input: Option<KinesisFirehoseInput>,
-
-
-    /// 
-    /// Describes the format of the data in the streaming source, and how each data element       maps to corresponding columns in the in-application stream that is being created.
-    /// 
-    /// Also used to describe the format of the reference data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: InputSchema
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputSchema")]
-    pub input_schema: InputSchema,
-
-
-    /// 
-    /// The InputProcessingConfiguration for the input. An input       processor transforms records as they are received from the stream, before the       application's SQL code executes. Currently, the only input processing configuration       available is InputLambdaProcessor.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InputProcessingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputProcessingConfiguration")]
-    pub input_processing_configuration: Option<InputProcessingConfiguration>,
-
-
-    /// 
-    /// Name prefix to use when creating an in-application stream. Suppose that you specify a       prefix "MyInApplicationStream." Amazon Kinesis Analytics then creates one or more (as       per the InputParallelism count you specified) in-application streams with       names "MyInApplicationStream_001," "MyInApplicationStream_002," and so on.
+    /// Type of column created in the in-application input stream or reference table.
     /// 
     /// Required: Yes
     ///
@@ -550,26 +587,34 @@ pub struct Input {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 32
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "NamePrefix")]
-    pub name_prefix: String,
+    #[serde(rename = "SqlType")]
+    pub sql_type: String,
 
 
     /// 
-    /// Describes the number of in-application streams to create.
-    /// 
-    /// Data from your source is routed to these in-application input streams.
-    /// 
-    /// See Configuring Application Input.
+    /// Reference to the data element in the streaming input or the reference data source.       This element is required if the RecordFormatType is JSON.
     /// 
     /// Required: No
     ///
-    /// Type: InputParallelism
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InputParallelism")]
-    pub input_parallelism: Option<InputParallelism>,
+    #[serde(rename = "Mapping")]
+    pub mapping: Option<String>,
+
+
+    /// 
+    /// Name of the column created in the in-application input stream or reference       table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
+
+

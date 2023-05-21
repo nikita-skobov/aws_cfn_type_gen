@@ -6,21 +6,21 @@ pub struct CfnOrganizationConformancePack {
 
 
     /// 
-    /// The name you assign to an organization conformance pack.
+    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
     /// 
-    /// Required: Yes
+    /// NoteThis field is optional.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
-    /// Maximum: 128
+    /// Maximum: 63
     ///
-    /// Pattern: [a-zA-Z][-a-zA-Z0-9]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OrganizationConformancePackName")]
-    pub organization_conformance_pack_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryS3Bucket")]
+    pub delivery_s3_bucket: Option<String>,
 
 
     /// 
@@ -50,21 +50,21 @@ pub struct CfnOrganizationConformancePack {
 
 
     /// 
-    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
+    /// The name you assign to an organization conformance pack.
     /// 
-    /// NoteThis field is optional.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 63
+    /// Maximum: 128
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryS3Bucket")]
-    pub delivery_s3_bucket: Option<String>,
+    /// Pattern: [a-zA-Z][-a-zA-Z0-9]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OrganizationConformancePackName")]
+    pub organization_conformance_pack_name: String,
 
 
     /// 
@@ -111,6 +111,8 @@ pub struct CfnOrganizationConformancePack {
     pub template_s3_uri: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
     fn type_string() -> &'static str {
@@ -160,3 +162,5 @@ pub struct ConformancePackInputParameter {
     pub parameter_value: String,
 
 }
+
+

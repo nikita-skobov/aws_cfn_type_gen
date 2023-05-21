@@ -10,24 +10,6 @@ pub struct CfnLogStream {
 
 
     /// 
-    /// The name of the log group where the log stream is created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\.\-_/#A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: String,
-
-
-    /// 
     /// The name of the log stream. The name must be unique within the log group.
     /// 
     /// Required: No
@@ -44,7 +26,27 @@ pub struct CfnLogStream {
     #[serde(rename = "LogStreamName")]
     pub log_stream_name: Option<String>,
 
+
+    /// 
+    /// The name of the log group where the log stream is created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\.\-_/#A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLogStream {
     fn type_string() -> &'static str {

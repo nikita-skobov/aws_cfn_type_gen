@@ -28,15 +28,17 @@ pub struct CfnAppMonitor {
 
 
     /// 
-    /// The top-level internet domain name for which your application has administrative authority. This parameter is required.
+    /// Data collected by CloudWatch RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether       CloudWatch RUM       sends a copy of this telemetry data to Amazon CloudWatch Logs       in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur       Amazon CloudWatch Logs charges.
     /// 
-    /// Required: Yes
+    /// If you omit this parameter, the default is false.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: String,
+    #[serde(rename = "CwLogEnabled")]
+    pub cw_log_enabled: Option<bool>,
 
 
     /// 
@@ -52,20 +54,6 @@ pub struct CfnAppMonitor {
 
 
     /// 
-    /// A structure that contains much of the configuration data for the app monitor. If you are using       Amazon Cognito for authorization, you must include this structure in your request, and it       must include the ID of the       Amazon Cognito identity pool to use for authorization. If you don't       include AppMonitorConfiguration, you must set up your own       authorization method. For more information, see       Authorize your application         to send data to AWS.
-    /// 
-    /// If you omit this argument, the sample rate used for CloudWatch RUM is set to 10% of the user sessions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AppMonitorConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppMonitorConfiguration")]
-    pub app_monitor_configuration: Option<AppMonitorConfiguration>,
-
-
-    /// 
     /// A name for the app monitor. This parameter is required.
     /// 
     /// Required: Yes
@@ -78,19 +66,33 @@ pub struct CfnAppMonitor {
 
 
     /// 
-    /// Data collected by CloudWatch RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether       CloudWatch RUM       sends a copy of this telemetry data to Amazon CloudWatch Logs       in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur       Amazon CloudWatch Logs charges.
+    /// The top-level internet domain name for which your application has administrative authority. This parameter is required.
     /// 
-    /// If you omit this parameter, the default is false.
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Domain")]
+    pub domain: String,
+
+
+    /// 
+    /// A structure that contains much of the configuration data for the app monitor. If you are using       Amazon Cognito for authorization, you must include this structure in your request, and it       must include the ID of the       Amazon Cognito identity pool to use for authorization. If you don't       include AppMonitorConfiguration, you must set up your own       authorization method. For more information, see       Authorize your application         to send data to AWS.
+    /// 
+    /// If you omit this argument, the sample rate used for CloudWatch RUM is set to 10% of the user sessions.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: AppMonitorConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CwLogEnabled")]
-    pub cw_log_enabled: Option<bool>,
+    #[serde(rename = "AppMonitorConfiguration")]
+    pub app_monitor_configuration: Option<AppMonitorConfiguration>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAppMonitor {
     fn type_string() -> &'static str {
@@ -100,237 +102,6 @@ impl cfn_resources::CfnResource for CfnAppMonitor {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// This structure contains much of the configuration data for the app monitor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AppMonitorConfiguration {
-
-
-    /// 
-    /// A list of URLs in your website or application to exclude from RUM data collection.
-    /// 
-    /// You can't include both ExcludedPages and IncludedPages in the same app monitor.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludedPages")]
-    pub excluded_pages: Option<Vec<String>>,
-
-
-    /// 
-    /// An array of structures that each define a destination that this app monitor will send extended metrics to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MetricDestination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricDestinations")]
-    pub metric_destinations: Option<Vec<MetricDestination>>,
-
-
-    /// 
-    /// A list of pages in your application that are to be displayed with a "favorite" icon       in the CloudWatch RUM console.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FavoritePages")]
-    pub favorite_pages: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN of the guest IAM role that is attached to the Amazon Cognito identity pool       that is used to authorize the sending of data to CloudWatch RUM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GuestRoleArn")]
-    pub guest_role_arn: Option<String>,
-
-
-    /// 
-    /// If this app monitor is to collect data from only certain pages in your application, this structure lists those pages.
-    /// 
-    /// You can't include both ExcludedPages and IncludedPages in the same app monitor.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludedPages")]
-    pub included_pages: Option<Vec<String>>,
-
-
-    /// 
-    /// If you set this to true, CloudWatch RUM sends client-side traces to       X-Ray for each sampled session. You can then see traces and       segments from these user sessions       in the RUM dashboard and the CloudWatch ServiceLens console. For more information,       see What is AWS X-Ray?
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableXRay")]
-    pub enable_xray: Option<bool>,
-
-
-    /// 
-    /// An array that lists the types of telemetry data that this app monitor is to collect.
-    /// 
-    /// errors indicates that RUM collects data about unhandled JavaScript errors raised         by your application.performance indicates that RUM collects performance data about how your application         and its resources are loaded and rendered. This includes Core Web Vitals.http indicates that RUM collects data about HTTP errors thrown by your application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Telemetries")]
-    pub telemetries: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies the portion of user sessions to use for CloudWatch RUM data collection. Choosing a higher portion gives you       more data but also incurs more costs.
-    /// 
-    /// The range for this value is 0 to 1 inclusive. Setting this to 1 means that 100% of user sessions are sampled, and setting       it to 0.1 means that 10% of user sessions are sampled.
-    /// 
-    /// If you omit this parameter, the default of 0.1 is used, and 10% of sessions will be sampled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionSampleRate")]
-    pub session_sample_rate: Option<f64>,
-
-
-    /// 
-    /// The ID of the Amazon Cognito identity pool       that is used to authorize the sending of data to CloudWatch RUM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdentityPoolId")]
-    pub identity_pool_id: Option<String>,
-
-
-    /// 
-    /// If you set this to true, the CloudWatch RUM web client sets two cookies, a session       cookie and a user cookie. The cookies allow the CloudWatch RUM web client to collect data relating to       the number of users an application has and the behavior of the application across a       sequence of events. Cookies are stored in the top-level domain of the current page.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowCookies")]
-    pub allow_cookies: Option<bool>,
-
-}
-
-
-/// Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send       extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
-///
-/// For more information about extended metrics, see             Extended metrics that you can send to CloudWatch and CloudWatch Evidently.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricDestination {
-
-
-    /// 
-    /// Defines the destination to send the metrics to. Valid values are CloudWatch and       Evidently. If       you specify Evidently, you must also specify the ARN of the       CloudWatchEvidently experiment that is to       be the destination and an IAM role that has permission to write to the experiment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Destination")]
-    pub destination: String,
-
-
-    /// 
-    /// An array of structures which define the metrics that you want to send.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MetricDefinition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricDefinitions")]
-    pub metric_definitions: Option<Vec<MetricDefinition>>,
-
-
-    /// 
-    /// Use this parameter only if Destination is Evidently. This parameter specifies       the ARN of the Evidently experiment that will receive the extended metrics.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: Option<String>,
-
-
-    /// 
-    /// This parameter is required if Destination is Evidently. If Destination is     CloudWatch, do not use this parameter.
-    /// 
-    /// This parameter specifies     the ARN of an IAM role that RUM will assume to write to the Evidently     experiment that you are sending metrics to. This role must have permission to write to that experiment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: Option<String>,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
 }
 
 
@@ -349,6 +120,34 @@ pub struct Tag {
 /// If some metric definitions that you specify are not valid,      then the operation will not modify any metric definitions even if other metric definitions specified are valid.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDefinition {
+
+
+    /// 
+    /// If you are creating a custom metric instead of an extended metrics, use this parameter to define       the metric namespace for that custom metric. Do not specify this parameter if you are creating an extended metric.
+    /// 
+    /// You can't use any string that starts with AWS/ for your namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Namespace")]
+    pub namespace: Option<String>,
+
+
+    /// 
+    /// The pattern that defines the metric. RUM checks events that happen in a user's session       against the pattern, and events that match the pattern are sent to the metric destination.
+    /// 
+    /// If the metrics destination       is CloudWatch and the event       also matches a value in DimensionKeys, then the metric is published with the specified dimensions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventPattern")]
+    pub event_pattern: Option<String>,
 
 
     /// 
@@ -376,20 +175,6 @@ pub struct MetricDefinition {
 
 
     /// 
-    /// If you are creating a custom metric instead of an extended metrics, use this parameter to define       the metric namespace for that custom metric. Do not specify this parameter if you are creating an extended metric.
-    /// 
-    /// You can't use any string that starts with AWS/ for your namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: Option<String>,
-
-
-    /// 
     /// Use this field only if you are sending this metric to CloudWatch. It defines       the CloudWatch metric unit that this metric is measured in.
     /// 
     /// Required: No
@@ -412,21 +197,185 @@ pub struct MetricDefinition {
     #[serde(rename = "ValueKey")]
     pub value_key: Option<String>,
 
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
 
     /// 
-    /// The pattern that defines the metric. RUM checks events that happen in a user's session       against the pattern, and events that match the pattern are sent to the metric destination.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// If the metrics destination       is CloudWatch and the event       also matches a value in DimensionKeys, then the metric is published with the specified dimensions.
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// This structure contains much of the configuration data for the app monitor.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AppMonitorConfiguration {
+
+
+    /// 
+    /// A list of URLs in your website or application to exclude from RUM data collection.
+    /// 
+    /// You can't include both ExcludedPages and IncludedPages in the same app monitor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludedPages")]
+    pub excluded_pages: Option<Vec<String>>,
+
+
+    /// 
+    /// If you set this to true, the CloudWatch RUM web client sets two cookies, a session       cookie and a user cookie. The cookies allow the CloudWatch RUM web client to collect data relating to       the number of users an application has and the behavior of the application across a       sequence of events. Cookies are stored in the top-level domain of the current page.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowCookies")]
+    pub allow_cookies: Option<bool>,
+
+
+    /// 
+    /// If this app monitor is to collect data from only certain pages in your application, this structure lists those pages.
+    /// 
+    /// You can't include both ExcludedPages and IncludedPages in the same app monitor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludedPages")]
+    pub included_pages: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of pages in your application that are to be displayed with a "favorite" icon       in the CloudWatch RUM console.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FavoritePages")]
+    pub favorite_pages: Option<Vec<String>>,
+
+
+    /// 
+    /// The ARN of the guest IAM role that is attached to the Amazon Cognito identity pool       that is used to authorize the sending of data to CloudWatch RUM.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EventPattern")]
-    pub event_pattern: Option<String>,
+    #[serde(rename = "GuestRoleArn")]
+    pub guest_role_arn: Option<String>,
+
+
+    /// 
+    /// An array of structures that each define a destination that this app monitor will send extended metrics to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MetricDestination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricDestinations")]
+    pub metric_destinations: Option<Vec<MetricDestination>>,
+
+
+    /// 
+    /// The ID of the Amazon Cognito identity pool       that is used to authorize the sending of data to CloudWatch RUM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityPoolId")]
+    pub identity_pool_id: Option<String>,
+
+
+    /// 
+    /// Specifies the portion of user sessions to use for CloudWatch RUM data collection. Choosing a higher portion gives you       more data but also incurs more costs.
+    /// 
+    /// The range for this value is 0 to 1 inclusive. Setting this to 1 means that 100% of user sessions are sampled, and setting       it to 0.1 means that 10% of user sessions are sampled.
+    /// 
+    /// If you omit this parameter, the default of 0.1 is used, and 10% of sessions will be sampled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionSampleRate")]
+    pub session_sample_rate: Option<f64>,
+
+
+    /// 
+    /// If you set this to true, CloudWatch RUM sends client-side traces to       X-Ray for each sampled session. You can then see traces and       segments from these user sessions       in the RUM dashboard and the CloudWatch ServiceLens console. For more information,       see What is AWS X-Ray?
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableXRay")]
+    pub enable_xray: Option<bool>,
+
+
+    /// 
+    /// An array that lists the types of telemetry data that this app monitor is to collect.
+    /// 
+    /// errors indicates that RUM collects data about unhandled JavaScript errors raised         by your application.performance indicates that RUM collects performance data about how your application         and its resources are loaded and rendered. This includes Core Web Vitals.http indicates that RUM collects data about HTTP errors thrown by your application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Telemetries")]
+    pub telemetries: Option<Vec<String>>,
 
 }
+
+
 
 
 /// This structure specifies whether this app monitor allows the web client to define and send custom events.
@@ -448,3 +397,66 @@ pub struct CustomEvents {
     pub status: Option<String>,
 
 }
+
+
+
+
+/// Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send       extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
+///
+/// For more information about extended metrics, see             Extended metrics that you can send to CloudWatch and CloudWatch Evidently.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricDestination {
+
+
+    /// 
+    /// Use this parameter only if Destination is Evidently. This parameter specifies       the ARN of the Evidently experiment that will receive the extended metrics.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: Option<String>,
+
+
+    /// 
+    /// This parameter is required if Destination is Evidently. If Destination is     CloudWatch, do not use this parameter.
+    /// 
+    /// This parameter specifies     the ARN of an IAM role that RUM will assume to write to the Evidently     experiment that you are sending metrics to. This role must have permission to write to that experiment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IamRoleArn")]
+    pub iam_role_arn: Option<String>,
+
+
+    /// 
+    /// An array of structures which define the metrics that you want to send.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MetricDefinition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricDefinitions")]
+    pub metric_definitions: Option<Vec<MetricDefinition>>,
+
+
+    /// 
+    /// Defines the destination to send the metrics to. Valid values are CloudWatch and       Evidently. If       you specify Evidently, you must also specify the ARN of the       CloudWatchEvidently experiment that is to       be the destination and an IAM role that has permission to write to the experiment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Destination")]
+    pub destination: String,
+
+}
+
+

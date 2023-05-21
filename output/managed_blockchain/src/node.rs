@@ -20,6 +20,18 @@ pub struct CfnNode {
 
 
     /// 
+    /// Configuration properties of a peer node.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: NodeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NodeConfiguration")]
+    pub node_configuration: NodeConfiguration,
+
+
+    /// 
     /// The unique identifier of the network for the node.
     /// 
     /// Ethereum public networks have the following NetworkIds:
@@ -38,19 +50,9 @@ pub struct CfnNode {
     #[serde(rename = "NetworkId")]
     pub network_id: String,
 
-
-    /// 
-    /// Configuration properties of a peer node.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: NodeConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NodeConfiguration")]
-    pub node_configuration: NodeConfiguration,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnNode {
     fn type_string() -> &'static str {
@@ -69,18 +71,6 @@ pub struct NodeConfiguration {
 
 
     /// 
-    /// The Amazon Managed Blockchain instance type for the node.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
     /// The Availability Zone in which the node exists. Required for Ethereum nodes.
     /// 
     /// Required: Yes
@@ -91,4 +81,18 @@ pub struct NodeConfiguration {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: String,
 
+
+    /// 
+    /// The Amazon Managed Blockchain instance type for the node.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
 }
+
+

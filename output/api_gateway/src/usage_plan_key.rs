@@ -6,15 +6,15 @@ pub struct CfnUsagePlanKey {
 
 
     /// 
-    /// The Id of the UsagePlanKey resource to be deleted.
+    /// The Id of the UsagePlan resource representing the usage plan containing the to-be-deleted UsagePlanKey resource representing a plan customer.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KeyId")]
-    pub key_id: String,
+    #[serde(rename = "UsagePlanId")]
+    pub usage_plan_id: String,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnUsagePlanKey {
 
 
     /// 
-    /// The Id of the UsagePlan resource representing the usage plan containing the to-be-deleted UsagePlanKey resource representing a plan customer.
+    /// The Id of the UsagePlanKey resource to be deleted.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UsagePlanId")]
-    pub usage_plan_id: String,
+    #[serde(rename = "KeyId")]
+    pub key_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUsagePlanKey {
     fn type_string() -> &'static str {

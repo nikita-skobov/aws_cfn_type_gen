@@ -22,6 +22,8 @@ pub struct CfnDefaultViewAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDefaultViewAssociation {
     fn type_string() -> &'static str {
         "AWS::ResourceExplorer2::DefaultViewAssociation"

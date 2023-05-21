@@ -6,34 +6,6 @@ pub struct CfnEnvironmentEC2 {
 
 
     /// 
-    /// The connection type used for connecting to an Amazon EC2 environment. Valid values are CONNECT_SSH (default) and CONNECT_SSM (connected through AWS Systems Manager).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CONNECT_SSH | CONNECT_SSM
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectionType")]
-    pub connection_type: Option<String>,
-
-
-    /// 
-    /// The description of the environment to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// An array of key-value pairs that will be associated with the new AWS Cloud9 development    environment.
     /// 
     /// Required: No
@@ -45,54 +17,6 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Any AWS CodeCommit source code repositories to be cloned into the development environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Repository
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Repositories")]
-    pub repositories: Option<Vec<Repository>>,
-
-
-    /// 
-    /// The type of instance to connect to the environment (for example, t2.micro).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 20
-    ///
-    /// Pattern: ^[a-z][1-9][.][a-z0-9]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
-    /// The ID of the subnet in Amazon Virtual Private Cloud (Amazon VPC) that AWS Cloud9 will use to communicate with the Amazon Elastic Compute Cloud (Amazon EC2) instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 15
-    ///
-    /// Maximum: 24
-    ///
-    /// Pattern: ^(subnet-[0-9a-f]{8}|subnet-[0-9a-f]{17})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
 
 
     /// 
@@ -120,17 +44,17 @@ pub struct CfnEnvironmentEC2 {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the environment owner. This ARN can be the ARN of any AWS Identity and Access Management principal. If this value is not specified, the ARN defaults to this environment's creator.
+    /// The connection type used for connecting to an Amazon EC2 environment. Valid values are CONNECT_SSH (default) and CONNECT_SSM (connected through AWS Systems Manager).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
+    /// Allowed values: CONNECT_SSH | CONNECT_SSM
     ///
     /// Update requires: Replacement
-    #[serde(rename = "OwnerArn")]
-    pub owner_arn: Option<String>,
+    #[serde(rename = "ConnectionType")]
+    pub connection_type: Option<EnvironmentEC2ConnectionTypeEnum>,
 
 
     /// 
@@ -150,6 +74,50 @@ pub struct CfnEnvironmentEC2 {
 
 
     /// 
+    /// Any AWS CodeCommit source code repositories to be cloned into the development environment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Repository
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Repositories")]
+    pub repositories: Option<Vec<Repository>>,
+
+
+    /// 
+    /// The ID of the subnet in Amazon Virtual Private Cloud (Amazon VPC) that AWS Cloud9 will use to communicate with the Amazon Elastic Compute Cloud (Amazon EC2) instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 15
+    ///
+    /// Maximum: 24
+    ///
+    /// Pattern: ^(subnet-[0-9a-f]{8}|subnet-[0-9a-f]{17})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
+
+
+    /// 
+    /// The description of the environment to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the environment.
     /// 
     /// Required: No
@@ -160,7 +128,60 @@ pub struct CfnEnvironmentEC2 {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the environment owner. This ARN can be the ARN of any AWS Identity and Access Management principal. If this value is not specified, the ARN defaults to this environment's creator.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OwnerArn")]
+    pub owner_arn: Option<String>,
+
+
+    /// 
+    /// The type of instance to connect to the environment (for example, t2.micro).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 20
+    ///
+    /// Pattern: ^[a-z][1-9][.][a-z0-9]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EnvironmentEC2ConnectionTypeEnum {
+
+    /// CONNECT_SSH
+    #[serde(rename = "CONNECT_SSH")]
+    Connectssh,
+
+    /// CONNECT_SSM
+    #[serde(rename = "CONNECT_SSM")]
+    Connectssm,
+
+}
+
+impl Default for EnvironmentEC2ConnectionTypeEnum {
+    fn default() -> Self {
+        EnvironmentEC2ConnectionTypeEnum::Connectssh
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
     fn type_string() -> &'static str {
@@ -208,21 +229,11 @@ pub struct Tag {
 }
 
 
+
+
 /// The Repository property type specifies an AWS CodeCommit source code repository to be cloned into an AWS Cloud9 development environment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Repository {
-
-
-    /// 
-    /// The path within the development environment's default file system location to clone the AWS CodeCommit repository into. For example, /REPOSITORY_NAME would clone the repository into the /home/USER_NAME/environment/REPOSITORY_NAME directory in the environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PathComponent")]
-    pub path_component: String,
 
 
     /// 
@@ -236,4 +247,18 @@ pub struct Repository {
     #[serde(rename = "RepositoryUrl")]
     pub repository_url: String,
 
+
+    /// 
+    /// The path within the development environment's default file system location to clone the AWS CodeCommit repository into. For example, /REPOSITORY_NAME would clone the repository into the /home/USER_NAME/environment/REPOSITORY_NAME directory in the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PathComponent")]
+    pub path_component: String,
+
 }
+
+

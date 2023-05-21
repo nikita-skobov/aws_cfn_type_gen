@@ -38,22 +38,6 @@ pub struct CfnFirewallRuleGroupAssociation {
 
 
     /// 
-    /// The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC. DNS Firewall       filters VPC traffic starting from rule group with the lowest numeric priority setting.
-    /// 
-    /// You must specify a unique priority for each rule group that you associate with a single VPC.       To make it easier to insert rule groups later, leave space between the numbers, for example, use 101, 200, and so on.       You can change the priority setting for a rule group association after you create it.
-    /// 
-    /// The allowed values for Priority are between 100 and 9900 (excluding 100 and 9900).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
-
-
-    /// 
     /// A list of the tag keys and values that you want to associate with the rule group.
     /// 
     /// Required: No
@@ -65,20 +49,6 @@ pub struct CfnFirewallRuleGroupAssociation {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MutationProtection")]
-    pub mutation_protection: Option<String>,
 
 
     /// 
@@ -96,7 +66,58 @@ pub struct CfnFirewallRuleGroupAssociation {
     #[serde(rename = "FirewallRuleGroupId")]
     pub firewall_rule_group_id: String,
 
+
+    /// 
+    /// The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC. DNS Firewall       filters VPC traffic starting from rule group with the lowest numeric priority setting.
+    /// 
+    /// You must specify a unique priority for each rule group that you associate with a single VPC.       To make it easier to insert rule groups later, leave space between the numbers, for example, use 101, 200, and so on.       You can change the priority setting for a rule group association after you create it.
+    /// 
+    /// The allowed values for Priority are between 100 and 9900 (excluding 100 and 9900).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: i64,
+
+
+    /// 
+    /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MutationProtection")]
+    pub mutation_protection: Option<FirewallRuleGroupAssociationMutationProtectionEnum>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FirewallRuleGroupAssociationMutationProtectionEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for FirewallRuleGroupAssociationMutationProtectionEnum {
+    fn default() -> Self {
+        FirewallRuleGroupAssociationMutationProtectionEnum::Disabled
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnFirewallRuleGroupAssociation {
     fn type_string() -> &'static str {
@@ -142,3 +163,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

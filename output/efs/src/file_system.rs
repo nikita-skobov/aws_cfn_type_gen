@@ -6,19 +6,75 @@ pub struct CfnFileSystem {
 
 
     /// 
-    /// Specifies the throughput mode for the file system. The mode can be bursting,     provisioned, or elastic. If you set ThroughputMode to     provisioned, you must also set a value for     ProvisionedThroughputInMibps. After you create the file system, you can    decrease your file system's throughput in Provisioned Throughput mode or change between    the throughput modes, with certain time restrictions. For more information, see Specifying     throughput with provisioned mode in the Amazon EFS User     Guide.
+    /// The performance mode of the file system. We recommend generalPurpose    performance mode for most file systems. File systems using the maxIO performance    mode can scale to higher levels of aggregate throughput and operations per second with a    tradeoff of slightly higher latencies for most file operations. The performance mode    can't be changed after the file system has been created.
     /// 
-    /// Default is bursting.
+    /// NoteThe maxIO mode is not supported on file systems using One Zone storage classes.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: bursting | elastic | provisioned
+    /// Allowed values: generalPurpose | maxIO
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PerformanceMode")]
+    pub performance_mode: Option<FileSystemPerformanceModeEnum>,
+
+
+    /// 
+    /// Use to create one or more tags associated with the file system. Each     tag is a user-defined key-value pair. Name your file system on creation by including a     "Key":"Name","Value":"{value}" key-value pair. Each key must be unique. For more     information, see Tagging AWS resources     in the         AWS General Reference Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ElasticFileSystemTag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ThroughputMode")]
-    pub throughput_mode: Option<String>,
+    #[serde(rename = "FileSystemTags")]
+    pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
+
+
+    /// 
+    /// Used to create a file system that uses One Zone storage classes. It specifies the AWS    Availability Zone in which to create the file system. Use the format us-east-1a    to specify the Availability Zone. For    more information about One Zone storage classes, see Using EFS storage classes in the Amazon EFS User Guide.
+    /// 
+    /// NoteOne Zone storage classes are not available in all Availability Zones in AWS Regions where     Amazon EFS is available.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: .+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZoneName")]
+    pub availability_zone_name: Option<String>,
+
+
+    /// 
+    /// The throughput, measured in    MiB/s,    that you want to provision for a file system that you're creating. Valid values are    1-1024. Required if ThroughputMode is set to provisioned. The upper    limit for throughput is 1024 MiB/s. To increase this limit, contact AWS Support. For    more information, see Amazon EFS quotas that you can increase in the Amazon EFS User Guide.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedThroughputInMibps")]
+    pub provisioned_throughput_in_mibps: Option<f64>,
+
+
+    /// 
+    /// A Boolean value that, if true, creates an encrypted file system. When creating an    encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS KMS key. If you don't specify a KMS key, then the default KMS key for    Amazon EFS, /aws/elasticfilesystem, is used to protect the encrypted file system.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
 
 
     /// 
@@ -31,6 +87,38 @@ pub struct CfnFileSystem {
     /// Update requires: No interruption
     #[serde(rename = "BackupPolicy")]
     pub backup_policy: Option<BackupPolicy>,
+
+
+    /// 
+    /// (Optional) A boolean that specifies whether or not to bypass the FileSystemPolicy lockout safety check. The lockout safety check    determines whether the policy in the request will lock out, or prevent, the IAM principal that is making the request from making future PutFileSystemPolicy requests on this file system.    Set BypassPolicyLockoutSafetyCheck to True only when you intend to prevent    the IAM principal that is making the request from making subsequent PutFileSystemPolicy requests on this file system.    The default value is False.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BypassPolicyLockoutSafetyCheck")]
+    pub bypass_policy_lockout_safety_check: Option<bool>,
+
+
+    /// 
+    /// The ID of the AWS KMS key to be used to protect the encrypted file system. This    parameter is only required if you want to use a nondefault KMS key. If this parameter is not    specified, the default KMS key for Amazon EFS is used. This ID can be in one of the following    formats:
+    /// 
+    /// Key ID - A unique identifier of the key, for example       1234abcd-12ab-34cd-56ef-1234567890ab.               ARN - An Amazon Resource Name (ARN) for the key, for example       arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab.               Key alias - A previously created display name for a key, for example       alias/projectKey1.               Key alias ARN - An ARN for a key alias, for example       arn:aws:kms:us-west-2:444455556666:alias/projectKey1.
+    /// 
+    /// If KmsKeyId is specified, the Encrypted parameter must be set to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|mrk-[0-9a-f]{32}|alias/[a-zA-Z0-9/_-]+|(arn:aws[-a-z]*:kms:[a-z0-9-]+:\d{12}:((key/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})|(key/mrk-[0-9a-f]{32})|(alias/[a-zA-Z0-9/_-]+))))$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -70,109 +158,65 @@ pub struct CfnFileSystem {
 
 
     /// 
-    /// The ID of the AWS KMS key to be used to protect the encrypted file system. This    parameter is only required if you want to use a nondefault KMS key. If this parameter is not    specified, the default KMS key for Amazon EFS is used. This ID can be in one of the following    formats:
+    /// Specifies the throughput mode for the file system. The mode can be bursting,     provisioned, or elastic. If you set ThroughputMode to     provisioned, you must also set a value for     ProvisionedThroughputInMibps. After you create the file system, you can    decrease your file system's throughput in Provisioned Throughput mode or change between    the throughput modes, with certain time restrictions. For more information, see Specifying     throughput with provisioned mode in the Amazon EFS User     Guide.
     /// 
-    /// Key ID - A unique identifier of the key, for example       1234abcd-12ab-34cd-56ef-1234567890ab.               ARN - An Amazon Resource Name (ARN) for the key, for example       arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab.               Key alias - A previously created display name for a key, for example       alias/projectKey1.               Key alias ARN - An ARN for a key alias, for example       arn:aws:kms:us-west-2:444455556666:alias/projectKey1.
-    /// 
-    /// If KmsKeyId is specified, the Encrypted parameter must be set to true.
+    /// Default is bursting.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|mrk-[0-9a-f]{32}|alias/[a-zA-Z0-9/_-]+|(arn:aws[-a-z]*:kms:[a-z0-9-]+:\d{12}:((key/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})|(key/mrk-[0-9a-f]{32})|(alias/[a-zA-Z0-9/_-]+))))$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// (Optional) A boolean that specifies whether or not to bypass the FileSystemPolicy lockout safety check. The lockout safety check    determines whether the policy in the request will lock out, or prevent, the IAM principal that is making the request from making future PutFileSystemPolicy requests on this file system.    Set BypassPolicyLockoutSafetyCheck to True only when you intend to prevent    the IAM principal that is making the request from making subsequent PutFileSystemPolicy requests on this file system.    The default value is False.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Allowed values: bursting | elastic | provisioned
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BypassPolicyLockoutSafetyCheck")]
-    pub bypass_policy_lockout_safety_check: Option<bool>,
-
-
-    /// 
-    /// Used to create a file system that uses One Zone storage classes. It specifies the AWS    Availability Zone in which to create the file system. Use the format us-east-1a    to specify the Availability Zone. For    more information about One Zone storage classes, see Using EFS storage classes in the Amazon EFS User Guide.
-    /// 
-    /// NoteOne Zone storage classes are not available in all Availability Zones in AWS Regions where     Amazon EFS is available.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: .+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZoneName")]
-    pub availability_zone_name: Option<String>,
-
-
-    /// 
-    /// A Boolean value that, if true, creates an encrypted file system. When creating an    encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS KMS key. If you don't specify a KMS key, then the default KMS key for    Amazon EFS, /aws/elasticfilesystem, is used to protect the encrypted file system.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
-    /// The performance mode of the file system. We recommend generalPurpose    performance mode for most file systems. File systems using the maxIO performance    mode can scale to higher levels of aggregate throughput and operations per second with a    tradeoff of slightly higher latencies for most file operations. The performance mode    can't be changed after the file system has been created.
-    /// 
-    /// NoteThe maxIO mode is not supported on file systems using One Zone storage classes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: generalPurpose | maxIO
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PerformanceMode")]
-    pub performance_mode: Option<String>,
-
-
-    /// 
-    /// Use to create one or more tags associated with the file system. Each     tag is a user-defined key-value pair. Name your file system on creation by including a     "Key":"Name","Value":"{value}" key-value pair. Each key must be unique. For more     information, see Tagging AWS resources     in the         AWS General Reference Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ElasticFileSystemTag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FileSystemTags")]
-    pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
-
-
-    /// 
-    /// The throughput, measured in    MiB/s,    that you want to provision for a file system that you're creating. Valid values are    1-1024. Required if ThroughputMode is set to provisioned. The upper    limit for throughput is 1024 MiB/s. To increase this limit, contact AWS Support. For    more information, see Amazon EFS quotas that you can increase in the Amazon EFS User Guide.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedThroughputInMibps")]
-    pub provisioned_throughput_in_mibps: Option<f64>,
+    #[serde(rename = "ThroughputMode")]
+    pub throughput_mode: Option<FileSystemThroughputModeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FileSystemPerformanceModeEnum {
+
+    /// generalPurpose
+    #[serde(rename = "generalPurpose")]
+    Generalpurpose,
+
+    /// maxIO
+    #[serde(rename = "maxIO")]
+    Maxio,
+
+}
+
+impl Default for FileSystemPerformanceModeEnum {
+    fn default() -> Self {
+        FileSystemPerformanceModeEnum::Generalpurpose
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FileSystemThroughputModeEnum {
+
+    /// bursting
+    #[serde(rename = "bursting")]
+    Bursting,
+
+    /// elastic
+    #[serde(rename = "elastic")]
+    Elastic,
+
+    /// provisioned
+    #[serde(rename = "provisioned")]
+    Provisioned,
+
+}
+
+impl Default for FileSystemThroughputModeEnum {
+    fn default() -> Self {
+        FileSystemThroughputModeEnum::Bursting
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnFileSystem {
     fn type_string() -> &'static str {
@@ -201,7 +245,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToPrimaryStorageClass")]
-    pub transition_to_primary_storage_class: Option<String>,
+    pub transition_to_primary_storage_class: Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
 
 
     /// 
@@ -215,30 +259,66 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToIA")]
-    pub transition_to_ia: Option<String>,
+    pub transition_to_ia: Option<LifecyclePolicyTransitionToIAEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LifecyclePolicyTransitionToPrimaryStorageClassEnum {
+
+    /// AFTER_1_ACCESS
+    #[serde(rename = "AFTER_1_ACCESS")]
+    After1access,
+
+}
+
+impl Default for LifecyclePolicyTransitionToPrimaryStorageClassEnum {
+    fn default() -> Self {
+        LifecyclePolicyTransitionToPrimaryStorageClassEnum::After1access
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LifecyclePolicyTransitionToIAEnum {
+
+    /// AFTER_14_DAYS
+    #[serde(rename = "AFTER_14_DAYS")]
+    After14days,
+
+    /// AFTER_1_DAY
+    #[serde(rename = "AFTER_1_DAY")]
+    After1day,
+
+    /// AFTER_30_DAYS
+    #[serde(rename = "AFTER_30_DAYS")]
+    After30days,
+
+    /// AFTER_60_DAYS
+    #[serde(rename = "AFTER_60_DAYS")]
+    After60days,
+
+    /// AFTER_7_DAYS
+    #[serde(rename = "AFTER_7_DAYS")]
+    After7days,
+
+    /// AFTER_90_DAYS
+    #[serde(rename = "AFTER_90_DAYS")]
+    After90days,
+
+}
+
+impl Default for LifecyclePolicyTransitionToIAEnum {
+    fn default() -> Self {
+        LifecyclePolicyTransitionToIAEnum::After14days
+    }
+}
+
 
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ElasticFileSystemTag {
-
-
-    /// 
-    /// The value of the tag key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -258,7 +338,25 @@ pub struct ElasticFileSystemTag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value of the tag key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
 
 
 /// The backup policy turns automatic backups for the file system on or off.
@@ -279,6 +377,35 @@ pub struct BackupPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: BackupPolicyStatusEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BackupPolicyStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// DISABLING
+    #[serde(rename = "DISABLING")]
+    Disabling,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+    /// ENABLING
+    #[serde(rename = "ENABLING")]
+    Enabling,
+
+}
+
+impl Default for BackupPolicyStatusEnum {
+    fn default() -> Self {
+        BackupPolicyStatusEnum::Disabled
+    }
+}
+

@@ -10,6 +10,20 @@ pub struct CfnLifecycleHook {
 
 
     /// 
+    /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an       unexpected failure occurs. The default value is ABANDON.
+    /// 
+    /// Valid values: CONTINUE | ABANDON
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultResult")]
+    pub default_result: Option<String>,
+
+
+    /// 
     /// Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to       the notification target.
     /// 
     /// Required: No
@@ -28,6 +42,20 @@ pub struct CfnLifecycleHook {
 
 
     /// 
+    /// The ARN of the IAM role that allows the Auto Scaling group to publish to the specified       notification target. For information about creating this role, see Configure a notification target for a lifecycle hook in the         Amazon EC2 Auto Scaling User Guide.
+    /// 
+    /// Valid only if the notification target is an Amazon SNS topic or an Amazon SQS queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the notification target that Amazon EC2 Auto Scaling sends       notifications to when an instance is in a wait state for the lifecycle hook. You can       specify an Amazon SNS topic or an Amazon SQS queue.
     /// 
     /// Required: No
@@ -40,6 +68,24 @@ pub struct CfnLifecycleHook {
 
 
     /// 
+    /// The name of the lifecycle hook.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [A-Za-z0-9\-_\/]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LifecycleHookName")]
+    pub lifecycle_hook_name: Option<String>,
+
+
+    /// 
     /// The name of the Auto Scaling group.
     /// 
     /// Required: Yes
@@ -49,20 +95,6 @@ pub struct CfnLifecycleHook {
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
     pub auto_scaling_group_name: String,
-
-
-    /// 
-    /// The ARN of the IAM role that allows the Auto Scaling group to publish to the specified       notification target. For information about creating this role, see Configure a notification target for a lifecycle hook in the         Amazon EC2 Auto Scaling User Guide.
-    /// 
-    /// Valid only if the notification target is an Amazon SNS topic or an Amazon SQS queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: Option<String>,
 
 
     /// 
@@ -90,39 +122,9 @@ pub struct CfnLifecycleHook {
     #[serde(rename = "LifecycleTransition")]
     pub lifecycle_transition: String,
 
-
-    /// 
-    /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an       unexpected failure occurs. The default value is ABANDON.
-    /// 
-    /// Valid values: CONTINUE | ABANDON
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultResult")]
-    pub default_result: Option<String>,
-
-
-    /// 
-    /// The name of the lifecycle hook.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [A-Za-z0-9\-_\/]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LifecycleHookName")]
-    pub lifecycle_hook_name: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLifecycleHook {
     fn type_string() -> &'static str {

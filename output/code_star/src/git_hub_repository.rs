@@ -18,6 +18,18 @@ pub struct CfnGitHubRepository {
 
 
     /// 
+    /// The name of the repository you want to create in GitHub with AWS CloudFormation       stack creation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: String,
+
+
+    /// 
     /// The GitHub user name for the owner of the GitHub repository to be created. If this       repository should be owned by a GitHub organization, provide its name.
     /// 
     /// Required: Yes
@@ -30,26 +42,15 @@ pub struct CfnGitHubRepository {
 
 
     /// 
-    /// Indicates whether to enable issues for the GitHub repository. You can use GitHub       issues to track information and bugs for your repository.
+    /// A comment or description about the new repository. This description is displayed in       GitHub after the repository is created.
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "EnableIssues")]
-    pub enable_issues: Option<bool>,
-
-
-    /// Property description not available.
-    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionArn")]
-    pub connection_arn: Option<String>,
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RepositoryDescription")]
+    pub repository_description: Option<String>,
 
 
     /// 
@@ -65,15 +66,15 @@ pub struct CfnGitHubRepository {
 
 
     /// 
-    /// The name of the repository you want to create in GitHub with AWS CloudFormation       stack creation.
+    /// Indicates whether to enable issues for the GitHub repository. You can use GitHub       issues to track information and bugs for your repository.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: String,
+    #[serde(rename = "EnableIssues")]
+    pub enable_issues: Option<bool>,
 
 
     /// 
@@ -88,18 +89,19 @@ pub struct CfnGitHubRepository {
     pub code: Option<Code>,
 
 
-    /// 
-    /// A comment or description about the new repository. This description is displayed in       GitHub after the repository is created.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "RepositoryDescription")]
-    pub repository_description: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionArn")]
+    pub connection_arn: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGitHubRepository {
     fn type_string() -> &'static str {
@@ -112,23 +114,34 @@ impl cfn_resources::CfnResource for CfnGitHubRepository {
 }
 
 
+/// The Code property type specifies information about code to be       committed.
+///
+/// Code is a property of the AWS::CodeStar::GitHubRepository       resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Code {
+
+
+    /// 
+    /// Information about the Amazon S3 bucket that contains a ZIP file of code to be       committed to the repository.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "S3")]
+    pub s3: S3,
+
+}
+
+
+
+
 /// The S3 property type specifies information about the Amazon S3 bucket       that contains the code to be committed to the new repository.
 ///
 /// S3 is a property of the AWS::CodeStar::GitHubRepository       resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3 {
-
-
-    /// 
-    /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
 
 
     /// 
@@ -154,25 +167,18 @@ pub struct S3 {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// The Code property type specifies information about code to be       committed.
-///
-/// Code is a property of the AWS::CodeStar::GitHubRepository       resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Code {
-
 
     /// 
-    /// Information about the Amazon S3 bucket that contains a ZIP file of code to be       committed to the repository.
+    /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.
     /// 
     /// Required: Yes
     ///
-    /// Type: S3
+    /// Type: String
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "S3")]
-    pub s3: S3,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
 
 }
+
+

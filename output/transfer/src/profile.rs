@@ -24,15 +24,17 @@ pub struct CfnProfile {
 
 
     /// 
-    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
+    /// Key-value pairs that can be used to group and search for profiles.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CertificateIds")]
-    pub certificate_ids: Option<Vec<String>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -46,23 +48,42 @@ pub struct CfnProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProfileType")]
-    pub profile_type: String,
+    pub profile_type: ProfileProfileTypeEnum,
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for profiles.
+    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "CertificateIds")]
+    pub certificate_ids: Option<Vec<String>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ProfileProfileTypeEnum {
+
+    /// LOCAL
+    #[serde(rename = "LOCAL")]
+    Local,
+
+    /// PARTNER
+    #[serde(rename = "PARTNER")]
+    Partner,
+
+}
+
+impl Default for ProfileProfileTypeEnum {
+    fn default() -> Self {
+        ProfileProfileTypeEnum::Local
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnProfile {
     fn type_string() -> &'static str {
@@ -108,3 +129,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

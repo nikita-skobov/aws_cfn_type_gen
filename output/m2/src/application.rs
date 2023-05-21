@@ -8,20 +8,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-    /// 
-    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Definition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Definition")]
-    pub definition: Definition,
-
-
-    /// 
     /// The type of the target platform for this application.
     /// 
     /// Required: Yes
@@ -32,7 +18,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineType")]
-    pub engine_type: String,
+    pub engine_type: ApplicationEngineTypeEnum,
 
 
     /// 
@@ -48,19 +34,31 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The description of the application.
+    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
     /// 
-    /// Required: No
+    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Definition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Definition")]
+    pub definition: Definition,
+
+
+    /// 
+    /// The name of the application.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Pattern: [A-Za-z0-9][A-Za-z0-9_\-]{1,59}
     ///
-    /// Maximum: 500
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -78,19 +76,42 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The name of the application.
+    /// The description of the application.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: [A-Za-z0-9][A-Za-z0-9_\-]{1,59}
+    /// Minimum: 0
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ApplicationEngineTypeEnum {
+
+    /// bluage
+    #[serde(rename = "bluage")]
+    Bluage,
+
+    /// microfocus
+    #[serde(rename = "microfocus")]
+    Microfocus,
+
+}
+
+impl Default for ApplicationEngineTypeEnum {
+    fn default() -> Self {
+        ApplicationEngineTypeEnum::Bluage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -109,6 +130,20 @@ pub struct Definition {
 
 
     /// 
+    /// The S3 bucket that contains the application definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: \S{1,2000}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Location")]
+    pub s3_location: Option<String>,
+
+
+    /// 
     /// The content of the application definition. This is a JSON object that contains the     resource configuration/definitions that identify an application.
     /// 
     /// Required: No
@@ -123,18 +158,6 @@ pub struct Definition {
     #[serde(rename = "Content")]
     pub content: Option<String>,
 
-
-    /// 
-    /// The S3 bucket that contains the application definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: \S{1,2000}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Location")]
-    pub s3_location: Option<String>,
-
 }
+
+

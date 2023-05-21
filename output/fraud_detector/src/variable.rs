@@ -6,15 +6,15 @@ pub struct CfnVariable {
 
 
     /// 
-    /// The default value of the variable.
+    /// The description of the variable.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -32,6 +32,18 @@ pub struct CfnVariable {
 
 
     /// 
+    /// The default value of the variable.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultValue")]
+    pub default_value: String,
+
+
+    /// 
     /// The type of the variable. For more information see Variable types.
     /// 
     /// Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT
@@ -42,7 +54,21 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
-    pub variable_type: Option<String>,
+    pub variable_type: Option<VariableVariableTypeEnum>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -74,33 +100,152 @@ pub struct CfnVariable {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+}
 
 
-    /// 
-    /// The description of the variable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VariableVariableTypeEnum {
+
+    /// AUTH_CODE
+    #[serde(rename = "AUTH_CODE")]
+    Authcode,
+
+    /// AVS
+    #[serde(rename = "AVS")]
+    Avs,
+
+    /// BILLING_ADDRESS_L1
+    #[serde(rename = "BILLING_ADDRESS_L1")]
+    Billingaddressl1,
+
+    /// BILLING_ADDRESS_L2
+    #[serde(rename = "BILLING_ADDRESS_L2")]
+    Billingaddressl2,
+
+    /// BILLING_CITY
+    #[serde(rename = "BILLING_CITY")]
+    Billingcity,
+
+    /// BILLING_COUNTRY
+    #[serde(rename = "BILLING_COUNTRY")]
+    Billingcountry,
+
+    /// BILLING_NAME
+    #[serde(rename = "BILLING_NAME")]
+    Billingname,
+
+    /// BILLING_PHONE
+    #[serde(rename = "BILLING_PHONE")]
+    Billingphone,
+
+    /// BILLING_STATE
+    #[serde(rename = "BILLING_STATE")]
+    Billingstate,
+
+    /// BILLING_ZIP
+    #[serde(rename = "BILLING_ZIP")]
+    Billingzip,
+
+    /// CARD_BIN
+    #[serde(rename = "CARD_BIN")]
+    Cardbin,
+
+    /// CATEGORICAL
+    #[serde(rename = "CATEGORICAL")]
+    Categorical,
+
+    /// CURRENCY_CODE
+    #[serde(rename = "CURRENCY_CODE")]
+    Currencycode,
+
+    /// EMAIL_ADDRESS
+    #[serde(rename = "EMAIL_ADDRESS")]
+    Emailaddress,
+
+    /// FINGERPRINT
+    #[serde(rename = "FINGERPRINT")]
+    Fingerprint,
+
+    /// FRAUD_LABEL
+    #[serde(rename = "FRAUD_LABEL")]
+    Fraudlabel,
+
+    /// FREE_FORM_TEXT
+    #[serde(rename = "FREE_FORM_TEXT")]
+    Freeformtext,
+
+    /// IP_ADDRESS
+    #[serde(rename = "IP_ADDRESS")]
+    Ipaddress,
+
+    /// NUMERIC
+    #[serde(rename = "NUMERIC")]
+    Numeric,
+
+    /// ORDER_ID
+    #[serde(rename = "ORDER_ID")]
+    Orderid,
+
+    /// PAYMENT_TYPE
+    #[serde(rename = "PAYMENT_TYPE")]
+    Paymenttype,
+
+    /// PHONE_NUMBER
+    #[serde(rename = "PHONE_NUMBER")]
+    Phonenumber,
+
+    /// PRICE
+    #[serde(rename = "PRICE")]
+    Price,
+
+    /// PRODUCT_CATEGORY
+    #[serde(rename = "PRODUCT_CATEGORY")]
+    Productcategory,
+
+    /// SHIPPING_ADDRESS_L1
+    #[serde(rename = "SHIPPING_ADDRESS_L1")]
+    Shippingaddressl1,
+
+    /// SHIPPING_ADDRESS_L2
+    #[serde(rename = "SHIPPING_ADDRESS_L2")]
+    Shippingaddressl2,
+
+    /// SHIPPING_CITY
+    #[serde(rename = "SHIPPING_CITY")]
+    Shippingcity,
+
+    /// SHIPPING_COUNTRY
+    #[serde(rename = "SHIPPING_COUNTRY")]
+    Shippingcountry,
+
+    /// SHIPPING_NAME
+    #[serde(rename = "SHIPPING_NAME")]
+    Shippingname,
+
+    /// SHIPPING_PHONE
+    #[serde(rename = "SHIPPING_PHONE")]
+    Shippingphone,
+
+    /// SHIPPING_STATE
+    #[serde(rename = "SHIPPING_STATE")]
+    Shippingstate,
+
+    /// SHIPPING_ZIP
+    #[serde(rename = "SHIPPING_ZIP")]
+    Shippingzip,
+
+    /// USERAGENT
+    #[serde(rename = "USERAGENT")]
+    Useragent,
 
 }
+
+impl Default for VariableVariableTypeEnum {
+    fn default() -> Self {
+        VariableVariableTypeEnum::Authcode
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnVariable {
     fn type_string() -> &'static str {
@@ -146,3 +291,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

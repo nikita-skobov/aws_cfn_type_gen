@@ -66,6 +66,8 @@ pub struct CfnDestination {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDestination {
     fn type_string() -> &'static str {
         "AWS::Logs::Destination"

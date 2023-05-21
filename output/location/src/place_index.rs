@@ -6,6 +6,48 @@ pub struct CfnPlaceIndex {
 
 
     /// 
+    /// Specifies the data storage option requesting Places.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataSourceConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataSourceConfiguration")]
+    pub data_source_configuration: Option<DataSourceConfiguration>,
+
+
+    /// 
+    /// The optional description for the place index resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
+    /// 
+    /// Allowed Values: RequestBasedUsage
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PricingPlan")]
+    pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
+
+
+    /// 
     /// The name of the place index resource.
     /// 
     /// Requirements:
@@ -28,22 +70,6 @@ pub struct CfnPlaceIndex {
 
 
     /// 
-    /// The optional description for the place index resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Specifies the geospatial data provider for the new place index.
     /// 
     /// NoteThis field is case-sensitive. Enter the valid values as shown. For example,         entering HERE returns an error.
@@ -62,33 +88,24 @@ pub struct CfnPlaceIndex {
     #[serde(rename = "DataSource")]
     pub data_source: String,
 
-
-    /// 
-    /// Specifies the data storage option requesting Places.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataSourceConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataSourceConfiguration")]
-    pub data_source_configuration: Option<DataSourceConfiguration>,
+}
 
 
-    /// 
-    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
-    /// 
-    /// Allowed Values: RequestBasedUsage
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PricingPlan")]
-    pub pricing_plan: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlaceIndexPricingPlanEnum {
+
+    /// RequestBasedUsage
+    #[serde(rename = "RequestBasedUsage")]
+    Requestbasedusage,
 
 }
+
+impl Default for PlaceIndexPricingPlanEnum {
+    fn default() -> Self {
+        PlaceIndexPricingPlanEnum::Requestbasedusage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPlaceIndex {
     fn type_string() -> &'static str {
@@ -123,6 +140,27 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntendedUse")]
-    pub intended_use: Option<String>,
+    pub intended_use: Option<DataSourceConfigurationIntendedUseEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DataSourceConfigurationIntendedUseEnum {
+
+    /// SingleUse
+    #[serde(rename = "SingleUse")]
+    Singleuse,
+
+    /// Storage
+    #[serde(rename = "Storage")]
+    Storage,
+
+}
+
+impl Default for DataSourceConfigurationIntendedUseEnum {
+    fn default() -> Self {
+        DataSourceConfigurationIntendedUseEnum::Singleuse
+    }
+}
+

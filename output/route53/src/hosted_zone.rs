@@ -14,22 +14,6 @@ pub struct CfnHostedZone {
 
 
     /// 
-    /// The name of the domain. Specify a fully qualified domain name, for example, www.example.com. 			The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Route 53 treats 			www.example.com (without a trailing dot) and www.example.com. (with a trailing dot) as identical.
-    /// 
-    /// If you're creating a public hosted zone, this is the name you have registered with your DNS registrar. If your domain name 			is registered with a registrar other than Route 53, change the name servers for your domain to the set of NameServers that 			are returned by the Fn::GetAtt intrinsic function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// A complex type that contains an optional comment.
     /// 
     /// If you don't want to specify a comment, omit the HostedZoneConfig and Comment elements.
@@ -44,17 +28,19 @@ pub struct CfnHostedZone {
 
 
     /// 
-    /// Adds, edits, or deletes tags for a health check or a hosted zone.
+    /// The name of the domain. Specify a fully qualified domain name, for example, www.example.com. 			The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Route 53 treats 			www.example.com (without a trailing dot) and www.example.com. (with a trailing dot) as identical.
     /// 
-    /// For information about using tags for cost allocation, see Using Cost Allocation 				Tags in the         AWS Billing and Cost Management User Guide.
+    /// If you're creating a public hosted zone, this is the name you have registered with your DNS registrar. If your domain name 			is registered with a registrar other than Route 53, change the name servers for your domain to the set of NameServers that 			are returned by the Fn::GetAtt intrinsic function.
     /// 
     /// Required: No
     ///
-    /// Type: List of HostedZoneTag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostedZoneTags")]
-    pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -88,7 +74,23 @@ pub struct CfnHostedZone {
     #[serde(rename = "QueryLoggingConfig")]
     pub query_logging_config: Option<QueryLoggingConfig>,
 
+
+    /// 
+    /// Adds, edits, or deletes tags for a health check or a hosted zone.
+    /// 
+    /// For information about using tags for cost allocation, see Using Cost Allocation 				Tags in the         AWS Billing and Cost Management User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of HostedZoneTag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostedZoneTags")]
+    pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnHostedZone {
     fn type_string() -> &'static str {
@@ -99,6 +101,189 @@ impl cfn_resources::CfnResource for CfnHostedZone {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A complex type that contains information about a configuration for DNS query 			logging.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct QueryLoggingConfig {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 			is publishing logs to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogsLogGroupArn")]
+    pub cloud_watch_logs_log_group_arn: String,
+
+}
+
+
+
+
+/// Private hosted zones only: A complex type that contains information about an Amazon VPC. Route 53 Resolver 			uses the records in the private hosted zone to route traffic in that VPC.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VPC {
+
+
+    /// 
+    /// Private hosted zones only: The ID of an Amazon VPC.
+    /// 
+    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VPCId")]
+    pub vpcid: String,
+
+
+    /// 
+    /// Private hosted zones only: The region that an Amazon VPC was created in.
+    /// 
+    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-gov-east-1 | us-gov-west-1 | us-iso-east-1 | us-iso-west-1 | us-isob-east-1 | us-west-1 | us-west-2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VPCRegion")]
+    pub vpcregion: VPCVPCRegionEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VPCVPCRegionEnum {
+
+    /// af-south-1
+    #[serde(rename = "af-south-1")]
+    Afsouth1,
+
+    /// ap-east-1
+    #[serde(rename = "ap-east-1")]
+    Apeast1,
+
+    /// ap-northeast-1
+    #[serde(rename = "ap-northeast-1")]
+    Apnortheast1,
+
+    /// ap-northeast-2
+    #[serde(rename = "ap-northeast-2")]
+    Apnortheast2,
+
+    /// ap-northeast-3
+    #[serde(rename = "ap-northeast-3")]
+    Apnortheast3,
+
+    /// ap-south-1
+    #[serde(rename = "ap-south-1")]
+    Apsouth1,
+
+    /// ap-southeast-1
+    #[serde(rename = "ap-southeast-1")]
+    Apsoutheast1,
+
+    /// ap-southeast-2
+    #[serde(rename = "ap-southeast-2")]
+    Apsoutheast2,
+
+    /// ap-southeast-3
+    #[serde(rename = "ap-southeast-3")]
+    Apsoutheast3,
+
+    /// ca-central-1
+    #[serde(rename = "ca-central-1")]
+    Cacentral1,
+
+    /// cn-north-1
+    #[serde(rename = "cn-north-1")]
+    Cnnorth1,
+
+    /// eu-central-1
+    #[serde(rename = "eu-central-1")]
+    Eucentral1,
+
+    /// eu-north-1
+    #[serde(rename = "eu-north-1")]
+    Eunorth1,
+
+    /// eu-south-1
+    #[serde(rename = "eu-south-1")]
+    Eusouth1,
+
+    /// eu-west-1
+    #[serde(rename = "eu-west-1")]
+    Euwest1,
+
+    /// eu-west-2
+    #[serde(rename = "eu-west-2")]
+    Euwest2,
+
+    /// eu-west-3
+    #[serde(rename = "eu-west-3")]
+    Euwest3,
+
+    /// me-south-1
+    #[serde(rename = "me-south-1")]
+    Mesouth1,
+
+    /// sa-east-1
+    #[serde(rename = "sa-east-1")]
+    Saeast1,
+
+    /// us-east-1
+    #[serde(rename = "us-east-1")]
+    Useast1,
+
+    /// us-east-2
+    #[serde(rename = "us-east-2")]
+    Useast2,
+
+    /// us-gov-east-1
+    #[serde(rename = "us-gov-east-1")]
+    Usgoveast1,
+
+    /// us-gov-west-1
+    #[serde(rename = "us-gov-west-1")]
+    Usgovwest1,
+
+    /// us-iso-east-1
+    #[serde(rename = "us-iso-east-1")]
+    Usisoeast1,
+
+    /// us-iso-west-1
+    #[serde(rename = "us-iso-west-1")]
+    Usisowest1,
+
+    /// us-isob-east-1
+    #[serde(rename = "us-isob-east-1")]
+    Usisobeast1,
+
+    /// us-west-1
+    #[serde(rename = "us-west-1")]
+    Uswest1,
+
+    /// us-west-2
+    #[serde(rename = "us-west-2")]
+    Uswest2,
+
+}
+
+impl Default for VPCVPCRegionEnum {
+    fn default() -> Self {
+        VPCVPCRegionEnum::Afsouth1
+    }
+}
+
 
 
 /// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
@@ -140,6 +325,8 @@ pub struct HostedZoneTag {
 }
 
 
+
+
 /// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HostedZoneConfig {
@@ -161,57 +348,3 @@ pub struct HostedZoneConfig {
 }
 
 
-/// Private hosted zones only: A complex type that contains information about an Amazon VPC. Route 53 Resolver 			uses the records in the private hosted zone to route traffic in that VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VPC {
-
-
-    /// 
-    /// Private hosted zones only: The region that an Amazon VPC was created in.
-    /// 
-    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-gov-east-1 | us-gov-west-1 | us-iso-east-1 | us-iso-west-1 | us-isob-east-1 | us-west-1 | us-west-2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VPCRegion")]
-    pub vpcregion: String,
-
-
-    /// 
-    /// Private hosted zones only: The ID of an Amazon VPC.
-    /// 
-    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VPCId")]
-    pub vpcid: String,
-
-}
-
-
-/// A complex type that contains information about a configuration for DNS query 			logging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct QueryLoggingConfig {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 			is publishing logs to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    pub cloud_watch_logs_log_group_arn: String,
-
-}

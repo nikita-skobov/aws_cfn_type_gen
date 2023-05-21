@@ -46,6 +46,8 @@ pub struct CfnVPCGatewayAttachment {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnVPCGatewayAttachment {
     fn type_string() -> &'static str {
         "AWS::EC2::VPCGatewayAttachment"

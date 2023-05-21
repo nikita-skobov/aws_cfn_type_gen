@@ -18,6 +18,8 @@ pub struct CfnResourceCollection {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResourceCollection {
     fn type_string() -> &'static str {
         "AWS::DevOpsGuru::ResourceCollection"
@@ -46,6 +48,8 @@ pub struct CloudFormationCollectionFilter {
     pub stack_names: Option<Vec<String>>,
 
 }
+
+
 
 
 /// A collection of AWS tags.
@@ -95,21 +99,11 @@ pub struct TagCollection {
 }
 
 
+
+
 /// Information about a filter used to specify which AWS resources are analyzed for 			anomalous behavior by DevOps Guru.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceCollectionFilter {
-
-
-    /// 
-    /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudFormationCollectionFilter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudFormation")]
-    pub cloud_formation: Option<CloudFormationCollectionFilter>,
 
 
     /// 
@@ -133,4 +127,18 @@ pub struct ResourceCollectionFilter {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagCollection>>,
 
+
+    /// 
+    /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudFormationCollectionFilter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudFormation")]
+    pub cloud_formation: Option<CloudFormationCollectionFilter>,
+
 }
+
+

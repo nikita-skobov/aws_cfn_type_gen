@@ -48,6 +48,8 @@ pub struct CfnAppImageConfig {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAppImageConfig {
     fn type_string() -> &'static str {
         "AWS::SageMaker::AppImageConfig"
@@ -56,39 +58,6 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KernelGatewayImageConfig {
-
-
-    /// 
-    /// The specification of the Jupyter kernels in the image.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of KernelSpec
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KernelSpecs")]
-    pub kernel_specs: Vec<KernelSpec>,
-
-
-    /// 
-    /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FileSystemConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FileSystemConfig")]
-    pub file_system_config: Option<FileSystemConfig>,
-
 }
 
 
@@ -114,22 +83,6 @@ pub struct FileSystemConfig {
 
 
     /// 
-    /// The default POSIX group ID (GID). If not specified, defaults to 100.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultGid")]
-    pub default_gid: Option<i64>,
-
-
-    /// 
     /// The path within the image to mount the user's EFS home directory. The directory     should be empty. If not specified, defaults to /home/sagemaker-user.
     /// 
     /// Required: No
@@ -144,7 +97,25 @@ pub struct FileSystemConfig {
     #[serde(rename = "MountPath")]
     pub mount_path: Option<String>,
 
+
+    /// 
+    /// The default POSIX group ID (GID). If not specified, defaults to 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultGid")]
+    pub default_gid: Option<i64>,
+
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -159,17 +130,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -179,7 +139,20 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
 
 
 /// The specification of a Jupyter kernel.
@@ -215,3 +188,40 @@ pub struct KernelSpec {
     pub name: String,
 
 }
+
+
+
+
+/// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KernelGatewayImageConfig {
+
+
+    /// 
+    /// The specification of the Jupyter kernels in the image.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of KernelSpec
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KernelSpecs")]
+    pub kernel_specs: Vec<KernelSpec>,
+
+
+    /// 
+    /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FileSystemConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FileSystemConfig")]
+    pub file_system_config: Option<FileSystemConfig>,
+
+}
+
+

@@ -46,6 +46,8 @@ pub struct CfnSecretTargetAttachment {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSecretTargetAttachment {
     fn type_string() -> &'static str {
         "AWS::SecretsManager::SecretTargetAttachment"

@@ -8,15 +8,19 @@ pub struct CfnSimulation {
 
 
     /// 
-    /// The name of the simulation.
+    /// The location of the simulation schema in Amazon Simple Storage Service (Amazon S3).     For more information about Amazon S3, see the     Amazon Simple Storage Service User Guide.
     /// 
-    /// Required: Yes
+    /// Provide a SchemaS3Location to start your simulation from a schema.
+    /// 
+    /// If you provide a SchemaS3Location then you can't provide a SnapshotS3Location.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: S3Location
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "SchemaS3Location")]
+    pub schema_s3_location: Option<S3Location>,
 
 
     /// 
@@ -29,6 +33,18 @@ pub struct CfnSimulation {
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
+
+
+    /// 
+    /// The name of the simulation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -58,23 +74,9 @@ pub struct CfnSimulation {
     #[serde(rename = "MaximumDuration")]
     pub maximum_duration: Option<String>,
 
-
-    /// 
-    /// The location of the simulation schema in Amazon Simple Storage Service (Amazon S3).     For more information about Amazon S3, see the     Amazon Simple Storage Service User Guide.
-    /// 
-    /// Provide a SchemaS3Location to start your simulation from a schema.
-    /// 
-    /// If you provide a SchemaS3Location then you can't provide a SnapshotS3Location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaS3Location")]
-    pub schema_s3_location: Option<S3Location>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSimulation {
     fn type_string() -> &'static str {
@@ -93,18 +95,6 @@ pub struct S3Location {
 
 
     /// 
-    /// The name of an Amazon S3 bucket. For more information about buckets, see Creating,       configuring, and working with Amazon S3 buckets in the Amazon Simple Storage Service User       Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
-
-
-    /// 
     /// The key name of an object in Amazon S3. For more information about Amazon S3 objects and object     keys, see Uploading,       downloading, and working with objects in Amazon S3 in the Amazon Simple Storage Service User       Guide.
     /// 
     /// Required: Yes
@@ -115,4 +105,18 @@ pub struct S3Location {
     #[serde(rename = "ObjectKey")]
     pub object_key: String,
 
+
+    /// 
+    /// The name of an Amazon S3 bucket. For more information about buckets, see Creating,       configuring, and working with Amazon S3 buckets in the Amazon Simple Storage Service User       Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
+
 }
+
+

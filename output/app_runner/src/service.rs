@@ -6,15 +6,15 @@ pub struct CfnService {
 
 
     /// 
-    /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default,    App Runner uses an AWS managed key.
+    /// The source to deploy to the App Runner service. It can be a code or an image repository.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: EncryptionConfiguration
+    /// Type: SourceConfiguration
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "EncryptionConfiguration")]
-    pub encryption_configuration: Option<EncryptionConfiguration>,
+    /// Update requires: No interruption
+    #[serde(rename = "SourceConfiguration")]
+    pub source_configuration: SourceConfiguration,
 
 
     /// 
@@ -30,39 +30,35 @@ pub struct CfnService {
 
 
     /// 
-    /// An optional list of metadata items that you can associate with the App Runner service resource. A tag is a key-value pair.
+    /// A name for the App Runner service. It must be unique across all the running App Runner services in your AWS account in the AWS Region.
+    /// 
+    /// If you don't specify a name, AWS CloudFormation generates a name for your service.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Minimum: 4
+    ///
+    /// Maximum: 40
+    ///
+    /// Pattern: [A-Za-z0-9][A-Za-z0-9-_]{3,39}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ServiceName")]
+    pub service_name: Option<String>,
 
 
     /// 
-    /// The runtime configuration of instances (scaling units) of your service.
+    /// Configuration settings related to network traffic of the web application that the App Runner service runs.
     /// 
     /// Required: No
     ///
-    /// Type: InstanceConfiguration
+    /// Type: NetworkConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceConfiguration")]
-    pub instance_configuration: Option<InstanceConfiguration>,
-
-
-    /// 
-    /// The source to deploy to the App Runner service. It can be a code or an image repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: SourceConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceConfiguration")]
-    pub source_configuration: SourceConfiguration,
+    #[serde(rename = "NetworkConfiguration")]
+    pub network_configuration: Option<NetworkConfiguration>,
 
 
     /// 
@@ -88,15 +84,27 @@ pub struct CfnService {
 
 
     /// 
-    /// Configuration settings related to network traffic of the web application that the App Runner service runs.
+    /// The runtime configuration of instances (scaling units) of your service.
     /// 
     /// Required: No
     ///
-    /// Type: NetworkConfiguration
+    /// Type: InstanceConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NetworkConfiguration")]
-    pub network_configuration: Option<NetworkConfiguration>,
+    #[serde(rename = "InstanceConfiguration")]
+    pub instance_configuration: Option<InstanceConfiguration>,
+
+
+    /// 
+    /// An optional list of metadata items that you can associate with the App Runner service resource. A tag is a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -112,25 +120,19 @@ pub struct CfnService {
 
 
     /// 
-    /// A name for the App Runner service. It must be unique across all the running App Runner services in your AWS account in the AWS Region.
-    /// 
-    /// If you don't specify a name, AWS CloudFormation generates a name for your service.
+    /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default,    App Runner uses an AWS managed key.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 4
-    ///
-    /// Maximum: 40
-    ///
-    /// Pattern: [A-Za-z0-9][A-Za-z0-9-_]{3,39}
+    /// Type: EncryptionConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ServiceName")]
-    pub service_name: Option<String>,
+    #[serde(rename = "EncryptionConfiguration")]
+    pub encryption_configuration: Option<EncryptionConfiguration>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnService {
     fn type_string() -> &'static str {
@@ -143,104 +145,103 @@ impl cfn_resources::CfnResource for CfnService {
 }
 
 
-/// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
+/// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServiceObservabilityConfiguration {
+pub struct EncryptionConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when     ObservabilityEnabled is true.
+    /// The ARN of the KMS key that's used for encryption.
     /// 
-    /// Specify an ARN with a name and a revision number to associate that revision. For example:      arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing/3
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws(-[\w]+)*:kms:[a-z\-]+-[0-9]{1}:[0-9]{12}:key\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKey")]
+    pub kms_key: String,
+
+}
+
+
+
+
+/// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CodeConfiguration {
+
+
     /// 
-    /// Specify just the name to associate the latest revision. For example:     arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing
+    /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a     apprunner.yaml file in the source code repository (or ignoring the file if it exists).
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1011
-    ///
-    /// Pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+    /// Type: CodeConfigurationValues
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ObservabilityConfigurationArn")]
-    pub observability_configuration_arn: Option<String>,
+    #[serde(rename = "CodeConfigurationValues")]
+    pub code_configuration_values: Option<CodeConfigurationValues>,
 
 
     /// 
-    /// When true, an observability configuration resource is associated with the service, and an ObservabilityConfigurationArn is    specified.
+    /// The source of the App Runner configuration. Values are interpreted as follows:
+    /// 
+    /// REPOSITORY – App Runner reads configuration values from the apprunner.yaml file in the source code repository and      ignores CodeConfigurationValues.                        API – App Runner uses configuration values provided in CodeConfigurationValues and ignores the       apprunner.yaml file in the source code repository.
     /// 
     /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Allowed values: API | REPOSITORY
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ObservabilityEnabled")]
-    pub observability_enabled: bool,
+    #[serde(rename = "ConfigurationSource")]
+    pub configuration_source: CodeConfigurationConfigurationSourceEnum,
 
 }
 
 
-/// Network configuration settings for inbound network traffic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IngressConfiguration {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CodeConfigurationConfigurationSourceEnum {
 
+    /// API
+    #[serde(rename = "API")]
+    Api,
 
-    /// 
-    /// Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service    privately accessible, from only within an Amazon VPC set it to False.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsPubliclyAccessible")]
-    pub is_publicly_accessible: bool,
+    /// REPOSITORY
+    #[serde(rename = "REPOSITORY")]
+    Repository,
 
 }
 
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
+impl Default for CodeConfigurationConfigurationSourceEnum {
+    fn default() -> Self {
+        CodeConfigurationConfigurationSourceEnum::Api
+    }
 }
+
 
 
 /// Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of KeyValuePair
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuntimeEnvironmentSecrets")]
+    pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
 
     /// 
@@ -261,17 +262,6 @@ pub struct ImageConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of KeyValuePair
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuntimeEnvironmentSecrets")]
-    pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
 
     /// 
@@ -302,100 +292,39 @@ pub struct ImageConfiguration {
 }
 
 
-/// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
+
+
+/// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceConfiguration {
+pub struct NetworkConfiguration {
 
 
     /// 
-    /// Describes the resources that are needed to authenticate access to some source repositories.
+    /// Network configuration settings for inbound message traffic.
     /// 
     /// Required: No
     ///
-    /// Type: AuthenticationConfiguration
+    /// Type: IngressConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthenticationConfiguration")]
-    pub authentication_configuration: Option<AuthenticationConfiguration>,
+    #[serde(rename = "IngressConfiguration")]
+    pub ingress_configuration: Option<IngressConfiguration>,
 
 
     /// 
-    /// The description of a source image    repository.
-    /// 
-    /// You must provide either this member or CodeRepository (but not both).
+    /// Network configuration settings for outbound message traffic.
     /// 
     /// Required: No
     ///
-    /// Type: ImageRepository
+    /// Type: EgressConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageRepository")]
-    pub image_repository: Option<ImageRepository>,
-
-
-    /// 
-    /// If true, continuous integration from the source repository is enabled for the App Runner service. Each repository change (including any source    code commit or new image version) starts a deployment.
-    /// 
-    /// Default: App Runner sets to false for a source image that uses an ECR Public repository or an ECR repository that's in an AWS account other than the one that the service is in. App Runner sets to true in all other cases (which currently include a source code    repository or a source image using a same-account ECR repository).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoDeploymentsEnabled")]
-    pub auto_deployments_enabled: Option<bool>,
-
-
-    /// 
-    /// The description of a source code repository.
-    /// 
-    /// You must provide either this member or ImageRepository (but not both).
-    /// 
-    /// Required: No
-    ///
-    /// Type: CodeRepository
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CodeRepository")]
-    pub code_repository: Option<CodeRepository>,
+    #[serde(rename = "EgressConfiguration")]
+    pub egress_configuration: Option<EgressConfiguration>,
 
 }
 
 
-/// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CodeConfiguration {
-
-
-    /// 
-    /// The source of the App Runner configuration. Values are interpreted as follows:
-    /// 
-    /// REPOSITORY – App Runner reads configuration values from the apprunner.yaml file in the source code repository and      ignores CodeConfigurationValues.                        API – App Runner uses configuration values provided in CodeConfigurationValues and ignores the       apprunner.yaml file in the source code repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: API | REPOSITORY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationSource")]
-    pub configuration_source: String,
-
-
-    /// 
-    /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a     apprunner.yaml file in the source code repository (or ignoring the file if it exists).
-    /// 
-    /// Required: No
-    ///
-    /// Type: CodeConfigurationValues
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CodeConfigurationValues")]
-    pub code_configuration_values: Option<CodeConfigurationValues>,
-
-}
 
 
 /// Describes a source code repository.
@@ -422,6 +351,18 @@ pub struct CodeRepository {
 
 
     /// 
+    /// The version that should be used within the source code repository.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: SourceCodeVersion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceCodeVersion")]
+    pub source_code_version: SourceCodeVersion,
+
+
+    /// 
     /// Configuration for building and running the service from a source code repository.
     /// 
     /// Note        CodeConfiguration is required only for CreateService request.
@@ -434,19 +375,83 @@ pub struct CodeRepository {
     #[serde(rename = "CodeConfiguration")]
     pub code_configuration: Option<CodeConfiguration>,
 
+}
+
+
+
+
+/// Describes a source image repository.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ImageRepository {
+
 
     /// 
-    /// The version that should be used within the source code repository.
+    /// The type of the image repository. This reflects the repository provider and whether the repository is private or public.
     /// 
     /// Required: Yes
     ///
-    /// Type: SourceCodeVersion
+    /// Type: String
+    ///
+    /// Allowed values: ECR | ECR_PUBLIC
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceCodeVersion")]
-    pub source_code_version: SourceCodeVersion,
+    #[serde(rename = "ImageRepositoryType")]
+    pub image_repository_type: ImageRepositoryImageRepositoryTypeEnum,
+
+
+    /// 
+    /// The identifier of an image.
+    /// 
+    /// For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ([0-9]{12}.dkr.ecr.[a-z\-]+-[0-9]{1}.amazonaws.com\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(:([\w\d+\-=._:\/@])+|@([\w\d\:]+))?)|(^public\.ecr\.aws\/.+\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(:([\w\d+\-=._:\/@])+|@([\w\d\:]+))?)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageIdentifier")]
+    pub image_identifier: String,
+
+
+    /// 
+    /// Configuration for running the identified image.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageConfiguration")]
+    pub image_configuration: Option<ImageConfiguration>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ImageRepositoryImageRepositoryTypeEnum {
+
+    /// ECR
+    #[serde(rename = "ECR")]
+    Ecr,
+
+    /// ECR_PUBLIC
+    #[serde(rename = "ECR_PUBLIC")]
+    Ecrpublic,
+
+}
+
+impl Default for ImageRepositoryImageRepositoryTypeEnum {
+    fn default() -> Self {
+        ImageRepositoryImageRepositoryTypeEnum::Ecr
+    }
+}
+
 
 
 /// Describes the runtime configuration of an AWS App Runner service instance (scaling unit).
@@ -514,27 +519,75 @@ pub struct InstanceConfiguration {
 }
 
 
-/// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
+
+
+/// Network configuration settings for inbound network traffic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticationConfiguration {
+pub struct IngressConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories    (but not for ECR Public repositories).
+    /// Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service    privately accessible, from only within an Amazon VPC set it to False.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsPubliclyAccessible")]
+    pub is_publicly_accessible: bool,
+
+}
+
+
+
+
+/// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServiceObservabilityConfiguration {
+
+
+    /// 
+    /// When true, an observability configuration resource is associated with the service, and an ObservabilityConfigurationArn is    specified.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObservabilityEnabled")]
+    pub observability_enabled: bool,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when     ObservabilityEnabled is true.
+    /// 
+    /// Specify an ARN with a name and a revision number to associate that revision. For example:      arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing/3
+    /// 
+    /// Specify just the name to associate the latest revision. For example:     arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 29
+    /// Minimum: 1
     ///
-    /// Maximum: 1024
+    /// Maximum: 1011
     ///
-    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):iam::[0-9]{12}:(role|role\/service-role)\/[\w+=,.@\-/]{1,1000}
+    /// Pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccessRoleArn")]
-    pub access_role_arn: Option<String>,
+    #[serde(rename = "ObservabilityConfigurationArn")]
+    pub observability_configuration_arn: Option<String>,
+
+}
+
+
+
+
+/// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthenticationConfiguration {
 
 
     /// 
@@ -554,7 +607,160 @@ pub struct AuthenticationConfiguration {
     #[serde(rename = "ConnectionArn")]
     pub connection_arn: Option<String>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories    (but not for ECR Public repositories).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 29
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):iam::[0-9]{12}:(role|role\/service-role)\/[\w+=,.@\-/]{1,1000}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessRoleArn")]
+    pub access_role_arn: Option<String>,
+
 }
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Describes a key-value pair, which is a string-to-string mapping.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KeyValuePair {
+
+
+    /// 
+    /// The key name string to map to a value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The value string to which the key name is mapped.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
+}
+
+
+
+
+/// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SourceConfiguration {
+
+
+    /// 
+    /// The description of a source code repository.
+    /// 
+    /// You must provide either this member or ImageRepository (but not both).
+    /// 
+    /// Required: No
+    ///
+    /// Type: CodeRepository
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CodeRepository")]
+    pub code_repository: Option<CodeRepository>,
+
+
+    /// 
+    /// Describes the resources that are needed to authenticate access to some source repositories.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationConfiguration")]
+    pub authentication_configuration: Option<AuthenticationConfiguration>,
+
+
+    /// 
+    /// The description of a source image    repository.
+    /// 
+    /// You must provide either this member or CodeRepository (but not both).
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageRepository
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageRepository")]
+    pub image_repository: Option<ImageRepository>,
+
+
+    /// 
+    /// If true, continuous integration from the source repository is enabled for the App Runner service. Each repository change (including any source    code commit or new image version) starts a deployment.
+    /// 
+    /// Default: App Runner sets to false for a source image that uses an ECR Public repository or an ECR repository that's in an AWS account other than the one that the service is in. App Runner sets to true in all other cases (which currently include a source code    repository or a source image using a same-account ECR repository).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoDeploymentsEnabled")]
+    pub auto_deployments_enabled: Option<bool>,
+
+}
+
+
 
 
 /// Identifies a version of code that AWS App Runner refers to within a source code repository.
@@ -595,101 +801,82 @@ pub struct SourceCodeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: SourceCodeVersionTypeEnum,
 
 }
 
 
-/// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionConfiguration {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceCodeVersionTypeEnum {
 
-
-    /// 
-    /// The ARN of the KMS key that's used for encryption.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws(-[\w]+)*:kms:[a-z\-]+-[0-9]{1}:[0-9]{12}:key\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKey")]
-    pub kms_key: String,
+    /// BRANCH
+    #[serde(rename = "BRANCH")]
+    Branch,
 
 }
 
-
-/// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NetworkConfiguration {
-
-
-    /// 
-    /// Network configuration settings for inbound message traffic.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IngressConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IngressConfiguration")]
-    pub ingress_configuration: Option<IngressConfiguration>,
-
-
-    /// 
-    /// Network configuration settings for outbound message traffic.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EgressConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressConfiguration")]
-    pub egress_configuration: Option<EgressConfiguration>,
-
+impl Default for SourceCodeVersionTypeEnum {
+    fn default() -> Self {
+        SourceCodeVersionTypeEnum::Branch
+    }
 }
 
-
-/// Describes a key-value pair, which is a string-to-string mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KeyValuePair {
-
-
-    /// 
-    /// The key name string to map to a value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The value string to which the key name is mapped.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-}
 
 
 /// Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible    configuration options. Fur full configuration capabilities, use a apprunner.yaml file in the source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeConfigurationValues {
+
+
+    /// 
+    /// A runtime environment type for building and running an App Runner service.    It represents a    programming language runtime.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CORRETTO_11 | CORRETTO_8 | DOTNET_6 | GO_1 | NODEJS_12 | NODEJS_14 | NODEJS_16 | PHP_81 | PYTHON_3 | RUBY_31
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Runtime")]
+    pub runtime: CodeConfigurationValuesRuntimeEnum,
+
+
+    /// 
+    /// The command App Runner runs to build your application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [^\x0a\x0d]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BuildCommand")]
+    pub build_command: Option<String>,
+
+
+    /// 
+    /// The environment variables that are available to your running AWS App Runner service. An array of key-value pairs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of KeyValuePair
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuntimeEnvironmentVariables")]
+    pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of KeyValuePair
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuntimeEnvironmentSecrets")]
+    pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
 
     /// 
@@ -713,57 +900,6 @@ pub struct CodeConfigurationValues {
 
 
     /// 
-    /// The environment variables that are available to your running AWS App Runner service. An array of key-value pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of KeyValuePair
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuntimeEnvironmentVariables")]
-    pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
-
-
-    /// 
-    /// A runtime environment type for building and running an App Runner service.    It represents a    programming language runtime.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CORRETTO_11 | CORRETTO_8 | DOTNET_6 | GO_1 | NODEJS_12 | NODEJS_14 | NODEJS_16 | PHP_81 | PYTHON_3 | RUBY_31
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Runtime")]
-    pub runtime: String,
-
-
-    /// 
-    /// The command App Runner runs to build your application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [^\x0a\x0d]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BuildCommand")]
-    pub build_command: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of KeyValuePair
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuntimeEnvironmentSecrets")]
-    pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
-
-
-    /// 
     /// The command App Runner runs to start your application.
     /// 
     /// Required: No
@@ -779,62 +915,80 @@ pub struct CodeConfigurationValues {
 }
 
 
-/// Describes a source image repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ImageRepository {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CodeConfigurationValuesRuntimeEnum {
 
+    /// CORRETTO_11
+    #[serde(rename = "CORRETTO_11")]
+    Corretto11,
 
-    /// 
-    /// The identifier of an image.
-    /// 
-    /// For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ([0-9]{12}.dkr.ecr.[a-z\-]+-[0-9]{1}.amazonaws.com\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(:([\w\d+\-=._:\/@])+|@([\w\d\:]+))?)|(^public\.ecr\.aws\/.+\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(:([\w\d+\-=._:\/@])+|@([\w\d\:]+))?)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageIdentifier")]
-    pub image_identifier: String,
+    /// CORRETTO_8
+    #[serde(rename = "CORRETTO_8")]
+    Corretto8,
 
+    /// DOTNET_6
+    #[serde(rename = "DOTNET_6")]
+    Dotnet6,
 
-    /// 
-    /// Configuration for running the identified image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ImageConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageConfiguration")]
-    pub image_configuration: Option<ImageConfiguration>,
+    /// GO_1
+    #[serde(rename = "GO_1")]
+    Go1,
 
+    /// NODEJS_12
+    #[serde(rename = "NODEJS_12")]
+    Nodejs12,
 
-    /// 
-    /// The type of the image repository. This reflects the repository provider and whether the repository is private or public.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ECR | ECR_PUBLIC
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageRepositoryType")]
-    pub image_repository_type: String,
+    /// NODEJS_14
+    #[serde(rename = "NODEJS_14")]
+    Nodejs14,
+
+    /// NODEJS_16
+    #[serde(rename = "NODEJS_16")]
+    Nodejs16,
+
+    /// PHP_81
+    #[serde(rename = "PHP_81")]
+    Php81,
+
+    /// PYTHON_3
+    #[serde(rename = "PYTHON_3")]
+    Python3,
+
+    /// RUBY_31
+    #[serde(rename = "RUBY_31")]
+    Ruby31,
 
 }
+
+impl Default for CodeConfigurationValuesRuntimeEnum {
+    fn default() -> Self {
+        CodeConfigurationValuesRuntimeEnum::Corretto11
+    }
+}
+
 
 
 /// Describes configuration settings related to outbound network traffic of an AWS App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EgressConfiguration {
+
+
+    /// 
+    /// The type of egress configuration.
+    /// 
+    /// Set to DEFAULT for access to resources hosted on public networks.
+    /// 
+    /// Set to VPC to associate your service to a custom VPC specified by VpcConnectorArn.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DEFAULT | VPC
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EgressType")]
+    pub egress_type: EgressConfigurationEgressTypeEnum,
 
 
     /// 
@@ -854,25 +1008,28 @@ pub struct EgressConfiguration {
     #[serde(rename = "VpcConnectorArn")]
     pub vpc_connector_arn: Option<String>,
 
+}
 
-    /// 
-    /// The type of egress configuration.
-    /// 
-    /// Set to DEFAULT for access to resources hosted on public networks.
-    /// 
-    /// Set to VPC to associate your service to a custom VPC specified by VpcConnectorArn.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | VPC
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressType")]
-    pub egress_type: String,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EgressConfigurationEgressTypeEnum {
+
+    /// DEFAULT
+    #[serde(rename = "DEFAULT")]
+    Default,
+
+    /// VPC
+    #[serde(rename = "VPC")]
+    Vpc,
 
 }
+
+impl Default for EgressConfigurationEgressTypeEnum {
+    fn default() -> Self {
+        EgressConfigurationEgressTypeEnum::Default
+    }
+}
+
 
 
 /// Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.
@@ -881,21 +1038,21 @@ pub struct HealthCheckConfiguration {
 
 
     /// 
-    /// The URL that health check requests are sent to.
+    /// The IP protocol that App Runner uses to perform health checks for your service.
     /// 
-    /// Path is only applicable when you set Protocol to HTTP.
+    /// If you set Protocol to HTTP, App Runner sends health check requests to the HTTP path specified by Path.
     /// 
-    /// Default: "/"
+    /// Default: TCP
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Allowed values: HTTP | TCP
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<HealthCheckConfigurationProtocolEnum>,
 
 
     /// 
@@ -953,24 +1110,6 @@ pub struct HealthCheckConfiguration {
 
 
     /// 
-    /// The IP protocol that App Runner uses to perform health checks for your service.
-    /// 
-    /// If you set Protocol to HTTP, App Runner sends health check requests to the HTTP path specified by Path.
-    /// 
-    /// Default: TCP
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HTTP | TCP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
-
-
-    /// 
     /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy.
     /// 
     /// Default: 1
@@ -987,4 +1126,43 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "HealthyThreshold")]
     pub healthy_threshold: Option<i64>,
 
+
+    /// 
+    /// The URL that health check requests are sent to.
+    /// 
+    /// Path is only applicable when you set Protocol to HTTP.
+    /// 
+    /// Default: "/"
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HealthCheckConfigurationProtocolEnum {
+
+    /// HTTP
+    #[serde(rename = "HTTP")]
+    Http,
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+}
+
+impl Default for HealthCheckConfigurationProtocolEnum {
+    fn default() -> Self {
+        HealthCheckConfigurationProtocolEnum::Http
+    }
+}
+

@@ -6,27 +6,15 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The name of the VPC interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The stream ID that you want to use for this transport. This parameter applies only to Zixi and SRT caller-based streams.
+    /// The identifier that is assigned to the Zixi receiver. This parameter applies only        to outputs that use Zixi pull.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StreamId")]
-    pub stream_id: Option<String>,
+    #[serde(rename = "RemoteId")]
+    pub remote_id: Option<String>,
 
 
     /// 
@@ -42,63 +30,15 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The minimum latency in milliseconds for SRT-based streams. In streams that use the        SRT protocol, this value that you set on your MediaConnect source or output        represents the minimal potential latency of that connection. The latency of the        stream is set to the highest number between the sender’s minimum latency and the        receiver’s minimum latency.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinLatency")]
-    pub min_latency: Option<i64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the flow this output is attached to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
-
-
-    /// 
-    /// The identifier that is assigned to the Zixi receiver. This parameter applies only        to outputs that use Zixi pull.
+    /// The name of the VPC interface.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RemoteId")]
-    pub remote_id: Option<String>,
-
-
-    /// 
-    /// The port to use when MediaConnect distributes content to the output.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The encryption credentials that you want to use for the output.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Encryption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Encryption")]
-    pub encryption: Option<Encryption>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -138,6 +78,18 @@ pub struct CfnFlowOutput {
 
 
     /// 
+    /// The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SmoothingLatency")]
+    pub smoothing_latency: Option<i64>,
+
+
+    /// 
     /// The IP address where you want to send the output.
     /// 
     /// Required: No
@@ -147,6 +99,66 @@ pub struct CfnFlowOutput {
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
     pub destination: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the flow this output is attached to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FlowArn")]
+    pub flow_arn: String,
+
+
+    /// 
+    /// The stream ID that you want to use for this transport. This parameter applies only to Zixi and SRT caller-based streams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StreamId")]
+    pub stream_id: Option<String>,
+
+
+    /// 
+    /// The encryption credentials that you want to use for the output.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Encryption
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Encryption")]
+    pub encryption: Option<Encryption>,
+
+
+    /// 
+    /// The port to use when MediaConnect distributes content to the output.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The minimum latency in milliseconds for SRT-based streams. In streams that use the        SRT protocol, this value that you set on your MediaConnect source or output        represents the minimal potential latency of that connection. The latency of the        stream is set to the highest number between the sender’s minimum latency and the        receiver’s minimum latency.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinLatency")]
+    pub min_latency: Option<i64>,
 
 
     /// 
@@ -160,19 +172,9 @@ pub struct CfnFlowOutput {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SmoothingLatency")]
-    pub smoothing_latency: Option<i64>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFlowOutput {
     fn type_string() -> &'static str {
@@ -204,21 +206,11 @@ pub struct VpcInterfaceAttachment {
 }
 
 
+
+
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Encryption {
-
-
-    /// 
-    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Algorithm")]
-    pub algorithm: Option<String>,
 
 
     /// 
@@ -234,18 +226,6 @@ pub struct Encryption {
 
 
     /// 
-    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: String,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
     /// 
     /// Required: Yes
@@ -256,4 +236,30 @@ pub struct Encryption {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
+
+    /// 
+    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Algorithm")]
+    pub algorithm: Option<String>,
+
+
+    /// 
+    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: String,
+
 }
+
+

@@ -32,6 +32,18 @@ pub struct CfnCustomerGateway {
 
 
     /// 
+    /// The name of customer gateway device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceName")]
+    pub device_name: Option<String>,
+
+
+    /// 
     /// The type of VPN connection that this customer gateway supports       (ipsec.1).
     /// 
     /// Required: Yes
@@ -42,7 +54,7 @@ pub struct CfnCustomerGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: CustomerGatewayTypeEnum,
 
 
     /// 
@@ -56,19 +68,24 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "IpAddress")]
     pub ip_address: String,
 
+}
 
-    /// 
-    /// The name of customer gateway device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceName")]
-    pub device_name: Option<String>,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CustomerGatewayTypeEnum {
+
+    /// ipsec.1
+    #[serde(rename = "ipsec.1")]
+    Ipsec1,
 
 }
+
+impl Default for CustomerGatewayTypeEnum {
+    fn default() -> Self {
+        CustomerGatewayTypeEnum::Ipsec1
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCustomerGateway {
     fn type_string() -> &'static str {
@@ -114,3 +131,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

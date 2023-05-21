@@ -20,6 +20,8 @@ pub struct CfnHub {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnHub {
     fn type_string() -> &'static str {
         "AWS::SecurityHub::Hub"

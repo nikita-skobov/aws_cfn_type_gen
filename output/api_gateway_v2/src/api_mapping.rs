@@ -6,18 +6,6 @@ pub struct CfnApiMapping {
 
 
     /// 
-    /// The API mapping key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApiMappingKey")]
-    pub api_mapping_key: Option<String>,
-
-
-    /// 
     /// The identifier of the API.
     /// 
     /// Required: Yes
@@ -42,6 +30,18 @@ pub struct CfnApiMapping {
 
 
     /// 
+    /// The API mapping key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApiMappingKey")]
+    pub api_mapping_key: Option<String>,
+
+
+    /// 
     /// The API stage.
     /// 
     /// Required: Yes
@@ -53,6 +53,8 @@ pub struct CfnApiMapping {
     pub stage: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApiMapping {
     fn type_string() -> &'static str {

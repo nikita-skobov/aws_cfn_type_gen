@@ -38,6 +38,8 @@ pub struct CfnAssessmentTarget {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAssessmentTarget {
     fn type_string() -> &'static str {
         "AWS::Inspector::AssessmentTarget"

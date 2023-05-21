@@ -34,21 +34,15 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
-    /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
+    /// Provides the customer-specified description for this DB parameter group.
     /// 
-    /// For more information about DB parameters and DB parameter groups for Amazon RDS DB       engines, see Working with DB         Parameter Groups in the Amazon RDS User Guide.
-    /// 
-    /// For more information about DB cluster and DB instance parameters and parameter groups       for Amazon Aurora DB engines, see Working         with DB Parameter Groups and DB Cluster Parameter Groups in the         Amazon Aurora User Guide.
-    /// 
-    /// NoteAWS CloudFormation doesn't support specifying an apply method for each individual parameter. The default         apply method for each parameter is used.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Json
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
 
 
     /// 
@@ -72,15 +66,21 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
-    /// Provides the customer-specified description for this DB parameter group.
+    /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
     /// 
-    /// Required: Yes
+    /// For more information about DB parameters and DB parameter groups for Amazon RDS DB       engines, see Working with DB         Parameter Groups in the Amazon RDS User Guide.
+    /// 
+    /// For more information about DB cluster and DB instance parameters and parameter groups       for Amazon Aurora DB engines, see Working         with DB Parameter Groups and DB Cluster Parameter Groups in the         Amazon Aurora User Guide.
+    /// 
+    /// NoteAWS CloudFormation doesn't support specifying an apply method for each individual parameter. The default         apply method for each parameter is used.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Json
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -97,6 +97,8 @@ pub struct CfnDBParameterGroup {
     pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBParameterGroup {
     fn type_string() -> &'static str {
@@ -142,3 +144,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

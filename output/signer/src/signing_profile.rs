@@ -6,15 +6,15 @@ pub struct CfnSigningProfile {
 
 
     /// 
-    /// The validity period override for any signature generated using this signing             profile. If unspecified, the default is 135 months.
+    /// The ID of a platform that is available for use by a signing profile.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: SignatureValidityPeriod
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SignatureValidityPeriod")]
-    pub signature_validity_period: Option<SignatureValidityPeriod>,
+    #[serde(rename = "PlatformId")]
+    pub platform_id: String,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnSigningProfile {
 
 
     /// 
-    /// The ID of a platform that is available for use by a signing profile.
+    /// The validity period override for any signature generated using this signing             profile. If unspecified, the default is 135 months.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: SignatureValidityPeriod
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PlatformId")]
-    pub platform_id: String,
+    #[serde(rename = "SignatureValidityPeriod")]
+    pub signature_validity_period: Option<SignatureValidityPeriod>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSigningProfile {
     fn type_string() -> &'static str {
@@ -88,21 +90,11 @@ pub struct Tag {
 }
 
 
+
+
 /// The validity period for the signing job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SignatureValidityPeriod {
-
-
-    /// 
-    /// The time unit for signature validity: DAYS | MONTHS | YEARS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
 
 
     /// 
@@ -116,4 +108,18 @@ pub struct SignatureValidityPeriod {
     #[serde(rename = "Value")]
     pub value: Option<i64>,
 
+
+    /// 
+    /// The time unit for signature validity: DAYS | MONTHS | YEARS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
 }
+
+

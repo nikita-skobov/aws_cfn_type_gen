@@ -8,18 +8,6 @@ pub struct CfnThing {
 
 
     /// 
-    /// A string that contains up to three key value pairs. Maximum length of 800. Duplicates     not allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AttributePayload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttributePayload")]
-    pub attribute_payload: Option<AttributePayload>,
-
-
-    /// 
     /// The name of the thing to update.
     /// 
     /// You can't change a thing's name. To change a thing's name, you must create a 			new thing, give it the new name, and then delete the old thing.
@@ -32,7 +20,21 @@ pub struct CfnThing {
     #[serde(rename = "ThingName")]
     pub thing_name: Option<String>,
 
+
+    /// 
+    /// A string that contains up to three key value pairs. Maximum length of 800. Duplicates     not allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AttributePayload
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttributePayload")]
+    pub attribute_payload: Option<AttributePayload>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnThing {
     fn type_string() -> &'static str {
@@ -64,3 +66,5 @@ pub struct AttributePayload {
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
 }
+
+

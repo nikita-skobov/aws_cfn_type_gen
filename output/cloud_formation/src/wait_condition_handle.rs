@@ -6,6 +6,8 @@ pub struct CfnWaitConditionHandle {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnWaitConditionHandle {
     fn type_string() -> &'static str {
         "AWS::CloudFormation::WaitConditionHandle"

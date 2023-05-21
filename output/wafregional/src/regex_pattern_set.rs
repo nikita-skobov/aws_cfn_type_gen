@@ -40,6 +40,8 @@ pub struct CfnRegexPatternSet {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnRegexPatternSet {
     fn type_string() -> &'static str {
         "AWS::WAFRegional::RegexPatternSet"

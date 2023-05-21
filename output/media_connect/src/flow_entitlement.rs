@@ -6,66 +6,6 @@ pub struct CfnFlowEntitlement {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
-
-
-    /// 
-    /// The name of the entitlement. This value must be unique within the current        flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subscribers")]
-    pub subscribers: Vec<String>,
-
-
-    /// 
-    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataTransferSubscriberFeePercent")]
-    pub data_transfer_subscriber_fee_percent: Option<i64>,
-
-
-    /// 
-    /// An indication of whether the new entitlement should be enabled or disabled as soon        as it is created. If you don’t specify the entitlementStatus field in your request,        MediaConnect sets it to ENABLED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntitlementStatus")]
-    pub entitlement_status: Option<String>,
-
-
-    /// 
     /// A description of the entitlement. This description appears only on the        MediaConnect console and is not visible outside of the current AWS account.
     /// 
     /// Required: Yes
@@ -88,7 +28,69 @@ pub struct CfnFlowEntitlement {
     #[serde(rename = "Encryption")]
     pub encryption: Option<Encryption>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the flow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FlowArn")]
+    pub flow_arn: String,
+
+
+    /// 
+    /// An indication of whether the new entitlement should be enabled or disabled as soon        as it is created. If you don’t specify the entitlementStatus field in your request,        MediaConnect sets it to ENABLED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntitlementStatus")]
+    pub entitlement_status: Option<String>,
+
+
+    /// 
+    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataTransferSubscriberFeePercent")]
+    pub data_transfer_subscriber_fee_percent: Option<i64>,
+
+
+    /// 
+    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subscribers")]
+    pub subscribers: Vec<String>,
+
+
+    /// 
+    /// The name of the entitlement. This value must be unique within the current        flow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFlowEntitlement {
     fn type_string() -> &'static str {
@@ -104,6 +106,30 @@ impl cfn_resources::CfnResource for CfnFlowEntitlement {
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Encryption {
+
+
+    /// 
+    /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: Option<String>,
+
+
+    /// 
+    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
 
 
     /// 
@@ -143,39 +169,15 @@ pub struct Encryption {
 
 
     /// 
-    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
+    /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeviceId")]
-    pub device_id: Option<String>,
-
-
-    /// 
-    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
-
-
-    /// 
-    /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: Option<String>,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: Option<String>,
 
 
     /// 
@@ -191,26 +193,28 @@ pub struct Encryption {
 
 
     /// 
-    /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
+    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceId")]
-    pub resource_id: Option<String>,
+    #[serde(rename = "DeviceId")]
+    pub device_id: Option<String>,
 
 
     /// 
-    /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
+    /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: Option<String>,
+    #[serde(rename = "Url")]
+    pub url: Option<String>,
 
 }
+
+

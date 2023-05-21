@@ -6,21 +6,31 @@ pub struct CfnAssignment {
 
 
     /// 
-    /// The ARN of the permission set.
+    /// The entity type for which the assignment will be created.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 10
-    ///
-    /// Maximum: 1224
-    ///
-    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::permissionSet/(sso)?ins-[a-zA-Z0-9-.]{16}/ps-[a-zA-Z0-9-./]{16}
+    /// Allowed values: GROUP | USER
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PermissionSetArn")]
-    pub permission_set_arn: String,
+    #[serde(rename = "PrincipalType")]
+    pub principal_type: AssignmentPrincipalTypeEnum,
+
+
+    /// 
+    /// The entity type for which the assignment will be created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AWS_ACCOUNT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetType")]
+    pub target_type: AssignmentTargetTypeEnum,
 
 
     /// 
@@ -60,17 +70,21 @@ pub struct CfnAssignment {
 
 
     /// 
-    /// The entity type for which the assignment will be created.
+    /// The ARN of the permission set.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: GROUP | USER
+    /// Minimum: 10
+    ///
+    /// Maximum: 1224
+    ///
+    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::permissionSet/(sso)?ins-[a-zA-Z0-9-.]{16}/ps-[a-zA-Z0-9-./]{16}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PrincipalType")]
-    pub principal_type: String,
+    #[serde(rename = "PermissionSetArn")]
+    pub permission_set_arn: String,
 
 
     /// 
@@ -90,21 +104,43 @@ pub struct CfnAssignment {
     #[serde(rename = "InstanceArn")]
     pub instance_arn: String,
 
+}
 
-    /// 
-    /// The entity type for which the assignment will be created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AWS_ACCOUNT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetType")]
-    pub target_type: String,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssignmentTargetTypeEnum {
+
+    /// AWS_ACCOUNT
+    #[serde(rename = "AWS_ACCOUNT")]
+    Awsaccount,
 
 }
+
+impl Default for AssignmentTargetTypeEnum {
+    fn default() -> Self {
+        AssignmentTargetTypeEnum::Awsaccount
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssignmentPrincipalTypeEnum {
+
+    /// GROUP
+    #[serde(rename = "GROUP")]
+    Group,
+
+    /// USER
+    #[serde(rename = "USER")]
+    User,
+
+}
+
+impl Default for AssignmentPrincipalTypeEnum {
+    fn default() -> Self {
+        AssignmentPrincipalTypeEnum::Group
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAssignment {
     fn type_string() -> &'static str {

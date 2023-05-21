@@ -6,18 +6,6 @@ pub struct CfnVdmAttributes {
 
 
     /// 
-    /// Specifies additional settings for your VDM configuration as applicable to the       Dashboard.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DashboardAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DashboardAttributes")]
-    pub dashboard_attributes: Option<DashboardAttributes>,
-
-
-    /// 
     /// Specifies additional settings for your VDM configuration as applicable to the       Guardian.
     /// 
     /// Required: No
@@ -28,7 +16,21 @@ pub struct CfnVdmAttributes {
     #[serde(rename = "GuardianAttributes")]
     pub guardian_attributes: Option<GuardianAttributes>,
 
+
+    /// 
+    /// Specifies additional settings for your VDM configuration as applicable to the       Dashboard.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DashboardAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DashboardAttributes")]
+    pub dashboard_attributes: Option<DashboardAttributes>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVdmAttributes {
     fn type_string() -> &'static str {
@@ -39,6 +41,29 @@ impl cfn_resources::CfnResource for CfnVdmAttributes {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Settings for your VDM configuration as applicable to the Dashboard.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DashboardAttributes {
+
+
+    /// 
+    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
+    /// 
+    /// ENABLED – Amazon SES enables engagement metrics for           your account.               DISABLED – Amazon SES disables engagement metrics for           your account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngagementMetrics")]
+    pub engagement_metrics: Option<String>,
+
+}
+
+
 
 
 /// Settings for your VDM configuration as applicable to the Guardian.
@@ -62,22 +87,3 @@ pub struct GuardianAttributes {
 }
 
 
-/// Settings for your VDM configuration as applicable to the Dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DashboardAttributes {
-
-
-    /// 
-    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
-    /// 
-    /// ENABLED – Amazon SES enables engagement metrics for           your account.               DISABLED – Amazon SES disables engagement metrics for           your account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngagementMetrics")]
-    pub engagement_metrics: Option<String>,
-
-}

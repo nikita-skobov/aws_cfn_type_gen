@@ -16,6 +16,22 @@ pub struct CfnGroup {
 
 
     /// 
+    /// Application-specific metadata to attach to the group. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
+    /// 
+    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
+    /// 
+    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
+    /// 
     /// The name of the group.
     /// 
     /// Required: Yes
@@ -52,23 +68,9 @@ pub struct CfnGroup {
     #[serde(rename = "InitialVersion")]
     pub initial_version: Option<GroupVersion>,
 
-
-    /// 
-    /// Application-specific metadata to attach to the group. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
-    /// 
-    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
-    /// 
-    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGroup {
     fn type_string() -> &'static str {
@@ -89,27 +91,15 @@ pub struct GroupVersion {
 
 
     /// 
-    /// The ARN of the core definition version that contains the core you want to deploy with the group version. 				 Currently, the core definition version can contain only one core.
+    /// The ARN of the device definition version that contains the devices you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CoreDefinitionVersionArn")]
-    pub core_definition_version_arn: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectorDefinitionVersionArn")]
-    pub connector_definition_version_arn: Option<String>,
+    #[serde(rename = "DeviceDefinitionVersionArn")]
+    pub device_definition_version_arn: Option<String>,
 
 
     /// 
@@ -127,27 +117,27 @@ pub struct GroupVersion {
 
 
     /// 
-    /// The ARN of the resource definition version that contains the resources you want to deploy with the group version.
+    /// The ARN of the subscription definition version that contains the subscriptions you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ResourceDefinitionVersionArn")]
-    pub resource_definition_version_arn: Option<String>,
+    #[serde(rename = "SubscriptionDefinitionVersionArn")]
+    pub subscription_definition_version_arn: Option<String>,
 
 
     /// 
-    /// The ARN of the device definition version that contains the devices you want to deploy with the group version.
+    /// The ARN of the core definition version that contains the core you want to deploy with the group version. 				 Currently, the core definition version can contain only one core.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeviceDefinitionVersionArn")]
-    pub device_definition_version_arn: Option<String>,
+    #[serde(rename = "CoreDefinitionVersionArn")]
+    pub core_definition_version_arn: Option<String>,
 
 
     /// 
@@ -163,14 +153,28 @@ pub struct GroupVersion {
 
 
     /// 
-    /// The ARN of the subscription definition version that contains the subscriptions you want to deploy with the group version.
+    /// The ARN of the resource definition version that contains the resources you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubscriptionDefinitionVersionArn")]
-    pub subscription_definition_version_arn: Option<String>,
+    #[serde(rename = "ResourceDefinitionVersionArn")]
+    pub resource_definition_version_arn: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConnectorDefinitionVersionArn")]
+    pub connector_definition_version_arn: Option<String>,
 
 }
+
+

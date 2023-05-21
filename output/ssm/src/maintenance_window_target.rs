@@ -6,6 +6,70 @@ pub struct CfnMaintenanceWindowTarget {
 
 
     /// 
+    /// The type of target that is being registered with the maintenance window.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: INSTANCE | RESOURCE_GROUP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceType")]
+    pub resource_type: MaintenanceWindowTargetResourceTypeEnum,
+
+
+    /// 
+    /// A description for the target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A user-provided value that will be included in any Amazon CloudWatch Events events that are  raised while running tasks for these targets in this maintenance window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OwnerInformation")]
+    pub owner_information: Option<String>,
+
+
+    /// 
+    /// The name for the maintenance window target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// The targets to register with the maintenance window. In other words, the instances to run    commands on when the maintenance window runs.
     /// 
     /// You must specify targets by using the WindowTargetIds parameter.
@@ -38,71 +102,28 @@ pub struct CfnMaintenanceWindowTarget {
     #[serde(rename = "WindowId")]
     pub window_id: String,
 
-
-    /// 
-    /// The name for the maintenance window target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+}
 
 
-    /// 
-    /// The type of target that is being registered with the maintenance window.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: INSTANCE | RESOURCE_GROUP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MaintenanceWindowTargetResourceTypeEnum {
 
+    /// INSTANCE
+    #[serde(rename = "INSTANCE")]
+    Instance,
 
-    /// 
-    /// A user-provided value that will be included in any Amazon CloudWatch Events events that are  raised while running tasks for these targets in this maintenance window.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OwnerInformation")]
-    pub owner_information: Option<String>,
-
-
-    /// 
-    /// A description for the target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// RESOURCE_GROUP
+    #[serde(rename = "RESOURCE_GROUP")]
+    Resourcegroup,
 
 }
+
+impl Default for MaintenanceWindowTargetResourceTypeEnum {
+    fn default() -> Self {
+        MaintenanceWindowTargetResourceTypeEnum::Instance
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
     fn type_string() -> &'static str {
@@ -123,22 +144,6 @@ pub struct Targets {
 
 
     /// 
-    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
-    /// 
-    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
     /// User-defined criteria for sending commands that target managed nodes that meet the  criteria.
     /// 
     /// Required: Yes
@@ -155,4 +160,22 @@ pub struct Targets {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
+    /// 
+    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
+
 }
+
+

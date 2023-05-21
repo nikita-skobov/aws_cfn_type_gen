@@ -14,76 +14,6 @@ pub struct CfnEventBusPolicy {
 
 
     /// 
-    /// A JSON string that describes the permission policy statement. You can include a     Policy parameter in the request instead of using the StatementId,     Action, Principal, or Condition parameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statement")]
-    pub statement: Option<serde_json::Value>,
-
-
-    /// 
-    /// The 12-digit AWS account ID that you are permitting to put events to your default event    bus. Specify "*" to permit any account to put events to your default event bus.
-    /// 
-    /// If you specify "*" without specifying Condition, avoid creating rules that    may match undesirable events. To create more secure rules, make sure that the event pattern    for each rule contains an account field with a specific account ID from which to    receive events. Rules with an account field do not match any events sent from other    accounts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: (\d{12}|\*)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: Option<String>,
-
-
-    /// 
-    /// An identifier string for the external account that you are granting permissions to. If you    later want to revoke the permission for this external account, specify this    StatementId when you run RemovePermission.
-    /// 
-    /// NoteEach StatementId must be unique.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [a-zA-Z0-9-_]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StatementId")]
-    pub statement_id: String,
-
-
-    /// 
-    /// The action that you are enabling the other account to perform.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: events:[a-zA-Z]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: Option<String>,
-
-
-    /// 
     /// The name of the event bus associated with the rule. If you omit this, the default event    bus is used.
     /// 
     /// Required: No
@@ -116,7 +46,79 @@ pub struct CfnEventBusPolicy {
     #[serde(rename = "Condition")]
     pub condition: Option<Condition>,
 
+
+    /// 
+    /// An identifier string for the external account that you are granting permissions to. If you    later want to revoke the permission for this external account, specify this    StatementId when you run RemovePermission.
+    /// 
+    /// NoteEach StatementId must be unique.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [a-zA-Z0-9-_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StatementId")]
+    pub statement_id: String,
+
+
+    /// 
+    /// The 12-digit AWS account ID that you are permitting to put events to your default event    bus. Specify "*" to permit any account to put events to your default event bus.
+    /// 
+    /// If you specify "*" without specifying Condition, avoid creating rules that    may match undesirable events. To create more secure rules, make sure that the event pattern    for each rule contains an account field with a specific account ID from which to    receive events. Rules with an account field do not match any events sent from other    accounts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: (\d{12}|\*)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principal")]
+    pub principal: Option<String>,
+
+
+    /// 
+    /// The action that you are enabling the other account to perform.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: events:[a-zA-Z]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: Option<String>,
+
+
+    /// 
+    /// A JSON string that describes the permission policy statement. You can include a     Policy parameter in the request instead of using the StatementId,     Action, Principal, or Condition parameters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statement")]
+    pub statement: Option<serde_json::Value>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEventBusPolicy {
     fn type_string() -> &'static str {
@@ -137,18 +139,6 @@ pub struct Condition {
 
 
     /// 
-    /// Specifies the key for the condition. Currently the only supported key is     aws:PrincipalOrgID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
     /// Specifies the type of condition. Currently the only supported value is     StringEquals.
     /// 
     /// Required: No
@@ -158,6 +148,18 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
+
+
+    /// 
+    /// Specifies the key for the condition. Currently the only supported key is     aws:PrincipalOrgID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
 
 
     /// 
@@ -172,3 +174,5 @@ pub struct Condition {
     pub value: Option<String>,
 
 }
+
+

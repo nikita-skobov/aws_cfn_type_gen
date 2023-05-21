@@ -6,15 +6,15 @@ pub struct CfnDocumentationVersion {
 
 
     /// 
-    /// A description about the new documentation snapshot.
+    /// The version identifier of the to-be-updated documentation version.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "DocumentationVersion")]
+    pub documentation_version: String,
 
 
     /// 
@@ -30,17 +30,19 @@ pub struct CfnDocumentationVersion {
 
 
     /// 
-    /// The version identifier of the to-be-updated documentation version.
+    /// A description about the new documentation snapshot.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DocumentationVersion")]
-    pub documentation_version: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDocumentationVersion {
     fn type_string() -> &'static str {

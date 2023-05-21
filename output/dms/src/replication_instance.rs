@@ -6,43 +6,85 @@ pub struct CfnReplicationInstance {
 
 
     /// 
-    /// Indicates that major version upgrades are allowed. Changing this parameter does not     result in an outage, and the change is asynchronously applied as soon as possible.
-    /// 
-    /// This parameter must be set to true when specifying a value for the       EngineVersion parameter that is a different major version than the     replication instance's current version.
+    /// A display name for the resource identifier at the end of the EndpointArn     response parameter that is returned in the created Endpoint object. The value     for this parameter can have up to 31 characters. It can contain only ASCII letters, digits,     and hyphen ('-'). Also, it can't end with a hyphen or contain two consecutive hyphens,     and can only begin with a letter, such as Example-App-ARN1. For example, this     value might result in the EndpointArn value     arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1. If you don't     specify a ResourceIdentifier value, AWS DMS generates a default identifier     value for the end of EndpointArn.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowMajorVersionUpgrade")]
-    pub allow_major_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// A value that indicates whether minor engine upgrades are applied automatically to the       replication instance during the maintenance window. This parameter defaults to true.
-    /// 
-    /// Default: true
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// Specifies the accessibility options for the replication instance. A value of       true represents an instance with a public IP address. A value of       false represents an instance with a private IP address.       The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PubliclyAccessible")]
-    pub publicly_accessible: Option<bool>,
+    #[serde(rename = "ResourceIdentifier")]
+    pub resource_identifier: Option<String>,
+
+
+    /// 
+    /// Specifies whether the replication instance is a Multi-AZ deployment. You can't set the       AvailabilityZone parameter if the Multi-AZ parameter is set to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MultiAZ")]
+    pub multi_az: Option<bool>,
+
+
+    /// 
+    /// The compute and memory capacity of the replication instance as defined for the specified       replication instance class. For example, to specify the instance class dms.c4.large, set this parameter to "dms.c4.large".       For more information on the settings and capacities for the available replication instance classes, see            Selecting the right AWS DMS replication instance for your migration       in the AWS Database Migration Service User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationInstanceClass")]
+    pub replication_instance_class: String,
+
+
+    /// 
+    /// One or more tags to be assigned to the replication instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The weekly time range during which system maintenance can occur, in UTC.
+    /// 
+    /// Format: ddd:hh24:mi-ddd:hh24:mi
+    /// 
+    /// Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region,       occurring on a random day of the week.
+    /// 
+    /// Valid days (ddd): Mon | Tue |       Wed | Thu | Fri | Sat | Sun
+    /// 
+    /// Constraints: Minimum 30-minute window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
+
+
+    /// 
+    /// The engine version number of the replication instance.
+    /// 
+    /// If an engine version number is not specified when a replication       instance is created, the default is the latest engine version available.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
 
 
     /// 
@@ -55,6 +97,20 @@ pub struct CfnReplicationInstance {
     /// Update requires: No interruption
     #[serde(rename = "AllocatedStorage")]
     pub allocated_storage: Option<i64>,
+
+
+    /// 
+    /// Indicates that major version upgrades are allowed. Changing this parameter does not     result in an outage, and the change is asynchronously applied as soon as possible.
+    /// 
+    /// This parameter must be set to true when specifying a value for the       EngineVersion parameter that is a different major version than the     replication instance's current version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowMajorVersionUpgrade")]
+    pub allow_major_version_upgrade: Option<bool>,
 
 
     /// 
@@ -102,97 +158,17 @@ pub struct CfnReplicationInstance {
 
 
     /// 
-    /// One or more tags to be assigned to the replication instance.
+    /// A value that indicates whether minor engine upgrades are applied automatically to the       replication instance during the maintenance window. This parameter defaults to true.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The engine version number of the replication instance.
-    /// 
-    /// If an engine version number is not specified when a replication       instance is created, the default is the latest engine version available.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// The compute and memory capacity of the replication instance as defined for the specified       replication instance class. For example, to specify the instance class dms.c4.large, set this parameter to "dms.c4.large".       For more information on the settings and capacities for the available replication instance classes, see            Selecting the right AWS DMS replication instance for your migration       in the AWS Database Migration Service User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationInstanceClass")]
-    pub replication_instance_class: String,
-
-
-    /// 
-    /// A display name for the resource identifier at the end of the EndpointArn     response parameter that is returned in the created Endpoint object. The value     for this parameter can have up to 31 characters. It can contain only ASCII letters, digits,     and hyphen ('-'). Also, it can't end with a hyphen or contain two consecutive hyphens,     and can only begin with a letter, such as Example-App-ARN1. For example, this     value might result in the EndpointArn value     arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1. If you don't     specify a ResourceIdentifier value, AWS DMS generates a default identifier     value for the end of EndpointArn.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceIdentifier")]
-    pub resource_identifier: Option<String>,
-
-
-    /// 
-    /// A subnet group to associate with the replication instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicationSubnetGroupIdentifier")]
-    pub replication_subnet_group_identifier: Option<String>,
-
-
-    /// 
-    /// The weekly time range during which system maintenance can occur, in UTC.
-    /// 
-    /// Format: ddd:hh24:mi-ddd:hh24:mi
-    /// 
-    /// Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region,       occurring on a random day of the week.
-    /// 
-    /// Valid days (ddd): Mon | Tue |       Wed | Thu | Fri | Sat | Sun
-    /// 
-    /// Constraints: Minimum 30-minute window.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
-
-
-    /// 
-    /// Specifies whether the replication instance is a Multi-AZ deployment. You can't set the       AvailabilityZone parameter if the Multi-AZ parameter is set to true.
+    /// Default: true
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MultiAZ")]
-    pub multi_az: Option<bool>,
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
 
 
     /// 
@@ -210,7 +186,33 @@ pub struct CfnReplicationInstance {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
+
+    /// 
+    /// A subnet group to associate with the replication instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ReplicationSubnetGroupIdentifier")]
+    pub replication_subnet_group_identifier: Option<String>,
+
+
+    /// 
+    /// Specifies the accessibility options for the replication instance. A value of       true represents an instance with a public IP address. A value of       false represents an instance with a private IP address.       The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PubliclyAccessible")]
+    pub publicly_accessible: Option<bool>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnReplicationInstance {
     fn type_string() -> &'static str {
@@ -235,17 +237,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -255,4 +246,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

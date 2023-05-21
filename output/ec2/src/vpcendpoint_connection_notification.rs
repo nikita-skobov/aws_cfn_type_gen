@@ -8,27 +8,15 @@ pub struct CfnVPCEndpointConnectionNotification {
 
 
     /// 
-    /// The ID of the endpoint service.
+    /// The ID of the endpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ServiceId")]
-    pub service_id: Option<String>,
-
-
-    /// 
-    /// The ARN of the SNS topic for the notifications.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionNotificationArn")]
-    pub connection_notification_arn: String,
+    #[serde(rename = "VPCEndpointId")]
+    pub vpcendpoint_id: Option<String>,
 
 
     /// 
@@ -44,17 +32,31 @@ pub struct CfnVPCEndpointConnectionNotification {
 
 
     /// 
-    /// The ID of the endpoint.
+    /// The ARN of the SNS topic for the notifications.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionNotificationArn")]
+    pub connection_notification_arn: String,
+
+
+    /// 
+    /// The ID of the endpoint service.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VPCEndpointId")]
-    pub vpcendpoint_id: Option<String>,
+    #[serde(rename = "ServiceId")]
+    pub service_id: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVPCEndpointConnectionNotification {
     fn type_string() -> &'static str {

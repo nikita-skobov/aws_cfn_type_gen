@@ -6,6 +6,18 @@ pub struct CfnResourceSet {
 
 
     /// 
+    /// Determines the resources that can be associated to the resource set. Depending on     your setting for max results and the number of resource sets, a single call might not     return the full list.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTypeList")]
+    pub resource_type_list: Vec<String>,
+
+
+    /// 
     /// A description of the resource set.
     /// 
     /// Required: No
@@ -19,18 +31,6 @@ pub struct CfnResourceSet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// Determines the resources that can be associated to the resource set. Depending on     your setting for max results and the number of resource sets, a single call might not     return the full list.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTypeList")]
-    pub resource_type_list: Vec<String>,
 
 
     /// 
@@ -52,18 +52,6 @@ pub struct CfnResourceSet {
 
 
     /// 
-    /// A collection of key:value pairs associated with a resource set. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The resources included in the resource set.
     /// 
     /// Required: No
@@ -74,7 +62,21 @@ pub struct CfnResourceSet {
     #[serde(rename = "Resources")]
     pub resources: Option<Vec<String>>,
 
+
+    /// 
+    /// A collection of key:value pairs associated with a resource set. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourceSet {
     fn type_string() -> &'static str {
@@ -99,17 +101,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -119,4 +110,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

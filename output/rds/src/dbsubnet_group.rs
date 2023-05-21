@@ -8,15 +8,15 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
-    /// The description for the DB subnet group.
+    /// An optional array of key-value pairs to apply to this DB subnet group.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBSubnetGroupDescription")]
-    pub dbsubnet_group_description: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -36,18 +36,6 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
-    /// An optional array of key-value pairs to apply to this DB subnet group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The EC2 Subnet IDs for the DB subnet group.
     /// 
     /// Required: Yes
@@ -58,7 +46,21 @@ pub struct CfnDBSubnetGroup {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
+
+    /// 
+    /// The description for the DB subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBSubnetGroupDescription")]
+    pub dbsubnet_group_description: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBSubnetGroup {
     fn type_string() -> &'static str {
@@ -104,3 +106,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

@@ -12,6 +12,20 @@ pub struct CfnRateBasedRule {
 
 
     /// 
+    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RateKey")]
+    pub rate_key: RateBasedRuleRateKeyEnum,
+
+
+    /// 
     /// The maximum number of requests, which have an identical value in the field specified     by the RateKey, allowed in a five-minute period. If the number of requests     exceeds the RateLimit and the other predicates specified in the rule are also       met, AWS WAF triggers the action that is specified for this rule.
     /// 
     /// Required: Yes
@@ -21,18 +35,6 @@ pub struct CfnRateBasedRule {
     /// Update requires: No interruption
     #[serde(rename = "RateLimit")]
     pub rate_limit: i64,
-
-
-    /// 
-    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Predicate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPredicates")]
-    pub match_predicates: Option<Vec<Predicate>>,
 
 
     /// 
@@ -72,19 +74,34 @@ pub struct CfnRateBasedRule {
 
 
     /// 
-    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
+    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Predicate
     ///
-    /// Allowed values: IP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RateKey")]
-    pub rate_key: String,
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPredicates")]
+    pub match_predicates: Option<Vec<Predicate>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RateBasedRuleRateKeyEnum {
+
+    /// IP
+    #[serde(rename = "IP")]
+    Ip,
+
+}
+
+impl Default for RateBasedRuleRateKeyEnum {
+    fn default() -> Self {
+        RateBasedRuleRateKeyEnum::Ip
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRateBasedRule {
     fn type_string() -> &'static str {
@@ -113,7 +130,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: PredicateTypeEnum,
 
 
     /// 
@@ -148,3 +165,44 @@ pub struct Predicate {
     pub data_id: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PredicateTypeEnum {
+
+    /// ByteMatch
+    #[serde(rename = "ByteMatch")]
+    Bytematch,
+
+    /// GeoMatch
+    #[serde(rename = "GeoMatch")]
+    Geomatch,
+
+    /// IPMatch
+    #[serde(rename = "IPMatch")]
+    Ipmatch,
+
+    /// RegexMatch
+    #[serde(rename = "RegexMatch")]
+    Regexmatch,
+
+    /// SizeConstraint
+    #[serde(rename = "SizeConstraint")]
+    Sizeconstraint,
+
+    /// SqlInjectionMatch
+    #[serde(rename = "SqlInjectionMatch")]
+    Sqlinjectionmatch,
+
+    /// XssMatch
+    #[serde(rename = "XssMatch")]
+    Xssmatch,
+
+}
+
+impl Default for PredicateTypeEnum {
+    fn default() -> Self {
+        PredicateTypeEnum::Bytematch
+    }
+}
+

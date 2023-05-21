@@ -6,18 +6,6 @@ pub struct CfnMacro {
 
 
     /// 
-    /// The ARN of the role AWS CloudFormation should assume when sending log entries to CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogRoleARN")]
-    pub log_role_arn: Option<String>,
-
-
-    /// 
     /// A description of the macro.
     /// 
     /// Required: No
@@ -30,15 +18,27 @@ pub struct CfnMacro {
 
 
     /// 
-    /// The CloudWatch Logs group to which AWS CloudFormation sends error logging information when invoking the  macro's underlying AWS Lambda function.
+    /// The ARN of the role AWS CloudFormation should assume when sending log entries to CloudWatch Logs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
+    #[serde(rename = "LogRoleARN")]
+    pub log_role_arn: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the underlying AWS Lambda function that you want AWS CloudFormation to invoke when the macro is run.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionName")]
+    pub function_name: String,
 
 
     /// 
@@ -54,17 +54,19 @@ pub struct CfnMacro {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the underlying AWS Lambda function that you want AWS CloudFormation to invoke when the macro is run.
+    /// The CloudWatch Logs group to which AWS CloudFormation sends error logging information when invoking the  macro's underlying AWS Lambda function.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMacro {
     fn type_string() -> &'static str {

@@ -8,20 +8,6 @@ pub struct CfnThingGroup {
 
 
     /// 
-    /// The dynamic thing group search query string.
-    /// 
-    /// The queryString attribute is required for       CreateDynamicThingGroup. The queryString attribute       is not required for CreateThingGroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: Option<String>,
-
-
-    /// 
     /// The parent thing group name.
     /// 
     /// A Dynamic Thing Group does not have parentGroupName defined.
@@ -33,6 +19,32 @@ pub struct CfnThingGroup {
     /// Update requires: Replacement
     #[serde(rename = "ParentGroupName")]
     pub parent_group_name: Option<String>,
+
+
+    /// 
+    /// Thing group properties.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThingGroupProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThingGroupProperties")]
+    pub thing_group_properties: Option<ThingGroupProperties>,
+
+
+    /// 
+    /// The dynamic thing group search query string.
+    /// 
+    /// The queryString attribute is required for       CreateDynamicThingGroup. The queryString attribute       is not required for CreateThingGroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryString")]
+    pub query_string: Option<String>,
 
 
     /// 
@@ -58,19 +70,9 @@ pub struct CfnThingGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Thing group properties.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ThingGroupProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThingGroupProperties")]
-    pub thing_group_properties: Option<ThingGroupProperties>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnThingGroup {
     fn type_string() -> &'static str {
@@ -83,35 +85,27 @@ impl cfn_resources::CfnResource for CfnThingGroup {
 }
 
 
-/// Thing group properties.
+/// The attribute payload.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThingGroupProperties {
+pub struct AttributePayload {
 
 
     /// 
-    /// The thing group description.
+    /// A JSON string containing up to three key-value pair in JSON format. For example:
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThingGroupDescription")]
-    pub thing_group_description: Option<String>,
-
-
-    /// 
-    /// The thing group attributes in JSON format.
+    /// {\"attributes\":{\"string1\":\"string2\"}}
     /// 
     /// Required: No
     ///
-    /// Type: AttributePayload
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AttributePayload")]
-    pub attribute_payload: Option<AttributePayload>,
+    #[serde(rename = "Attributes")]
+    pub attributes: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -149,22 +143,36 @@ pub struct Tag {
 }
 
 
-/// The attribute payload.
+
+
+/// Thing group properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AttributePayload {
+pub struct ThingGroupProperties {
 
 
     /// 
-    /// A JSON string containing up to three key-value pair in JSON format. For example:
-    /// 
-    /// {\"attributes\":{\"string1\":\"string2\"}}
+    /// The thing group attributes in JSON format.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: AttributePayload
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "AttributePayload")]
+    pub attribute_payload: Option<AttributePayload>,
+
+
+    /// 
+    /// The thing group description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThingGroupDescription")]
+    pub thing_group_description: Option<String>,
 
 }
+
+

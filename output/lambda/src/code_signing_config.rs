@@ -22,18 +22,6 @@ pub struct CfnCodeSigningConfig {
 
 
     /// 
-    /// The code signing policy controls the validation failure action for signature mismatch or expiry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CodeSigningPolicies
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CodeSigningPolicies")]
-    pub code_signing_policies: Option<CodeSigningPolicies>,
-
-
-    /// 
     /// List of allowed publishers.
     /// 
     /// Required: Yes
@@ -44,7 +32,21 @@ pub struct CfnCodeSigningConfig {
     #[serde(rename = "AllowedPublishers")]
     pub allowed_publishers: AllowedPublishers,
 
+
+    /// 
+    /// The code signing policy controls the validation failure action for signature mismatch or expiry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CodeSigningPolicies
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CodeSigningPolicies")]
+    pub code_signing_policies: Option<CodeSigningPolicies>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCodeSigningConfig {
     fn type_string() -> &'static str {
@@ -54,29 +56,6 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CodeSigningPolicies {
-
-
-    /// 
-    /// Code signing configuration policy for deployment validation failure. If you set the policy to    Enforce, Lambda blocks the deployment request if signature validation checks fail. If you set the    policy to Warn, Lambda allows the deployment and creates a CloudWatch log.
-    /// 
-    /// Default value: Warn
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Enforce | Warn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UntrustedArtifactOnDeployment")]
-    pub untrusted_artifact_on_deployment: String,
-
 }
 
 
@@ -99,3 +78,49 @@ pub struct AllowedPublishers {
     pub signing_profile_version_arns: Vec<String>,
 
 }
+
+
+
+
+/// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CodeSigningPolicies {
+
+
+    /// 
+    /// Code signing configuration policy for deployment validation failure. If you set the policy to    Enforce, Lambda blocks the deployment request if signature validation checks fail. If you set the    policy to Warn, Lambda allows the deployment and creates a CloudWatch log.
+    /// 
+    /// Default value: Warn
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Enforce | Warn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UntrustedArtifactOnDeployment")]
+    pub untrusted_artifact_on_deployment: CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
+
+    /// Enforce
+    #[serde(rename = "Enforce")]
+    Enforce,
+
+    /// Warn
+    #[serde(rename = "Warn")]
+    Warn,
+
+}
+
+impl Default for CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
+    fn default() -> Self {
+        CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum::Enforce
+    }
+}
+

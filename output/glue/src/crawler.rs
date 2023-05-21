@@ -18,57 +18,27 @@ pub struct CfnCrawler {
 
 
     /// 
-    /// The tags to use with this crawler.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
-    /// A collection of targets to crawl.
+    /// The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources,    such as Amazon Simple Storage Service (Amazon S3) data.
     /// 
     /// Required: Yes
     ///
-    /// Type: Targets
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Targets,
+    #[serde(rename = "Role")]
+    pub role: String,
 
 
     /// 
-    /// The name of the SecurityConfiguration structure to be used by this    crawler.
+    /// Crawler configuration information. This versioned JSON string allows users to specify       aspects of a crawler's behavior. For more information, see Configuring a       Crawler.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "CrawlerSecurityConfiguration")]
-    pub crawler_security_configuration: Option<String>,
-
-
-    /// 
-    /// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
-    /// 
-    /// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SchemaChangePolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SchemaChangePolicy")]
-    pub schema_change_policy: Option<SchemaChangePolicy>,
+    #[serde(rename = "Configuration")]
+    pub configuration: Option<String>,
 
 
     /// 
@@ -90,27 +60,31 @@ pub struct CfnCrawler {
 
 
     /// 
-    /// A list of UTF-8 strings that specify the names of custom classifiers that are associated    with the crawler.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Classifiers")]
-    pub classifiers: Option<Vec<String>>,
-
-
-    /// 
-    /// Crawler configuration information. This versioned JSON string allows users to specify       aspects of a crawler's behavior. For more information, see Configuring a       Crawler.
+    /// The name of the SecurityConfiguration structure to be used by this    crawler.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Configuration")]
-    pub configuration: Option<String>,
+    #[serde(rename = "CrawlerSecurityConfiguration")]
+    pub crawler_security_configuration: Option<String>,
+
+
+    /// 
+    /// The tags to use with this crawler.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -130,15 +104,15 @@ pub struct CfnCrawler {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources,    such as Amazon Simple Storage Service (Amazon S3) data.
+    /// For scheduled crawlers, the schedule when the crawler runs.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Schedule
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Role")]
-    pub role: String,
+    #[serde(rename = "Schedule")]
+    pub schedule: Option<Schedule>,
 
 
     /// 
@@ -151,6 +125,18 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "RecrawlPolicy")]
     pub recrawl_policy: Option<RecrawlPolicy>,
+
+
+    /// 
+    /// A collection of targets to crawl.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Targets
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Targets,
 
 
     /// 
@@ -172,17 +158,33 @@ pub struct CfnCrawler {
 
 
     /// 
-    /// For scheduled crawlers, the schedule when the crawler runs.
+    /// A list of UTF-8 strings that specify the names of custom classifiers that are associated    with the crawler.
     /// 
     /// Required: No
     ///
-    /// Type: Schedule
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: Option<Schedule>,
+    #[serde(rename = "Classifiers")]
+    pub classifiers: Option<Vec<String>>,
+
+
+    /// 
+    /// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
+    /// 
+    /// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SchemaChangePolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SchemaChangePolicy")]
+    pub schema_change_policy: Option<SchemaChangePolicy>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCrawler {
     fn type_string() -> &'static str {
@@ -193,6 +195,45 @@ impl cfn_resources::CfnResource for CfnCrawler {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Specifies an AWS Glue Data Catalog target.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CatalogTarget {
+
+
+    /// 
+    /// A list of the tables to be synchronized.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tables")]
+    pub tables: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the database to be synchronized.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
+
+}
+
+
 
 
 /// A scheduling object using a cron statement to schedule an event.
@@ -214,23 +255,6 @@ pub struct Schedule {
 }
 
 
-/// Specifies an Amazon DynamoDB table to crawl.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DynamoDBTarget {
-
-
-    /// 
-    /// The name of the DynamoDB table to crawl.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-}
 
 
 /// Specifies a data store in Amazon Simple Storage Service (Amazon S3).
@@ -251,27 +275,15 @@ pub struct S3Target {
 
 
     /// 
-    /// The name of a connection which allows a job or crawler to access data in Amazon S3 within an Amazon Virtual Private Cloud environment (Amazon VPC).
+    /// Sets the number of files in each leaf folder to be crawled when crawling sample files in a dataset. If not set, all the files are crawled. A valid value is an integer between 1 and 249.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConnectionName")]
-    pub connection_name: Option<String>,
-
-
-    /// 
-    /// A valid Amazon dead-letter SQS ARN. For example, arn:aws:sqs:region:account:deadLetterQueue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DlqEventQueueArn")]
-    pub dlq_event_queue_arn: Option<String>,
+    #[serde(rename = "SampleSize")]
+    pub sample_size: Option<i64>,
 
 
     /// 
@@ -287,15 +299,15 @@ pub struct S3Target {
 
 
     /// 
-    /// Sets the number of files in each leaf folder to be crawled when crawling sample files in a dataset. If not set, all the files are crawled. A valid value is an integer between 1 and 249.
+    /// A valid Amazon dead-letter SQS ARN. For example, arn:aws:sqs:region:account:deadLetterQueue.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SampleSize")]
-    pub sample_size: Option<i64>,
+    #[serde(rename = "DlqEventQueueArn")]
+    pub dlq_event_queue_arn: Option<String>,
 
 
     /// 
@@ -309,7 +321,21 @@ pub struct S3Target {
     #[serde(rename = "Exclusions")]
     pub exclusions: Option<Vec<String>>,
 
+
+    /// 
+    /// The name of a connection which allows a job or crawler to access data in Amazon S3 within an Amazon Virtual Private Cloud environment (Amazon VPC).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionName")]
+    pub connection_name: Option<String>,
+
 }
+
+
 
 
 /// Specifies a JDBC data store to crawl.
@@ -355,88 +381,6 @@ pub struct JdbcTarget {
 }
 
 
-/// Specifies an AWS Glue Data Catalog target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CatalogTarget {
-
-
-    /// 
-    /// The name of the database to be synchronized.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
-
-
-    /// 
-    /// A list of the tables to be synchronized.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tables")]
-    pub tables: Option<Vec<String>>,
-
-}
-
-
-/// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
-///
-/// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SchemaChangePolicy {
-
-
-    /// 
-    /// The deletion behavior when the crawler finds a deleted object.
-    /// 
-    /// A value of LOG specifies that if a table or partition is found to no longer exist, do not delete it, only log that it was found to no longer exist.
-    /// 
-    /// A value of DELETE_FROM_DATABASE specifies that if a table or partition is found to have been removed, delete it from the database.
-    /// 
-    /// A value of DEPRECATE_IN_DATABASE specifies that if a table has been found to no longer exist, to add a property to the table that says "DEPRECATED" and includes a timestamp with the time of deprecation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DELETE_FROM_DATABASE | DEPRECATE_IN_DATABASE | LOG
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeleteBehavior")]
-    pub delete_behavior: Option<String>,
-
-
-    /// 
-    /// The update behavior when the crawler finds a changed schema.
-    /// 
-    /// A value of LOG specifies that if a table or a partition already exists, and a change is detected, do not update it, only log that a change was detected. Add new tables and new partitions (including on existing tables).
-    /// 
-    /// A value of UPDATE_IN_DATABASE specifies that if a table or partition already exists, and a change is detected, update it. Add new tables and partitions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: LOG | UPDATE_IN_DATABASE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UpdateBehavior")]
-    pub update_behavior: Option<String>,
-
-}
 
 
 /// Specifies an Amazon DocumentDB or MongoDB data store to crawl.
@@ -470,55 +414,6 @@ pub struct MongoDBTarget {
 }
 
 
-/// The DeltaTarget property type specifies Property description not available. for an AWS::Glue::Crawler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeltaTarget {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WriteManifest")]
-    pub write_manifest: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaTables")]
-    pub delta_tables: Option<Vec<String>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreateNativeDeltaTable")]
-    pub create_native_delta_table: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionName")]
-    pub connection_name: Option<String>,
-
-}
 
 
 /// Specifies data stores to crawl.
@@ -562,18 +457,6 @@ pub struct Targets {
 
 
     /// 
-    /// Specifies Amazon Simple Storage Service (Amazon S3) targets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of S3Target
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Targets")]
-    pub s3_targets: Option<Vec<S3Target>>,
-
-
-    /// 
     /// Specifies Amazon DynamoDB targets.
     /// 
     /// Required: No
@@ -583,6 +466,18 @@ pub struct Targets {
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBTargets")]
     pub dynamo_dbtargets: Option<Vec<DynamoDBTarget>>,
+
+
+    /// 
+    /// Specifies Amazon Simple Storage Service (Amazon S3) targets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of S3Target
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Targets")]
+    pub s3_targets: Option<Vec<S3Target>>,
 
 
     /// 
@@ -597,6 +492,61 @@ pub struct Targets {
     pub catalog_targets: Option<Vec<CatalogTarget>>,
 
 }
+
+
+
+
+/// The DeltaTarget property type specifies Property description not available. for an AWS::Glue::Crawler.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeltaTarget {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeltaTables")]
+    pub delta_tables: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionName")]
+    pub connection_name: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WriteManifest")]
+    pub write_manifest: Option<bool>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreateNativeDeltaTable")]
+    pub create_native_delta_table: Option<bool>,
+
+}
+
+
 
 
 /// When crawling an Amazon S3 data source after the first crawl is complete, specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run. For more information, see Incremental Crawls in AWS Glue in the developer guide.
@@ -621,6 +571,143 @@ pub struct RecrawlPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecrawlBehavior")]
-    pub recrawl_behavior: Option<String>,
+    pub recrawl_behavior: Option<RecrawlPolicyRecrawlBehaviorEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecrawlPolicyRecrawlBehaviorEnum {
+
+    /// CRAWL_EVENT_MODE
+    #[serde(rename = "CRAWL_EVENT_MODE")]
+    Crawleventmode,
+
+    /// CRAWL_EVERYTHING
+    #[serde(rename = "CRAWL_EVERYTHING")]
+    Crawleverything,
+
+    /// CRAWL_NEW_FOLDERS_ONLY
+    #[serde(rename = "CRAWL_NEW_FOLDERS_ONLY")]
+    Crawlnewfoldersonly,
+
+}
+
+impl Default for RecrawlPolicyRecrawlBehaviorEnum {
+    fn default() -> Self {
+        RecrawlPolicyRecrawlBehaviorEnum::Crawleventmode
+    }
+}
+
+
+
+/// Specifies an Amazon DynamoDB table to crawl.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DynamoDBTarget {
+
+
+    /// 
+    /// The name of the DynamoDB table to crawl.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+}
+
+
+
+
+/// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
+///
+/// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SchemaChangePolicy {
+
+
+    /// 
+    /// The deletion behavior when the crawler finds a deleted object.
+    /// 
+    /// A value of LOG specifies that if a table or partition is found to no longer exist, do not delete it, only log that it was found to no longer exist.
+    /// 
+    /// A value of DELETE_FROM_DATABASE specifies that if a table or partition is found to have been removed, delete it from the database.
+    /// 
+    /// A value of DEPRECATE_IN_DATABASE specifies that if a table has been found to no longer exist, to add a property to the table that says "DEPRECATED" and includes a timestamp with the time of deprecation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DELETE_FROM_DATABASE | DEPRECATE_IN_DATABASE | LOG
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeleteBehavior")]
+    pub delete_behavior: Option<SchemaChangePolicyDeleteBehaviorEnum>,
+
+
+    /// 
+    /// The update behavior when the crawler finds a changed schema.
+    /// 
+    /// A value of LOG specifies that if a table or a partition already exists, and a change is detected, do not update it, only log that a change was detected. Add new tables and new partitions (including on existing tables).
+    /// 
+    /// A value of UPDATE_IN_DATABASE specifies that if a table or partition already exists, and a change is detected, update it. Add new tables and partitions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LOG | UPDATE_IN_DATABASE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UpdateBehavior")]
+    pub update_behavior: Option<SchemaChangePolicyUpdateBehaviorEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SchemaChangePolicyDeleteBehaviorEnum {
+
+    /// DELETE_FROM_DATABASE
+    #[serde(rename = "DELETE_FROM_DATABASE")]
+    Deletefromdatabase,
+
+    /// DEPRECATE_IN_DATABASE
+    #[serde(rename = "DEPRECATE_IN_DATABASE")]
+    Deprecateindatabase,
+
+    /// LOG
+    #[serde(rename = "LOG")]
+    Log,
+
+}
+
+impl Default for SchemaChangePolicyDeleteBehaviorEnum {
+    fn default() -> Self {
+        SchemaChangePolicyDeleteBehaviorEnum::Deletefromdatabase
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SchemaChangePolicyUpdateBehaviorEnum {
+
+    /// LOG
+    #[serde(rename = "LOG")]
+    Log,
+
+    /// UPDATE_IN_DATABASE
+    #[serde(rename = "UPDATE_IN_DATABASE")]
+    Updateindatabase,
+
+}
+
+impl Default for SchemaChangePolicyUpdateBehaviorEnum {
+    fn default() -> Self {
+        SchemaChangePolicyUpdateBehaviorEnum::Log
+    }
+}
+

@@ -16,6 +16,8 @@ pub struct CfnProactiveEngagement {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnProactiveEngagement {
     fn type_string() -> &'static str {
         "AWS::Shield::ProactiveEngagement"
@@ -32,14 +34,14 @@ impl cfn_resources::CfnResource for CfnProactiveEngagement {
 pub struct EmergencyContact {
 
 
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-emailaddress
-    #[serde(rename = "EmailAddress")]
-    pub email_address: String,
-
-
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-contactnotes
     #[serde(rename = "ContactNotes")]
     pub contact_notes: Option<String>,
+
+
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-emailaddress
+    #[serde(rename = "EmailAddress")]
+    pub email_address: String,
 
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-phonenumber
@@ -47,3 +49,5 @@ pub struct EmergencyContact {
     pub phone_number: Option<String>,
 
 }
+
+

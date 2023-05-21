@@ -6,55 +6,17 @@ pub struct CfnService {
 
 
     /// 
-    /// The number of instantiations of the specified task definition to place and keep running in your service.
+    /// The name of your service. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. Service names must be unique within 			a cluster, but you can have similarly named services in multiple clusters within a 			Region or across multiple Regions.
     /// 
-    /// For new services, if a desired count is not specified, a default value of 1 is used. When using the   DAEMON scheduling strategy, the desired count is not required.
-    /// 
-    /// For existing services, if a desired count is not specified, it is omitted from the operation.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DesiredCount")]
-    pub desired_count: Option<i64>,
-
-
-    /// 
-    /// The deployment controller to use for the service. If no deployment controller is 			specified, the default value of ECS is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentController
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeploymentController")]
-    pub deployment_controller: Option<DeploymentController>,
-
-
-    /// 
-    /// The platform version that your tasks in the service are running on. A platform version 			is specified only for tasks using the Fargate launch type. If one isn't 			specified, the LATEST platform version is used. For more information, see 				AWS Fargate platform 				versions in the Amazon Elastic Container Service Developer Guide.
+    /// ImportantThe stack update fails if you change any properties that require replacement and the       ServiceName is configured. This is because AWS CloudFormation       creates the replacement service first, but each ServiceName must be unique in       the cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlatformVersion")]
-    pub platform_version: Option<String>,
-
-
-    /// 
-    /// Optional deployment parameters that control how many tasks run during the deployment 			and the ordering of stopping and starting tasks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeploymentConfiguration")]
-    pub deployment_configuration: Option<DeploymentConfiguration>,
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceName")]
+    pub service_name: Option<String>,
 
 
     /// 
@@ -67,58 +29,6 @@ pub struct CfnService {
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategies")]
     pub placement_strategies: Option<Vec<PlacementStrategy>>,
-
-
-    /// 
-    /// An array of placement constraint objects to use for tasks in your service. You can 			specify a maximum of 10 constraints for each task. This limit includes constraints in 			the task definition and those specified at runtime.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PlacementConstraint
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlacementConstraints")]
-    pub placement_constraints: Option<Vec<PlacementConstraint>>,
-
-
-    /// 
-    /// Specifies whether to propagate the tags from the task definition to the task. If no 			value is specified, the tags aren't propagated. Tags can only be propagated to the task 			during task creation. To add tags to a task after task creation, use the TagResource API action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | SERVICE | TASK_DEFINITION
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropagateTags")]
-    pub propagate_tags: Option<String>,
-
-
-    /// 
-    /// Specifies whether to turn on Amazon ECS managed tags for the tasks within the service. For 			more information, see Tagging your Amazon ECS 				resources in the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableECSManagedTags")]
-    pub enable_ecsmanaged_tags: Option<bool>,
-
-
-    /// 
-    /// The details of the service discovery registry to associate with this service. For more 			information, see Service 				discovery.
-    /// 
-    /// NoteEach service may be associated with one service registry. Multiple service 				registries for each service isn't supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ServiceRegistry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceRegistries")]
-    pub service_registries: Option<Vec<ServiceRegistry>>,
 
 
     /// 
@@ -138,22 +48,6 @@ pub struct CfnService {
 
 
     /// 
-    /// The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy 			Elastic Load Balancing target health checks after a task has first started. This is only used when your 			service is configured to use a load balancer. If your service has a load balancer 			defined and you don't specify a health check grace period value, the default value of 				0 is used.
-    /// 
-    /// If you do not use an Elastic Load Balancing, we recommend that you use the startPeriod in 			the task definition health check parameters. For more information, see Health 				check.
-    /// 
-    /// If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you 			can specify a health check grace period of up to 			2,147,483,647 			seconds (about 69 years). During that time, the Amazon ECS service 			scheduler ignores health check status. This grace period can prevent the service 			scheduler from marking tasks as unhealthy and stopping them before they have time to 			come up.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckGracePeriodSeconds")]
-    pub health_check_grace_period_seconds: Option<i64>,
-
-
-    /// 
     /// A list of load balancer objects to associate with the service. If you specify the Role property,   LoadBalancers must be specified as well. For information about the number of load balancers that you  can specify per service, see Service Load Balancing in the   Amazon Elastic Container Service Developer Guide.
     /// 
     /// Required: No
@@ -166,21 +60,109 @@ pub struct CfnService {
 
 
     /// 
-    /// The scheduling strategy to use for the service. For more information, see Services.
+    /// The number of instantiations of the specified task definition to place and keep running in your service.
     /// 
-    /// There are two service scheduler strategies available:
+    /// For new services, if a desired count is not specified, a default value of 1 is used. When using the   DAEMON scheduling strategy, the desired count is not required.
     /// 
-    /// REPLICA-The replica scheduling strategy places and 					maintains the desired number of tasks across your cluster. By default, the 					service scheduler spreads tasks across Availability Zones. You can use task 					placement strategies and constraints to customize task placement decisions. This 					scheduler strategy is required if the service uses the CODE_DEPLOY 					or EXTERNAL deployment controller types.                        DAEMON-The daemon scheduling strategy deploys exactly one 					task on each active container instance that meets all of the task placement 					constraints that you specify in your cluster. The service scheduler also 					evaluates the task placement constraints for running tasks and will stop tasks 					that don't meet the placement constraints. When you're using this strategy, you 					don't need to specify a desired number of tasks, a task placement strategy, or 					use Service Auto Scaling policies.        NoteTasks using the Fargate launch type or the 							CODE_DEPLOY or EXTERNAL deployment controller 						types don't support the DAEMON scheduling strategy.
+    /// For existing services, if a desired count is not specified, it is omitted from the operation.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DesiredCount")]
+    pub desired_count: Option<i64>,
+
+
+    /// 
+    /// The network configuration for the service. This parameter is required for task definitions that use the   awsvpc network mode to receive their own elastic network interface, and it is not supported for other  network modes. For more information, see Task Networking in the Amazon Elastic   Container Service Developer Guide.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: NetworkConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkConfiguration")]
+    pub network_configuration: Option<NetworkConfiguration>,
+
+
+    /// 
+    /// Determines whether the execute command functionality is turned on for the service. If 				true, the execute command functionality is turned on for all containers 			in tasks as part of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableExecuteCommand")]
+    pub enable_execute_command: Option<bool>,
+
+
+    /// 
+    /// Specifies whether to propagate the tags from the task definition to the task. If no 			value is specified, the tags aren't propagated. Tags can only be propagated to the task 			during task creation. To add tags to a task after task creation, use the TagResource API action.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DAEMON | REPLICA
+    /// Allowed values: NONE | SERVICE | TASK_DEFINITION
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PropagateTags")]
+    pub propagate_tags: Option<ServicePropagateTagsEnum>,
+
+
+    /// 
+    /// The capacity provider strategy to use for the service.
+    /// 
+    /// If a capacityProviderStrategy is specified, the launchType 			parameter must be omitted. If no capacityProviderStrategy or 				launchType is specified, the 				defaultCapacityProviderStrategy for the cluster is used.
+    /// 
+    /// A capacity provider strategy may contain a maximum of 6 capacity providers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of CapacityProviderStrategyItem
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProviderStrategy")]
+    pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
+
+
+    /// 
+    /// Specifies whether to turn on Amazon ECS managed tags for the tasks within the service. For 			more information, see Tagging your Amazon ECS 				resources in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableECSManagedTags")]
+    pub enable_ecsmanaged_tags: Option<bool>,
+
+
+    /// 
+    /// Optional deployment parameters that control how many tasks run during the deployment 			and the ordering of stopping and starting tasks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeploymentConfiguration")]
+    pub deployment_configuration: Option<DeploymentConfiguration>,
+
+
+    /// 
+    /// The deployment controller to use for the service. If no deployment controller is 			specified, the default value of ECS is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentController
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SchedulingStrategy")]
-    pub scheduling_strategy: Option<String>,
+    #[serde(rename = "DeploymentController")]
+    pub deployment_controller: Option<DeploymentController>,
 
 
     /// 
@@ -200,27 +182,15 @@ pub struct CfnService {
 
 
     /// 
-    /// The short name or full Amazon Resource Name (ARN) of the cluster that you run your service on. 			If you do not specify a cluster, the default cluster is assumed.
+    /// The platform version that your tasks in the service are running on. A platform version 			is specified only for tasks using the Fargate launch type. If one isn't 			specified, the LATEST platform version is used. For more information, see 				AWS Fargate platform 				versions in the Amazon Elastic Container Service Developer Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Cluster")]
-    pub cluster: Option<String>,
-
-
-    /// 
-    /// Determines whether the execute command functionality is turned on for the service. If 				true, the execute command functionality is turned on for all containers 			in tasks as part of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "EnableExecuteCommand")]
-    pub enable_execute_command: Option<bool>,
+    #[serde(rename = "PlatformVersion")]
+    pub platform_version: Option<String>,
 
 
     /// 
@@ -242,34 +212,6 @@ pub struct CfnService {
 
 
     /// 
-    /// The capacity provider strategy to use for the service.
-    /// 
-    /// If a capacityProviderStrategy is specified, the launchType 			parameter must be omitted. If no capacityProviderStrategy or 				launchType is specified, the 				defaultCapacityProviderStrategy for the cluster is used.
-    /// 
-    /// A capacity provider strategy may contain a maximum of 6 capacity providers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CapacityProviderStrategyItem
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapacityProviderStrategy")]
-    pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
-
-
-    /// 
-    /// The network configuration for the service. This parameter is required for task definitions that use the   awsvpc network mode to receive their own elastic network interface, and it is not supported for other  network modes. For more information, see Task Networking in the Amazon Elastic   Container Service Developer Guide.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: NetworkConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkConfiguration")]
-    pub network_configuration: Option<NetworkConfiguration>,
-
-
-    /// 
     /// The launch type on which to run your service. For more information, see Amazon ECS Launch Types in the Amazon   Elastic Container Service Developer Guide.
     /// 
     /// Required: No
@@ -280,21 +222,49 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchType")]
-    pub launch_type: Option<String>,
+    pub launch_type: Option<ServiceLaunchTypeEnum>,
 
 
     /// 
-    /// The name of your service. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. Service names must be unique within 			a cluster, but you can have similarly named services in multiple clusters within a 			Region or across multiple Regions.
+    /// An array of placement constraint objects to use for tasks in your service. You can 			specify a maximum of 10 constraints for each task. This limit includes constraints in 			the task definition and those specified at runtime.
     /// 
-    /// ImportantThe stack update fails if you change any properties that require replacement and the       ServiceName is configured. This is because AWS CloudFormation       creates the replacement service first, but each ServiceName must be unique in       the cluster.
+    /// Required: No
+    ///
+    /// Type: List of PlacementConstraint
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PlacementConstraints")]
+    pub placement_constraints: Option<Vec<PlacementConstraint>>,
+
+
+    /// 
+    /// The scheduling strategy to use for the service. For more information, see Services.
+    /// 
+    /// There are two service scheduler strategies available:
+    /// 
+    /// REPLICA-The replica scheduling strategy places and 					maintains the desired number of tasks across your cluster. By default, the 					service scheduler spreads tasks across Availability Zones. You can use task 					placement strategies and constraints to customize task placement decisions. This 					scheduler strategy is required if the service uses the CODE_DEPLOY 					or EXTERNAL deployment controller types.                        DAEMON-The daemon scheduling strategy deploys exactly one 					task on each active container instance that meets all of the task placement 					constraints that you specify in your cluster. The service scheduler also 					evaluates the task placement constraints for running tasks and will stop tasks 					that don't meet the placement constraints. When you're using this strategy, you 					don't need to specify a desired number of tasks, a task placement strategy, or 					use Service Auto Scaling policies.        NoteTasks using the Fargate launch type or the 							CODE_DEPLOY or EXTERNAL deployment controller 						types don't support the DAEMON scheduling strategy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DAEMON | REPLICA
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchedulingStrategy")]
+    pub scheduling_strategy: Option<ServiceSchedulingStrategyEnum>,
+
+
+    /// 
+    /// The short name or full Amazon Resource Name (ARN) of the cluster that you run your service on. 			If you do not specify a cluster, the default cluster is assumed.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ServiceName")]
-    pub service_name: Option<String>,
+    #[serde(rename = "Cluster")]
+    pub cluster: Option<String>,
 
 
     /// 
@@ -310,7 +280,104 @@ pub struct CfnService {
     #[serde(rename = "ServiceConnectConfiguration")]
     pub service_connect_configuration: Option<ServiceConnectConfiguration>,
 
+
+    /// 
+    /// The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy 			Elastic Load Balancing target health checks after a task has first started. This is only used when your 			service is configured to use a load balancer. If your service has a load balancer 			defined and you don't specify a health check grace period value, the default value of 				0 is used.
+    /// 
+    /// If you do not use an Elastic Load Balancing, we recommend that you use the startPeriod in 			the task definition health check parameters. For more information, see Health 				check.
+    /// 
+    /// If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you 			can specify a health check grace period of up to 			2,147,483,647 			seconds (about 69 years). During that time, the Amazon ECS service 			scheduler ignores health check status. This grace period can prevent the service 			scheduler from marking tasks as unhealthy and stopping them before they have time to 			come up.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckGracePeriodSeconds")]
+    pub health_check_grace_period_seconds: Option<i64>,
+
+
+    /// 
+    /// The details of the service discovery registry to associate with this service. For more 			information, see Service 				discovery.
+    /// 
+    /// NoteEach service may be associated with one service registry. Multiple service 				registries for each service isn't supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ServiceRegistry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceRegistries")]
+    pub service_registries: Option<Vec<ServiceRegistry>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ServiceSchedulingStrategyEnum {
+
+    /// DAEMON
+    #[serde(rename = "DAEMON")]
+    Daemon,
+
+    /// REPLICA
+    #[serde(rename = "REPLICA")]
+    Replica,
+
+}
+
+impl Default for ServiceSchedulingStrategyEnum {
+    fn default() -> Self {
+        ServiceSchedulingStrategyEnum::Daemon
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ServicePropagateTagsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SERVICE
+    #[serde(rename = "SERVICE")]
+    Service,
+
+    /// TASK_DEFINITION
+    #[serde(rename = "TASK_DEFINITION")]
+    Taskdefinition,
+
+}
+
+impl Default for ServicePropagateTagsEnum {
+    fn default() -> Self {
+        ServicePropagateTagsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ServiceLaunchTypeEnum {
+
+    /// EC2
+    #[serde(rename = "EC2")]
+    Ec2,
+
+    /// EXTERNAL
+    #[serde(rename = "EXTERNAL")]
+    External,
+
+    /// FARGATE
+    #[serde(rename = "FARGATE")]
+    Fargate,
+
+}
+
+impl Default for ServiceLaunchTypeEnum {
+    fn default() -> Self {
+        ServiceLaunchTypeEnum::Ec2
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnService {
     fn type_string() -> &'static str {
@@ -320,174 +387,6 @@ impl cfn_resources::CfnResource for CfnService {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The PlacementStrategy property specifies the task placement strategy for a task or service. For  more information, see Task Placement Strategies in the   Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PlacementStrategy {
-
-
-    /// 
-    /// The type of placement strategy. The random placement strategy randomly 			places tasks on available candidates. The spread placement strategy spreads 			placement across available candidates evenly based on the field parameter. 			The binpack strategy places tasks on available candidates that have the 			least available amount of the resource that's specified with the field 			parameter. For example, if you binpack on memory, a task is placed on the instance with 			the least amount of remaining memory but still enough to run the task.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: binpack | random | spread
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The field to apply the placement strategy against. For the spread placement strategy, valid values  are instanceId (or host, which has the same effect), or any platform or custom attribute  that is applied to a container instance, such as attribute:ecs.availability-zone. For the   binpack placement strategy, valid values are CPU and MEMORY. For the   random placement strategy, this field is not used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Field")]
-    pub field: Option<String>,
-
-}
-
-
-/// Each alias ("endpoint") is a fully-qualified name and port number that other tasks 			("clients") can use to connect to this service.
-///
-/// Each name and port mapping must be unique within the namespace.
-///
-/// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServiceConnectClientAlias {
-
-
-    /// 
-    /// The dnsName is the name that you use in the applications of client tasks 			to connect to this service. The name must be a valid DNS name but doesn't need to be 			fully-qualified. The name can include up to 127 characters. The name can include 			lowercase letters, numbers, underscores (_), hyphens (-), and periods (.). The name 			can't start with a hyphen.
-    /// 
-    /// If this parameter isn't specified, the default value of discoveryName.namespace is used. If the discoveryName isn't specified, the port mapping name from the task definition is used in portName.namespace.
-    /// 
-    /// To avoid changing your applications in client Amazon ECS services, set this to the same 			name that the client application uses by default. For example, a few common names are 				database, db, or the lowercase name of a database, such as 				mysql or redis. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsName")]
-    pub dns_name: Option<String>,
-
-
-    /// 
-    /// The listening port number for the Service Connect proxy. This port is available 			inside of all of the tasks within the same namespace.
-    /// 
-    /// To avoid changing your applications in client Amazon ECS services, set this to the same 			port that the client application uses by default. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: i64,
-
-}
-
-
-/// The Service Connect configuration of your Amazon ECS service. The configuration for this 			service to discover and connect to services, and be discovered by, and connected from, 			other services within a namespace.
-///
-/// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServiceConnectConfiguration {
-
-
-    /// 
-    /// The namespace name or full Amazon Resource Name (ARN) of the AWS Cloud Map namespace for use with Service Connect. The namespace must be in 			the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't 			affect Service Connect. For more information about AWS Cloud Map, see Working with Services in the 			        AWS Cloud Map Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: Option<String>,
-
-
-    /// 
-    /// Specifies whether to use Service Connect with this service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-
-    /// 
-    /// The log configuration for the container. This parameter maps to LogConfig 			in the Create a container section of the Docker Remote API and the 				--log-driver option to docker 					run.
-    /// 
-    /// By default, containers use the same logging driver that the Docker daemon uses. 			However, the container might use a different logging driver than the Docker daemon by 			specifying a log driver configuration in the container definition. For more information 			about the options for different supported log drivers, see Configure logging 				drivers in the Docker documentation.
-    /// 
-    /// Understand the following when specifying a log configuration for your 			containers.
-    /// 
-    /// Amazon ECS currently supports a subset of the logging drivers available to the 					Docker daemon (shown in the valid values below). Additional log drivers may be 					available in future releases of the Amazon ECS container agent.               This parameter requires version 1.18 of the Docker Remote API or greater on 					your container instance.               For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must 					register the available logging drivers with the 						ECS_AVAILABLE_LOGGING_DRIVERS environment variable before 					containers placed on that instance can use these log configuration options. For 					more information, see Amazon ECS container agent configuration in the 					Amazon Elastic Container Service Developer Guide.               For tasks that are on AWS Fargate, because you don't have access to the 					underlying infrastructure your tasks are hosted on, any additional software 					needed must be installed outside of the task. For example, the Fluentd output 					aggregators or a remote host running Logstash to send Gelf logs to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LogConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogConfiguration")]
-    pub log_configuration: Option<LogConfiguration>,
-
-
-    /// 
-    /// The list of Service Connect service objects. These are names and aliases (also known 			as endpoints) that are used by other Amazon ECS services to connect to this service.
-    /// 
-    /// This field is not required for a "client" Amazon ECS service that's a member of a namespace 			only to connect to other services within the namespace. An example of this would be a 			frontend application that accepts incoming requests from either a load balancer that's 			attached to the service or by other means.
-    /// 
-    /// An object selects a port from the task definition, assigns a name for the AWS Cloud Map 			service, and a list of aliases (endpoints) and ports for client applications to refer to 			this service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ServiceConnectService
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Services")]
-    pub services: Option<Vec<ServiceConnectService>>,
-
-}
-
-
-/// The deployment controller to use for the service. For more information, see Amazon ECS deployment types in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeploymentController {
-
-
-    /// 
-    /// The deployment controller type to use. There are three deployment controller types available:
-    /// 
-    /// ECS      The rolling update (ECS) deployment type involves replacing the current running version of the    container with the latest version. The number of containers Amazon ECS adds or removes from the service during a    rolling update is controlled by adjusting the minimum and maximum number of healthy tasks allowed during a service    deployment, as specified in the DeploymentConfiguration.        CODE_DEPLOY      The blue/green (CODE_DEPLOY) deployment type uses the blue/green deployment model powered by    AWS CodeDeploy, which allows you to verify a new deployment of a service before sending production    traffic to it.        EXTERNAL      The external (EXTERNAL) deployment type enables you to use any third-party deployment controller    for full control over the deployment process for an Amazon ECS service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CODE_DEPLOY | ECS | EXTERNAL
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
 }
 
 
@@ -560,6 +459,349 @@ pub struct LoadBalancer {
 }
 
 
+
+
+/// The Service Connect configuration of your Amazon ECS service. The configuration for this 			service to discover and connect to services, and be discovered by, and connected from, 			other services within a namespace.
+///
+/// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServiceConnectConfiguration {
+
+
+    /// 
+    /// The list of Service Connect service objects. These are names and aliases (also known 			as endpoints) that are used by other Amazon ECS services to connect to this service.
+    /// 
+    /// This field is not required for a "client" Amazon ECS service that's a member of a namespace 			only to connect to other services within the namespace. An example of this would be a 			frontend application that accepts incoming requests from either a load balancer that's 			attached to the service or by other means.
+    /// 
+    /// An object selects a port from the task definition, assigns a name for the AWS Cloud Map 			service, and a list of aliases (endpoints) and ports for client applications to refer to 			this service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ServiceConnectService
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Services")]
+    pub services: Option<Vec<ServiceConnectService>>,
+
+
+    /// 
+    /// Specifies whether to use Service Connect with this service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// The namespace name or full Amazon Resource Name (ARN) of the AWS Cloud Map namespace for use with Service Connect. The namespace must be in 			the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't 			affect Service Connect. For more information about AWS Cloud Map, see Working with Services in the 			        AWS Cloud Map Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Namespace")]
+    pub namespace: Option<String>,
+
+
+    /// 
+    /// The log configuration for the container. This parameter maps to LogConfig 			in the Create a container section of the Docker Remote API and the 				--log-driver option to docker 					run.
+    /// 
+    /// By default, containers use the same logging driver that the Docker daemon uses. 			However, the container might use a different logging driver than the Docker daemon by 			specifying a log driver configuration in the container definition. For more information 			about the options for different supported log drivers, see Configure logging 				drivers in the Docker documentation.
+    /// 
+    /// Understand the following when specifying a log configuration for your 			containers.
+    /// 
+    /// Amazon ECS currently supports a subset of the logging drivers available to the 					Docker daemon (shown in the valid values below). Additional log drivers may be 					available in future releases of the Amazon ECS container agent.               This parameter requires version 1.18 of the Docker Remote API or greater on 					your container instance.               For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must 					register the available logging drivers with the 						ECS_AVAILABLE_LOGGING_DRIVERS environment variable before 					containers placed on that instance can use these log configuration options. For 					more information, see Amazon ECS container agent configuration in the 					Amazon Elastic Container Service Developer Guide.               For tasks that are on AWS Fargate, because you don't have access to the 					underlying infrastructure your tasks are hosted on, any additional software 					needed must be installed outside of the task. For example, the Fluentd output 					aggregators or a remote host running Logstash to send Gelf logs to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LogConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogConfiguration")]
+    pub log_configuration: Option<LogConfiguration>,
+
+}
+
+
+
+
+/// The details of a capacity provider strategy. A capacity provider strategy can be set when using the   RunTask or CreateService APIs or as the default capacity provider strategy for a cluster  with the CreateCluster API.
+///
+/// Only capacity providers that are already associated with a cluster and have an ACTIVE or   UPDATING status can be used in a capacity provider strategy. The   PutClusterCapacityProviders API is used to associate a capacity provider with a cluster.
+///
+/// If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be  created. New Auto Scaling group capacity providers can be created with the CreateCapacityProvider API  operation.
+///
+/// To use an AWS Fargate capacity provider, specify either the FARGATE or   FARGATE_SPOT capacity providers. The AWS Fargate capacity providers are available to  all accounts and only need to be associated with a cluster to be used in a capacity provider strategy.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CapacityProviderStrategyItem {
+
+
+    /// 
+    /// The weight value designates the relative percentage of the total 			number of tasks launched that should use the specified capacity provider. The 				weight value is taken into consideration after the base 			value, if defined, is satisfied.
+    /// 
+    /// If no weight value is specified, the default value of 0 is 			used. When multiple capacity providers are specified within a capacity provider 			strategy, at least one of the capacity providers must have a weight value greater than 			zero and any capacity providers with a weight of 0 can't be used to place 			tasks. If you specify multiple capacity providers in a strategy that all have a weight 			of 0, any RunTask or CreateService actions using 			the capacity provider strategy will fail.
+    /// 
+    /// An example scenario for using weights is defining a strategy that contains two 			capacity providers and both have a weight of 1, then when the 				base is satisfied, the tasks will be split evenly across the two 			capacity providers. Using that same logic, if you specify a weight of 1 for 				capacityProviderA and a weight of 4 for 				capacityProviderB, then for every one task that's run using 				capacityProviderA, four tasks would use 				capacityProviderB.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+
+    /// 
+    /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 100000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Base")]
+    pub base: Option<i64>,
+
+
+    /// 
+    /// The short name of the capacity provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProvider")]
+    pub capacity_provider: Option<String>,
+
+}
+
+
+
+
+/// The ServiceRegistry property specifies details of the service registry. For more information, see   Service Discovery  in the Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServiceRegistry {
+
+
+    /// 
+    /// The container name value to be used for your service discovery service. It's already 			specified in the task definition. If the task definition that your service task 			specifies uses the bridge or host network mode, you must 			specify a containerName and containerPort combination from the 			task definition. If the task definition that your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContainerName")]
+    pub container_name: Option<String>,
+
+
+    /// 
+    /// The port value used if your service discovery service specified an SRV record. This 			field might be used if both the awsvpc network mode and SRV records are 			used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The port value to be used for your service discovery service. It's already specified 			in the task definition. If the task definition your service task specifies uses the 				bridge or host network mode, you must specify a 				containerName and containerPort combination from the task 			definition. If the task definition your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContainerPort")]
+    pub container_port: Option<i64>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the service registry. The currently supported service registry is 			AWS Cloud Map. For more information, see CreateService.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegistryArn")]
+    pub registry_arn: Option<String>,
+
+}
+
+
+
+
+/// The deployment controller to use for the service. For more information, see Amazon ECS deployment types in the Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentController {
+
+
+    /// 
+    /// The deployment controller type to use. There are three deployment controller types available:
+    /// 
+    /// ECS      The rolling update (ECS) deployment type involves replacing the current running version of the    container with the latest version. The number of containers Amazon ECS adds or removes from the service during a    rolling update is controlled by adjusting the minimum and maximum number of healthy tasks allowed during a service    deployment, as specified in the DeploymentConfiguration.        CODE_DEPLOY      The blue/green (CODE_DEPLOY) deployment type uses the blue/green deployment model powered by    AWS CodeDeploy, which allows you to verify a new deployment of a service before sending production    traffic to it.        EXTERNAL      The external (EXTERNAL) deployment type enables you to use any third-party deployment controller    for full control over the deployment process for an Amazon ECS service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CODE_DEPLOY | ECS | EXTERNAL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<DeploymentControllerTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeploymentControllerTypeEnum {
+
+    /// CODE_DEPLOY
+    #[serde(rename = "CODE_DEPLOY")]
+    Codedeploy,
+
+    /// ECS
+    #[serde(rename = "ECS")]
+    Ecs,
+
+    /// EXTERNAL
+    #[serde(rename = "EXTERNAL")]
+    External,
+
+}
+
+impl Default for DeploymentControllerTypeEnum {
+    fn default() -> Self {
+        DeploymentControllerTypeEnum::Codedeploy
+    }
+}
+
+
+
+/// The DeploymentConfiguration property specifies optional deployment parameters that control how many  tasks run during the deployment and the ordering of stopping and starting tasks.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentConfiguration {
+
+
+    /// 
+    /// If a service is using the rolling update (ECS) deployment type, the 				minimumHealthyPercent represents a lower limit on the number of your 			service's tasks that must remain in the RUNNING state during a deployment, 			as a percentage of the desiredCount (rounded up to the nearest integer). 			This parameter enables you to deploy without using additional cluster capacity. For 			example, if your service has a desiredCount of four tasks and a 				minimumHealthyPercent of 50%, the service scheduler may stop two 			existing tasks to free up cluster capacity before starting two new tasks.
+    /// 
+    /// For services that do not use a load balancer, the following 			should be noted:
+    /// 
+    /// A service is considered healthy if all essential containers within the tasks 					in the service pass their health checks.               If a task has no essential containers with a health check defined, the service 					scheduler will wait for 40 seconds after a task reaches a RUNNING 					state before the task is counted towards the minimum healthy percent 					total.               If a task has one or more essential containers with a health check defined, 					the service scheduler will wait for the task to reach a healthy status before 					counting it towards the minimum healthy percent total. A task is considered 					healthy when all essential containers within the task have passed their health 					checks. The amount of time the service scheduler can wait for is determined by 					the container health check settings.
+    /// 
+    /// For services are that do use a load balancer, the following 			should be noted:
+    /// 
+    /// If a task has no essential containers with a health check defined, the service 					scheduler will wait for the load balancer target group health check to return a 					healthy status before counting the task towards the minimum healthy percent 					total.               If a task has an essential container with a health check defined, the service 					scheduler will wait for both the task to reach a healthy status and the load 					balancer target group health check to return a healthy status before counting 					the task towards the minimum healthy percent total.
+    /// 
+    /// If a service is using either the blue/green (CODE_DEPLOY) or 				EXTERNAL deployment types and is running tasks that use the 			EC2 launch type, the minimum healthy 				percent value is set to the default value and is used to define the lower 			limit on the number of the tasks in the service that remain in the RUNNING 			state while the container instances are in the DRAINING state. If a service 			is using either the blue/green (CODE_DEPLOY) or EXTERNAL 			deployment types and is running tasks that use the Fargate launch type, 			the minimum healthy percent value is not used, although it is returned when describing 			your service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinimumHealthyPercent")]
+    pub minimum_healthy_percent: Option<i64>,
+
+
+    /// 
+    /// NoteThe deployment circuit breaker can only be used for services using the rolling 				update (ECS) deployment type.
+    /// 
+    /// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If you use the deployment 			circuit breaker, a service deployment will transition to a failed state and 			stop launching new tasks. If you use the rollback option, when a service deployment fails, the 			service is rolled back to the last deployment that completed successfully. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer 					Guide
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentCircuitBreaker
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeploymentCircuitBreaker")]
+    pub deployment_circuit_breaker: Option<DeploymentCircuitBreaker>,
+
+
+    /// 
+    /// Information about the CloudWatch alarms.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentAlarms
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Alarms")]
+    pub alarms: Option<DeploymentAlarms>,
+
+
+    /// 
+    /// If a service is using the rolling update (ECS) deployment type, the 				maximumPercent parameter represents an upper limit on the number of 			your service's tasks that are allowed in the RUNNING or 				PENDING state during a deployment, as a percentage of the 				desiredCount (rounded down to the nearest integer). This parameter 			enables you to define the deployment batch size. For example, if your service is using 			the REPLICA service scheduler and has a desiredCount of four 			tasks and a maximumPercent value of 200%, the scheduler may start four new 			tasks before stopping the four older tasks (provided that the cluster resources required 			to do this are available). The default maximumPercent value for a service 			using the REPLICA service scheduler is 200%.
+    /// 
+    /// If a service is using either the blue/green (CODE_DEPLOY) or 				EXTERNAL deployment types and tasks that use the EC2 			launch type, the maximum percent value is set to the 			default value and is used to define the upper limit on the number of the tasks in the 			service that remain in the RUNNING state while the container instances are 			in the DRAINING state. If the tasks in the service use the 			Fargate launch type, the maximum percent value is not used, although it is 			returned when describing your service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumPercent")]
+    pub maximum_percent: Option<i64>,
+
+}
+
+
+
+
+/// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If it is turned on, a 			service deployment will transition to a failed state and stop launching new tasks. You 			can also configure Amazon ECS to roll back your service to the last completed deployment 			after a failure. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentCircuitBreaker {
+
+
+    /// 
+    /// Determines whether to configure Amazon ECS to roll back the service if a service deployment 			fails. If rollback is on, when a service deployment fails, the service is rolled back to 			the last deployment that completed successfully.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Rollback")]
+    pub rollback: bool,
+
+
+    /// 
+    /// Determines whether to use the deployment circuit breaker logic for the service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: bool,
+
+}
+
+
+
+
 /// The NetworkConfiguration property specifies an object representing the network configuration for a  task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkConfiguration {
@@ -579,6 +821,8 @@ pub struct NetworkConfiguration {
     pub awsvpc_configuration: Option<AwsVpcConfiguration>,
 
 }
+
+
 
 
 /// The log configuration for the container. This parameter maps to LogConfig 			in the Create a container section of the Docker Remote API and the 				--log-driver option to docker 					run.
@@ -611,19 +855,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDriver")]
-    pub log_driver: Option<String>,
-
-
-    /// 
-    /// The secrets to pass to the log configuration. For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Secret
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretOptions")]
-    pub secret_options: Option<Vec<Secret>>,
+    pub log_driver: Option<LogConfigurationLogDriverEnum>,
 
 
     /// 
@@ -637,111 +869,103 @@ pub struct LogConfiguration {
     #[serde(rename = "Options")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
+
+    /// 
+    /// The secrets to pass to the log configuration. For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Secret
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretOptions")]
+    pub secret_options: Option<Vec<Secret>>,
+
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LogConfigurationLogDriverEnum {
+
+    /// awsfirelens
+    #[serde(rename = "awsfirelens")]
+    Awsfirelens,
+
+    /// awslogs
+    #[serde(rename = "awslogs")]
+    Awslogs,
+
+    /// fluentd
+    #[serde(rename = "fluentd")]
+    Fluentd,
+
+    /// gelf
+    #[serde(rename = "gelf")]
+    Gelf,
+
+    /// journald
+    #[serde(rename = "journald")]
+    Journald,
+
+    /// json-file
+    #[serde(rename = "json-file")]
+    Jsonfile,
+
+    /// splunk
+    #[serde(rename = "splunk")]
+    Splunk,
+
+    /// syslog
+    #[serde(rename = "syslog")]
+    Syslog,
+
+}
+
+impl Default for LogConfigurationLogDriverEnum {
+    fn default() -> Self {
+        LogConfigurationLogDriverEnum::Awsfirelens
+    }
+}
+
+
+
+/// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
 ///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct Secret {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The secret to expose to the container. The supported values are either the full ARN 			of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter 			Store.
+    /// 
+    /// For information about the require AWS Identity and Access Management permissions, see Required IAM permissions for Amazon ECS secrets (for Secrets Manager) or Required IAM permissions for Amazon ECS secrets (for Systems Manager Parameter 			store) in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// NoteIf the SSM Parameter Store parameter exists in the same Region as the task 				you're launching, then you can use either the full ARN or name of the parameter. 				If the parameter exists in a different Region, then the full ARN must be 				specified.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ValueFrom")]
+    pub value_from: String,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The name of the secret.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 
 
-/// The DeploymentConfiguration property specifies optional deployment parameters that control how many  tasks run during the deployment and the ordering of stopping and starting tasks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeploymentConfiguration {
-
-
-    /// 
-    /// If a service is using the rolling update (ECS) deployment type, the 				minimumHealthyPercent represents a lower limit on the number of your 			service's tasks that must remain in the RUNNING state during a deployment, 			as a percentage of the desiredCount (rounded up to the nearest integer). 			This parameter enables you to deploy without using additional cluster capacity. For 			example, if your service has a desiredCount of four tasks and a 				minimumHealthyPercent of 50%, the service scheduler may stop two 			existing tasks to free up cluster capacity before starting two new tasks.
-    /// 
-    /// For services that do not use a load balancer, the following 			should be noted:
-    /// 
-    /// A service is considered healthy if all essential containers within the tasks 					in the service pass their health checks.               If a task has no essential containers with a health check defined, the service 					scheduler will wait for 40 seconds after a task reaches a RUNNING 					state before the task is counted towards the minimum healthy percent 					total.               If a task has one or more essential containers with a health check defined, 					the service scheduler will wait for the task to reach a healthy status before 					counting it towards the minimum healthy percent total. A task is considered 					healthy when all essential containers within the task have passed their health 					checks. The amount of time the service scheduler can wait for is determined by 					the container health check settings.
-    /// 
-    /// For services are that do use a load balancer, the following 			should be noted:
-    /// 
-    /// If a task has no essential containers with a health check defined, the service 					scheduler will wait for the load balancer target group health check to return a 					healthy status before counting the task towards the minimum healthy percent 					total.               If a task has an essential container with a health check defined, the service 					scheduler will wait for both the task to reach a healthy status and the load 					balancer target group health check to return a healthy status before counting 					the task towards the minimum healthy percent total.
-    /// 
-    /// If a service is using either the blue/green (CODE_DEPLOY) or 				EXTERNAL deployment types and is running tasks that use the 			EC2 launch type, the minimum healthy 				percent value is set to the default value and is used to define the lower 			limit on the number of the tasks in the service that remain in the RUNNING 			state while the container instances are in the DRAINING state. If a service 			is using either the blue/green (CODE_DEPLOY) or EXTERNAL 			deployment types and is running tasks that use the Fargate launch type, 			the minimum healthy percent value is not used, although it is returned when describing 			your service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinimumHealthyPercent")]
-    pub minimum_healthy_percent: Option<i64>,
-
-
-    /// 
-    /// Information about the CloudWatch alarms.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentAlarms
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Alarms")]
-    pub alarms: Option<DeploymentAlarms>,
-
-
-    /// 
-    /// NoteThe deployment circuit breaker can only be used for services using the rolling 				update (ECS) deployment type.
-    /// 
-    /// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If you use the deployment 			circuit breaker, a service deployment will transition to a failed state and 			stop launching new tasks. If you use the rollback option, when a service deployment fails, the 			service is rolled back to the last deployment that completed successfully. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer 					Guide
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentCircuitBreaker
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeploymentCircuitBreaker")]
-    pub deployment_circuit_breaker: Option<DeploymentCircuitBreaker>,
-
-
-    /// 
-    /// If a service is using the rolling update (ECS) deployment type, the 				maximumPercent parameter represents an upper limit on the number of 			your service's tasks that are allowed in the RUNNING or 				PENDING state during a deployment, as a percentage of the 				desiredCount (rounded down to the nearest integer). This parameter 			enables you to define the deployment batch size. For example, if your service is using 			the REPLICA service scheduler and has a desiredCount of four 			tasks and a maximumPercent value of 200%, the scheduler may start four new 			tasks before stopping the four older tasks (provided that the cluster resources required 			to do this are available). The default maximumPercent value for a service 			using the REPLICA service scheduler is 200%.
-    /// 
-    /// If a service is using either the blue/green (CODE_DEPLOY) or 				EXTERNAL deployment types and tasks that use the EC2 			launch type, the maximum percent value is set to the 			default value and is used to define the upper limit on the number of the tasks in the 			service that remain in the RUNNING state while the container instances are 			in the DRAINING state. If the tasks in the service use the 			Fargate launch type, the maximum percent value is not used, although it is 			returned when describing your service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumPercent")]
-    pub maximum_percent: Option<i64>,
-
-}
 
 
 /// One of the methods which provide a way for you to quickly identify when a deployment 			has failed, and then to optionally roll back the failure to the last working 			deployment.
@@ -753,6 +977,18 @@ pub struct DeploymentConfiguration {
 /// For more information, see Rolling 				update in the         Amazon Elastic Container Service Developer Guide       .
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeploymentAlarms {
+
+
+    /// 
+    /// Determines whether to use the CloudWatch alarm option in the service deployment process.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: bool,
 
 
     /// 
@@ -778,142 +1014,9 @@ pub struct DeploymentAlarms {
     #[serde(rename = "Rollback")]
     pub rollback: bool,
 
-
-    /// 
-    /// Determines whether to use the CloudWatch alarm option in the service deployment process.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: bool,
-
 }
 
 
-/// The ServiceRegistry property specifies details of the service registry. For more information, see   Service Discovery  in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServiceRegistry {
-
-
-    /// 
-    /// The port value used if your service discovery service specified an SRV record. This 			field might be used if both the awsvpc network mode and SRV records are 			used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The container name value to be used for your service discovery service. It's already 			specified in the task definition. If the task definition that your service task 			specifies uses the bridge or host network mode, you must 			specify a containerName and containerPort combination from the 			task definition. If the task definition that your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContainerName")]
-    pub container_name: Option<String>,
-
-
-    /// 
-    /// The port value to be used for your service discovery service. It's already specified 			in the task definition. If the task definition your service task specifies uses the 				bridge or host network mode, you must specify a 				containerName and containerPort combination from the task 			definition. If the task definition your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContainerPort")]
-    pub container_port: Option<i64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the service registry. The currently supported service registry is 			AWS Cloud Map. For more information, see CreateService.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegistryArn")]
-    pub registry_arn: Option<String>,
-
-}
-
-
-/// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
-///
-/// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Secret {
-
-
-    /// 
-    /// The name of the secret.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The secret to expose to the container. The supported values are either the full ARN 			of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter 			Store.
-    /// 
-    /// For information about the require AWS Identity and Access Management permissions, see Required IAM permissions for Amazon ECS secrets (for Secrets Manager) or Required IAM permissions for Amazon ECS secrets (for Systems Manager Parameter 			store) in the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// NoteIf the SSM Parameter Store parameter exists in the same Region as the task 				you're launching, then you can use either the full ARN or name of the parameter. 				If the parameter exists in a different Region, then the full ARN must be 				specified.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ValueFrom")]
-    pub value_from: String,
-
-}
-
-
-/// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If it is turned on, a 			service deployment will transition to a failed state and stop launching new tasks. You 			can also configure Amazon ECS to roll back your service to the last completed deployment 			after a failure. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeploymentCircuitBreaker {
-
-
-    /// 
-    /// Determines whether to use the deployment circuit breaker logic for the service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: bool,
-
-
-    /// 
-    /// Determines whether to configure Amazon ECS to roll back the service if a service deployment 			fails. If rollback is on, when a service deployment fails, the service is rolled back to 			the last deployment that completed successfully.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Rollback")]
-    pub rollback: bool,
-
-}
 
 
 /// The Service Connect service object configuration. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
@@ -940,15 +1043,17 @@ pub struct ServiceConnectService {
 
 
     /// 
-    /// The portName must match the name of one of the portMappings 			from all the containers in the task definition of this Amazon ECS service.
+    /// The discoveryName is the name of the new AWS Cloud Map service that Amazon ECS creates 			for this Amazon ECS service. This must be unique within the AWS Cloud Map namespace. The name can contain up to 64 characters. The name can include lowercase letters, 			numbers, underscores (_), and hyphens (-). The name can't start with a hyphen.
     /// 
-    /// Required: Yes
+    /// If the discoveryName isn't specified, the port mapping name from the task definition is used in portName.namespace.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PortName")]
-    pub port_name: String,
+    #[serde(rename = "DiscoveryName")]
+    pub discovery_name: Option<String>,
 
 
     /// 
@@ -972,38 +1077,24 @@ pub struct ServiceConnectService {
 
 
     /// 
-    /// The discoveryName is the name of the new AWS Cloud Map service that Amazon ECS creates 			for this Amazon ECS service. This must be unique within the AWS Cloud Map namespace. The name can contain up to 64 characters. The name can include lowercase letters, 			numbers, underscores (_), and hyphens (-). The name can't start with a hyphen.
-    /// 
-    /// If the discoveryName isn't specified, the port mapping name from the task definition is used in portName.namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DiscoveryName")]
-    pub discovery_name: Option<String>,
-
-}
-
-
-/// The PlacementConstraint property specifies an object representing a constraint on task placement in  the task definition. For more information, see Task Placement Constraints in the   Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PlacementConstraint {
-
-
-    /// 
-    /// The type of constraint. Use distinctInstance to ensure that each task in 			a particular group is running on a different container instance. Use 				memberOf to restrict the selection to a group of valid 			candidates.
+    /// The portName must match the name of one of the portMappings 			from all the containers in the task definition of this Amazon ECS service.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: distinctInstance | memberOf
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "PortName")]
+    pub port_name: String,
+
+}
+
+
+
+
+/// The PlacementConstraint property specifies an object representing a constraint on task placement in  the task definition. For more information, see Task Placement Constraints in the   Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PlacementConstraint {
 
 
     /// 
@@ -1017,101 +1108,189 @@ pub struct PlacementConstraint {
     #[serde(rename = "Expression")]
     pub expression: Option<String>,
 
+
+    /// 
+    /// The type of constraint. Use distinctInstance to ensure that each task in 			a particular group is running on a different container instance. Use 				memberOf to restrict the selection to a group of valid 			candidates.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: distinctInstance | memberOf
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PlacementConstraintTypeEnum,
+
 }
 
 
-/// The details of a capacity provider strategy. A capacity provider strategy can be set when using the   RunTask or CreateService APIs or as the default capacity provider strategy for a cluster  with the CreateCluster API.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementConstraintTypeEnum {
+
+    /// distinctInstance
+    #[serde(rename = "distinctInstance")]
+    Distinctinstance,
+
+    /// memberOf
+    #[serde(rename = "memberOf")]
+    Memberof,
+
+}
+
+impl Default for PlacementConstraintTypeEnum {
+    fn default() -> Self {
+        PlacementConstraintTypeEnum::Distinctinstance
+    }
+}
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
-/// Only capacity providers that are already associated with a cluster and have an ACTIVE or   UPDATING status can be used in a capacity provider strategy. The   PutClusterCapacityProviders API is used to associate a capacity provider with a cluster.
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
 ///
-/// If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be  created. New Auto Scaling group capacity providers can be created with the CreateCapacityProvider API  operation.
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
-/// To use an AWS Fargate capacity provider, specify either the FARGATE or   FARGATE_SPOT capacity providers. The AWS Fargate capacity providers are available to  all accounts and only need to be associated with a cluster to be used in a capacity provider strategy.
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CapacityProviderStrategyItem {
+pub struct Tag {
 
 
     /// 
-    /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 100000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Base")]
-    pub base: Option<i64>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 
     /// 
-    /// The weight value designates the relative percentage of the total 			number of tasks launched that should use the specified capacity provider. The 				weight value is taken into consideration after the base 			value, if defined, is satisfied.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// If no weight value is specified, the default value of 0 is 			used. When multiple capacity providers are specified within a capacity provider 			strategy, at least one of the capacity providers must have a weight value greater than 			zero and any capacity providers with a weight of 0 can't be used to place 			tasks. If you specify multiple capacity providers in a strategy that all have a weight 			of 0, any RunTask or CreateService actions using 			the capacity provider strategy will fail.
+    /// Required: Yes
     /// 
-    /// An example scenario for using weights is defining a strategy that contains two 			capacity providers and both have a weight of 1, then when the 				base is satisfied, the tasks will be split evenly across the two 			capacity providers. Using that same logic, if you specify a weight of 1 for 				capacityProviderA and a weight of 4 for 				capacityProviderB, then for every one task that's run using 				capacityProviderA, four tasks would use 				capacityProviderB.
+    /// Type: String
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+
+
+/// The PlacementStrategy property specifies the task placement strategy for a task or service. For  more information, see Task Placement Strategies in the   Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PlacementStrategy {
 
 
     /// 
-    /// The short name of the capacity provider.
+    /// The field to apply the placement strategy against. For the spread placement strategy, valid values  are instanceId (or host, which has the same effect), or any platform or custom attribute  that is applied to a container instance, such as attribute:ecs.availability-zone. For the   binpack placement strategy, valid values are CPU and MEMORY. For the   random placement strategy, this field is not used.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CapacityProvider")]
-    pub capacity_provider: Option<String>,
+    #[serde(rename = "Field")]
+    pub field: Option<String>,
+
+
+    /// 
+    /// The type of placement strategy. The random placement strategy randomly 			places tasks on available candidates. The spread placement strategy spreads 			placement across available candidates evenly based on the field parameter. 			The binpack strategy places tasks on available candidates that have the 			least available amount of the resource that's specified with the field 			parameter. For example, if you binpack on memory, a task is placed on the instance with 			the least amount of remaining memory but still enough to run the task.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: binpack | random | spread
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PlacementStrategyTypeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementStrategyTypeEnum {
+
+    /// binpack
+    #[serde(rename = "binpack")]
+    Binpack,
+
+    /// random
+    #[serde(rename = "random")]
+    Random,
+
+    /// spread
+    #[serde(rename = "spread")]
+    Spread,
+
+}
+
+impl Default for PlacementStrategyTypeEnum {
+    fn default() -> Self {
+        PlacementStrategyTypeEnum::Binpack
+    }
+}
+
+
+
+/// Each alias ("endpoint") is a fully-qualified name and port number that other tasks 			("clients") can use to connect to this service.
+///
+/// Each name and port mapping must be unique within the namespace.
+///
+/// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServiceConnectClientAlias {
+
+
+    /// 
+    /// The listening port number for the Service Connect proxy. This port is available 			inside of all of the tasks within the same namespace.
+    /// 
+    /// To avoid changing your applications in client Amazon ECS services, set this to the same 			port that the client application uses by default. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: i64,
+
+
+    /// 
+    /// The dnsName is the name that you use in the applications of client tasks 			to connect to this service. The name must be a valid DNS name but doesn't need to be 			fully-qualified. The name can include up to 127 characters. The name can include 			lowercase letters, numbers, underscores (_), hyphens (-), and periods (.). The name 			can't start with a hyphen.
+    /// 
+    /// If this parameter isn't specified, the default value of discoveryName.namespace is used. If the discoveryName isn't specified, the port mapping name from the task definition is used in portName.namespace.
+    /// 
+    /// To avoid changing your applications in client Amazon ECS services, set this to the same 			name that the client application uses by default. For example, a few common names are 				database, db, or the lowercase name of a database, such as 				mysql or redis. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsName")]
+    pub dns_name: Option<String>,
+
+}
+
+
 
 
 /// An object representing the networking details for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AwsVpcConfiguration {
-
-
-    /// 
-    /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssignPublicIp")]
-    pub assign_public_ip: Option<String>,
-
-
-    /// 
-    /// The IDs of the subnets associated with the task or service. There's a limit of 16 			subnets that can be specified per AwsVpcConfiguration.
-    /// 
-    /// NoteAll specified subnets must be from the same VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subnets")]
-    pub subnets: Option<Vec<String>>,
 
 
     /// 
@@ -1127,4 +1306,53 @@ pub struct AwsVpcConfiguration {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
 
+
+    /// 
+    /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssignPublicIp")]
+    pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
+
+
+    /// 
+    /// The IDs of the subnets associated with the task or service. There's a limit of 16 			subnets that can be specified per AwsVpcConfiguration.
+    /// 
+    /// NoteAll specified subnets must be from the same VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subnets")]
+    pub subnets: Option<Vec<String>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AwsVpcConfigurationAssignPublicIpEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for AwsVpcConfigurationAssignPublicIpEnum {
+    fn default() -> Self {
+        AwsVpcConfigurationAssignPublicIpEnum::Disabled
+    }
+}
+

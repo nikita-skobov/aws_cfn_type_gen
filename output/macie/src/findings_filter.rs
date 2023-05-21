@@ -8,6 +8,18 @@ pub struct CfnFindingsFilter {
 
 
     /// 
+    /// The criteria to use to filter findings.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FindingCriteria
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FindingCriteria")]
+    pub finding_criteria: FindingCriteria,
+
+
+    /// 
     /// A custom name for the findings filter. The name can contain 3-64 characters.
     /// 
     /// Avoid including sensitive data in the name. Users of the account might be able to see       the name, depending on the actions that they're allowed to perform in Amazon Macie.
@@ -19,20 +31,6 @@ pub struct CfnFindingsFilter {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// A custom description of the findings filter. The description can contain 1-512       characters.
-    /// 
-    /// Avoid including sensitive data in the description. Users of the account might be able       to see the description, depending on the actions that they're allowed to perform in         Amazon Macie.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -62,17 +60,21 @@ pub struct CfnFindingsFilter {
 
 
     /// 
-    /// The criteria to use to filter findings.
+    /// A custom description of the findings filter. The description can contain 1-512       characters.
     /// 
-    /// Required: Yes
+    /// Avoid including sensitive data in the description. Users of the account might be able       to see the description, depending on the actions that they're allowed to perform in         Amazon Macie.
+    /// 
+    /// Required: No
     ///
-    /// Type: FindingCriteria
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FindingCriteria")]
-    pub finding_criteria: FindingCriteria,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFindingsFilter {
     fn type_string() -> &'static str {
@@ -104,57 +106,11 @@ pub struct FindingCriteria {
 }
 
 
+
+
 /// Specifies a condition that defines the property, operator, and one or more values to       use in a findings filter. A findings filter, also referred to as a filter rule, is a       set of custom criteria that specifies which findings to include or exclude from the results of a query for findings. You can also       configure a findings filter to suppress (automatically archive) findings that match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CriterionAdditionalProperties {
-
-
-    /// 
-    /// The value for the specified property is less than the specified value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "lt")]
-    pub lt: Option<i64>,
-
-
-    /// 
-    /// The value for the specified property is greater than or equal to the specified value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "gte")]
-    pub gte: Option<i64>,
-
-
-    /// 
-    /// The value for the specified property is less than or equal to the specified value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "lte")]
-    pub lte: Option<i64>,
-
-
-    /// 
-    /// The value for the specified property is greater than the specified value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "gt")]
-    pub gt: Option<i64>,
 
 
     /// 
@@ -170,6 +126,42 @@ pub struct CriterionAdditionalProperties {
 
 
     /// 
+    /// The value for the specified property is greater than or equal to the specified value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "gte")]
+    pub gte: Option<i64>,
+
+
+    /// 
+    /// The value for the specified property is greater than the specified value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "gt")]
+    pub gt: Option<i64>,
+
+
+    /// 
+    /// The value for the specified property is less than or equal to the specified value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "lte")]
+    pub lte: Option<i64>,
+
+
+    /// 
     /// The value for the specified property doesn't match (doesn't equal) the specified       value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
     /// 
     /// Required: No
@@ -180,4 +172,18 @@ pub struct CriterionAdditionalProperties {
     #[serde(rename = "neq")]
     pub neq: Option<Vec<String>>,
 
+
+    /// 
+    /// The value for the specified property is less than the specified value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "lt")]
+    pub lt: Option<i64>,
+
 }
+
+

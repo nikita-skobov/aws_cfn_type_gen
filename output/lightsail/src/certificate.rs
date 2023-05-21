@@ -18,19 +18,15 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
+    /// The name of the certificate.
     /// 
-    /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
-    /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateName")]
+    pub certificate_name: String,
 
 
     /// 
@@ -46,17 +42,23 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The name of the certificate.
+    /// An array of key-value pairs to apply to this resource.
     /// 
-    /// Required: Yes
+    /// For more information, see Tag     in the AWS CloudFormation User Guide.
+    /// 
+    /// NoteThe Value of Tags is optional for Lightsail resources.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateName")]
-    pub certificate_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {
@@ -81,17 +83,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -101,4 +92,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

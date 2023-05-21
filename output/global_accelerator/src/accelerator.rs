@@ -6,52 +6,6 @@ pub struct CfnAccelerator {
 
 
     /// 
-    /// Create tags for an accelerator.
-    /// 
-    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Optionally, if you've added your own IP address pool to Global Accelerator (BYOIP), you can choose IP addresses 			from your own pool to use for the accelerator's static IP addresses when you create an accelerator. You can 			specify one or two addresses, separated by a comma. Do not include the /32 suffix.
-    /// 
-    /// Only one IP address from each of your IP address ranges can be used for each accelerator. If you specify only 			one IP address from your IP address range, Global Accelerator assigns a second static IP address for the 			accelerator from the AWS IP address pool.
-    /// 
-    /// Note that you can't update IP addresses for an existing accelerator. To change them, you must create a new 			accelerator with the new addresses.
-    /// 
-    /// For more information, see Bring Your Own 			IP Addresses (BYOIP) in the AWS Global Accelerator Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IpAddresses")]
-    pub ip_addresses: Option<Vec<String>>,
-
-
-    /// 
-    /// The IP address type that an accelerator supports. For a standard accelerator, the value can be IPV4 or DUAL_STACK.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUAL_STACK | IPV4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<String>,
-
-
-    /// 
     /// The name of the accelerator. The name must contain only alphanumeric characters or 			hyphens (-), and must not begin or end with a hyphen.
     /// 
     /// Required: Yes
@@ -78,7 +32,74 @@ pub struct CfnAccelerator {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
+
+    /// 
+    /// Create tags for an accelerator.
+    /// 
+    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The IP address type that an accelerator supports. For a standard accelerator, the value can be IPV4 or DUAL_STACK.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DUAL_STACK | IPV4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<AcceleratorIpAddressTypeEnum>,
+
+
+    /// 
+    /// Optionally, if you've added your own IP address pool to Global Accelerator (BYOIP), you can choose IP addresses 			from your own pool to use for the accelerator's static IP addresses when you create an accelerator. You can 			specify one or two addresses, separated by a comma. Do not include the /32 suffix.
+    /// 
+    /// Only one IP address from each of your IP address ranges can be used for each accelerator. If you specify only 			one IP address from your IP address range, Global Accelerator assigns a second static IP address for the 			accelerator from the AWS IP address pool.
+    /// 
+    /// Note that you can't update IP addresses for an existing accelerator. To change them, you must create a new 			accelerator with the new addresses.
+    /// 
+    /// For more information, see Bring Your Own 			IP Addresses (BYOIP) in the AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IpAddresses")]
+    pub ip_addresses: Option<Vec<String>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AcceleratorIpAddressTypeEnum {
+
+    /// DUAL_STACK
+    #[serde(rename = "DUAL_STACK")]
+    Dualstack,
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+}
+
+impl Default for AcceleratorIpAddressTypeEnum {
+    fn default() -> Self {
+        AcceleratorIpAddressTypeEnum::Dualstack
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAccelerator {
     fn type_string() -> &'static str {
@@ -103,17 +124,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -123,4 +133,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

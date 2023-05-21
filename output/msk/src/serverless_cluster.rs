@@ -7,6 +7,28 @@ pub struct CfnServerlessCluster {
 
     /// Property description not available.
     ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of VpcConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcConfigs")]
+    pub vpc_configs: Vec<VpcConfig>,
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -26,29 +48,9 @@ pub struct CfnServerlessCluster {
     #[serde(rename = "ClientAuthentication")]
     pub client_authentication: ClientAuthentication,
 
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of VpcConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcConfigs")]
-    pub vpc_configs: Vec<VpcConfig>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnServerlessCluster {
     fn type_string() -> &'static str {
@@ -59,6 +61,27 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Includes all client authentication information.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ClientAuthentication {
+
+
+    /// 
+    /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Sasl
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Sasl")]
+    pub sasl: Sasl,
+
+}
+
+
 
 
 /// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
@@ -90,23 +113,6 @@ pub struct VpcConfig {
 }
 
 
-/// Includes all client authentication information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ClientAuthentication {
-
-
-    /// 
-    /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Sasl
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Sasl")]
-    pub sasl: Sasl,
-
-}
 
 
 /// Details for SASL/IAM client authentication.
@@ -128,6 +134,8 @@ pub struct Iam {
 }
 
 
+
+
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Sasl {
@@ -145,3 +153,5 @@ pub struct Sasl {
     pub iam: Iam,
 
 }
+
+

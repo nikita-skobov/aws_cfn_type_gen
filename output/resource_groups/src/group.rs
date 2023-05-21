@@ -24,29 +24,15 @@ pub struct CfnGroup {
 
 
     /// 
-    /// The resource query structure that is used to dynamically determine which AWS resources are members of the associated resource group. For more       information about queries and how to construct them, see Build queries and groups in           AWS Resource Groups in the AWS Resource Groups User         Guide
+    /// The tag key and value pairs that are attached to the resource group.
     /// 
-    /// Note                                   You can include either a ResourceQuery or a               Configuration, but not both.                   You can specify the group's membership either by using a               ResourceQuery or by using a list of Resources,             but not both.
-    /// 
-    /// Required: Conditional
+    /// Required: No
     ///
-    /// Type: ResourceQuery
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceQuery")]
-    pub resource_query: Option<ResourceQuery>,
-
-
-    /// 
-    /// The name of a resource group. The name must be unique within the AWS       Region in which you create the resource. To create multiple resource groups based on the       same CloudFormation stack, you must generate unique names for each.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -64,18 +50,6 @@ pub struct CfnGroup {
 
 
     /// 
-    /// The tag key and value pairs that are attached to the resource group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The description of the resource group.
     /// 
     /// Required: No
@@ -86,7 +60,35 @@ pub struct CfnGroup {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The name of a resource group. The name must be unique within the AWS       Region in which you create the resource. To create multiple resource groups based on the       same CloudFormation stack, you must generate unique names for each.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The resource query structure that is used to dynamically determine which AWS resources are members of the associated resource group. For more       information about queries and how to construct them, see Build queries and groups in           AWS Resource Groups in the AWS Resource Groups User         Guide
+    /// 
+    /// Note                                   You can include either a ResourceQuery or a               Configuration, but not both.                   You can specify the group's membership either by using a               ResourceQuery or by using a list of Resources,             but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: ResourceQuery
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceQuery")]
+    pub resource_query: Option<ResourceQuery>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGroup {
     fn type_string() -> &'static str {
@@ -96,37 +98,6 @@ impl cfn_resources::CfnResource for CfnGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// One of the items in the service configuration assigned to a resource group. A service       configuration can consist of one or more items. For details service configurations and       how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConfigurationItem {
-
-
-    /// 
-    /// A collection of parameters for this configuration item. For the list of parameters       that you can use with each configuration item Type, see Supported resource types and parameters in the AWS Resource Groups User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConfigurationParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<Vec<ConfigurationParameter>>,
-
-
-    /// 
-    /// Specifies the type of configuration item. Each item must have a unique value for type.       For the list of the types that you can specify for a configuration item, see Supported resource types and parameters in the AWS Resource Groups User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
 }
 
 
@@ -142,17 +113,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -162,7 +122,86 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
+
+
+/// One parameter for a group configuration item. For details about service configurations       and how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigurationParameter {
+
+
+    /// 
+    /// The name of the group configuration parameter. For the list of parameters that you can       use with each configuration item type, see Supported resource         types and parameters in the AWS Resource Groups User         Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The value or values to be used for the specified parameter. For the list of values you       can use with each parameter, see Supported resource         types and parameters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+}
+
+
+
+
+/// One of the items in the service configuration assigned to a resource group. A service       configuration can consist of one or more items. For details service configurations and       how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigurationItem {
+
+
+    /// 
+    /// Specifies the type of configuration item. Each item must have a unique value for type.       For the list of the types that you can specify for a configuration item, see Supported resource types and parameters in the AWS Resource Groups User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+
+    /// 
+    /// A collection of parameters for this configuration item. For the list of parameters       that you can use with each configuration item Type, see Supported resource types and parameters in the AWS Resource Groups User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConfigurationParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<Vec<ConfigurationParameter>>,
+
+}
+
+
 
 
 /// The query used to dynamically define the members of a group. For more information       about how to construct a query, see Build queries and groups in           AWS Resource Groups.
@@ -202,72 +241,6 @@ pub struct ResourceQuery {
 }
 
 
-/// Specifies a single tag key and optional values that you can use to specify membership       in a tag-based group. An AWS resource that doesn't have a matching tag       key and value is rejected as a member of the group.
-///
-/// A TagFilter object includes two properties: Key (a string)       and Values (a list of strings). Only resources in the account that are       tagged with a matching key-value pair are members of the group. The Values       property of TagFilter is optional, but specifying it narrows the query       results.
-///
-/// As an example, suppose the TagFilters string is [{"Key": "Stage",         "Values": ["Test", "Beta"]}, {"Key": "Storage"}]. In this case, only       resources with all of the following tags are members of the group:
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TagFilter {
-
-
-    /// 
-    /// A string that defines a tag key. Only resources in the account that are tagged with a       specified tag key are members of the tag-based resource group.
-    /// 
-    /// This field is required when the ResourceQuery structure's         Type property is TAG_FILTERS_1_0. You must specify at       least one tag key.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
-    /// A list of tag values that can be included in the tag-based resource group. This is       optional. If you don't specify a value or values for a key, then an AWS       resource with any value for that key is a member.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-}
-
-
-/// One parameter for a group configuration item. For details about service configurations       and how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConfigurationParameter {
-
-
-    /// 
-    /// The name of the group configuration parameter. For the list of parameters that you can       use with each configuration item type, see Supported resource         types and parameters in the AWS Resource Groups User         Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The value or values to be used for the specified parameter. For the list of values you       can use with each parameter, see Supported resource         types and parameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-}
 
 
 /// Specifies details within a ResourceQuery structure that determines the       membership of the resource group. The contents required in the Query       structure are determined by the Type property of the containing         ResourceQuery structure.
@@ -315,3 +288,44 @@ pub struct Query {
     pub stack_identifier: Option<String>,
 
 }
+
+
+
+
+/// Specifies a single tag key and optional values that you can use to specify membership       in a tag-based group. An AWS resource that doesn't have a matching tag       key and value is rejected as a member of the group.
+///
+/// A TagFilter object includes two properties: Key (a string)       and Values (a list of strings). Only resources in the account that are       tagged with a matching key-value pair are members of the group. The Values       property of TagFilter is optional, but specifying it narrows the query       results.
+///
+/// As an example, suppose the TagFilters string is [{"Key": "Stage",         "Values": ["Test", "Beta"]}, {"Key": "Storage"}]. In this case, only       resources with all of the following tags are members of the group:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TagFilter {
+
+
+    /// 
+    /// A string that defines a tag key. Only resources in the account that are tagged with a       specified tag key are members of the tag-based resource group.
+    /// 
+    /// This field is required when the ResourceQuery structure's         Type property is TAG_FILTERS_1_0. You must specify at       least one tag key.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// A list of tag values that can be included in the tag-based resource group. This is       optional. If you don't specify a value or values for a key, then an AWS       resource with any value for that key is a member.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+}
+
+

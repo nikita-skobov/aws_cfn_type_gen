@@ -6,32 +6,6 @@ pub struct CfnScheduledAction {
 
 
     /// 
-    /// The description of the scheduled action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduledActionDescription")]
-    pub scheduled_action_description: Option<String>,
-
-
-    /// 
-    /// The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndTime")]
-    pub end_time: Option<String>,
-
-
-    /// 
     /// The schedule for a one-time (at format) or recurring (cron format) scheduled action.       Schedule invocations must be separated by at least one hour.
     /// 
     /// Format of at expressions is "at(yyyy-mm-ddThh:mm:ss)". For example, "at(2016-03-04T17:27:00)".
@@ -64,18 +38,6 @@ pub struct CfnScheduledAction {
 
 
     /// 
-    /// If true, the schedule is enabled. If false, the scheduled action does not trigger.       For more information about state of the scheduled action, see AWS::Redshift::ScheduledAction.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: Option<bool>,
-
-
-    /// 
     /// A JSON format string of the Amazon Redshift API operation with input parameters.
     /// 
     /// "{\"ResizeCluster\":{\"NodeType\":\"ds2.8xlarge\",\"ClusterIdentifier\":\"my-test-cluster\",\"NumberOfNodes\":3}}".
@@ -102,6 +64,44 @@ pub struct CfnScheduledAction {
 
 
     /// 
+    /// The description of the scheduled action.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduledActionDescription")]
+    pub scheduled_action_description: Option<String>,
+
+
+    /// 
+    /// If true, the schedule is enabled. If false, the scheduled action does not trigger.       For more information about state of the scheduled action, see AWS::Redshift::ScheduledAction.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: Option<bool>,
+
+
+    /// 
+    /// The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndTime")]
+    pub end_time: Option<String>,
+
+
+    /// 
     /// The name of the scheduled action.
     /// 
     /// Required: Yes
@@ -116,6 +116,8 @@ pub struct CfnScheduledAction {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnScheduledAction {
     fn type_string() -> &'static str {
         "AWS::Redshift::ScheduledAction"
@@ -124,27 +126,6 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Describes a pause cluster operation. For example, a scheduled action to run the PauseCluster API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PauseClusterMessage {
-
-
-    /// 
-    /// The identifier of the cluster to be paused.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
-
 }
 
 
@@ -169,35 +150,91 @@ pub struct ResumeClusterMessage {
 }
 
 
-/// Describes a resize cluster operation. For example, a scheduled action to run the ResizeCluster API operation.
+
+
+/// The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResizeClusterMessage {
+pub struct ScheduledActionType {
 
 
     /// 
-    /// The new number of nodes for the cluster. If not specified, the cluster's current number of nodes is used.
+    /// An action that runs a ResizeCluster API operation.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: ResizeClusterMessage
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NumberOfNodes")]
-    pub number_of_nodes: Option<i64>,
+    #[serde(rename = "ResizeCluster")]
+    pub resize_cluster: Option<ResizeClusterMessage>,
 
 
     /// 
-    /// The new cluster type for the specified cluster.
+    /// An action that runs a PauseCluster API operation.
     /// 
     /// Required: No
+    ///
+    /// Type: PauseClusterMessage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PauseCluster")]
+    pub pause_cluster: Option<PauseClusterMessage>,
+
+
+    /// 
+    /// An action that runs a ResumeCluster API operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResumeClusterMessage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResumeCluster")]
+    pub resume_cluster: Option<ResumeClusterMessage>,
+
+}
+
+
+
+
+/// Describes a pause cluster operation. For example, a scheduled action to run the PauseCluster API operation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PauseClusterMessage {
+
+
+    /// 
+    /// The identifier of the cluster to be paused.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClusterType")]
-    pub cluster_type: Option<String>,
+    #[serde(rename = "ClusterIdentifier")]
+    pub cluster_identifier: String,
+
+}
+
+
+
+
+/// Describes a resize cluster operation. For example, a scheduled action to run the ResizeCluster API operation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResizeClusterMessage {
+
+
+    /// 
+    /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Classic")]
+    pub classic: Option<bool>,
 
 
     /// 
@@ -215,6 +252,18 @@ pub struct ResizeClusterMessage {
 
 
     /// 
+    /// The new number of nodes for the cluster. If not specified, the cluster's current number of nodes is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfNodes")]
+    pub number_of_nodes: Option<i64>,
+
+
+    /// 
     /// The new node type for the nodes you are adding. If not specified, the cluster's current node type is used.
     /// 
     /// Required: No
@@ -229,57 +278,18 @@ pub struct ResizeClusterMessage {
 
 
     /// 
-    /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
+    /// The new cluster type for the specified cluster.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Classic")]
-    pub classic: Option<bool>,
+    #[serde(rename = "ClusterType")]
+    pub cluster_type: Option<String>,
 
 }
 
 
-/// The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScheduledActionType {
-
-
-    /// 
-    /// An action that runs a ResumeCluster API operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResumeClusterMessage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResumeCluster")]
-    pub resume_cluster: Option<ResumeClusterMessage>,
-
-
-    /// 
-    /// An action that runs a PauseCluster API operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PauseClusterMessage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PauseCluster")]
-    pub pause_cluster: Option<PauseClusterMessage>,
-
-
-    /// 
-    /// An action that runs a ResizeCluster API operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResizeClusterMessage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResizeCluster")]
-    pub resize_cluster: Option<ResizeClusterMessage>,
-
-}

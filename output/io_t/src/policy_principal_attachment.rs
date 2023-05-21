@@ -8,18 +8,6 @@ pub struct CfnPolicyPrincipalAttachment {
 
 
     /// 
-    /// The name of the AWS IoT policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
-
-
-    /// 
     /// The principal, which can be a certificate ARN (as returned from the       CreateCertificate operation) or an Amazon Cognito ID.
     /// 
     /// Required: Yes
@@ -30,7 +18,21 @@ pub struct CfnPolicyPrincipalAttachment {
     #[serde(rename = "Principal")]
     pub principal: String,
 
+
+    /// 
+    /// The name of the AWS IoT policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPolicyPrincipalAttachment {
     fn type_string() -> &'static str {

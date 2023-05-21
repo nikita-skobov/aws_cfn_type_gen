@@ -24,6 +24,8 @@ pub struct CfnProject {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string() -> &'static str {
         "AWS::LookoutVision::Project"

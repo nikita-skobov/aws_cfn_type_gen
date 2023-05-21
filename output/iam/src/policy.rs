@@ -68,26 +68,6 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// The name of the user to associate the policy with.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Users")]
-    pub users: Option<Vec<String>>,
-
-
-    /// 
     /// The policy document.
     /// 
     /// You must provide policies in JSON format in IAM. However, for AWS CloudFormation       templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format before submitting it to       IAM.
@@ -110,7 +90,29 @@ pub struct CfnPolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
 
+
+    /// 
+    /// The name of the user to associate the policy with.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Users")]
+    pub users: Option<Vec<String>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPolicy {
     fn type_string() -> &'static str {

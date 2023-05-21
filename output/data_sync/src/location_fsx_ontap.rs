@@ -6,6 +6,38 @@ pub struct CfnLocationFSxONTAP {
 
 
     /// 
+    /// Specifies a path to the file share in the SVM where you'll copy your data.
+    /// 
+    /// You can specify a junction path (also known as a mount point), qtree path (for NFS file    shares), or share name (for SMB file shares). For example, your mount path might be     /vol1, /vol1/tree1, or /share1.
+    /// 
+    /// NoteDon't specify a junction path in the SVM's root volume. For more information, see Managing FSx for ONTAP storage virtual machines in the Amazon FSx for NetApp ONTAP User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
+
+
+    /// 
+    /// Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Protocol
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<Protocol>,
+
+
+    /// 
     /// Specifies the ARN of the storage virtual machine (SVM) in your file system where you want    to copy data to or from.
     /// 
     /// Required: Yes
@@ -19,18 +51,6 @@ pub struct CfnLocationFSxONTAP {
     /// Update requires: Replacement
     #[serde(rename = "StorageVirtualMachineArn")]
     pub storage_virtual_machine_arn: String,
-
-
-    /// 
-    /// Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Protocol
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<Protocol>,
 
 
     /// 
@@ -64,27 +84,9 @@ pub struct CfnLocationFSxONTAP {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Specifies a path to the file share in the SVM where you'll copy your data.
-    /// 
-    /// You can specify a junction path (also known as a mount point), qtree path (for NFS file    shares), or share name (for SMB file shares). For example, your mount path might be     /vol1, /vol1/tree1, or /share1.
-    /// 
-    /// NoteDon't specify a junction path in the SVM's root volume. For more information, see Managing FSx for ONTAP storage virtual machines in the Amazon FSx for NetApp ONTAP User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocationFSxONTAP {
     fn type_string() -> &'static str {
@@ -95,6 +97,134 @@ impl cfn_resources::CfnResource for CfnLocationFSxONTAP {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Specifies the version of the Server Message Block (SMB) protocol that AWS DataSync uses to access an SMB file server.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SmbMountOptions {
+
+
+    /// 
+    /// By default, DataSync automatically chooses an SMB protocol version based on    negotiation with your SMB file server. You also can configure DataSync to use a    specific SMB version, but we recommend doing this only if DataSync has trouble    negotiating with the SMB file server automatically.
+    /// 
+    /// These are the following options for configuring the SMB version:
+    /// 
+    /// AUTOMATIC (default): DataSync and the SMB file server negotiate      the highest version of SMB that they mutually support between 2.1 and 3.1.1.        This is the recommended option. If you instead choose a specific version that your      file server doesn't support, you may get an Operation Not Supported      error.                        SMB3: Restricts the protocol negotiation to only SMB version      3.0.2.                        SMB2: Restricts the protocol negotiation to only SMB version 2.1.                        SMB2_0: Restricts the protocol negotiation to only SMB version      2.0.                        SMB1: Restricts the protocol negotiation to only SMB version 1.0.        NoteThe SMB1 option isn't available when creating an Amazon FSx for NetApp ONTAP location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AUTOMATIC | SMB1 | SMB2 | SMB2_0 | SMB3
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: Option<SmbMountOptionsVersionEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SmbMountOptionsVersionEnum {
+
+    /// AUTOMATIC
+    #[serde(rename = "AUTOMATIC")]
+    Automatic,
+
+    /// SMB1
+    #[serde(rename = "SMB1")]
+    Smb1,
+
+    /// SMB2
+    #[serde(rename = "SMB2")]
+    Smb2,
+
+    /// SMB2_0
+    #[serde(rename = "SMB2_0")]
+    Smb20,
+
+    /// SMB3
+    #[serde(rename = "SMB3")]
+    Smb3,
+
+}
+
+impl Default for SmbMountOptionsVersionEnum {
+    fn default() -> Self {
+        SmbMountOptionsVersionEnum::Automatic
+    }
+}
+
+
+
+/// Specifies the data transfer protocol that AWS DataSync uses to access your     Amazon FSx file system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Protocol {
+
+
+    /// 
+    /// Specifies the Server Message Block (SMB) protocol configuration that DataSync uses to access your FSx for ONTAP file system's SVM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SMB
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SMB")]
+    pub smb: Option<SMB>,
+
+
+    /// 
+    /// Specifies the Network File System (NFS) protocol configuration that DataSync uses to access your FSx for ONTAP file system's storage virtual machine (SVM).
+    /// 
+    /// Required: No
+    ///
+    /// Type: NFS
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NFS")]
+    pub nfs: Option<NFS>,
+
+}
+
+
 
 
 /// Specifies how DataSync can access a location using the NFS protocol.
@@ -119,9 +249,38 @@ pub struct NfsMountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: Option<String>,
+    pub version: Option<NfsMountOptionsVersionEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NfsMountOptionsVersionEnum {
+
+    /// AUTOMATIC
+    #[serde(rename = "AUTOMATIC")]
+    Automatic,
+
+    /// NFS3
+    #[serde(rename = "NFS3")]
+    Nfs3,
+
+    /// NFS4_0
+    #[serde(rename = "NFS4_0")]
+    Nfs40,
+
+    /// NFS4_1
+    #[serde(rename = "NFS4_1")]
+    Nfs41,
+
+}
+
+impl Default for NfsMountOptionsVersionEnum {
+    fn default() -> Self {
+        NfsMountOptionsVersionEnum::Automatic
+    }
+}
+
 
 
 /// Specifies the Server Message Block (SMB) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see Accessing FSx for ONTAP file systems.
@@ -143,6 +302,18 @@ pub struct SMB {
     /// Update requires: Replacement
     #[serde(rename = "Password")]
     pub password: String,
+
+
+    /// 
+    /// Specifies how DataSync can access a location using the SMB protocol.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: SmbMountOptions
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MountOptions")]
+    pub mount_options: SmbMountOptions,
 
 
     /// 
@@ -184,54 +355,9 @@ pub struct SMB {
     #[serde(rename = "User")]
     pub user: String,
 
-
-    /// 
-    /// Specifies how DataSync can access a location using the SMB protocol.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: SmbMountOptions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MountOptions")]
-    pub mount_options: SmbMountOptions,
-
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
 
 
 /// Specifies the Network File System (NFS) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see Accessing FSx for ONTAP file systems.
@@ -253,57 +379,3 @@ pub struct NFS {
 }
 
 
-/// Specifies the version of the Server Message Block (SMB) protocol that AWS DataSync uses to access an SMB file server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SmbMountOptions {
-
-
-    /// 
-    /// By default, DataSync automatically chooses an SMB protocol version based on    negotiation with your SMB file server. You also can configure DataSync to use a    specific SMB version, but we recommend doing this only if DataSync has trouble    negotiating with the SMB file server automatically.
-    /// 
-    /// These are the following options for configuring the SMB version:
-    /// 
-    /// AUTOMATIC (default): DataSync and the SMB file server negotiate      the highest version of SMB that they mutually support between 2.1 and 3.1.1.        This is the recommended option. If you instead choose a specific version that your      file server doesn't support, you may get an Operation Not Supported      error.                        SMB3: Restricts the protocol negotiation to only SMB version      3.0.2.                        SMB2: Restricts the protocol negotiation to only SMB version 2.1.                        SMB2_0: Restricts the protocol negotiation to only SMB version      2.0.                        SMB1: Restricts the protocol negotiation to only SMB version 1.0.        NoteThe SMB1 option isn't available when creating an Amazon FSx for NetApp ONTAP location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AUTOMATIC | SMB1 | SMB2 | SMB2_0 | SMB3
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
-
-}
-
-
-/// Specifies the data transfer protocol that AWS DataSync uses to access your     Amazon FSx file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Protocol {
-
-
-    /// 
-    /// Specifies the Server Message Block (SMB) protocol configuration that DataSync uses to access your FSx for ONTAP file system's SVM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SMB
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SMB")]
-    pub smb: Option<SMB>,
-
-
-    /// 
-    /// Specifies the Network File System (NFS) protocol configuration that DataSync uses to access your FSx for ONTAP file system's storage virtual machine (SVM).
-    /// 
-    /// Required: No
-    ///
-    /// Type: NFS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NFS")]
-    pub nfs: Option<NFS>,
-
-}

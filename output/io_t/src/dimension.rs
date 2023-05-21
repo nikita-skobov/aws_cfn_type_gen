@@ -6,15 +6,15 @@ pub struct CfnDimension {
 
 
     /// 
-    /// Specifies the type of dimension. Supported types: TOPIC_FILTER.
+    /// Metadata that can be used to manage the dimension.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnDimension {
 
 
     /// 
-    /// Metadata that can be used to manage the dimension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// Specifies the value or list of values for the dimension. For TOPIC_FILTER dimensions, this is a pattern used to match the MQTT topic (for example, "admin/#").
     /// 
     /// Required: Yes
@@ -52,7 +40,21 @@ pub struct CfnDimension {
     #[serde(rename = "StringValues")]
     pub string_values: Vec<String>,
 
+
+    /// 
+    /// Specifies the type of dimension. Supported types: TOPIC_FILTER.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDimension {
     fn type_string() -> &'static str {
@@ -98,3 +100,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

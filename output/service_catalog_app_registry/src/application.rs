@@ -50,6 +50,8 @@ pub struct CfnApplication {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
         "AWS::ServiceCatalogAppRegistry::Application"

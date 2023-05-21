@@ -6,30 +6,6 @@ pub struct CfnCertificateAuthorityActivation {
 
 
     /// 
-    /// The Base64 PEM-encoded certificate chain that chains up to the root CA certificate       that you used to sign your private CA certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateChain")]
-    pub certificate_chain: Option<String>,
-
-
-    /// 
-    /// Status of your private CA.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
     /// The Base64 PEM-encoded certificate authority certificate.
     /// 
     /// Required: Yes
@@ -52,7 +28,33 @@ pub struct CfnCertificateAuthorityActivation {
     #[serde(rename = "CertificateAuthorityArn")]
     pub certificate_authority_arn: String,
 
+
+    /// 
+    /// The Base64 PEM-encoded certificate chain that chains up to the root CA certificate       that you used to sign your private CA certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateChain")]
+    pub certificate_chain: Option<String>,
+
+
+    /// 
+    /// Status of your private CA.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCertificateAuthorityActivation {
     fn type_string() -> &'static str {

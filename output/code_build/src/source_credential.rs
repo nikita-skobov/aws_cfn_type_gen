@@ -6,20 +6,6 @@ pub struct CfnSourceCredential {
 
 
     /// 
-    /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BASIC_AUTH | OAUTH | PERSONAL_ACCESS_TOKEN
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthType")]
-    pub auth_type: String,
-
-
-    /// 
     /// The type of source provider. The valid options are GITHUB, GITHUB_ENTERPRISE, or       BITBUCKET.
     /// 
     /// Required: Yes
@@ -30,21 +16,7 @@ pub struct CfnSourceCredential {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerType")]
-    pub server_type: String,
-
-
-    /// 
-    /// The Bitbucket username when the authType is BASIC_AUTH. This parameter       is not valid for other types of source providers or connections.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: Option<String>,
+    pub server_type: SourceCredentialServerTypeEnum,
 
 
     /// 
@@ -60,7 +32,83 @@ pub struct CfnSourceCredential {
     #[serde(rename = "Token")]
     pub token: String,
 
+
+    /// 
+    /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BASIC_AUTH | OAUTH | PERSONAL_ACCESS_TOKEN
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthType")]
+    pub auth_type: SourceCredentialAuthTypeEnum,
+
+
+    /// 
+    /// The Bitbucket username when the authType is BASIC_AUTH. This parameter       is not valid for other types of source providers or connections.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceCredentialServerTypeEnum {
+
+    /// BITBUCKET
+    #[serde(rename = "BITBUCKET")]
+    Bitbucket,
+
+    /// GITHUB
+    #[serde(rename = "GITHUB")]
+    Github,
+
+    /// GITHUB_ENTERPRISE
+    #[serde(rename = "GITHUB_ENTERPRISE")]
+    Githubenterprise,
+
+}
+
+impl Default for SourceCredentialServerTypeEnum {
+    fn default() -> Self {
+        SourceCredentialServerTypeEnum::Bitbucket
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceCredentialAuthTypeEnum {
+
+    /// BASIC_AUTH
+    #[serde(rename = "BASIC_AUTH")]
+    Basicauth,
+
+    /// OAUTH
+    #[serde(rename = "OAUTH")]
+    Oauth,
+
+    /// PERSONAL_ACCESS_TOKEN
+    #[serde(rename = "PERSONAL_ACCESS_TOKEN")]
+    Personalaccesstoken,
+
+}
+
+impl Default for SourceCredentialAuthTypeEnum {
+    fn default() -> Self {
+        SourceCredentialAuthTypeEnum::Basicauth
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnSourceCredential {
     fn type_string() -> &'static str {

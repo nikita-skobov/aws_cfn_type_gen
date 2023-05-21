@@ -14,48 +14,6 @@ pub struct CfnFlywheel {
 
 
     /// 
-    /// Model type of the flywheel's model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DOCUMENT_CLASSIFIER | ENTITY_RECOGNIZER
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelType")]
-    pub model_type: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Number (ARN) of the active model version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws(-[^:]+)?:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:(document-classifier|entity-recognizer)/[a-zA-Z0-9](-*[a-zA-Z0-9])*(/version/[a-zA-Z0-9](-*[a-zA-Z0-9])*)?
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActiveModelArn")]
-    pub active_model_arn: Option<String>,
-
-
-    /// 
-    /// Data security configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataSecurityConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataSecurityConfig")]
-    pub data_security_config: Option<DataSecurityConfig>,
-
-
-    /// 
     /// Tags associated with the endpoint being created. A tag is a key-value pair that adds    metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an    endpoint to indicate its use by the sales department.
     /// 
     /// Required: No
@@ -68,6 +26,20 @@ pub struct CfnFlywheel {
 
 
     /// 
+    /// Model type of the flywheel's model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DOCUMENT_CLASSIFIER | ENTITY_RECOGNIZER
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelType")]
+    pub model_type: Option<FlywheelModelTypeEnum>,
+
+
+    /// 
     /// Configuration about the model associated with a flywheel.
     /// 
     /// Required: No
@@ -77,6 +49,22 @@ pub struct CfnFlywheel {
     /// Update requires: Replacement
     #[serde(rename = "TaskConfig")]
     pub task_config: Option<TaskConfig>,
+
+
+    /// 
+    /// Name for the flywheel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FlywheelName")]
+    pub flywheel_name: String,
 
 
     /// 
@@ -98,19 +86,15 @@ pub struct CfnFlywheel {
 
 
     /// 
-    /// Name for the flywheel.
+    /// Data security configuration.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: DataSecurityConfig
     ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FlywheelName")]
-    pub flywheel_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DataSecurityConfig")]
+    pub data_security_config: Option<DataSecurityConfig>,
 
 
     /// 
@@ -128,7 +112,44 @@ pub struct CfnFlywheel {
     #[serde(rename = "DataLakeS3Uri")]
     pub data_lake_s3_uri: String,
 
+
+    /// 
+    /// The Amazon Resource Number (ARN) of the active model version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws(-[^:]+)?:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:(document-classifier|entity-recognizer)/[a-zA-Z0-9](-*[a-zA-Z0-9])*(/version/[a-zA-Z0-9](-*[a-zA-Z0-9])*)?
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActiveModelArn")]
+    pub active_model_arn: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FlywheelModelTypeEnum {
+
+    /// DOCUMENT_CLASSIFIER
+    #[serde(rename = "DOCUMENT_CLASSIFIER")]
+    Documentclassifier,
+
+    /// ENTITY_RECOGNIZER
+    #[serde(rename = "ENTITY_RECOGNIZER")]
+    Entityrecognizer,
+
+}
+
+impl Default for FlywheelModelTypeEnum {
+    fn default() -> Self {
+        FlywheelModelTypeEnum::Documentclassifier
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnFlywheel {
     fn type_string() -> &'static str {
@@ -139,6 +160,112 @@ impl cfn_resources::CfnResource for CfnFlywheel {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Configuration about the model associated with a flywheel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TaskConfig {
+
+
+    /// 
+    /// Configuration required for an entity recognition model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EntityRecognitionConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EntityRecognitionConfig")]
+    pub entity_recognition_config: Option<EntityRecognitionConfig>,
+
+
+    /// 
+    /// Configuration required for a document classification model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DocumentClassificationConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DocumentClassificationConfig")]
+    pub document_classification_config: Option<DocumentClassificationConfig>,
+
+
+    /// 
+    /// Language code for the language that the model supports.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ar | de | en | es | fr | hi | it | ja | ko | pt | zh | zh-TW
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LanguageCode")]
+    pub language_code: TaskConfigLanguageCodeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TaskConfigLanguageCodeEnum {
+
+    /// ar
+    #[serde(rename = "ar")]
+    Ar,
+
+    /// de
+    #[serde(rename = "de")]
+    De,
+
+    /// en
+    #[serde(rename = "en")]
+    En,
+
+    /// es
+    #[serde(rename = "es")]
+    Es,
+
+    /// fr
+    #[serde(rename = "fr")]
+    Fr,
+
+    /// hi
+    #[serde(rename = "hi")]
+    Hi,
+
+    /// it
+    #[serde(rename = "it")]
+    It,
+
+    /// ja
+    #[serde(rename = "ja")]
+    Ja,
+
+    /// ko
+    #[serde(rename = "ko")]
+    Ko,
+
+    /// pt
+    #[serde(rename = "pt")]
+    Pt,
+
+    /// zh
+    #[serde(rename = "zh")]
+    Zh,
+
+    /// zh-TW
+    #[serde(rename = "zh-TW")]
+    Zhtw,
+
+}
+
+impl Default for TaskConfigLanguageCodeEnum {
+    fn default() -> Self {
+        TaskConfigLanguageCodeEnum::Ar
+    }
+}
+
 
 
 /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
@@ -176,6 +303,64 @@ pub struct VpcConfig {
 }
 
 
+
+
+/// Configuration required for a document classification model.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DocumentClassificationConfig {
+
+
+    /// 
+    /// Classification mode indicates whether the documents are MULTI_CLASS or MULTI_LABEL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: MULTI_CLASS | MULTI_LABEL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Mode")]
+    pub mode: DocumentClassificationConfigModeEnum,
+
+
+    /// 
+    /// One or more labels to associate with the custom classifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Labels")]
+    pub labels: Option<Vec<String>>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DocumentClassificationConfigModeEnum {
+
+    /// MULTI_CLASS
+    #[serde(rename = "MULTI_CLASS")]
+    Multiclass,
+
+    /// MULTI_LABEL
+    #[serde(rename = "MULTI_LABEL")]
+    Multilabel,
+
+}
+
+impl Default for DocumentClassificationConfigModeEnum {
+    fn default() -> Self {
+        DocumentClassificationConfigModeEnum::Multiclass
+    }
+}
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -188,17 +373,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -208,26 +382,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
 
 
-/// Configuration required for an entity recognition model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EntityRecognitionConfig {
-
-
-    /// 
-    /// Up to 25 entity types that the model is trained to recognize.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EntityTypesListItem
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EntityTypes")]
-    pub entity_types: Option<Vec<EntityTypesListItem>>,
-
-}
 
 
 /// Data security configuration.
@@ -299,6 +467,29 @@ pub struct DataSecurityConfig {
 }
 
 
+
+
+/// Configuration required for an entity recognition model.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EntityRecognitionConfig {
+
+
+    /// 
+    /// Up to 25 entity types that the model is trained to recognize.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EntityTypesListItem
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EntityTypes")]
+    pub entity_types: Option<Vec<EntityTypesListItem>>,
+
+}
+
+
+
+
 /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EntityTypesListItem {
@@ -324,81 +515,3 @@ pub struct EntityTypesListItem {
 }
 
 
-/// Configuration about the model associated with a flywheel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TaskConfig {
-
-
-    /// 
-    /// Configuration required for an entity recognition model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EntityRecognitionConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EntityRecognitionConfig")]
-    pub entity_recognition_config: Option<EntityRecognitionConfig>,
-
-
-    /// 
-    /// Configuration required for a document classification model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DocumentClassificationConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DocumentClassificationConfig")]
-    pub document_classification_config: Option<DocumentClassificationConfig>,
-
-
-    /// 
-    /// Language code for the language that the model supports.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ar | de | en | es | fr | hi | it | ja | ko | pt | zh | zh-TW
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LanguageCode")]
-    pub language_code: String,
-
-}
-
-
-/// Configuration required for a document classification model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DocumentClassificationConfig {
-
-
-    /// 
-    /// Classification mode indicates whether the documents are MULTI_CLASS or MULTI_LABEL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: MULTI_CLASS | MULTI_LABEL
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Mode")]
-    pub mode: String,
-
-
-    /// 
-    /// One or more labels to associate with the custom classifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Labels")]
-    pub labels: Option<Vec<String>>,
-
-}

@@ -22,6 +22,8 @@ pub struct CfnContinuousDeploymentPolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {
     fn type_string() -> &'static str {
         "AWS::CloudFront::ContinuousDeploymentPolicy"
@@ -30,49 +32,6 @@ impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Contains the configuration for a continuous deployment policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ContinuousDeploymentPolicyConfig {
-
-
-    /// 
-    /// The CloudFront domain name of the staging distribution. For example: 				d111111abcdef8.cloudfront.net.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StagingDistributionDnsNames")]
-    pub staging_distribution_dns_names: Vec<String>,
-
-
-    /// 
-    /// Contains the parameters for routing production traffic from your primary to staging 			distributions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TrafficConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TrafficConfig")]
-    pub traffic_config: Option<TrafficConfig>,
-
-
-    /// 
-    /// A Boolean that indicates whether this continuous deployment policy is enabled (in 			effect). When this value is true, this policy is enabled and in effect. 			When this value is false, this policy is not enabled and has no 			effect.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
 }
 
 
@@ -107,23 +66,11 @@ pub struct SingleWeightConfig {
 }
 
 
+
+
 /// The traffic configuration of your continuous deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TrafficConfig {
-
-
-    /// 
-    /// The type of traffic configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SingleHeader | SingleWeight
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 
     /// 
@@ -149,7 +96,42 @@ pub struct TrafficConfig {
     #[serde(rename = "SingleWeightConfig")]
     pub single_weight_config: Option<SingleWeightConfig>,
 
+
+    /// 
+    /// The type of traffic configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SingleHeader | SingleWeight
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: TrafficConfigTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TrafficConfigTypeEnum {
+
+    /// SingleHeader
+    #[serde(rename = "SingleHeader")]
+    Singleheader,
+
+    /// SingleWeight
+    #[serde(rename = "SingleWeight")]
+    Singleweight,
+
+}
+
+impl Default for TrafficConfigTypeEnum {
+    fn default() -> Self {
+        TrafficConfigTypeEnum::Singleheader
+    }
+}
+
 
 
 /// Determines which HTTP requests are sent to the staging distribution.
@@ -183,6 +165,53 @@ pub struct SingleHeaderConfig {
 }
 
 
+
+
+/// Contains the configuration for a continuous deployment policy.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContinuousDeploymentPolicyConfig {
+
+
+    /// 
+    /// The CloudFront domain name of the staging distribution. For example: 				d111111abcdef8.cloudfront.net.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StagingDistributionDnsNames")]
+    pub staging_distribution_dns_names: Vec<String>,
+
+
+    /// 
+    /// A Boolean that indicates whether this continuous deployment policy is enabled (in 			effect). When this value is true, this policy is enabled and in effect. 			When this value is false, this policy is not enabled and has no 			effect.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// Contains the parameters for routing production traffic from your primary to staging 			distributions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TrafficConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TrafficConfig")]
+    pub traffic_config: Option<TrafficConfig>,
+
+}
+
+
+
+
 /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SessionStickinessConfig {
@@ -212,3 +241,5 @@ pub struct SessionStickinessConfig {
     pub maximum_ttl: i64,
 
 }
+
+

@@ -8,22 +8,6 @@ pub struct CfnLocationS3 {
 
 
     /// 
-    /// The ARN of the Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 156
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(s3|s3-outposts):[a-z\-0-9]*:[0-9]*:.*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3BucketArn")]
-    pub s3_bucket_arn: Option<String>,
-
-
-    /// 
     /// The Amazon S3 storage class that you want to store your files in when this location is     used as a task destination. For buckets in AWS Regions, the storage class     defaults to S3 Standard.
     /// 
     /// For more information about S3 storage classes, see Amazon S3 Storage Classes. Some storage classes have     behaviors that can affect your S3 storage costs. For detailed information, see Considerations When Working with Amazon S3 Storage Classes in DataSync.
@@ -36,7 +20,21 @@ pub struct CfnLocationS3 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3StorageClass")]
-    pub s3_storage_class: Option<String>,
+    pub s3_storage_class: Option<LocationS3S3StorageClassEnum>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that is used     to access an Amazon S3 bucket.
+    /// 
+    /// For detailed information about using such a role, see Creating       a Location for Amazon S3 in the AWS DataSync User       Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3Config
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Config")]
+    pub s3_config: S3Config,
 
 
     /// 
@@ -54,6 +52,22 @@ pub struct CfnLocationS3 {
 
 
     /// 
+    /// The ARN of the Amazon S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 156
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(s3|s3-outposts):[a-z\-0-9]*:[0-9]*:.*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3BucketArn")]
+    pub s3_bucket_arn: Option<String>,
+
+
+    /// 
     /// A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3 is used to read    data from the S3 source location or write data to the S3 destination.
     /// 
     /// Required: No
@@ -68,21 +82,52 @@ pub struct CfnLocationS3 {
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
 
+}
 
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that is used     to access an Amazon S3 bucket.
-    /// 
-    /// For detailed information about using such a role, see Creating       a Location for Amazon S3 in the AWS DataSync User       Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: S3Config
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Config")]
-    pub s3_config: S3Config,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LocationS3S3StorageClassEnum {
+
+    /// DEEP_ARCHIVE
+    #[serde(rename = "DEEP_ARCHIVE")]
+    Deeparchive,
+
+    /// GLACIER
+    #[serde(rename = "GLACIER")]
+    Glacier,
+
+    /// GLACIER_INSTANT_RETRIEVAL
+    #[serde(rename = "GLACIER_INSTANT_RETRIEVAL")]
+    Glacierinstantretrieval,
+
+    /// INTELLIGENT_TIERING
+    #[serde(rename = "INTELLIGENT_TIERING")]
+    Intelligenttiering,
+
+    /// ONEZONE_IA
+    #[serde(rename = "ONEZONE_IA")]
+    Onezoneia,
+
+    /// OUTPOSTS
+    #[serde(rename = "OUTPOSTS")]
+    Outposts,
+
+    /// STANDARD
+    #[serde(rename = "STANDARD")]
+    Standard,
+
+    /// STANDARD_IA
+    #[serde(rename = "STANDARD_IA")]
+    Standardia,
 
 }
+
+impl Default for LocationS3S3StorageClassEnum {
+    fn default() -> Self {
+        LocationS3S3StorageClassEnum::Deeparchive
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnLocationS3 {
     fn type_string() -> &'static str {
@@ -93,6 +138,33 @@ impl cfn_resources::CfnResource for CfnLocationS3 {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role used to access    an Amazon S3 bucket.
+///
+/// For detailed information about using such a role, see Creating a     Location for Amazon S3 in the         AWS DataSync User    Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Config {
+
+
+    /// 
+    /// The ARN of the IAM role for accessing the S3 bucket.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketAccessRoleArn")]
+    pub bucket_access_role_arn: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -130,26 +202,3 @@ pub struct Tag {
 }
 
 
-/// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role used to access    an Amazon S3 bucket.
-///
-/// For detailed information about using such a role, see Creating a     Location for Amazon S3 in the         AWS DataSync User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Config {
-
-
-    /// 
-    /// The ARN of the IAM role for accessing the S3 bucket.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketAccessRoleArn")]
-    pub bucket_access_role_arn: String,
-
-}

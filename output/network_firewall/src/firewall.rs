@@ -40,6 +40,30 @@ pub struct CfnFirewall {
 
 
     /// 
+    /// A setting indicating whether the firewall is protected against changes to the subnet associations.     Use this setting to protect against     accidentally modifying the subnet associations for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetChangeProtection")]
+    pub subnet_change_protection: Option<bool>,
+
+
+    /// 
+    /// The public subnets that Network Firewall is using for the firewall. Each subnet must belong     to a different Availability Zone.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of SubnetMapping
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetMappings")]
+    pub subnet_mappings: Vec<SubnetMapping>,
+
+
+    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -51,6 +75,34 @@ pub struct CfnFirewall {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A description of the firewall.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: ^.*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A setting indicating whether the firewall is protected against a change to the firewall policy association.     Use this setting to protect against     accidentally modifying the firewall policy for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FirewallPolicyChangeProtection")]
+    pub firewall_policy_change_protection: Option<bool>,
 
 
     /// 
@@ -72,18 +124,6 @@ pub struct CfnFirewall {
 
 
     /// 
-    /// A setting indicating whether the firewall is protected against changes to the subnet associations.     Use this setting to protect against     accidentally modifying the subnet associations for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetChangeProtection")]
-    pub subnet_change_protection: Option<bool>,
-
-
-    /// 
     /// The unique identifier of the VPC where the firewall is in use. You can't change the VPC of a firewall after you create the firewall.
     /// 
     /// Required: Yes
@@ -100,47 +140,9 @@ pub struct CfnFirewall {
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
 
-
-    /// 
-    /// A setting indicating whether the firewall is protected against a change to the firewall policy association.     Use this setting to protect against     accidentally modifying the firewall policy for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FirewallPolicyChangeProtection")]
-    pub firewall_policy_change_protection: Option<bool>,
-
-
-    /// 
-    /// The public subnets that Network Firewall is using for the firewall. Each subnet must belong     to a different Availability Zone.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of SubnetMapping
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetMappings")]
-    pub subnet_mappings: Vec<SubnetMapping>,
-
-
-    /// 
-    /// A description of the firewall.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: ^.*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFirewall {
     fn type_string() -> &'static str {
@@ -188,23 +190,11 @@ pub struct Tag {
 }
 
 
+
+
 /// The ID for a subnet that you want to associate with the firewall. AWS Network Firewall     creates an instance of the associated firewall in each subnet that you specify, to filter     traffic in the subnet's Availability Zone.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SubnetMapping {
-
-
-    /// 
-    /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUALSTACK | IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPAddressType")]
-    pub ipaddress_type: Option<String>,
 
 
     /// 
@@ -218,4 +208,43 @@ pub struct SubnetMapping {
     #[serde(rename = "SubnetId")]
     pub subnet_id: String,
 
+
+    /// 
+    /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DUALSTACK | IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPAddressType")]
+    pub ipaddress_type: Option<SubnetMappingIPAddressTypeEnum>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SubnetMappingIPAddressTypeEnum {
+
+    /// DUALSTACK
+    #[serde(rename = "DUALSTACK")]
+    Dualstack,
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for SubnetMappingIPAddressTypeEnum {
+    fn default() -> Self {
+        SubnetMappingIPAddressTypeEnum::Dualstack
+    }
+}
+

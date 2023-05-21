@@ -44,6 +44,8 @@ pub struct CfnParameterGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnParameterGroup {
     fn type_string() -> &'static str {
         "AWS::DAX::ParameterGroup"

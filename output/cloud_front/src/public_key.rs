@@ -18,6 +18,8 @@ pub struct CfnPublicKey {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnPublicKey {
     fn type_string() -> &'static str {
         "AWS::CloudFront::PublicKey"
@@ -32,6 +34,18 @@ impl cfn_resources::CfnResource for CfnPublicKey {
 /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PublicKeyConfig {
+
+
+    /// 
+    /// A name to help identify the public key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -69,16 +83,6 @@ pub struct PublicKeyConfig {
     #[serde(rename = "Comment")]
     pub comment: Option<String>,
 
-
-    /// 
-    /// A name to help identify the public key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+

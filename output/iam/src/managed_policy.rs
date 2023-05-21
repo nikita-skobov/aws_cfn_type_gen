@@ -12,23 +12,29 @@ pub struct CfnManagedPolicy {
 
 
     /// 
-    /// The name (friendly name, not ARN) of the IAM user to attach the policy to.
+    /// The path for the policy.
     /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// For more information about paths, see IAM identifiers in the         IAM User Guide.
+    /// 
+    /// This parameter is optional. If it is not included, it defaults to a slash (/).
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
+    /// 
+    /// NoteYou cannot use an asterisk (*) in the path name.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
+    /// Maximum: 512
     ///
-    /// Pattern: [\w+=,.@-]+
+    /// Pattern: ((/[A-Za-z0-9\.,\+@=_-]+)*)/
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Users")]
-    pub users: Option<Vec<String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
 
 
     /// 
@@ -78,32 +84,6 @@ pub struct CfnManagedPolicy {
 
 
     /// 
-    /// The path for the policy.
-    /// 
-    /// For more information about paths, see IAM identifiers in the         IAM User Guide.
-    /// 
-    /// This parameter is optional. If it is not included, it defaults to a slash (/).
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
-    /// 
-    /// NoteYou cannot use an asterisk (*) in the path name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: ((/[A-Za-z0-9\.,\+@=_-]+)*)/
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-
-    /// 
     /// The name (friendly name, not ARN) of the group to attach the policy to.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
@@ -121,6 +101,26 @@ pub struct CfnManagedPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
     pub groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The name (friendly name, not ARN) of the IAM user to attach the policy to.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Users")]
+    pub users: Option<Vec<String>>,
 
 
     /// 
@@ -157,6 +157,8 @@ pub struct CfnManagedPolicy {
     pub roles: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnManagedPolicy {
     fn type_string() -> &'static str {

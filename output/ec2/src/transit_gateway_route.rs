@@ -6,15 +6,15 @@ pub struct CfnTransitGatewayRoute {
 
 
     /// 
-    /// The ID of the transit gateway route table.
+    /// Indicates whether to drop traffic that matches this route.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayRouteTableId")]
-    pub transit_gateway_route_table_id: String,
+    #[serde(rename = "Blackhole")]
+    pub blackhole: Option<bool>,
 
 
     /// 
@@ -30,6 +30,18 @@ pub struct CfnTransitGatewayRoute {
 
 
     /// 
+    /// The ID of the transit gateway route table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayRouteTableId")]
+    pub transit_gateway_route_table_id: String,
+
+
+    /// 
     /// The CIDR block used for destination matches.
     /// 
     /// Required: No
@@ -40,19 +52,9 @@ pub struct CfnTransitGatewayRoute {
     #[serde(rename = "DestinationCidrBlock")]
     pub destination_cidr_block: Option<String>,
 
-
-    /// 
-    /// Indicates whether to drop traffic that matches this route.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Blackhole")]
-    pub blackhole: Option<bool>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRoute {
     fn type_string() -> &'static str {

@@ -6,18 +6,6 @@ pub struct CfnCoreDefinitionVersion {
 
 
     /// 
-    /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Core
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Cores")]
-    pub cores: Vec<Core>,
-
-
-    /// 
     /// The ID of the core definition associated with this version. This value is a GUID.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnCoreDefinitionVersion {
     #[serde(rename = "CoreDefinitionId")]
     pub core_definition_id: String,
 
+
+    /// 
+    /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Core
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Cores")]
+    pub cores: Vec<Core>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
     fn type_string() -> &'static str {
@@ -61,18 +63,6 @@ pub struct Core {
 
 
     /// 
-    /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
-
-
-    /// 
     /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
     /// 
     /// Required: No
@@ -82,6 +72,18 @@ pub struct Core {
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
     pub sync_shadow: Option<bool>,
+
+
+    /// 
+    /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: String,
 
 
     /// 
@@ -96,3 +98,5 @@ pub struct Core {
     pub id: String,
 
 }
+
+

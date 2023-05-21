@@ -6,15 +6,15 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The schema definition using the DataFormat setting for SchemaName.
+    /// The compatibility mode of the schema.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Compatibility")]
+    pub compatibility: String,
 
 
     /// 
@@ -27,6 +27,42 @@ pub struct CfnSchema {
     /// Update requires: Replacement
     #[serde(rename = "Registry")]
     pub registry: Option<Registry>,
+
+
+    /// 
+    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The schema definition using the DataFormat setting for SchemaName.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaDefinition")]
+    pub schema_definition: String,
+
+
+    /// 
+    /// The data format of the schema definition. Currently only AVRO is supported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataFormat")]
+    pub data_format: String,
 
 
     /// 
@@ -60,42 +96,6 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The compatibility mode of the schema.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Compatibility")]
-    pub compatibility: String,
-
-
-    /// 
-    /// The data format of the schema definition. Currently only AVRO is supported.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataFormat")]
-    pub data_format: String,
-
-
-    /// 
-    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A description of the schema if specified when created.
     /// 
     /// Required: No
@@ -108,6 +108,8 @@ pub struct CfnSchema {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSchema {
     fn type_string() -> &'static str {
         "AWS::Glue::Schema"
@@ -116,37 +118,6 @@ impl cfn_resources::CfnResource for CfnSchema {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Specifies a registry in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Registry {
-
-
-    /// 
-    /// The name of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
 }
 
 
@@ -181,6 +152,8 @@ pub struct SchemaVersion {
 }
 
 
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -193,17 +166,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -213,4 +175,50 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
+
+
+/// Specifies a registry in the AWS Glue Schema Registry.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Registry {
+
+
+    /// 
+    /// The name of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+}
+
+

@@ -6,18 +6,6 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// The EC2 subnet IDs for the cache subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
     /// The description for the cache subnet group.
     /// 
     /// Required: Yes
@@ -27,17 +15,6 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: String,
-
-
-    /// A tag that can be added to an ElastiCache subnet group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your subnet groups. A tag with a null Value is permitted.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -55,7 +32,32 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "CacheSubnetGroupName")]
     pub cache_subnet_group_name: Option<String>,
 
+
+    /// 
+    /// The EC2 subnet IDs for the cache subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
+
+
+    /// A tag that can be added to an ElastiCache subnet group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your subnet groups. A tag with a null Value is permitted.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string() -> &'static str {
@@ -101,3 +103,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

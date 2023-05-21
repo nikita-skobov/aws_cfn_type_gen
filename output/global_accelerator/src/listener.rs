@@ -6,17 +6,17 @@ pub struct CfnListener {
 
 
     /// 
-    /// The protocol for the connections from clients to the accelerator.
+    /// The Amazon Resource Name (ARN) of your accelerator.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: TCP | UDP
+    /// Maximum: 255
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: String,
+    /// Update requires: Replacement
+    #[serde(rename = "AcceleratorArn")]
+    pub accelerator_arn: String,
 
 
     /// 
@@ -36,7 +36,21 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAffinity")]
-    pub client_affinity: Option<String>,
+    pub client_affinity: Option<ListenerClientAffinityEnum>,
+
+
+    /// 
+    /// The protocol for the connections from clients to the accelerator.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: TCP | UDP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: ListenerProtocolEnum,
 
 
     /// 
@@ -52,21 +66,47 @@ pub struct CfnListener {
     #[serde(rename = "PortRanges")]
     pub port_ranges: Vec<PortRange>,
 
+}
 
-    /// 
-    /// The Amazon Resource Name (ARN) of your accelerator.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AcceleratorArn")]
-    pub accelerator_arn: String,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ListenerClientAffinityEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SOURCE_IP
+    #[serde(rename = "SOURCE_IP")]
+    Sourceip,
 
 }
+
+impl Default for ListenerClientAffinityEnum {
+    fn default() -> Self {
+        ListenerClientAffinityEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ListenerProtocolEnum {
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+    /// UDP
+    #[serde(rename = "UDP")]
+    Udp,
+
+}
+
+impl Default for ListenerProtocolEnum {
+    fn default() -> Self {
+        ListenerProtocolEnum::Tcp
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnListener {
     fn type_string() -> &'static str {
@@ -116,3 +156,5 @@ pub struct PortRange {
     pub to_port: i64,
 
 }
+
+

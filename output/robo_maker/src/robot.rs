@@ -6,17 +6,15 @@ pub struct CfnRobot {
 
 
     /// 
-    /// The architecture of the robot.
+    /// The Amazon Resource Name (ARN) of the fleet to which the robot will be     registered.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "Architecture")]
-    pub architecture: String,
+    #[serde(rename = "Fleet")]
+    pub fleet: Option<String>,
 
 
     /// 
@@ -29,24 +27,6 @@ pub struct CfnRobot {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The Greengrass group associated with the robot.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1224
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GreengrassGroupId")]
-    pub greengrass_group_id: String,
 
 
     /// 
@@ -68,17 +48,62 @@ pub struct CfnRobot {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the fleet to which the robot will be     registered.
+    /// The Greengrass group associated with the robot.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1224
+    ///
+    /// Pattern: .*
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "Fleet")]
-    pub fleet: Option<String>,
+    #[serde(rename = "GreengrassGroupId")]
+    pub greengrass_group_id: String,
+
+
+    /// 
+    /// The architecture of the robot.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Architecture")]
+    pub architecture: RobotArchitectureEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotArchitectureEnum {
+
+    /// ARM64
+    #[serde(rename = "ARM64")]
+    Arm64,
+
+    /// ARMHF
+    #[serde(rename = "ARMHF")]
+    Armhf,
+
+    /// X86_64
+    #[serde(rename = "X86_64")]
+    X8664,
+
+}
+
+impl Default for RobotArchitectureEnum {
+    fn default() -> Self {
+        RobotArchitectureEnum::Arm64
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRobot {
     fn type_string() -> &'static str {

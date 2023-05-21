@@ -6,20 +6,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// The number of shards that the stream uses. For greater provisioned throughput,       increase the number of shards.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShardCount")]
-    pub shard_count: Option<i64>,
-
-
-    /// 
     /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
     /// 
     /// Required: No
@@ -32,18 +18,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetentionPeriodHours")]
-    pub retention_period_hours: Option<i64>,
-
-
-    /// 
     /// An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream.       For information about constraints for this property, see Tag Restrictions       in the Amazon Kinesis Developer Guide.
     /// 
     /// Required: No
@@ -53,6 +27,18 @@ pub struct CfnStream {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionPeriodHours")]
+    pub retention_period_hours: Option<i64>,
 
 
     /// 
@@ -76,6 +62,20 @@ pub struct CfnStream {
 
 
     /// 
+    /// The number of shards that the stream uses. For greater provisioned throughput,       increase the number of shards.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShardCount")]
+    pub shard_count: Option<i64>,
+
+
+    /// 
     /// When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream. Removing this property from your stack       template and updating your stack disables encryption.
     /// 
     /// Required: No
@@ -87,6 +87,8 @@ pub struct CfnStream {
     pub stream_encryption: Option<StreamEncryption>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStream {
     fn type_string() -> &'static str {
@@ -134,6 +136,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamModeDetails {
@@ -150,9 +154,30 @@ pub struct StreamModeDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamMode")]
-    pub stream_mode: String,
+    pub stream_mode: StreamModeDetailsStreamModeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StreamModeDetailsStreamModeEnum {
+
+    /// ON_DEMAND
+    #[serde(rename = "ON_DEMAND")]
+    Ondemand,
+
+    /// PROVISIONED
+    #[serde(rename = "PROVISIONED")]
+    Provisioned,
+
+}
+
+impl Default for StreamModeDetailsStreamModeEnum {
+    fn default() -> Self {
+        StreamModeDetailsStreamModeEnum::Ondemand
+    }
+}
+
 
 
 /// Enables or updates server-side encryption using an AWS KMS key for a       specified stream.
@@ -164,18 +189,6 @@ pub struct StreamModeDetails {
 /// Note: It can take up to 5 seconds after the stream is in an ACTIVE status       before all records written to the stream are encrypted. After you enable encryption, you       can verify that encryption is applied by inspecting the API response from         PutRecord or PutRecords.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamEncryption {
-
-
-    /// 
-    /// The encryption type to use. The only valid value is KMS.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
 
 
     /// 
@@ -195,4 +208,18 @@ pub struct StreamEncryption {
     #[serde(rename = "KeyId")]
     pub key_id: String,
 
+
+    /// 
+    /// The encryption type to use. The only valid value is KMS.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionType")]
+    pub encryption_type: String,
+
 }
+
+

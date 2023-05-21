@@ -6,18 +6,6 @@ pub struct CfnModel {
 
 
     /// 
-    /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schema")]
-    pub schema: serde_json::Value,
-
-
-    /// 
     /// The name of the model.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnModel {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The content-type for the model, for example, "application/json".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContentType")]
+    pub content_type: Option<String>,
 
 
     /// 
@@ -42,6 +42,18 @@ pub struct CfnModel {
 
 
     /// 
+    /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schema")]
+    pub schema: serde_json::Value,
+
+
+    /// 
     /// The API identifier.
     /// 
     /// Required: Yes
@@ -52,19 +64,9 @@ pub struct CfnModel {
     #[serde(rename = "ApiId")]
     pub api_id: String,
 
-
-    /// 
-    /// The content-type for the model, for example, "application/json".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContentType")]
-    pub content_type: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnModel {
     fn type_string() -> &'static str {

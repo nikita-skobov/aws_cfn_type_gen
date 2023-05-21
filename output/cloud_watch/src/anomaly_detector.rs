@@ -6,6 +6,18 @@ pub struct CfnAnomalyDetector {
 
 
     /// 
+    /// The CloudWatch metric math expression for this anomaly detector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MetricMathAnomalyDetector
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricMathAnomalyDetector")]
+    pub metric_math_anomaly_detector: Option<MetricMathAnomalyDetector>,
+
+
+    /// 
     /// The namespace of the metric associated with the anomaly detection band.
     /// 
     /// Required: No
@@ -15,6 +27,18 @@ pub struct CfnAnomalyDetector {
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
     pub namespace: Option<String>,
+
+
+    /// 
+    /// The CloudWatch metric and statistic for this anomaly detector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SingleMetricAnomalyDetector
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SingleMetricAnomalyDetector")]
+    pub single_metric_anomaly_detector: Option<SingleMetricAnomalyDetector>,
 
 
     /// 
@@ -42,15 +66,15 @@ pub struct CfnAnomalyDetector {
 
 
     /// 
-    /// The CloudWatch metric math expression for this anomaly detector.
+    /// The name of the metric associated with the anomaly detection band.
     /// 
     /// Required: No
     ///
-    /// Type: MetricMathAnomalyDetector
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MetricMathAnomalyDetector")]
-    pub metric_math_anomaly_detector: Option<MetricMathAnomalyDetector>,
+    #[serde(rename = "MetricName")]
+    pub metric_name: Option<String>,
 
 
     /// 
@@ -64,31 +88,9 @@ pub struct CfnAnomalyDetector {
     #[serde(rename = "Dimensions")]
     pub dimensions: Option<Vec<Dimension>>,
 
-
-    /// 
-    /// The CloudWatch metric and statistic for this anomaly detector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SingleMetricAnomalyDetector
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SingleMetricAnomalyDetector")]
-    pub single_metric_anomaly_detector: Option<SingleMetricAnomalyDetector>,
-
-
-    /// 
-    /// The name of the metric associated with the anomaly detection band.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAnomalyDetector {
     fn type_string() -> &'static str {
@@ -99,6 +101,147 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude         when training and updating the model. The configuration can also include the time zone to use for the metric.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Configuration {
+
+
+    /// 
+    /// Specifies an array of time ranges to exclude from use when the anomaly detection model is trained and updated.       Use this to make sure that events that could cause unusual values for the metric, such as deployments, aren't used when       CloudWatch creates or updates the model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Range
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludedTimeRanges")]
+    pub excluded_time_ranges: Option<Vec<Range>>,
+
+
+    /// 
+    /// The time zone to use for the metric. This is useful to enable the model to automatically account for daylight savings       time changes if the metric is sensitive to such time changes.
+    /// 
+    /// To specify a time zone, use the name of the time zone as specified in the standard tz database. For more information,         see tz database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricTimeZone")]
+    pub metric_time_zone: Option<String>,
+
+}
+
+
+
+
+/// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricDataQueries {
+
+}
+
+
+
+
+/// A dimension is a name/value pair that is part of the identity of a metric. Because dimensions are part of the unique 			identifier for a metric, whenever you add a unique name/value pair to one of 			your metrics, you are creating a new variation of that metric. For example, many Amazon EC2 metrics publish 		InstanceId as a dimension name, and the actual instance ID as the value for that dimension.
+///
+/// You 		can assign up to 30 dimensions to a metric.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Dimension {
+
+
+    /// 
+    /// The value of the dimension. Dimension values must contain only ASCII characters and must include 			at least one non-whitespace character. ASCII 			control characters are not supported as part of dimension values.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The name of the dimension.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// Each Range specifies one range of days or times to exclude from use for training or updating an     anomaly detection model.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Range {
+
+
+    /// 
+    /// The start time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartTime")]
+    pub start_time: String,
+
+
+    /// 
+    /// The end time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndTime")]
+    pub end_time: String,
+
+}
+
+
+
+
+/// Indicates the CloudWatch math expression that provides the time series the anomaly detector 			uses as input. 			The designated math expression must return a single time series.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricMathAnomalyDetector {
+
+
+    /// 
+    /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MetricDataQuery
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricDataQueries")]
+    pub metric_data_queries: Option<Vec<MetricDataQuery>>,
+
+}
+
+
 
 
 /// Represents a specific metric.
@@ -123,20 +266,6 @@ pub struct Metric {
 
 
     /// 
-    /// The dimensions for the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Dimension
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Dimensions")]
-    pub dimensions: Option<Vec<Dimension>>,
-
-
-    /// 
     /// The namespace of the metric.
     /// 
     /// Required: Yes
@@ -153,119 +282,23 @@ pub struct Metric {
     #[serde(rename = "Namespace")]
     pub namespace: String,
 
-}
-
-
-/// Each Range specifies one range of days or times to exclude from use for training or updating an     anomaly detection model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Range {
-
 
     /// 
-    /// The end time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndTime")]
-    pub end_time: String,
-
-
-    /// 
-    /// The start time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartTime")]
-    pub start_time: String,
-
-}
-
-
-/// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricDataQueries {
-
-}
-
-
-/// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude         when training and updating the model. The configuration can also include the time zone to use for the metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Configuration {
-
-
-    /// 
-    /// The time zone to use for the metric. This is useful to enable the model to automatically account for daylight savings       time changes if the metric is sensitive to such time changes.
-    /// 
-    /// To specify a time zone, use the name of the time zone as specified in the standard tz database. For more information,         see tz database.
+    /// The dimensions for the metric.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Dimension
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricTimeZone")]
-    pub metric_time_zone: Option<String>,
-
-
-    /// 
-    /// Specifies an array of time ranges to exclude from use when the anomaly detection model is trained and updated.       Use this to make sure that events that could cause unusual values for the metric, such as deployments, aren't used when       CloudWatch creates or updates the model.
-    /// 
-    /// Required: No
+    /// Maximum: 30
     ///
-    /// Type: List of Range
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludedTimeRanges")]
-    pub excluded_time_ranges: Option<Vec<Range>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Dimensions")]
+    pub dimensions: Option<Vec<Dimension>>,
 
 }
 
 
-/// A dimension is a name/value pair that is part of the identity of a metric. Because dimensions are part of the unique 			identifier for a metric, whenever you add a unique name/value pair to one of 			your metrics, you are creating a new variation of that metric. For example, many Amazon EC2 metrics publish 		InstanceId as a dimension name, and the actual instance ID as the value for that dimension.
-///
-/// You 		can assign up to 30 dimensions to a metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Dimension {
-
-
-    /// 
-    /// The name of the dimension.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The value of the dimension. Dimension values must contain only ASCII characters and must include 			at least one non-whitespace character. ASCII 			control characters are not supported as part of dimension values.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
 
 
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
@@ -286,7 +319,19 @@ pub struct MetricStat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Unit")]
-    pub unit: Option<String>,
+    pub unit: Option<MetricStatUnitEnum>,
+
+
+    /// 
+    /// The statistic to return. It can include any CloudWatch statistic or extended statistic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Stat")]
+    pub stat: String,
 
 
     /// 
@@ -308,18 +353,6 @@ pub struct MetricStat {
 
 
     /// 
-    /// The statistic to return. It can include any CloudWatch statistic or extended statistic.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Stat")]
-    pub stat: String,
-
-
-    /// 
     /// The metric to return, including the metric name, namespace, and dimensions.
     /// 
     /// Required: Yes
@@ -333,6 +366,127 @@ pub struct MetricStat {
 }
 
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MetricStatUnitEnum {
+
+    /// Bits
+    #[serde(rename = "Bits")]
+    Bits,
+
+    /// Bits/Second
+    #[serde(rename = "Bits/Second")]
+    Bitssecond,
+
+    /// Bytes
+    #[serde(rename = "Bytes")]
+    Bytes,
+
+    /// Bytes/Second
+    #[serde(rename = "Bytes/Second")]
+    Bytessecond,
+
+    /// Count
+    #[serde(rename = "Count")]
+    Count,
+
+    /// Count/Second
+    #[serde(rename = "Count/Second")]
+    Countsecond,
+
+    /// Gigabits
+    #[serde(rename = "Gigabits")]
+    Gigabits,
+
+    /// Gigabits/Second
+    #[serde(rename = "Gigabits/Second")]
+    Gigabitssecond,
+
+    /// Gigabytes
+    #[serde(rename = "Gigabytes")]
+    Gigabytes,
+
+    /// Gigabytes/Second
+    #[serde(rename = "Gigabytes/Second")]
+    Gigabytessecond,
+
+    /// Kilobits
+    #[serde(rename = "Kilobits")]
+    Kilobits,
+
+    /// Kilobits/Second
+    #[serde(rename = "Kilobits/Second")]
+    Kilobitssecond,
+
+    /// Kilobytes
+    #[serde(rename = "Kilobytes")]
+    Kilobytes,
+
+    /// Kilobytes/Second
+    #[serde(rename = "Kilobytes/Second")]
+    Kilobytessecond,
+
+    /// Megabits
+    #[serde(rename = "Megabits")]
+    Megabits,
+
+    /// Megabits/Second
+    #[serde(rename = "Megabits/Second")]
+    Megabitssecond,
+
+    /// Megabytes
+    #[serde(rename = "Megabytes")]
+    Megabytes,
+
+    /// Megabytes/Second
+    #[serde(rename = "Megabytes/Second")]
+    Megabytessecond,
+
+    /// Microseconds
+    #[serde(rename = "Microseconds")]
+    Microseconds,
+
+    /// Milliseconds
+    #[serde(rename = "Milliseconds")]
+    Milliseconds,
+
+    /// None
+    #[serde(rename = "None")]
+    None,
+
+    /// Percent
+    #[serde(rename = "Percent")]
+    Percent,
+
+    /// Seconds
+    #[serde(rename = "Seconds")]
+    Seconds,
+
+    /// Terabits
+    #[serde(rename = "Terabits")]
+    Terabits,
+
+    /// Terabits/Second
+    #[serde(rename = "Terabits/Second")]
+    Terabitssecond,
+
+    /// Terabytes
+    #[serde(rename = "Terabytes")]
+    Terabytes,
+
+    /// Terabytes/Second
+    #[serde(rename = "Terabytes/Second")]
+    Terabytessecond,
+
+}
+
+impl Default for MetricStatUnitEnum {
+    fn default() -> Self {
+        MetricStatUnitEnum::Bits
+    }
+}
+
+
+
 /// This structure is used in both GetMetricData and PutMetricAlarm. The supported 			use of this structure is different for those two operations.
 ///
 /// When used in GetMetricData, it indicates the metric data to return, and whether this call is just retrieving 			a batch set of data for one metric, or is performing a Metrics Insights query or a math expression. A 			single GetMetricData call can include up to 500 MetricDataQuery 			structures.
@@ -344,6 +498,68 @@ pub struct MetricStat {
 /// Some of the parameters of this structure also have different uses whether you are using this structure in a GetMetricData 			operation or a PutMetricAlarm operation. These differences are explained in the following parameter list.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDataQuery {
+
+
+    /// 
+    /// A human-readable label for this metric or expression. This is especially useful 			if this is an expression, so that you know 			what the value represents. If the metric or expression is shown in a 			CloudWatch dashboard widget, the label is shown. If Label is omitted, CloudWatch 			generates a default.
+    /// 
+    /// You can put dynamic expressions into a label, so that it is more descriptive. 			For more information, see Using Dynamic Labels.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Label")]
+    pub label: Option<String>,
+
+
+    /// 
+    /// When used in GetMetricData, this option indicates whether to return the 			timestamps and raw data values of this metric. If you are performing this call just to 			do math expressions and do not also need the raw data returned, you can specify 				false. If you omit this, the default of true is 			used.
+    /// 
+    /// When used in PutMetricAlarm, specify true for the one expression result to use as the alarm. For all 		other metrics and expressions in the same PutMetricAlarm operation, specify ReturnData as False.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReturnData")]
+    pub return_data: Option<bool>,
+
+
+    /// 
+    /// The ID of the account where the metrics are located.
+    /// 
+    /// If you are performing a GetMetricData operation in a monitoring account, use this to specify 			which account to retrieve this metric from.
+    /// 
+    /// If you are performing a PutMetricAlarm operation, use this to specify 			which account contains the metric that the alarm is watching.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AccountId")]
+    pub account_id: Option<String>,
+
+
+    /// 
+    /// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric 			and not performing a math expression on returned data.
+    /// 
+    /// Within one MetricDataQuery object, you must specify either 			Expression or MetricStat but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MetricStat
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricStat")]
+    pub metric_stat: Option<MetricStat>,
 
 
     /// 
@@ -395,88 +611,9 @@ pub struct MetricDataQuery {
     #[serde(rename = "Period")]
     pub period: Option<i64>,
 
-
-    /// 
-    /// A human-readable label for this metric or expression. This is especially useful 			if this is an expression, so that you know 			what the value represents. If the metric or expression is shown in a 			CloudWatch dashboard widget, the label is shown. If Label is omitted, CloudWatch 			generates a default.
-    /// 
-    /// You can put dynamic expressions into a label, so that it is more descriptive. 			For more information, see Using Dynamic Labels.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Label")]
-    pub label: Option<String>,
-
-
-    /// 
-    /// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric 			and not performing a math expression on returned data.
-    /// 
-    /// Within one MetricDataQuery object, you must specify either 			Expression or MetricStat but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MetricStat
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricStat")]
-    pub metric_stat: Option<MetricStat>,
-
-
-    /// 
-    /// The ID of the account where the metrics are located.
-    /// 
-    /// If you are performing a GetMetricData operation in a monitoring account, use this to specify 			which account to retrieve this metric from.
-    /// 
-    /// If you are performing a PutMetricAlarm operation, use this to specify 			which account contains the metric that the alarm is watching.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccountId")]
-    pub account_id: Option<String>,
-
-
-    /// 
-    /// When used in GetMetricData, this option indicates whether to return the 			timestamps and raw data values of this metric. If you are performing this call just to 			do math expressions and do not also need the raw data returned, you can specify 				false. If you omit this, the default of true is 			used.
-    /// 
-    /// When used in PutMetricAlarm, specify true for the one expression result to use as the alarm. For all 		other metrics and expressions in the same PutMetricAlarm operation, specify ReturnData as False.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReturnData")]
-    pub return_data: Option<bool>,
-
 }
 
 
-/// Indicates the CloudWatch math expression that provides the time series the anomaly detector 			uses as input. 			The designated math expression must return a single time series.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricMathAnomalyDetector {
-
-
-    /// 
-    /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MetricDataQuery
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricDataQueries")]
-    pub metric_data_queries: Option<Vec<MetricDataQuery>>,
-
-}
 
 
 /// Designates the CloudWatch metric and statistic that provides the time series the anomaly detector 			uses as input.
@@ -499,19 +636,19 @@ pub struct SingleMetricAnomalyDetector {
 
 
     /// 
-    /// The name of the metric to create the anomaly detection model for.
+    /// The statistic to use for the metric and anomaly detection model.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Maximum: 50
     ///
-    /// Maximum: 255
+    /// Pattern: (SampleCount|Average|Sum|Minimum|Maximum|IQM|(p|tc|tm|ts|wm)(\d{1,2}(\.\d{0,10})?|100)|[ou]\d+(\.\d*)?)(_E|_L|_H)?|(TM|TC|TS|WM)\(((((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%)?:((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%|((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%:(((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%)?)\)|(TM|TC|TS|WM|PR)\(((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)):((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))?|((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))?:(\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))\)
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: Option<String>,
+    #[serde(rename = "Stat")]
+    pub stat: Option<String>,
 
 
     /// 
@@ -533,18 +670,20 @@ pub struct SingleMetricAnomalyDetector {
 
 
     /// 
-    /// The statistic to use for the metric and anomaly detection model.
+    /// The name of the metric to create the anomaly detection model for.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
     ///
-    /// Pattern: (SampleCount|Average|Sum|Minimum|Maximum|IQM|(p|tc|tm|ts|wm)(\d{1,2}(\.\d{0,10})?|100)|[ou]\d+(\.\d*)?)(_E|_L|_H)?|(TM|TC|TS|WM)\(((((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%)?:((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%|((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%:(((\d{1,2})(\.\d{0,10})?|100(\.0{0,10})?)%)?)\)|(TM|TC|TS|WM|PR)\(((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)):((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))?|((\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))?:(\d+(\.\d{0,10})?|(\d+(\.\d{0,10})?[Ee][+-]?\d+)))\)
+    /// Maximum: 255
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Stat")]
-    pub stat: Option<String>,
+    #[serde(rename = "MetricName")]
+    pub metric_name: Option<String>,
 
 }
+
+

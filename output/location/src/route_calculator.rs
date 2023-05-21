@@ -54,7 +54,7 @@ pub struct CfnRouteCalculator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    pub pricing_plan: Option<String>,
+    pub pricing_plan: Option<RouteCalculatorPricingPlanEnum>,
 
 
     /// 
@@ -79,6 +79,23 @@ pub struct CfnRouteCalculator {
     pub calculator_name: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RouteCalculatorPricingPlanEnum {
+
+    /// RequestBasedUsage
+    #[serde(rename = "RequestBasedUsage")]
+    Requestbasedusage,
+
+}
+
+impl Default for RouteCalculatorPricingPlanEnum {
+    fn default() -> Self {
+        RouteCalculatorPricingPlanEnum::Requestbasedusage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRouteCalculator {
     fn type_string() -> &'static str {

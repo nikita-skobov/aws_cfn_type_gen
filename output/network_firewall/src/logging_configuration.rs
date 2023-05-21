@@ -12,15 +12,15 @@ pub struct CfnLoggingConfiguration {
 
 
     /// 
-    /// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
+    /// The name of the firewall that the logging configuration is associated with.       You can't change the firewall specification after you create the logging configuration.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: LoggingConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingConfiguration")]
-    pub logging_configuration: Box<LoggingConfiguration>,
+    /// Update requires: Replacement
+    #[serde(rename = "FirewallName")]
+    pub firewall_name: Option<String>,
 
 
     /// 
@@ -36,17 +36,19 @@ pub struct CfnLoggingConfiguration {
 
 
     /// 
-    /// The name of the firewall that the logging configuration is associated with.       You can't change the firewall specification after you create the logging configuration.
+    /// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: LoggingConfiguration
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "FirewallName")]
-    pub firewall_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingConfiguration")]
+    pub logging_configuration: Box<LoggingConfiguration>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLoggingConfiguration {
     fn type_string() -> &'static str {
@@ -57,6 +59,27 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoggingConfiguration {
+
+
+    /// 
+    /// Defines the logging destinations for the logs for a firewall. Network Firewall generates     logs for stateful rule groups.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of LogDestinationConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogDestinationConfigs")]
+    pub log_destination_configs: Vec<LogDestinationConfig>,
+
+}
+
+
 
 
 /// Defines where AWS Network Firewall sends logs for the firewall for one log type. This is used     in AWS::NetworkFirewall::LoggingConfiguration. You can send each type of log to an Amazon S3 bucket, a CloudWatch log group, or a Kinesis Data Firehose delivery stream.
@@ -91,7 +114,7 @@ pub struct LogDestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDestinationType")]
-    pub log_destination_type: String,
+    pub log_destination_type: LogDestinationConfigLogDestinationTypeEnum,
 
 
     /// 
@@ -105,25 +128,50 @@ pub struct LogDestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogType")]
-    pub log_type: String,
+    pub log_type: LogDestinationConfigLogTypeEnum,
 
 }
 
 
-/// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoggingConfiguration {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LogDestinationConfigLogDestinationTypeEnum {
 
+    /// CloudWatchLogs
+    #[serde(rename = "CloudWatchLogs")]
+    Cloudwatchlogs,
 
-    /// 
-    /// Defines the logging destinations for the logs for a firewall. Network Firewall generates     logs for stateful rule groups.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of LogDestinationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogDestinationConfigs")]
-    pub log_destination_configs: Vec<LogDestinationConfig>,
+    /// KinesisDataFirehose
+    #[serde(rename = "KinesisDataFirehose")]
+    Kinesisdatafirehose,
+
+    /// S3
+    #[serde(rename = "S3")]
+    S3,
 
 }
+
+impl Default for LogDestinationConfigLogDestinationTypeEnum {
+    fn default() -> Self {
+        LogDestinationConfigLogDestinationTypeEnum::Cloudwatchlogs
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LogDestinationConfigLogTypeEnum {
+
+    /// ALERT
+    #[serde(rename = "ALERT")]
+    Alert,
+
+    /// FLOW
+    #[serde(rename = "FLOW")]
+    Flow,
+
+}
+
+impl Default for LogDestinationConfigLogTypeEnum {
+    fn default() -> Self {
+        LogDestinationConfigLogTypeEnum::Alert
+    }
+}
+

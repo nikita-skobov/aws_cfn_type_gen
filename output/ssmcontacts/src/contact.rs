@@ -6,24 +6,6 @@ pub struct CfnContact {
 
 
     /// 
-    /// The full name of the contact or escalation plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[\p{L}\p{Z}\p{N}_.\-]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: String,
-
-
-    /// 
     /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
     /// 
     /// Required: No
@@ -48,7 +30,7 @@ pub struct CfnContact {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: ContactTypeEnum,
 
 
     /// 
@@ -68,7 +50,50 @@ pub struct CfnContact {
     #[serde(rename = "Alias")]
     pub alias: String,
 
+
+    /// 
+    /// The full name of the contact or escalation plan.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[\p{L}\p{Z}\p{N}_.\-]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: String,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ContactTypeEnum {
+
+    /// ESCALATION
+    #[serde(rename = "ESCALATION")]
+    Escalation,
+
+    /// ONCALL_SCHEDULE
+    #[serde(rename = "ONCALL_SCHEDULE")]
+    Oncallschedule,
+
+    /// PERSONAL
+    #[serde(rename = "PERSONAL")]
+    Personal,
+
+}
+
+impl Default for ContactTypeEnum {
+    fn default() -> Self {
+        ContactTypeEnum::Escalation
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnContact {
     fn type_string() -> &'static str {
@@ -78,89 +103,6 @@ impl cfn_resources::CfnResource for CfnContact {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The Stage property type specifies a set amount of time that an escalation       plan or engagement plan engages the specified contacts or contact methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Stage {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RotationIds")]
-    pub rotation_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationInMinutes")]
-    pub duration_in_minutes: Option<i64>,
-
-
-    /// 
-    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Targets
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<Targets>>,
-
-}
-
-
-/// The contact that Incident Manager is engaging during an incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ContactTargetInfo {
-
-
-    /// 
-    /// A Boolean value determining if the contact's acknowledgement stops the progress of     stages in the plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsEssential")]
-    pub is_essential: bool,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the contact.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContactId")]
-    pub contact_id: String,
-
 }
 
 
@@ -205,6 +147,95 @@ pub struct ChannelTargetInfo {
 }
 
 
+
+
+/// The Stage property type specifies a set amount of time that an escalation       plan or engagement plan engages the specified contacts or contact methods.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Stage {
+
+
+    /// 
+    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DurationInMinutes")]
+    pub duration_in_minutes: Option<i64>,
+
+
+    /// 
+    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Targets
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<Targets>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RotationIds")]
+    pub rotation_ids: Option<Vec<String>>,
+
+}
+
+
+
+
+/// The contact that Incident Manager is engaging during an incident.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContactTargetInfo {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the contact.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactId")]
+    pub contact_id: String,
+
+
+    /// 
+    /// A Boolean value determining if the contact's acknowledgement stops the progress of     stages in the plan.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsEssential")]
+    pub is_essential: bool,
+
+}
+
+
+
+
 /// The contact or contact channel that's being engaged.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Targets {
@@ -234,3 +265,5 @@ pub struct Targets {
     pub channel_target_info: Option<ChannelTargetInfo>,
 
 }
+
+

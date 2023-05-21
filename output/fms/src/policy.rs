@@ -30,35 +30,19 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// The type of resource protected by or in scope of the policy. This is in the format shown     in the AWS Resource Types Reference.           To apply this policy to multiple resource types, specify a resource type of ResourceTypeList and then specify the resource types in a ResourceTypeList.
+    /// Indicates whether AWS Firewall Manager should automatically remove protections from resources that leave the policy scope and clean up resources    that Firewall Manager is managing for accounts when those accounts leave policy scope. For example, Firewall Manager will disassociate a Firewall Manager managed web ACL    from a protected customer resource when the customer resource leaves policy scope.
     /// 
-    /// For AWS WAF and Shield Advanced, example resource types include     AWS::ElasticLoadBalancingV2::LoadBalancer and     AWS::CloudFront::Distribution. For a security group common policy, valid values    are AWS::EC2::NetworkInterface and AWS::EC2::Instance. For a    security group content audit policy, valid values are AWS::EC2::SecurityGroup,     AWS::EC2::NetworkInterface, and AWS::EC2::Instance. For a security       group usage audit policy, the value is AWS::EC2::SecurityGroup. For an AWS Network Firewall policy or DNS Firewall policy,         the value is AWS::EC2::VPC.
+    /// By default, Firewall Manager doesn't remove protections or delete Firewall Manager managed resources.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: Option<String>,
-
-
-    /// 
-    /// The unique identifiers of the resource sets used by the policy.
+    /// This option is not available for Shield Advanced or AWS WAF Classic policies.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceSetIds")]
-    pub resource_set_ids: Option<Vec<String>>,
+    #[serde(rename = "ResourcesCleanUp")]
+    pub resources_clean_up: Option<bool>,
 
 
     /// 
@@ -77,110 +61,6 @@ pub struct CfnPolicy {
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMap")]
     pub exclude_map: Option<IEMap>,
-
-
-    /// 
-    /// Indicates whether AWS Firewall Manager should automatically remove protections from resources that leave the policy scope and clean up resources    that Firewall Manager is managing for accounts when those accounts leave policy scope. For example, Firewall Manager will disassociate a Firewall Manager managed web ACL    from a protected customer resource when the customer resource leaves policy scope.
-    /// 
-    /// By default, Firewall Manager doesn't remove protections or delete Firewall Manager managed resources.
-    /// 
-    /// This option is not available for Shield Advanced or AWS WAF Classic policies.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourcesCleanUp")]
-    pub resources_clean_up: Option<bool>,
-
-
-    /// 
-    /// An array of ResourceType objects. Use this only to specify multiple resource types. To specify a single resource type, use ResourceType.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTypeList")]
-    pub resource_type_list: Option<Vec<String>>,
-
-
-    /// 
-    /// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PolicyTag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<PolicyTag>>,
-
-
-    /// 
-    /// Used only when tags are specified in the ResourceTags property. If this property        is True, resources with the specified tags are not in scope of the policy. If it's False,          only resources with the specified tags are in scope of the policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeResourceTags")]
-    pub exclude_resource_tags: bool,
-
-
-    /// 
-    /// The name of the AWS Firewall Manager policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
-
-
-    /// 
-    /// Used when deleting a policy. If true, Firewall Manager performs cleanup according to the policy type.
-    /// 
-    /// For AWS WAF and Shield Advanced policies, Firewall Manager does the following:
-    /// 
-    /// Deletes rule groups created by Firewall ManagerRemoves web ACLs from in-scope resources Deletes web ACLs that contain no rules or rule groups
-    /// 
-    /// For security group policies, Firewall Manager does the following for each security group in the policy:
-    /// 
-    /// Disassociates the security group from in-scope resources Deletes the security group if it was created through Firewall Manager and if it's no longer associated with any resources through another policy
-    /// 
-    /// After the cleanup, in-scope resources are no longer protected by web ACLs in this policy. Protection of out-of-scope resources remains unchanged. Scope is determined by tags that you create and accounts that you associate with the policy. When creating the policy, if you specify that only resources in specific accounts or with specific tags are in scope of the policy, those accounts and resources are handled by the policy. All others are out of scope. If you don't specify tags or accounts, all resources are in scope.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeleteAllPolicyResources")]
-    pub delete_all_policy_resources: Option<bool>,
-
-
-    /// 
-    /// Indicates if the policy should be automatically applied to new resources.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RemediationEnabled")]
-    pub remediation_enabled: bool,
 
 
     /// 
@@ -214,6 +94,88 @@ pub struct CfnPolicy {
 
 
     /// 
+    /// Used when deleting a policy. If true, Firewall Manager performs cleanup according to the policy type.
+    /// 
+    /// For AWS WAF and Shield Advanced policies, Firewall Manager does the following:
+    /// 
+    /// Deletes rule groups created by Firewall ManagerRemoves web ACLs from in-scope resources Deletes web ACLs that contain no rules or rule groups
+    /// 
+    /// For security group policies, Firewall Manager does the following for each security group in the policy:
+    /// 
+    /// Disassociates the security group from in-scope resources Deletes the security group if it was created through Firewall Manager and if it's no longer associated with any resources through another policy
+    /// 
+    /// After the cleanup, in-scope resources are no longer protected by web ACLs in this policy. Protection of out-of-scope resources remains unchanged. Scope is determined by tags that you create and accounts that you associate with the policy. When creating the policy, if you specify that only resources in specific accounts or with specific tags are in scope of the policy, those accounts and resources are handled by the policy. All others are out of scope. If you don't specify tags or accounts, all resources are in scope.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeleteAllPolicyResources")]
+    pub delete_all_policy_resources: Option<bool>,
+
+
+    /// 
+    /// An array of ResourceType objects. Use this only to specify multiple resource types. To specify a single resource type, use ResourceType.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTypeList")]
+    pub resource_type_list: Option<Vec<String>>,
+
+
+    /// 
+    /// Used only when tags are specified in the ResourceTags property. If this property        is True, resources with the specified tags are not in scope of the policy. If it's False,          only resources with the specified tags are in scope of the policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludeResourceTags")]
+    pub exclude_resource_tags: bool,
+
+
+    /// 
+    /// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PolicyTag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<PolicyTag>>,
+
+
+    /// 
+    /// Indicates if the policy should be automatically applied to new resources.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RemediationEnabled")]
+    pub remediation_enabled: bool,
+
+
+    /// 
+    /// The unique identifiers of the resource sets used by the policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceSetIds")]
+    pub resource_set_ids: Option<Vec<String>>,
+
+
+    /// 
     /// The definition of the AWS Network Firewall firewall policy.
     /// 
     /// Required: No
@@ -228,7 +190,47 @@ pub struct CfnPolicy {
     #[serde(rename = "PolicyDescription")]
     pub policy_description: Option<String>,
 
+
+    /// 
+    /// The type of resource protected by or in scope of the policy. This is in the format shown     in the AWS Resource Types Reference.           To apply this policy to multiple resource types, specify a resource type of ResourceTypeList and then specify the resource types in a ResourceTypeList.
+    /// 
+    /// For AWS WAF and Shield Advanced, example resource types include     AWS::ElasticLoadBalancingV2::LoadBalancer and     AWS::CloudFront::Distribution. For a security group common policy, valid values    are AWS::EC2::NetworkInterface and AWS::EC2::Instance. For a    security group content audit policy, valid values are AWS::EC2::SecurityGroup,     AWS::EC2::NetworkInterface, and AWS::EC2::Instance. For a security       group usage audit policy, the value is AWS::EC2::SecurityGroup. For an AWS Network Firewall policy or DNS Firewall policy,         the value is AWS::EC2::VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceType")]
+    pub resource_type: Option<String>,
+
+
+    /// 
+    /// The name of the AWS Firewall Manager policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPolicy {
     fn type_string() -> &'static str {
@@ -257,45 +259,92 @@ pub struct NetworkFirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallDeploymentModel")]
-    pub firewall_deployment_model: String,
+    pub firewall_deployment_model: NetworkFirewallPolicyFirewallDeploymentModelEnum,
 
 }
 
 
-/// Contains the AWS Network Firewall firewall policy options to configure the policy's deployment model and third-party firewall policy settings.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkFirewallPolicyFirewallDeploymentModelEnum {
+
+    /// CENTRALIZED
+    #[serde(rename = "CENTRALIZED")]
+    Centralized,
+
+    /// DISTRIBUTED
+    #[serde(rename = "DISTRIBUTED")]
+    Distributed,
+
+}
+
+impl Default for NetworkFirewallPolicyFirewallDeploymentModelEnum {
+    fn default() -> Self {
+        NetworkFirewallPolicyFirewallDeploymentModelEnum::Centralized
+    }
+}
+
+
+
+/// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PolicyOption {
+pub struct PolicyTag {
 
 
     /// 
-    /// Defines the deployment model to use for the firewall policy.
+    /// Part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: NetworkFirewallPolicy
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkFirewallPolicy")]
-    pub network_firewall_policy: Option<NetworkFirewallPolicy>,
-
-
-    /// 
-    /// Defines the policy options for a third-party firewall policy.
-    /// 
-    /// Required: No
+    /// Minimum: 1
     ///
-    /// Type: ThirdPartyFirewallPolicy
+    /// Maximum: 128
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ThirdPartyFirewallPolicy")]
-    pub third_party_firewall_policy: Option<ThirdPartyFirewallPolicy>,
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// Part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
+
+
 
 
 /// Details about the security service that is being used to protect the resources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SecurityServicePolicyData {
+
+
+    /// 
+    /// Contains the Network Firewall firewall policy options to configure a centralized deployment     model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PolicyOption
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyOption")]
+    pub policy_option: Option<PolicyOption>,
 
 
     /// 
@@ -309,7 +358,7 @@ pub struct SecurityServicePolicyData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: SecurityServicePolicyDataTypeEnum,
 
 
     /// 
@@ -331,118 +380,60 @@ pub struct SecurityServicePolicyData {
     #[serde(rename = "ManagedServiceData")]
     pub managed_service_data: Option<String>,
 
-
-    /// 
-    /// Contains the Network Firewall firewall policy options to configure a centralized deployment     model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PolicyOption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyOption")]
-    pub policy_option: Option<PolicyOption>,
-
 }
 
 
-/// Configures the deployment model for the third-party firewall.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThirdPartyFirewallPolicy {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SecurityServicePolicyDataTypeEnum {
 
+    /// DNS_FIREWALL
+    #[serde(rename = "DNS_FIREWALL")]
+    Dnsfirewall,
 
-    /// 
-    /// Defines the deployment model to use for the third-party firewall policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CENTRALIZED | DISTRIBUTED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FirewallDeploymentModel")]
-    pub firewall_deployment_model: String,
+    /// IMPORT_NETWORK_FIREWALL
+    #[serde(rename = "IMPORT_NETWORK_FIREWALL")]
+    Importnetworkfirewall,
 
-}
+    /// NETWORK_FIREWALL
+    #[serde(rename = "NETWORK_FIREWALL")]
+    Networkfirewall,
 
+    /// SECURITY_GROUPS_COMMON
+    #[serde(rename = "SECURITY_GROUPS_COMMON")]
+    Securitygroupscommon,
 
-/// Specifies the AWS account IDs and AWS Organizations organizational units (OUs) to include in or exclude from the policy.      Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time.
-///
-/// This is used for the policy's IncludeMap and ExcludeMap.
-///
-/// You can specify account IDs, OUs, or a combination:
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IEMap {
+    /// SECURITY_GROUPS_CONTENT_AUDIT
+    #[serde(rename = "SECURITY_GROUPS_CONTENT_AUDIT")]
+    Securitygroupscontentaudit,
 
+    /// SECURITY_GROUPS_USAGE_AUDIT
+    #[serde(rename = "SECURITY_GROUPS_USAGE_AUDIT")]
+    Securitygroupsusageaudit,
 
-    /// 
-    /// The account list for the map.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ACCOUNT")]
-    pub account: Option<Vec<String>>,
+    /// SHIELD_ADVANCED
+    #[serde(rename = "SHIELD_ADVANCED")]
+    Shieldadvanced,
 
+    /// THIRD_PARTY_FIREWALL
+    #[serde(rename = "THIRD_PARTY_FIREWALL")]
+    Thirdpartyfirewall,
 
-    /// 
-    /// The organizational unit list for the map.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ORGUNIT")]
-    pub orgunit: Option<Vec<String>>,
+    /// WAF
+    #[serde(rename = "WAF")]
+    Waf,
+
+    /// WAFV2
+    #[serde(rename = "WAFV2")]
+    Wafv2,
 
 }
 
-
-/// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PolicyTag {
-
-
-    /// 
-    /// Part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// Part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
+impl Default for SecurityServicePolicyDataTypeEnum {
+    fn default() -> Self {
+        SecurityServicePolicyDataTypeEnum::Dnsfirewall
+    }
 }
+
 
 
 /// The resource tags that AWS Firewall Manager uses to determine if a particular resource    should be included or excluded from the AWS Firewall Manager policy. Tags enable you to    categorize your AWS resources in different ways, for example, by purpose, owner, or    environment. Each tag consists of a key and an optional value. Firewall Manager combines the    tags with "AND" so that, if you add more than one tag to a policy scope, a resource must have     all the specified tags to be included or excluded. For more information, see   Working with Tag Editor.
@@ -484,3 +475,117 @@ pub struct ResourceTag {
     pub value: Option<String>,
 
 }
+
+
+
+
+/// Specifies the AWS account IDs and AWS Organizations organizational units (OUs) to include in or exclude from the policy.      Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time.
+///
+/// This is used for the policy's IncludeMap and ExcludeMap.
+///
+/// You can specify account IDs, OUs, or a combination:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IEMap {
+
+
+    /// 
+    /// The organizational unit list for the map.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ORGUNIT")]
+    pub orgunit: Option<Vec<String>>,
+
+
+    /// 
+    /// The account list for the map.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ACCOUNT")]
+    pub account: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Contains the AWS Network Firewall firewall policy options to configure the policy's deployment model and third-party firewall policy settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PolicyOption {
+
+
+    /// 
+    /// Defines the deployment model to use for the firewall policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NetworkFirewallPolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkFirewallPolicy")]
+    pub network_firewall_policy: Option<NetworkFirewallPolicy>,
+
+
+    /// 
+    /// Defines the policy options for a third-party firewall policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThirdPartyFirewallPolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThirdPartyFirewallPolicy")]
+    pub third_party_firewall_policy: Option<ThirdPartyFirewallPolicy>,
+
+}
+
+
+
+
+/// Configures the deployment model for the third-party firewall.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ThirdPartyFirewallPolicy {
+
+
+    /// 
+    /// Defines the deployment model to use for the third-party firewall policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CENTRALIZED | DISTRIBUTED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FirewallDeploymentModel")]
+    pub firewall_deployment_model: ThirdPartyFirewallPolicyFirewallDeploymentModelEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ThirdPartyFirewallPolicyFirewallDeploymentModelEnum {
+
+    /// CENTRALIZED
+    #[serde(rename = "CENTRALIZED")]
+    Centralized,
+
+    /// DISTRIBUTED
+    #[serde(rename = "DISTRIBUTED")]
+    Distributed,
+
+}
+
+impl Default for ThirdPartyFirewallPolicyFirewallDeploymentModelEnum {
+    fn default() -> Self {
+        ThirdPartyFirewallPolicyFirewallDeploymentModelEnum::Centralized
+    }
+}
+

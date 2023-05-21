@@ -6,41 +6,15 @@ pub struct CfnJobQueue {
 
 
     /// 
-    /// The name of the job queue. It can be up to 128 letters long. It can contain uppercase and lowercase letters,  numbers, hyphens (-), and underscores (_).
+    /// The priority of the job queue. Job queues with a higher priority (or a higher integer value for the   priority parameter) are evaluated first when associated with the same compute environment. Priority is  determined in descending order. For example, a job queue with a priority value of 10 is given scheduling  preference over a job queue with a priority value of 1. All of the compute environments must be either  EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and  Fargate compute environments can't be mixed.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobQueueName")]
-    pub job_queue_name: Option<String>,
-
-
-    /// 
-    /// The state of the job queue. If the job queue state is ENABLED, it is able to accept jobs. If the  job queue state is DISABLED, new jobs can't be added to the queue, but jobs already in the queue can  finish.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "State")]
-    pub state: Option<String>,
-
-
-    /// 
-    /// The tags that are applied to the job queue. For more information, see Tagging your AWS Batch resources in           AWS Batch User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Priority")]
+    pub priority: i64,
 
 
     /// 
@@ -70,17 +44,64 @@ pub struct CfnJobQueue {
 
 
     /// 
-    /// The priority of the job queue. Job queues with a higher priority (or a higher integer value for the   priority parameter) are evaluated first when associated with the same compute environment. Priority is  determined in descending order. For example, a job queue with a priority value of 10 is given scheduling  preference over a job queue with a priority value of 1. All of the compute environments must be either  EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and  Fargate compute environments can't be mixed.
+    /// The state of the job queue. If the job queue state is ENABLED, it is able to accept jobs. If the  job queue state is DISABLED, new jobs can't be added to the queue, but jobs already in the queue can  finish.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
+    #[serde(rename = "State")]
+    pub state: Option<JobQueueStateEnum>,
+
+
+    /// 
+    /// The name of the job queue. It can be up to 128 letters long. It can contain uppercase and lowercase letters,  numbers, hyphens (-), and underscores (_).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobQueueName")]
+    pub job_queue_name: Option<String>,
+
+
+    /// 
+    /// The tags that are applied to the job queue. For more information, see Tagging your AWS Batch resources in           AWS Batch User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JobQueueStateEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for JobQueueStateEnum {
+    fn default() -> Self {
+        JobQueueStateEnum::Disabled
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnJobQueue {
     fn type_string() -> &'static str {
@@ -122,3 +143,5 @@ pub struct ComputeEnvironmentOrder {
     pub compute_environment: String,
 
 }
+
+

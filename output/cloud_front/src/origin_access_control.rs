@@ -22,6 +22,8 @@ pub struct CfnOriginAccessControl {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnOriginAccessControl {
     fn type_string() -> &'static str {
         "AWS::CloudFront::OriginAccessControl"
@@ -43,6 +45,18 @@ pub struct OriginAccessControlConfig {
 
 
     /// 
+    /// A description of the origin access control.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// Specifies which requests CloudFront signs (adds authentication information to). Specify 				always for the most common use case. For more information, see origin access control advanced settings in the 				Amazon CloudFront Developer Guide.
     /// 
     /// This field can have one of the following values:
@@ -57,31 +71,7 @@ pub struct OriginAccessControlConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningBehavior")]
-    pub signing_behavior: String,
-
-
-    /// 
-    /// A name to identify the origin access control.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A description of the origin access control.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    pub signing_behavior: OriginAccessControlConfigSigningBehaviorEnum,
 
 
     /// 
@@ -95,7 +85,7 @@ pub struct OriginAccessControlConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessControlOriginType")]
-    pub origin_access_control_origin_type: String,
+    pub origin_access_control_origin_type: OriginAccessControlConfigOriginAccessControlOriginTypeEnum,
 
 
     /// 
@@ -109,6 +99,77 @@ pub struct OriginAccessControlConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningProtocol")]
-    pub signing_protocol: String,
+    pub signing_protocol: OriginAccessControlConfigSigningProtocolEnum,
+
+
+    /// 
+    /// A name to identify the origin access control.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+
+    /// mediastore
+    #[serde(rename = "mediastore")]
+    Mediastore,
+
+    /// s3
+    #[serde(rename = "s3")]
+    S3,
+
+}
+
+impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+    fn default() -> Self {
+        OriginAccessControlConfigOriginAccessControlOriginTypeEnum::Mediastore
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OriginAccessControlConfigSigningBehaviorEnum {
+
+    /// always
+    #[serde(rename = "always")]
+    Always,
+
+    /// never
+    #[serde(rename = "never")]
+    Never,
+
+    /// no-override
+    #[serde(rename = "no-override")]
+    Nooverride,
+
+}
+
+impl Default for OriginAccessControlConfigSigningBehaviorEnum {
+    fn default() -> Self {
+        OriginAccessControlConfigSigningBehaviorEnum::Always
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OriginAccessControlConfigSigningProtocolEnum {
+
+    /// sigv4
+    #[serde(rename = "sigv4")]
+    Sigv4,
+
+}
+
+impl Default for OriginAccessControlConfigSigningProtocolEnum {
+    fn default() -> Self {
+        OriginAccessControlConfigSigningProtocolEnum::Sigv4
+    }
+}
+

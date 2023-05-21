@@ -32,6 +32,8 @@ pub struct CfnTagAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTagAssociation {
     fn type_string() -> &'static str {
         "AWS::LakeFormation::TagAssociation"
@@ -51,15 +53,15 @@ pub struct TableWithColumnsResource {
 
 
     /// 
-    /// The name of the database for the table with columns resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+    /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    #[serde(rename = "ColumnNames")]
+    pub column_names: Vec<String>,
 
 
     /// 
@@ -77,6 +79,18 @@ pub struct TableWithColumnsResource {
 
 
     /// 
+    /// The name of the database for the table with columns resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
+
+
+    /// 
     /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
     /// 
     /// Required: Yes
@@ -87,50 +101,9 @@ pub struct TableWithColumnsResource {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ColumnNames")]
-    pub column_names: Vec<String>,
-
 }
 
 
-/// A structure for the database object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DatabaseResource {
-
-
-    /// 
-    /// The identifier for the Data Catalog. By default, it should be the account ID of the caller.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
-
-
-    /// 
-    /// The name of the database resource. Unique to the Data Catalog.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
 
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
@@ -148,6 +121,18 @@ pub struct TableResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
 
 
     /// 
@@ -175,36 +160,14 @@ pub struct TableResource {
     #[serde(rename = "TableWildcard")]
     pub table_wildcard: Option<serde_json::Value>,
 
-
-    /// 
-    /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
-
 }
+
+
 
 
 /// A structure containing the catalog ID, tag key, and tag values of an LF-tag key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LFTagPair {
-
-
-    /// 
-    /// The key-name for the LF-tag.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TagKey")]
-    pub tag_key: String,
 
 
     /// 
@@ -230,24 +193,26 @@ pub struct LFTagPair {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
+
+    /// 
+    /// The key-name for the LF-tag.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagKey")]
+    pub tag_key: String,
+
 }
+
+
 
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Resource {
-
-
-    /// 
-    /// The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DatabaseResource
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Database")]
-    pub database: Option<DatabaseResource>,
 
 
     /// 
@@ -285,4 +250,51 @@ pub struct Resource {
     #[serde(rename = "TableWithColumns")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 
+
+    /// 
+    /// The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DatabaseResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Database")]
+    pub database: Option<DatabaseResource>,
+
 }
+
+
+
+
+/// A structure for the database object.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DatabaseResource {
+
+
+    /// 
+    /// The name of the database resource. Unique to the Data Catalog.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The identifier for the Data Catalog. By default, it should be the account ID of the caller.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CatalogId")]
+    pub catalog_id: String,
+
+}
+
+

@@ -16,17 +16,6 @@ pub struct CfnQueryDefinition {
     pub log_group_names: Option<Vec<String>>,
 
 
-    /// The query string    to use for this query definition. For more information, see         CloudWatch Logs Insights Query Syntax.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: String,
-
-
     /// A name for the query definition.
     ///
     /// Required: Yes
@@ -37,7 +26,20 @@ pub struct CfnQueryDefinition {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// The query string    to use for this query definition. For more information, see         CloudWatch Logs Insights Query Syntax.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryString")]
+    pub query_string: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnQueryDefinition {
     fn type_string() -> &'static str {

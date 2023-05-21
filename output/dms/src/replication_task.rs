@@ -22,46 +22,6 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// Indicates the start time for a change data capture (CDC) operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CdcStartTime")]
-    pub cdc_start_time: Option<f64>,
-
-
-    /// 
-    /// Indicates when you want a change data capture (CDC) operation to stop. The value can be     either server time or commit time.
-    /// 
-    /// Here is a server time example: --cdc-stop-position         "server_time:2018-02-09T12:12:12"
-    /// 
-    /// Here is a commit time example: --cdc-stop-position "commit_time:         2018-02-09T12:12:12"
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CdcStopPosition")]
-    pub cdc_stop_position: Option<String>,
-
-
-    /// 
-    /// An Amazon Resource Name (ARN) that uniquely identifies the target endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetEndpointArn")]
-    pub target_endpoint_arn: String,
-
-
-    /// 
     /// Overall settings for the task, in JSON format. For more information, see                Specifying Task Settings for AWS Database Migration Service Tasks       in the AWS Database Migration Service User Guide.
     /// 
     /// Required: No
@@ -84,18 +44,31 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MigrationType")]
-    pub migration_type: String,
+    pub migration_type: ReplicationTaskMigrationTypeEnum,
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
+    /// 
+    /// An Amazon Resource Name (ARN) that uniquely identifies the target endpoint.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskData")]
-    pub task_data: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "TargetEndpointArn")]
+    pub target_endpoint_arn: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of a replication instance.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ReplicationInstanceArn")]
+    pub replication_instance_arn: String,
 
 
     /// 
@@ -121,27 +94,27 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// One or more tags to be assigned to the replication task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of a replication instance.
+    /// The table mappings for the task, in JSON format. For more information, see                Using Table Mapping to Specify Task Settings       in the AWS Database Migration Service User Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicationInstanceArn")]
-    pub replication_instance_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "TableMappings")]
+    pub table_mappings: String,
+
+
+    /// 
+    /// Indicates the start time for a change data capture (CDC) operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CdcStartTime")]
+    pub cdc_start_time: Option<f64>,
 
 
     /// 
@@ -159,15 +132,42 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// The table mappings for the task, in JSON format. For more information, see                Using Table Mapping to Specify Task Settings       in the AWS Database Migration Service User Guide.
+    /// One or more tags to be assigned to the replication task.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Indicates when you want a change data capture (CDC) operation to stop. The value can be     either server time or commit time.
+    /// 
+    /// Here is a server time example: --cdc-stop-position         "server_time:2018-02-09T12:12:12"
+    /// 
+    /// Here is a commit time example: --cdc-stop-position "commit_time:         2018-02-09T12:12:12"
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TableMappings")]
-    pub table_mappings: String,
+    #[serde(rename = "CdcStopPosition")]
+    pub cdc_stop_position: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskData")]
+    pub task_data: Option<String>,
 
 
     /// 
@@ -182,6 +182,31 @@ pub struct CfnReplicationTask {
     pub source_endpoint_arn: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ReplicationTaskMigrationTypeEnum {
+
+    /// cdc
+    #[serde(rename = "cdc")]
+    Cdc,
+
+    /// full-load
+    #[serde(rename = "full-load")]
+    Fullload,
+
+    /// full-load-and-cdc
+    #[serde(rename = "full-load-and-cdc")]
+    Fullloadandcdc,
+
+}
+
+impl Default for ReplicationTaskMigrationTypeEnum {
+    fn default() -> Self {
+        ReplicationTaskMigrationTypeEnum::Cdc
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnReplicationTask {
     fn type_string() -> &'static str {
@@ -227,3 +252,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

@@ -18,6 +18,30 @@ pub struct CfnRouteResponse {
 
 
     /// 
+    /// The response models for the route response.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResponseModels")]
+    pub response_models: Option<serde_json::Value>,
+
+
+    /// 
+    /// The route response key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RouteResponseKey")]
+    pub route_response_key: String,
+
+
+    /// 
     /// The model selection expression for the route response. Supported only for WebSocket APIs.
     /// 
     /// Required: No
@@ -42,30 +66,6 @@ pub struct CfnRouteResponse {
 
 
     /// 
-    /// The route response key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RouteResponseKey")]
-    pub route_response_key: String,
-
-
-    /// 
-    /// The response models for the route response.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseModels")]
-    pub response_models: Option<serde_json::Value>,
-
-
-    /// 
     /// The route response parameters.
     /// 
     /// Required: No
@@ -77,6 +77,8 @@ pub struct CfnRouteResponse {
     pub response_parameters: Option<serde_json::Value>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRouteResponse {
     fn type_string() -> &'static str {
@@ -106,3 +108,5 @@ pub struct ParameterConstraints {
     pub required: bool,
 
 }
+
+

@@ -6,6 +6,18 @@ pub struct CfnUserProfile {
 
 
     /// 
+    /// The user's SSH user name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SshUsername")]
+    pub ssh_username: Option<String>,
+
+
+    /// 
     /// The user's IAM ARN.
     /// 
     /// Required: Yes
@@ -40,19 +52,9 @@ pub struct CfnUserProfile {
     #[serde(rename = "SshPublicKey")]
     pub ssh_public_key: Option<String>,
 
-
-    /// 
-    /// The user's SSH user name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SshUsername")]
-    pub ssh_username: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUserProfile {
     fn type_string() -> &'static str {

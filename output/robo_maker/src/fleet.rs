@@ -6,6 +6,18 @@ pub struct CfnFleet {
 
 
     /// 
+    /// The list of all tags added to the fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
     /// The name of the fleet.
     /// 
     /// Required: No
@@ -22,19 +34,9 @@ pub struct CfnFleet {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
-    /// The list of all tags added to the fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFleet {
     fn type_string() -> &'static str {

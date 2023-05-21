@@ -32,34 +32,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The ARN of the associated schema.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaArn")]
-    pub schema_arn: String,
-
-
-    /// 
-    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
-    ///
-    /// Required: No
-    ///
-    /// Type: DatasetImportJob
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetImportJob")]
-    pub dataset_import_job: Option<DatasetImportJob>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the dataset group.
     /// 
     /// Required: Yes
@@ -73,6 +45,22 @@ pub struct CfnDataset {
     /// Update requires: Replacement
     #[serde(rename = "DatasetGroupArn")]
     pub dataset_group_arn: String,
+
+
+    /// 
+    /// The ARN of the associated schema.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaArn")]
+    pub schema_arn: String,
 
 
     /// 
@@ -90,7 +78,21 @@ pub struct CfnDataset {
     #[serde(rename = "DatasetType")]
     pub dataset_type: String,
 
+
+    /// 
+    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
+    ///
+    /// Required: No
+    ///
+    /// Type: DatasetImportJob
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetImportJob")]
+    pub dataset_import_job: Option<DatasetImportJob>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDataset {
     fn type_string() -> &'static str {
@@ -103,11 +105,63 @@ impl cfn_resources::CfnResource for CfnDataset {
 }
 
 
+/// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataSource {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataLocation")]
+    pub data_location: Option<String>,
+
+}
+
+
+
+
 /// Describes a job that imports training data from a data source (Amazon S3    bucket) to an Amazon Personalize dataset. For more information, see CreateDatasetImportJob.
 ///
 /// A dataset import job can be in one of the following states:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatasetImportJob {
+
+
+    /// 
+    /// The ARN of the IAM role that has permissions to read from the Amazon S3    data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the dataset that receives the    imported data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetArn")]
+    pub dataset_arn: Option<String>,
 
 
     /// 
@@ -141,22 +195,6 @@ pub struct DatasetImportJob {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the dataset that receives the    imported data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetArn")]
-    pub dataset_arn: Option<String>,
-
-
-    /// 
     /// The ARN of the dataset import job.
     /// 
     /// Required: No
@@ -171,38 +209,6 @@ pub struct DatasetImportJob {
     #[serde(rename = "DatasetImportJobArn")]
     pub dataset_import_job_arn: Option<String>,
 
-
-    /// 
-    /// The ARN of the IAM role that has permissions to read from the Amazon S3    data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
 }
 
 
-/// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataSource {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataLocation")]
-    pub data_location: Option<String>,
-
-}

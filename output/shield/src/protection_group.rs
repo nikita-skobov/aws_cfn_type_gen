@@ -5,14 +5,9 @@
 pub struct CfnProtectionGroup {
 
 
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-members
-    #[serde(rename = "Members")]
-    pub members: Option<Vec<String>>,
-
-
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-protectiongroupid
-    #[serde(rename = "ProtectionGroupId")]
-    pub protection_group_id: String,
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-aggregation
+    #[serde(rename = "Aggregation")]
+    pub aggregation: String,
 
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-resourcetype
@@ -20,9 +15,9 @@ pub struct CfnProtectionGroup {
     pub resource_type: Option<String>,
 
 
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-aggregation
-    #[serde(rename = "Aggregation")]
-    pub aggregation: String,
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-members
+    #[serde(rename = "Members")]
+    pub members: Option<Vec<String>>,
 
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-pattern
@@ -34,7 +29,14 @@ pub struct CfnProtectionGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-protectiongroupid
+    #[serde(rename = "ProtectionGroupId")]
+    pub protection_group_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProtectionGroup {
     fn type_string() -> &'static str {
@@ -62,3 +64,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

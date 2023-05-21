@@ -6,24 +6,6 @@ pub struct CfnStoredQuery {
 
 
     /// 
-    /// The name of the query.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[a-zA-Z0-9-_]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "QueryName")]
-    pub query_name: String,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// Required: No
@@ -48,6 +30,24 @@ pub struct CfnStoredQuery {
 
 
     /// 
+    /// The name of the query.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[a-zA-Z0-9-_]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "QueryName")]
+    pub query_name: String,
+
+
+    /// 
     /// A unique description for the query.
     /// 
     /// Required: No
@@ -59,6 +59,8 @@ pub struct CfnStoredQuery {
     pub query_description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStoredQuery {
     fn type_string() -> &'static str {
@@ -104,3 +106,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

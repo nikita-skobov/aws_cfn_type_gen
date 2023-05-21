@@ -30,6 +30,8 @@ pub struct CfnConnectorDefinitionVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnConnectorDefinitionVersion {
     fn type_string() -> &'static str {
         "AWS::Greengrass::ConnectorDefinitionVersion"
@@ -49,20 +51,6 @@ pub struct Connector {
 
 
     /// 
-    /// The parameters or configuration that the connector uses.
-    /// 
-    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the connector.
     /// 
     /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
@@ -77,6 +65,20 @@ pub struct Connector {
 
 
     /// 
+    /// The parameters or configuration that the connector uses.
+    /// 
+    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
     /// A descriptive or arbitrary ID for the connector. This value must be unique within       the connector definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
     /// 
     /// Required: Yes
@@ -88,3 +90,5 @@ pub struct Connector {
     pub id: String,
 
 }
+
+

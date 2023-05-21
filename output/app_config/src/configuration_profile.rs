@@ -10,24 +10,6 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// The type of configurations contained in the profile. AWS AppConfig supports       feature flags and freeform configurations. We recommend you     create feature flag configurations to enable or disable new features and freeform     configurations to distribute configurations to an application. When calling this API, enter     one of the following values for Type:
-    /// 
-    /// AWS.AppConfig.FeatureFlags
-    /// 
-    /// AWS.Freeform
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z\.]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
     /// A list of methods for validating the configuration.
     /// 
     /// Required: No
@@ -70,33 +52,23 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// The application ID.
+    /// The ARN of an IAM role with permission to access the configuration at the specified       LocationUri.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
-
-
-    /// 
-    /// A description of the configuration profile.
+    /// ImportantA retrieval role ARN is not required for configurations stored in the AWS AppConfig hosted configuration store. It is required for all other sources that       store your configuration.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 20
     ///
-    /// Maximum: 1024
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^((arn):(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):(iam)::\d{12}:role[/].*)$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "RetrievalRoleArn")]
+    pub retrieval_role_arn: Option<String>,
 
 
     /// 
@@ -118,25 +90,55 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// The ARN of an IAM role with permission to access the configuration at the specified       LocationUri.
+    /// The type of configurations contained in the profile. AWS AppConfig supports       feature flags and freeform configurations. We recommend you     create feature flag configurations to enable or disable new features and freeform     configurations to distribute configurations to an application. When calling this API, enter     one of the following values for Type:
     /// 
-    /// ImportantA retrieval role ARN is not required for configurations stored in the AWS AppConfig hosted configuration store. It is required for all other sources that       store your configuration.
+    /// AWS.AppConfig.FeatureFlags
+    /// 
+    /// AWS.Freeform
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 20
+    /// Pattern: ^[a-zA-Z\.]+
     ///
-    /// Maximum: 2048
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+
+    /// 
+    /// A description of the configuration profile.
+    /// 
+    /// Required: No
     ///
-    /// Pattern: ^((arn):(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):(iam)::\d{12}:role[/].*)$
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RetrievalRoleArn")]
-    pub retrieval_role_arn: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The application ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-z0-9]{4,7}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfigurationProfile {
     fn type_string() -> &'static str {
@@ -180,6 +182,8 @@ pub struct Tags {
 }
 
 
+
+
 /// A validator provides a syntactic or semantic check to ensure the configuration that you     want to deploy functions as intended. To validate your application configuration data, you     provide a schema or an AWS Lambda function that runs against the configuration. The     configuration deployment or update can only proceed when the configuration data is     valid.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Validators {
@@ -212,6 +216,27 @@ pub struct Validators {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<ValidatorsTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ValidatorsTypeEnum {
+
+    /// JSON_SCHEMA
+    #[serde(rename = "JSON_SCHEMA")]
+    Jsonschema,
+
+    /// LAMBDA
+    #[serde(rename = "LAMBDA")]
+    Lambda,
+
+}
+
+impl Default for ValidatorsTypeEnum {
+    fn default() -> Self {
+        ValidatorsTypeEnum::Jsonschema
+    }
+}
+

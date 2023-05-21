@@ -12,33 +12,19 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// A description of the deployment.
+    /// The AWS KMS key identifier (key ID, key alias, or key ARN). AWS AppConfig uses this ID to encrypt the configuration data using a customer managed key.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The configuration profile ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
+    /// Maximum: 2048
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ConfigurationProfileId")]
-    pub configuration_profile_id: String,
+    #[serde(rename = "KmsKeyIdentifier")]
+    pub kms_key_identifier: Option<String>,
 
 
     /// 
@@ -56,23 +42,19 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The AWS KMS key identifier (key ID, key alias, or key ARN). AWS AppConfig uses this ID to encrypt the configuration data using a customer managed key.
+    /// Metadata to assign to the deployment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
+    /// Type: List of Tags
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KmsKeyIdentifier")]
-    pub kms_key_identifier: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
 
 
     /// 
-    /// The environment ID.
+    /// The configuration profile ID.
     /// 
     /// Required: Yes
     ///
@@ -81,8 +63,8 @@ pub struct CfnDeployment {
     /// Pattern: [a-z0-9]{4,7}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
+    #[serde(rename = "ConfigurationProfileId")]
+    pub configuration_profile_id: String,
 
 
     /// 
@@ -100,15 +82,19 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// Metadata to assign to the deployment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
+    /// A description of the deployment.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tags
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -126,7 +112,23 @@ pub struct CfnDeployment {
     #[serde(rename = "ConfigurationVersion")]
     pub configuration_version: String,
 
+
+    /// 
+    /// The environment ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-z0-9]{4,7}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeployment {
     fn type_string() -> &'static str {
@@ -168,3 +170,5 @@ pub struct Tags {
     pub key: Option<String>,
 
 }
+
+

@@ -6,24 +6,6 @@ pub struct CfnPlan {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the contact.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContactId")]
-    pub contact_id: String,
-
-
-    /// 
     /// The Amazon Resource Names (ARNs) of the on-call rotations associated with the plan.
     ///
     /// Required: No
@@ -46,7 +28,27 @@ pub struct CfnPlan {
     #[serde(rename = "Stages")]
     pub stages: Option<Vec<Stage>>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the contact.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContactId")]
+    pub contact_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPlan {
     fn type_string() -> &'static str {
@@ -57,6 +59,43 @@ impl cfn_resources::CfnResource for CfnPlan {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A set amount of time that an escalation plan or engagement plan engages the specified     contacts or contact methods.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Stage {
+
+
+    /// 
+    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Targets
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<Targets>>,
+
+
+    /// 
+    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DurationInMinutes")]
+    pub duration_in_minutes: i64,
+
+}
+
+
 
 
 /// The contact that Incident Manager is engaging during an incident.
@@ -96,39 +135,6 @@ pub struct ContactTargetInfo {
 }
 
 
-/// A set amount of time that an escalation plan or engagement plan engages the specified     contacts or contact methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Stage {
-
-
-    /// 
-    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationInMinutes")]
-    pub duration_in_minutes: i64,
-
-
-    /// 
-    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Targets
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<Targets>>,
-
-}
 
 
 /// Information about the contact channel that Incident Manager uses to engage the     contact.
@@ -172,21 +178,11 @@ pub struct ChannelTargetInfo {
 }
 
 
+
+
 /// The contact or contact channel that's being engaged.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Targets {
-
-
-    /// 
-    /// Information about the contact that Incident Manager engages.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ContactTargetInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContactTargetInfo")]
-    pub contact_target_info: Option<ContactTargetInfo>,
 
 
     /// 
@@ -200,4 +196,18 @@ pub struct Targets {
     #[serde(rename = "ChannelTargetInfo")]
     pub channel_target_info: Option<ChannelTargetInfo>,
 
+
+    /// 
+    /// Information about the contact that Incident Manager engages.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ContactTargetInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactTargetInfo")]
+    pub contact_target_info: Option<ContactTargetInfo>,
+
 }
+
+

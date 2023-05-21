@@ -36,17 +36,17 @@ pub struct CfnConnector {
 
 
     /// 
-    /// The URL of the partner's AS2 endpoint.
+    /// Key-value pairs that can be used to group and search for connectors.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Maximum: 255
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -68,19 +68,21 @@ pub struct CfnConnector {
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for connectors.
+    /// The URL of the partner's AS2 endpoint.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Maximum: 255
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Url")]
+    pub url: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConnector {
     fn type_string() -> &'static str {
@@ -105,17 +107,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -125,7 +116,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// A structure that contains the parameters for a connector object.
@@ -152,6 +156,22 @@ pub struct As2Config {
 
 
     /// 
+    /// The signing algorithm for the MDN response.
+    /// 
+    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MdnSigningAlgorithm")]
+    pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
+
+
+    /// 
     /// Specifies whether the AS2 file is compressed.
     /// 
     /// Required: No
@@ -162,7 +182,41 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
-    pub compression: Option<String>,
+    pub compression: Option<As2ConfigCompressionEnum>,
+
+
+    /// 
+    /// The algorithm that is used to encrypt the file.
+    /// 
+    /// NoteYou can only specify NONE if the URL for your connector uses HTTPS. This ensures that     no traffic is sent in clear text.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AES128_CBC | AES192_CBC | AES256_CBC | NONE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionAlgorithm")]
+    pub encryption_algorithm: Option<As2ConfigEncryptionAlgorithmEnum>,
+
+
+    /// 
+    /// A unique identifier for the AS2 local profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 19
+    ///
+    /// Maximum: 19
+    ///
+    /// Pattern: ^p-([0-9a-f]{17})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LocalProfileId")]
+    pub local_profile_id: Option<String>,
 
 
     /// 
@@ -176,39 +230,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningAlgorithm")]
-    pub signing_algorithm: Option<String>,
-
-
-    /// 
-    /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
-    /// 
-    /// SYNC: The system expects a synchronous MDN response, confirming that the file was transferred successfully (or not).                        NONE: Specifies that no MDN response is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | SYNC
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MdnResponse")]
-    pub mdn_response: Option<String>,
-
-
-    /// 
-    /// The signing algorithm for the MDN response.
-    /// 
-    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MdnSigningAlgorithm")]
-    pub mdn_signing_algorithm: Option<String>,
+    pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
 
 
     /// 
@@ -230,36 +252,151 @@ pub struct As2Config {
 
 
     /// 
-    /// The algorithm that is used to encrypt the file.
+    /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
     /// 
-    /// NoteYou can only specify NONE if the URL for your connector uses HTTPS. This ensures that     no traffic is sent in clear text.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AES128_CBC | AES192_CBC | AES256_CBC | NONE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionAlgorithm")]
-    pub encryption_algorithm: Option<String>,
-
-
-    /// 
-    /// A unique identifier for the AS2 local profile.
+    /// SYNC: The system expects a synchronous MDN response, confirming that the file was transferred successfully (or not).                        NONE: Specifies that no MDN response is required.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 19
-    ///
-    /// Maximum: 19
-    ///
-    /// Pattern: ^p-([0-9a-f]{17})$
+    /// Allowed values: NONE | SYNC
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LocalProfileId")]
-    pub local_profile_id: Option<String>,
+    #[serde(rename = "MdnResponse")]
+    pub mdn_response: Option<As2ConfigMdnResponseEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigSigningAlgorithmEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SHA1
+    #[serde(rename = "SHA1")]
+    Sha1,
+
+    /// SHA256
+    #[serde(rename = "SHA256")]
+    Sha256,
+
+    /// SHA384
+    #[serde(rename = "SHA384")]
+    Sha384,
+
+    /// SHA512
+    #[serde(rename = "SHA512")]
+    Sha512,
+
+}
+
+impl Default for As2ConfigSigningAlgorithmEnum {
+    fn default() -> Self {
+        As2ConfigSigningAlgorithmEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigMdnSigningAlgorithmEnum {
+
+    /// DEFAULT
+    #[serde(rename = "DEFAULT")]
+    Default,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SHA1
+    #[serde(rename = "SHA1")]
+    Sha1,
+
+    /// SHA256
+    #[serde(rename = "SHA256")]
+    Sha256,
+
+    /// SHA384
+    #[serde(rename = "SHA384")]
+    Sha384,
+
+    /// SHA512
+    #[serde(rename = "SHA512")]
+    Sha512,
+
+}
+
+impl Default for As2ConfigMdnSigningAlgorithmEnum {
+    fn default() -> Self {
+        As2ConfigMdnSigningAlgorithmEnum::Default
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigEncryptionAlgorithmEnum {
+
+    /// AES128_CBC
+    #[serde(rename = "AES128_CBC")]
+    Aes128cbc,
+
+    /// AES192_CBC
+    #[serde(rename = "AES192_CBC")]
+    Aes192cbc,
+
+    /// AES256_CBC
+    #[serde(rename = "AES256_CBC")]
+    Aes256cbc,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for As2ConfigEncryptionAlgorithmEnum {
+    fn default() -> Self {
+        As2ConfigEncryptionAlgorithmEnum::Aes128cbc
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigMdnResponseEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SYNC
+    #[serde(rename = "SYNC")]
+    Sync,
+
+}
+
+impl Default for As2ConfigMdnResponseEnum {
+    fn default() -> Self {
+        As2ConfigMdnResponseEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigCompressionEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ZLIB
+    #[serde(rename = "ZLIB")]
+    Zlib,
+
+}
+
+impl Default for As2ConfigCompressionEnum {
+    fn default() -> Self {
+        As2ConfigCompressionEnum::Disabled
+    }
+}
+

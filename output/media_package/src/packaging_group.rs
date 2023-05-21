@@ -8,6 +8,18 @@ pub struct CfnPackagingGroup {
 
 
     /// 
+    /// The tags to assign to the packaging group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Parameters for CDN authorization.
     /// 
     /// Required: No
@@ -42,19 +54,9 @@ pub struct CfnPackagingGroup {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
-    /// The tags to assign to the packaging group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPackagingGroup {
     fn type_string() -> &'static str {
@@ -64,25 +66,6 @@ impl cfn_resources::CfnResource for CfnPackagingGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LogConfiguration {
-
-
-    /// 
-    /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
-
 }
 
 
@@ -121,21 +104,32 @@ pub struct Tag {
 }
 
 
-/// Parameters for enabling CDN authorization.
+
+
+/// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Authorization {
+pub struct LogConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) for the IAM role that allows AWS Elemental MediaPackage to communicate with AWS Secrets Manager.
+    /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecretsRoleArn")]
-    pub secrets_role_arn: String,
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
+
+}
+
+
+
+
+/// Parameters for enabling CDN authorization.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Authorization {
 
 
     /// 
@@ -149,4 +143,18 @@ pub struct Authorization {
     #[serde(rename = "CdnIdentifierSecret")]
     pub cdn_identifier_secret: String,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) for the IAM role that allows AWS Elemental MediaPackage to communicate with AWS Secrets Manager.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretsRoleArn")]
+    pub secrets_role_arn: String,
+
 }
+
+

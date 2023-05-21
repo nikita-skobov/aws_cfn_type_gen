@@ -18,6 +18,8 @@ pub struct CfnCloudFrontOriginAccessIdentity {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnCloudFrontOriginAccessIdentity {
     fn type_string() -> &'static str {
         "AWS::CloudFront::CloudFrontOriginAccessIdentity"
@@ -46,3 +48,5 @@ pub struct CloudFrontOriginAccessIdentityConfig {
     pub comment: String,
 
 }
+
+

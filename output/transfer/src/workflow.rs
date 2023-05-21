@@ -6,20 +6,6 @@ pub struct CfnWorkflow {
 
 
     /// 
-    /// Specifies the steps (actions) to take if errors are encountered during execution of the workflow.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of WorkflowStep
-    ///
-    /// Maximum: 8
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OnExceptionSteps")]
-    pub on_exception_steps: Option<Vec<WorkflowStep>>,
-
-
-    /// 
     /// Key-value pairs that can be used to group and search for workflows. Tags are metadata attached to workflows for any purpose.
     /// 
     /// Required: No
@@ -62,7 +48,23 @@ pub struct CfnWorkflow {
     #[serde(rename = "Steps")]
     pub steps: Vec<WorkflowStep>,
 
+
+    /// 
+    /// Specifies the steps (actions) to take if errors are encountered during execution of the workflow.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of WorkflowStep
+    ///
+    /// Maximum: 8
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OnExceptionSteps")]
+    pub on_exception_steps: Option<Vec<WorkflowStep>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWorkflow {
     fn type_string() -> &'static str {
@@ -81,18 +83,6 @@ pub struct S3Tag {
 
 
     /// 
-    /// The value that corresponds to the key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The name assigned to the tag that you create.
     /// 
     /// Required: Yes
@@ -103,57 +93,21 @@ pub struct S3Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// Specifies the details for the Amazon S3 location for an input file to a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3InputFileLocation {
-
 
     /// 
-    /// Specifies the S3 bucket for the customer input file.
+    /// The value that corresponds to the key.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: Option<String>,
-
-
-    /// 
-    /// The name assigned to the file when it was created in Amazon S3. You use the object key to retrieve the object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
 
-/// Specifies the S3 details for the file being used, such as bucket, ETag, and so    forth.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3FileLocation {
-
-
-    /// 
-    /// Specifies the details for the file location for the file that's being used in the workflow. Only applicable if you are using Amazon S3 storage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3InputFileLocation
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3FileLocation")]
-    pub s3_file_location: Option<S3InputFileLocation>,
-
-}
 
 
 /// Details for a step that invokes an AWS Lambda function.
@@ -161,32 +115,6 @@ pub struct S3FileLocation {
 /// Consists of the Lambda function's name, target, and timeout (in seconds).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomStepDetails {
-
-
-    /// 
-    /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
-    /// 
-    /// To use the previous file as the input, enter ${previous.file}.      In this case, this workflow step uses the output file from the previous workflow step as input.      This is the default value.               To use the originally uploaded file location as input for this step, enter ${original.file}.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceFileLocation")]
-    pub source_file_location: Option<String>,
-
-
-    /// 
-    /// The ARN for the Lambda function that is being called.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Target")]
-    pub target: Option<String>,
 
 
     /// 
@@ -202,6 +130,18 @@ pub struct CustomStepDetails {
 
 
     /// 
+    /// The ARN for the Lambda function that is being called.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Target")]
+    pub target: Option<String>,
+
+
+    /// 
     /// The name of the step, used as an identifier.
     /// 
     /// Required: No
@@ -212,7 +152,23 @@ pub struct CustomStepDetails {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
+    /// 
+    /// To use the previous file as the input, enter ${previous.file}.      In this case, this workflow step uses the output file from the previous workflow step as input.      This is the default value.               To use the originally uploaded file location as input for this step, enter ${original.file}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceFileLocation")]
+    pub source_file_location: Option<String>,
+
 }
+
+
 
 
 /// Specifies the location for the file that's being processed.
@@ -246,40 +202,25 @@ pub struct InputFileLocation {
 }
 
 
-/// Specifies the Amazon EFS identifier and the path for the file being used.
+
+
+/// Details for a step that decrypts an encrypted file.
+///
+/// Consists of the following values:
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EfsInputFileLocation {
+pub struct DecryptStepDetails {
 
 
     /// 
-    /// The identifier of the file system, assigned by Amazon EFS.
+    /// The type of encryption used. Currently, this value must be PGP.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FileSystemId")]
-    pub file_system_id: Option<String>,
-
-
-    /// 
-    /// The pathname for the folder being used by a workflow.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-}
-
-
-/// An object that contains the name and file location for a file being deleted by a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeleteStepDetails {
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
 
 
     /// 
@@ -294,27 +235,6 @@ pub struct DeleteStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     pub source_file_location: Option<String>,
-
-
-    /// 
-    /// The name of the step, used as an identifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-/// Details for a step that decrypts an encrypted file.
-///
-/// Consists of the following values:
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DecryptStepDetails {
 
 
     /// 
@@ -334,30 +254,6 @@ pub struct DecryptStepDetails {
 
 
     /// 
-    /// The name of the step, used as an identifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The type of encryption used. Currently, this value must be PGP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
     /// Specifies the location for the file being decrypted. Use ${Transfer:UserName} or    ${Transfer:UploadDate} in this field to parametrize the destination prefix by    username or uploaded date.
     /// 
     /// Set the value of DestinationFileLocation to      ${Transfer:UserName} to decrypt uploaded files to an Amazon S3 bucket      that is prefixed with the name of the Transfer Family user that uploaded the      file.               Set the value of DestinationFileLocation to ${Transfer:UploadDate} to decrypt uploaded files to      an Amazon S3 bucket that is prefixed with the date of the upload.        NoteThe system resolves UploadDate to a date format of YYYY-MM-DD, based on the date the file       is uploaded in UTC.
@@ -372,19 +268,114 @@ pub struct DecryptStepDetails {
 
 
     /// 
-    /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
-    /// 
-    /// To use the previous file as the input, enter ${previous.file}.      In this case, this workflow step uses the output file from the previous workflow step as input.      This is the default value.               To use the originally uploaded file location as input for this step, enter ${original.file}.
+    /// The name of the step, used as an identifier.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceFileLocation")]
-    pub source_file_location: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
+
+
+
+
+/// The basic building block of a workflow.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WorkflowStep {
+
+
+    /// 
+    /// Details for a step that invokes an AWS Lambda function.
+    /// 
+    /// Consists of the Lambda function's name, target, and timeout (in seconds).
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomStepDetails
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomStepDetails")]
+    pub custom_step_details: Option<CustomStepDetails>,
+
+
+    /// 
+    /// Details for a step that performs a file copy.
+    /// 
+    /// Consists of the following values:
+    /// 
+    /// A description               An Amazon S3 location for the destination of the file copy.               A flag that indicates whether to overwrite an existing file of the same name. The default is       FALSE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CopyStepDetails
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CopyStepDetails")]
+    pub copy_step_details: Option<CopyStepDetails>,
+
+
+    /// 
+    /// Details for a step that decrypts an encrypted file.
+    /// 
+    /// Consists of the following values:
+    /// 
+    /// A descriptive name               An Amazon S3 or Amazon Elastic File System (Amazon EFS) location for the source file to      decrypt.               An S3 or Amazon EFS location for the destination of the file decryption.               A flag that indicates whether to overwrite an existing file of the same name. The default is       FALSE.               The type of encryption that's used. Currently, only PGP encryption is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DecryptStepDetails
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DecryptStepDetails")]
+    pub decrypt_step_details: Option<DecryptStepDetails>,
+
+
+    /// 
+    /// Details for a step that deletes the file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeleteStepDetails
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeleteStepDetails")]
+    pub delete_step_details: Option<DeleteStepDetails>,
+
+
+    /// 
+    /// Details for a step that creates one or more tags.
+    /// 
+    /// You specify one or more tags. Each tag contains a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TagStepDetails
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagStepDetails")]
+    pub tag_step_details: Option<TagStepDetails>,
+
+
+    /// 
+    /// Currently, the following step types are supported.
+    /// 
+    /// COPY          - Copy the file to another location.                                   CUSTOM          - Perform a custom step with an AWS Lambda function target.                                   DECRYPT          - Decrypt a file that was encrypted before it was uploaded.                                   DELETE          - Delete the file.                                   TAG          - Add a tag to the file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+}
+
+
 
 
 /// Details for a step that creates one or more tags.
@@ -432,6 +423,76 @@ pub struct TagStepDetails {
     pub name: Option<String>,
 
 }
+
+
+
+
+/// An object that contains the name and file location for a file being deleted by a workflow.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeleteStepDetails {
+
+
+    /// 
+    /// The name of the step, used as an identifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
+    /// 
+    /// To use the previous file as the input, enter ${previous.file}.      In this case, this workflow step uses the output file from the previous workflow step as input.      This is the default value.               To use the originally uploaded file location as input for this step, enter ${original.file}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceFileLocation")]
+    pub source_file_location: Option<String>,
+
+}
+
+
+
+
+/// Specifies the Amazon EFS identifier and the path for the file being used.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EfsInputFileLocation {
+
+
+    /// 
+    /// The pathname for the folder being used by a workflow.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+
+    /// 
+    /// The identifier of the file system, assigned by Amazon EFS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FileSystemId")]
+    pub file_system_id: Option<String>,
+
+}
+
+
 
 
 /// Details for a step that performs a file copy.
@@ -499,97 +560,6 @@ pub struct CopyStepDetails {
 }
 
 
-/// The basic building block of a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct WorkflowStep {
-
-
-    /// 
-    /// Details for a step that creates one or more tags.
-    /// 
-    /// You specify one or more tags. Each tag contains a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TagStepDetails
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TagStepDetails")]
-    pub tag_step_details: Option<TagStepDetails>,
-
-
-    /// 
-    /// Details for a step that decrypts an encrypted file.
-    /// 
-    /// Consists of the following values:
-    /// 
-    /// A descriptive name               An Amazon S3 or Amazon Elastic File System (Amazon EFS) location for the source file to      decrypt.               An S3 or Amazon EFS location for the destination of the file decryption.               A flag that indicates whether to overwrite an existing file of the same name. The default is       FALSE.               The type of encryption that's used. Currently, only PGP encryption is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DecryptStepDetails
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DecryptStepDetails")]
-    pub decrypt_step_details: Option<DecryptStepDetails>,
-
-
-    /// 
-    /// Details for a step that deletes the file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeleteStepDetails
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeleteStepDetails")]
-    pub delete_step_details: Option<DeleteStepDetails>,
-
-
-    /// 
-    /// Currently, the following step types are supported.
-    /// 
-    /// COPY          - Copy the file to another location.                                   CUSTOM          - Perform a custom step with an AWS Lambda function target.                                   DECRYPT          - Decrypt a file that was encrypted before it was uploaded.                                   DELETE          - Delete the file.                                   TAG          - Add a tag to the file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
-    /// Details for a step that invokes an AWS Lambda function.
-    /// 
-    /// Consists of the Lambda function's name, target, and timeout (in seconds).
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomStepDetails
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomStepDetails")]
-    pub custom_step_details: Option<CustomStepDetails>,
-
-
-    /// 
-    /// Details for a step that performs a file copy.
-    /// 
-    /// Consists of the following values:
-    /// 
-    /// A description               An Amazon S3 location for the destination of the file copy.               A flag that indicates whether to overwrite an existing file of the same name. The default is       FALSE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CopyStepDetails
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CopyStepDetails")]
-    pub copy_step_details: Option<CopyStepDetails>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -604,17 +574,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -624,4 +583,71 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
+
+
+/// Specifies the S3 details for the file being used, such as bucket, ETag, and so    forth.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3FileLocation {
+
+
+    /// 
+    /// Specifies the details for the file location for the file that's being used in the workflow. Only applicable if you are using Amazon S3 storage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3InputFileLocation
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3FileLocation")]
+    pub s3_file_location: Option<S3InputFileLocation>,
+
+}
+
+
+
+
+/// Specifies the details for the Amazon S3 location for an input file to a workflow.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3InputFileLocation {
+
+
+    /// 
+    /// Specifies the S3 bucket for the customer input file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: Option<String>,
+
+
+    /// 
+    /// The name assigned to the file when it was created in Amazon S3. You use the object key to retrieve the object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+}
+
+

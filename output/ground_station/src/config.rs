@@ -8,18 +8,6 @@ pub struct CfnConfig {
 
 
     /// 
-    /// Object containing the parameters of a config.       Only one subtype may be specified per config.       See the subtype definitions for a description of each config subtype.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ConfigData
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigData")]
-    pub config_data: ConfigData,
-
-
-    /// 
     /// Tags assigned to a resource.
     /// 
     /// Required: No
@@ -42,7 +30,21 @@ pub struct CfnConfig {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// Object containing the parameters of a config.       Only one subtype may be specified per config.       See the subtype definitions for a description of each config subtype.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ConfigData
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigData")]
+    pub config_data: ConfigData,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfig {
     fn type_string() -> &'static str {
@@ -52,232 +54,6 @@ impl cfn_resources::CfnResource for CfnConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Provides information about how AWS Ground Station should track the satellite through the sky during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TrackingConfig {
-
-
-    /// 
-    /// Specifies whether or not to use autotrack.       REMOVED specifies that program track should only be used during the contact.       PREFERRED specifies that autotracking is preferred during the contact but fallback to program track if the signal is lost.       REQUIRED specifies that autotracking is required during the contact and not to use program track if the signal is lost.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Autotrack")]
-    pub autotrack: Option<String>,
-
-}
-
-
-/// Defines a frequency.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Frequency {
-
-
-    /// 
-    /// The value of the frequency. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<f64>,
-
-
-    /// 
-    /// The units of the frequency.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Units")]
-    pub units: Option<String>,
-
-}
-
-
-/// Provides information about how AWS Ground Station should configure an antenna for uplink during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AntennaUplinkConfig {
-
-
-    /// 
-    /// Whether or not uplink transmit is disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TransmitDisabled")]
-    pub transmit_disabled: Option<bool>,
-
-
-    /// 
-    /// The equivalent isotropically radiated power (EIRP) to use for uplink transmissions. Valid values are between 20.0 to 50.0 dBW.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Eirp
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetEirp")]
-    pub target_eirp: Option<Eirp>,
-
-
-    /// 
-    /// Defines the spectrum configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: UplinkSpectrumConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SpectrumConfig")]
-    pub spectrum_config: Option<UplinkSpectrumConfig>,
-
-}
-
-
-/// Defines an equivalent isotropically radiated power (EIRP).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Eirp {
-
-
-    /// 
-    /// The value of the EIRP. Valid values are between 20.0 to 50.0 dBW.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<f64>,
-
-
-    /// 
-    /// The units of the EIRP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Units")]
-    pub units: Option<String>,
-
-}
-
-
-/// Provides information about how AWS Ground Station should echo back uplink transmissions to a dataflow endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct UplinkEchoConfig {
-
-
-    /// 
-    /// Whether or not uplink echo is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// Defines the ARN of the uplink config to echo back to a dataflow endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AntennaUplinkConfigArn")]
-    pub antenna_uplink_config_arn: Option<String>,
-
-}
-
-
-/// Defines a bandwidth.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FrequencyBandwidth {
-
-
-    /// 
-    /// The units of the bandwidth.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Units")]
-    pub units: Option<String>,
-
-
-    /// 
-    /// The value of the bandwidth. AWS Ground Station currently has the following bandwidth limitations:
-    ///
-    /// For AntennaDownlinkDemodDecodeconfig, valid values are between 125 kHz to 650 MHz. For AntennaDownlinkconfig, valid values are between 10 kHz to 54 MHz. For AntennaUplinkConfig, valid values are between 10 kHz to 54 MHz.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<f64>,
-
-}
-
-
-/// Defines demodulation settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DemodulationConfig {
-
-
-    /// 
-    /// The demodulation settings are in JSON format and define parameters for demodulation, for example which modulation scheme (e.g. PSK, QPSK, etc.) and matched filter to use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UnvalidatedJSON")]
-    pub unvalidated_json: Option<String>,
-
-}
-
-
-/// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink config in a mission profile to receive the downlink data in raw DigIF format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AntennaDownlinkConfig {
-
-
-    /// 
-    /// Defines the spectrum configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SpectrumConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SpectrumConfig")]
-    pub spectrum_config: Option<SpectrumConfig>,
-
 }
 
 
@@ -312,9 +88,23 @@ pub struct DataflowEndpointConfig {
 }
 
 
+
+
 /// Defines a spectrum.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SpectrumConfig {
+
+
+    /// 
+    /// The polarization of the spectrum. Valid values are "RIGHT_HAND" and "LEFT_HAND". Capturing both "RIGHT_HAND" and "LEFT_HAND" polarization requires two separate configs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Polarization")]
+    pub polarization: Option<String>,
 
 
     /// 
@@ -342,19 +132,120 @@ pub struct SpectrumConfig {
     #[serde(rename = "CenterFrequency")]
     pub center_frequency: Option<Frequency>,
 
+}
+
+
+
+
+/// Provides information about how AWS Ground Station should configure an antenna for uplink during a contact.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AntennaUplinkConfig {
+
 
     /// 
-    /// The polarization of the spectrum. Valid values are "RIGHT_HAND" and "LEFT_HAND". Capturing both "RIGHT_HAND" and "LEFT_HAND" polarization requires two separate configs.
+    /// The equivalent isotropically radiated power (EIRP) to use for uplink transmissions. Valid values are between 20.0 to 50.0 dBW.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Eirp
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetEirp")]
+    pub target_eirp: Option<Eirp>,
+
+
+    /// 
+    /// Whether or not uplink transmit is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransmitDisabled")]
+    pub transmit_disabled: Option<bool>,
+
+
+    /// 
+    /// Defines the spectrum configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: UplinkSpectrumConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SpectrumConfig")]
+    pub spectrum_config: Option<UplinkSpectrumConfig>,
+
+}
+
+
+
+
+/// Defines an equivalent isotropically radiated power (EIRP).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Eirp {
+
+
+    /// 
+    /// The units of the EIRP.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Polarization")]
-    pub polarization: Option<String>,
+    #[serde(rename = "Units")]
+    pub units: Option<String>,
+
+
+    /// 
+    /// The value of the EIRP. Valid values are between 20.0 to 50.0 dBW.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<f64>,
 
 }
+
+
+
+
+/// Defines a frequency.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Frequency {
+
+
+    /// 
+    /// The value of the frequency. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<f64>,
+
+
+    /// 
+    /// The units of the frequency.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Units")]
+    pub units: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -392,21 +283,86 @@ pub struct Tag {
 }
 
 
-/// Defines a uplink spectrum.
+
+
+/// Provides information about how AWS Ground Station should echo back uplink transmissions to a dataflow endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct UplinkSpectrumConfig {
+pub struct UplinkEchoConfig {
 
 
     /// 
-    /// The center frequency of the spectrum. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.
+    /// Defines the ARN of the uplink config to echo back to a dataflow endpoint.
     /// 
     /// Required: No
     ///
-    /// Type: Frequency
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CenterFrequency")]
-    pub center_frequency: Option<Frequency>,
+    #[serde(rename = "AntennaUplinkConfigArn")]
+    pub antenna_uplink_config_arn: Option<String>,
+
+
+    /// 
+    /// Whether or not uplink echo is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+}
+
+
+
+
+/// Defines demodulation settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DemodulationConfig {
+
+
+    /// 
+    /// The demodulation settings are in JSON format and define parameters for demodulation, for example which modulation scheme (e.g. PSK, QPSK, etc.) and matched filter to use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnvalidatedJSON")]
+    pub unvalidated_json: Option<String>,
+
+}
+
+
+
+
+/// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink config in a mission profile to receive the downlink data in raw DigIF format.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AntennaDownlinkConfig {
+
+
+    /// 
+    /// Defines the spectrum configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SpectrumConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SpectrumConfig")]
+    pub spectrum_config: Option<SpectrumConfig>,
+
+}
+
+
+
+
+/// Defines a uplink spectrum.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct UplinkSpectrumConfig {
 
 
     /// 
@@ -420,7 +376,77 @@ pub struct UplinkSpectrumConfig {
     #[serde(rename = "Polarization")]
     pub polarization: Option<String>,
 
+
+    /// 
+    /// The center frequency of the spectrum. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Frequency
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CenterFrequency")]
+    pub center_frequency: Option<Frequency>,
+
 }
+
+
+
+
+/// Provides information about how AWS Ground Station should track the satellite through the sky during a contact.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TrackingConfig {
+
+
+    /// 
+    /// Specifies whether or not to use autotrack.       REMOVED specifies that program track should only be used during the contact.       PREFERRED specifies that autotracking is preferred during the contact but fallback to program track if the signal is lost.       REQUIRED specifies that autotracking is required during the contact and not to use program track if the signal is lost.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Autotrack")]
+    pub autotrack: Option<String>,
+
+}
+
+
+
+
+/// Defines a bandwidth.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FrequencyBandwidth {
+
+
+    /// 
+    /// The value of the bandwidth. AWS Ground Station currently has the following bandwidth limitations:
+    ///
+    /// For AntennaDownlinkDemodDecodeconfig, valid values are between 125 kHz to 650 MHz. For AntennaDownlinkconfig, valid values are between 10 kHz to 54 MHz. For AntennaUplinkConfig, valid values are between 10 kHz to 54 MHz.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<f64>,
+
+
+    /// 
+    /// The units of the bandwidth.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Units")]
+    pub units: Option<String>,
+
+}
+
+
 
 
 /// Provides information about how AWS Ground Station should save downlink data to S3.
@@ -468,6 +494,53 @@ pub struct S3RecordingConfig {
 }
 
 
+
+
+/// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink demod decode config in a mission profile to receive the downlink data that has been demodulated and decoded.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AntennaDownlinkDemodDecodeConfig {
+
+
+    /// 
+    /// Defines how the RF signal will be decoded.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DecodeConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DecodeConfig")]
+    pub decode_config: Option<DecodeConfig>,
+
+
+    /// 
+    /// Defines the spectrum configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SpectrumConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SpectrumConfig")]
+    pub spectrum_config: Option<SpectrumConfig>,
+
+
+    /// 
+    /// Defines how the RF signal will be demodulated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DemodulationConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DemodulationConfig")]
+    pub demodulation_config: Option<DemodulationConfig>,
+
+}
+
+
+
+
 /// Config objects provide information to Ground Station about how to configure the antenna and how data flows during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigData {
@@ -483,30 +556,6 @@ pub struct ConfigData {
     /// Update requires: No interruption
     #[serde(rename = "AntennaDownlinkDemodDecodeConfig")]
     pub antenna_downlink_demod_decode_config: Option<AntennaDownlinkDemodDecodeConfig>,
-
-
-    /// 
-    /// Provides information for an S3 recording config object.       S3 recording config objects are used to provide parameters for S3 recording during downlink contacts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3RecordingConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3RecordingConfig")]
-    pub s3_recording_config: Option<S3RecordingConfig>,
-
-
-    /// 
-    /// Provides information for an uplink config object.       Uplink config objects are used to provide parameters for uplink contacts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AntennaUplinkConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AntennaUplinkConfig")]
-    pub antenna_uplink_config: Option<AntennaUplinkConfig>,
 
 
     /// 
@@ -534,18 +583,6 @@ pub struct ConfigData {
 
 
     /// 
-    /// Provides information for a dataflow endpoint config object.       Dataflow endpoint config objects are used to provide parameters about which IP endpoint(s) to use during a contact.       Dataflow endpoints are where Ground Station sends data during a downlink contact and where Ground Station receives data to send to the satellite during an uplink contact.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataflowEndpointConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataflowEndpointConfig")]
-    pub dataflow_endpoint_config: Option<DataflowEndpointConfig>,
-
-
-    /// 
     /// Provides information for a tracking config object.       Tracking config objects are used to provide parameters about how to track the satellite through the sky during a contact.
     /// 
     /// Required: No
@@ -556,7 +593,45 @@ pub struct ConfigData {
     #[serde(rename = "TrackingConfig")]
     pub tracking_config: Option<TrackingConfig>,
 
+
+    /// 
+    /// Provides information for an uplink config object.       Uplink config objects are used to provide parameters for uplink contacts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AntennaUplinkConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AntennaUplinkConfig")]
+    pub antenna_uplink_config: Option<AntennaUplinkConfig>,
+
+
+    /// 
+    /// Provides information for an S3 recording config object.       S3 recording config objects are used to provide parameters for S3 recording during downlink contacts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3RecordingConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3RecordingConfig")]
+    pub s3_recording_config: Option<S3RecordingConfig>,
+
+
+    /// 
+    /// Provides information for a dataflow endpoint config object.       Dataflow endpoint config objects are used to provide parameters about which IP endpoint(s) to use during a contact.       Dataflow endpoints are where Ground Station sends data during a downlink contact and where Ground Station receives data to send to the satellite during an uplink contact.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataflowEndpointConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataflowEndpointConfig")]
+    pub dataflow_endpoint_config: Option<DataflowEndpointConfig>,
+
 }
+
+
 
 
 /// Defines decoding settings.
@@ -578,44 +653,3 @@ pub struct DecodeConfig {
 }
 
 
-/// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink demod decode config in a mission profile to receive the downlink data that has been demodulated and decoded.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AntennaDownlinkDemodDecodeConfig {
-
-
-    /// 
-    /// Defines the spectrum configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SpectrumConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SpectrumConfig")]
-    pub spectrum_config: Option<SpectrumConfig>,
-
-
-    /// 
-    /// Defines how the RF signal will be demodulated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DemodulationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DemodulationConfig")]
-    pub demodulation_config: Option<DemodulationConfig>,
-
-
-    /// 
-    /// Defines how the RF signal will be decoded.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DecodeConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DecodeConfig")]
-    pub decode_config: Option<DecodeConfig>,
-
-}

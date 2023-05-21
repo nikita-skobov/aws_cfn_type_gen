@@ -30,6 +30,8 @@ pub struct CfnGatewayRouteTableAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnGatewayRouteTableAssociation {
     fn type_string() -> &'static str {
         "AWS::EC2::GatewayRouteTableAssociation"

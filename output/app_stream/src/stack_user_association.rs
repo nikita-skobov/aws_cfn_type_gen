@@ -6,32 +6,6 @@ pub struct CfnStackUserAssociation {
 
 
     /// 
-    /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: API | AWS_AD | SAML | USERPOOL
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
-
-
-    /// 
-    /// Specifies whether a welcome email is sent to a user after the user is created in the user pool.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SendEmailNotification")]
-    pub send_email_notification: Option<bool>,
-
-
-    /// 
     /// The email address of the user who is associated with the stack.
     /// 
     /// NoteUsers' email addresses are case-sensitive.
@@ -52,6 +26,18 @@ pub struct CfnStackUserAssociation {
 
 
     /// 
+    /// Specifies whether a welcome email is sent to a user after the user is created in the user pool.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SendEmailNotification")]
+    pub send_email_notification: Option<bool>,
+
+
+    /// 
     /// The name of the stack that is associated with the user.
     /// 
     /// Required: Yes
@@ -64,7 +50,50 @@ pub struct CfnStackUserAssociation {
     #[serde(rename = "StackName")]
     pub stack_name: String,
 
+
+    /// 
+    /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: API | AWS_AD | SAML | USERPOOL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: StackUserAssociationAuthenticationTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StackUserAssociationAuthenticationTypeEnum {
+
+    /// API
+    #[serde(rename = "API")]
+    Api,
+
+    /// AWS_AD
+    #[serde(rename = "AWS_AD")]
+    Awsad,
+
+    /// SAML
+    #[serde(rename = "SAML")]
+    Saml,
+
+    /// USERPOOL
+    #[serde(rename = "USERPOOL")]
+    Userpool,
+
+}
+
+impl Default for StackUserAssociationAuthenticationTypeEnum {
+    fn default() -> Self {
+        StackUserAssociationAuthenticationTypeEnum::Api
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnStackUserAssociation {
     fn type_string() -> &'static str {

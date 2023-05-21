@@ -8,27 +8,27 @@ pub struct CfnChannel {
 
 
     /// 
-    /// Configures ingress access logs.
+    /// Configures egress access logs.
     /// 
     /// Required: No
     ///
     /// Type: LogConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IngressAccessLogs")]
-    pub ingress_access_logs: Option<LogConfiguration>,
+    #[serde(rename = "EgressAccessLogs")]
+    pub egress_access_logs: Option<LogConfiguration>,
 
 
     /// 
-    /// Any descriptive information that you want to add to the channel for future identification purposes.
+    /// The input URL where the source stream should be sent.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: HlsIngest
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "HlsIngest")]
+    pub hls_ingest: Option<HlsIngest>,
 
 
     /// 
@@ -56,29 +56,31 @@ pub struct CfnChannel {
 
 
     /// 
-    /// Configures egress access logs.
+    /// Configures ingress access logs.
     /// 
     /// Required: No
     ///
     /// Type: LogConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EgressAccessLogs")]
-    pub egress_access_logs: Option<LogConfiguration>,
+    #[serde(rename = "IngressAccessLogs")]
+    pub ingress_access_logs: Option<LogConfiguration>,
 
 
     /// 
-    /// The input URL where the source stream should be sent.
+    /// Any descriptive information that you want to add to the channel for future identification purposes.
     /// 
     /// Required: No
     ///
-    /// Type: HlsIngest
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HlsIngest")]
-    pub hls_ingest: Option<HlsIngest>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnChannel {
     fn type_string() -> &'static str {
@@ -88,80 +90,6 @@ impl cfn_resources::CfnResource for CfnChannel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// An endpoint for ingesting source content for a channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IngestEndpoint {
-
-
-    /// 
-    /// The endpoint identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
-    /// The system-generated password for WebDAV input authentication.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: String,
-
-
-    /// 
-    /// The input URL where the source stream should be sent.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: String,
-
-
-    /// 
-    /// The system-generated username for WebDAV input authentication.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: String,
-
-}
-
-
-/// The access log configuration parameters for your channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LogConfiguration {
-
-
-    /// 
-    /// Sets a custom Amazon CloudWatch log group name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
-
 }
 
 
@@ -200,6 +128,8 @@ pub struct Tag {
 }
 
 
+
+
 /// HLS ingest configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HlsIngest {
@@ -217,3 +147,83 @@ pub struct HlsIngest {
     pub ingest_endpoints: Option<Vec<IngestEndpoint>>,
 
 }
+
+
+
+
+/// An endpoint for ingesting source content for a channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IngestEndpoint {
+
+
+    /// 
+    /// The system-generated password for WebDAV input authentication.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: String,
+
+
+    /// 
+    /// The endpoint identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The input URL where the source stream should be sent.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: String,
+
+
+    /// 
+    /// The system-generated username for WebDAV input authentication.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: String,
+
+}
+
+
+
+
+/// The access log configuration parameters for your channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LogConfiguration {
+
+
+    /// 
+    /// Sets a custom Amazon CloudWatch log group name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
+
+}
+
+

@@ -6,18 +6,6 @@ pub struct CfnDocumentationPart {
 
 
     /// 
-    /// The location of the targeted API entity of the to-be-created documentation part.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Location
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Location")]
-    pub location: Location,
-
-
-    /// 
     /// The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can be exported and, hence, published.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnDocumentationPart {
     #[serde(rename = "RestApiId")]
     pub rest_api_id: String,
 
+
+    /// 
+    /// The location of the targeted API entity of the to-be-created documentation part.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Location
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Location")]
+    pub location: Location,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDocumentationPart {
     fn type_string() -> &'static str {
@@ -85,18 +87,6 @@ pub struct Location {
 
 
     /// 
-    /// The HTTP verb of a method. It is a valid field for the API entity types of METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is * for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other location attributes, the child entity's method attribute must match that of the parent entity exactly.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Method")]
-    pub method: Option<String>,
-
-
-    /// 
     /// The name of the targeted API entity. It is a valid and required field for the API entity types of AUTHORIZER, MODEL, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY and RESPONSE_HEADER. It is an invalid field for any other entity type.
     /// 
     /// Required: No
@@ -119,6 +109,79 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<LocationTypeEnum>,
+
+
+    /// 
+    /// The HTTP verb of a method. It is a valid field for the API entity types of METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is * for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other location attributes, the child entity's method attribute must match that of the parent entity exactly.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Method")]
+    pub method: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LocationTypeEnum {
+
+    /// API
+    #[serde(rename = "API")]
+    Api,
+
+    /// AUTHORIZER
+    #[serde(rename = "AUTHORIZER")]
+    Authorizer,
+
+    /// METHOD
+    #[serde(rename = "METHOD")]
+    Method,
+
+    /// MODEL
+    #[serde(rename = "MODEL")]
+    Model,
+
+    /// PATH_PARAMETER
+    #[serde(rename = "PATH_PARAMETER")]
+    Pathparameter,
+
+    /// QUERY_PARAMETER
+    #[serde(rename = "QUERY_PARAMETER")]
+    Queryparameter,
+
+    /// REQUEST_BODY
+    #[serde(rename = "REQUEST_BODY")]
+    Requestbody,
+
+    /// REQUEST_HEADER
+    #[serde(rename = "REQUEST_HEADER")]
+    Requestheader,
+
+    /// RESOURCE
+    #[serde(rename = "RESOURCE")]
+    Resource,
+
+    /// RESPONSE
+    #[serde(rename = "RESPONSE")]
+    Response,
+
+    /// RESPONSE_BODY
+    #[serde(rename = "RESPONSE_BODY")]
+    Responsebody,
+
+    /// RESPONSE_HEADER
+    #[serde(rename = "RESPONSE_HEADER")]
+    Responseheader,
+
+}
+
+impl Default for LocationTypeEnum {
+    fn default() -> Self {
+        LocationTypeEnum::Api
+    }
+}
+

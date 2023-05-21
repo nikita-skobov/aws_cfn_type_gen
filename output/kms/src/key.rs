@@ -20,66 +20,6 @@ pub struct CfnKey {
 
 
     /// 
-    /// Determines the cryptographic     operations for which you can use the KMS key. The default value is     ENCRYPT_DECRYPT. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't    change the KeyUsage value after the KMS key is created.
-    /// 
-    /// ImportantIf you change the value of the KeyUsage property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
-    /// 
-    /// Select only one valid value.
-    /// 
-    /// For symmetric encryption KMS keys, omit the property or specify ENCRYPT_DECRYPT.        For asymmetric KMS keys with RSA key material, specify ENCRYPT_DECRYPT or       SIGN_VERIFY.        For asymmetric KMS keys with ECC key material, specify SIGN_VERIFY.        For asymmetric KMS keys with SM2 (China Regions only) key material, specify ENCRYPT_DECRYPT or      SIGN_VERIFY.        For HMAC KMS keys, specify GENERATE_VERIFY_MAC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ENCRYPT_DECRYPT | GENERATE_VERIFY_MAC | SIGN_VERIFY
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyUsage")]
-    pub key_usage: Option<String>,
-
-
-    /// 
-    /// Creates a multi-Region primary key that you can replicate in other AWS Regions. You can't change the    MultiRegion value after the KMS key is created.
-    /// 
-    /// For a list of AWS Regions in which multi-Region keys are supported, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
-    /// 
-    /// ImportantIf you change the value of the MultiRegion property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
-    /// 
-    /// For a multi-Region key, set to this property to true. For a single-Region    key, omit this property or set it to false. The default value is    false.
-    /// 
-    /// Multi-Region keys are an AWS KMS feature that lets you    create multiple interoperable KMS keys in different AWS Regions. Because these    KMS keys have the same key ID, key material, and other metadata, you can use them to encrypt data    in one AWS Region and decrypt it in a different AWS Region    without making a cross-Region call or exposing the plaintext data. For more information, see    Multi-Region keys in the AWS Key Management Service Developer     Guide.
-    /// 
-    /// You can create a symmetric encryption, HMAC, or asymmetric multi-Region KMS key, and you can    create a multi-Region key with imported key material. However, you cannot create a    multi-Region key in a custom key store.
-    /// 
-    /// To create a replica of this primary key in a different AWS Region ,    create an AWS::KMS::ReplicaKey resource in a CloudFormation stack in the replica Region.    Specify the key ARN of this primary key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MultiRegion")]
-    pub multi_region: Option<bool>,
-
-
-    /// 
-    /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Specifies the number of days in the waiting period before AWS KMS deletes a    KMS key that has been removed from a CloudFormation stack. Enter a value between 7 and 30 days.    The default value is 30 days.
     /// 
     /// When you remove a KMS key from a CloudFormation stack, AWS KMS schedules the    KMS key for deletion and starts the mandatory waiting period. The PendingWindowInDays    property determines the length of waiting period. During the waiting period, the key state of    KMS key is Pending Deletion or Pending Replica Deletion, which prevents    the KMS key from being used in cryptographic operations. When the waiting period expires, AWS KMS permanently deletes the KMS key.
@@ -104,27 +44,21 @@ pub struct CfnKey {
 
 
     /// 
-    /// The key policy that authorizes use of the KMS key. The key policy must conform to the    following rules.
+    /// Enables automatic rotation of the key material for the specified KMS key. By default,    automatic key rotation is not enabled.
     /// 
-    /// The key policy must allow the caller to make a subsequent PutKeyPolicy request on the      KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, refer      to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWS principal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
+    /// AWS KMS supports automatic rotation only for symmetric encryption KMS keys (KeySpec = SYMMETRIC_DEFAULT).    For asymmetric KMS keys and HMAC KMS keys, omit the EnableKeyRotation property or set it to     false.
     /// 
-    /// If you are unsure of which policy to use, consider the default key    policy. This is the key policy that AWS KMS applies to KMS keys that are    created by using the CreateKey API with no specified key policy. It gives the AWS account that owns the key permission to perform all operations on the key. It    also allows you write IAM policies to authorize access to the key. For details, see Default key policy in the AWS Key Management Service Developer     Guide.
+    /// To enable automatic key rotation of the key material for a multi-Region KMS key, set EnableKeyRotation to true on the primary key (created by using AWS::KMS::Key).      AWS KMS copies the rotation status to all replica keys. For details, see Rotating multi-Region keys in the AWS Key Management Service Developer Guide.
     /// 
-    /// A key policy document can include only the following characters:
+    /// When you enable automatic rotation, AWS KMS automatically creates new key    material for the KMS key one year after the enable date and every year    thereafter. AWS KMS retains all key material until you delete the KMS key. For    detailed information about automatic key rotation, see Rotating KMS keys in the      AWS Key Management Service Developer Guide.
     /// 
-    /// Printable ASCII characters        Printable characters in the Basic Latin and Latin-1 Supplement character set        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 32768
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Json
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KeyPolicy")]
-    pub key_policy: serde_json::Value,
+    #[serde(rename = "EnableKeyRotation")]
+    pub enable_key_rotation: Option<bool>,
 
 
     /// 
@@ -141,6 +75,42 @@ pub struct CfnKey {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Determines the cryptographic     operations for which you can use the KMS key. The default value is     ENCRYPT_DECRYPT. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't    change the KeyUsage value after the KMS key is created.
+    /// 
+    /// ImportantIf you change the value of the KeyUsage property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
+    /// 
+    /// Select only one valid value.
+    /// 
+    /// For symmetric encryption KMS keys, omit the property or specify ENCRYPT_DECRYPT.        For asymmetric KMS keys with RSA key material, specify ENCRYPT_DECRYPT or       SIGN_VERIFY.        For asymmetric KMS keys with ECC key material, specify SIGN_VERIFY.        For asymmetric KMS keys with SM2 (China Regions only) key material, specify ENCRYPT_DECRYPT or      SIGN_VERIFY.        For HMAC KMS keys, specify GENERATE_VERIFY_MAC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ENCRYPT_DECRYPT | GENERATE_VERIFY_MAC | SIGN_VERIFY
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyUsage")]
+    pub key_usage: Option<KeyKeyUsageEnum>,
+
+
+    /// 
+    /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 8192
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -182,27 +152,145 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeySpec")]
-    pub key_spec: Option<String>,
+    pub key_spec: Option<KeyKeySpecEnum>,
 
 
     /// 
-    /// Enables automatic rotation of the key material for the specified KMS key. By default,    automatic key rotation is not enabled.
+    /// Creates a multi-Region primary key that you can replicate in other AWS Regions. You can't change the    MultiRegion value after the KMS key is created.
     /// 
-    /// AWS KMS supports automatic rotation only for symmetric encryption KMS keys (KeySpec = SYMMETRIC_DEFAULT).    For asymmetric KMS keys and HMAC KMS keys, omit the EnableKeyRotation property or set it to     false.
+    /// For a list of AWS Regions in which multi-Region keys are supported, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
     /// 
-    /// To enable automatic key rotation of the key material for a multi-Region KMS key, set EnableKeyRotation to true on the primary key (created by using AWS::KMS::Key).      AWS KMS copies the rotation status to all replica keys. For details, see Rotating multi-Region keys in the AWS Key Management Service Developer Guide.
+    /// ImportantIf you change the value of the MultiRegion property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
     /// 
-    /// When you enable automatic rotation, AWS KMS automatically creates new key    material for the KMS key one year after the enable date and every year    thereafter. AWS KMS retains all key material until you delete the KMS key. For    detailed information about automatic key rotation, see Rotating KMS keys in the      AWS Key Management Service Developer Guide.
+    /// For a multi-Region key, set to this property to true. For a single-Region    key, omit this property or set it to false. The default value is    false.
+    /// 
+    /// Multi-Region keys are an AWS KMS feature that lets you    create multiple interoperable KMS keys in different AWS Regions. Because these    KMS keys have the same key ID, key material, and other metadata, you can use them to encrypt data    in one AWS Region and decrypt it in a different AWS Region    without making a cross-Region call or exposing the plaintext data. For more information, see    Multi-Region keys in the AWS Key Management Service Developer     Guide.
+    /// 
+    /// You can create a symmetric encryption, HMAC, or asymmetric multi-Region KMS key, and you can    create a multi-Region key with imported key material. However, you cannot create a    multi-Region key in a custom key store.
+    /// 
+    /// To create a replica of this primary key in a different AWS Region ,    create an AWS::KMS::ReplicaKey resource in a CloudFormation stack in the replica Region.    Specify the key ARN of this primary key.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "MultiRegion")]
+    pub multi_region: Option<bool>,
+
+
+    /// 
+    /// The key policy that authorizes use of the KMS key. The key policy must conform to the    following rules.
+    /// 
+    /// The key policy must allow the caller to make a subsequent PutKeyPolicy request on the      KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, refer      to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWS principal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
+    /// 
+    /// If you are unsure of which policy to use, consider the default key    policy. This is the key policy that AWS KMS applies to KMS keys that are    created by using the CreateKey API with no specified key policy. It gives the AWS account that owns the key permission to perform all operations on the key. It    also allows you write IAM policies to authorize access to the key. For details, see Default key policy in the AWS Key Management Service Developer     Guide.
+    /// 
+    /// A key policy document can include only the following characters:
+    /// 
+    /// Printable ASCII characters        Printable characters in the Basic Latin and Latin-1 Supplement character set        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 32768
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "EnableKeyRotation")]
-    pub enable_key_rotation: Option<bool>,
+    #[serde(rename = "KeyPolicy")]
+    pub key_policy: serde_json::Value,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum KeyKeySpecEnum {
+
+    /// ECC_NIST_P256
+    #[serde(rename = "ECC_NIST_P256")]
+    Eccnistp256,
+
+    /// ECC_NIST_P384
+    #[serde(rename = "ECC_NIST_P384")]
+    Eccnistp384,
+
+    /// ECC_NIST_P521
+    #[serde(rename = "ECC_NIST_P521")]
+    Eccnistp521,
+
+    /// ECC_SECG_P256K1
+    #[serde(rename = "ECC_SECG_P256K1")]
+    Eccsecgp256k1,
+
+    /// HMAC_224
+    #[serde(rename = "HMAC_224")]
+    Hmac224,
+
+    /// HMAC_256
+    #[serde(rename = "HMAC_256")]
+    Hmac256,
+
+    /// HMAC_384
+    #[serde(rename = "HMAC_384")]
+    Hmac384,
+
+    /// HMAC_512
+    #[serde(rename = "HMAC_512")]
+    Hmac512,
+
+    /// RSA_2048
+    #[serde(rename = "RSA_2048")]
+    Rsa2048,
+
+    /// RSA_3072
+    #[serde(rename = "RSA_3072")]
+    Rsa3072,
+
+    /// RSA_4096
+    #[serde(rename = "RSA_4096")]
+    Rsa4096,
+
+    /// SM2
+    #[serde(rename = "SM2")]
+    Sm2,
+
+    /// SYMMETRIC_DEFAULT
+    #[serde(rename = "SYMMETRIC_DEFAULT")]
+    Symmetricdefault,
+
+}
+
+impl Default for KeyKeySpecEnum {
+    fn default() -> Self {
+        KeyKeySpecEnum::Eccnistp256
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum KeyKeyUsageEnum {
+
+    /// ENCRYPT_DECRYPT
+    #[serde(rename = "ENCRYPT_DECRYPT")]
+    Encryptdecrypt,
+
+    /// GENERATE_VERIFY_MAC
+    #[serde(rename = "GENERATE_VERIFY_MAC")]
+    Generateverifymac,
+
+    /// SIGN_VERIFY
+    #[serde(rename = "SIGN_VERIFY")]
+    Signverify,
+
+}
+
+impl Default for KeyKeyUsageEnum {
+    fn default() -> Self {
+        KeyKeyUsageEnum::Encryptdecrypt
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnKey {
     fn type_string() -> &'static str {
@@ -248,3 +336,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

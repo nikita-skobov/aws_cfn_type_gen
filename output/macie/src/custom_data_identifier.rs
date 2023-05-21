@@ -24,6 +24,34 @@ pub struct CfnCustomDataIdentifier {
 
 
     /// 
+    /// A custom description of the custom data identifier. The description can contain 1-512       characters.
+    /// 
+    /// Avoid including sensitive data in the description. Users of the account might be able       to see the description, depending on the actions that they're allowed to perform in         Amazon Macie.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// An array of character sequences (keywords), one of which must       precede and be in proximity (MaximumMatchDistance) of the regular       expression (Regex) to match.
+    /// 
+    /// The array can contain 1-50 keywords. Each keyword can contain 3-90 UTF-8 characters.       Keywords aren't case sensitive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Keywords")]
+    pub keywords: Option<Vec<String>>,
+
+
+    /// 
     /// The maximum number of characters that can exist between the end of at least one       complete character sequence specified by the Keywords array and the end of       text that matches the regular expression (Regex). If a complete keyword       precedes all the text that matches the regular expression and the keyword is within the       specified distance, Amazon Macie includes the result.
     /// 
     /// The distance can be 1-300 characters. The default value is 50.
@@ -52,34 +80,6 @@ pub struct CfnCustomDataIdentifier {
 
 
     /// 
-    /// An array of character sequences (keywords), one of which must       precede and be in proximity (MaximumMatchDistance) of the regular       expression (Regex) to match.
-    /// 
-    /// The array can contain 1-50 keywords. Each keyword can contain 3-90 UTF-8 characters.       Keywords aren't case sensitive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Keywords")]
-    pub keywords: Option<Vec<String>>,
-
-
-    /// 
-    /// A custom description of the custom data identifier. The description can contain 1-512       characters.
-    /// 
-    /// Avoid including sensitive data in the description. Users of the account might be able       to see the description, depending on the actions that they're allowed to perform in         Amazon Macie.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The regular expression (regex) that defines the text pattern to       match. The expression can contain 1-512 characters.
     /// 
     /// Required: Yes
@@ -91,6 +91,8 @@ pub struct CfnCustomDataIdentifier {
     pub regex: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCustomDataIdentifier {
     fn type_string() -> &'static str {

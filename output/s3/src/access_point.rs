@@ -6,6 +6,18 @@ pub struct CfnAccessPoint {
 
 
     /// 
+    /// The name of the bucket associated with this access point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+
+    /// 
     /// The access point policy associated with this access point.
     /// 
     /// Required: No
@@ -64,19 +76,9 @@ pub struct CfnAccessPoint {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
-    /// The name of the bucket associated with this access point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAccessPoint {
     fn type_string() -> &'static str {
@@ -108,6 +110,8 @@ pub struct VpcConfiguration {
 }
 
 
+
+
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PublicAccessBlockConfiguration {
@@ -130,17 +134,17 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting     this element to TRUE restricts access to this bucket to only AWS service principals and authorized users within this account if the bucket has     a public policy.
+    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
     /// 
-    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
+    /// Enabling this setting doesn't affect existing bucket policies.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RestrictPublicBuckets")]
-    pub restrict_public_buckets: Option<bool>,
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
 
 
     /// 
@@ -158,16 +162,18 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
+    /// Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting     this element to TRUE restricts access to this bucket to only AWS service principals and authorized users within this account if the bucket has     a public policy.
     /// 
-    /// Enabling this setting doesn't affect existing bucket policies.
+    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
+    #[serde(rename = "RestrictPublicBuckets")]
+    pub restrict_public_buckets: Option<bool>,
 
 }
+
+

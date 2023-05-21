@@ -6,6 +6,56 @@ pub struct CfnRepositoryAssociation {
 
 
     /// 
+    /// The name of the repository.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^\S[\w.-]*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The name of the bucket. This is required for your S3Bucket repository. The name must start with the prefix codeguru-reviewer-*.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketName")]
+    pub bucket_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is      arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see      Connection in      the AWS CodeStar Connections API Reference.
+    /// 
+    /// ConnectionArn must be specified for Bitbucket and GitHub Enterprise Server repositories. It has no effect if      it is specified for an AWS CodeCommit repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws(-[\w]+)*:.+:.+:[0-9]{12}:.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConnectionArn")]
+    pub connection_arn: Option<String>,
+
+
+    /// 
     /// The type of repository that contains the source code to be reviewed. The valid values are:
     /// 
     /// CodeCommit            Bitbucket            GitHubEnterpriseServer           S3Bucket
@@ -34,26 +84,6 @@ pub struct CfnRepositoryAssociation {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is      arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see      Connection in      the AWS CodeStar Connections API Reference.
-    /// 
-    /// ConnectionArn must be specified for Bitbucket and GitHub Enterprise Server repositories. It has no effect if      it is specified for an AWS CodeCommit repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws(-[\w]+)*:.+:.+:[0-9]{12}:.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectionArn")]
-    pub connection_arn: Option<String>,
-
-
-    /// 
     /// The owner of the repository. For a GitHub Enterprise Server or Bitbucket repository, this is the username     for the account that owns the repository.
     /// 
     /// Owner must be specified for Bitbucket and GitHub Enterprise Server repositories. It has no effect if      it is specified for an AWS CodeCommit repository.
@@ -72,37 +102,9 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "Owner")]
     pub owner: Option<String>,
 
-
-    /// 
-    /// The name of the bucket. This is required for your S3Bucket repository. The name must start with the prefix codeguru-reviewer-*.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketName")]
-    pub bucket_name: Option<String>,
-
-
-    /// 
-    /// The name of the repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^\S[\w.-]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRepositoryAssociation {
     fn type_string() -> &'static str {
@@ -148,3 +150,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

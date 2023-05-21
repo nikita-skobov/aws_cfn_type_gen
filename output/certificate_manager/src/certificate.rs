@@ -6,23 +6,37 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
+    /// The method you want to use to validate that you own or control the domain associated     with a public certificate. You can validate with DNS or validate with       email. We recommend that you use DNS validation.
     /// 
-    /// arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012
+    /// If not specified, this property defaults to email validation.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:[\w+=/,.@-]+:acm-pca:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*
+    /// Allowed values: DNS | EMAIL
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificateAuthorityArn")]
-    pub certificate_authority_arn: Option<String>,
+    #[serde(rename = "ValidationMethod")]
+    pub validation_method: Option<CertificateValidationMethodEnum>,
+
+
+    /// 
+    /// You can opt out of certificate transparency logging by specifying the       DISABLED option. Opt in by specifying ENABLED.
+    /// 
+    /// If you do not specify a certificate transparency logging preference on a new     CloudFormation template, or if you remove the logging preference from an existing template,     this is the same as explicitly enabling the preference.
+    /// 
+    /// Changing the certificate transparency logging preference will update the existing     resource by calling UpdateCertificateOptions on the certificate. This action     will not create a new resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateTransparencyLoggingPreference")]
+    pub certificate_transparency_logging_preference: Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
 
 
     /// 
@@ -58,21 +72,39 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// You can opt out of certificate transparency logging by specifying the       DISABLED option. Opt in by specifying ENABLED.
+    /// Domain information that domain name registrars use to verify your identity.
     /// 
-    /// If you do not specify a certificate transparency logging preference on a new     CloudFormation template, or if you remove the logging preference from an existing template,     this is the same as explicitly enabling the preference.
+    /// ImportantIn order for a AWS::CertificateManager::Certificate to be provisioned and validated       in CloudFormation automatically, the `DomainName` property needs to be identical to one       of the `DomainName` property supplied in DomainValidationOptions, if the       ValidationMethod is **DNS**. Failing to keep them like-for-like will result in failure       to create the domain validation records in Route53.
     /// 
-    /// Changing the certificate transparency logging preference will update the existing     resource by calling UpdateCertificateOptions on the certificate. This action     will not create a new resource.
+    /// Required: No
+    ///
+    /// Type: List of DomainValidationOption
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainValidationOptions")]
+    pub domain_validation_options: Option<Vec<DomainValidationOption>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
+    /// 
+    /// arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DISABLED | ENABLED
+    /// Minimum: 20
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateTransparencyLoggingPreference")]
-    pub certificate_transparency_logging_preference: Option<String>,
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:[\w+=/,.@-]+:acm-pca:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateAuthorityArn")]
+    pub certificate_authority_arn: Option<String>,
 
 
     /// 
@@ -88,39 +120,47 @@ pub struct CfnCertificate {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The method you want to use to validate that you own or control the domain associated     with a public certificate. You can validate with DNS or validate with       email. We recommend that you use DNS validation.
-    /// 
-    /// If not specified, this property defaults to email validation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DNS | EMAIL
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ValidationMethod")]
-    pub validation_method: Option<String>,
+}
 
 
-    /// 
-    /// Domain information that domain name registrars use to verify your identity.
-    /// 
-    /// ImportantIn order for a AWS::CertificateManager::Certificate to be provisioned and validated       in CloudFormation automatically, the `DomainName` property needs to be identical to one       of the `DomainName` property supplied in DomainValidationOptions, if the       ValidationMethod is **DNS**. Failing to keep them like-for-like will result in failure       to create the domain validation records in Route53.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DomainValidationOption
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainValidationOptions")]
-    pub domain_validation_options: Option<Vec<DomainValidationOption>>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateCertificateTransparencyLoggingPreferenceEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
 
 }
+
+impl Default for CertificateCertificateTransparencyLoggingPreferenceEnum {
+    fn default() -> Self {
+        CertificateCertificateTransparencyLoggingPreferenceEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateValidationMethodEnum {
+
+    /// DNS
+    #[serde(rename = "DNS")]
+    Dns,
+
+    /// EMAIL
+    #[serde(rename = "EMAIL")]
+    Email,
+
+}
+
+impl Default for CertificateValidationMethodEnum {
+    fn default() -> Self {
+        CertificateValidationMethodEnum::Dns
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string() -> &'static str {
@@ -136,24 +176,6 @@ impl cfn_resources::CfnResource for CfnCertificate {
 /// DomainValidationOption is a property of the AWS::CertificateManager::Certificate resource that specifies the AWS Certificate Manager (ACM) certificate domain to validate. Depending on the     chosen validation method, ACM checks the domain's DNS record for a validation CNAME, or it     attempts to send a validation email message to the domain owner.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DomainValidationOption {
-
-
-    /// 
-    /// A fully qualified domain name (FQDN) in the certificate request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainName")]
-    pub domain_name: String,
 
 
     /// 
@@ -177,6 +199,24 @@ pub struct DomainValidationOption {
 
 
     /// 
+    /// A fully qualified domain name (FQDN) in the certificate request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainName")]
+    pub domain_name: String,
+
+
+    /// 
     /// The domain name to which you want ACM to send validation emails. This domain name is the     suffix of the email addresses that you want ACM to use. This must be the same as the       DomainName value or a superdomain of the DomainName value. For     example, if you request a certificate for testing.example.com, you can specify       example.com as this value. In that case, ACM sends domain validation emails     to the following five addresses:
     /// 
     /// admin@example.com            administrator@example.com            hostmaster@example.com            postmaster@example.com            webmaster@example.com
@@ -196,6 +236,8 @@ pub struct DomainValidationOption {
     pub validation_domain: Option<String>,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -231,3 +273,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

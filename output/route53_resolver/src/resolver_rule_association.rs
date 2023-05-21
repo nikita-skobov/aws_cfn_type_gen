@@ -6,22 +6,6 @@ pub struct CfnResolverRuleAssociation {
 
 
     /// 
-    /// The name of an association between a Resolver rule and a VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The ID of the VPC that you associated the Resolver rule with.
     /// 
     /// Required: Yes
@@ -35,6 +19,22 @@ pub struct CfnResolverRuleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VPCId")]
     pub vpcid: String,
+
+
+    /// 
+    /// The name of an association between a Resolver rule and a VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -53,6 +53,8 @@ pub struct CfnResolverRuleAssociation {
     pub resolver_rule_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResolverRuleAssociation {
     fn type_string() -> &'static str {

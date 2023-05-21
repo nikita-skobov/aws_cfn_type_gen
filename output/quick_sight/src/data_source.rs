@@ -6,76 +6,6 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// Error information from the last update or the creation of the data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataSourceErrorInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ErrorInfo")]
-    pub error_info: Option<DataSourceErrorInfo>,
-
-
-    /// 
-    /// An ID for the data source. This ID is unique per AWS Region for each AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataSourceId")]
-    pub data_source_id: Option<String>,
-
-
-    /// 
-    /// A set of alternate data source parameters that you want to share for the credentials       stored with this data source. The credentials are applied in tandem with the data source       parameters when you copy a data source by using a create or update request. The API       operation compares the DataSourceParameters structure that's in the request       with the structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the credentials from this       existing data source. If the AlternateDataSourceParameters list is null,       the Credentials originally used with this DataSourceParameters       are automatically allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DataSourceParameters
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlternateDataSourceParameters")]
-    pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
-
-
-    /// 
-    /// A list of resource permissions on the data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ResourcePermission
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permissions")]
-    pub permissions: Option<Vec<ResourcePermission>>,
-
-
-    /// 
-    /// The AWS account ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: ^[0-9]{12}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: Option<String>,
-
-
-    /// 
     /// Contains a map of the key-value pairs for the resource tag or tags assigned to the data source.
     /// 
     /// Required: No
@@ -102,6 +32,18 @@ pub struct CfnDataSource {
 
 
     /// 
+    /// Error information from the last update or the creation of the data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataSourceErrorInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ErrorInfo")]
+    pub error_info: Option<DataSourceErrorInfo>,
+
+
+    /// 
     /// The type of the data source. To return a 			list of all data sources, use ListDataSources.
     /// 
     /// Use AMAZON_ELASTICSEARCH for Amazon OpenSearch Service.
@@ -114,7 +56,21 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<DataSourceTypeEnum>,
+
+
+    /// 
+    /// A list of resource permissions on the data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ResourcePermission
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Permissions")]
+    pub permissions: Option<Vec<ResourcePermission>>,
 
 
     /// 
@@ -134,18 +90,6 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// The parameters that Amazon QuickSight uses to connect to your underlying source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataSourceParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataSourceParameters")]
-    pub data_source_parameters: Option<DataSourceParameters>,
-
-
-    /// 
     /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your underlying source.
     /// 
     /// Required: No
@@ -155,6 +99,20 @@ pub struct CfnDataSource {
     /// Update requires: No interruption
     #[serde(rename = "SslProperties")]
     pub ssl_properties: Option<SslProperties>,
+
+
+    /// 
+    /// A set of alternate data source parameters that you want to share for the credentials       stored with this data source. The credentials are applied in tandem with the data source       parameters when you copy a data source by using a create or update request. The API       operation compares the DataSourceParameters structure that's in the request       with the structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the credentials from this       existing data source. If the AlternateDataSourceParameters list is null,       the Credentials originally used with this DataSourceParameters       are automatically allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DataSourceParameters
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlternateDataSourceParameters")]
+    pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
 
 
     /// 
@@ -168,7 +126,166 @@ pub struct CfnDataSource {
     #[serde(rename = "VpcConnectionProperties")]
     pub vpc_connection_properties: Option<VpcConnectionProperties>,
 
+
+    /// 
+    /// The AWS account ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: ^[0-9]{12}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AwsAccountId")]
+    pub aws_account_id: Option<String>,
+
+
+    /// 
+    /// An ID for the data source. This ID is unique per AWS Region for each AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataSourceId")]
+    pub data_source_id: Option<String>,
+
+
+    /// 
+    /// The parameters that Amazon QuickSight uses to connect to your underlying source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataSourceParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataSourceParameters")]
+    pub data_source_parameters: Option<DataSourceParameters>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DataSourceTypeEnum {
+
+    /// ADOBE_ANALYTICS
+    #[serde(rename = "ADOBE_ANALYTICS")]
+    Adobeanalytics,
+
+    /// AMAZON_ELASTICSEARCH
+    #[serde(rename = "AMAZON_ELASTICSEARCH")]
+    Amazonelasticsearch,
+
+    /// AMAZON_OPENSEARCH
+    #[serde(rename = "AMAZON_OPENSEARCH")]
+    Amazonopensearch,
+
+    /// ATHENA
+    #[serde(rename = "ATHENA")]
+    Athena,
+
+    /// AURORA
+    #[serde(rename = "AURORA")]
+    Aurora,
+
+    /// AURORA_POSTGRESQL
+    #[serde(rename = "AURORA_POSTGRESQL")]
+    Aurorapostgresql,
+
+    /// AWS_IOT_ANALYTICS
+    #[serde(rename = "AWS_IOT_ANALYTICS")]
+    Awsiotanalytics,
+
+    /// DATABRICKS
+    #[serde(rename = "DATABRICKS")]
+    Databricks,
+
+    /// EXASOL
+    #[serde(rename = "EXASOL")]
+    Exasol,
+
+    /// GITHUB
+    #[serde(rename = "GITHUB")]
+    Github,
+
+    /// JIRA
+    #[serde(rename = "JIRA")]
+    Jira,
+
+    /// MARIADB
+    #[serde(rename = "MARIADB")]
+    Mariadb,
+
+    /// MYSQL
+    #[serde(rename = "MYSQL")]
+    Mysql,
+
+    /// ORACLE
+    #[serde(rename = "ORACLE")]
+    Oracle,
+
+    /// POSTGRESQL
+    #[serde(rename = "POSTGRESQL")]
+    Postgresql,
+
+    /// PRESTO
+    #[serde(rename = "PRESTO")]
+    Presto,
+
+    /// REDSHIFT
+    #[serde(rename = "REDSHIFT")]
+    Redshift,
+
+    /// S3
+    #[serde(rename = "S3")]
+    S3,
+
+    /// SALESFORCE
+    #[serde(rename = "SALESFORCE")]
+    Salesforce,
+
+    /// SERVICENOW
+    #[serde(rename = "SERVICENOW")]
+    Servicenow,
+
+    /// SNOWFLAKE
+    #[serde(rename = "SNOWFLAKE")]
+    Snowflake,
+
+    /// SPARK
+    #[serde(rename = "SPARK")]
+    Spark,
+
+    /// SQLSERVER
+    #[serde(rename = "SQLSERVER")]
+    Sqlserver,
+
+    /// TERADATA
+    #[serde(rename = "TERADATA")]
+    Teradata,
+
+    /// TIMESTREAM
+    #[serde(rename = "TIMESTREAM")]
+    Timestream,
+
+    /// TWITTER
+    #[serde(rename = "TWITTER")]
+    Twitter,
+
+}
+
+impl Default for DataSourceTypeEnum {
+    fn default() -> Self {
+        DataSourceTypeEnum::Adobeanalytics
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnDataSource {
     fn type_string() -> &'static str {
@@ -181,9 +298,30 @@ impl cfn_resources::CfnResource for CfnDataSource {
 }
 
 
-/// The parameters for MariaDB.
+/// VPC connection properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MariaDbParameters {
+pub struct VpcConnectionProperties {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) for the VPC connection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcConnectionArn")]
+    pub vpc_connection_arn: String,
+
+}
+
+
+
+
+/// The parameters for Amazon RDS.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RdsParameters {
 
 
     /// 
@@ -203,7 +341,7 @@ pub struct MariaDbParameters {
 
 
     /// 
-    /// Host.
+    /// Instance ID.
     /// 
     /// Required: Yes
     ///
@@ -211,295 +349,56 @@ pub struct MariaDbParameters {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
+    #[serde(rename = "InstanceId")]
+    pub instance_id: String,
+
+}
+
+
+
+
+/// Amazon S3 manifest file location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ManifestFileLocation {
 
 
     /// 
-    /// Port.
+    /// Amazon S3 key that identifies an object.
     /// 
     /// Required: Yes
     ///
-    /// Type: Double
+    /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 65535
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-}
-
-
-/// Oracle parameters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OracleParameters {
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// Database.
+    /// Amazon S3 bucket.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
-
-
-    /// 
-    /// Port.
-    /// 
-    /// Required: Yes
+    /// Minimum: 1
     ///
-    /// Type: Double
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-
-    /// 
-    /// Host.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
 
 }
 
 
-/// The parameters that Amazon QuickSight uses to connect to your underlying data source.       This is a variant type structure. For this structure to be valid, only one of the       attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataSourceParameters {
-
-
-    /// 
-    /// The parameters for SQL Server.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SqlServerParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SqlServerParameters")]
-    pub sql_server_parameters: Option<SqlServerParameters>,
-
-
-    /// 
-    /// The parameters for MariaDB.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MariaDbParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MariaDbParameters")]
-    pub maria_db_parameters: Option<MariaDbParameters>,
-
-
-    /// 
-    /// The parameters for Spark.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SparkParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SparkParameters")]
-    pub spark_parameters: Option<SparkParameters>,
-
-
-    /// 
-    /// The parameters for Amazon Aurora MySQL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuroraParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuroraParameters")]
-    pub aurora_parameters: Option<AuroraParameters>,
-
-
-    /// 
-    /// The required parameters that are needed to connect to a Databricks data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DatabricksParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatabricksParameters")]
-    pub databricks_parameters: Option<DatabricksParameters>,
-
-
-    /// 
-    /// The parameters for Amazon RDS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RdsParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RdsParameters")]
-    pub rds_parameters: Option<RdsParameters>,
-
-
-    /// 
-    /// The parameters for Presto.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PrestoParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PrestoParameters")]
-    pub presto_parameters: Option<PrestoParameters>,
-
-
-    /// 
-    /// The parameters for Amazon Athena.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AthenaParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AthenaParameters")]
-    pub athena_parameters: Option<AthenaParameters>,
-
-
-    /// 
-    /// The parameters for OpenSearch.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AmazonOpenSearchParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AmazonOpenSearchParameters")]
-    pub amazon_open_search_parameters: Option<AmazonOpenSearchParameters>,
-
-
-    /// 
-    /// Oracle parameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OracleParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OracleParameters")]
-    pub oracle_parameters: Option<OracleParameters>,
-
-
-    /// 
-    /// The parameters for Amazon Aurora.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuroraPostgreSqlParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuroraPostgreSqlParameters")]
-    pub aurora_postgre_sql_parameters: Option<AuroraPostgreSqlParameters>,
-
-
-    /// 
-    /// The parameters for S3.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3Parameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Parameters")]
-    pub s3_parameters: Option<S3Parameters>,
-
-
-    /// 
-    /// The parameters for Snowflake.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SnowflakeParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnowflakeParameters")]
-    pub snowflake_parameters: Option<SnowflakeParameters>,
-
-
-    /// 
-    /// The parameters for Amazon Redshift.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RedshiftParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedshiftParameters")]
-    pub redshift_parameters: Option<RedshiftParameters>,
-
-
-    /// 
-    /// The parameters for Teradata.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TeradataParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TeradataParameters")]
-    pub teradata_parameters: Option<TeradataParameters>,
-
-
-    /// 
-    /// The parameters for PostgreSQL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PostgreSqlParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PostgreSqlParameters")]
-    pub postgre_sql_parameters: Option<PostgreSqlParameters>,
-
-
-    /// 
-    /// The parameters for OpenSearch.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AmazonElasticsearchParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AmazonElasticsearchParameters")]
-    pub amazon_elasticsearch_parameters: Option<AmazonElasticsearchParameters>,
-
-
-    /// 
-    /// The parameters for MySQL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MySqlParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MySqlParameters")]
-    pub my_sql_parameters: Option<MySqlParameters>,
-
-}
 
 
 /// The parameters for PostgreSQL.
@@ -557,102 +456,124 @@ pub struct PostgreSqlParameters {
 }
 
 
-/// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your       underlying data source.
+
+
+/// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SslProperties {
+pub struct ResourcePermission {
 
 
     /// 
-    /// A Boolean option to control whether SSL should be disabled.
+    /// The Amazon Resource Name (ARN) of the principal. This can be one of the following:
+    /// 
+    /// The ARN of an Amazon QuickSight user or group associated with a data source or dataset. (This is   common.)     The ARN of an Amazon QuickSight user, group, or namespace associated with an analysis, dashboard,   template, or theme. (This is common.)     The ARN of an AWS account root: This is an IAM ARN rather than a Amazon QuickSight ARN. Use this option only to share resources (templates) across AWS accounts. (This is   less common.)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principal")]
+    pub principal: String,
+
+
+    /// 
+    /// The IAM action to grant or revoke permissions on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Actions")]
+    pub actions: Vec<String>,
+
+}
+
+
+
+
+/// Error information for the data source creation or update.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataSourceErrorInfo {
+
+
+    /// 
+    /// Error message.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisableSsl")]
-    pub disable_ssl: Option<bool>,
-
-}
-
-
-/// The parameters for OpenSearch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AmazonElasticsearchParameters {
-
-
-    /// 
-    /// The OpenSearch domain.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: String,
-
-}
-
-
-/// VPC connection properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectionProperties {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) for the VPC connection.
-    /// 
-    /// Required: Yes
-    ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VpcConnectionArn")]
-    pub vpc_connection_arn: String,
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
+
+
+    /// 
+    /// Error type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ACCESS_DENIED | CONFLICT | COPY_SOURCE_NOT_FOUND | ENGINE_VERSION_NOT_SUPPORTED | GENERIC_SQL_FAILURE | TIMEOUT | UNKNOWN | UNKNOWN_HOST
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<DataSourceErrorInfoTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DataSourceErrorInfoTypeEnum {
+
+    /// ACCESS_DENIED
+    #[serde(rename = "ACCESS_DENIED")]
+    Accessdenied,
+
+    /// CONFLICT
+    #[serde(rename = "CONFLICT")]
+    Conflict,
+
+    /// COPY_SOURCE_NOT_FOUND
+    #[serde(rename = "COPY_SOURCE_NOT_FOUND")]
+    Copysourcenotfound,
+
+    /// ENGINE_VERSION_NOT_SUPPORTED
+    #[serde(rename = "ENGINE_VERSION_NOT_SUPPORTED")]
+    Engineversionnotsupported,
+
+    /// GENERIC_SQL_FAILURE
+    #[serde(rename = "GENERIC_SQL_FAILURE")]
+    Genericsqlfailure,
+
+    /// TIMEOUT
+    #[serde(rename = "TIMEOUT")]
+    Timeout,
+
+    /// UNKNOWN
+    #[serde(rename = "UNKNOWN")]
+    Unknown,
+
+    /// UNKNOWN_HOST
+    #[serde(rename = "UNKNOWN_HOST")]
+    Unknownhost,
+
+}
+
+impl Default for DataSourceErrorInfoTypeEnum {
+    fn default() -> Self {
+        DataSourceErrorInfoTypeEnum::Accessdenied
+    }
+}
+
 
 
 /// The parameters for Amazon Redshift. The ClusterId field can be blank if       Host and Port are both set. The Host and       Port fields can be blank if the ClusterId field is set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RedshiftParameters {
-
-
-    /// 
-    /// Database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
-
-
-    /// 
-    /// Host. This field can be blank if ClusterId is provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: Option<String>,
 
 
     /// 
@@ -686,71 +607,11 @@ pub struct RedshiftParameters {
     #[serde(rename = "ClusterId")]
     pub cluster_id: Option<String>,
 
-}
-
-
-/// The combination of user name and password that are used as credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CredentialPair {
-
 
     /// 
-    /// A set of alternate data source parameters that you want to share for these       credentials. The credentials are applied in tandem with the data source parameters when       you copy a data source by using a create or update request. The API operation compares       the DataSourceParameters structure that's in the request with the       structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the new data source with       the existing credentials. If the AlternateDataSourceParameters list is       null, the DataSourceParameters originally used with these         Credentials is automatically allowed.
+    /// Host. This field can be blank if ClusterId is provided.
     /// 
     /// Required: No
-    ///
-    /// Type: List of DataSourceParameters
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlternateDataSourceParameters")]
-    pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
-
-
-    /// 
-    /// Password.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: String,
-
-
-    /// 
-    /// User name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: String,
-
-}
-
-
-/// The parameters for Snowflake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SnowflakeParameters {
-
-
-    /// 
-    /// Host.
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
@@ -760,7 +621,7 @@ pub struct SnowflakeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: Option<String>,
 
 
     /// 
@@ -777,27 +638,27 @@ pub struct SnowflakeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Database")]
     pub database: String,
-
-
-    /// 
-    /// Warehouse.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Warehouse")]
-    pub warehouse: String,
 
 }
 
 
-/// The parameters for Teradata.
+
+
+/// Oracle parameters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TeradataParameters {
+pub struct OracleParameters {
+
+
+    /// 
+    /// Port.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: f64,
 
 
     /// 
@@ -807,13 +668,30 @@ pub struct TeradataParameters {
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
     pub database: String,
+
+
+    /// 
+    /// Host.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+}
+
+
+
+
+/// The parameters for Spark.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SparkParameters {
 
 
     /// 
@@ -850,92 +728,6 @@ pub struct TeradataParameters {
 }
 
 
-/// Parameters for Amazon Aurora PostgreSQL-Compatible Edition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuroraPostgreSqlParameters {
-
-
-    /// 
-    /// The Amazon Aurora PostgreSQL-Compatible host to connect to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
-
-
-    /// 
-    /// The port that Amazon Aurora PostgreSQL is listening on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-
-    /// 
-    /// The Amazon Aurora PostgreSQL database to connect to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
-
-}
-
-
-/// Error information for the data source creation or update.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataSourceErrorInfo {
-
-
-    /// 
-    /// Error message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
-
-
-    /// 
-    /// Error type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ACCESS_DENIED | CONFLICT | COPY_SOURCE_NOT_FOUND | ENGINE_VERSION_NOT_SUPPORTED | GENERIC_SQL_FAILURE | TIMEOUT | UNKNOWN | UNKNOWN_HOST
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-}
 
 
 /// Parameters for Amazon Aurora.
@@ -944,6 +736,22 @@ pub struct AuroraParameters {
 
 
     /// 
+    /// Database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
     /// Host.
     /// 
     /// Required: Yes
@@ -974,28 +782,26 @@ pub struct AuroraParameters {
     #[serde(rename = "Port")]
     pub port: f64,
 
-
-    /// 
-    /// Database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
-
 }
+
+
 
 
 /// Data source credentials. This is a variant type structure. For this structure to be       valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSourceCredentials {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the secret associated with the data source in AWS Secrets Manager.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
 
 
     /// 
@@ -1023,179 +829,34 @@ pub struct DataSourceCredentials {
     #[serde(rename = "CopySourceArn")]
     pub copy_source_arn: Option<String>,
 
+}
+
+
+
+
+/// Parameters for Amazon Athena.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AthenaParameters {
+
 
     /// 
-    /// The Amazon Resource Name (ARN) of the secret associated with the data source in AWS Secrets Manager.
+    /// The workgroup that Amazon Athena uses.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
-
-}
-
-
-/// The parameters for S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Parameters {
-
-
-    /// 
-    /// Location of the Amazon S3 manifest file. This is NULL if the manifest file was       uploaded into Amazon QuickSight.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ManifestFileLocation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManifestFileLocation")]
-    pub manifest_file_location: ManifestFileLocation,
-
-}
-
-
-/// The parameters for SQL Server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SqlServerParameters {
-
-
-    /// 
-    /// Database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
     /// Minimum: 1
     ///
     /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
-
-
-    /// 
-    /// Port.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-
-    /// 
-    /// Host.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
+    #[serde(rename = "WorkGroup")]
+    pub work_group: Option<String>,
 
 }
 
 
-/// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourcePermission {
-
-
-    /// 
-    /// The IAM action to grant or revoke permissions on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Actions")]
-    pub actions: Vec<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the principal. This can be one of the following:
-    /// 
-    /// The ARN of an Amazon QuickSight user or group associated with a data source or dataset. (This is   common.)     The ARN of an Amazon QuickSight user, group, or namespace associated with an analysis, dashboard,   template, or theme. (This is common.)     The ARN of an AWS account root: This is an IAM ARN rather than a Amazon QuickSight ARN. Use this option only to share resources (templates) across AWS accounts. (This is   less common.)
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: String,
-
-}
-
-
-/// The parameters for Presto.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PrestoParameters {
-
-
-    /// 
-    /// Port.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-
-    /// 
-    /// Host.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
-
-
-    /// 
-    /// Catalog.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Catalog")]
-    pub catalog: String,
-
-}
 
 
 /// The parameters for MySQL.
@@ -1253,6 +914,86 @@ pub struct MySqlParameters {
 }
 
 
+
+
+/// The parameters for S3.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Parameters {
+
+
+    /// 
+    /// Location of the Amazon S3 manifest file. This is NULL if the manifest file was       uploaded into Amazon QuickSight.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ManifestFileLocation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManifestFileLocation")]
+    pub manifest_file_location: ManifestFileLocation,
+
+}
+
+
+
+
+/// The parameters for MariaDB.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MariaDbParameters {
+
+
+    /// 
+    /// Host.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+
+    /// 
+    /// Database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
+    /// Port.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: f64,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -1288,36 +1029,76 @@ pub struct Tag {
 }
 
 
-/// Parameters for Amazon Athena.
+
+
+/// The required parameters that are needed to connect to a Databricks data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AthenaParameters {
+pub struct DatabricksParameters {
 
 
     /// 
-    /// The workgroup that Amazon Athena uses.
+    /// The host name of the Databricks data source.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+
+    /// 
+    /// The port for the Databricks data source.
+    /// 
+    /// Required: Yes
     ///
-    /// Maximum: 128
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "WorkGroup")]
-    pub work_group: Option<String>,
+    #[serde(rename = "Port")]
+    pub port: f64,
+
+
+    /// 
+    /// The HTTP path of the Databricks data source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SqlEndpointPath")]
+    pub sql_endpoint_path: String,
 
 }
 
 
-/// The parameters for Amazon RDS.
+
+
+/// Parameters for Amazon Aurora PostgreSQL-Compatible Edition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RdsParameters {
+pub struct AuroraPostgreSqlParameters {
 
 
     /// 
-    /// Instance ID.
+    /// The port that Amazon Aurora PostgreSQL is listening on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: f64,
+
+
+    /// 
+    /// The Amazon Aurora PostgreSQL-Compatible host to connect to.
     /// 
     /// Required: Yes
     ///
@@ -1325,15 +1106,15 @@ pub struct RdsParameters {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    #[serde(rename = "Host")]
+    pub host: String,
 
 
     /// 
-    /// Database.
+    /// The Amazon Aurora PostgreSQL database to connect to.
     /// 
     /// Required: Yes
     ///
@@ -1350,9 +1131,27 @@ pub struct RdsParameters {
 }
 
 
-/// The parameters for Spark.
+
+
+/// The parameters for SQL Server.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SparkParameters {
+pub struct SqlServerParameters {
+
+
+    /// 
+    /// Database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
 
 
     /// 
@@ -1389,13 +1188,15 @@ pub struct SparkParameters {
 }
 
 
-/// Amazon S3 manifest file location.
+
+
+/// The parameters for Presto.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ManifestFileLocation {
+pub struct PrestoParameters {
 
 
     /// 
-    /// Amazon S3 key that identifies an object.
+    /// Host.
     /// 
     /// Required: Yes
     ///
@@ -1403,54 +1204,7 @@ pub struct ManifestFileLocation {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// Amazon S3 bucket.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
-}
-
-
-/// The required parameters that are needed to connect to a Databricks data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DatabricksParameters {
-
-
-    /// 
-    /// The port for the Databricks data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: f64,
-
-
-    /// 
-    /// The host name of the Databricks data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
@@ -1458,17 +1212,92 @@ pub struct DatabricksParameters {
 
 
     /// 
-    /// The HTTP path of the Databricks data source.
+    /// Catalog.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Maximum: 128
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "SqlEndpointPath")]
-    pub sql_endpoint_path: String,
+    #[serde(rename = "Catalog")]
+    pub catalog: String,
+
+
+    /// 
+    /// Port.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: f64,
 
 }
+
+
+
+
+/// The combination of user name and password that are used as credentials.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CredentialPair {
+
+
+    /// 
+    /// User name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: String,
+
+
+    /// 
+    /// Password.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: String,
+
+
+    /// 
+    /// A set of alternate data source parameters that you want to share for these       credentials. The credentials are applied in tandem with the data source parameters when       you copy a data source by using a create or update request. The API operation compares       the DataSourceParameters structure that's in the request with the       structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the new data source with       the existing credentials. If the AlternateDataSourceParameters list is       null, the DataSourceParameters originally used with these         Credentials is automatically allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DataSourceParameters
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlternateDataSourceParameters")]
+    pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
+
+}
+
+
 
 
 /// The parameters for OpenSearch.
@@ -1492,3 +1321,388 @@ pub struct AmazonOpenSearchParameters {
     pub domain: String,
 
 }
+
+
+
+
+/// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your       underlying data source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SslProperties {
+
+
+    /// 
+    /// A Boolean option to control whether SSL should be disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisableSsl")]
+    pub disable_ssl: Option<bool>,
+
+}
+
+
+
+
+/// The parameters for Snowflake.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SnowflakeParameters {
+
+
+    /// 
+    /// Database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
+    /// Warehouse.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Warehouse")]
+    pub warehouse: String,
+
+
+    /// 
+    /// Host.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+}
+
+
+
+
+/// The parameters for Teradata.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TeradataParameters {
+
+
+    /// 
+    /// Port.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: f64,
+
+
+    /// 
+    /// Host.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+
+    /// 
+    /// Database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
+
+}
+
+
+
+
+/// The parameters that Amazon QuickSight uses to connect to your underlying data source.       This is a variant type structure. For this structure to be valid, only one of the       attributes can be non-null.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataSourceParameters {
+
+
+    /// 
+    /// The parameters for Amazon Aurora MySQL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuroraParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuroraParameters")]
+    pub aurora_parameters: Option<AuroraParameters>,
+
+
+    /// 
+    /// The parameters for OpenSearch.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AmazonOpenSearchParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AmazonOpenSearchParameters")]
+    pub amazon_open_search_parameters: Option<AmazonOpenSearchParameters>,
+
+
+    /// 
+    /// The parameters for Teradata.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TeradataParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TeradataParameters")]
+    pub teradata_parameters: Option<TeradataParameters>,
+
+
+    /// 
+    /// The parameters for Amazon Aurora.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuroraPostgreSqlParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuroraPostgreSqlParameters")]
+    pub aurora_postgre_sql_parameters: Option<AuroraPostgreSqlParameters>,
+
+
+    /// 
+    /// The parameters for PostgreSQL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PostgreSqlParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PostgreSqlParameters")]
+    pub postgre_sql_parameters: Option<PostgreSqlParameters>,
+
+
+    /// 
+    /// The required parameters that are needed to connect to a Databricks data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DatabricksParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatabricksParameters")]
+    pub databricks_parameters: Option<DatabricksParameters>,
+
+
+    /// 
+    /// The parameters for Amazon RDS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RdsParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RdsParameters")]
+    pub rds_parameters: Option<RdsParameters>,
+
+
+    /// 
+    /// The parameters for OpenSearch.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AmazonElasticsearchParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AmazonElasticsearchParameters")]
+    pub amazon_elasticsearch_parameters: Option<AmazonElasticsearchParameters>,
+
+
+    /// 
+    /// The parameters for SQL Server.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SqlServerParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SqlServerParameters")]
+    pub sql_server_parameters: Option<SqlServerParameters>,
+
+
+    /// 
+    /// Oracle parameters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OracleParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OracleParameters")]
+    pub oracle_parameters: Option<OracleParameters>,
+
+
+    /// 
+    /// The parameters for Amazon Redshift.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RedshiftParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedshiftParameters")]
+    pub redshift_parameters: Option<RedshiftParameters>,
+
+
+    /// 
+    /// The parameters for S3.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3Parameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Parameters")]
+    pub s3_parameters: Option<S3Parameters>,
+
+
+    /// 
+    /// The parameters for MySQL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MySqlParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MySqlParameters")]
+    pub my_sql_parameters: Option<MySqlParameters>,
+
+
+    /// 
+    /// The parameters for Spark.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SparkParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SparkParameters")]
+    pub spark_parameters: Option<SparkParameters>,
+
+
+    /// 
+    /// The parameters for Snowflake.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SnowflakeParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnowflakeParameters")]
+    pub snowflake_parameters: Option<SnowflakeParameters>,
+
+
+    /// 
+    /// The parameters for Presto.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PrestoParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrestoParameters")]
+    pub presto_parameters: Option<PrestoParameters>,
+
+
+    /// 
+    /// The parameters for MariaDB.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MariaDbParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MariaDbParameters")]
+    pub maria_db_parameters: Option<MariaDbParameters>,
+
+
+    /// 
+    /// The parameters for Amazon Athena.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AthenaParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AthenaParameters")]
+    pub athena_parameters: Option<AthenaParameters>,
+
+}
+
+
+
+
+/// The parameters for OpenSearch.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AmazonElasticsearchParameters {
+
+
+    /// 
+    /// The OpenSearch domain.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Domain")]
+    pub domain: String,
+
+}
+
+

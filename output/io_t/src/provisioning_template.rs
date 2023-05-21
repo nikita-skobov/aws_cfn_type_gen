@@ -6,18 +6,6 @@ pub struct CfnProvisioningTemplate {
 
 
     /// 
-    /// The name of the fleet provisioning template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateName")]
-    pub template_name: Option<String>,
-
-
-    /// 
     /// The description of the fleet provisioning template.
     /// 
     /// Required: No
@@ -27,42 +15,6 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// The JSON formatted contents of the fleet provisioning template version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateBody")]
-    pub template_body: String,
-
-
-    /// 
-    /// True to enable the fleet provisioning template, otherwise false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// Metadata that can be used to manage the fleet provisioning template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -100,7 +52,57 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "ProvisioningRoleArn")]
     pub provisioning_role_arn: String,
 
+
+    /// 
+    /// The name of the fleet provisioning template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateName")]
+    pub template_name: Option<String>,
+
+
+    /// 
+    /// True to enable the fleet provisioning template, otherwise false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The JSON formatted contents of the fleet provisioning template version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateBody")]
+    pub template_body: String,
+
+
+    /// 
+    /// Metadata that can be used to manage the fleet provisioning template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProvisioningTemplate {
     fn type_string() -> &'static str {
@@ -125,17 +127,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -145,24 +136,25 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
 
 
 /// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningHook {
-
-
-    /// 
-    /// The ARN of the target function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetArn")]
-    pub target_arn: Option<String>,
 
 
     /// 
@@ -176,4 +168,18 @@ pub struct ProvisioningHook {
     #[serde(rename = "PayloadVersion")]
     pub payload_version: Option<String>,
 
+
+    /// 
+    /// The ARN of the target function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetArn")]
+    pub target_arn: Option<String>,
+
 }
+
+

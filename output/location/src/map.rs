@@ -6,15 +6,19 @@ pub struct CfnMap {
 
 
     /// 
-    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
+    /// An optional description for the map resource.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: MapConfiguration
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Configuration")]
-    pub configuration: MapConfiguration,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -40,6 +44,18 @@ pub struct CfnMap {
 
 
     /// 
+    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MapConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Configuration")]
+    pub configuration: MapConfiguration,
+
+
+    /// 
     /// No longer used. If included, the only allowed value is       RequestBasedUsage.
     /// 
     /// Allowed Values: RequestBasedUsage
@@ -50,25 +66,26 @@ pub struct CfnMap {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    pub pricing_plan: Option<String>,
-
-
-    /// 
-    /// An optional description for the map resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    pub pricing_plan: Option<MapPricingPlanEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MapPricingPlanEnum {
+
+    /// RequestBasedUsage
+    #[serde(rename = "RequestBasedUsage")]
+    Requestbasedusage,
+
+}
+
+impl Default for MapPricingPlanEnum {
+    fn default() -> Self {
+        MapPricingPlanEnum::Requestbasedusage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnMap {
     fn type_string() -> &'static str {
@@ -122,3 +139,5 @@ pub struct MapConfiguration {
     pub style: String,
 
 }
+
+

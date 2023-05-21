@@ -22,6 +22,18 @@ pub struct CfnSchedule {
 
 
     /// 
+    /// Metadata tags that have been applied to the schedule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The dates and times when the job is to run. For more information, see Working with cron       expressions for recipe jobs in the         AWS Glue DataBrew Developer       Guide.
     /// 
     /// Required: Yes
@@ -38,18 +50,6 @@ pub struct CfnSchedule {
 
 
     /// 
-    /// Metadata tags that have been applied to the schedule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A list of jobs to be run, according to the schedule.
     /// 
     /// Required: No
@@ -63,6 +63,8 @@ pub struct CfnSchedule {
     pub job_names: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSchedule {
     fn type_string() -> &'static str {
@@ -108,3 +110,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

@@ -20,6 +20,18 @@ pub struct CfnStorageVirtualMachine {
 
 
     /// 
+    /// Specifies the FSx for ONTAP file system on which to create the SVM.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FileSystemId")]
+    pub file_system_id: String,
+
+
+    /// 
     /// The name of the SVM.
     /// 
     /// Required: Yes
@@ -50,19 +62,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootVolumeSecurityStyle")]
-    pub root_volume_security_style: Option<String>,
-
-
-    /// 
-    /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ActiveDirectoryConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActiveDirectoryConfiguration")]
-    pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
+    pub root_volume_security_style: Option<StorageVirtualMachineRootVolumeSecurityStyleEnum>,
 
 
     /// 
@@ -78,17 +78,42 @@ pub struct CfnStorageVirtualMachine {
 
 
     /// 
-    /// Specifies the FSx for ONTAP file system on which to create the SVM.
+    /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: ActiveDirectoryConfiguration
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "ActiveDirectoryConfiguration")]
+    pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StorageVirtualMachineRootVolumeSecurityStyleEnum {
+
+    /// MIXED
+    #[serde(rename = "MIXED")]
+    Mixed,
+
+    /// NTFS
+    #[serde(rename = "NTFS")]
+    Ntfs,
+
+    /// UNIX
+    #[serde(rename = "UNIX")]
+    Unix,
+
+}
+
+impl Default for StorageVirtualMachineRootVolumeSecurityStyleEnum {
+    fn default() -> Self {
+        StorageVirtualMachineRootVolumeSecurityStyleEnum::Mixed
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnStorageVirtualMachine {
     fn type_string() -> &'static str {
@@ -99,6 +124,82 @@ impl cfn_resources::CfnResource for CfnStorageVirtualMachine {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes the self-managed Microsoft Active Directory to which you want to join the SVM.    Joining an Active Directory provides user authentication and access control for SMB clients,    including Microsoft Windows and macOS client accessing the file system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ActiveDirectoryConfiguration {
+
+
+    /// 
+    /// The NetBIOS name of the Active Directory computer object that will be created for your SVM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetBiosName")]
+    pub net_bios_name: Option<String>,
+
+
+    /// 
+    /// The configuration that Amazon FSx uses to join the ONTAP storage virtual machine       (SVM) to your self-managed (including on-premises) Microsoft Active Directory (AD) directory.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SelfManagedActiveDirectoryConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
+    pub self_managed_active_directory_configuration: Option<SelfManagedActiveDirectoryConfiguration>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 
 
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
@@ -125,41 +226,17 @@ pub struct SelfManagedActiveDirectoryConfiguration {
 
 
     /// 
-    /// (Optional) The fully qualified distinguished name of the organizational unit within       your self-managed AD directory. Amazon       FSx only accepts OU as the direct parent of the file system. An example is         OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the       FSx file system is created in the default location of your self-managed AD directory.
-    /// 
-    /// ImportantOnly Organizational Unit (OU) objects can be the direct parent of the file system         that you're creating.
+    /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 1
+    /// Maximum: 3
     ///
-    /// Maximum: 2000
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,2000}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    pub organizational_unit_distinguished_name: Option<String>,
-
-
-    /// 
-    /// (Optional) The name of the domain group whose members are granted administrative       privileges for the file system. Administrative privileges include taking ownership of       files and folders, setting audit controls (audit ACLs) on files and folders, and               administering the file system remotely by using the FSx Remote PowerShell.       The group that you specify must already exist in your domain. If you don't provide one,       your AD domain's Domain Admins group is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,256}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FileSystemAdministratorsGroup")]
-    pub file_system_administrators_group: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "DnsIps")]
+    pub dns_ips: Option<Vec<String>>,
 
 
     /// 
@@ -181,17 +258,41 @@ pub struct SelfManagedActiveDirectoryConfiguration {
 
 
     /// 
-    /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
+    /// (Optional) The name of the domain group whose members are granted administrative       privileges for the file system. Administrative privileges include taking ownership of       files and folders, setting audit controls (audit ACLs) on files and folders, and               administering the file system remotely by using the FSx Remote PowerShell.       The group that you specify must already exist in your domain. If you don't provide one,       your AD domain's Domain Admins group is used.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 3
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsIps")]
-    pub dns_ips: Option<Vec<String>>,
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,256}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FileSystemAdministratorsGroup")]
+    pub file_system_administrators_group: Option<String>,
+
+
+    /// 
+    /// (Optional) The fully qualified distinguished name of the organizational unit within       your self-managed AD directory. Amazon       FSx only accepts OU as the direct parent of the file system. An example is         OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the       FSx file system is created in the default location of your self-managed AD directory.
+    /// 
+    /// ImportantOnly Organizational Unit (OU) objects can be the direct parent of the file system         that you're creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2000
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,2000}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OrganizationalUnitDistinguishedName")]
+    pub organizational_unit_distinguished_name: Option<String>,
 
 
     /// 
@@ -214,73 +315,3 @@ pub struct SelfManagedActiveDirectoryConfiguration {
 }
 
 
-/// Describes the self-managed Microsoft Active Directory to which you want to join the SVM.    Joining an Active Directory provides user authentication and access control for SMB clients,    including Microsoft Windows and macOS client accessing the file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ActiveDirectoryConfiguration {
-
-
-    /// 
-    /// The configuration that Amazon FSx uses to join the ONTAP storage virtual machine       (SVM) to your self-managed (including on-premises) Microsoft Active Directory (AD) directory.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SelfManagedActiveDirectoryConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
-    pub self_managed_active_directory_configuration: Option<SelfManagedActiveDirectoryConfiguration>,
-
-
-    /// 
-    /// The NetBIOS name of the Active Directory computer object that will be created for your SVM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetBiosName")]
-    pub net_bios_name: Option<String>,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}

@@ -12,6 +12,18 @@ pub struct CfnObservabilityConfiguration {
 
 
     /// 
+    /// The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TraceConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TraceConfiguration")]
+    pub trace_configuration: Option<TraceConfiguration>,
+
+
+    /// 
     /// A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.
     /// 
     /// Required: No
@@ -44,19 +56,9 @@ pub struct CfnObservabilityConfiguration {
     #[serde(rename = "ObservabilityConfigurationName")]
     pub observability_configuration_name: Option<String>,
 
-
-    /// 
-    /// The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TraceConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TraceConfiguration")]
-    pub trace_configuration: Option<TraceConfiguration>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
     fn type_string() -> &'static str {
@@ -104,6 +106,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Describes the configuration of the tracing feature within an AWS App Runner observability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TraceConfiguration {
@@ -120,6 +124,23 @@ pub struct TraceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Vendor")]
-    pub vendor: String,
+    pub vendor: TraceConfigurationVendorEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TraceConfigurationVendorEnum {
+
+    /// AWSXRAY
+    #[serde(rename = "AWSXRAY")]
+    Awsxray,
+
+}
+
+impl Default for TraceConfigurationVendorEnum {
+    fn default() -> Self {
+        TraceConfigurationVendorEnum::Awsxray
+    }
+}
+

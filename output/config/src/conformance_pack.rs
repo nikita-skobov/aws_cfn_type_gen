@@ -6,44 +6,6 @@ pub struct CfnConformancePack {
 
 
     /// 
-    /// A string containing full conformance pack template body. Structure containing the template body with a     minimum length of 1 byte and a maximum length of 51,200 bytes.
-    /// 
-    /// NoteYou can only use a YAML template with two resource types: config rule (AWS::Config::ConfigRule) and a remediation action (AWS::Config::RemediationConfiguration).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateBody")]
-    pub template_body: Option<String>,
-
-
-    /// 
-    /// The prefix for the Amazon S3 bucket.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryS3KeyPrefix")]
-    pub delivery_s3_key_prefix: Option<String>,
-
-
-    /// 
-    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryS3Bucket")]
-    pub delivery_s3_bucket: Option<String>,
-
-
-    /// 
     /// A list of ConformancePackInputParameter objects.
     /// 
     /// Required: No
@@ -69,6 +31,17 @@ pub struct CfnConformancePack {
     pub template_s3_uri: Option<String>,
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: TemplateSSMDocumentDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateSSMDocumentDetails")]
+    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
+
+
     /// 
     /// Name of the conformance pack you want to create.
     ///
@@ -81,17 +54,46 @@ pub struct CfnConformancePack {
     pub conformance_pack_name: String,
 
 
-    /// Property description not available.
+    /// 
+    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
     ///
     /// Required: No
     ///
-    /// Type: TemplateSSMDocumentDetails
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TemplateSSMDocumentDetails")]
-    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
+    #[serde(rename = "DeliveryS3Bucket")]
+    pub delivery_s3_bucket: Option<String>,
+
+
+    /// 
+    /// The prefix for the Amazon S3 bucket.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryS3KeyPrefix")]
+    pub delivery_s3_key_prefix: Option<String>,
+
+
+    /// 
+    /// A string containing full conformance pack template body. Structure containing the template body with a     minimum length of 1 byte and a maximum length of 51,200 bytes.
+    /// 
+    /// NoteYou can only use a YAML template with two resource types: config rule (AWS::Config::ConfigRule) and a remediation action (AWS::Config::RemediationConfiguration).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateBody")]
+    pub template_body: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConformancePack {
     fn type_string() -> &'static str {
@@ -104,50 +106,25 @@ impl cfn_resources::CfnResource for CfnConformancePack {
 }
 
 
-/// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConformancePackInputParameter {
-
-
-    /// 
-    /// One part of a key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
-
-
-    /// 
-    /// Another part of the key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
-
-}
-
-
 /// This API allows you to create a conformance pack template with an AWS Systems Manager document (SSM document). 			To deploy a conformance pack using an SSM document, first create an SSM document with conformance pack content, and then provide the DocumentName in the PutConformancePack API. You can also provide the DocumentVersion.
 ///
 /// The TemplateSSMDocumentDetails object contains the name of the SSM document and the version of the SSM document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TemplateSSMDocumentDetails {
+
+
+    /// 
+    /// The name or Amazon Resource Name (ARN) of the SSM document to use to create a conformance pack. 			If you use the document name, AWS Config checks only your account and AWS Region for the SSM document. If you want to use an SSM document from another Region or account, you must provide the ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.:/]{3,200}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentName")]
+    pub document_name: Option<String>,
 
 
     /// 
@@ -165,18 +142,47 @@ pub struct TemplateSSMDocumentDetails {
     #[serde(rename = "DocumentVersion")]
     pub document_version: Option<String>,
 
+}
+
+
+
+
+/// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConformancePackInputParameter {
+
 
     /// 
-    /// The name or Amazon Resource Name (ARN) of the SSM document to use to create a conformance pack. 			If you use the document name, AWS Config checks only your account and AWS Region for the SSM document. If you want to use an SSM document from another Region or account, you must provide the ARN.
+    /// Another part of the key-value pair.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: ^[a-zA-Z0-9_\-.:/]{3,200}$
+    /// Minimum: 0
+    ///
+    /// Maximum: 4096
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DocumentName")]
-    pub document_name: Option<String>,
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: String,
+
+
+    /// 
+    /// One part of a key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterName")]
+    pub parameter_name: String,
 
 }
+
+

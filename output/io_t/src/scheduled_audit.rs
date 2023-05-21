@@ -18,18 +18,6 @@ pub struct CfnScheduledAudit {
 
 
     /// 
-    /// How often the scheduled audit occurs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Frequency")]
-    pub frequency: String,
-
-
-    /// 
     /// Which checks are performed during the scheduled audit. Checks must be enabled for your     account. (Use DescribeAccountAuditConfiguration to see the list of all checks,     including those that are enabled or use UpdateAccountAuditConfiguration to     select which checks are enabled.)
     /// 
     /// The following checks are currently aviable:
@@ -46,15 +34,15 @@ pub struct CfnScheduledAudit {
 
 
     /// 
-    /// The name of the scheduled audit.
+    /// How often the scheduled audit occurs.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduledAuditName")]
-    pub scheduled_audit_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Frequency")]
+    pub frequency: String,
 
 
     /// 
@@ -80,7 +68,21 @@ pub struct CfnScheduledAudit {
     #[serde(rename = "DayOfWeek")]
     pub day_of_week: Option<String>,
 
+
+    /// 
+    /// The name of the scheduled audit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScheduledAuditName")]
+    pub scheduled_audit_name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnScheduledAudit {
     fn type_string() -> &'static str {
@@ -126,3 +128,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

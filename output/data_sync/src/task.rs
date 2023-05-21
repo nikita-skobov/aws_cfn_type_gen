@@ -6,33 +6,15 @@ pub struct CfnTask {
 
 
     /// 
-    /// The name of a task. This value is a text reference that is used to identify the task in    the console.
+    /// The Amazon Resource Name (ARN) of an AWS storage resource's     location.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[a-zA-Z0-9\s+=._:@/-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Specifies a schedule used to periodically transfer files from a source to a destination    location. The schedule should be specified in UTC time. For more information, see Scheduling your     task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TaskSchedule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: Option<TaskSchedule>,
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationLocationArn")]
+    pub destination_location_arn: String,
 
 
     /// 
@@ -47,18 +29,6 @@ pub struct CfnTask {
     /// Update requires: No interruption
     #[serde(rename = "Excludes")]
     pub excludes: Option<Vec<FilterRule>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of an AWS storage resource's     location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationLocationArn")]
-    pub destination_location_arn: String,
 
 
     /// 
@@ -82,19 +52,15 @@ pub struct CfnTask {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the source location for the task.
+    /// Specifies a schedule used to periodically transfer files from a source to a destination    location. The schedule should be specified in UTC time. For more information, see Scheduling your     task.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: TaskSchedule
     ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceLocationArn")]
-    pub source_location_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Schedule")]
+    pub schedule: Option<TaskSchedule>,
 
 
     /// 
@@ -126,6 +92,24 @@ pub struct CfnTask {
 
 
     /// 
+    /// The name of a task. This value is a text reference that is used to identify the task in    the console.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[a-zA-Z0-9\s+=._:@/-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// Specifies the tags that you want to apply to the Amazon Resource Name (ARN)    representing the task.
     /// 
     /// Tags are key-value pairs that help you manage, filter, and search    for your DataSync resources.
@@ -140,7 +124,25 @@ pub struct CfnTask {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the source location for the task.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceLocationArn")]
+    pub source_location_arn: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTask {
     fn type_string() -> &'static str {
@@ -150,45 +152,6 @@ impl cfn_resources::CfnResource for CfnTask {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FilterRule {
-
-
-    /// 
-    /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SIMPLE_PATTERN
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FilterType")]
-    pub filter_type: Option<String>,
-
-
-    /// 
-    /// A single filter string that consists of the patterns to include or exclude. The patterns    are delimited by "|" (that is, a pipe), for example: /folder1|/folder2
-    /// 
-    /// 
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 102400
-    ///
-    /// Pattern: ^[^\x00]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
 }
 
 
@@ -204,17 +167,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -224,30 +176,20 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// Specifies the schedule you want your task to use for repeated executions. For more    information, see Schedule Expressions for     Rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TaskSchedule {
-
 
     /// 
-    /// A cron expression that specifies when AWS DataSync initiates a scheduled    transfer from a source to a destination location.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[a-zA-Z0-9\ \_\*\?\,\|\^\-\/\#\s\(\)\+]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
+
+
 
 
 /// Represents the options that are available to control the behavior of a StartTaskExecution operation. This behavior includes preserving metadata, such     as user ID (UID), group ID (GID), and file permissions; overwriting files in the     destination; data integrity verification; and so on.
@@ -255,114 +197,6 @@ pub struct TaskSchedule {
 /// A task has a set of default options associated with it. If you don't specify an     option in StartTaskExecution,     the default value is used. You can override the default options on each task execution by     specifying an overriding Options value to StartTaskExecution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Options {
-
-
-    /// 
-    /// A value that determines whether AWS DataSync should preserve the metadata of block    and character devices in the source file system, and re-create the files with that device name    and metadata on the destination. DataSync does not copy the contents of such devices, only the    name and metadata.
-    /// 
-    /// Note        AWS DataSync can't sync the actual contents of such devices, because they are     nonterminal and don't return an end-of-file (EOF) marker.
-    /// 
-    /// Default value: NONE
-    /// 
-    /// NONE: Ignore special devices (recommended).
-    /// 
-    /// PRESERVE: Preserve character and block device metadata. This option     isn't currently supported for Amazon EFS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | PRESERVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreserveDevices")]
-    pub preserve_devices: Option<String>,
-
-
-    /// 
-    /// Specifies whether object tags are preserved when transferring between object storage    systems. If you want your DataSync task to ignore object tags, specify the     NONE value.
-    /// 
-    /// Default Value: PRESERVE
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | PRESERVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ObjectTags")]
-    pub object_tags: Option<String>,
-
-
-    /// 
-    /// A value that determines which users or groups can access a file for a specific     purpose, such as reading, writing, or execution of the file. This option should be set only     for Network File System (NFS), Amazon EFS, and Amazon S3 locations. For more information     about what metadata is copied by DataSync, see Metadata Copied by       DataSync.
-    /// 
-    /// Default value: PRESERVE
-    /// 
-    /// PRESERVE: Preserve POSIX-style permissions (recommended).
-    /// 
-    /// NONE: Ignore permissions.
-    /// 
-    /// Note        AWS DataSync can preserve extant permissions of a source location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | PRESERVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PosixPermissions")]
-    pub posix_permissions: Option<String>,
-
-
-    /// 
-    /// A value that specifies whether files in the destination that don't exist in the     source file system are preserved. This option can affect your storage costs. If your task     deletes objects, you might incur minimum storage duration charges for certain storage     classes. For detailed information, see Considerations when working with Amazon S3 storage classes in DataSync in the       AWS DataSync User Guide.
-    /// 
-    /// Default value: PRESERVE
-    /// 
-    /// PRESERVE: Ignore destination files that aren't present in the source     (recommended).
-    /// 
-    /// REMOVE: Delete destination files that aren't present in the     source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: PRESERVE | REMOVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreserveDeletedFiles")]
-    pub preserve_deleted_files: Option<String>,
-
-
-    /// 
-    /// Specifies the type of logs that DataSync publishes to a Amazon CloudWatch Logs    log group. To specify the log group, see CloudWatchLogGroupArn.
-    /// 
-    /// If you set LogLevel to OFF, no logs are published.     BASIC publishes logs on errors for individual files transferred.     TRANSFER publishes logs for every file or object that is transferred and    integrity checked.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BASIC | OFF | TRANSFER
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogLevel")]
-    pub log_level: Option<String>,
-
-
-    /// 
-    /// A value that limits the bandwidth used by AWS DataSync. For example, if you want    AWS DataSync to use a maximum of 1 MB, set this value to 1048576     (=1024*1024).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BytesPerSecond")]
-    pub bytes_per_second: Option<i64>,
 
 
     /// 
@@ -384,7 +218,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifyMode")]
-    pub verify_mode: Option<String>,
+    pub verify_mode: Option<OptionsVerifyModeEnum>,
 
 
     /// 
@@ -406,61 +240,29 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtime")]
-    pub mtime: Option<String>,
+    pub mtime: Option<OptionsMtimeEnum>,
 
 
     /// 
-    /// Specifies whether data at the destination location should be overwritten or preserved. If    set to NEVER, a destination file for example will not be replaced by a source    file (even if the destination file differs from the source file). If you modify files in the    destination and you sync the files, you can use this value to protect against overwriting    those changes.
+    /// A value that determines which users or groups can access a file for a specific     purpose, such as reading, writing, or execution of the file. This option should be set only     for Network File System (NFS), Amazon EFS, and Amazon S3 locations. For more information     about what metadata is copied by DataSync, see Metadata Copied by       DataSync.
     /// 
-    /// Some storage classes have specific behaviors that can affect your Amazon S3    storage cost. For detailed information, see Considerations     when working with Amazon S3 storage classes in DataSync.
+    /// Default value: PRESERVE
+    /// 
+    /// PRESERVE: Preserve POSIX-style permissions (recommended).
+    /// 
+    /// NONE: Ignore permissions.
+    /// 
+    /// Note        AWS DataSync can preserve extant permissions of a source location.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ALWAYS | NEVER
+    /// Allowed values: NONE | PRESERVE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OverwriteMode")]
-    pub overwrite_mode: Option<String>,
-
-
-    /// 
-    /// Specifies whether tasks should be queued before executing the tasks. The default is     ENABLED, which means the tasks will be queued.
-    /// 
-    /// If you use the same agent to run multiple tasks, you can enable the tasks to run in    series. For more information, see Queueing task     executions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskQueueing")]
-    pub task_queueing: Option<String>,
-
-
-    /// 
-    /// The group ID (GID) of the file's owners.
-    /// 
-    /// Default value:     INT_VALUE
-    /// 
-    /// INT_VALUE: Preserve the integer value of the user ID (UID) and group ID     (GID) (recommended).
-    /// 
-    /// NAME: Currently not supported.
-    /// 
-    /// NONE: Ignore the UID and GID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Gid")]
-    pub gid: Option<String>,
+    #[serde(rename = "PosixPermissions")]
+    pub posix_permissions: Option<OptionsPosixPermissionsEnum>,
 
 
     /// 
@@ -492,47 +294,77 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDescriptorCopyFlags")]
-    pub security_descriptor_copy_flags: Option<String>,
+    pub security_descriptor_copy_flags: Option<OptionsSecurityDescriptorCopyFlagsEnum>,
 
 
     /// 
-    /// The user ID (UID) of the file's owner.
+    /// A value that specifies whether files in the destination that don't exist in the     source file system are preserved. This option can affect your storage costs. If your task     deletes objects, you might incur minimum storage duration charges for certain storage     classes. For detailed information, see Considerations when working with Amazon S3 storage classes in DataSync in the       AWS DataSync User Guide.
     /// 
-    /// Default value:     INT_VALUE
+    /// Default value: PRESERVE
     /// 
-    /// INT_VALUE: Preserve the integer value of the UID and group ID (GID)     (recommended).
+    /// PRESERVE: Ignore destination files that aren't present in the source     (recommended).
     /// 
-    /// NAME: Currently not supported
-    /// 
-    /// NONE: Ignore the UID and GID.
+    /// REMOVE: Delete destination files that aren't present in the     source.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
+    /// Allowed values: PRESERVE | REMOVE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Uid")]
-    pub uid: Option<String>,
+    #[serde(rename = "PreserveDeletedFiles")]
+    pub preserve_deleted_files: Option<OptionsPreserveDeletedFilesEnum>,
 
 
     /// 
-    /// A value that determines whether DataSync transfers only the data and metadata that differ between the source    and the destination location, or whether DataSync transfers all the content from the source, without comparing it to    the destination location.
+    /// A value that determines whether AWS DataSync should preserve the metadata of block    and character devices in the source file system, and re-create the files with that device name    and metadata on the destination. DataSync does not copy the contents of such devices, only the    name and metadata.
     /// 
-    /// CHANGED: DataSync copies only data or metadata that is new or different from the source location to the    destination location.
+    /// Note        AWS DataSync can't sync the actual contents of such devices, because they are     nonterminal and don't return an end-of-file (EOF) marker.
     /// 
-    /// ALL: DataSync copies all source location content to the destination, without comparing it to existing content on    the destination.
+    /// Default value: NONE
+    /// 
+    /// NONE: Ignore special devices (recommended).
+    /// 
+    /// PRESERVE: Preserve character and block device metadata. This option     isn't currently supported for Amazon EFS.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ALL | CHANGED
+    /// Allowed values: NONE | PRESERVE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TransferMode")]
-    pub transfer_mode: Option<String>,
+    #[serde(rename = "PreserveDevices")]
+    pub preserve_devices: Option<OptionsPreserveDevicesEnum>,
+
+
+    /// 
+    /// Specifies the type of logs that DataSync publishes to a Amazon CloudWatch Logs    log group. To specify the log group, see CloudWatchLogGroupArn.
+    /// 
+    /// If you set LogLevel to OFF, no logs are published.     BASIC publishes logs on errors for individual files transferred.     TRANSFER publishes logs for every file or object that is transferred and    integrity checked.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BASIC | OFF | TRANSFER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogLevel")]
+    pub log_level: Option<OptionsLogLevelEnum>,
+
+
+    /// 
+    /// A value that limits the bandwidth used by AWS DataSync. For example, if you want    AWS DataSync to use a maximum of 1 MB, set this value to 1048576     (=1024*1024).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BytesPerSecond")]
+    pub bytes_per_second: Option<i64>,
 
 
     /// 
@@ -554,6 +386,493 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Atime")]
-    pub atime: Option<String>,
+    pub atime: Option<OptionsAtimeEnum>,
+
+
+    /// 
+    /// The group ID (GID) of the file's owners.
+    /// 
+    /// Default value:     INT_VALUE
+    /// 
+    /// INT_VALUE: Preserve the integer value of the user ID (UID) and group ID     (GID) (recommended).
+    /// 
+    /// NAME: Currently not supported.
+    /// 
+    /// NONE: Ignore the UID and GID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Gid")]
+    pub gid: Option<OptionsGidEnum>,
+
+
+    /// 
+    /// Specifies whether object tags are preserved when transferring between object storage    systems. If you want your DataSync task to ignore object tags, specify the     NONE value.
+    /// 
+    /// Default Value: PRESERVE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NONE | PRESERVE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObjectTags")]
+    pub object_tags: Option<OptionsObjectTagsEnum>,
+
+
+    /// 
+    /// A value that determines whether DataSync transfers only the data and metadata that differ between the source    and the destination location, or whether DataSync transfers all the content from the source, without comparing it to    the destination location.
+    /// 
+    /// CHANGED: DataSync copies only data or metadata that is new or different from the source location to the    destination location.
+    /// 
+    /// ALL: DataSync copies all source location content to the destination, without comparing it to existing content on    the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL | CHANGED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransferMode")]
+    pub transfer_mode: Option<OptionsTransferModeEnum>,
+
+
+    /// 
+    /// Specifies whether data at the destination location should be overwritten or preserved. If    set to NEVER, a destination file for example will not be replaced by a source    file (even if the destination file differs from the source file). If you modify files in the    destination and you sync the files, you can use this value to protect against overwriting    those changes.
+    /// 
+    /// Some storage classes have specific behaviors that can affect your Amazon S3    storage cost. For detailed information, see Considerations     when working with Amazon S3 storage classes in DataSync.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALWAYS | NEVER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OverwriteMode")]
+    pub overwrite_mode: Option<OptionsOverwriteModeEnum>,
+
+
+    /// 
+    /// The user ID (UID) of the file's owner.
+    /// 
+    /// Default value:     INT_VALUE
+    /// 
+    /// INT_VALUE: Preserve the integer value of the UID and group ID (GID)     (recommended).
+    /// 
+    /// NAME: Currently not supported
+    /// 
+    /// NONE: Ignore the UID and GID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Uid")]
+    pub uid: Option<OptionsUidEnum>,
+
+
+    /// 
+    /// Specifies whether tasks should be queued before executing the tasks. The default is     ENABLED, which means the tasks will be queued.
+    /// 
+    /// If you use the same agent to run multiple tasks, you can enable the tasks to run in    series. For more information, see Queueing task     executions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskQueueing")]
+    pub task_queueing: Option<OptionsTaskQueueingEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsTransferModeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// CHANGED
+    #[serde(rename = "CHANGED")]
+    Changed,
+
+}
+
+impl Default for OptionsTransferModeEnum {
+    fn default() -> Self {
+        OptionsTransferModeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsUidEnum {
+
+    /// BOTH
+    #[serde(rename = "BOTH")]
+    Both,
+
+    /// INT_VALUE
+    #[serde(rename = "INT_VALUE")]
+    Intvalue,
+
+    /// NAME
+    #[serde(rename = "NAME")]
+    Name,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for OptionsUidEnum {
+    fn default() -> Self {
+        OptionsUidEnum::Both
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsTaskQueueingEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for OptionsTaskQueueingEnum {
+    fn default() -> Self {
+        OptionsTaskQueueingEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsMtimeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsMtimeEnum {
+    fn default() -> Self {
+        OptionsMtimeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsOverwriteModeEnum {
+
+    /// ALWAYS
+    #[serde(rename = "ALWAYS")]
+    Always,
+
+    /// NEVER
+    #[serde(rename = "NEVER")]
+    Never,
+
+}
+
+impl Default for OptionsOverwriteModeEnum {
+    fn default() -> Self {
+        OptionsOverwriteModeEnum::Always
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsAtimeEnum {
+
+    /// BEST_EFFORT
+    #[serde(rename = "BEST_EFFORT")]
+    Besteffort,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for OptionsAtimeEnum {
+    fn default() -> Self {
+        OptionsAtimeEnum::Besteffort
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsGidEnum {
+
+    /// BOTH
+    #[serde(rename = "BOTH")]
+    Both,
+
+    /// INT_VALUE
+    #[serde(rename = "INT_VALUE")]
+    Intvalue,
+
+    /// NAME
+    #[serde(rename = "NAME")]
+    Name,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for OptionsGidEnum {
+    fn default() -> Self {
+        OptionsGidEnum::Both
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsObjectTagsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsObjectTagsEnum {
+    fn default() -> Self {
+        OptionsObjectTagsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsLogLevelEnum {
+
+    /// BASIC
+    #[serde(rename = "BASIC")]
+    Basic,
+
+    /// OFF
+    #[serde(rename = "OFF")]
+    Off,
+
+    /// TRANSFER
+    #[serde(rename = "TRANSFER")]
+    Transfer,
+
+}
+
+impl Default for OptionsLogLevelEnum {
+    fn default() -> Self {
+        OptionsLogLevelEnum::Basic
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsVerifyModeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// ONLY_FILES_TRANSFERRED
+    #[serde(rename = "ONLY_FILES_TRANSFERRED")]
+    Onlyfilestransferred,
+
+    /// POINT_IN_TIME_CONSISTENT
+    #[serde(rename = "POINT_IN_TIME_CONSISTENT")]
+    Pointintimeconsistent,
+
+}
+
+impl Default for OptionsVerifyModeEnum {
+    fn default() -> Self {
+        OptionsVerifyModeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPreserveDeletedFilesEnum {
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+    /// REMOVE
+    #[serde(rename = "REMOVE")]
+    Remove,
+
+}
+
+impl Default for OptionsPreserveDeletedFilesEnum {
+    fn default() -> Self {
+        OptionsPreserveDeletedFilesEnum::Preserve
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPosixPermissionsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsPosixPermissionsEnum {
+    fn default() -> Self {
+        OptionsPosixPermissionsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsSecurityDescriptorCopyFlagsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// OWNER_DACL
+    #[serde(rename = "OWNER_DACL")]
+    Ownerdacl,
+
+    /// OWNER_DACL_SACL
+    #[serde(rename = "OWNER_DACL_SACL")]
+    Ownerdaclsacl,
+
+}
+
+impl Default for OptionsSecurityDescriptorCopyFlagsEnum {
+    fn default() -> Self {
+        OptionsSecurityDescriptorCopyFlagsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPreserveDevicesEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsPreserveDevicesEnum {
+    fn default() -> Self {
+        OptionsPreserveDevicesEnum::None
+    }
+}
+
+
+
+/// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FilterRule {
+
+
+    /// 
+    /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SIMPLE_PATTERN
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterType")]
+    pub filter_type: Option<FilterRuleFilterTypeEnum>,
+
+
+    /// 
+    /// A single filter string that consists of the patterns to include or exclude. The patterns    are delimited by "|" (that is, a pipe), for example: /folder1|/folder2
+    /// 
+    /// 
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 102400
+    ///
+    /// Pattern: ^[^\x00]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterRuleFilterTypeEnum {
+
+    /// SIMPLE_PATTERN
+    #[serde(rename = "SIMPLE_PATTERN")]
+    Simplepattern,
+
+}
+
+impl Default for FilterRuleFilterTypeEnum {
+    fn default() -> Self {
+        FilterRuleFilterTypeEnum::Simplepattern
+    }
+}
+
+
+
+/// Specifies the schedule you want your task to use for repeated executions. For more    information, see Schedule Expressions for     Rules.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TaskSchedule {
+
+
+    /// 
+    /// A cron expression that specifies when AWS DataSync initiates a scheduled    transfer from a source to a destination location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[a-zA-Z0-9\ \_\*\?\,\|\^\-\/\#\s\(\)\+]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduleExpression")]
+    pub schedule_expression: String,
+
+}
+
+

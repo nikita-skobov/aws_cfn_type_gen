@@ -9,6 +9,22 @@ pub struct CfnEndpoint {
 
 
     /// 
+    /// The container for the type of connectivity used to access the Amazon S3 on Outposts    endpoint. To use the Amazon VPC, choose Private. To use the endpoint    with an on-premises network, choose CustomerOwnedIp. If you choose     CustomerOwnedIp, you must also provide the customer-owned IP address pool (CoIP    pool).
+    /// 
+    /// NotePrivate is the default access type value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CustomerOwnedIp | Private
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AccessType")]
+    pub access_type: Option<EndpointAccessTypeEnum>,
+
+
+    /// 
     /// The ID of the subnet.
     /// 
     /// Required: Yes
@@ -47,22 +63,6 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// The container for the type of connectivity used to access the Amazon S3 on Outposts    endpoint. To use the Amazon VPC, choose Private. To use the endpoint    with an on-premises network, choose CustomerOwnedIp. If you choose     CustomerOwnedIp, you must also provide the customer-owned IP address pool (CoIP    pool).
-    /// 
-    /// NotePrivate is the default access type value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CustomerOwnedIp | Private
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessType")]
-    pub access_type: Option<String>,
-
-
-    /// 
     /// The ID of the Outpost.
     /// 
     /// Required: Yes
@@ -74,6 +74,27 @@ pub struct CfnEndpoint {
     pub outpost_id: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointAccessTypeEnum {
+
+    /// CustomerOwnedIp
+    #[serde(rename = "CustomerOwnedIp")]
+    Customerownedip,
+
+    /// Private
+    #[serde(rename = "Private")]
+    Private,
+
+}
+
+impl Default for EndpointAccessTypeEnum {
+    fn default() -> Self {
+        EndpointAccessTypeEnum::Customerownedip
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEndpoint {
     fn type_string() -> &'static str {
@@ -103,3 +124,5 @@ pub struct NetworkInterface {
     pub network_interface_id: String,
 
 }
+
+

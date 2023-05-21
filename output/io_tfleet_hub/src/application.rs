@@ -6,24 +6,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The name of the web application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[ -~]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationName")]
-    pub application_name: String,
-
-
-    /// 
     /// An optional description of the web application.
     /// 
     /// Required: No
@@ -39,6 +21,24 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationDescription")]
     pub application_description: Option<String>,
+
+
+    /// 
+    /// The name of the web application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[ -~]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationName")]
+    pub application_name: String,
 
 
     /// 
@@ -69,6 +69,8 @@ pub struct CfnApplication {
     pub role_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -114,3 +116,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

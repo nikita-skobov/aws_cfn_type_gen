@@ -26,18 +26,6 @@ pub struct CfnKeyPair {
 
 
     /// 
-    /// The public key material. The PublicKeyMaterial property is used to import a key pair. If this property is not specified,      then a new key pair will be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublicKeyMaterial")]
-    pub public_key_material: Option<String>,
-
-
-    /// 
     /// The tags to apply to the key pair.
     /// 
     /// Required: No
@@ -64,9 +52,42 @@ pub struct CfnKeyPair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyType")]
-    pub key_type: Option<String>,
+    pub key_type: Option<KeyPairKeyTypeEnum>,
+
+
+    /// 
+    /// The public key material. The PublicKeyMaterial property is used to import a key pair. If this property is not specified,      then a new key pair will be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicKeyMaterial")]
+    pub public_key_material: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum KeyPairKeyTypeEnum {
+
+    /// ed25519
+    #[serde(rename = "ed25519")]
+    Ed25519,
+
+    /// rsa
+    #[serde(rename = "rsa")]
+    Rsa,
+
+}
+
+impl Default for KeyPairKeyTypeEnum {
+    fn default() -> Self {
+        KeyPairKeyTypeEnum::Ed25519
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnKeyPair {
     fn type_string() -> &'static str {
@@ -91,17 +112,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -111,4 +121,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

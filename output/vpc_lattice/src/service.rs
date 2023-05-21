@@ -7,29 +7,6 @@
 pub struct CfnService {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: DnsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsEntry")]
-    pub dns_entry: Option<DnsEntry>,
-
-
-    /// 
-    /// The custom domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomDomainName")]
-    pub custom_domain_name: Option<String>,
-
-
     /// 
     /// The type of IAM policy.
     /// 
@@ -42,6 +19,17 @@ pub struct CfnService {
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
     pub auth_type: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: DnsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsEntry")]
+    pub dns_entry: Option<DnsEntry>,
 
 
     /// 
@@ -71,6 +59,18 @@ pub struct CfnService {
 
 
     /// 
+    /// The custom domain name of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomDomainName")]
+    pub custom_domain_name: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the certificate.
     /// 
     /// Required: No
@@ -83,6 +83,8 @@ pub struct CfnService {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnService {
     fn type_string() -> &'static str {
         "AWS::VpcLattice::Service"
@@ -91,37 +93,6 @@ impl cfn_resources::CfnResource for CfnService {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Describes the DNS information of a service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DnsEntry {
-
-
-    /// 
-    /// The domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
-
-
-    /// 
-    /// The ID of the hosted zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
-
 }
 
 
@@ -158,3 +129,38 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// Describes the DNS information of a service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DnsEntry {
+
+
+    /// 
+    /// The domain name of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
+
+
+    /// 
+    /// The ID of the hosted zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
+
+}
+
+

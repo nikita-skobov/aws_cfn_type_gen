@@ -30,6 +30,8 @@ pub struct CfnEnabledControl {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnEnabledControl {
     fn type_string() -> &'static str {
         "AWS::ControlTower::EnabledControl"

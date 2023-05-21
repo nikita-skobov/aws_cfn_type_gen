@@ -30,6 +30,8 @@ pub struct CfnConfigurationSetEventDestination {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnConfigurationSetEventDestination {
     fn type_string() -> &'static str {
         "AWS::SES::ConfigurationSetEventDestination"
@@ -41,11 +43,107 @@ impl cfn_resources::CfnResource for CfnConfigurationSetEventDestination {
 }
 
 
+/// Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event       destination.
+///
+/// Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable       you to publish email sending events. For information about using configuration sets, see       the Amazon SES         Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisFirehoseDestination {
+
+
+    /// 
+    /// The ARN of the Amazon Kinesis Firehose stream that email sending events should be published to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryStreamARN")]
+    pub delivery_stream_arn: String,
+
+
+    /// 
+    /// The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose       stream.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IAMRoleARN")]
+    pub iamrole_arn: String,
+
+}
+
+
+
+
+/// Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.
+///
+/// Event destinations, such as Amazon SNS, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SnsDestination {
+
+
+    /// 
+    /// The ARN of the Amazon SNS topic for email sending events. You can find the ARN of a topic       by using the ListTopics Amazon SNS operation.
+    /// 
+    /// For more information about Amazon SNS topics, see the Amazon SNS Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TopicARN")]
+    pub topic_arn: String,
+
+}
+
+
+
+
 /// Contains information about an event destination.
 ///
 /// Event destinations are associated with configuration sets, which enable you to publish       email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about       using configuration sets, see the Amazon SES Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EventDestination {
+
+
+    /// 
+    /// An object that contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event       destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SnsDestination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsDestination")]
+    pub sns_destination: Option<SnsDestination>,
+
+
+    /// 
+    /// Sets whether Amazon SES publishes events to this destination when you send an email with       the associated configuration set. Set to true to enable publishing to this       destination; set to false to prevent publishing to this destination. The       default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// An object that contains the delivery stream ARN and the IAM role ARN associated with       an Amazon Kinesis Firehose event destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisFirehoseDestination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseDestination")]
+    pub kinesis_firehose_destination: Option<KinesisFirehoseDestination>,
 
 
     /// 
@@ -77,42 +175,6 @@ pub struct EventDestination {
 
 
     /// 
-    /// Sets whether Amazon SES publishes events to this destination when you send an email with       the associated configuration set. Set to true to enable publishing to this       destination; set to false to prevent publishing to this destination. The       default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// An object that contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event       destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SnsDestination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnsDestination")]
-    pub sns_destination: Option<SnsDestination>,
-
-
-    /// 
-    /// An object that contains the delivery stream ARN and the IAM role ARN associated with       an Amazon Kinesis Firehose event destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisFirehoseDestination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseDestination")]
-    pub kinesis_firehose_destination: Option<KinesisFirehoseDestination>,
-
-
-    /// 
     /// An object that contains the names, default values, and sources of the dimensions       associated with an Amazon CloudWatch event destination.
     /// 
     /// Required: No
@@ -124,6 +186,31 @@ pub struct EventDestination {
     pub cloud_watch_destination: Option<CloudWatchDestination>,
 
 }
+
+
+
+
+/// Contains information associated with an Amazon CloudWatch event destination to which email       sending events are published.
+///
+/// Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CloudWatchDestination {
+
+
+    /// 
+    /// A list of dimensions upon which to categorize your emails when you publish email       sending events to Amazon CloudWatch.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DimensionConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DimensionConfigurations")]
+    pub dimension_configurations: Option<Vec<DimensionConfiguration>>,
+
+}
+
+
 
 
 /// Contains the dimension configuration to use when you publish email sending events to       Amazon CloudWatch.
@@ -172,83 +259,31 @@ pub struct DimensionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionValueSource")]
-    pub dimension_value_source: String,
+    pub dimension_value_source: DimensionConfigurationDimensionValueSourceEnum,
 
 }
 
 
-/// Contains information associated with an Amazon CloudWatch event destination to which email       sending events are published.
-///
-/// Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CloudWatchDestination {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DimensionConfigurationDimensionValueSourceEnum {
 
+    /// emailHeader
+    #[serde(rename = "emailHeader")]
+    Emailheader,
 
-    /// 
-    /// A list of dimensions upon which to categorize your emails when you publish email       sending events to Amazon CloudWatch.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DimensionConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DimensionConfigurations")]
-    pub dimension_configurations: Option<Vec<DimensionConfiguration>>,
+    /// linkTag
+    #[serde(rename = "linkTag")]
+    Linktag,
+
+    /// messageTag
+    #[serde(rename = "messageTag")]
+    Messagetag,
 
 }
 
-
-/// Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event       destination.
-///
-/// Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable       you to publish email sending events. For information about using configuration sets, see       the Amazon SES         Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KinesisFirehoseDestination {
-
-
-    /// 
-    /// The ARN of the Amazon Kinesis Firehose stream that email sending events should be published to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStreamARN")]
-    pub delivery_stream_arn: String,
-
-
-    /// 
-    /// The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose       stream.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IAMRoleARN")]
-    pub iamrole_arn: String,
-
+impl Default for DimensionConfigurationDimensionValueSourceEnum {
+    fn default() -> Self {
+        DimensionConfigurationDimensionValueSourceEnum::Emailheader
+    }
 }
 
-
-/// Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.
-///
-/// Event destinations, such as Amazon SNS, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SnsDestination {
-
-
-    /// 
-    /// The ARN of the Amazon SNS topic for email sending events. You can find the ARN of a topic       by using the ListTopics Amazon SNS operation.
-    /// 
-    /// For more information about Amazon SNS topics, see the Amazon SNS Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TopicARN")]
-    pub topic_arn: String,
-
-}

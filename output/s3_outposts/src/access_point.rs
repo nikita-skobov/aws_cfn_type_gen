@@ -7,18 +7,6 @@ pub struct CfnAccessPoint {
 
 
     /// 
-    /// The access point policy associated with this access point.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: Option<serde_json::Value>,
-
-
-    /// 
     /// The virtual private cloud (VPC) configuration for this access point, if one exists.
     /// 
     /// Required: Yes
@@ -53,7 +41,21 @@ pub struct CfnAccessPoint {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
+
+    /// 
+    /// The access point policy associated with this access point.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: Option<serde_json::Value>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAccessPoint {
     fn type_string() -> &'static str {
@@ -83,3 +85,5 @@ pub struct VpcConfiguration {
     pub vpc_id: Option<String>,
 
 }
+
+

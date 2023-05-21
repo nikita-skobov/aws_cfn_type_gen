@@ -6,21 +6,17 @@ pub struct CfnMountTarget {
 
 
     /// 
-    /// Valid IPv4 address within the address range of the specified subnet.
+    /// Up to five VPC security group IDs, of the form sg-xxxxxxxx. These must be    for the same VPC as subnet specified.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 7
+    /// Maximum: 100
     ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Vec<String>,
 
 
     /// 
@@ -42,6 +38,24 @@ pub struct CfnMountTarget {
 
 
     /// 
+    /// Valid IPv4 address within the address range of the specified subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 7
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpAddress")]
+    pub ip_address: Option<String>,
+
+
+    /// 
     /// The ID of the file system for which to create the mount target.
     /// 
     /// Required: Yes
@@ -56,21 +70,9 @@ pub struct CfnMountTarget {
     #[serde(rename = "FileSystemId")]
     pub file_system_id: String,
 
-
-    /// 
-    /// Up to five VPC security group IDs, of the form sg-xxxxxxxx. These must be    for the same VPC as subnet specified.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Vec<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMountTarget {
     fn type_string() -> &'static str {

@@ -20,29 +20,6 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// Specifies whether AWS IoT validates the token signature in an authorization request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SigningDisabled")]
-    pub signing_disabled: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableCachingForHttp")]
-    pub enable_caching_for_http: Option<bool>,
-
-
-    /// 
     /// Metadata which can be used to manage the custom authorizer.
     /// 
     /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
@@ -57,15 +34,38 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The public keys used to validate the token signature returned by your custom     authentication service.
+    /// The authorizer name.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthorizerName")]
+    pub authorizer_name: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TokenSigningPublicKeys")]
-    pub token_signing_public_keys: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "EnableCachingForHttp")]
+    pub enable_caching_for_http: Option<bool>,
+
+
+    /// 
+    /// Specifies whether AWS IoT validates the token signature in an authorization request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SigningDisabled")]
+    pub signing_disabled: Option<bool>,
 
 
     /// 
@@ -81,15 +81,15 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The authorizer name.
+    /// The public keys used to validate the token signature returned by your custom     authentication service.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Map of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthorizerName")]
-    pub authorizer_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "TokenSigningPublicKeys")]
+    pub token_signing_public_keys: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -104,6 +104,8 @@ pub struct CfnAuthorizer {
     pub authorizer_function_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAuthorizer {
     fn type_string() -> &'static str {
@@ -128,17 +130,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -148,4 +139,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

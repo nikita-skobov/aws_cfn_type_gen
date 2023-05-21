@@ -10,24 +10,6 @@ pub struct CfnStreamConsumer {
 
 
     /// 
-    /// The ARN of the stream with which you registered the consumer.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:aws.*:kinesis:.*:\d{12}:stream/\S+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StreamARN")]
-    pub stream_arn: String,
-
-
-    /// 
     /// The name of the consumer is something you choose when you register the       consumer.
     /// 
     /// Required: Yes
@@ -44,7 +26,27 @@ pub struct CfnStreamConsumer {
     #[serde(rename = "ConsumerName")]
     pub consumer_name: String,
 
+
+    /// 
+    /// The ARN of the stream with which you registered the consumer.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:aws.*:kinesis:.*:\d{12}:stream/\S+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StreamARN")]
+    pub stream_arn: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStreamConsumer {
     fn type_string() -> &'static str {

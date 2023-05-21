@@ -8,24 +8,6 @@ pub struct CfnRule {
 
 
     /// 
-    /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
     /// 
     /// Required: No
@@ -54,7 +36,27 @@ pub struct CfnRule {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
+
+    /// 
+    /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRule {
     fn type_string() -> &'static str {
@@ -91,20 +93,6 @@ pub struct Predicate {
 
 
     /// 
-    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
     /// Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the 		     specified ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet. 			For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow or block requests based on that IP address.
     /// 
     /// Set Negated to True if you want AWS WAF to allow or block a request based on the negation 		     of the settings in the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet. 			For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow, block, or count requests based on 			all IP addresses except       192.0.2.44.
@@ -117,4 +105,59 @@ pub struct Predicate {
     #[serde(rename = "Negated")]
     pub negated: bool,
 
+
+    /// 
+    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PredicateTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PredicateTypeEnum {
+
+    /// ByteMatch
+    #[serde(rename = "ByteMatch")]
+    Bytematch,
+
+    /// GeoMatch
+    #[serde(rename = "GeoMatch")]
+    Geomatch,
+
+    /// IPMatch
+    #[serde(rename = "IPMatch")]
+    Ipmatch,
+
+    /// RegexMatch
+    #[serde(rename = "RegexMatch")]
+    Regexmatch,
+
+    /// SizeConstraint
+    #[serde(rename = "SizeConstraint")]
+    Sizeconstraint,
+
+    /// SqlInjectionMatch
+    #[serde(rename = "SqlInjectionMatch")]
+    Sqlinjectionmatch,
+
+    /// XssMatch
+    #[serde(rename = "XssMatch")]
+    Xssmatch,
+
+}
+
+impl Default for PredicateTypeEnum {
+    fn default() -> Self {
+        PredicateTypeEnum::Bytematch
+    }
+}
+

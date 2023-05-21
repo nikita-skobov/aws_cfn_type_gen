@@ -12,18 +12,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// A Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon Forecast can assume to access    the key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EncryptionConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionConfig")]
-    pub encryption_config: Option<EncryptionConfig>,
-
-
-    /// 
     /// The dataset type.
     /// 
     /// Required: Yes
@@ -34,19 +22,21 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetType")]
-    pub dataset_type: String,
+    pub dataset_type: DatasetDatasetTypeEnum,
 
 
     /// 
-    /// The schema for the dataset. The schema attributes and their order must match the fields in    your data. The dataset Domain and DatasetType that you choose    determine the minimum required fields in your training data. For information about the    required fields for a specific dataset domain and type, see Dataset Domains and Dataset     Types.
+    /// The domain associated with the dataset.
     /// 
     /// Required: Yes
     ///
-    /// Type: Schema
+    /// Type: String
+    ///
+    /// Allowed values: CUSTOM | EC2_CAPACITY | INVENTORY_PLANNING | METRICS | RETAIL | WEB_TRAFFIC | WORK_FORCE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Schema")]
-    pub schema: Schema,
+    #[serde(rename = "Domain")]
+    pub domain: DatasetDomainEnum,
 
 
     /// 
@@ -74,31 +64,27 @@ pub struct CfnDataset {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// A Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon Forecast can assume to access    the key.
     /// 
     /// Required: No
     ///
-    /// Type: List of TagsItems
+    /// Type: EncryptionConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagsItems>>,
+    #[serde(rename = "EncryptionConfig")]
+    pub encryption_config: Option<EncryptionConfig>,
 
 
     /// 
-    /// The domain associated with the dataset.
+    /// The schema for the dataset. The schema attributes and their order must match the fields in    your data. The dataset Domain and DatasetType that you choose    determine the minimum required fields in your training data. For information about the    required fields for a specific dataset domain and type, see Dataset Domains and Dataset     Types.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: CUSTOM | EC2_CAPACITY | INVENTORY_PLANNING | METRICS | RETAIL | WEB_TRAFFIC | WORK_FORCE
+    /// Type: Schema
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: String,
+    #[serde(rename = "Schema")]
+    pub schema: Schema,
 
 
     /// 
@@ -118,7 +104,85 @@ pub struct CfnDataset {
     #[serde(rename = "DatasetName")]
     pub dataset_name: String,
 
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagsItems
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagsItems>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DatasetDatasetTypeEnum {
+
+    /// ITEM_METADATA
+    #[serde(rename = "ITEM_METADATA")]
+    Itemmetadata,
+
+    /// RELATED_TIME_SERIES
+    #[serde(rename = "RELATED_TIME_SERIES")]
+    Relatedtimeseries,
+
+    /// TARGET_TIME_SERIES
+    #[serde(rename = "TARGET_TIME_SERIES")]
+    Targettimeseries,
+
+}
+
+impl Default for DatasetDatasetTypeEnum {
+    fn default() -> Self {
+        DatasetDatasetTypeEnum::Itemmetadata
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DatasetDomainEnum {
+
+    /// CUSTOM
+    #[serde(rename = "CUSTOM")]
+    Custom,
+
+    /// EC2_CAPACITY
+    #[serde(rename = "EC2_CAPACITY")]
+    Ec2capacity,
+
+    /// INVENTORY_PLANNING
+    #[serde(rename = "INVENTORY_PLANNING")]
+    Inventoryplanning,
+
+    /// METRICS
+    #[serde(rename = "METRICS")]
+    Metrics,
+
+    /// RETAIL
+    #[serde(rename = "RETAIL")]
+    Retail,
+
+    /// WEB_TRAFFIC
+    #[serde(rename = "WEB_TRAFFIC")]
+    Webtraffic,
+
+    /// WORK_FORCE
+    #[serde(rename = "WORK_FORCE")]
+    Workforce,
+
+}
+
+impl Default for DatasetDomainEnum {
+    fn default() -> Self {
+        DatasetDomainEnum::Custom
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnDataset {
     fn type_string() -> &'static str {
@@ -134,22 +198,6 @@ impl cfn_resources::CfnResource for CfnDataset {
 /// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfig {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the KMS key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws:kms:.*:key/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
 
 
     /// 
@@ -169,7 +217,56 @@ pub struct EncryptionConfig {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the KMS key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws:kms:.*:key/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
+
 }
+
+
+
+
+/// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TagsItems {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 
 
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
@@ -201,33 +298,6 @@ pub struct AttributesItems {
 }
 
 
-/// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TagsItems {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
 
 
 /// Defines the fields of a dataset.
@@ -249,3 +319,5 @@ pub struct Schema {
     pub attributes: Option<Vec<AttributesItems>>,
 
 }
+
+

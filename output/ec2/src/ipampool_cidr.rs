@@ -18,18 +18,6 @@ pub struct CfnIPAMPoolCidr {
 
 
     /// 
-    /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Cidr")]
-    pub cidr: Option<String>,
-
-
-    /// 
     /// The ID of the IPAM pool.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnIPAMPoolCidr {
     #[serde(rename = "IpamPoolId")]
     pub ipam_pool_id: String,
 
+
+    /// 
+    /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Cidr")]
+    pub cidr: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPAMPoolCidr {
     fn type_string() -> &'static str {

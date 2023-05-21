@@ -6,15 +6,31 @@ pub struct CfnDetector {
 
 
     /// 
-    /// The models to associate with this detector. You must provide the ARNs of all the models you want to associate.
+    /// The status of the detector version. If a value is not provided for this property, AWS CloudFormation assumes DRAFT status.
+    /// 
+    /// Valid values: ACTIVE | DRAFT
     /// 
     /// Required: No
     ///
-    /// Type: List of Model
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AssociatedModels")]
-    pub associated_models: Option<Vec<Model>>,
+    #[serde(rename = "DetectorVersionStatus")]
+    pub detector_version_status: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -34,18 +50,6 @@ pub struct CfnDetector {
 
 
     /// 
-    /// The event type associated with this detector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: EventType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventType")]
-    pub event_type: EventType,
-
-
-    /// 
     /// The rules to include in the detector version.
     /// 
     /// Required: Yes
@@ -55,6 +59,24 @@ pub struct CfnDetector {
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
     pub rules: Vec<Rule>,
+
+
+    /// 
+    /// The name of the detector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[0-9a-z_-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DetectorId")]
+    pub detector_id: String,
 
 
     /// 
@@ -78,51 +100,31 @@ pub struct CfnDetector {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// The models to associate with this detector. You must provide the ARNs of all the models you want to associate.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of Model
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AssociatedModels")]
+    pub associated_models: Option<Vec<Model>>,
 
 
     /// 
-    /// The name of the detector.
+    /// The event type associated with this detector.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[0-9a-z_-]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DetectorId")]
-    pub detector_id: String,
-
-
-    /// 
-    /// The status of the detector version. If a value is not provided for this property, AWS CloudFormation assumes DRAFT status.
-    /// 
-    /// Valid values: ACTIVE | DRAFT
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: EventType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DetectorVersionStatus")]
-    pub detector_version_status: Option<String>,
+    #[serde(rename = "EventType")]
+    pub event_type: EventType,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDetector {
     fn type_string() -> &'static str {
@@ -132,119 +134,6 @@ impl cfn_resources::CfnResource for CfnDetector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The label details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Label {
-
-
-    /// 
-    /// Timestamp of when the label was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
-
-
-    /// 
-    /// The label name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
-    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Inline")]
-    pub inline: Option<bool>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The label description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The label ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
-    /// Timestamp of when the event type was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
 }
 
 
@@ -266,168 +155,63 @@ pub struct Model {
 }
 
 
-/// A rule. Rule is a condition that tells Amazon Fraud Detector how to interpret variables values during a fraud prediction.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Rule {
-
-
-    /// 
-    /// Timestamp for when the rule was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-
-    /// 
-    /// Timestamp for when the rule was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
-
-
-    /// 
-    /// The rule version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 5
-    ///
-    /// Pattern: ^([1-9][0-9]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleVersion")]
-    pub rule_version: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The rule outcome.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Outcome
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Outcomes")]
-    pub outcomes: Option<Vec<Outcome>>,
-
-
-    /// 
-    /// The rule language.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Language")]
-    pub language: Option<String>,
-
-
-    /// 
-    /// The rule ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[0-9a-z_-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleId")]
-    pub rule_id: Option<String>,
-
-
-    /// 
-    /// The detector for which the rule is associated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[0-9a-z_-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DetectorId")]
-    pub detector_id: Option<String>,
-
-
-    /// 
-    /// The rule description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The rule ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
-    /// The rule expression. A rule expression captures the business logic. For more information, see Rule language reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Expression")]
-    pub expression: Option<String>,
-
-}
 
 
 /// The event type details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EventType {
+
+
+    /// 
+    /// The event type entity types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EntityType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntityTypes")]
+    pub entity_types: Option<Vec<EntityType>>,
+
+
+    /// 
+    /// The event type event variables.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EventVariable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventVariables")]
+    pub event_variables: Option<Vec<EventVariable>>,
+
+
+    /// 
+    /// The event type name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Timestamp of when the event type was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
 
 
     /// 
@@ -446,62 +230,6 @@ pub struct EventType {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
-
-
-    /// 
-    /// Timestamp of when the event type was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
-
-
-    /// 
-    /// The event type name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The event type entity types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EntityType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntityTypes")]
-    pub entity_types: Option<Vec<EntityType>>,
-
-
-    /// 
-    /// The event type description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -531,100 +259,7 @@ pub struct EventType {
 
 
     /// 
-    /// The event type event variables.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EventVariable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventVariables")]
-    pub event_variables: Option<Vec<EventVariable>>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Timestamp of when the event type was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-}
-
-
-/// The entity type details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EntityType {
-
-
-    /// 
-    /// The entity type ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
-    /// The entity type name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Timestamp of when the entity type was last updated.
+    /// Timestamp of when the event type was last updated.
     /// 
     /// Required: No
     ///
@@ -640,37 +275,7 @@ pub struct EntityType {
 
 
     /// 
-    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
-    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these Variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Inline")]
-    pub inline: Option<bool>,
-
-
-    /// 
-    /// Timestamp of when the entity type was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-
-    /// 
-    /// The entity type description.
+    /// The event type description.
     /// 
     /// Required: No
     ///
@@ -683,93 +288,6 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-}
-
-
-/// The outcome.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Outcome {
-
-
-    /// 
-    /// The outcome description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The timestamp when the outcome was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-
-    /// 
-    /// The outcome ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
-    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
-    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Inline")]
-    pub inline: Option<bool>,
-
-
-    /// 
-    /// The timestamp when the outcome was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 11
-    ///
-    /// Maximum: 30
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
 
 
     /// 
@@ -785,9 +303,78 @@ pub struct Outcome {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
+
+
+
+
+/// A rule. Rule is a condition that tells Amazon Fraud Detector how to interpret variables values during a fraud prediction.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Rule {
+
 
     /// 
-    /// The outcome name.
+    /// The rule expression. A rule expression captures the business logic. For more information, see Rule language reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Expression")]
+    pub expression: Option<String>,
+
+
+    /// 
+    /// The rule ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The rule language.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Language")]
+    pub language: Option<String>,
+
+
+    /// 
+    /// Timestamp for when the rule was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+
+    /// 
+    /// Timestamp for when the rule was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The rule ID.
     /// 
     /// Required: No
     ///
@@ -800,31 +387,50 @@ pub struct Outcome {
     /// Pattern: ^[0-9a-z_-]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-/// The event type variable for the detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EventVariable {
+    #[serde(rename = "RuleId")]
+    pub rule_id: Option<String>,
 
 
     /// 
-    /// The data source of the event variable.
-    /// 
-    /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
-    /// 
-    /// When defining a variable within a detector, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
+    /// The rule description.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataSource")]
-    pub data_source: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The rule version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 5
+    ///
+    /// Pattern: ^([1-9][0-9]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleVersion")]
+    pub rule_version: Option<String>,
+
+
+    /// 
+    /// The rule outcome.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Outcome
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Outcomes")]
+    pub outcomes: Option<Vec<Outcome>>,
 
 
     /// 
@@ -842,15 +448,30 @@ pub struct EventVariable {
 
 
     /// 
-    /// The name of the event variable.
+    /// The detector for which the rule is associated.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[0-9a-z_-]+$
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "DetectorId")]
+    pub detector_id: Option<String>,
+
+}
+
+
+
+
+/// The event type variable for the detector.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EventVariable {
 
 
     /// 
@@ -868,27 +489,39 @@ pub struct EventVariable {
 
 
     /// 
-    /// The description of the event variable.
+    /// Timestamp for when the event variable was created.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
 
 
     /// 
-    /// The default value of the event variable. This is required if you are providing the details of your variables instead of the ARN.
+    /// Timestamp for when the event variable was last updated.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: Option<String>,
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The name of the event variable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -916,6 +549,60 @@ pub struct EventVariable {
 
 
     /// 
+    /// The data source of the event variable.
+    /// 
+    /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
+    /// 
+    /// When defining a variable within a detector, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataSource")]
+    pub data_source: Option<String>,
+
+
+    /// 
+    /// The description of the event variable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The default value of the event variable. This is required if you are providing the details of your variables instead of the ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultValue")]
+    pub default_value: Option<String>,
+
+
+    /// 
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
     /// 
     /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
@@ -928,31 +615,9 @@ pub struct EventVariable {
     #[serde(rename = "Inline")]
     pub inline: Option<bool>,
 
-
-    /// 
-    /// Timestamp for when the event variable was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-
-    /// 
-    /// Timestamp for when the event variable was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
-
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -988,3 +653,356 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// The label details.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Label {
+
+
+    /// 
+    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
+    /// 
+    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Inline")]
+    pub inline: Option<bool>,
+
+
+    /// 
+    /// Timestamp of when the label was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The label name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The label ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The label description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Timestamp of when the event type was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+}
+
+
+
+
+/// The entity type details.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EntityType {
+
+
+    /// 
+    /// Timestamp of when the entity type was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+
+    /// 
+    /// The entity type description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The entity type name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
+    /// 
+    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these Variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Inline")]
+    pub inline: Option<bool>,
+
+
+    /// 
+    /// Timestamp of when the entity type was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The entity type ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+}
+
+
+
+
+/// The outcome.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Outcome {
+
+
+    /// 
+    /// The outcome ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The timestamp when the outcome was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+
+    /// 
+    /// The outcome description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
+    /// 
+    /// For example, when creating AWS::FraudDetector::Detector you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your detector but not execute any      changes to the variables.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Inline")]
+    pub inline: Option<bool>,
+
+
+    /// 
+    /// The timestamp when the outcome was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The outcome name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[0-9a-z_-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+

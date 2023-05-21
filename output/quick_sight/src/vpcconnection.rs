@@ -6,32 +6,6 @@ pub struct CfnVPCConnection {
 
 
     /// 
-    /// The Amazon EC2 security group IDs associated with the VPC connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN of the         IAM role associated with the VPC       connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
     /// The availability status of the VPC connection.
     /// 
     /// Required: No
@@ -42,7 +16,23 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
-    pub availability_status: Option<String>,
+    pub availability_status: Option<VPCConnectionAvailabilityStatusEnum>,
+
+
+    /// 
+    /// The display name for the VPC connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -74,6 +64,50 @@ pub struct CfnVPCConnection {
 
 
     /// 
+    /// The Amazon EC2 security group IDs associated with the VPC connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The ARN of the         IAM role associated with the VPC       connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The AWS account ID of the account where you want to create a new VPC 			connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: ^[0-9]{12}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AwsAccountId")]
+    pub aws_account_id: Option<String>,
+
+
+    /// 
     /// A list of subnet IDs for the VPC connection.
     /// 
     /// Required: No
@@ -100,41 +134,32 @@ pub struct CfnVPCConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The AWS account ID of the account where you want to create a new VPC 			connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: ^[0-9]{12}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: Option<String>,
+}
 
 
-    /// 
-    /// The display name for the VPC connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VPCConnectionAvailabilityStatusEnum {
+
+    /// AVAILABLE
+    #[serde(rename = "AVAILABLE")]
+    Available,
+
+    /// PARTIALLY_AVAILABLE
+    #[serde(rename = "PARTIALLY_AVAILABLE")]
+    Partiallyavailable,
+
+    /// UNAVAILABLE
+    #[serde(rename = "UNAVAILABLE")]
+    Unavailable,
 
 }
+
+impl Default for VPCConnectionAvailabilityStatusEnum {
+    fn default() -> Self {
+        VPCConnectionAvailabilityStatusEnum::Available
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnVPCConnection {
     fn type_string() -> &'static str {
@@ -159,17 +184,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -179,7 +193,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// The structure that contains information about a network interface.
@@ -188,15 +215,19 @@ pub struct NetworkInterface {
 
 
     /// 
-    /// An error message.
+    /// The network interface ID.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^eni-[0-9a-z]*$
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "ErrorMessage")]
-    pub error_message: Option<String>,
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: Option<String>,
 
 
     /// 
@@ -222,23 +253,19 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: Option<String>,
+    pub status: Option<NetworkInterfaceStatusEnum>,
 
 
     /// 
-    /// The network interface ID.
+    /// An error message.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^eni-[0-9a-z]*$
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: Option<String>,
+    #[serde(rename = "ErrorMessage")]
+    pub error_message: Option<String>,
 
 
     /// 
@@ -259,3 +286,56 @@ pub struct NetworkInterface {
     pub subnet_id: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkInterfaceStatusEnum {
+
+    /// ATTACHMENT_FAILED_ROLLBACK_FAILED
+    #[serde(rename = "ATTACHMENT_FAILED_ROLLBACK_FAILED")]
+    Attachmentfailedrollbackfailed,
+
+    /// AVAILABLE
+    #[serde(rename = "AVAILABLE")]
+    Available,
+
+    /// CREATING
+    #[serde(rename = "CREATING")]
+    Creating,
+
+    /// CREATION_FAILED
+    #[serde(rename = "CREATION_FAILED")]
+    Creationfailed,
+
+    /// DELETED
+    #[serde(rename = "DELETED")]
+    Deleted,
+
+    /// DELETING
+    #[serde(rename = "DELETING")]
+    Deleting,
+
+    /// DELETION_FAILED
+    #[serde(rename = "DELETION_FAILED")]
+    Deletionfailed,
+
+    /// DELETION_SCHEDULED
+    #[serde(rename = "DELETION_SCHEDULED")]
+    Deletionscheduled,
+
+    /// UPDATE_FAILED
+    #[serde(rename = "UPDATE_FAILED")]
+    Updatefailed,
+
+    /// UPDATING
+    #[serde(rename = "UPDATING")]
+    Updating,
+
+}
+
+impl Default for NetworkInterfaceStatusEnum {
+    fn default() -> Self {
+        NetworkInterfaceStatusEnum::Attachmentfailedrollbackfailed
+    }
+}
+

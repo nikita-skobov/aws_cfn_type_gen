@@ -18,6 +18,8 @@ pub struct CfnDomain {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDomain {
     fn type_string() -> &'static str {
         "AWS::SDB::Domain"

@@ -38,6 +38,8 @@ pub struct CfnImageVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnImageVersion {
     fn type_string() -> &'static str {
         "AWS::SageMaker::ImageVersion"

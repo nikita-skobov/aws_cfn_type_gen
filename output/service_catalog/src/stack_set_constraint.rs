@@ -6,34 +6,6 @@ pub struct CfnStackSetConstraint {
 
 
     /// 
-    /// The language code.
-    /// 
-    /// jp - Japanese                        zh - Chinese
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
-
-
-    /// 
-    /// One or more AWS accounts that will have access to the provisioned product.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccountList")]
-    pub account_list: Vec<String>,
-
-
-    /// 
     /// The description of the constraint.
     /// 
     /// Required: Yes
@@ -45,36 +17,6 @@ pub struct CfnStackSetConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: String,
-
-
-    /// 
-    /// The product identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProductId")]
-    pub product_id: String,
-
-
-    /// 
-    /// ExecutionRole name
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecutionRole")]
-    pub execution_role: String,
 
 
     /// 
@@ -93,6 +35,46 @@ pub struct CfnStackSetConstraint {
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
+
+
+    /// 
+    /// ExecutionRole name
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecutionRole")]
+    pub execution_role: String,
+
+
+    /// 
+    /// Permission to create, update, and delete stack instances. Choose from ALLOWED and NOT_ALLOWED.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StackInstanceControl")]
+    pub stack_instance_control: String,
+
+
+    /// 
+    /// The language code.
+    /// 
+    /// jp - Japanese                        zh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
 
 
     /// 
@@ -126,17 +108,37 @@ pub struct CfnStackSetConstraint {
 
 
     /// 
-    /// Permission to create, update, and delete stack instances. Choose from ALLOWED and NOT_ALLOWED.
+    /// The product identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProductId")]
+    pub product_id: String,
+
+
+    /// 
+    /// One or more AWS accounts that will have access to the provisioned product.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "StackInstanceControl")]
-    pub stack_instance_control: String,
+    #[serde(rename = "AccountList")]
+    pub account_list: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStackSetConstraint {
     fn type_string() -> &'static str {

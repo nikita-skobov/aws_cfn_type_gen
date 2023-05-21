@@ -34,6 +34,8 @@ pub struct CfnSession {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSession {
     fn type_string() -> &'static str {
         "AWS::Macie::Session"

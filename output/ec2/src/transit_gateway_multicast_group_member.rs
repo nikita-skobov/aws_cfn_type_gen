@@ -18,18 +18,6 @@ pub struct CfnTransitGatewayMulticastGroupMember {
 
 
     /// 
-    /// The IP address assigned to the transit gateway multicast group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupIpAddress")]
-    pub group_ip_address: String,
-
-
-    /// 
     /// The ID of the transit gateway multicast domain.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnTransitGatewayMulticastGroupMember {
     #[serde(rename = "TransitGatewayMulticastDomainId")]
     pub transit_gateway_multicast_domain_id: String,
 
+
+    /// 
+    /// The IP address assigned to the transit gateway multicast group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupIpAddress")]
+    pub group_ip_address: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastGroupMember {
     fn type_string() -> &'static str {

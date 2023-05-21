@@ -64,6 +64,8 @@ pub struct CfnHookDefaultVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnHookDefaultVersion {
     fn type_string() -> &'static str {
         "AWS::CloudFormation::HookDefaultVersion"

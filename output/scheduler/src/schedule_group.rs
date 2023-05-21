@@ -36,6 +36,8 @@ pub struct CfnScheduleGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnScheduleGroup {
     fn type_string() -> &'static str {
         "AWS::Scheduler::ScheduleGroup"
@@ -80,3 +82,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

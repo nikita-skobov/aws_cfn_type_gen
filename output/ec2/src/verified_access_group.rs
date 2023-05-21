@@ -6,15 +6,15 @@ pub struct CfnVerifiedAccessGroup {
 
 
     /// 
-    /// The status of the Verified Access policy.
+    /// The tags.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PolicyEnabled")]
-    pub policy_enabled: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -42,15 +42,15 @@ pub struct CfnVerifiedAccessGroup {
 
 
     /// 
-    /// The tags.
+    /// The status of the Verified Access policy.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "PolicyEnabled")]
+    pub policy_enabled: Option<bool>,
 
 
     /// 
@@ -65,6 +65,8 @@ pub struct CfnVerifiedAccessGroup {
     pub verified_access_instance_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessGroup {
     fn type_string() -> &'static str {
@@ -110,3 +112,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

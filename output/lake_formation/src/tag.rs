@@ -6,20 +6,6 @@ pub struct CfnTag {
 
 
     /// 
-    /// An array of UTF-8 strings, not less than 1 or more than 50 strings.
-    /// 
-    /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagValues")]
-    pub tag_values: Vec<String>,
-
-
-    /// 
     /// Catalog id string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
     /// The identifier for the Data Catalog. By default, the account ID.       The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -48,7 +34,23 @@ pub struct CfnTag {
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 
+
+    /// 
+    /// An array of UTF-8 strings, not less than 1 or more than 50 strings.
+    /// 
+    /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagValues")]
+    pub tag_values: Vec<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTag {
     fn type_string() -> &'static str {

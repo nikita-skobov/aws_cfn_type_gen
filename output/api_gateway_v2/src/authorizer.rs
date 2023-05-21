@@ -6,27 +6,39 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableSimpleResponses")]
-    pub enable_simple_responses: Option<bool>,
-
-
-    /// 
-    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+    /// The name of the authorizer.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizerType")]
-    pub authorizer_type: String,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// This parameter is not used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityValidationExpression")]
+    pub identity_validation_expression: Option<String>,
+
+
+    /// 
+    /// The authorizer's Uniform Resource Identifier (URI). For REQUEST          authorizers, this must be a well-formed Lambda function URI, for example,                arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations.          In general, the URI has this form:                arn:aws:apigateway:{region}:lambda:path/{service_api}          , where {region} is the same as the region hosting the          Lambda function, path indicates that the remaining substring in the URI should be          treated as the path to the resource, including the initial /. For          Lambda functions, this is usually of the form             /2015-03-31/functions/[FunctionARN]/invocations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerUri")]
+    pub authorizer_uri: Option<String>,
 
 
     /// 
@@ -43,54 +55,6 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
     pub identity_source: Option<Vec<String>>,
-
-
-    /// 
-    /// The authorizer's Uniform Resource Identifier (URI). For REQUEST          authorizers, this must be a well-formed Lambda function URI, for example,                arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations.          In general, the URI has this form:                arn:aws:apigateway:{region}:lambda:path/{service_api}          , where {region} is the same as the region hosting the          Lambda function, path indicates that the remaining substring in the URI should be          treated as the path to the resource, including the initial /. For          Lambda functions, this is usually of the form             /2015-03-31/functions/[FunctionARN]/invocations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerUri")]
-    pub authorizer_uri: Option<String>,
-
-
-    /// 
-    /// Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null. Supported only for REQUEST authorizers.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerCredentialsArn")]
-    pub authorizer_credentials_arn: Option<String>,
-
-
-    /// 
-    /// This parameter is not used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdentityValidationExpression")]
-    pub identity_validation_expression: Option<String>,
-
-
-    /// 
-    /// The name of the authorizer.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -118,15 +82,39 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
+    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    pub authorizer_result_ttl_in_seconds: Option<i64>,
+    #[serde(rename = "EnableSimpleResponses")]
+    pub enable_simple_responses: Option<bool>,
+
+
+    /// 
+    /// Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null. Supported only for REQUEST authorizers.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerCredentialsArn")]
+    pub authorizer_credentials_arn: Option<String>,
+
+
+    /// 
+    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerType")]
+    pub authorizer_type: String,
 
 
     /// 
@@ -140,7 +128,21 @@ pub struct CfnAuthorizer {
     #[serde(rename = "ApiId")]
     pub api_id: String,
 
+
+    /// 
+    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerResultTtlInSeconds")]
+    pub authorizer_result_ttl_in_seconds: Option<i64>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAuthorizer {
     fn type_string() -> &'static str {
@@ -159,18 +161,6 @@ pub struct JWTConfiguration {
 
 
     /// 
-    /// The base domain of the identity provider that issues JSON Web Tokens. For example,        an Amazon Cognito user pool has the following format:           https://cognito-idp.{region}.amazonaws.com/{userPoolId}           .        Required for the JWT authorizer type. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Issuer")]
-    pub issuer: Option<String>,
-
-
-    /// 
     /// A list of the intended recipients of the JWT. A valid JWT must provide an          aud that matches at least one entry in this list. See RFC 7519.        Required for the JWT authorizer type. Supported only for HTTP APIs.
     /// 
     /// Required: No
@@ -181,4 +171,18 @@ pub struct JWTConfiguration {
     #[serde(rename = "Audience")]
     pub audience: Option<Vec<String>>,
 
+
+    /// 
+    /// The base domain of the identity provider that issues JSON Web Tokens. For example,        an Amazon Cognito user pool has the following format:           https://cognito-idp.{region}.amazonaws.com/{userPoolId}           .        Required for the JWT authorizer type. Supported only for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Issuer")]
+    pub issuer: Option<String>,
+
 }
+
+

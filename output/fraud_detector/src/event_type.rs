@@ -6,46 +6,6 @@ pub struct CfnEventType {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The event type name.
-    /// 
-    /// Pattern : ^[0-9a-z_-]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The event type event variables.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of EventVariable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventVariables")]
-    pub event_variables: Vec<EventVariable>,
-
-
-    /// 
     /// The event type entity types.
     /// 
     /// Required: Yes
@@ -74,6 +34,34 @@ pub struct CfnEventType {
 
 
     /// 
+    /// The event type name.
+    /// 
+    /// Pattern : ^[0-9a-z_-]+$
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The event type labels.
     /// 
     /// Required: Yes
@@ -84,7 +72,21 @@ pub struct CfnEventType {
     #[serde(rename = "Labels")]
     pub labels: Vec<Label>,
 
+
+    /// 
+    /// The event type event variables.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of EventVariable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventVariables")]
+    pub event_variables: Vec<EventVariable>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEventType {
     fn type_string() -> &'static str {
@@ -100,38 +102,6 @@ impl cfn_resources::CfnResource for CfnEventType {
 /// The entity type details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EntityType {
-
-
-    /// 
-    /// The entity type name.
-    /// 
-    /// ^[0-9a-z_-]+$
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The entity type ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
 
 
     /// 
@@ -167,6 +137,24 @@ pub struct EntityType {
 
 
     /// 
+    /// The entity type ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn\:aws[a-z-]{0,15}\:frauddetector\:[a-z0-9-]{3,20}\:[0-9]{12}\:[^\s]{2,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
     /// Timestamp of when the entity type was created.
     /// 
     /// Required: No
@@ -197,6 +185,20 @@ pub struct EntityType {
 
 
     /// 
+    /// The entity type name.
+    /// 
+    /// ^[0-9a-z_-]+$
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
     /// 
     /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your event type but not execute any      changes to the variables.
@@ -212,151 +214,6 @@ pub struct EntityType {
 }
 
 
-/// The variables associated with this event type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EventVariable {
-
-
-    /// 
-    /// The source of the event variable.
-    /// 
-    /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
-    /// 
-    /// When defining a variable within a event type, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataSource")]
-    pub data_source: Option<String>,
-
-
-    /// 
-    /// The data type of the event variable. For more information, see Data types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataType")]
-    pub data_type: Option<String>,
-
-
-    /// 
-    /// The type of event variable. For more information, see Variable types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VariableType")]
-    pub variable_type: Option<String>,
-
-
-    /// 
-    /// The event variable ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
-    /// Timestamp for when event variable was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
-
-
-    /// 
-    /// The name of the event variable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The event variable description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The default value of the event variable
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
-    /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the Variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your event type but not execute any      changes to the variables.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Inline")]
-    pub inline: Option<bool>,
-
-
-    /// 
-    /// Timestamp for when the event variable was last updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LastUpdatedTime")]
-    pub last_updated_time: Option<String>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -394,21 +251,31 @@ pub struct Tag {
 }
 
 
-/// The label associated with the event type.
+
+
+/// The variables associated with this event type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Label {
+pub struct EventVariable {
 
 
     /// 
-    /// The label description.
+    /// The event variable ARN.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The event variable description.
+    /// 
+    /// Required: No
     ///
-    /// Maximum: 128
+    /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
@@ -416,19 +283,128 @@ pub struct Label {
 
 
     /// 
-    /// Timestamp of when the label was last updated.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The source of the event variable.
+    /// 
+    /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
+    /// 
+    /// When defining a variable within a event type, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 11
+    /// Update requires: No interruption
+    #[serde(rename = "DataSource")]
+    pub data_source: Option<String>,
+
+
+    /// 
+    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
+    /// 
+    /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the Variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your event type but not execute any      changes to the variables.
+    /// 
+    /// Required: No
     ///
-    /// Maximum: 30
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Inline")]
+    pub inline: Option<bool>,
+
+
+    /// 
+    /// Timestamp for when event variable was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+
+    /// 
+    /// The type of event variable. For more information, see Variable types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VariableType")]
+    pub variable_type: Option<String>,
+
+
+    /// 
+    /// Timestamp for when the event variable was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
     pub last_updated_time: Option<String>,
+
+
+    /// 
+    /// The data type of the event variable. For more information, see Data types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataType")]
+    pub data_type: Option<String>,
+
+
+    /// 
+    /// The default value of the event variable
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultValue")]
+    pub default_value: Option<String>,
+
+
+    /// 
+    /// The name of the event variable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
+/// The label associated with the event type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Label {
 
 
     /// 
@@ -448,17 +424,19 @@ pub struct Label {
 
 
     /// 
-    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
-    /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your EventType but not execute any      changes to the variables.
+    /// The label description.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Inline")]
-    pub inline: Option<bool>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -504,4 +482,36 @@ pub struct Label {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
+    /// 
+    /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your EventType but not execute any      changes to the variables.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Inline")]
+    pub inline: Option<bool>,
+
+
+    /// 
+    /// Timestamp of when the label was last updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 11
+    ///
+    /// Maximum: 30
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LastUpdatedTime")]
+    pub last_updated_time: Option<String>,
+
 }
+
+

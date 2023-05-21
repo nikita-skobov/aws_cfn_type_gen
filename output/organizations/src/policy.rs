@@ -12,33 +12,23 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// Human readable description of the policy.
+    /// Name of the policy.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The type of policy to create.
+    /// The regex pattern that is used to       validate this parameter is a string of any of the characters in the ASCII character       range.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: AISERVICES_OPT_OUT_POLICY | BACKUP_POLICY | SERVICE_CONTROL_POLICY | TAG_POLICY
+    /// Minimum: 1
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Maximum: 128
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -62,23 +52,17 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// Name of the policy.
+    /// A list of tags that you want to attach to the newly created policy. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
     /// 
-    /// The regex pattern that is used to       validate this parameter is a string of any of the characters in the ASCII character       range.
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for a policy, then the entire request fails and the policy is not created.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\s\S]*
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -108,19 +92,64 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// A list of tags that you want to attach to the newly created policy. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for a policy, then the entire request fails and the policy is not created.
+    /// Human readable description of the policy.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The type of policy to create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AISERVICES_OPT_OUT_POLICY | BACKUP_POLICY | SERVICE_CONTROL_POLICY | TAG_POLICY
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: PolicyTypeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PolicyTypeEnum {
+
+    /// AISERVICES_OPT_OUT_POLICY
+    #[serde(rename = "AISERVICES_OPT_OUT_POLICY")]
+    Aiservicesoptoutpolicy,
+
+    /// BACKUP_POLICY
+    #[serde(rename = "BACKUP_POLICY")]
+    Backuppolicy,
+
+    /// SERVICE_CONTROL_POLICY
+    #[serde(rename = "SERVICE_CONTROL_POLICY")]
+    Servicecontrolpolicy,
+
+    /// TAG_POLICY
+    #[serde(rename = "TAG_POLICY")]
+    Tagpolicy,
+
+}
+
+impl Default for PolicyTypeEnum {
+    fn default() -> Self {
+        PolicyTypeEnum::Aiservicesoptoutpolicy
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPolicy {
     fn type_string() -> &'static str {
@@ -145,17 +174,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -165,4 +183,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

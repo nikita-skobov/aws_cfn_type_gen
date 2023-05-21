@@ -36,18 +36,6 @@ pub struct CfnDetector {
 
 
     /// 
-    /// A list of features that will be configured for the detector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of FeatureConfigurations
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Features")]
-    pub features: Option<Vec<FeatureConfigurations>>,
-
-
-    /// 
     /// Specifies how frequently updated findings are exported.
     /// 
     /// Required: No
@@ -58,7 +46,7 @@ pub struct CfnDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
-    pub finding_publishing_frequency: Option<String>,
+    pub finding_publishing_frequency: Option<DetectorFindingPublishingFrequencyEnum>,
 
 
     /// 
@@ -72,7 +60,44 @@ pub struct CfnDetector {
     #[serde(rename = "Enable")]
     pub enable: bool,
 
+
+    /// 
+    /// A list of features that will be configured for the detector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of FeatureConfigurations
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Features")]
+    pub features: Option<Vec<FeatureConfigurations>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DetectorFindingPublishingFrequencyEnum {
+
+    /// FIFTEEN_MINUTES
+    #[serde(rename = "FIFTEEN_MINUTES")]
+    Fifteenminutes,
+
+    /// ONE_HOUR
+    #[serde(rename = "ONE_HOUR")]
+    Onehour,
+
+    /// SIX_HOURS
+    #[serde(rename = "SIX_HOURS")]
+    Sixhours,
+
+}
+
+impl Default for DetectorFindingPublishingFrequencyEnum {
+    fn default() -> Self {
+        DetectorFindingPublishingFrequencyEnum::Fifteenminutes
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnDetector {
     fn type_string() -> &'static str {
@@ -83,6 +108,48 @@ impl cfn_resources::CfnResource for CfnDetector {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CFNS3LogsConfiguration {
+
+
+    /// 
+    /// The status of S3 data event logs as a data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: Option<bool>,
+
+}
+
+
+
+
+/// Describes which optional data sources are enabled for a detector.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CFNKubernetesAuditLogsConfiguration {
+
+
+    /// 
+    /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: Option<bool>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -120,42 +187,27 @@ pub struct Tag {
 }
 
 
-/// Describes which Kubernetes protection data sources are enabled for the          detector.
+
+
+/// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CFNKubernetesConfiguration {
+pub struct CFNScanEc2InstanceWithFindingsConfiguration {
 
 
     /// 
-    /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CFNKubernetesAuditLogsConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuditLogs")]
-    pub audit_logs: Option<CFNKubernetesAuditLogsConfiguration>,
-
-}
-
-
-/// Describes which optional data sources are enabled for a detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CFNKubernetesAuditLogsConfiguration {
-
-
-    /// 
-    /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
+    /// Describes the configuration for scanning EBS volumes as data source.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: Option<bool>,
+    #[serde(rename = "EbsVolumes")]
+    pub ebs_volumes: Option<bool>,
 
 }
+
+
 
 
 /// Describes the configuration for a feature.
@@ -203,56 +255,6 @@ pub struct FeatureConfigurations {
 }
 
 
-/// Describes the additional configuration for a feature. If you want to specify any additional          configuration for your feature, it is required to provide the Name and Status          for that additional configuration. For more information, see          DetectorAdditionalConfiguration.
-///
-/// If you're providing additional configuration, ensure to provide the corresponding       FeatureConfigurations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FeatureAdditionalConfiguration {
-
-
-    /// 
-    /// Name of the additional configuration of a feature.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Status of the additional configuration of a feature.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-}
-
-
-/// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CFNScanEc2InstanceWithFindingsConfiguration {
-
-
-    /// 
-    /// Describes the configuration for scanning EBS volumes as data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EbsVolumes")]
-    pub ebs_volumes: Option<bool>,
-
-}
 
 
 /// Describes whether Malware Protection will be enabled as a data source.
@@ -274,23 +276,6 @@ pub struct CFNMalwareProtectionConfiguration {
 }
 
 
-/// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CFNS3LogsConfiguration {
-
-
-    /// 
-    /// The status of S3 data event logs as a data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: Option<bool>,
-
-}
 
 
 /// Describes whether S3 data event logs, Kubernetes audit logs, or Malware Protection          will be enabled as a data source when the detector is created.
@@ -299,15 +284,15 @@ pub struct CFNDataSourceConfigurations {
 
 
     /// 
-    /// Describes whether S3 data event logs are enabled as a data source.
+    /// Describes which Kubernetes data sources are enabled for a detector.
     /// 
     /// Required: No
     ///
-    /// Type: CFNS3LogsConfiguration
+    /// Type: CFNKubernetesConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3Logs")]
-    pub s3_logs: Option<CFNS3LogsConfiguration>,
+    #[serde(rename = "Kubernetes")]
+    pub kubernetes: Option<CFNKubernetesConfiguration>,
 
 
     /// 
@@ -323,14 +308,72 @@ pub struct CFNDataSourceConfigurations {
 
 
     /// 
-    /// Describes which Kubernetes data sources are enabled for a detector.
+    /// Describes whether S3 data event logs are enabled as a data source.
     /// 
     /// Required: No
     ///
-    /// Type: CFNKubernetesConfiguration
+    /// Type: CFNS3LogsConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Kubernetes")]
-    pub kubernetes: Option<CFNKubernetesConfiguration>,
+    #[serde(rename = "S3Logs")]
+    pub s3_logs: Option<CFNS3LogsConfiguration>,
 
 }
+
+
+
+
+/// Describes which Kubernetes protection data sources are enabled for the          detector.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CFNKubernetesConfiguration {
+
+
+    /// 
+    /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CFNKubernetesAuditLogsConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuditLogs")]
+    pub audit_logs: Option<CFNKubernetesAuditLogsConfiguration>,
+
+}
+
+
+
+
+/// Describes the additional configuration for a feature. If you want to specify any additional          configuration for your feature, it is required to provide the Name and Status          for that additional configuration. For more information, see          DetectorAdditionalConfiguration.
+///
+/// If you're providing additional configuration, ensure to provide the corresponding       FeatureConfigurations.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FeatureAdditionalConfiguration {
+
+
+    /// 
+    /// Status of the additional configuration of a feature.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// Name of the additional configuration of a feature.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+

@@ -6,6 +6,32 @@ pub struct CfnImage {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the distribution configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|workflow\/(?:build|test|distribution))/[a-z0-9-_]+(?:/(?:(?:x|[0-9]+)\.(?:x|[0-9]+)\.(?:x|[0-9]+))(?:/[0-9]+)?)?$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DistributionConfigurationArn")]
+    pub distribution_configuration_arn: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the infrastructure configuration associated with 			this image pipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InfrastructureConfigurationArn")]
+    pub infrastructure_configuration_arn: String,
+
+
+    /// 
     /// Indicates whether Image Builder collects additional information about the image, such as the 			operating system (OS) version and package list.
     /// 
     /// Required: No
@@ -26,6 +52,30 @@ pub struct CfnImage {
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningConfiguration")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerRecipeArn")]
+    pub container_recipe_arn: Option<String>,
+
+
+    /// 
+    /// The configuration settings for your image test components, which includes 			a toggle that allows you to turn off tests, and a timeout setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageTestsConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageTestsConfiguration")]
+    pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
 
     /// 
@@ -53,57 +103,9 @@ pub struct CfnImage {
     #[serde(rename = "ImageRecipeArn")]
     pub image_recipe_arn: Option<String>,
 
-
-    /// 
-    /// The configuration settings for your image test components, which includes 			a toggle that allows you to turn off tests, and a timeout setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ImageTestsConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ImageTestsConfiguration")]
-    pub image_tests_configuration: Option<ImageTestsConfiguration>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the distribution configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):(?:image-recipe|container-recipe|infrastructure-configuration|distribution-configuration|component|image|image-pipeline|workflow\/(?:build|test|distribution))/[a-z0-9-_]+(?:/(?:(?:x|[0-9]+)\.(?:x|[0-9]+)\.(?:x|[0-9]+))(?:/[0-9]+)?)?$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DistributionConfigurationArn")]
-    pub distribution_configuration_arn: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the infrastructure configuration associated with 			this image pipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InfrastructureConfigurationArn")]
-    pub infrastructure_configuration_arn: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerRecipeArn")]
-    pub container_recipe_arn: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnImage {
     fn type_string() -> &'static str {
@@ -145,20 +147,11 @@ pub struct ImageScanningConfiguration {
 }
 
 
+
+
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EcrConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerTags")]
-    pub container_tags: Option<Vec<String>>,
 
 
     /// Property description not available.
@@ -171,7 +164,20 @@ pub struct EcrConfiguration {
     #[serde(rename = "RepositoryName")]
     pub repository_name: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerTags")]
+    pub container_tags: Option<Vec<String>>,
+
 }
+
+
 
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that are used to create the final image. You must have at least one build   		component to create a recipe, but test components are not required. If you have added tests,   		they run after the image is created, to ensure that the target image is functional and can   		be used reliably for launching Amazon EC2 instances.
@@ -209,3 +215,5 @@ pub struct ImageTestsConfiguration {
     pub timeout_minutes: Option<i64>,
 
 }
+
+

@@ -6,22 +6,6 @@ pub struct CfnStackFleetAssociation {
 
 
     /// 
-    /// The name of the fleet.
-    /// 
-    /// To associate a fleet with a stack, you must specify a dependency on the fleet resource. For more information, see DependsOn Attribute.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FleetName")]
-    pub fleet_name: String,
-
-
-    /// 
     /// The name of the stack.
     /// 
     /// To associate a fleet with a stack, you must specify a dependency on the stack resource. For more information, see DependsOn Attribute.
@@ -36,7 +20,25 @@ pub struct CfnStackFleetAssociation {
     #[serde(rename = "StackName")]
     pub stack_name: String,
 
+
+    /// 
+    /// The name of the fleet.
+    /// 
+    /// To associate a fleet with a stack, you must specify a dependency on the fleet resource. For more information, see DependsOn Attribute.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FleetName")]
+    pub fleet_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStackFleetAssociation {
     fn type_string() -> &'static str {

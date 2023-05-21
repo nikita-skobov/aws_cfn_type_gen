@@ -66,6 +66,8 @@ pub struct CfnListenerRule {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnListenerRule {
     fn type_string() -> &'static str {
         "AWS::ElasticLoadBalancingV2::ListenerRule"
@@ -75,6 +77,64 @@ impl cfn_resources::CfnResource for CfnListenerRule {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Information about a query string condition.
+///
+/// The query string component of a URI starts after the first '?' character and is terminated    by either a '#' character or the end of the URI. A typical query string contains key/value    pairs separated by '&' characters. The allowed characters are specified by RFC 3986. Any    character can be percentage encoded.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct QueryStringConfig {
+
+
+    /// 
+    /// The key/value pairs or values to find in the query string. The maximum size of    each string is 128 characters. The comparison is case insensitive. The following wildcard    characters are supported: * (matches 0 or more characters) and ? (matches exactly 1    character). To search for a literal '*' or '?' character in a query string, you must escape    these characters in Values using a '\' character.
+    /// 
+    /// If you specify multiple key/value pairs or values, the condition is satisfied if one of    them is found in the query string.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of QueryStringKeyValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<QueryStringKeyValue>>,
+
+}
+
+
+
+
+/// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ForwardConfig {
+
+
+    /// 
+    /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TargetGroupTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroups")]
+    pub target_groups: Option<Vec<TargetGroupTuple>>,
+
+
+    /// 
+    /// Information about the target group stickiness for a rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TargetGroupStickinessConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupStickinessConfig")]
+    pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
+
+}
+
+
 
 
 /// Information about an HTTP header condition.
@@ -114,45 +174,60 @@ pub struct HttpHeaderConfig {
 }
 
 
-/// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
+
+
+/// Information about an HTTP method condition.
+///
+/// HTTP defines a set of request methods, also referred to as HTTP verbs. For more    information, see the HTTP Method     Registry. You can also define custom HTTP methods.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticateOidcConfig {
+pub struct HttpRequestMethodConfig {
 
 
     /// 
-    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
+    /// The name of the request method. The maximum size is 40 characters. The allowed characters    are A-Z, hyphen (-), and underscore (_). The comparison is case sensitive. Wildcards are not    supported; therefore, the method name must be an exact match.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserInfoEndpoint")]
-    pub user_info_endpoint: String,
-
-
-    /// 
-    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// If you specify multiple strings, the condition is satisfied if one of the strings matches    the HTTP request method. We recommend that you route GET and HEAD requests in the same way,    because the response to a HEAD request may be cached.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UseExistingClientSecret")]
-    pub use_existing_client_secret: Option<bool>,
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthenticateCognitoConfig {
 
 
     /// 
-    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TokenEndpoint")]
-    pub token_endpoint: String,
+    #[serde(rename = "UserPoolDomain")]
+    pub user_pool_domain: String,
 
 
     /// 
@@ -165,6 +240,30 @@ pub struct AuthenticateOidcConfig {
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
     pub session_cookie_name: Option<String>,
+
+
+    /// 
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<i64>,
+
+
+    /// 
+    /// The ID of the Amazon Cognito user pool client.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolClientId")]
+    pub user_pool_client_id: String,
 
 
     /// 
@@ -182,75 +281,15 @@ pub struct AuthenticateOidcConfig {
 
 
     /// 
-    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientSecret")]
-    pub client_secret: Option<String>,
-
-
-    /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: String,
-
-
-    /// 
-    /// The OAuth 2.0 client identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
-
-
-    /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<i64>,
-
-
-    /// 
-    /// The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Issuer")]
-    pub issuer: String,
+    #[serde(rename = "UserPoolArn")]
+    pub user_pool_arn: String,
 
 
     /// 
@@ -266,170 +305,112 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    pub on_unauthenticated_request: Option<String>,
+    pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
 
 }
 
 
-/// Information about a redirect action.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
+
+    /// allow
+    #[serde(rename = "allow")]
+    Allow,
+
+    /// authenticate
+    #[serde(rename = "authenticate")]
+    Authenticate,
+
+    /// deny
+    #[serde(rename = "deny")]
+    Deny,
+
+}
+
+impl Default for AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
+    fn default() -> Self {
+        AuthenticateCognitoConfigOnUnauthenticatedRequestEnum::Allow
+    }
+}
+
+
+
+/// Information about a source IP condition.
 ///
-/// A URI consists of the following components: protocol://hostname:port/path?query. You must    modify at least one of the following components to avoid a redirect loop: protocol, hostname,    port, or path. Any components that you do not modify retain their original values.
-///
-/// You can reuse URI components using the following reserved keywords:
-///
-/// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
+/// You can use this condition to route based on the IP address of the source that connects to    the load balancer. If a client is behind a proxy, this is the IP address of the proxy not the    IP address of the client.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RedirectConfig {
+pub struct SourceIpConfig {
 
 
     /// 
-    /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP    302).
+    /// The source IP addresses, in CIDR format. You can use both IPv4 and IPv6     addresses. Wildcards are not supported.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HTTP_301 | HTTP_302
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: String,
-
-
-    /// 
-    /// The port. You can specify a value from 1 to 65535 or #{port}.
+    /// If you specify multiple addresses, the condition is satisfied if the source IP address     of the request matches one of the CIDR blocks. This condition is not satisfied by the     addresses in the X-Forwarded-For header.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<String>,
-
-
-    /// 
-    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Query")]
-    pub query: Option<String>,
-
-
-    /// 
-    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(HTTPS?|#\{protocol\})$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
-
-
-    /// 
-    /// The absolute path, starting with the leading "/". This component is not percent-encoded.    The path can contain #{host}, #{path}, and #{port}.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-
-    /// 
-    /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: Option<String>,
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
 
 }
 
 
-/// Specifies information required when returning a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FixedResponseConfig {
-
-
-    /// 
-    /// The HTTP response code (2XX, 4XX, or 5XX).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(2|4|5)\d\d$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: String,
-
-
-    /// 
-    /// The content type.
-    /// 
-    /// Valid Values: text/plain | text/css | text/html | application/javascript |    application/json
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContentType")]
-    pub content_type: Option<String>,
-
-
-    /// 
-    /// The message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageBody")]
-    pub message_body: Option<String>,
-
-}
 
 
 /// Specifies an action for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Action {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
+
+
+    /// 
+    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticateOidcConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticateOidcConfig")]
+    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
+
+
+    /// 
+    /// [Application Load Balancer] Information for creating a redirect action. Specify only when     Type is redirect.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RedirectConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedirectConfig")]
+    pub redirect_config: Option<RedirectConfig>,
+
+
+    /// 
+    /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticateCognitoConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticateCognitoConfig")]
+    pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
 
     /// 
@@ -443,7 +424,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: ActionTypeEnum,
 
 
     /// 
@@ -456,18 +437,6 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "FixedResponseConfig")]
     pub fixed_response_config: Option<FixedResponseConfig>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
 
 
     /// 
@@ -487,30 +456,6 @@ pub struct Action {
 
 
     /// 
-    /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticateCognitoConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticateCognitoConfig")]
-    pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
-
-
-    /// 
-    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticateOidcConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticateOidcConfig")]
-    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
-
-
-    /// 
     /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
     /// 
     /// Required: No
@@ -521,50 +466,222 @@ pub struct Action {
     #[serde(rename = "ForwardConfig")]
     pub forward_config: Option<ForwardConfig>,
 
-
-    /// 
-    /// [Application Load Balancer] Information for creating a redirect action. Specify only when     Type is redirect.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RedirectConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedirectConfig")]
-    pub redirect_config: Option<RedirectConfig>,
-
 }
 
 
-/// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ActionTypeEnum {
+
+    /// authenticate-cognito
+    #[serde(rename = "authenticate-cognito")]
+    Authenticatecognito,
+
+    /// authenticate-oidc
+    #[serde(rename = "authenticate-oidc")]
+    Authenticateoidc,
+
+    /// fixed-response
+    #[serde(rename = "fixed-response")]
+    Fixedresponse,
+
+    /// forward
+    #[serde(rename = "forward")]
+    Forward,
+
+    /// redirect
+    #[serde(rename = "redirect")]
+    Redirect,
+
+}
+
+impl Default for ActionTypeEnum {
+    fn default() -> Self {
+        ActionTypeEnum::Authenticatecognito
+    }
+}
+
+
+
+/// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ForwardConfig {
+pub struct AuthenticateOidcConfig {
 
 
     /// 
-    /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TokenEndpoint")]
+    pub token_endpoint: String,
+
+
+    /// 
+    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationEndpoint")]
+    pub authorization_endpoint: String,
+
+
+    /// 
+    /// The behavior if the user is not authenticated. The following are possible values:
+    /// 
+    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
     /// 
     /// Required: No
     ///
-    /// Type: List of TargetGroupTuple
+    /// Type: String
+    ///
+    /// Allowed values: allow | authenticate | deny
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetGroups")]
-    pub target_groups: Option<Vec<TargetGroupTuple>>,
+    #[serde(rename = "OnUnauthenticatedRequest")]
+    pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
 
 
     /// 
-    /// Information about the target group stickiness for a rule.
+    /// The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Issuer")]
+    pub issuer: String,
+
+
+    /// 
+    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserInfoEndpoint")]
+    pub user_info_endpoint: String,
+
+
+    /// 
+    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// 
+    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
     /// 
     /// Required: No
     ///
-    /// Type: TargetGroupStickinessConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetGroupStickinessConfig")]
-    pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
+    #[serde(rename = "Scope")]
+    pub scope: Option<String>,
+
+
+    /// 
+    /// The OAuth 2.0 client identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
+
+
+    /// 
+    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseExistingClientSecret")]
+    pub use_existing_client_secret: Option<bool>,
+
+
+    /// 
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<i64>,
+
+
+    /// 
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionCookieName")]
+    pub session_cookie_name: Option<String>,
+
+
+    /// 
+    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientSecret")]
+    pub client_secret: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
+
+    /// allow
+    #[serde(rename = "allow")]
+    Allow,
+
+    /// authenticate
+    #[serde(rename = "authenticate")]
+    Authenticate,
+
+    /// deny
+    #[serde(rename = "deny")]
+    Deny,
+
+}
+
+impl Default for AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
+    fn default() -> Self {
+        AuthenticateOidcConfigOnUnauthenticatedRequestEnum::Allow
+    }
+}
+
 
 
 /// Information about a key/value pair.
@@ -598,217 +715,6 @@ pub struct QueryStringKeyValue {
 }
 
 
-/// Information about a source IP condition.
-///
-/// You can use this condition to route based on the IP address of the source that connects to    the load balancer. If a client is behind a proxy, this is the IP address of the proxy not the    IP address of the client.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceIpConfig {
-
-
-    /// 
-    /// The source IP addresses, in CIDR format. You can use both IPv4 and IPv6     addresses. Wildcards are not supported.
-    /// 
-    /// If you specify multiple addresses, the condition is satisfied if the source IP address     of the request matches one of the CIDR blocks. This condition is not satisfied by the     addresses in the X-Forwarded-For header.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-}
-
-
-/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetGroupTuple {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the target group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
-
-
-    /// 
-    /// The weight. The range is 0 to 999.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-}
-
-
-/// Information about a query string condition.
-///
-/// The query string component of a URI starts after the first '?' character and is terminated    by either a '#' character or the end of the URI. A typical query string contains key/value    pairs separated by '&' characters. The allowed characters are specified by RFC 3986. Any    character can be percentage encoded.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct QueryStringConfig {
-
-
-    /// 
-    /// The key/value pairs or values to find in the query string. The maximum size of    each string is 128 characters. The comparison is case insensitive. The following wildcard    characters are supported: * (matches 0 or more characters) and ? (matches exactly 1    character). To search for a literal '*' or '?' character in a query string, you must escape    these characters in Values using a '\' character.
-    /// 
-    /// If you specify multiple key/value pairs or values, the condition is satisfied if one of    them is found in the query string.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of QueryStringKeyValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<QueryStringKeyValue>>,
-
-}
-
-
-/// Specifies a condition for a listener rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RuleCondition {
-
-
-    /// 
-    /// Information for an HTTP header condition. Specify only when Field is     http-header.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: HttpHeaderConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpHeaderConfig")]
-    pub http_header_config: Option<HttpHeaderConfig>,
-
-
-    /// 
-    /// Information for a query string condition. Specify only when Field is     query-string.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: QueryStringConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStringConfig")]
-    pub query_string_config: Option<QueryStringConfig>,
-
-
-    /// 
-    /// Information for a source IP condition. Specify only when Field is     source-ip.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: SourceIpConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceIpConfig")]
-    pub source_ip_config: Option<SourceIpConfig>,
-
-
-    /// 
-    /// The field in the HTTP request. The following are the possible values:
-    /// 
-    /// http-header                                http-request-method                                host-header                                path-pattern                                query-string                                source-ip
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Field")]
-    pub field: Option<String>,
-
-
-    /// 
-    /// The condition value. Specify only when Field is host-header or       path-pattern. Alternatively, to specify multiple host names or multiple     path patterns, use HostHeaderConfig or PathPatternConfig.
-    /// 
-    /// If Field is host-header and you're not using       HostHeaderConfig, you can specify a single host name (for example,     my.example.com). A host name is case insensitive, can be up to 128 characters in length,     and can contain any of the following characters.
-    /// 
-    /// A-Z, a-z, 0-9            - .            * (matches 0 or more characters)            ? (matches exactly 1 character)
-    /// 
-    /// If Field is path-pattern and you're not using       PathPatternConfig, you can specify a single path pattern (for example,     /img/*). A path pattern is case-sensitive, can be up to 128 characters in length, and can     contain any of the following characters.
-    /// 
-    /// A-Z, a-z, 0-9            _ - . $ / ~ " ' @ : +            & (using &amp;)            * (matches 0 or more characters)            ? (matches exactly 1 character)
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-
-    /// 
-    /// Information for a host header condition. Specify only when Field is     host-header.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HostHeaderConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostHeaderConfig")]
-    pub host_header_config: Option<HostHeaderConfig>,
-
-
-    /// 
-    /// Information for an HTTP method condition. Specify only when Field is     http-request-method.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: HttpRequestMethodConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpRequestMethodConfig")]
-    pub http_request_method_config: Option<HttpRequestMethodConfig>,
-
-
-    /// 
-    /// Information for a path pattern condition. Specify only when Field is     path-pattern.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PathPatternConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PathPatternConfig")]
-    pub path_pattern_config: Option<PathPatternConfig>,
-
-}
-
-
-/// Information about a host header condition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HostHeaderConfig {
-
-
-    /// 
-    /// The host names. The maximum size of each name is 128 characters. The comparison is    case insensitive. The following wildcard characters are supported: * (matches 0 or more    characters) and ? (matches exactly 1 character).
-    /// 
-    /// If you specify multiple strings, the condition is satisfied if one of the strings matches    the host name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-}
 
 
 /// Information about the target group stickiness for a rule.
@@ -842,136 +748,6 @@ pub struct TargetGroupStickinessConfig {
 }
 
 
-/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticateCognitoConfig {
-
-
-    /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<i64>,
-
-
-    /// 
-    /// The behavior if the user is not authenticated. The following are possible values:
-    /// 
-    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: allow | authenticate | deny
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnUnauthenticatedRequest")]
-    pub on_unauthenticated_request: Option<String>,
-
-
-    /// 
-    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolDomain")]
-    pub user_pool_domain: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolArn")]
-    pub user_pool_arn: String,
-
-
-    /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The set of user claims to be requested from the IdP. The default is    openid.
-    /// 
-    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<String>,
-
-
-    /// 
-    /// The ID of the Amazon Cognito user pool client.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolClientId")]
-    pub user_pool_client_id: String,
-
-
-    /// 
-    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionCookieName")]
-    pub session_cookie_name: Option<String>,
-
-}
-
-
-/// Information about an HTTP method condition.
-///
-/// HTTP defines a set of request methods, also referred to as HTTP verbs. For more    information, see the HTTP Method     Registry. You can also define custom HTTP methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HttpRequestMethodConfig {
-
-
-    /// 
-    /// The name of the request method. The maximum size is 40 characters. The allowed characters    are A-Z, hyphen (-), and underscore (_). The comparison is case sensitive. Wildcards are not    supported; therefore, the method name must be an exact match.
-    /// 
-    /// If you specify multiple strings, the condition is satisfied if one of the strings matches    the HTTP request method. We recommend that you route GET and HEAD requests in the same way,    because the response to a HEAD request may be cached.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
-
-}
 
 
 /// Information about a path pattern condition.
@@ -993,3 +769,388 @@ pub struct PathPatternConfig {
     pub values: Option<Vec<String>>,
 
 }
+
+
+
+
+/// Specifies information required when returning a custom HTTP response.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FixedResponseConfig {
+
+
+    /// 
+    /// The content type.
+    /// 
+    /// Valid Values: text/plain | text/css | text/html | application/javascript |    application/json
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContentType")]
+    pub content_type: Option<FixedResponseConfigContentTypeEnum>,
+
+
+    /// 
+    /// The HTTP response code (2XX, 4XX, or 5XX).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(2|4|5)\d\d$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatusCode")]
+    pub status_code: String,
+
+
+    /// 
+    /// The message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageBody")]
+    pub message_body: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FixedResponseConfigContentTypeEnum {
+
+    /// text/plain
+    #[serde(rename = "text/plain")]
+    Textplain,
+
+    /// text/css
+    #[serde(rename = "text/css")]
+    Textcss,
+
+    /// text/html
+    #[serde(rename = "text/html")]
+    Texthtml,
+
+    /// application/javascript
+    #[serde(rename = "application/javascript")]
+    Applicationjavascript,
+
+    /// application/json
+    #[serde(rename = "application/json")]
+    Applicationjson,
+
+}
+
+impl Default for FixedResponseConfigContentTypeEnum {
+    fn default() -> Self {
+        FixedResponseConfigContentTypeEnum::Textplain
+    }
+}
+
+
+
+/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetGroupTuple {
+
+
+    /// 
+    /// The weight. The range is 0 to 999.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the target group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
+
+}
+
+
+
+
+/// Information about a redirect action.
+///
+/// A URI consists of the following components: protocol://hostname:port/path?query. You must    modify at least one of the following components to avoid a redirect loop: protocol, hostname,    port, or path. Any components that you do not modify retain their original values.
+///
+/// You can reuse URI components using the following reserved keywords:
+///
+/// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RedirectConfig {
+
+
+    /// 
+    /// The absolute path, starting with the leading "/". This component is not percent-encoded.    The path can contain #{host}, #{path}, and #{port}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+
+    /// 
+    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Query")]
+    pub query: Option<String>,
+
+
+    /// 
+    /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP    302).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HTTP_301 | HTTP_302
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatusCode")]
+    pub status_code: RedirectConfigStatusCodeEnum,
+
+
+    /// 
+    /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: Option<String>,
+
+
+    /// 
+    /// The port. You can specify a value from 1 to 65535 or #{port}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<String>,
+
+
+    /// 
+    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(HTTPS?|#\{protocol\})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RedirectConfigStatusCodeEnum {
+
+    /// HTTP_301
+    #[serde(rename = "HTTP_301")]
+    Http301,
+
+    /// HTTP_302
+    #[serde(rename = "HTTP_302")]
+    Http302,
+
+}
+
+impl Default for RedirectConfigStatusCodeEnum {
+    fn default() -> Self {
+        RedirectConfigStatusCodeEnum::Http301
+    }
+}
+
+
+
+/// Specifies a condition for a listener rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RuleCondition {
+
+
+    /// 
+    /// Information for a host header condition. Specify only when Field is     host-header.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HostHeaderConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostHeaderConfig")]
+    pub host_header_config: Option<HostHeaderConfig>,
+
+
+    /// 
+    /// Information for an HTTP header condition. Specify only when Field is     http-header.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: HttpHeaderConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpHeaderConfig")]
+    pub http_header_config: Option<HttpHeaderConfig>,
+
+
+    /// 
+    /// The field in the HTTP request. The following are the possible values:
+    /// 
+    /// http-header                                http-request-method                                host-header                                path-pattern                                query-string                                source-ip
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Field")]
+    pub field: Option<String>,
+
+
+    /// 
+    /// Information for a query string condition. Specify only when Field is     query-string.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: QueryStringConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStringConfig")]
+    pub query_string_config: Option<QueryStringConfig>,
+
+
+    /// 
+    /// Information for a path pattern condition. Specify only when Field is     path-pattern.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathPatternConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PathPatternConfig")]
+    pub path_pattern_config: Option<PathPatternConfig>,
+
+
+    /// 
+    /// Information for an HTTP method condition. Specify only when Field is     http-request-method.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: HttpRequestMethodConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpRequestMethodConfig")]
+    pub http_request_method_config: Option<HttpRequestMethodConfig>,
+
+
+    /// 
+    /// The condition value. Specify only when Field is host-header or       path-pattern. Alternatively, to specify multiple host names or multiple     path patterns, use HostHeaderConfig or PathPatternConfig.
+    /// 
+    /// If Field is host-header and you're not using       HostHeaderConfig, you can specify a single host name (for example,     my.example.com). A host name is case insensitive, can be up to 128 characters in length,     and can contain any of the following characters.
+    /// 
+    /// A-Z, a-z, 0-9            - .            * (matches 0 or more characters)            ? (matches exactly 1 character)
+    /// 
+    /// If Field is path-pattern and you're not using       PathPatternConfig, you can specify a single path pattern (for example,     /img/*). A path pattern is case-sensitive, can be up to 128 characters in length, and can     contain any of the following characters.
+    /// 
+    /// A-Z, a-z, 0-9            _ - . $ / ~ " ' @ : +            & (using &amp;)            * (matches 0 or more characters)            ? (matches exactly 1 character)
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+
+    /// 
+    /// Information for a source IP condition. Specify only when Field is     source-ip.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: SourceIpConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceIpConfig")]
+    pub source_ip_config: Option<SourceIpConfig>,
+
+}
+
+
+
+
+/// Information about a host header condition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HostHeaderConfig {
+
+
+    /// 
+    /// The host names. The maximum size of each name is 128 characters. The comparison is    case insensitive. The following wildcard characters are supported: * (matches 0 or more    characters) and ? (matches exactly 1 character).
+    /// 
+    /// If you specify multiple strings, the condition is satisfied if one of the strings matches    the host name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
+}
+
+

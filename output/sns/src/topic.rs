@@ -6,6 +6,36 @@ pub struct CfnTopic {
 
 
     /// 
+    /// Tracing mode of an Amazon SNS topic. By default TracingConfig is set to       PassThrough, and the topic passes through the tracing header it receives     from an SNS publisher to its subscriptions. If set to Active, SNS will vend     X-Ray segment data to topic owner account if the sampled flag in the tracing header is     true. Only supported on standard topics.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TracingConfig")]
+    pub tracing_config: Option<String>,
+
+
+    /// 
+    /// The body of the policy document you want to use for this topic.
+    /// 
+    /// You can only add one policy per topic.
+    /// 
+    /// The policy must be in JSON string format.
+    /// 
+    /// Length Constraints: Maximum length of 30,720.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataProtectionPolicy")]
+    pub data_protection_policy: Option<serde_json::Value>,
+
+
+    /// 
     /// Enables content-based deduplication for FIFO topics.
     /// 
     /// By default, ContentBasedDeduplication is set to false.        If you create a FIFO topic and this attribute is false, you must specify        a value for the MessageDeduplicationId parameter for the Publish action.                  When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId        using the body of the message (but not the attributes of the message).       (Optional) To override the generated value, you can specify a value for the the          MessageDeduplicationId parameter for the Publish        action.
@@ -20,31 +50,41 @@ pub struct CfnTopic {
 
 
     /// 
-    /// The name of the topic you want to create. Topic names must include only uppercase and     lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256     characters long. FIFO topic names must end with .fifo.
-    /// 
-    /// If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses     that ID for the topic name. For more information, see Name     type.
-    /// 
-    /// ImportantIf you specify a name, you can't perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
+    /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TopicName")]
-    pub topic_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "SignatureVersion")]
+    pub signature_version: Option<String>,
 
 
     /// 
-    /// Set to true to create a FIFO topic.
+    /// The display name to use for an Amazon SNS topic with SMS subscriptions. The     display name must be maximum 100 characters long, including hyphens (-), underscores (_),     spaces, and tabs.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "FifoTopic")]
-    pub fifo_topic: Option<bool>,
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// 
+    /// The ID of an AWS managed customer master key (CMK) for Amazon SNS     or a custom CMK. For more information, see Key terms. For     more examples, see       KeyId      in the AWS Key Management Service API Reference.
+    /// 
+    /// This property applies only to server-side-encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsMasterKeyId")]
+    pub kms_master_key_id: Option<String>,
 
 
     /// 
@@ -76,73 +116,35 @@ pub struct CfnTopic {
 
 
     /// 
-    /// Tracing mode of an Amazon SNS topic. By default TracingConfig is set to       PassThrough, and the topic passes through the tracing header it receives     from an SNS publisher to its subscriptions. If set to Active, SNS will vend     X-Ray segment data to topic owner account if the sampled flag in the tracing header is     true. Only supported on standard topics.
+    /// The name of the topic you want to create. Topic names must include only uppercase and     lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256     characters long. FIFO topic names must end with .fifo.
+    /// 
+    /// If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses     that ID for the topic name. For more information, see Name     type.
+    /// 
+    /// ImportantIf you specify a name, you can't perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TracingConfig")]
-    pub tracing_config: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "TopicName")]
+    pub topic_name: Option<String>,
 
 
     /// 
-    /// The ID of an AWS managed customer master key (CMK) for Amazon SNS     or a custom CMK. For more information, see Key terms. For     more examples, see       KeyId      in the AWS Key Management Service API Reference.
-    /// 
-    /// This property applies only to server-side-encryption.
+    /// Set to true to create a FIFO topic.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsMasterKeyId")]
-    pub kms_master_key_id: Option<String>,
-
-
-    /// 
-    /// The body of the policy document you want to use for this topic.
-    /// 
-    /// You can only add one policy per topic.
-    /// 
-    /// The policy must be in JSON string format.
-    /// 
-    /// Length Constraints: Maximum length of 30,720.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataProtectionPolicy")]
-    pub data_protection_policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SignatureVersion")]
-    pub signature_version: Option<String>,
-
-
-    /// 
-    /// The display name to use for an Amazon SNS topic with SMS subscriptions. The     display name must be maximum 100 characters long, including hyphens (-), underscores (_),     spaces, and tabs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "FifoTopic")]
+    pub fifo_topic: Option<bool>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTopic {
     fn type_string() -> &'static str {
@@ -190,6 +192,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Subscription is an embedded property that describes the subscription endpoints     of an Amazon SNS topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subscription {
@@ -219,3 +223,5 @@ pub struct Subscription {
     pub protocol: String,
 
 }
+
+

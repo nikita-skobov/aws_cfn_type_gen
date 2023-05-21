@@ -6,18 +6,6 @@ pub struct CfnProfilePermission {
 
 
     /// 
-    /// The human-readable name of the signing profile.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProfileName")]
-    pub profile_name: String,
-
-
-    /// 
     /// The version of the signing profile.
     /// 
     /// Required: No
@@ -27,18 +15,6 @@ pub struct CfnProfilePermission {
     /// Update requires: Replacement
     #[serde(rename = "ProfileVersion")]
     pub profile_version: Option<String>,
-
-
-    /// 
-    /// The AWS Signer action permitted as part of cross-account             permissions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: String,
 
 
     /// 
@@ -64,7 +40,33 @@ pub struct CfnProfilePermission {
     #[serde(rename = "StatementId")]
     pub statement_id: String,
 
+
+    /// 
+    /// The human-readable name of the signing profile.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProfileName")]
+    pub profile_name: String,
+
+
+    /// 
+    /// The AWS Signer action permitted as part of cross-account             permissions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProfilePermission {
     fn type_string() -> &'static str {

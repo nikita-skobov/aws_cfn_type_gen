@@ -12,6 +12,24 @@ pub struct CfnApiDestination {
 
 
     /// 
+    /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Pattern: ^arn:aws([a-z]|\-)*:events:([a-z]|\d|\-)*:([0-9]{12})?:connection\/[\.\-_A-Za-z0-9]+\/[\-A-Za-z0-9]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionArn")]
+    pub connection_arn: String,
+
+
+    /// 
     /// The URL to the HTTP invocation endpoint for the API destination.
     /// 
     /// Required: Yes
@@ -27,20 +45,6 @@ pub struct CfnApiDestination {
     /// Update requires: No interruption
     #[serde(rename = "InvocationEndpoint")]
     pub invocation_endpoint: String,
-
-
-    /// 
-    /// The method to use for the request to the HTTP invocation endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DELETE | GET | HEAD | OPTIONS | PATCH | POST | PUT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpMethod")]
-    pub http_method: String,
 
 
     /// 
@@ -74,24 +78,6 @@ pub struct CfnApiDestination {
 
 
     /// 
-    /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Pattern: ^arn:aws([a-z]|\-)*:events:([a-z]|\d|\-)*:([0-9]{12})?:connection\/[\.\-_A-Za-z0-9]+\/[\-A-Za-z0-9]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionArn")]
-    pub connection_arn: String,
-
-
-    /// 
     /// The name for the API destination to create.
     /// 
     /// Required: No
@@ -108,7 +94,62 @@ pub struct CfnApiDestination {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The method to use for the request to the HTTP invocation endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DELETE | GET | HEAD | OPTIONS | PATCH | POST | PUT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpMethod")]
+    pub http_method: ApiDestinationHttpMethodEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ApiDestinationHttpMethodEnum {
+
+    /// DELETE
+    #[serde(rename = "DELETE")]
+    Delete,
+
+    /// GET
+    #[serde(rename = "GET")]
+    Get,
+
+    /// HEAD
+    #[serde(rename = "HEAD")]
+    Head,
+
+    /// OPTIONS
+    #[serde(rename = "OPTIONS")]
+    Options,
+
+    /// PATCH
+    #[serde(rename = "PATCH")]
+    Patch,
+
+    /// POST
+    #[serde(rename = "POST")]
+    Post,
+
+    /// PUT
+    #[serde(rename = "PUT")]
+    Put,
+
+}
+
+impl Default for ApiDestinationHttpMethodEnum {
+    fn default() -> Self {
+        ApiDestinationHttpMethodEnum::Delete
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnApiDestination {
     fn type_string() -> &'static str {

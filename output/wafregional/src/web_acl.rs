@@ -8,6 +8,24 @@ pub struct CfnWebACL {
 
 
     /// 
+    /// A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// An array that contains the action for each Rule in a WebACL, the priority of the Rule, 			and the ID of the Rule.
     /// 
     /// Required: No
@@ -17,6 +35,18 @@ pub struct CfnWebACL {
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
     pub rules: Option<Vec<Rule>>,
+
+
+    /// 
+    /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the      WafAction object.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Action
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultAction")]
+    pub default_action: Action,
 
 
     /// 
@@ -36,37 +66,9 @@ pub struct CfnWebACL {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
-    /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the      WafAction object.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Action
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAction")]
-    pub default_action: Action,
-
-
-    /// 
-    /// A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWebACL {
     fn type_string() -> &'static str {
@@ -104,35 +106,13 @@ pub struct Action {
 }
 
 
+
+
 /// A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet objects that identify the web requests that you      want to allow, block, or count. For example, you might create a Rule that includes the following predicates:
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent     header for which the value is BadBot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Rule {
-
-
-    /// 
-    /// The order in which AWS WAF evaluates the rules in a web ACL. AWS WAF evaluates rules with a lower value before rules with a higher value. The value must be a unique integer. If you have multiple rules in a web ACL, the priority numbers do not need to be consecutive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
-
-
-    /// 
-    /// The action that AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Action
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: Action,
 
 
     /// 
@@ -152,4 +132,30 @@ pub struct Rule {
     #[serde(rename = "RuleId")]
     pub rule_id: String,
 
+
+    /// 
+    /// The action that AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Action
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: Action,
+
+
+    /// 
+    /// The order in which AWS WAF evaluates the rules in a web ACL. AWS WAF evaluates rules with a lower value before rules with a higher value. The value must be a unique integer. If you have multiple rules in a web ACL, the priority numbers do not need to be consecutive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: i64,
+
 }
+
+

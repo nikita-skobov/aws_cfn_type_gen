@@ -18,6 +18,8 @@ pub struct CfnAccount {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAccount {
     fn type_string() -> &'static str {
         "AWS::CertificateManager::Account"
@@ -46,3 +48,5 @@ pub struct ExpiryEventsConfiguration {
     pub days_before_expiry: Option<i64>,
 
 }
+
+

@@ -6,27 +6,15 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
-
-
-    /// 
-    /// The input configuration for a canary deployment.
+    /// The name of the Stage resource for the Deployment resource to create.
     /// 
     /// Required: No
     ///
-    /// Type: DeploymentCanarySettings
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeploymentCanarySettings")]
-    pub deployment_canary_settings: Option<DeploymentCanarySettings>,
+    /// Update requires: No interruption
+    #[serde(rename = "StageName")]
+    pub stage_name: Option<String>,
 
 
     /// 
@@ -42,6 +30,18 @@ pub struct CfnDeployment {
 
 
     /// 
+    /// The input configuration for a canary deployment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentCanarySettings
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeploymentCanarySettings")]
+    pub deployment_canary_settings: Option<DeploymentCanarySettings>,
+
+
+    /// 
     /// The description for the Deployment resource to create.
     /// 
     /// Required: No
@@ -54,17 +54,19 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The name of the Stage resource for the Deployment resource to create.
+    /// The string identifier of the associated RestApi.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "StageName")]
-    pub stage_name: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeployment {
     fn type_string() -> &'static str {
@@ -112,11 +114,25 @@ pub struct Tag {
 }
 
 
+
+
 /// The CanarySetting property type specifies settings for the canary deployment in this stage.
 ///
 /// CanarySetting is a property of the StageDescription property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CanarySetting {
+
+
+    /// 
+    /// A Boolean flag to indicate whether the canary deployment uses the stage cache or not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseStageCache")]
+    pub use_stage_cache: Option<bool>,
 
 
     /// 
@@ -142,261 +158,26 @@ pub struct CanarySetting {
     #[serde(rename = "StageVariableOverrides")]
     pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
-    /// A Boolean flag to indicate whether the canary deployment uses the stage cache or not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseStageCache")]
-    pub use_stage_cache: Option<bool>,
-
 }
 
 
-/// StageDescription is a property of the AWS::ApiGateway::Deployment resource that configures a deployment stage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StageDescription {
-
-
-    /// 
-    /// The identifier of the client certificate that API Gateway uses to call your integration endpoints in the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientCertificateId")]
-    pub client_certificate_id: Option<String>,
-
-
-    /// 
-    /// Indicates whether data trace logging is enabled for methods in the stage. API Gateway pushes these logs to Amazon CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataTraceEnabled")]
-    pub data_trace_enabled: Option<bool>,
-
-
-    /// 
-    /// The time-to-live (TTL) period, in seconds, that specifies how long API Gateway caches responses.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheTtlInSeconds")]
-    pub cache_ttl_in_seconds: Option<i64>,
-
-
-    /// 
-    /// An array of arbitrary tags (key-value pairs) to associate with the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The version identifier of the API documentation snapshot.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentationVersion")]
-    pub documentation_version: Option<String>,
-
-
-    /// 
-    /// The target request steady-state rate limit. For more information, see Manage API Request Throttling in the API Gateway Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThrottlingRateLimit")]
-    pub throttling_rate_limit: Option<f64>,
-
-
-    /// 
-    /// A map that defines the stage variables. Variable names must consist of alphanumeric characters, and the values must match the following regular expression: [A-Za-z0-9-._~:/?#&=,]+.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variables")]
-    pub variables: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// Indicates whether the cached responses are encrypted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheDataEncrypted")]
-    pub cache_data_encrypted: Option<bool>,
-
-
-    /// 
-    /// The size of the stage's cache cluster. For more information, see cacheClusterSize in the API Gateway API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheClusterSize")]
-    pub cache_cluster_size: Option<String>,
-
-
-    /// 
-    /// Indicates whether responses are cached and returned for requests. You must enable a cache cluster on the stage to cache responses. For more information, see Enable API Gateway Caching in a Stage to Enhance API Performance in the API Gateway Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CachingEnabled")]
-    pub caching_enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies settings for the canary deployment in this stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CanarySetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CanarySetting")]
-    pub canary_setting: Option<CanarySetting>,
-
-
-    /// 
-    /// A description of the purpose of the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Configures settings for all of the stage's methods.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MethodSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MethodSettings")]
-    pub method_settings: Option<Vec<MethodSetting>>,
-
-
-    /// 
-    /// Indicates whether Amazon CloudWatch metrics are enabled for methods in the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricsEnabled")]
-    pub metrics_enabled: Option<bool>,
-
-
-    /// 
-    /// The logging level for this method. For valid values, see the loggingLevel property of the MethodSetting resource in the Amazon API Gateway API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingLevel")]
-    pub logging_level: Option<String>,
-
-
-    /// 
-    /// The target request burst rate limit. This allows more requests through for a period of time than the target rate limit. For more information, see Manage API Request Throttling in the API Gateway Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThrottlingBurstLimit")]
-    pub throttling_burst_limit: Option<i64>,
-
-
-    /// 
-    /// Specifies whether active tracing with X-ray is enabled for this stage.
-    /// 
-    /// For more information, see Trace API Gateway API Execution with AWS X-Ray in the API Gateway Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TracingEnabled")]
-    pub tracing_enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a cache cluster is enabled for the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheClusterEnabled")]
-    pub cache_cluster_enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies settings for logging access in this stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AccessLogSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessLogSetting")]
-    pub access_log_setting: Option<AccessLogSetting>,
-
-}
 
 
 /// The DeploymentCanarySettings property type specifies settings for the canary deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeploymentCanarySettings {
+
+
+    /// 
+    /// A stage variable overrides used for the canary release deployment. They can override existing stage variables or add new stage variables for the canary release deployment. These stage variables are represented as a string-to-string map between stage variable names and their values.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StageVariableOverrides")]
+    pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -422,19 +203,9 @@ pub struct DeploymentCanarySettings {
     #[serde(rename = "UseStageCache")]
     pub use_stage_cache: Option<bool>,
 
-
-    /// 
-    /// A stage variable overrides used for the canary release deployment. They can override existing stage variables or add new stage variables for the canary release deployment. These stage variables are represented as a string-to-string map between stage variable names and their values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StageVariableOverrides")]
-    pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
-
 }
+
+
 
 
 /// The AccessLogSetting property type specifies settings for logging access in this stage.
@@ -470,27 +241,101 @@ pub struct AccessLogSetting {
 }
 
 
-/// The MethodSetting property type configures settings for all methods in a stage.
-///
-/// The MethodSettings property of the Amazon API Gateway Deployment StageDescription property type contains a list of MethodSetting property types.
+
+
+/// StageDescription is a property of the AWS::ApiGateway::Deployment resource that configures a deployment stage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MethodSetting {
+pub struct StageDescription {
 
 
     /// 
-    /// The resource path for this method. Forward slashes (/) are encoded as ~1 and the initial slash must include a forward slash. For example, the path value /resource/subresource must be encoded as /~1resource~1subresource. To specify the root path, use only a slash (/).
+    /// Specifies whether active tracing with X-ray is enabled for this stage.
+    /// 
+    /// For more information, see Trace API Gateway API Execution with AWS X-Ray in the API Gateway Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TracingEnabled")]
+    pub tracing_enabled: Option<bool>,
+
+
+    /// 
+    /// The version identifier of the API documentation snapshot.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourcePath")]
-    pub resource_path: Option<String>,
+    #[serde(rename = "DocumentationVersion")]
+    pub documentation_version: Option<String>,
 
 
     /// 
-    /// Specifies the throttling rate limit.
+    /// Indicates whether responses are cached and returned for requests. You must enable a cache cluster on the stage to cache responses. For more information, see Enable API Gateway Caching in a Stage to Enhance API Performance in the API Gateway Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CachingEnabled")]
+    pub caching_enabled: Option<bool>,
+
+
+    /// 
+    /// A map that defines the stage variables. Variable names must consist of alphanumeric characters, and the values must match the following regular expression: [A-Za-z0-9-._~:/?#&=,]+.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variables")]
+    pub variables: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// Indicates whether data trace logging is enabled for methods in the stage. API Gateway pushes these logs to Amazon CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataTraceEnabled")]
+    pub data_trace_enabled: Option<bool>,
+
+
+    /// 
+    /// Configures settings for all of the stage's methods.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MethodSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MethodSettings")]
+    pub method_settings: Option<Vec<MethodSetting>>,
+
+
+    /// 
+    /// Indicates whether the cached responses are encrypted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheDataEncrypted")]
+    pub cache_data_encrypted: Option<bool>,
+
+
+    /// 
+    /// The target request steady-state rate limit. For more information, see Manage API Request Throttling in the API Gateway Developer Guide.
     /// 
     /// Required: No
     ///
@@ -499,6 +344,149 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
     pub throttling_rate_limit: Option<f64>,
+
+
+    /// 
+    /// Specifies settings for the canary deployment in this stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CanarySetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CanarySetting")]
+    pub canary_setting: Option<CanarySetting>,
+
+
+    /// 
+    /// An array of arbitrary tags (key-value pairs) to associate with the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A description of the purpose of the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Indicates whether Amazon CloudWatch metrics are enabled for methods in the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricsEnabled")]
+    pub metrics_enabled: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a cache cluster is enabled for the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheClusterEnabled")]
+    pub cache_cluster_enabled: Option<bool>,
+
+
+    /// 
+    /// The target request burst rate limit. This allows more requests through for a period of time than the target rate limit. For more information, see Manage API Request Throttling in the API Gateway Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingBurstLimit")]
+    pub throttling_burst_limit: Option<i64>,
+
+
+    /// 
+    /// The identifier of the client certificate that API Gateway uses to call your integration endpoints in the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientCertificateId")]
+    pub client_certificate_id: Option<String>,
+
+
+    /// 
+    /// The time-to-live (TTL) period, in seconds, that specifies how long API Gateway caches responses.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheTtlInSeconds")]
+    pub cache_ttl_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The size of the stage's cache cluster. For more information, see cacheClusterSize in the API Gateway API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheClusterSize")]
+    pub cache_cluster_size: Option<String>,
+
+
+    /// 
+    /// The logging level for this method. For valid values, see the loggingLevel property of the MethodSetting resource in the Amazon API Gateway API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingLevel")]
+    pub logging_level: Option<String>,
+
+
+    /// 
+    /// Specifies settings for logging access in this stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AccessLogSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessLogSetting")]
+    pub access_log_setting: Option<AccessLogSetting>,
+
+}
+
+
+
+
+/// The MethodSetting property type configures settings for all methods in a stage.
+///
+/// The MethodSettings property of the Amazon API Gateway Deployment StageDescription property type contains a list of MethodSetting property types.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MethodSetting {
 
 
     /// 
@@ -514,15 +502,15 @@ pub struct MethodSetting {
 
 
     /// 
-    /// Specifies the throttling burst limit.
+    /// The HTTP method.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ThrottlingBurstLimit")]
-    pub throttling_burst_limit: Option<i64>,
+    #[serde(rename = "HttpMethod")]
+    pub http_method: Option<String>,
 
 
     /// 
@@ -535,6 +523,30 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "CacheTtlInSeconds")]
     pub cache_ttl_in_seconds: Option<i64>,
+
+
+    /// 
+    /// Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. Valid values are OFF, ERROR, and INFO. Choose ERROR to write only error-level entries to CloudWatch Logs, or choose INFO to include all ERROR events as well as extra informational events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingLevel")]
+    pub logging_level: Option<String>,
+
+
+    /// 
+    /// Specifies the throttling rate limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingRateLimit")]
+    pub throttling_rate_limit: Option<f64>,
 
 
     /// 
@@ -562,15 +574,27 @@ pub struct MethodSetting {
 
 
     /// 
-    /// The HTTP method.
+    /// The resource path for this method. Forward slashes (/) are encoded as ~1 and the initial slash must include a forward slash. For example, the path value /resource/subresource must be encoded as /~1resource~1subresource. To specify the root path, use only a slash (/).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HttpMethod")]
-    pub http_method: Option<String>,
+    #[serde(rename = "ResourcePath")]
+    pub resource_path: Option<String>,
+
+
+    /// 
+    /// Specifies the throttling burst limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingBurstLimit")]
+    pub throttling_burst_limit: Option<i64>,
 
 
     /// 
@@ -584,16 +608,6 @@ pub struct MethodSetting {
     #[serde(rename = "CacheDataEncrypted")]
     pub cache_data_encrypted: Option<bool>,
 
-
-    /// 
-    /// Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. Valid values are OFF, ERROR, and INFO. Choose ERROR to write only error-level entries to CloudWatch Logs, or choose INFO to include all ERROR events as well as extra informational events.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingLevel")]
-    pub logging_level: Option<String>,
-
 }
+
+

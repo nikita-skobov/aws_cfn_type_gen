@@ -12,6 +12,18 @@ pub struct CfnConfigurationRecorder {
 
 
     /// 
+    /// Indicates whether to record configurations for all supported resources or for a list of resource types. The resource types that you list must be supported by AWS Config.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RecordingGroup
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordingGroup")]
+    pub recording_group: Option<RecordingGroup>,
+
+
+    /// 
     /// A name for the configuration recorder. If you don't specify a name, AWS CloudFormation CloudFormation generates a unique physical ID and uses that ID for the configuration recorder name.       For more information, see Name Type.
     /// 
     /// NoteAfter you create a configuration recorder, you cannot rename it. If you don't want a name that AWS CloudFormation generates, specify a value for this property.
@@ -32,18 +44,6 @@ pub struct CfnConfigurationRecorder {
 
 
     /// 
-    /// Indicates whether to record configurations for all supported resources or for a list of resource types. The resource types that you list must be supported by AWS Config.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RecordingGroup
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordingGroup")]
-    pub recording_group: Option<RecordingGroup>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the IAM (IAM) role that is used to make read or write requests to the delivery channel that you specify and to get configuration details for supported AWS resources.       For more information, see Permissions for the IAM Role Assigned to AWS Config in the AWS Config Developer Guide.
     /// 
     /// Required: Yes
@@ -55,6 +55,8 @@ pub struct CfnConfigurationRecorder {
     pub role_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnConfigurationRecorder {
     fn type_string() -> &'static str {
@@ -83,19 +85,21 @@ pub struct RecordingGroup {
 
 
     /// 
-    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
+    /// Specifies whether AWS Config includes all supported types of 			global resources (for example, IAM resources) with the resources 			that it records.
     /// 
-    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
+    /// Before you can set this option to true, you must 			set the AllSupported option to 			true.
     /// 
-    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
+    /// If you set this option to true, when AWS Config 			adds support for a new type of global resource, it starts recording 			resources of that type automatically.
+    /// 
+    /// The configuration details for any global resource are the same 			in all regions. To prevent duplicate configuration items, you should 			consider customizing AWS Config in only one region to record global 			resources.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllSupported")]
-    pub all_supported: Option<bool>,
+    #[serde(rename = "IncludeGlobalResourceTypes")]
+    pub include_global_resource_types: Option<bool>,
 
 
     /// 
@@ -117,20 +121,20 @@ pub struct RecordingGroup {
 
 
     /// 
-    /// Specifies whether AWS Config includes all supported types of 			global resources (for example, IAM resources) with the resources 			that it records.
+    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
     /// 
-    /// Before you can set this option to true, you must 			set the AllSupported option to 			true.
+    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
     /// 
-    /// If you set this option to true, when AWS Config 			adds support for a new type of global resource, it starts recording 			resources of that type automatically.
-    /// 
-    /// The configuration details for any global resource are the same 			in all regions. To prevent duplicate configuration items, you should 			consider customizing AWS Config in only one region to record global 			resources.
+    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IncludeGlobalResourceTypes")]
-    pub include_global_resource_types: Option<bool>,
+    #[serde(rename = "AllSupported")]
+    pub all_supported: Option<bool>,
 
 }
+
+

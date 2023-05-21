@@ -8,19 +8,63 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// The duration of the maintenance window in hours.
+    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 24
+    /// Maximum: 6
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Duration")]
-    pub duration: i64,
+    #[serde(rename = "ScheduleOffset")]
+    pub schedule_offset: Option<i64>,
+
+
+    /// 
+    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduleTimezone")]
+    pub schedule_timezone: Option<String>,
+
+
+    /// 
+    /// A description of the maintenance window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The number of hours before the end of the maintenance window that AWS Systems Manager stops scheduling  new tasks for execution.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 23
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cutoff")]
+    pub cutoff: i64,
 
 
     /// 
@@ -39,22 +83,6 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleOffset")]
-    pub schedule_offset: Option<i64>,
 
 
     /// 
@@ -86,22 +114,6 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// A description of the maintenance window.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The date and time, in ISO-8601 Extended format, for when the maintenance window is    scheduled to become active. StartDate allows you to delay activation of the Maintenance Window    until the specified future date.
     /// 
     /// Required: No
@@ -111,6 +123,22 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
     pub start_date: Option<String>,
+
+
+    /// 
+    /// The duration of the maintenance window in hours.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 24
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Duration")]
+    pub duration: i64,
 
 
     /// 
@@ -138,35 +166,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleTimezone")]
-    pub schedule_timezone: Option<String>,
-
-
-    /// 
-    /// The number of hours before the end of the maintenance window that AWS Systems Manager stops scheduling  new tasks for execution.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 23
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cutoff")]
-    pub cutoff: i64,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMaintenanceWindow {
     fn type_string() -> &'static str {
@@ -212,3 +214,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

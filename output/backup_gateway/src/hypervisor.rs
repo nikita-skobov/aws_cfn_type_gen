@@ -8,24 +8,6 @@ pub struct CfnHypervisor {
 
 
     /// 
-    /// The username for the hypervisor.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [ -\.0-\[\]-~]*[!-\.0-\[\]-~][ -\.0-\[\]-~]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service used to encrypt the    hypervisor.
     /// 
     /// Required: No
@@ -41,6 +23,36 @@ pub struct CfnHypervisor {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
+
+
+    /// 
+    /// The tags of the hypervisor configuration to import.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The password for the hypervisor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [ -~]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
 
 
     /// 
@@ -98,19 +110,7 @@ pub struct CfnHypervisor {
 
 
     /// 
-    /// The tags of the hypervisor configuration to import.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The password for the hypervisor.
+    /// The username for the hypervisor.
     /// 
     /// Required: No
     ///
@@ -120,13 +120,15 @@ pub struct CfnHypervisor {
     ///
     /// Maximum: 100
     ///
-    /// Pattern: [ -~]+
+    /// Pattern: [ -\.0-\[\]-~]*[!-\.0-\[\]-~][ -\.0-\[\]-~]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
+    #[serde(rename = "Username")]
+    pub username: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnHypervisor {
     fn type_string() -> &'static str {
@@ -151,17 +153,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -171,4 +162,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

@@ -28,7 +28,7 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistic")]
-    pub statistic: String,
+    pub statistic: NetworkPerformanceMetricSubscriptionStatisticEnum,
 
 
     /// 
@@ -42,7 +42,7 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Metric")]
-    pub metric: String,
+    pub metric: NetworkPerformanceMetricSubscriptionMetricEnum,
 
 
     /// 
@@ -57,6 +57,38 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     pub source: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkPerformanceMetricSubscriptionMetricEnum {
+
+    /// aggregate-latency
+    #[serde(rename = "aggregate-latency")]
+    Aggregatelatency,
+
+}
+
+impl Default for NetworkPerformanceMetricSubscriptionMetricEnum {
+    fn default() -> Self {
+        NetworkPerformanceMetricSubscriptionMetricEnum::Aggregatelatency
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkPerformanceMetricSubscriptionStatisticEnum {
+
+    /// p50
+    #[serde(rename = "p50")]
+    P50,
+
+}
+
+impl Default for NetworkPerformanceMetricSubscriptionStatisticEnum {
+    fn default() -> Self {
+        NetworkPerformanceMetricSubscriptionStatisticEnum::P50
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnNetworkPerformanceMetricSubscription {
     fn type_string() -> &'static str {

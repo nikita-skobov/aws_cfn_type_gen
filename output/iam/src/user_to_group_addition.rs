@@ -38,6 +38,8 @@ pub struct CfnUserToGroupAddition {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnUserToGroupAddition {
     fn type_string() -> &'static str {
         "AWS::IAM::UserToGroupAddition"

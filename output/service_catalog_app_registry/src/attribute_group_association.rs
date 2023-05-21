@@ -30,6 +30,8 @@ pub struct CfnAttributeGroupAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAttributeGroupAssociation {
     fn type_string() -> &'static str {
         "AWS::ServiceCatalogAppRegistry::AttributeGroupAssociation"

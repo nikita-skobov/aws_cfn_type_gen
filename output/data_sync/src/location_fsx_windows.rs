@@ -6,6 +6,56 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
+    /// Specifies the name of the Windows domain that the FSx for Windows File Server belongs    to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+
+    /// 
+    /// The user who has the permissions to access files and folders in the FSx for Windows File    Server file system.
+    /// 
+    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 104
+    ///
+    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "User")]
+    pub user: String,
+
+
+    /// 
+    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Names (ARNs) of the security groups that are used to configure the     FSx for Windows File Server file system.
     /// 
     /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
@@ -36,56 +86,6 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
-    /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FsxFilesystemArn")]
-    pub fsx_filesystem_arn: Option<String>,
-
-
-    /// 
-    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
-
-
-    /// 
-    /// The user who has the permissions to access files and folders in the FSx for Windows File    Server file system.
-    /// 
-    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "User")]
-    pub user: String,
-
-
-    /// 
     /// Specifies the password of the user who has the permissions to access files and folders in    the file system.
     /// 
     /// Required: No
@@ -102,21 +102,23 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
-    /// Specifies the name of the Windows domain that the FSx for Windows File Server belongs    to.
+    /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 253
+    /// Maximum: 128
     ///
-    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
+    #[serde(rename = "FsxFilesystemArn")]
+    pub fsx_filesystem_arn: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocationFSxWindows {
     fn type_string() -> &'static str {
@@ -162,3 +164,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

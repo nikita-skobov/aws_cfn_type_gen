@@ -56,6 +56,8 @@ pub struct CfnSnapshot {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSnapshot {
     fn type_string() -> &'static str {
         "AWS::FSx::Snapshot"
@@ -100,3 +102,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

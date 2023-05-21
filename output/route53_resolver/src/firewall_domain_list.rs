@@ -8,15 +8,19 @@ pub struct CfnFirewallDomainList {
 
 
     /// 
-    /// A list of the domain lists that you have defined.
+    /// The name of the domain list.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domains")]
-    pub domains: Option<Vec<String>>,
+    /// Maximum: 64
+    ///
+    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -38,19 +42,15 @@ pub struct CfnFirewallDomainList {
 
 
     /// 
-    /// The name of the domain list.
+    /// A list of the domain lists that you have defined.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Maximum: 64
-    ///
-    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Domains")]
+    pub domains: Option<Vec<String>>,
 
 
     /// 
@@ -67,6 +67,8 @@ pub struct CfnFirewallDomainList {
     pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFirewallDomainList {
     fn type_string() -> &'static str {
@@ -91,17 +93,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -111,4 +102,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

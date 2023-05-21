@@ -6,20 +6,6 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// A policy you want to associate with a resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Pattern: \S+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: serde_json::Value,
-
-
-    /// 
     /// Amazon Resource Name (ARN) of the resource to which you want to attach a policy.
     /// 
     /// Required: Yes
@@ -34,7 +20,23 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
 
+
+    /// 
+    /// A policy you want to associate with a resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Pattern: \S+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: serde_json::Value,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string() -> &'static str {

@@ -6,6 +6,18 @@ pub struct CfnView {
 
 
     /// 
+    /// A list of fields that provide additional information about the view.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of IncludedProperty
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludedProperties")]
+    pub included_properties: Option<Vec<IncludedProperty>>,
+
+
+    /// 
     /// The name of the new view.
     /// 
     /// Required: Yes
@@ -17,18 +29,6 @@ pub struct CfnView {
     /// Update requires: Replacement
     #[serde(rename = "ViewName")]
     pub view_name: String,
-
-
-    /// 
-    /// A list of fields that provide additional information about the view.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of IncludedProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludedProperties")]
-    pub included_properties: Option<Vec<IncludedProperty>>,
 
 
     /// 
@@ -59,6 +59,8 @@ pub struct CfnView {
     pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnView {
     fn type_string() -> &'static str {
@@ -94,6 +96,8 @@ pub struct IncludedProperty {
 }
 
 
+
+
 /// An object with a FilterString that specifies which resources to include       in the results of queries made using this view.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filters {
@@ -110,3 +114,5 @@ pub struct Filters {
     pub filter_string: String,
 
 }
+
+

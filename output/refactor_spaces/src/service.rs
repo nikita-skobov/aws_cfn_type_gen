@@ -6,27 +6,27 @@ pub struct CfnService {
 
 
     /// 
-    /// The unique identifier of the application.
+    /// A description of the service.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationIdentifier")]
-    pub application_identifier: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
-    /// The summary of the configuration for the URL endpoint type.
+    /// A summary of the configuration for the AWS Lambda endpoint type.
     /// 
     /// Required: No
     ///
-    /// Type: UrlEndpointInput
+    /// Type: LambdaEndpointInput
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UrlEndpoint")]
-    pub url_endpoint: Option<UrlEndpointInput>,
+    #[serde(rename = "LambdaEndpoint")]
+    pub lambda_endpoint: Option<LambdaEndpointInput>,
 
 
     /// 
@@ -42,18 +42,6 @@ pub struct CfnService {
 
 
     /// 
-    /// The unique identifier of the environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
-
-
-    /// 
     /// The ID of the virtual private cloud (VPC).
     /// 
     /// Required: No
@@ -66,27 +54,15 @@ pub struct CfnService {
 
 
     /// 
-    /// The name of the service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A description of the service.
+    /// The summary of the configuration for the URL endpoint type.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: UrlEndpointInput
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "UrlEndpoint")]
+    pub url_endpoint: Option<UrlEndpointInput>,
 
 
     /// 
@@ -102,17 +78,43 @@ pub struct CfnService {
 
 
     /// 
-    /// A summary of the configuration for the AWS Lambda endpoint type.
+    /// The name of the service.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: LambdaEndpointInput
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LambdaEndpoint")]
-    pub lambda_endpoint: Option<LambdaEndpointInput>,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The unique identifier of the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationIdentifier")]
+    pub application_identifier: String,
+
+
+    /// 
+    /// The unique identifier of the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnvironmentIdentifier")]
+    pub environment_identifier: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnService {
     fn type_string() -> &'static str {
@@ -137,17 +139,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -157,7 +148,53 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
+
+
+/// The configuration for the URL endpoint type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct UrlEndpointInput {
+
+
+    /// 
+    /// The health check URL of the URL endpoint type. If the URL is a public endpoint, the     HealthUrl must also be a public endpoint. If the URL is a private endpoint    inside a virtual private cloud (VPC), the health URL must also be a private endpoint, and the    host must be the same as the URL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HealthUrl")]
+    pub health_url: Option<String>,
+
+
+    /// 
+    /// The URL to route traffic to. The URL must be an rfc3986-formatted URL. If the    host is a domain name, the name must be resolvable over the public internet. If the scheme is     https, the top level domain of the host must be listed in the IANA root zone database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Url")]
+    pub url: String,
+
+}
+
+
 
 
 /// The input for the AWS Lambda endpoint type.
@@ -179,32 +216,3 @@ pub struct LambdaEndpointInput {
 }
 
 
-/// The configuration for the URL endpoint type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct UrlEndpointInput {
-
-
-    /// 
-    /// The URL to route traffic to. The URL must be an rfc3986-formatted URL. If the    host is a domain name, the name must be resolvable over the public internet. If the scheme is     https, the top level domain of the host must be listed in the IANA root zone database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Url")]
-    pub url: String,
-
-
-    /// 
-    /// The health check URL of the URL endpoint type. If the URL is a public endpoint, the     HealthUrl must also be a public endpoint. If the URL is a private endpoint    inside a virtual private cloud (VPC), the health URL must also be a private endpoint, and the    host must be the same as the URL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HealthUrl")]
-    pub health_url: Option<String>,
-
-}

@@ -6,54 +6,6 @@ pub struct CfnSecurityProfile {
 
 
     /// 
-    /// Specifies the behaviors that, when violated by a device (thing), cause an alert.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Behavior
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Behaviors")]
-    pub behaviors: Option<Vec<Behavior>>,
-
-
-    /// 
-    /// The name you gave to the security profile.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityProfileName")]
-    pub security_profile_name: Option<String>,
-
-
-    /// 
-    /// The ARN of the target (thing group) to which the security profile is attached.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetArns")]
-    pub target_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Metadata that can be used to manage the security profile.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// Specifies the destinations to which alerts are sent. (Alerts are always sent to the      console.) Alerts are generated when a device (thing) violates a behavior.
     /// 
     /// Required: No
@@ -88,7 +40,57 @@ pub struct CfnSecurityProfile {
     #[serde(rename = "AdditionalMetricsToRetainV2")]
     pub additional_metrics_to_retain_v2: Option<Vec<MetricToRetain>>,
 
+
+    /// 
+    /// Specifies the behaviors that, when violated by a device (thing), cause an alert.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Behavior
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Behaviors")]
+    pub behaviors: Option<Vec<Behavior>>,
+
+
+    /// 
+    /// Metadata that can be used to manage the security profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name you gave to the security profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityProfileName")]
+    pub security_profile_name: Option<String>,
+
+
+    /// 
+    /// The ARN of the target (thing group) to which the security profile is attached.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetArns")]
+    pub target_arns: Option<Vec<String>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSecurityProfile {
     fn type_string() -> &'static str {
@@ -101,35 +103,99 @@ impl cfn_resources::CfnResource for CfnSecurityProfile {
 }
 
 
-/// The dimension of the metric.
+/// The criteria by which the behavior is determined to be normal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricDimension {
+pub struct BehaviorCriteria {
 
 
     /// 
-    /// Operators are constructs that perform logical operations. Valid values are IN and NOT_IN.
+    /// The value to be compared with the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MetricValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<MetricValue>,
+
+
+    /// 
+    /// A statistical ranking (percentile)that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
+    /// 
+    /// Required: No
+    ///
+    /// Type: StatisticalThreshold
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatisticalThreshold")]
+    pub statistical_threshold: Option<StatisticalThreshold>,
+
+
+    /// 
+    /// If a device is in violation of the behavior for the specified number of consecutive      datapoints, an alarm occurs. If not specified, the default is 1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConsecutiveDatapointsToAlarm")]
+    pub consecutive_datapoints_to_alarm: Option<i64>,
+
+
+    /// 
+    /// If an alarm has occurred and the offending device is no longer in violation of the behavior      for the specified number of consecutive datapoints, the alarm is cleared. If not specified,      the default is 1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConsecutiveDatapointsToClear")]
+    pub consecutive_datapoints_to_clear: Option<i64>,
+
+
+    /// 
+    /// The operator that relates the thing measured (metric) to the criteria      (containing a value or statisticalThreshold). Valid operators include:
+    /// 
+    /// string-list: in-set and not-in-set                                number-list: in-set and not-in-set                                ip-address-list: in-cidr-set and not-in-cidr-set                                number: less-than, less-than-equals, greater-than, and greater-than-equals
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Operator")]
-    pub operator: Option<String>,
+    #[serde(rename = "ComparisonOperator")]
+    pub comparison_operator: Option<String>,
 
 
     /// 
-    /// The name of the dimension.
+    /// Use this to specify the time duration over which the behavior is evaluated, for those criteria that    have a time dimension (for example, NUM_MESSAGES_SENT). For a     statisticalThreshhold metric comparison, measurements from all devices are    accumulated over this time duration before being used to calculate percentiles, and later,    measurements from an individual device are also accumulated over this time duration before    being given a percentile rank. Cannot be used with list-based metric datatypes.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DimensionName")]
-    pub dimension_name: String,
+    #[serde(rename = "DurationSeconds")]
+    pub duration_seconds: Option<i64>,
+
+
+    /// 
+    /// The confidence level of the detection model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MachineLearningDetectionConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MlDetectionConfig")]
+    pub ml_detection_config: Option<MachineLearningDetectionConfig>,
 
 }
+
+
 
 
 /// A structure containing the alert target ARN and the role ARN.
@@ -163,316 +229,6 @@ pub struct AlertTarget {
 }
 
 
-/// A Device Defender security profile behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Behavior {
-
-
-    /// 
-    /// The alert status. If you set the value to true, alerts will be     suppressed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SuppressAlerts")]
-    pub suppress_alerts: Option<bool>,
-
-
-    /// 
-    /// The dimension of the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MetricDimension
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricDimension")]
-    pub metric_dimension: Option<MetricDimension>,
-
-
-    /// 
-    /// What is measured by the behavior.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Metric")]
-    pub metric: Option<String>,
-
-
-    /// 
-    /// The criteria that determine if a device is behaving normally in regard to      the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BehaviorCriteria
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Criteria")]
-    pub criteria: Option<BehaviorCriteria>,
-
-
-    /// 
-    /// The name    you've given to the behavior.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-/// A statistical ranking (percentile) that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StatisticalThreshold {
-
-
-    /// 
-    /// The percentile that    resolves to a threshold value by which compliance with a behavior is determined. Metrics are    collected over the specified period (durationSeconds) from all reporting devices    in your account and statistical ranks are calculated. Then, the measurements from a device are    collected over the same period. If the accumulated measurements from the device fall above or    below (comparisonOperator) the value associated with the percentile specified,    then the device is considered to be in compliance with the behavior, otherwise a violation    occurs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statistic")]
-    pub statistic: Option<String>,
-
-}
-
-
-/// The criteria by which the behavior is determined to be normal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BehaviorCriteria {
-
-
-    /// 
-    /// Use this to specify the time duration over which the behavior is evaluated, for those criteria that    have a time dimension (for example, NUM_MESSAGES_SENT). For a     statisticalThreshhold metric comparison, measurements from all devices are    accumulated over this time duration before being used to calculate percentiles, and later,    measurements from an individual device are also accumulated over this time duration before    being given a percentile rank. Cannot be used with list-based metric datatypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationSeconds")]
-    pub duration_seconds: Option<i64>,
-
-
-    /// 
-    /// If an alarm has occurred and the offending device is no longer in violation of the behavior      for the specified number of consecutive datapoints, the alarm is cleared. If not specified,      the default is 1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConsecutiveDatapointsToClear")]
-    pub consecutive_datapoints_to_clear: Option<i64>,
-
-
-    /// 
-    /// If a device is in violation of the behavior for the specified number of consecutive      datapoints, an alarm occurs. If not specified, the default is 1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConsecutiveDatapointsToAlarm")]
-    pub consecutive_datapoints_to_alarm: Option<i64>,
-
-
-    /// 
-    /// The value to be compared with the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MetricValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<MetricValue>,
-
-
-    /// 
-    /// A statistical ranking (percentile)that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
-    /// 
-    /// Required: No
-    ///
-    /// Type: StatisticalThreshold
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatisticalThreshold")]
-    pub statistical_threshold: Option<StatisticalThreshold>,
-
-
-    /// 
-    /// The confidence level of the detection model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MachineLearningDetectionConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MlDetectionConfig")]
-    pub ml_detection_config: Option<MachineLearningDetectionConfig>,
-
-
-    /// 
-    /// The operator that relates the thing measured (metric) to the criteria      (containing a value or statisticalThreshold). Valid operators include:
-    /// 
-    /// string-list: in-set and not-in-set                                number-list: in-set and not-in-set                                ip-address-list: in-cidr-set and not-in-cidr-set                                number: less-than, less-than-equals, greater-than, and greater-than-equals
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComparisonOperator")]
-    pub comparison_operator: Option<String>,
-
-}
-
-
-/// The MachineLearningDetectionConfig property type controls confidence of the machine learning model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MachineLearningDetectionConfig {
-
-
-    /// 
-    /// The model confidence level.
-    /// 
-    /// There are three levels of confidence, "high", "medium", and "low".
-    /// 
-    /// The higher the confidence level, the lower the sensitivity, and the lower the alarm     frequency will be.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfidenceLevel")]
-    pub confidence_level: Option<String>,
-
-}
-
-
-/// The value to be compared with the metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricValue {
-
-
-    /// 
-    /// If the comparisonOperator calls for a numeric value, use this      to specify that numeric value to be compared with the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Count")]
-    pub count: Option<String>,
-
-
-    /// 
-    /// If the comparisonOperator calls for a set of CIDRs, use this      to specify that set to be compared with the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cidrs")]
-    pub cidrs: Option<Vec<String>>,
-
-
-    /// 
-    /// The numeric value of a metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Numbers")]
-    pub numbers: Option<Vec<f64>>,
-
-
-    /// 
-    /// The numeric values of a metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Number")]
-    pub number: Option<f64>,
-
-
-    /// 
-    /// If the comparisonOperator calls for a set of ports, use this      to specify that set to be compared with the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ports")]
-    pub ports: Option<Vec<i64>>,
-
-
-    /// 
-    /// The string values of a metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Strings")]
-    pub strings: Option<Vec<String>>,
-
-}
-
-
-/// The metric you want to retain. Dimensions are optional.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricToRetain {
-
-
-    /// 
-    /// A standard of measurement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Metric")]
-    pub metric: String,
-
-
-    /// 
-    /// The dimension of the metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MetricDimension
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricDimension")]
-    pub metric_dimension: Option<MetricDimension>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -508,3 +264,267 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// The MachineLearningDetectionConfig property type controls confidence of the machine learning model.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MachineLearningDetectionConfig {
+
+
+    /// 
+    /// The model confidence level.
+    /// 
+    /// There are three levels of confidence, "high", "medium", and "low".
+    /// 
+    /// The higher the confidence level, the lower the sensitivity, and the lower the alarm     frequency will be.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfidenceLevel")]
+    pub confidence_level: Option<String>,
+
+}
+
+
+
+
+/// A statistical ranking (percentile) that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StatisticalThreshold {
+
+
+    /// 
+    /// The percentile that    resolves to a threshold value by which compliance with a behavior is determined. Metrics are    collected over the specified period (durationSeconds) from all reporting devices    in your account and statistical ranks are calculated. Then, the measurements from a device are    collected over the same period. If the accumulated measurements from the device fall above or    below (comparisonOperator) the value associated with the percentile specified,    then the device is considered to be in compliance with the behavior, otherwise a violation    occurs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statistic")]
+    pub statistic: Option<String>,
+
+}
+
+
+
+
+/// The value to be compared with the metric.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricValue {
+
+
+    /// 
+    /// If the comparisonOperator calls for a numeric value, use this      to specify that numeric value to be compared with the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Count")]
+    pub count: Option<String>,
+
+
+    /// 
+    /// The numeric values of a metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Number")]
+    pub number: Option<f64>,
+
+
+    /// 
+    /// The string values of a metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Strings")]
+    pub strings: Option<Vec<String>>,
+
+
+    /// 
+    /// If the comparisonOperator calls for a set of ports, use this      to specify that set to be compared with the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ports")]
+    pub ports: Option<Vec<i64>>,
+
+
+    /// 
+    /// The numeric value of a metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Numbers")]
+    pub numbers: Option<Vec<f64>>,
+
+
+    /// 
+    /// If the comparisonOperator calls for a set of CIDRs, use this      to specify that set to be compared with the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cidrs")]
+    pub cidrs: Option<Vec<String>>,
+
+}
+
+
+
+
+/// The dimension of the metric.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricDimension {
+
+
+    /// 
+    /// Operators are constructs that perform logical operations. Valid values are IN and NOT_IN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Operator")]
+    pub operator: Option<String>,
+
+
+    /// 
+    /// The name of the dimension.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DimensionName")]
+    pub dimension_name: String,
+
+}
+
+
+
+
+/// A Device Defender security profile behavior.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Behavior {
+
+
+    /// 
+    /// The alert status. If you set the value to true, alerts will be     suppressed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SuppressAlerts")]
+    pub suppress_alerts: Option<bool>,
+
+
+    /// 
+    /// What is measured by the behavior.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Metric")]
+    pub metric: Option<String>,
+
+
+    /// 
+    /// The dimension of the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MetricDimension
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricDimension")]
+    pub metric_dimension: Option<MetricDimension>,
+
+
+    /// 
+    /// The name    you've given to the behavior.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The criteria that determine if a device is behaving normally in regard to      the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BehaviorCriteria
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Criteria")]
+    pub criteria: Option<BehaviorCriteria>,
+
+}
+
+
+
+
+/// The metric you want to retain. Dimensions are optional.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricToRetain {
+
+
+    /// 
+    /// The dimension of the metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MetricDimension
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricDimension")]
+    pub metric_dimension: Option<MetricDimension>,
+
+
+    /// 
+    /// A standard of measurement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Metric")]
+    pub metric: String,
+
+}
+
+

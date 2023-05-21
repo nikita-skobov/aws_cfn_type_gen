@@ -8,6 +8,30 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
+    /// Must be neptune1 for engine versions prior to 1.2.0.0, or    neptune1.2 for engine version 1.2.0.0 and higher.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Family")]
+    pub family: String,
+
+
+    /// 
+    /// Provides the name of the DB parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// Provides the customer-specified description for this DB parameter group.
     /// 
     /// Required: Yes
@@ -36,18 +60,6 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
-    /// Provides the name of the DB parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The tags that you want to attach to this parameter group.
     /// 
     /// Required: No
@@ -58,19 +70,9 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Must be neptune1 for engine versions prior to 1.2.0.0, or    neptune1.2 for engine version 1.2.0.0 and higher.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Family")]
-    pub family: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBParameterGroup {
     fn type_string() -> &'static str {
@@ -95,17 +97,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -115,4 +106,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

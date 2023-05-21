@@ -6,15 +6,15 @@ pub struct CfnVpcLink {
 
 
     /// 
-    /// A list of security group IDs for the VPC link.
+    /// A list of subnet IDs to include in the VPC link.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -30,6 +30,18 @@ pub struct CfnVpcLink {
 
 
     /// 
+    /// A list of security group IDs for the VPC link.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
     /// The collection of tags. Each tag element is associated with a given resource.
     /// 
     /// Required: No
@@ -40,19 +52,9 @@ pub struct CfnVpcLink {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
-    /// A list of subnet IDs to include in the VPC link.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVpcLink {
     fn type_string() -> &'static str {

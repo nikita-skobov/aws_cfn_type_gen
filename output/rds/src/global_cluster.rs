@@ -12,15 +12,53 @@ pub struct CfnGlobalCluster {
 
 
     /// 
-    /// The cluster identifier of the global database cluster.
+    /// The DB cluster identifier or Amazon Resource Name (ARN) to use as the primary cluster of the global database.
+    /// 
+    /// NoteIf the Engine property isn't specified, this property is required. If the Engine property is specified,         make sure this property isn't specified.
     /// 
     /// Required: Conditional
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "GlobalClusterIdentifier")]
-    pub global_cluster_identifier: Option<String>,
+    #[serde(rename = "SourceDBClusterIdentifier")]
+    pub source_dbcluster_identifier: Option<String>,
+
+
+    /// 
+    /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtection")]
+    pub deletion_protection: Option<bool>,
+
+
+    /// 
+    /// The storage encryption setting for the global database cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StorageEncrypted")]
+    pub storage_encrypted: Option<bool>,
+
+
+    /// 
+    /// The engine version of the Aurora global database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
 
 
     /// 
@@ -40,55 +78,19 @@ pub struct CfnGlobalCluster {
 
 
     /// 
-    /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeletionProtection")]
-    pub deletion_protection: Option<bool>,
-
-
-    /// 
-    /// The DB cluster identifier or Amazon Resource Name (ARN) to use as the primary cluster of the global database.
-    /// 
-    /// NoteIf the Engine property isn't specified, this property is required. If the Engine property is specified,         make sure this property isn't specified.
+    /// The cluster identifier of the global database cluster.
     /// 
     /// Required: Conditional
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceDBClusterIdentifier")]
-    pub source_dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// The engine version of the Aurora global database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// The storage encryption setting for the global database cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StorageEncrypted")]
-    pub storage_encrypted: Option<bool>,
+    #[serde(rename = "GlobalClusterIdentifier")]
+    pub global_cluster_identifier: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGlobalCluster {
     fn type_string() -> &'static str {

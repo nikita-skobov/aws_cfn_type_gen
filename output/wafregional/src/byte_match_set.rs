@@ -36,6 +36,8 @@ pub struct CfnByteMatchSet {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnByteMatchSet {
     fn type_string() -> &'static str {
         "AWS::WAFRegional::ByteMatchSet"
@@ -87,14 +89,85 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: FieldToMatchTypeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FieldToMatchTypeEnum {
+
+    /// ALL_QUERY_ARGS
+    #[serde(rename = "ALL_QUERY_ARGS")]
+    Allqueryargs,
+
+    /// BODY
+    #[serde(rename = "BODY")]
+    Body,
+
+    /// HEADER
+    #[serde(rename = "HEADER")]
+    Header,
+
+    /// METHOD
+    #[serde(rename = "METHOD")]
+    Method,
+
+    /// QUERY_STRING
+    #[serde(rename = "QUERY_STRING")]
+    Querystring,
+
+    /// SINGLE_QUERY_ARG
+    #[serde(rename = "SINGLE_QUERY_ARG")]
+    Singlequeryarg,
+
+    /// URI
+    #[serde(rename = "URI")]
+    Uri,
+
+}
+
+impl Default for FieldToMatchTypeEnum {
+    fn default() -> Self {
+        FieldToMatchTypeEnum::Allqueryargs
+    }
+}
+
 
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ByteMatchTuple {
+
+
+    /// 
+    /// The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it.
+    /// 
+    /// You must specify this property or the TargetString property.
+    /// 
+    /// AWS WAF searches for this value in a specific part of web requests, which you define in the FieldToMatch property.
+    /// 
+    /// Valid values depend on the Type value in the FieldToMatch property. For example, for a METHOD type, you must specify HTTP methods such as DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetStringBase64")]
+    pub target_string_base64: Option<String>,
+
+
+    /// 
+    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -142,7 +215,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
-    pub text_transformation: String,
+    pub text_transformation: ByteMatchTupleTextTransformationEnum,
 
 
     /// 
@@ -178,25 +251,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PositionalConstraint")]
-    pub positional_constraint: String,
-
-
-    /// 
-    /// The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it.
-    /// 
-    /// You must specify this property or the TargetString property.
-    /// 
-    /// AWS WAF searches for this value in a specific part of web requests, which you define in the FieldToMatch property.
-    /// 
-    /// Valid values depend on the Type value in the FieldToMatch property. For example, for a METHOD type, you must specify HTTP methods such as DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetStringBase64")]
-    pub target_string_base64: Option<String>,
+    pub positional_constraint: ByteMatchTuplePositionalConstraintEnum,
 
 
     /// 
@@ -218,16 +273,72 @@ pub struct ByteMatchTuple {
     #[serde(rename = "TargetString")]
     pub target_string: Option<String>,
 
+}
 
-    /// 
-    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ByteMatchTuplePositionalConstraintEnum {
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// CONTAINS_WORD
+    #[serde(rename = "CONTAINS_WORD")]
+    Containsword,
+
+    /// ENDS_WITH
+    #[serde(rename = "ENDS_WITH")]
+    Endswith,
+
+    /// EXACTLY
+    #[serde(rename = "EXACTLY")]
+    Exactly,
+
+    /// STARTS_WITH
+    #[serde(rename = "STARTS_WITH")]
+    Startswith,
 
 }
+
+impl Default for ByteMatchTuplePositionalConstraintEnum {
+    fn default() -> Self {
+        ByteMatchTuplePositionalConstraintEnum::Contains
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ByteMatchTupleTextTransformationEnum {
+
+    /// CMD_LINE
+    #[serde(rename = "CMD_LINE")]
+    Cmdline,
+
+    /// COMPRESS_WHITE_SPACE
+    #[serde(rename = "COMPRESS_WHITE_SPACE")]
+    Compresswhitespace,
+
+    /// HTML_ENTITY_DECODE
+    #[serde(rename = "HTML_ENTITY_DECODE")]
+    Htmlentitydecode,
+
+    /// LOWERCASE
+    #[serde(rename = "LOWERCASE")]
+    Lowercase,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// URL_DECODE
+    #[serde(rename = "URL_DECODE")]
+    Urldecode,
+
+}
+
+impl Default for ByteMatchTupleTextTransformationEnum {
+    fn default() -> Self {
+        ByteMatchTupleTextTransformationEnum::Cmdline
+    }
+}
+

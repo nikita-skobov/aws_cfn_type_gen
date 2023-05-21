@@ -8,23 +8,21 @@ pub struct CfnLogGroup {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS KMS key to use when encrypting log data.
-    /// 
-    /// To associate an AWS KMS key with the log group, specify the ARN of that KMS key here. If you do so,    ingested data is encrypted using this key.     This association is stored as long as the data encrypted with the KMS key is still within CloudWatch Logs.    This enables CloudWatch Logs to decrypt this data whenever it is requested.
-    /// 
-    /// If you attempt to associate a KMS key with the log group but the KMS key doesn't exist or is deactivated, you will    receive an InvalidParameterException error.
-    /// 
-    /// Log group data is always encrypted in CloudWatch Logs. If you omit this key, the encryption does not use    AWS KMS. For more information, see      Encrypt log data in CloudWatch Logs using AWS Key Management Service
+    /// The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 256
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    /// Maximum: 512
+    ///
+    /// Pattern: [\.\-_/#A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
 
 
     /// 
@@ -56,21 +54,23 @@ pub struct CfnLogGroup {
 
 
     /// 
-    /// The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
+    /// The Amazon Resource Name (ARN) of the AWS KMS key to use when encrypting log data.
+    /// 
+    /// To associate an AWS KMS key with the log group, specify the ARN of that KMS key here. If you do so,    ingested data is encrypted using this key.     This association is stored as long as the data encrypted with the KMS key is still within CloudWatch Logs.    This enables CloudWatch Logs to decrypt this data whenever it is requested.
+    /// 
+    /// If you attempt to associate a KMS key with the log group but the KMS key doesn't exist or is deactivated, you will    receive an InvalidParameterException error.
+    /// 
+    /// Log group data is always encrypted in CloudWatch Logs. If you omit this key, the encryption does not use    AWS KMS. For more information, see      Encrypt log data in CloudWatch Logs using AWS Key Management Service
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Maximum: 256
     ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\.\-_/#A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -87,6 +87,8 @@ pub struct CfnLogGroup {
     pub retention_in_days: Option<i64>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLogGroup {
     fn type_string() -> &'static str {
@@ -111,17 +113,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -131,4 +122,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

@@ -32,6 +32,8 @@ pub struct CfnInputSecurityGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnInputSecurityGroup {
     fn type_string() -> &'static str {
         "AWS::MediaLive::InputSecurityGroup"
@@ -62,3 +64,5 @@ pub struct InputWhitelistRuleCidr {
     pub cidr: Option<String>,
 
 }
+
+

@@ -5,82 +5,6 @@
 pub struct CfnApplication {
 
 
-    /// A list of attributes to delete from an application.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttributesToDelete")]
-    pub attributes_to_delete: Option<Vec<String>>,
-
-
-    /// The description of the application.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// The display name of the application. This name is visible to users in the application catalog.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// The app block ARN with which the application should be associated.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppBlockArn")]
-    pub app_block_arn: String,
-
-
-    /// The instance families the application supports.
-    ///
-    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceFamilies")]
-    pub instance_families: Vec<String>,
-
-
-    /// The working directory of the application.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkingDirectory")]
-    pub working_directory: Option<String>,
-
-
     /// The tags of the application.
     ///
     /// Required: No
@@ -90,17 +14,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// The icon S3 location of the application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IconS3Location")]
-    pub icon_s3_location: S3Location,
 
 
     /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
@@ -118,19 +31,54 @@ pub struct CfnApplication {
     pub name: String,
 
 
-    /// The platforms the application supports.
-    /// 
-    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
+    /// The display name of the application. This name is visible to users in the application catalog.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// The description of the application.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// The icon S3 location of the application.
     ///
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: S3Location
     ///
-    /// Maximum: 4
+    /// Update requires: No interruption
+    #[serde(rename = "IconS3Location")]
+    pub icon_s3_location: S3Location,
+
+
+    /// The launch path of the application.
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Platforms")]
-    pub platforms: Vec<String>,
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchPath")]
+    pub launch_path: String,
 
 
     /// The launch parameters of the application.
@@ -146,19 +94,73 @@ pub struct CfnApplication {
     pub launch_parameters: Option<String>,
 
 
-    /// The launch path of the application.
+    /// The app block ARN with which the application should be associated.
     ///
     /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppBlockArn")]
+    pub app_block_arn: String,
+
+
+    /// The platforms the application supports.
+    /// 
+    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Platforms")]
+    pub platforms: Vec<String>,
+
+
+    /// The instance families the application supports.
+    ///
+    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceFamilies")]
+    pub instance_families: Vec<String>,
+
+
+    /// A list of attributes to delete from an application.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttributesToDelete")]
+    pub attributes_to_delete: Option<Vec<String>>,
+
+
+    /// The working directory of the application.
+    ///
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LaunchPath")]
-    pub launch_path: String,
+    #[serde(rename = "WorkingDirectory")]
+    pub working_directory: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -168,41 +170,6 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
 }
 
 
@@ -235,3 +202,42 @@ pub struct S3Location {
     pub s3_key: String,
 
 }
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+

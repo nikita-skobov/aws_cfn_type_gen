@@ -18,15 +18,15 @@ pub struct CfnRuleGroupsNamespace {
 
 
     /// 
-    /// The rules definition file for this namespace.
+    /// The ARN of the workspace that contains this rule groups namespace.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Data")]
-    pub data: String,
+    #[serde(rename = "Workspace")]
+    pub workspace: String,
 
 
     /// 
@@ -42,17 +42,19 @@ pub struct CfnRuleGroupsNamespace {
 
 
     /// 
-    /// The ARN of the workspace that contains this rule groups namespace.
+    /// The rules definition file for this namespace.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Workspace")]
-    pub workspace: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
     fn type_string() -> &'static str {
@@ -98,3 +100,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

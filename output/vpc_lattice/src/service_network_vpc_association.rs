@@ -12,6 +12,18 @@ pub struct CfnServiceNetworkVpcAssociation {
 
 
     /// 
+    /// The tags for the association.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The ID of the VPC.
     /// 
     /// Required: No
@@ -21,18 +33,6 @@ pub struct CfnServiceNetworkVpcAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VpcIdentifier")]
     pub vpc_identifier: Option<String>,
-
-
-    /// 
-    /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN when the  resources specified in the operation are in different accounts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceNetworkIdentifier")]
-    pub service_network_identifier: Option<String>,
 
 
     /// 
@@ -48,17 +48,19 @@ pub struct CfnServiceNetworkVpcAssociation {
 
 
     /// 
-    /// The tags for the association.
+    /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN when the  resources specified in the operation are in different accounts.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceNetworkIdentifier")]
+    pub service_network_identifier: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
     fn type_string() -> &'static str {
@@ -104,3 +106,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

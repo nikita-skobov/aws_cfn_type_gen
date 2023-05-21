@@ -8,25 +8,15 @@ pub struct CfnInstanceProfile {
 
 
     /// 
-    /// The path to the instance profile. For more information about paths, see IAM         Identifiers in the IAM User Guide.
+    /// The name of the role to associate with the instance profile. Only one role can be     assigned to an EC2 instance at a time, and all applications on the instance share the same     role and permissions.
     /// 
-    /// This parameter is optional. If it is not included, it defaults to a slash (/).
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Roles")]
+    pub roles: Vec<String>,
 
 
     /// 
@@ -50,17 +40,29 @@ pub struct CfnInstanceProfile {
 
 
     /// 
-    /// The name of the role to associate with the instance profile. Only one role can be     assigned to an EC2 instance at a time, and all applications on the instance share the same     role and permissions.
+    /// The path to the instance profile. For more information about paths, see IAM         Identifiers in the IAM User Guide.
     /// 
-    /// Required: Yes
+    /// This parameter is optional. If it is not included, it defaults to a slash (/).
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
+    /// 
+    /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Roles")]
-    pub roles: Vec<String>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnInstanceProfile {
     fn type_string() -> &'static str {

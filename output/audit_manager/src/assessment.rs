@@ -6,85 +6,15 @@ pub struct CfnAssessment {
 
 
     /// 
-    /// The roles that are associated with the assessment.
+    /// The AWS account that's associated with the assessment.
     /// 
     /// Required: No
     ///
-    /// Type: List of Role
+    /// Type: AWSAccount
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Roles")]
-    pub roles: Option<Vec<Role>>,
-
-
-    /// 
-    /// The name of the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Pattern: ^[^\\]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The delegations that are associated with the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Delegation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Delegations")]
-    pub delegations: Option<Vec<Delegation>>,
-
-
-    /// 
-    /// The description of the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^[\w\W\s\S]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The wrapper of AWS accounts and services that are in scope for the     assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Scope
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<Scope>,
-
-
-    /// 
-    /// The tags that are associated with the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "AwsAccount")]
+    pub aws_account: Option<AWSAccount>,
 
 
     /// 
@@ -106,6 +36,88 @@ pub struct CfnAssessment {
 
 
     /// 
+    /// The tags that are associated with the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Pattern: ^[^\\]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The description of the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: ^[\w\W\s\S]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The roles that are associated with the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Role
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Roles")]
+    pub roles: Option<Vec<Role>>,
+
+
+    /// 
+    /// The wrapper of AWS accounts and services that are in scope for the     assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Scope
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<Scope>,
+
+
+    /// 
+    /// The delegations that are associated with the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Delegation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Delegations")]
+    pub delegations: Option<Vec<Delegation>>,
+
+
+    /// 
     /// The destination that evidence reports are stored in for the assessment.
     /// 
     /// Required: No
@@ -115,18 +127,6 @@ pub struct CfnAssessment {
     /// Update requires: No interruption
     #[serde(rename = "AssessmentReportsDestination")]
     pub assessment_reports_destination: Option<AssessmentReportsDestination>,
-
-
-    /// 
-    /// The AWS account that's associated with the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AWSAccount
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AwsAccount")]
-    pub aws_account: Option<AWSAccount>,
 
 
     /// 
@@ -144,9 +144,30 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: Option<String>,
+    pub status: Option<AssessmentStatusEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssessmentStatusEnum {
+
+    /// ACTIVE
+    #[serde(rename = "ACTIVE")]
+    Active,
+
+    /// INACTIVE
+    #[serde(rename = "INACTIVE")]
+    Inactive,
+
+}
+
+impl Default for AssessmentStatusEnum {
+    fn default() -> Self {
+        AssessmentStatusEnum::Active
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAssessment {
     fn type_string() -> &'static str {
@@ -159,9 +180,9 @@ impl cfn_resources::CfnResource for CfnAssessment {
 }
 
 
-/// The Role property type specifies the wrapper that contains AWS Audit Manager role information, such as the role type and IAM Amazon     Resource Name (ARN).
+/// The Delegation property type specifies the assignment of a control set to a delegate for review.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Role {
+pub struct Delegation {
 
 
     /// 
@@ -195,14 +216,7 @@ pub struct Role {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleType")]
-    pub role_type: Option<String>,
-
-}
-
-
-/// The Delegation property type specifies the assignment of a control set to a delegate for review.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Delegation {
+    pub role_type: Option<DelegationRoleTypeEnum>,
 
 
     /// 
@@ -219,70 +233,6 @@ pub struct Delegation {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     pub comment: Option<String>,
-
-
-    /// 
-    /// The name of the assessment that's associated with the delegation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Pattern: ^[^\\]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssessmentName")]
-    pub assessment_name: Option<String>,
-
-
-    /// 
-    /// Specifies when the delegation was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreationTime")]
-    pub creation_time: Option<f64>,
-
-
-    /// 
-    /// The user or role that created the delegation.
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 100
-    /// 
-    /// Pattern: ^[a-zA-Z0-9-_()\\[\\]\\s]+$
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreatedBy")]
-    pub created_by: Option<String>,
-
-
-    /// 
-    /// The type of customer persona.
-    /// 
-    /// NoteIn CreateAssessment, roleType can only be        PROCESS_OWNER. In UpdateSettings, roleType can only be        PROCESS_OWNER.In BatchCreateDelegationByAssessment, roleType can only be        RESOURCE_OWNER.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: PROCESS_OWNER | RESOURCE_OWNER
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleType")]
-    pub role_type: Option<String>,
 
 
     /// 
@@ -322,17 +272,33 @@ pub struct Delegation {
 
 
     /// 
-    /// The status of the delegation.
+    /// Specifies when the delegation was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreationTime")]
+    pub creation_time: Option<f64>,
+
+
+    /// 
+    /// The user or role that created the delegation.
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 100
+    /// 
+    /// Pattern: ^[a-zA-Z0-9-_()\\[\\]\\s]+$
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: COMPLETE | IN_PROGRESS | UNDER_REVIEW
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
+    #[serde(rename = "CreatedBy")]
+    pub created_by: Option<String>,
 
 
     /// 
@@ -354,24 +320,6 @@ pub struct Delegation {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^arn:.*:iam:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
     /// Specifies when the delegation was last updated.
     /// 
     /// Required: No
@@ -382,7 +330,206 @@ pub struct Delegation {
     #[serde(rename = "LastUpdated")]
     pub last_updated: Option<f64>,
 
+
+    /// 
+    /// The status of the delegation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: COMPLETE | IN_PROGRESS | UNDER_REVIEW
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<DelegationStatusEnum>,
+
+
+    /// 
+    /// The name of the assessment that's associated with the delegation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Pattern: ^[^\\]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssessmentName")]
+    pub assessment_name: Option<String>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DelegationStatusEnum {
+
+    /// COMPLETE
+    #[serde(rename = "COMPLETE")]
+    Complete,
+
+    /// IN_PROGRESS
+    #[serde(rename = "IN_PROGRESS")]
+    Inprogress,
+
+    /// UNDER_REVIEW
+    #[serde(rename = "UNDER_REVIEW")]
+    Underreview,
+
+}
+
+impl Default for DelegationStatusEnum {
+    fn default() -> Self {
+        DelegationStatusEnum::Complete
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DelegationRoleTypeEnum {
+
+    /// PROCESS_OWNER
+    #[serde(rename = "PROCESS_OWNER")]
+    Processowner,
+
+    /// RESOURCE_OWNER
+    #[serde(rename = "RESOURCE_OWNER")]
+    Resourceowner,
+
+}
+
+impl Default for DelegationRoleTypeEnum {
+    fn default() -> Self {
+        DelegationRoleTypeEnum::Processowner
+    }
+}
+
+
+
+/// The Scope property type specifies the wrapper that contains the AWS accounts and services that are in scope for the assessment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Scope {
+
+
+    /// 
+    /// The AWS services that are included in the scope of the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AWSService
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsServices")]
+    pub aws_services: Option<Vec<AWSService>>,
+
+
+    /// 
+    /// The AWS accounts that are included in the scope of the assessment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AWSAccount
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsAccounts")]
+    pub aws_accounts: Option<Vec<AWSAccount>>,
+
+}
+
+
+
+
+/// The AWSAccount property type specifies the wrapper of the AWS account details, such as account ID, email address, and so on.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AWSAccount {
+
+
+    /// 
+    /// The name of the AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: ^[\u0020-\u007E]+$
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The identifier for the AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: ^[0-9]{12}$
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "Id")]
+    pub id: Option<String>,
+
+
+    /// 
+    /// The email address that's associated with the AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 320
+    ///
+    /// Pattern: ^.*@.*$
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "EmailAddress")]
+    pub email_address: Option<String>,
+
+}
+
+
+
+
+/// The AWSService property type specifies an AWS service     such as Amazon S3, AWS CloudTrail, and so on.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AWSService {
+
+
+    /// 
+    /// The name of the AWS service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 40
+    ///
+    /// Pattern: ^[a-zA-Z0-9-\s().]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceName")]
+    pub service_name: Option<String>,
+
+}
+
+
 
 
 /// The AssessmentReportsDestination property type specifies the location in     which AWS Audit Manager saves assessment reports for the given assessment.
@@ -419,9 +566,26 @@ pub struct AssessmentReportsDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationType")]
-    pub destination_type: Option<String>,
+    pub destination_type: Option<AssessmentReportsDestinationDestinationTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AssessmentReportsDestinationDestinationTypeEnum {
+
+    /// S3
+    #[serde(rename = "S3")]
+    S3,
+
+}
+
+impl Default for AssessmentReportsDestinationDestinationTypeEnum {
+    fn default() -> Self {
+        AssessmentReportsDestinationDestinationTypeEnum::S3
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -459,118 +623,65 @@ pub struct Tag {
 }
 
 
-/// The AWSService property type specifies an AWS service     such as Amazon S3, AWS CloudTrail, and so on.
+
+
+/// The Role property type specifies the wrapper that contains AWS Audit Manager role information, such as the role type and IAM Amazon     Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AWSService {
+pub struct Role {
 
 
     /// 
-    /// The name of the AWS service.
+    /// The Amazon Resource Name (ARN) of the IAM role.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 20
     ///
-    /// Maximum: 40
+    /// Maximum: 2048
     ///
-    /// Pattern: ^[a-zA-Z0-9-\s().]+$
+    /// Pattern: ^arn:.*:iam:.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ServiceName")]
-    pub service_name: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The type of customer persona.
+    /// 
+    /// NoteIn CreateAssessment, roleType can only be        PROCESS_OWNER. In UpdateSettings, roleType can only be        PROCESS_OWNER.In BatchCreateDelegationByAssessment, roleType can only be        RESOURCE_OWNER.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: PROCESS_OWNER | RESOURCE_OWNER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleType")]
+    pub role_type: Option<RoleRoleTypeEnum>,
 
 }
 
 
-/// The AWSAccount property type specifies the wrapper of the AWS account details, such as account ID, email address, and so on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AWSAccount {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RoleRoleTypeEnum {
 
+    /// PROCESS_OWNER
+    #[serde(rename = "PROCESS_OWNER")]
+    Processowner,
 
-    /// 
-    /// The name of the AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: ^[\u0020-\u007E]+$
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The email address that's associated with the AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 320
-    ///
-    /// Pattern: ^.*@.*$
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "EmailAddress")]
-    pub email_address: Option<String>,
-
-
-    /// 
-    /// The identifier for the AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: ^[0-9]{12}$
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Id")]
-    pub id: Option<String>,
+    /// RESOURCE_OWNER
+    #[serde(rename = "RESOURCE_OWNER")]
+    Resourceowner,
 
 }
 
-
-/// The Scope property type specifies the wrapper that contains the AWS accounts and services that are in scope for the assessment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Scope {
-
-
-    /// 
-    /// The AWS services that are included in the scope of the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AWSService
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsServices")]
-    pub aws_services: Option<Vec<AWSService>>,
-
-
-    /// 
-    /// The AWS accounts that are included in the scope of the assessment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AWSAccount
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsAccounts")]
-    pub aws_accounts: Option<Vec<AWSAccount>>,
-
+impl Default for RoleRoleTypeEnum {
+    fn default() -> Self {
+        RoleRoleTypeEnum::Processowner
+    }
 }
+

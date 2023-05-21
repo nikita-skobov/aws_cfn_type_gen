@@ -6,38 +6,6 @@ pub struct CfnPublicDnsNamespace {
 
 
     /// 
-    /// The name that you want to assign to this namespace.
-    /// 
-    /// NoteDo not include sensitive information in the name. The name is publicly available using DNS queries.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A description for the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The tags for the namespace. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
     /// 
     /// Required: No
@@ -62,7 +30,41 @@ pub struct CfnPublicDnsNamespace {
     #[serde(rename = "Properties")]
     pub properties: Option<Properties>,
 
+
+    /// 
+    /// A description for the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name that you want to assign to this namespace.
+    /// 
+    /// NoteDo not include sensitive information in the name. The name is publicly available using DNS queries.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPublicDnsNamespace {
     fn type_string() -> &'static str {
@@ -72,25 +74,6 @@ impl cfn_resources::CfnResource for CfnPublicDnsNamespace {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Start of Authority  (SOA) properties for a public or private DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SOA {
-
-
-    /// 
-    /// The time to live  (TTL) for purposes of negative caching.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: Option<f64>,
-
 }
 
 
@@ -113,6 +96,29 @@ pub struct Properties {
 }
 
 
+
+
+/// Start of Authority  (SOA) properties for a public or private DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SOA {
+
+
+    /// 
+    /// The time to live  (TTL) for purposes of negative caching.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: Option<f64>,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -125,17 +131,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -145,7 +140,20 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
 
 
 /// DNS properties for  the public DNS namespace.
@@ -165,3 +173,5 @@ pub struct PublicDnsPropertiesMutable {
     pub soa: Option<SOA>,
 
 }
+
+

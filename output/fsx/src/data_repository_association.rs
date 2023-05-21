@@ -26,15 +26,17 @@ pub struct CfnDataRepositoryAssociation {
 
 
     /// 
-    /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: S3
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3")]
-    pub s3: Option<S3>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -60,29 +62,15 @@ pub struct CfnDataRepositoryAssociation {
 
 
     /// 
-    /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
+    /// The ID of the file system on which the data repository association is configured.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BatchImportMetaDataOnCreate")]
-    pub batch_import_meta_data_on_create: Option<bool>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "FileSystemId")]
+    pub file_system_id: String,
 
 
     /// 
@@ -104,17 +92,31 @@ pub struct CfnDataRepositoryAssociation {
 
 
     /// 
-    /// The ID of the file system on which the data repository association is configured.
+    /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    #[serde(rename = "BatchImportMetaDataOnCreate")]
+    pub batch_import_meta_data_on_create: Option<bool>,
+
+
+    /// 
+    /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3")]
+    pub s3: Option<S3>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
     fn type_string() -> &'static str {
@@ -154,66 +156,6 @@ pub struct AutoImportPolicy {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
-///
-/// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoExportPolicy {
-
-
-    /// 
-    /// The AutoExportPolicy can have the following event values:
-    /// 
-    /// NEW - New files and directories are automatically exported         to the data repository as they are added to the file system.                        CHANGED - Changes to files and directories on the         file system are automatically exported to the data repository.                        DELETED - Files and directories are automatically deleted         on the data repository when they are deleted on the file system.
-    /// 
-    /// You can define any combination of event types for your AutoExportPolicy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Events")]
-    pub events: Vec<String>,
-
-}
 
 
 /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
@@ -249,3 +191,71 @@ pub struct S3 {
     pub auto_import_policy: Option<AutoImportPolicy>,
 
 }
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+
+
+/// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
+///
+/// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoExportPolicy {
+
+
+    /// 
+    /// The AutoExportPolicy can have the following event values:
+    /// 
+    /// NEW - New files and directories are automatically exported         to the data repository as they are added to the file system.                        CHANGED - Changes to files and directories on the         file system are automatically exported to the data repository.                        DELETED - Files and directories are automatically deleted         on the data repository when they are deleted on the file system.
+    /// 
+    /// You can define any combination of event types for your AutoExportPolicy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Events")]
+    pub events: Vec<String>,
+
+}
+
+

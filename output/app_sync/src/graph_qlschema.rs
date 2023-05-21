@@ -6,18 +6,6 @@ pub struct CfnGraphQLSchema {
 
 
     /// 
-    /// The location of a GraphQL schema file in an Amazon S3 bucket. Use this if you want to provision     with the schema living in Amazon S3 rather than embedding it in your CloudFormation     template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefinitionS3Location")]
-    pub definition_s3_location: Option<String>,
-
-
-    /// 
     /// The text representation of a GraphQL schema in SDL format.
     /// 
     /// For more information about using the Ref function, see Ref.
@@ -32,6 +20,18 @@ pub struct CfnGraphQLSchema {
 
 
     /// 
+    /// The location of a GraphQL schema file in an Amazon S3 bucket. Use this if you want to provision     with the schema living in Amazon S3 rather than embedding it in your CloudFormation     template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefinitionS3Location")]
+    pub definition_s3_location: Option<String>,
+
+
+    /// 
     /// The AWS AppSync GraphQL API identifier to which you want to apply this schema.
     /// 
     /// Required: Yes
@@ -43,6 +43,8 @@ pub struct CfnGraphQLSchema {
     pub api_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnGraphQLSchema {
     fn type_string() -> &'static str {

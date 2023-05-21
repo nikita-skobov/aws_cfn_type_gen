@@ -6,6 +6,22 @@ pub struct CfnBucket {
 
 
     /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag     in the AWS CloudFormation User Guide.
+    /// 
+    /// NoteThe Value of Tags is optional for Lightsail resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Indicates whether object versioning is enabled for the bucket.
     /// 
     /// The following options can be configured:
@@ -24,6 +40,18 @@ pub struct CfnBucket {
 
 
     /// 
+    /// An object that describes the access rules for the bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AccessRules
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessRules")]
+    pub access_rules: Option<AccessRules>,
+
+
+    /// 
     /// An array of AWS account IDs that have read-only access to the     bucket.
     /// 
     /// Required: No
@@ -38,31 +66,15 @@ pub struct CfnBucket {
 
 
     /// 
-    /// An object that describes the access rules for the bucket.
+    /// An array of Lightsail instances that have access to the bucket.
     /// 
     /// Required: No
     ///
-    /// Type: AccessRules
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccessRules")]
-    pub access_rules: Option<AccessRules>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
-    /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ResourcesReceivingAccess")]
+    pub resources_receiving_access: Option<Vec<String>>,
 
 
     /// 
@@ -75,18 +87,6 @@ pub struct CfnBucket {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
-
-
-    /// 
-    /// An array of Lightsail instances that have access to the bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourcesReceivingAccess")]
-    pub resources_receiving_access: Option<Vec<String>>,
 
 
     /// 
@@ -106,6 +106,8 @@ pub struct CfnBucket {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnBucket {
     fn type_string() -> &'static str {
         "AWS::Lightsail::Bucket"
@@ -114,45 +116,6 @@ impl cfn_resources::CfnResource for CfnBucket {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// AccessRules is a property of the AWS::Lightsail::Bucket resource. It describes access rules for a bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessRules {
-
-
-    /// 
-    /// Specifies the anonymous access to all objects in a bucket.
-    /// 
-    /// The following options can be specified:
-    /// 
-    /// public - Sets all objects in the bucket to public (read-only), making        them readable by everyone on the internet.        If the GetObject value is set to public, then all        objects in the bucket default to public regardless of the          allowPublicOverrides value.                    private - Sets all objects in the bucket to private, making them        readable only by you and anyone that you grant access to.        If the GetObject value is set to private, and the          allowPublicOverrides value is set to true, then all        objects in the bucket default to private unless they are configured with a          public-read ACL. Individual objects with a public-read        ACL are readable by everyone on the internet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: private | public
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GetObject")]
-    pub get_object: Option<String>,
-
-
-    /// 
-    /// A Boolean value indicating whether the access control list (ACL) permissions that are     applied to individual objects override the GetObject option that is currently     specified.
-    /// 
-    /// When this is true, you can use the PutObjectAcl Amazon S3 API     operation to set individual objects to public (read-only) or private, using either the public-read     ACL or the private ACL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowPublicOverrides")]
-    pub allow_public_overrides: Option<bool>,
-
 }
 
 
@@ -189,3 +152,65 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// AccessRules is a property of the AWS::Lightsail::Bucket resource. It describes access rules for a bucket.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessRules {
+
+
+    /// 
+    /// A Boolean value indicating whether the access control list (ACL) permissions that are     applied to individual objects override the GetObject option that is currently     specified.
+    /// 
+    /// When this is true, you can use the PutObjectAcl Amazon S3 API     operation to set individual objects to public (read-only) or private, using either the public-read     ACL or the private ACL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowPublicOverrides")]
+    pub allow_public_overrides: Option<bool>,
+
+
+    /// 
+    /// Specifies the anonymous access to all objects in a bucket.
+    /// 
+    /// The following options can be specified:
+    /// 
+    /// public - Sets all objects in the bucket to public (read-only), making        them readable by everyone on the internet.        If the GetObject value is set to public, then all        objects in the bucket default to public regardless of the          allowPublicOverrides value.                    private - Sets all objects in the bucket to private, making them        readable only by you and anyone that you grant access to.        If the GetObject value is set to private, and the          allowPublicOverrides value is set to true, then all        objects in the bucket default to private unless they are configured with a          public-read ACL. Individual objects with a public-read        ACL are readable by everyone on the internet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: private | public
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GetObject")]
+    pub get_object: Option<AccessRulesGetObjectEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AccessRulesGetObjectEnum {
+
+    /// private
+    #[serde(rename = "private")]
+    Private,
+
+    /// public
+    #[serde(rename = "public")]
+    Public,
+
+}
+
+impl Default for AccessRulesGetObjectEnum {
+    fn default() -> Self {
+        AccessRulesGetObjectEnum::Private
+    }
+}
+

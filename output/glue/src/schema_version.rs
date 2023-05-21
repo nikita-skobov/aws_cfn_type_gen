@@ -6,18 +6,6 @@ pub struct CfnSchemaVersion {
 
 
     /// 
-    /// The schema definition for the schema version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
-
-
-    /// 
     /// The schema that includes the schema version.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnSchemaVersion {
     #[serde(rename = "Schema")]
     pub schema: Schema,
 
+
+    /// 
+    /// The schema definition for the schema version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaDefinition")]
+    pub schema_definition: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSchemaVersion {
     fn type_string() -> &'static str {
@@ -47,15 +49,15 @@ pub struct Schema {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
+    /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SchemaArn")]
-    pub schema_arn: Option<String>,
+    #[serde(rename = "SchemaName")]
+    pub schema_name: Option<String>,
 
 
     /// 
@@ -71,14 +73,16 @@ pub struct Schema {
 
 
     /// 
-    /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
+    /// The Amazon Resource Name (ARN) of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SchemaName")]
-    pub schema_name: Option<String>,
+    #[serde(rename = "SchemaArn")]
+    pub schema_arn: Option<String>,
 
 }
+
+

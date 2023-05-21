@@ -72,6 +72,8 @@ pub struct CfnClusterSecurityGroupIngress {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnClusterSecurityGroupIngress {
     fn type_string() -> &'static str {
         "AWS::Redshift::ClusterSecurityGroupIngress"

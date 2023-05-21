@@ -6,22 +6,6 @@ pub struct CfnNamedQuery {
 
 
     /// 
-    /// The query description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The query name.
     /// 
     /// Required: No
@@ -35,6 +19,38 @@ pub struct CfnNamedQuery {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The SQL statements that make up the query.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 262144
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "QueryString")]
+    pub query_string: String,
+
+
+    /// 
+    /// The query description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -66,23 +82,9 @@ pub struct CfnNamedQuery {
     #[serde(rename = "WorkGroup")]
     pub work_group: Option<String>,
 
-
-    /// 
-    /// The SQL statements that make up the query.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 262144
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "QueryString")]
-    pub query_string: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnNamedQuery {
     fn type_string() -> &'static str {

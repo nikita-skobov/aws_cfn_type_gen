@@ -6,15 +6,19 @@ pub struct CfnReportGroup {
 
 
     /// 
-    /// Information about the destination where the raw data of this ReportGroup       is exported.
+    /// The type of the ReportGroup. This can be one of the following       values:
+    /// 
+    /// CODE_COVERAGE                  The report group contains code coverage reports.                       TEST                  The report group contains test reports.
     /// 
     /// Required: Yes
     ///
-    /// Type: ReportExportConfig
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExportConfig")]
-    pub export_config: ReportExportConfig,
+    /// Allowed values: CODE_COVERAGE | TEST
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: ReportGroupTypeEnum,
 
 
     /// 
@@ -34,19 +38,15 @@ pub struct CfnReportGroup {
 
 
     /// 
-    /// A list of tag key and value pairs associated with this report group.
+    /// Information about the destination where the raw data of this ReportGroup       is exported.
     /// 
-    /// These tags are available for use by AWS services that support AWS CodeBuild report group    tags.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: ReportExportConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ExportConfig")]
+    pub export_config: ReportExportConfig,
 
 
     /// 
@@ -64,21 +64,42 @@ pub struct CfnReportGroup {
 
 
     /// 
-    /// The type of the ReportGroup. This can be one of the following       values:
+    /// A list of tag key and value pairs associated with this report group.
     /// 
-    /// CODE_COVERAGE                  The report group contains code coverage reports.                       TEST                  The report group contains test reports.
+    /// These tags are available for use by AWS services that support AWS CodeBuild report group    tags.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Allowed values: CODE_COVERAGE | TEST
+    /// Maximum: 50
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ReportGroupTypeEnum {
+
+    /// CODE_COVERAGE
+    #[serde(rename = "CODE_COVERAGE")]
+    Codecoverage,
+
+    /// TEST
+    #[serde(rename = "TEST")]
+    Test,
+
+}
+
+impl Default for ReportGroupTypeEnum {
+    fn default() -> Self {
+        ReportGroupTypeEnum::Codecoverage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnReportGroup {
     fn type_string() -> &'static str {
@@ -88,128 +109,6 @@ impl cfn_resources::CfnResource for CfnReportGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Information about the S3 bucket where the raw data of a report are exported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3ReportExportConfig {
-
-
-    /// 
-    /// The encryption key for the report's encrypted raw data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionKey")]
-    pub encryption_key: Option<String>,
-
-
-    /// 
-    /// The name of the S3 bucket where the raw data of a report are exported.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
-
-    /// 
-    /// The AWS account identifier of the owner of the Amazon S3 bucket. This allows report data to be exported to an Amazon S3 bucket     that is owned by an account other than the account running the build.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketOwner")]
-    pub bucket_owner: Option<String>,
-
-
-    /// 
-    /// The type of build output artifact to create. Valid values include:
-    /// 
-    /// NONE: CodeBuild creates the raw data in the output bucket. This           is the default if packaging is not specified.                         ZIP: CodeBuild creates a ZIP file with the raw data in the           output bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | ZIP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Packaging")]
-    pub packaging: Option<String>,
-
-
-    /// 
-    /// A boolean value that specifies if the results of a report are encrypted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionDisabled")]
-    pub encryption_disabled: Option<bool>,
-
-
-    /// 
-    /// The path to the exported report's raw data results.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-}
-
-
-/// Information about the location where the run of a report is exported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ReportExportConfig {
-
-
-    /// 
-    /// A S3ReportExportConfig object that contains information about the S3       bucket where the run of a report is exported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3ReportExportConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Destination")]
-    pub s3_destination: Option<S3ReportExportConfig>,
-
-
-    /// 
-    /// The export configuration type. Valid values are:
-    /// 
-    /// S3: The report results are exported to an S3 bucket.                         NO_EXPORT: The report results are not exported.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NO_EXPORT | S3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExportConfigType")]
-    pub export_config_type: String,
-
 }
 
 
@@ -246,3 +145,169 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// Information about the location where the run of a report is exported.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReportExportConfig {
+
+
+    /// 
+    /// A S3ReportExportConfig object that contains information about the S3       bucket where the run of a report is exported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3ReportExportConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Destination")]
+    pub s3_destination: Option<S3ReportExportConfig>,
+
+
+    /// 
+    /// The export configuration type. Valid values are:
+    /// 
+    /// S3: The report results are exported to an S3 bucket.                         NO_EXPORT: The report results are not exported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NO_EXPORT | S3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExportConfigType")]
+    pub export_config_type: ReportExportConfigExportConfigTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ReportExportConfigExportConfigTypeEnum {
+
+    /// NO_EXPORT
+    #[serde(rename = "NO_EXPORT")]
+    Noexport,
+
+    /// S3
+    #[serde(rename = "S3")]
+    S3,
+
+}
+
+impl Default for ReportExportConfigExportConfigTypeEnum {
+    fn default() -> Self {
+        ReportExportConfigExportConfigTypeEnum::Noexport
+    }
+}
+
+
+
+/// Information about the S3 bucket where the raw data of a report are exported.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3ReportExportConfig {
+
+
+    /// 
+    /// The type of build output artifact to create. Valid values include:
+    /// 
+    /// NONE: CodeBuild creates the raw data in the output bucket. This           is the default if packaging is not specified.                         ZIP: CodeBuild creates a ZIP file with the raw data in the           output bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NONE | ZIP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Packaging")]
+    pub packaging: Option<S3ReportExportConfigPackagingEnum>,
+
+
+    /// 
+    /// The name of the S3 bucket where the raw data of a report are exported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+
+    /// 
+    /// The AWS account identifier of the owner of the Amazon S3 bucket. This allows report data to be exported to an Amazon S3 bucket     that is owned by an account other than the account running the build.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketOwner")]
+    pub bucket_owner: Option<String>,
+
+
+    /// 
+    /// The encryption key for the report's encrypted raw data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionKey")]
+    pub encryption_key: Option<String>,
+
+
+    /// 
+    /// A boolean value that specifies if the results of a report are encrypted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionDisabled")]
+    pub encryption_disabled: Option<bool>,
+
+
+    /// 
+    /// The path to the exported report's raw data results.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum S3ReportExportConfigPackagingEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// ZIP
+    #[serde(rename = "ZIP")]
+    Zip,
+
+}
+
+impl Default for S3ReportExportConfigPackagingEnum {
+    fn default() -> Self {
+        S3ReportExportConfigPackagingEnum::None
+    }
+}
+

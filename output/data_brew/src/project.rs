@@ -6,51 +6,15 @@ pub struct CfnProject {
 
 
     /// 
-    /// The name of a recipe that will be developed during a project session.
+    /// Metadata tags that have been applied to the project.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecipeName")]
-    pub recipe_name: String,
-
-
-    /// 
-    /// The dataset that the project is to act upon.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetName")]
-    pub dataset_name: String,
-
-
-    /// 
-    /// The unique name of a project.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
+    /// Type: List of Tag
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -70,15 +34,19 @@ pub struct CfnProject {
 
 
     /// 
-    /// Metadata tags that have been applied to the project.
+    /// The unique name of a project.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -92,7 +60,41 @@ pub struct CfnProject {
     #[serde(rename = "Sample")]
     pub sample: Option<Sample>,
 
+
+    /// 
+    /// The dataset that the project is to act upon.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetName")]
+    pub dataset_name: String,
+
+
+    /// 
+    /// The name of a recipe that will be developed during a project session.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecipeName")]
+    pub recipe_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string() -> &'static str {
@@ -102,41 +104,6 @@ impl cfn_resources::CfnResource for CfnProject {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
 }
 
 
@@ -156,7 +123,7 @@ pub struct Sample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: SampleTypeEnum,
 
 
     /// 
@@ -175,3 +142,65 @@ pub struct Sample {
     pub size: Option<i64>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SampleTypeEnum {
+
+    /// FIRST_N
+    #[serde(rename = "FIRST_N")]
+    Firstn,
+
+    /// LAST_N
+    #[serde(rename = "LAST_N")]
+    Lastn,
+
+    /// RANDOM
+    #[serde(rename = "RANDOM")]
+    Random,
+
+}
+
+impl Default for SampleTypeEnum {
+    fn default() -> Self {
+        SampleTypeEnum::Firstn
+    }
+}
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+

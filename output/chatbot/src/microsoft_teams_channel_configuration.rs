@@ -8,15 +8,31 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ARNs of the SNS topics that deliver notifications to AWS Chatbot.
+    /// The ID of the Microsoft Team authorized with AWS Chatbot.
     /// 
-    /// Required: No
+    /// To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TeamId")]
+    pub team_id: String,
+
+
+    /// 
+    /// The ARN of the IAM role that defines the permissions for AWS Chatbot.
+    /// 
+    /// This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role. For more information, see IAM Policies for AWS Chatbot.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnsTopicArns")]
-    pub sns_topic_arns: Option<Vec<String>>,
+    #[serde(rename = "IamRoleArn")]
+    pub iam_role_arn: String,
 
 
     /// 
@@ -32,20 +48,6 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ID of the Microsoft Team authorized with AWS Chatbot.
-    /// 
-    /// To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TeamId")]
-    pub team_id: String,
-
-
-    /// 
     /// The list of IAM policy ARNs that are applied as channel guardrails. The AWS managed 'AdministratorAccess' policy is applied as a default if this is not set.
     /// 
     /// Required: No
@@ -58,43 +60,15 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// Enables use of a user role requirement in your chat configuration.
+    /// The ARNs of the SNS topics that deliver notifications to AWS Chatbot.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UserRoleRequired")]
-    pub user_role_required: Option<bool>,
-
-
-    /// 
-    /// The ID of the Microsoft Teams channel.
-    /// 
-    /// To get the channel ID, open Microsoft Teams, right click on the channel name in the left pane, then choose Copy. An example of the channel ID syntax is: 19%3ab6ef35dc342d56ba5654e6fc6d25a071%40thread.tacv2.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TeamsChannelId")]
-    pub teams_channel_id: String,
-
-
-    /// 
-    /// The ID of the Microsoft Teams tenant.
-    /// 
-    /// To get the tenant ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the tenant ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TeamsTenantId")]
-    pub teams_tenant_id: String,
+    #[serde(rename = "SnsTopicArns")]
+    pub sns_topic_arns: Option<Vec<String>>,
 
 
     /// 
@@ -112,19 +86,47 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ARN of the IAM role that defines the permissions for AWS Chatbot.
+    /// The ID of the Microsoft Teams tenant.
     /// 
-    /// This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role. For more information, see IAM Policies for AWS Chatbot.
+    /// To get the tenant ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the tenant ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TeamsTenantId")]
+    pub teams_tenant_id: String,
+
+
+    /// 
+    /// The ID of the Microsoft Teams channel.
+    /// 
+    /// To get the channel ID, open Microsoft Teams, right click on the channel name in the left pane, then choose Copy. An example of the channel ID syntax is: 19%3ab6ef35dc342d56ba5654e6fc6d25a071%40thread.tacv2.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: String,
+    #[serde(rename = "TeamsChannelId")]
+    pub teams_channel_id: String,
+
+
+    /// 
+    /// Enables use of a user role requirement in your chat configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserRoleRequired")]
+    pub user_role_required: Option<bool>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMicrosoftTeamsChannelConfiguration {
     fn type_string() -> &'static str {

@@ -6,18 +6,6 @@ pub struct CfnResource {
 
 
     /// 
-    /// The IAM role that registered a resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
     /// Designates a trusted caller, an IAM principal, by registering this caller with the Data Catalog.
     /// 
     /// Required: Yes
@@ -42,6 +30,18 @@ pub struct CfnResource {
 
 
     /// 
+    /// The IAM role that registered a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the resource.
     /// 
     /// Required: Yes
@@ -53,6 +53,8 @@ pub struct CfnResource {
     pub resource_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResource {
     fn type_string() -> &'static str {

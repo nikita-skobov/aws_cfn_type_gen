@@ -22,6 +22,38 @@ pub struct CfnRule {
 
 
     /// 
+    /// The event pattern of the rule. For more information, see Events and Event    Patterns in the Amazon EventBridge User Guide.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Json
+    ///
+    /// Maximum: 4096
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventPattern")]
+    pub event_pattern: Option<serde_json::Value>,
+
+
+    /// 
+    /// The name or ARN of the event bus associated with the rule. If you omit this, the default    event bus is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [/\.\-_A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EventBusName")]
+    pub event_bus_name: Option<String>,
+
+
+    /// 
     /// The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)". For more information, see Creating an Amazon EventBridge rule that runs on a schedule.
     /// 
     /// Required: Conditional
@@ -33,6 +65,34 @@ pub struct CfnRule {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     pub schedule_expression: Option<String>,
+
+
+    /// 
+    /// The state of the rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "State")]
+    pub state: Option<RuleStateEnum>,
+
+
+    /// 
+    /// The description of the rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -88,7 +148,9 @@ pub struct CfnRule {
 
 
     /// 
-    /// The name or ARN of the event bus associated with the rule. If you omit this, the default    event bus is used.
+    /// The Amazon Resource Name (ARN) of the role that is used for target invocation.
+    /// 
+    /// If you're setting an event bus in another account as the target and that account granted    permission to your account through an organization instead of directly by the account ID, you    must specify a RoleArn with proper permissions in the Target    structure, instead of here in this parameter.
     /// 
     /// Required: No
     ///
@@ -96,41 +158,11 @@ pub struct CfnRule {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [/\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EventBusName")]
-    pub event_bus_name: Option<String>,
-
-
-    /// 
-    /// The state of the rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
+    /// Maximum: 1600
     ///
     /// Update requires: No interruption
-    #[serde(rename = "State")]
-    pub state: Option<String>,
-
-
-    /// 
-    /// The description of the rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 
     /// 
@@ -150,39 +182,28 @@ pub struct CfnRule {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
-    /// The event pattern of the rule. For more information, see Events and Event    Patterns in the Amazon EventBridge User Guide.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Json
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventPattern")]
-    pub event_pattern: Option<serde_json::Value>,
+}
 
 
-    /// 
-    /// The Amazon Resource Name (ARN) of the role that is used for target invocation.
-    /// 
-    /// If you're setting an event bus in another account as the target and that account granted    permission to your account through an organization instead of directly by the account ID, you    must specify a RoleArn with proper permissions in the Target    structure, instead of here in this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RuleStateEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
 
 }
+
+impl Default for RuleStateEnum {
+    fn default() -> Self {
+        RuleStateEnum::Disabled
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRule {
     fn type_string() -> &'static str {
@@ -192,556 +213,6 @@ impl cfn_resources::CfnResource for CfnRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// A key-value pair associated with an ECS Target of an EventBridge rule. The tag will be propagated to ECS by EventBridge when starting    an ECS task based on a matched event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// A string you can use to assign a value. The combination of tag keys and values can help    you organize and categorize your resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
-    /// The value for the specified tag key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-}
-
-
-/// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CapacityProviderStrategyItem {
-
-
-    /// 
-    /// The weight value designates the relative percentage of the total number of tasks launched    that should use the specified capacity provider. The weight value is taken into consideration    after the base value, if defined, is satisfied.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-
-    /// 
-    /// The base value designates how many tasks, at a minimum, to run on the specified capacity    provider. Only one capacity provider in a capacity provider strategy can have a base defined.    If no value is specified, the default value of 0 is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 100000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Base")]
-    pub base: Option<i64>,
-
-
-    /// 
-    /// The short name of the capacity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapacityProvider")]
-    pub capacity_provider: String,
-
-}
-
-
-/// This object enables you to specify a JSON path to extract from the event and use as the    partition key for the Amazon Kinesis data stream, so that you can control the shard to which    the event goes. If you do not include this parameter, the default is to use the     eventId as the partition key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KinesisParameters {
-
-
-    /// 
-    /// The JSON path to be extracted from the event and used as the partition key. For more    information, see Amazon Kinesis Streams Key     Concepts in the Amazon Kinesis Streams Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PartitionKeyPath")]
-    pub partition_key_path: String,
-
-}
-
-
-/// The custom parameters to be used when the target is an Amazon ECS task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EcsParameters {
-
-
-    /// 
-    /// The number of tasks to create based on TaskDefinition. The default is    1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskCount")]
-    pub task_count: Option<i64>,
-
-
-    /// 
-    /// Specifies whether to enable Amazon ECS managed tags for the task. For more information,    see Tagging Your Amazon ECS Resources in the Amazon Elastic Container Service Developer    Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableECSManagedTags")]
-    pub enable_ecsmanaged_tags: Option<bool>,
-
-
-    /// 
-    /// The ARN of the task definition to use if the event target is an Amazon ECS task.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskDefinitionArn")]
-    pub task_definition_arn: String,
-
-
-    /// 
-    /// Specifies an ECS task group for the task. The maximum length is 255 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Group")]
-    pub group: Option<String>,
-
-
-    /// 
-    /// Specifies the launch type on which your task is running. The launch type that you specify    here must match one of the launch type (compatibilities) of the target task. The    FARGATE value is supported only in the Regions where AWS Fargate with Amazon ECS   is supported. For more information, see AWS Fargate on Amazon ECS in    the Amazon Elastic Container Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EC2 | EXTERNAL | FARGATE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchType")]
-    pub launch_type: Option<String>,
-
-
-    /// 
-    /// The metadata that you apply to the task to help you categorize and organize them. Each tag    consists of a key and an optional value, both of which you define. To learn more, see RunTask in the Amazon ECS API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagList")]
-    pub tag_list: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies the platform version for the task. Specify only the numeric portion of the    platform version, such as 1.1.0.
-    /// 
-    /// This structure is used only if LaunchType is FARGATE. For more    information about valid platform versions, see AWS Fargate Platform     Versions in the Amazon Elastic Container Service Developer     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlatformVersion")]
-    pub platform_version: Option<String>,
-
-
-    /// 
-    /// Specifies whether to propagate the tags from the task definition to the task. If no value    is specified, the tags are not propagated. Tags can only be propagated to the task during task    creation. To add tags to a task after task creation, use the TagResource API action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: TASK_DEFINITION
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropagateTags")]
-    pub propagate_tags: Option<String>,
-
-
-    /// 
-    /// The reference ID to use for the task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReferenceId")]
-    pub reference_id: Option<String>,
-
-
-    /// 
-    /// Use this structure if the Amazon ECS task uses the awsvpc network mode. This    structure specifies the VPC subnets and security groups associated with the task, and whether    a public IP address is to be used. This structure is required if LaunchType is     FARGATE because the awsvpc mode is required for Fargate    tasks.
-    /// 
-    /// If you specify NetworkConfiguration when the target ECS task does not use the     awsvpc network mode, the task fails.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NetworkConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkConfiguration")]
-    pub network_configuration: Option<NetworkConfiguration>,
-
-
-    /// 
-    /// Whether or not to enable the execute command functionality for the containers in this    task. If true, this enables execute command functionality on all containers in the    task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableExecuteCommand")]
-    pub enable_execute_command: Option<bool>,
-
-
-    /// 
-    /// The placement strategy objects to use for the task. You can specify a maximum of five    strategy rules per task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PlacementStrategy
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlacementStrategies")]
-    pub placement_strategies: Option<Vec<PlacementStrategy>>,
-
-
-    /// 
-    /// An array of placement constraint objects to use for the task. You can specify up to 10    constraints per task (including constraints in the task definition and those specified at    runtime).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PlacementConstraint
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlacementConstraints")]
-    pub placement_constraints: Option<Vec<PlacementConstraint>>,
-
-
-    /// 
-    /// The capacity provider strategy to use for the task.
-    /// 
-    /// If a capacityProviderStrategy is specified, the launchType    parameter must be omitted. If no capacityProviderStrategy or launchType is    specified, the defaultCapacityProviderStrategy for the cluster is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CapacityProviderStrategyItem
-    ///
-    /// Maximum: 6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapacityProviderStrategy")]
-    pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
-
-}
-
-
-/// The custom parameters to be used when the target is an AWS Batch job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BatchParameters {
-
-
-    /// 
-    /// The ARN or name of the job definition to use if the event target is an AWS Batch job. This    job definition must already exist.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JobDefinition")]
-    pub job_definition: String,
-
-
-    /// 
-    /// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BatchArrayProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ArrayProperties")]
-    pub array_properties: Option<BatchArrayProperties>,
-
-
-    /// 
-    /// The retry strategy to use for failed jobs, if the target is an AWS Batch job. The retry    strategy is the number of times to retry the failed job execution. Valid values are 1–10. When    you specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BatchRetryStrategy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetryStrategy")]
-    pub retry_strategy: Option<BatchRetryStrategy>,
-
-
-    /// 
-    /// The name to use for this execution of the job, if the target is an AWS Batch job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JobName")]
-    pub job_name: String,
-
-}
-
-
-/// This structure specifies the network configuration for an ECS task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NetworkConfiguration {
-
-
-    /// 
-    /// Use this structure to specify the VPC subnets and security groups for the task, and    whether a public IP address is to be used. This structure is relevant only for ECS tasks that    use the awsvpc network mode.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AwsVpcConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsVpcConfiguration")]
-    pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
-
-}
-
-
-/// This parameter contains the criteria (either InstanceIds or a tag) used to specify which    EC2 instances are to be sent the command.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RunCommandParameters {
-
-
-    /// 
-    /// Currently, we support including only one RunCommandTarget block, which specifies either an    array of InstanceIds or a tag.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of RunCommandTarget
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RunCommandTargets")]
-    pub run_command_targets: Vec<RunCommandTarget>,
-
-}
-
-
-/// This structure includes the custom parameter to be used when the target is an SQS FIFO    queue.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SqsParameters {
-
-
-    /// 
-    /// The FIFO message group ID to use as the target.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageGroupId")]
-    pub message_group_id: String,
-
-}
-
-
-/// Information about the EC2 instances that are to be sent the command, specified as    key-value pairs. Each RunCommandTarget block can include only one key, but this    key may specify multiple values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RunCommandTarget {
-
-
-    /// 
-    /// If Key is tag:       tag-key, Values    is a list of tag values. If Key is InstanceIds, Values    is a list of Amazon EC2 instance IDs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
-    /// Can be either tag:       tag-key or    InstanceIds.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[\p{L}\p{Z}\p{N}_.:/=+\-@]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-/// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BatchArrayProperties {
-
-
-    /// 
-    /// The size of the array, if this is an array batch job. Valid values are integers between 2    and 10,000.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Size")]
-    pub size: Option<i64>,
-
-}
-
-
-/// A DeadLetterConfig object that contains information about a dead-letter queue    configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeadLetterConfig {
-
-
-    /// 
-    /// The ARN of the SQS queue specified as the target for the dead-letter queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-}
-
-
-/// A RetryPolicy object that includes information about the retry policy    settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RetryPolicy {
-
-
-    /// 
-    /// The maximum amount of time, in seconds, to continue to make retry attempts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 60
-    ///
-    /// Maximum: 86400
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumEventAgeInSeconds")]
-    pub maximum_event_age_in_seconds: Option<i64>,
-
-
-    /// 
-    /// The maximum number of retry attempts to make before the request fails. Retry attempts    continue until either the maximum number of attempts is made or until the duration of the     MaximumEventAgeInSeconds is met.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 185
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumRetryAttempts")]
-    pub maximum_retry_attempts: Option<i64>,
-
 }
 
 
@@ -824,6 +295,755 @@ pub struct InputTransformer {
 }
 
 
+
+
+/// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CapacityProviderStrategyItem {
+
+
+    /// 
+    /// The base value designates how many tasks, at a minimum, to run on the specified capacity    provider. Only one capacity provider in a capacity provider strategy can have a base defined.    If no value is specified, the default value of 0 is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 100000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Base")]
+    pub base: Option<i64>,
+
+
+    /// 
+    /// The short name of the capacity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProvider")]
+    pub capacity_provider: String,
+
+
+    /// 
+    /// The weight value designates the relative percentage of the total number of tasks launched    that should use the specified capacity provider. The weight value is taken into consideration    after the base value, if defined, is satisfied.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+}
+
+
+
+
+/// This structure specifies the VPC subnets and security groups for the task, and whether a    public IP address is to be used. This structure is relevant only for ECS tasks that use the     awsvpc network mode.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AwsVpcConfiguration {
+
+
+    /// 
+    /// Specifies whether the task's elastic network interface receives a public IP address. You    can specify ENABLED only when LaunchType in     EcsParameters is set to FARGATE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssignPublicIp")]
+    pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
+
+
+    /// 
+    /// Specifies the security groups associated with the task. These security groups must all be    in the same VPC. You can specify as many as five security groups. If you do not specify a    security group, the default security group for the VPC is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// Specifies the subnets associated with the task. These subnets must all be in the same VPC.    You can specify as many as 16 subnets.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AwsVpcConfigurationAssignPublicIpEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for AwsVpcConfigurationAssignPublicIpEnum {
+    fn default() -> Self {
+        AwsVpcConfigurationAssignPublicIpEnum::Disabled
+    }
+}
+
+
+
+/// A DeadLetterConfig object that contains information about a dead-letter queue    configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeadLetterConfig {
+
+
+    /// 
+    /// The ARN of the SQS queue specified as the target for the dead-letter queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+}
+
+
+
+
+/// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BatchArrayProperties {
+
+
+    /// 
+    /// The size of the array, if this is an array batch job. Valid values are integers between 2    and 10,000.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Size")]
+    pub size: Option<i64>,
+
+}
+
+
+
+
+/// This structure includes the custom parameter to be used when the target is an SQS FIFO    queue.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SqsParameters {
+
+
+    /// 
+    /// The FIFO message group ID to use as the target.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageGroupId")]
+    pub message_group_id: String,
+
+}
+
+
+
+
+/// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API ExecuteStatement based on EventBridge events.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RedshiftDataParameters {
+
+
+    /// 
+    /// The name of the database. Required when authenticating using temporary credentials.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
+    /// The name of the SQL statement. You can name the SQL statement when you create it to    identify the query.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatementName")]
+    pub statement_name: Option<String>,
+
+
+    /// 
+    /// Indicates whether to send an event back to EventBridge after the SQL statement    runs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WithEvent")]
+    pub with_event: Option<bool>,
+
+
+    /// 
+    /// The name or ARN of the secret that enables access to the database. Required when    authenticating using AWS Secrets Manager.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Pattern: (^arn:aws([a-z]|\-)*:secretsmanager:[a-z0-9-.]+:.*)|(\$(\.[\w_-]+(\[(\d+|\*)\])*)*)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretManagerArn")]
+    pub secret_manager_arn: Option<String>,
+
+
+    /// 
+    /// The SQL statement text to run.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sql")]
+    pub sql: String,
+
+
+    /// 
+    /// The database user name. Required when authenticating using temporary credentials.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DbUser")]
+    pub db_user: Option<String>,
+
+}
+
+
+
+
+/// These are custom parameters to use when the target is a SageMaker Model Building Pipeline    that starts based on EventBridge events.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SageMakerPipelineParameters {
+
+
+    /// 
+    /// List of Parameter names and values for SageMaker Model Building Pipeline execution.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of SageMakerPipelineParameter
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineParameterList")]
+    pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
+
+}
+
+
+
+
+/// The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you    specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BatchRetryStrategy {
+
+
+    /// 
+    /// The number of times to attempt to retry, if the job fails. Valid values are 1–10.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attempts")]
+    pub attempts: Option<i64>,
+
+}
+
+
+
+
+/// This object enables you to specify a JSON path to extract from the event and use as the    partition key for the Amazon Kinesis data stream, so that you can control the shard to which    the event goes. If you do not include this parameter, the default is to use the     eventId as the partition key.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisParameters {
+
+
+    /// 
+    /// The JSON path to be extracted from the event and used as the partition key. For more    information, see Amazon Kinesis Streams Key     Concepts in the Amazon Kinesis Streams Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PartitionKeyPath")]
+    pub partition_key_path: String,
+
+}
+
+
+
+
+/// The custom parameters to be used when the target is an AWS Batch job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BatchParameters {
+
+
+    /// 
+    /// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BatchArrayProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ArrayProperties")]
+    pub array_properties: Option<BatchArrayProperties>,
+
+
+    /// 
+    /// The name to use for this execution of the job, if the target is an AWS Batch job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JobName")]
+    pub job_name: String,
+
+
+    /// 
+    /// The retry strategy to use for failed jobs, if the target is an AWS Batch job. The retry    strategy is the number of times to retry the failed job execution. Valid values are 1–10. When    you specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BatchRetryStrategy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetryStrategy")]
+    pub retry_strategy: Option<BatchRetryStrategy>,
+
+
+    /// 
+    /// The ARN or name of the job definition to use if the event target is an AWS Batch job. This    job definition must already exist.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JobDefinition")]
+    pub job_definition: String,
+
+}
+
+
+
+
+/// This structure specifies the network configuration for an ECS task.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NetworkConfiguration {
+
+
+    /// 
+    /// Use this structure to specify the VPC subnets and security groups for the task, and    whether a public IP address is to be used. This structure is relevant only for ECS tasks that    use the awsvpc network mode.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AwsVpcConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsVpcConfiguration")]
+    pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
+
+}
+
+
+
+
+/// A key-value pair associated with an ECS Target of an EventBridge rule. The tag will be propagated to ECS by EventBridge when starting    an ECS task based on a matched event.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// A string you can use to assign a value. The combination of tag keys and values can help    you organize and categorize your resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// The value for the specified tag key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
+}
+
+
+
+
+/// A RetryPolicy object that includes information about the retry policy    settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RetryPolicy {
+
+
+    /// 
+    /// The maximum amount of time, in seconds, to continue to make retry attempts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 60
+    ///
+    /// Maximum: 86400
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumEventAgeInSeconds")]
+    pub maximum_event_age_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The maximum number of retry attempts to make before the request fails. Retry attempts    continue until either the maximum number of attempts is made or until the duration of the     MaximumEventAgeInSeconds is met.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 185
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumRetryAttempts")]
+    pub maximum_retry_attempts: Option<i64>,
+
+}
+
+
+
+
+/// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer    Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PlacementStrategy {
+
+
+    /// 
+    /// The field to apply the placement strategy against. For the spread placement strategy,    valid values are instanceId (or host, which has the same effect), or any platform or custom    attribute that is applied to a container instance, such as attribute:ecs.availability-zone.    For the binpack placement strategy, valid values are cpu and memory. For the random placement    strategy, this field is not used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Field")]
+    pub field: Option<String>,
+
+
+    /// 
+    /// The type of placement strategy. The random placement strategy randomly places tasks on    available candidates. The spread placement strategy spreads placement across available    candidates evenly based on the field parameter. The binpack strategy places tasks on available    candidates that have the least available amount of the resource that is specified with the    field parameter. For example, if you binpack on memory, a task is placed on the instance with    the least amount of remaining memory (but still enough to run the task).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: binpack | random | spread
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<PlacementStrategyTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementStrategyTypeEnum {
+
+    /// binpack
+    #[serde(rename = "binpack")]
+    Binpack,
+
+    /// random
+    #[serde(rename = "random")]
+    Random,
+
+    /// spread
+    #[serde(rename = "spread")]
+    Spread,
+
+}
+
+impl Default for PlacementStrategyTypeEnum {
+    fn default() -> Self {
+        PlacementStrategyTypeEnum::Binpack
+    }
+}
+
+
+
+/// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer    Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PlacementConstraint {
+
+
+    /// 
+    /// A cluster query language expression to apply to the constraint. You cannot specify an    expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Expression")]
+    pub expression: Option<String>,
+
+
+    /// 
+    /// The type of constraint. Use distinctInstance to ensure that each task in a particular    group is running on a different container instance. Use memberOf to restrict the selection to    a group of valid candidates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: distinctInstance | memberOf
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<PlacementConstraintTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementConstraintTypeEnum {
+
+    /// distinctInstance
+    #[serde(rename = "distinctInstance")]
+    Distinctinstance,
+
+    /// memberOf
+    #[serde(rename = "memberOf")]
+    Memberof,
+
+}
+
+impl Default for PlacementConstraintTypeEnum {
+    fn default() -> Self {
+        PlacementConstraintTypeEnum::Distinctinstance
+    }
+}
+
+
+
+/// This parameter contains the criteria (either InstanceIds or a tag) used to specify which    EC2 instances are to be sent the command.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RunCommandParameters {
+
+
+    /// 
+    /// Currently, we support including only one RunCommandTarget block, which specifies either an    array of InstanceIds or a tag.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of RunCommandTarget
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RunCommandTargets")]
+    pub run_command_targets: Vec<RunCommandTarget>,
+
+}
+
+
+
+
+/// Information about the EC2 instances that are to be sent the command, specified as    key-value pairs. Each RunCommandTarget block can include only one key, but this    key may specify multiple values.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RunCommandTarget {
+
+
+    /// 
+    /// If Key is tag:       tag-key, Values    is a list of tag values. If Key is InstanceIds, Values    is a list of Amazon EC2 instance IDs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
+
+
+    /// 
+    /// Can be either tag:       tag-key or    InstanceIds.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[\p{L}\p{Z}\p{N}_.:/=+\-@]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+
+
+/// These are custom parameter to be used when the target is an API Gateway APIs or    EventBridge ApiDestinations. In the latter case, these are merged with any    InvocationParameters specified on the Connection, with any values from the Connection taking    precedence.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HttpParameters {
+
+
+    /// 
+    /// The path parameter values to be used to populate API Gateway API or EventBridge    ApiDestination path wildcards ("*").
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PathParameterValues")]
+    pub path_parameter_values: Option<Vec<String>>,
+
+
+    /// 
+    /// The query string keys/values that need to be sent as part of request invoking the API Gateway    API or EventBridge ApiDestination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStringParameters")]
+    pub query_string_parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The headers that need to be sent as part of request invoking the API Gateway API or    EventBridge ApiDestination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HeaderParameters")]
+    pub header_parameters: Option<std::collections::HashMap<String, String>>,
+
+}
+
+
+
+
 /// Name/Value pair of a parameter to start execution of a SageMaker Model Building    Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SageMakerPipelineParameter {
@@ -863,48 +1083,45 @@ pub struct SageMakerPipelineParameter {
 }
 
 
-/// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer    Guide.
+
+
+/// Targets are the resources to be invoked when a rule is triggered. For a complete list of    services and resources that can be set as a target, see PutTargets.
+///
+/// If you are setting the event bus of another account as the target, and that account    granted permission to your account through an organization instead of directly by the account    ID, then you must specify a RoleArn with proper permissions in the     Target structure. For more information, see Sending and      Receiving Events Between AWS Accounts in the Amazon EventBridge User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PlacementConstraint {
+pub struct Target {
 
 
     /// 
-    /// A cluster query language expression to apply to the constraint. You cannot specify an    expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide.
+    /// The value of the JSONPath that is used for extracting part of the matched event when    passing it to the target. You may use JSON dot notation or bracket notation. For more    information about JSON paths, see JSONPath.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 2000
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Expression")]
-    pub expression: Option<String>,
+    #[serde(rename = "InputPath")]
+    pub input_path: Option<String>,
 
 
     /// 
-    /// The type of constraint. Use distinctInstance to ensure that each task in a particular    group is running on a different container instance. Use memberOf to restrict the selection to    a group of valid candidates.
+    /// Valid JSON text passed to the target. In this case, nothing from the event itself is    passed to the target. For more information, see The JavaScript Object Notation (JSON) Data     Interchange Format.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: distinctInstance | memberOf
+    /// Maximum: 8192
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-}
-
-
-/// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API ExecuteStatement based on EventBridge events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RedshiftDataParameters {
+    #[serde(rename = "Input")]
+    pub input: Option<String>,
 
 
     /// 
-    /// The SQL statement text to run.
+    /// The Amazon Resource Name (ARN) of the target.
     /// 
     /// Required: Yes
     ///
@@ -912,47 +1129,51 @@ pub struct RedshiftDataParameters {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 100000
+    /// Maximum: 1600
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Sql")]
-    pub sql: String,
+    #[serde(rename = "Arn")]
+    pub arn: String,
 
 
     /// 
-    /// The database user name. Required when authenticating using temporary credentials.
+    /// The custom parameter you can use to control the shard assignment, when the target is a    Kinesis data stream. If you do not include this parameter, the default is to use the     eventId as the partition key.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
+    /// Type: KinesisParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DbUser")]
-    pub db_user: Option<String>,
+    #[serde(rename = "KinesisParameters")]
+    pub kinesis_parameters: Option<KinesisParameters>,
 
 
     /// 
-    /// The name of the SQL statement. You can name the SQL statement when you create it to    identify the query.
+    /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 500
+    /// Type: RunCommandParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StatementName")]
-    pub statement_name: Option<String>,
+    #[serde(rename = "RunCommandParameters")]
+    pub run_command_parameters: Option<RunCommandParameters>,
 
 
     /// 
-    /// The name of the database. Required when authenticating using temporary credentials.
+    /// If the event target is an AWS Batch job, this contains the job definition, job name, and    other parameters. For more information, see Jobs in the         AWS Batch User     Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BatchParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BatchParameters")]
+    pub batch_parameters: Option<BatchParameters>,
+
+
+    /// 
+    /// The ID of the target within the specified rule. Use this ID to reference the target when updating the rule. We recommend using a memorable and unique string.
     /// 
     /// Required: Yes
     ///
@@ -962,15 +1183,31 @@ pub struct RedshiftDataParameters {
     ///
     /// Maximum: 64
     ///
+    /// Pattern: [\.\-_A-Za-z0-9]+
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Database")]
-    pub database: String,
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
-    /// The name or ARN of the secret that enables access to the database. Required when    authenticating using AWS Secrets Manager.
+    /// Contains the HTTP parameters to use when the target is a API Gateway endpoint or    EventBridge ApiDestination.
+    /// 
+    /// If you specify an API Gateway API or EventBridge ApiDestination as a target, you can    use this parameter to specify headers, path parameters, and query string keys/values as part    of your target invoking request. If you're using ApiDestinations, the corresponding Connection    can also have these values configured. In case of any conflicting keys, values from the    Connection take precedence.
     /// 
     /// Required: No
+    ///
+    /// Type: HttpParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpParameters")]
+    pub http_parameters: Option<HttpParameters>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is    triggered. If one rule triggers multiple targets, you can use a different IAM role for each    target.
+    /// 
+    /// Required: Conditional
     ///
     /// Type: String
     ///
@@ -978,152 +1215,21 @@ pub struct RedshiftDataParameters {
     ///
     /// Maximum: 1600
     ///
-    /// Pattern: (^arn:aws([a-z]|\-)*:secretsmanager:[a-z0-9-.]+:.*)|(\$(\.[\w_-]+(\[(\d+|\*)\])*)*)
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "SecretManagerArn")]
-    pub secret_manager_arn: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 
     /// 
-    /// Indicates whether to send an event back to EventBridge after the SQL statement    runs.
+    /// Contains the Amazon ECS task definition and task count to be used, if the event target is    an Amazon ECS task. For more information about Amazon ECS tasks, see Task     Definitions in the Amazon EC2 Container Service Developer     Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: EcsParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "WithEvent")]
-    pub with_event: Option<bool>,
-
-}
-
-
-/// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PlacementStrategy {
-
-
-    /// 
-    /// The type of placement strategy. The random placement strategy randomly places tasks on    available candidates. The spread placement strategy spreads placement across available    candidates evenly based on the field parameter. The binpack strategy places tasks on available    candidates that have the least available amount of the resource that is specified with the    field parameter. For example, if you binpack on memory, a task is placed on the instance with    the least amount of remaining memory (but still enough to run the task).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: binpack | random | spread
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
-    /// The field to apply the placement strategy against. For the spread placement strategy,    valid values are instanceId (or host, which has the same effect), or any platform or custom    attribute that is applied to a container instance, such as attribute:ecs.availability-zone.    For the binpack placement strategy, valid values are cpu and memory. For the random placement    strategy, this field is not used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Field")]
-    pub field: Option<String>,
-
-}
-
-
-/// These are custom parameters to use when the target is a SageMaker Model Building Pipeline    that starts based on EventBridge events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SageMakerPipelineParameters {
-
-
-    /// 
-    /// List of Parameter names and values for SageMaker Model Building Pipeline execution.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of SageMakerPipelineParameter
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineParameterList")]
-    pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
-
-}
-
-
-/// The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you    specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BatchRetryStrategy {
-
-
-    /// 
-    /// The number of times to attempt to retry, if the job fails. Valid values are 1–10.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attempts")]
-    pub attempts: Option<i64>,
-
-}
-
-
-/// This structure specifies the VPC subnets and security groups for the task, and whether a    public IP address is to be used. This structure is relevant only for ECS tasks that use the     awsvpc network mode.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AwsVpcConfiguration {
-
-
-    /// 
-    /// Specifies whether the task's elastic network interface receives a public IP address. You    can specify ENABLED only when LaunchType in     EcsParameters is set to FARGATE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssignPublicIp")]
-    pub assign_public_ip: Option<String>,
-
-
-    /// 
-    /// Specifies the subnets associated with the task. These subnets must all be in the same VPC.    You can specify as many as 16 subnets.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
-
-    /// 
-    /// Specifies the security groups associated with the task. These security groups must all be    in the same VPC. You can specify as many as five security groups. If you do not specify a    security group, the default security group for the VPC is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Option<Vec<String>>,
-
-}
-
-
-/// Targets are the resources to be invoked when a rule is triggered. For a complete list of    services and resources that can be set as a target, see PutTargets.
-///
-/// If you are setting the event bus of another account as the target, and that account    granted permission to your account through an organization instead of directly by the account    ID, then you must specify a RoleArn with proper permissions in the     Target structure. For more information, see Sending and      Receiving Events Between AWS Accounts in the Amazon EventBridge User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Target {
+    #[serde(rename = "EcsParameters")]
+    pub ecs_parameters: Option<EcsParameters>,
 
 
     /// 
@@ -1136,6 +1242,32 @@ pub struct Target {
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
     pub dead_letter_config: Option<DeadLetterConfig>,
+
+
+    /// 
+    /// Settings to enable you to provide custom input to a target based on certain event data.    You can extract one or more key-value pairs from the event and then use that data to send    customized input to the target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InputTransformer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputTransformer")]
+    pub input_transformer: Option<InputTransformer>,
+
+
+    /// 
+    /// Contains the Amazon Redshift Data API parameters to use when the target is a Amazon Redshift    cluster.
+    /// 
+    /// If you specify a Amazon Redshift Cluster as a Target, you can use this to specify parameters to    invoke the Amazon Redshift Data API ExecuteStatement based on EventBridge events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RedshiftDataParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedshiftDataParameters")]
+    pub redshift_data_parameters: Option<RedshiftDataParameters>,
 
 
     /// 
@@ -1167,18 +1299,6 @@ pub struct Target {
 
 
     /// 
-    /// The custom parameter you can use to control the shard assignment, when the target is a    Kinesis data stream. If you do not include this parameter, the default is to use the     eventId as the partition key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisParameters")]
-    pub kinesis_parameters: Option<KinesisParameters>,
-
-
-    /// 
     /// The RetryPolicy object that contains the retry policy configuration to use    for the dead-letter queue.
     /// 
     /// Required: No
@@ -1189,201 +1309,245 @@ pub struct Target {
     #[serde(rename = "RetryPolicy")]
     pub retry_policy: Option<RetryPolicy>,
 
-
-    /// 
-    /// Settings to enable you to provide custom input to a target based on certain event data.    You can extract one or more key-value pairs from the event and then use that data to send    customized input to the target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InputTransformer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputTransformer")]
-    pub input_transformer: Option<InputTransformer>,
-
-
-    /// 
-    /// Contains the Amazon ECS task definition and task count to be used, if the event target is    an Amazon ECS task. For more information about Amazon ECS tasks, see Task     Definitions in the Amazon EC2 Container Service Developer     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EcsParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EcsParameters")]
-    pub ecs_parameters: Option<EcsParameters>,
-
-
-    /// 
-    /// If the event target is an AWS Batch job, this contains the job definition, job name, and    other parameters. For more information, see Jobs in the         AWS Batch User     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BatchParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BatchParameters")]
-    pub batch_parameters: Option<BatchParameters>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is    triggered. If one rule triggers multiple targets, you can use a different IAM role for each    target.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
-    /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RunCommandParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RunCommandParameters")]
-    pub run_command_parameters: Option<RunCommandParameters>,
-
-
-    /// 
-    /// Valid JSON text passed to the target. In this case, nothing from the event itself is    passed to the target. For more information, see The JavaScript Object Notation (JSON) Data     Interchange Format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Input")]
-    pub input: Option<String>,
-
-
-    /// 
-    /// The ID of the target within the specified rule. Use this ID to reference the target when updating the rule. We recommend using a memorable and unique string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the target.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: String,
-
-
-    /// 
-    /// The value of the JSONPath that is used for extracting part of the matched event when    passing it to the target. You may use JSON dot notation or bracket notation. For more    information about JSON paths, see JSONPath.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputPath")]
-    pub input_path: Option<String>,
-
-
-    /// 
-    /// Contains the HTTP parameters to use when the target is a API Gateway endpoint or    EventBridge ApiDestination.
-    /// 
-    /// If you specify an API Gateway API or EventBridge ApiDestination as a target, you can    use this parameter to specify headers, path parameters, and query string keys/values as part    of your target invoking request. If you're using ApiDestinations, the corresponding Connection    can also have these values configured. In case of any conflicting keys, values from the    Connection take precedence.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HttpParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpParameters")]
-    pub http_parameters: Option<HttpParameters>,
-
-
-    /// 
-    /// Contains the Amazon Redshift Data API parameters to use when the target is a Amazon Redshift    cluster.
-    /// 
-    /// If you specify a Amazon Redshift Cluster as a Target, you can use this to specify parameters to    invoke the Amazon Redshift Data API ExecuteStatement based on EventBridge events.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RedshiftDataParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedshiftDataParameters")]
-    pub redshift_data_parameters: Option<RedshiftDataParameters>,
-
 }
 
 
-/// These are custom parameter to be used when the target is an API Gateway APIs or    EventBridge ApiDestinations. In the latter case, these are merged with any    InvocationParameters specified on the Connection, with any values from the Connection taking    precedence.
+
+
+/// The custom parameters to be used when the target is an Amazon ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HttpParameters {
+pub struct EcsParameters {
 
 
     /// 
-    /// The query string keys/values that need to be sent as part of request invoking the API Gateway    API or EventBridge ApiDestination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStringParameters")]
-    pub query_string_parameters: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The headers that need to be sent as part of request invoking the API Gateway API or    EventBridge ApiDestination.
+    /// Specifies whether to enable Amazon ECS managed tags for the task. For more information,    see Tagging Your Amazon ECS Resources in the Amazon Elastic Container Service Developer    Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HeaderParameters")]
-    pub header_parameters: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "EnableECSManagedTags")]
+    pub enable_ecsmanaged_tags: Option<bool>,
 
 
     /// 
-    /// The path parameter values to be used to populate API Gateway API or EventBridge    ApiDestination path wildcards ("*").
+    /// Specifies the platform version for the task. Specify only the numeric portion of the    platform version, such as 1.1.0.
+    /// 
+    /// This structure is used only if LaunchType is FARGATE. For more    information about valid platform versions, see AWS Fargate Platform     Versions in the Amazon Elastic Container Service Developer     Guide.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PathParameterValues")]
-    pub path_parameter_values: Option<Vec<String>>,
+    #[serde(rename = "PlatformVersion")]
+    pub platform_version: Option<String>,
+
+
+    /// 
+    /// The placement strategy objects to use for the task. You can specify a maximum of five    strategy rules per task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PlacementStrategy
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PlacementStrategies")]
+    pub placement_strategies: Option<Vec<PlacementStrategy>>,
+
+
+    /// 
+    /// The reference ID to use for the task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReferenceId")]
+    pub reference_id: Option<String>,
+
+
+    /// 
+    /// Specifies an ECS task group for the task. The maximum length is 255 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Group")]
+    pub group: Option<String>,
+
+
+    /// 
+    /// Specifies the launch type on which your task is running. The launch type that you specify    here must match one of the launch type (compatibilities) of the target task. The    FARGATE value is supported only in the Regions where AWS Fargate with Amazon ECS   is supported. For more information, see AWS Fargate on Amazon ECS in    the Amazon Elastic Container Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EC2 | EXTERNAL | FARGATE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchType")]
+    pub launch_type: Option<EcsParametersLaunchTypeEnum>,
+
+
+    /// 
+    /// Specifies whether to propagate the tags from the task definition to the task. If no value    is specified, the tags are not propagated. Tags can only be propagated to the task during task    creation. To add tags to a task after task creation, use the TagResource API action.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: TASK_DEFINITION
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PropagateTags")]
+    pub propagate_tags: Option<EcsParametersPropagateTagsEnum>,
+
+
+    /// 
+    /// Use this structure if the Amazon ECS task uses the awsvpc network mode. This    structure specifies the VPC subnets and security groups associated with the task, and whether    a public IP address is to be used. This structure is required if LaunchType is     FARGATE because the awsvpc mode is required for Fargate    tasks.
+    /// 
+    /// If you specify NetworkConfiguration when the target ECS task does not use the     awsvpc network mode, the task fails.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NetworkConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkConfiguration")]
+    pub network_configuration: Option<NetworkConfiguration>,
+
+
+    /// 
+    /// The capacity provider strategy to use for the task.
+    /// 
+    /// If a capacityProviderStrategy is specified, the launchType    parameter must be omitted. If no capacityProviderStrategy or launchType is    specified, the defaultCapacityProviderStrategy for the cluster is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of CapacityProviderStrategyItem
+    ///
+    /// Maximum: 6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProviderStrategy")]
+    pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
+
+
+    /// 
+    /// An array of placement constraint objects to use for the task. You can specify up to 10    constraints per task (including constraints in the task definition and those specified at    runtime).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PlacementConstraint
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PlacementConstraints")]
+    pub placement_constraints: Option<Vec<PlacementConstraint>>,
+
+
+    /// 
+    /// The ARN of the task definition to use if the event target is an Amazon ECS task.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskDefinitionArn")]
+    pub task_definition_arn: String,
+
+
+    /// 
+    /// The metadata that you apply to the task to help you categorize and organize them. Each tag    consists of a key and an optional value, both of which you define. To learn more, see RunTask in the Amazon ECS API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagList")]
+    pub tag_list: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Whether or not to enable the execute command functionality for the containers in this    task. If true, this enables execute command functionality on all containers in the    task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableExecuteCommand")]
+    pub enable_execute_command: Option<bool>,
+
+
+    /// 
+    /// The number of tasks to create based on TaskDefinition. The default is    1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskCount")]
+    pub task_count: Option<i64>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EcsParametersPropagateTagsEnum {
+
+    /// TASK_DEFINITION
+    #[serde(rename = "TASK_DEFINITION")]
+    Taskdefinition,
+
+}
+
+impl Default for EcsParametersPropagateTagsEnum {
+    fn default() -> Self {
+        EcsParametersPropagateTagsEnum::Taskdefinition
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EcsParametersLaunchTypeEnum {
+
+    /// EC2
+    #[serde(rename = "EC2")]
+    Ec2,
+
+    /// EXTERNAL
+    #[serde(rename = "EXTERNAL")]
+    External,
+
+    /// FARGATE
+    #[serde(rename = "FARGATE")]
+    Fargate,
+
+}
+
+impl Default for EcsParametersLaunchTypeEnum {
+    fn default() -> Self {
+        EcsParametersLaunchTypeEnum::Ec2
+    }
+}
+

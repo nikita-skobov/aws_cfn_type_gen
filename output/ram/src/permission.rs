@@ -40,18 +40,6 @@ pub struct CfnPermission {
 
 
     /// 
-    /// Specifies a list of one or more tag key and value pairs to attach to the       permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// Specifies the name of the resource type that this customer managed permission applies       to.
     /// 
     /// The format is         <service-code>:<resource-type>       and is not case sensitive. For example, to specify an Amazon EC2 Subnet, you can       use the string ec2:subnet. To see the list of valid values for this       parameter, query the ListResourceTypes       operation.
@@ -64,7 +52,21 @@ pub struct CfnPermission {
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
 
+
+    /// 
+    /// Specifies a list of one or more tag key and value pairs to attach to the       permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPermission {
     fn type_string() -> &'static str {
@@ -110,3 +112,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

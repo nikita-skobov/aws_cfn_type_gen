@@ -20,6 +20,8 @@ pub struct CfnKeyGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnKeyGroup {
     fn type_string() -> &'static str {
         "AWS::CloudFront::KeyGroup"
@@ -36,18 +38,6 @@ impl cfn_resources::CfnResource for CfnKeyGroup {
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KeyGroupConfig {
-
-
-    /// 
-    /// A list of the identifiers of the public keys in the key group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Items")]
-    pub items: Vec<String>,
 
 
     /// 
@@ -73,4 +63,18 @@ pub struct KeyGroupConfig {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// A list of the identifiers of the public keys in the key group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Items")]
+    pub items: Vec<String>,
+
 }
+
+

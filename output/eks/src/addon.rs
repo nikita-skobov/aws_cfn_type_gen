@@ -8,15 +8,15 @@ pub struct CfnAddon {
 
 
     /// 
-    /// The version of the add-on.
+    /// The configuration values that you provided.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AddonVersion")]
-    pub addon_version: Option<String>,
+    #[serde(rename = "ConfigurationValues")]
+    pub configuration_values: Option<String>,
 
 
     /// 
@@ -38,30 +38,6 @@ pub struct CfnAddon {
 
 
     /// 
-    /// The name of the add-on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AddonName")]
-    pub addon_name: String,
-
-
-    /// 
-    /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// How to resolve field value conflicts for an Amazon EKS add-on. Conflicts are       handled based on the value you choose:
     /// 
     /// None – If the self-managed version of           the add-on is installed on your cluster, Amazon EKS doesn't change the           value. Creation of the add-on might fail.                        Overwrite – If the self-managed           version of the add-on is installed on your cluster and the Amazon EKS           default value is different than the existing value, Amazon EKS changes           the value to the Amazon EKS default value.                        Preserve – Not supported. You can set           this value when updating an add-on though. For more information, see UpdateAddon.
@@ -76,7 +52,19 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolveConflicts")]
-    pub resolve_conflicts: Option<String>,
+    pub resolve_conflicts: Option<AddonResolveConflictsEnum>,
+
+
+    /// 
+    /// The version of the add-on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddonVersion")]
+    pub addon_version: Option<String>,
 
 
     /// 
@@ -98,6 +86,18 @@ pub struct CfnAddon {
 
 
     /// 
+    /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. If an IAM       account is associated with the add-on, it isn't removed.
     /// 
     /// Required: No
@@ -110,17 +110,42 @@ pub struct CfnAddon {
 
 
     /// 
-    /// The configuration values that you provided.
+    /// The name of the add-on.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationValues")]
-    pub configuration_values: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "AddonName")]
+    pub addon_name: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AddonResolveConflictsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// OVERWRITE
+    #[serde(rename = "OVERWRITE")]
+    Overwrite,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for AddonResolveConflictsEnum {
+    fn default() -> Self {
+        AddonResolveConflictsEnum::None
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnAddon {
     fn type_string() -> &'static str {
@@ -145,17 +170,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -165,4 +179,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

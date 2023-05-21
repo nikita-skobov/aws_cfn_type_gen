@@ -6,15 +6,15 @@ pub struct CfnVpcConnection {
 
 
     /// 
-    /// Create tags when creating the VPC connection.
+    /// The Amazon Resource Name (ARN) of the cluster.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "TargetClusterArn")]
+    pub target_cluster_arn: String,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnVpcConnection {
 
 
     /// 
-    /// The list of subnets in the client VPC to connect to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientSubnets")]
-    pub client_subnets: Vec<String>,
-
-
-    /// 
     /// The VPC id of the remote client.
     /// 
     /// Required: Yes
@@ -51,6 +39,30 @@ pub struct CfnVpcConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+
+
+    /// 
+    /// Create tags when creating the VPC connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The list of subnets in the client VPC to connect to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientSubnets")]
+    pub client_subnets: Vec<String>,
 
 
     /// 
@@ -64,19 +76,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "Authentication")]
     pub authentication: String,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetClusterArn")]
-    pub target_cluster_arn: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVpcConnection {
     fn type_string() -> &'static str {

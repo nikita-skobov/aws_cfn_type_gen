@@ -30,6 +30,8 @@ pub struct CfnAccessPoint {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAccessPoint {
     fn type_string() -> &'static str {
         "AWS::S3ObjectLambda::AccessPoint"
@@ -38,158 +40,6 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The AwsLambda property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AwsLambda {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionArn")]
-    pub function_arn: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionPayload")]
-    pub function_payload: Option<String>,
-
-}
-
-
-/// A configuration used when creating an Object Lambda Access Point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ObjectLambdaConfiguration {
-
-
-    /// 
-    /// A container for transformation configurations for an Object Lambda Access Point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of TransformationConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TransformationConfigurations")]
-    pub transformation_configurations: Vec<TransformationConfiguration>,
-
-
-    /// 
-    /// Standard access point associated with the Object Lambda Access Point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SupportingAccessPoint")]
-    pub supporting_access_point: String,
-
-
-    /// 
-    /// A container for allowed features. Valid inputs are GetObject-Range,         GetObject-PartNumber, HeadObject-Range, and         HeadObject-PartNumber.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowedFeatures")]
-    pub allowed_features: Option<Vec<String>>,
-
-
-    /// 
-    /// A container for whether the CloudWatch metrics configuration is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchMetricsEnabled")]
-    pub cloud_watch_metrics_enabled: Option<bool>,
-
-}
-
-
-/// The alias of an Object Lambda Access Point. For more information, see How to use a bucket-style alias for your S3 bucket     Object Lambda Access Point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Alias {
-
-
-    /// 
-    /// The alias value of the Object Lambda Access Point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The status of the Object Lambda Access Point alias. If the status is PROVISIONING, the Object Lambda Access Point is provisioning the alias and the alias is not ready for use yet. If      the status is READY, the Object Lambda Access Point alias is successfully provisioned and ready for use.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
-
-}
-
-
-/// The ContentTransformation property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ContentTransformation {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: AwsLambda
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsLambda")]
-    pub aws_lambda: AwsLambda,
-
-}
-
-
-/// Indicates whether this access point policy is public. For more information about how Amazon S3     evaluates policies to determine whether they are public, see The Meaning of "Public" in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PolicyStatus {
-
-
-    /// 
-    /// 
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsPublic")]
-    pub is_public: Option<bool>,
-
 }
 
 
@@ -224,59 +74,77 @@ pub struct TransformationConfiguration {
 }
 
 
+
+
+/// The AwsLambda property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AwsLambda {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionArn")]
+    pub function_arn: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionPayload")]
+    pub function_payload: Option<String>,
+
+}
+
+
+
+
+/// The alias of an Object Lambda Access Point. For more information, see How to use a bucket-style alias for your S3 bucket     Object Lambda Access Point.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Alias {
+
+
+    /// 
+    /// The status of the Object Lambda Access Point alias. If the status is PROVISIONING, the Object Lambda Access Point is provisioning the alias and the alias is not ready for use yet. If      the status is READY, the Object Lambda Access Point alias is successfully provisioned and ready for use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: String,
+
+
+    /// 
+    /// The alias value of the Object Lambda Access Point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3     account. You can enable the configuration options in any combination. For more information     about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 ///
 /// This data type is not supported for Amazon S3 on Outposts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PublicAccessBlockConfiguration {
-
-
-    /// 
-    /// Specifies whether Amazon S3 should restrict public bucket policies for buckets in this     account. Setting this element to TRUE restricts access to buckets with public     policies to only AWS service principals and authorized users within this     account.
-    /// 
-    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
-    /// 
-    /// This property is not supported for Amazon S3 on Outposts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RestrictPublicBuckets")]
-    pub restrict_public_buckets: Option<bool>,
-
-
-    /// 
-    /// Specifies whether Amazon S3 should block public bucket policies for buckets in this account.     Setting this element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy     if the specified bucket policy allows public access.
-    /// 
-    /// Enabling this setting doesn't affect existing bucket policies.
-    /// 
-    /// This property is not supported for Amazon S3 on Outposts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
-
-
-    /// 
-    /// Specifies whether Amazon S3 should ignore public ACLs for buckets in this account. Setting     this element to TRUE causes Amazon S3 to ignore all public ACLs on buckets in this     account and any objects that they contain.
-    /// 
-    /// Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't     prevent new public ACLs from being set.
-    /// 
-    /// This property is not supported for Amazon S3 on Outposts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IgnorePublicAcls")]
-    pub ignore_public_acls: Option<bool>,
 
 
     /// 
@@ -296,4 +164,152 @@ pub struct PublicAccessBlockConfiguration {
     #[serde(rename = "BlockPublicAcls")]
     pub block_public_acls: Option<bool>,
 
+
+    /// 
+    /// Specifies whether Amazon S3 should block public bucket policies for buckets in this account.     Setting this element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy     if the specified bucket policy allows public access.
+    /// 
+    /// Enabling this setting doesn't affect existing bucket policies.
+    /// 
+    /// This property is not supported for Amazon S3 on Outposts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
+
+
+    /// 
+    /// Specifies whether Amazon S3 should restrict public bucket policies for buckets in this     account. Setting this element to TRUE restricts access to buckets with public     policies to only AWS service principals and authorized users within this     account.
+    /// 
+    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
+    /// 
+    /// This property is not supported for Amazon S3 on Outposts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RestrictPublicBuckets")]
+    pub restrict_public_buckets: Option<bool>,
+
+
+    /// 
+    /// Specifies whether Amazon S3 should ignore public ACLs for buckets in this account. Setting     this element to TRUE causes Amazon S3 to ignore all public ACLs on buckets in this     account and any objects that they contain.
+    /// 
+    /// Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't     prevent new public ACLs from being set.
+    /// 
+    /// This property is not supported for Amazon S3 on Outposts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IgnorePublicAcls")]
+    pub ignore_public_acls: Option<bool>,
+
 }
+
+
+
+
+/// Indicates whether this access point policy is public. For more information about how Amazon S3     evaluates policies to determine whether they are public, see The Meaning of "Public" in the Amazon S3 User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PolicyStatus {
+
+
+    /// 
+    /// 
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsPublic")]
+    pub is_public: Option<bool>,
+
+}
+
+
+
+
+/// The ContentTransformation property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContentTransformation {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: AwsLambda
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsLambda")]
+    pub aws_lambda: AwsLambda,
+
+}
+
+
+
+
+/// A configuration used when creating an Object Lambda Access Point.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ObjectLambdaConfiguration {
+
+
+    /// 
+    /// A container for transformation configurations for an Object Lambda Access Point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of TransformationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransformationConfigurations")]
+    pub transformation_configurations: Vec<TransformationConfiguration>,
+
+
+    /// 
+    /// Standard access point associated with the Object Lambda Access Point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SupportingAccessPoint")]
+    pub supporting_access_point: String,
+
+
+    /// 
+    /// A container for whether the CloudWatch metrics configuration is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchMetricsEnabled")]
+    pub cloud_watch_metrics_enabled: Option<bool>,
+
+
+    /// 
+    /// A container for allowed features. Valid inputs are GetObject-Range,         GetObject-PartNumber, HeadObject-Range, and         HeadObject-PartNumber.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowedFeatures")]
+    pub allowed_features: Option<Vec<String>>,
+
+}
+
+

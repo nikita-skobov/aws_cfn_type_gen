@@ -8,15 +8,15 @@ pub struct CfnClusterSubnetGroup {
 
 
     /// 
-    /// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single       request.
+    /// Specifies an arbitrary set of tags (key–value pairs) to associate with this subnet       group. Use tags to manage your resources.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -34,17 +34,19 @@ pub struct CfnClusterSubnetGroup {
 
 
     /// 
-    /// Specifies an arbitrary set of tags (key–value pairs) to associate with this subnet       group. Use tags to manage your resources.
+    /// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single       request.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnClusterSubnetGroup {
     fn type_string() -> &'static str {
@@ -90,3 +92,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

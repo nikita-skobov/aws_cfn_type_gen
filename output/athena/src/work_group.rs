@@ -6,27 +6,17 @@ pub struct CfnWorkGroup {
 
 
     /// 
-    /// The tags (key-value pairs) to associate with this resource.
+    /// The workgroup name.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The option to delete a workgroup and its contents even if the workgroup contains any       named queries. The default is false.
-    /// 
-    /// Required: No
+    /// Pattern: [a-zA-Z0-9._-]{1,128}
     ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecursiveDeleteOption")]
-    pub recursive_delete_option: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -46,20 +36,6 @@ pub struct CfnWorkGroup {
 
 
     /// 
-    /// The workgroup name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-zA-Z0-9._-]{1,128}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The state of the workgroup: ENABLED or DISABLED.
     /// 
     /// Required: No
@@ -70,7 +46,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    pub state: Option<String>,
+    pub state: Option<WorkGroupStateEnum>,
 
 
     /// 
@@ -84,7 +60,52 @@ pub struct CfnWorkGroup {
     #[serde(rename = "WorkGroupConfiguration")]
     pub work_group_configuration: Option<WorkGroupConfiguration>,
 
+
+    /// 
+    /// The option to delete a workgroup and its contents even if the workgroup contains any       named queries. The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecursiveDeleteOption")]
+    pub recursive_delete_option: Option<bool>,
+
+
+    /// 
+    /// The tags (key-value pairs) to associate with this resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum WorkGroupStateEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for WorkGroupStateEnum {
+    fn default() -> Self {
+        WorkGroupStateEnum::Disabled
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnWorkGroup {
     fn type_string() -> &'static str {
@@ -97,44 +118,9 @@ impl cfn_resources::CfnResource for CfnWorkGroup {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AclConfiguration {
+pub struct CustomerContentEncryptionConfiguration {
 
 
     /// Property description not available.
@@ -144,15 +130,28 @@ pub struct AclConfiguration {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3AclOption")]
-    pub s3_acl_option: String,
+    #[serde(rename = "KmsKey")]
+    pub kms_key: String,
 
 }
+
+
 
 
 /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkGroupConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: EngineVersion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<EngineVersion>,
 
 
     /// Property description not available.
@@ -179,6 +178,32 @@ pub struct WorkGroupConfiguration {
 
 
     /// 
+    /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is       allowed to scan. No default is defined.
+    /// 
+    /// NoteThis property currently supports integer types. Support for long values is         planned.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BytesScannedCutoffPerQuery")]
+    pub bytes_scanned_cutoff_per_query: Option<i64>,
+
+
+    /// 
+    /// Specifies the location in Amazon S3 where query results are stored and the encryption       option, if any, used for query results. For more information, see Working with Query         Results, Output Files, and Query History.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResultConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResultConfiguration")]
+    pub result_configuration: Option<ResultConfiguration>,
+
+
+    /// 
     /// If set to true, allows members assigned to a workgroup to reference       Amazon S3 Requester Pays buckets in queries. If set to false, workgroup       members cannot query data from Requester Pays buckets, and queries that retrieve data       from Requester Pays buckets cause an error. The default is false. For more       information about Requester Pays buckets, see Requester Pays Buckets       in the Amazon Simple Storage Service Developer Guide.
     /// 
     /// Required: No
@@ -194,34 +219,11 @@ pub struct WorkGroupConfiguration {
     ///
     /// Required: No
     ///
-    /// Type: EngineVersion
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<EngineVersion>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
     /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalConfiguration")]
     pub additional_configuration: Option<String>,
-
-
-    /// 
-    /// Specifies the location in Amazon S3 where query results are stored and the encryption       option, if any, used for query results. For more information, see Working with Query         Results, Output Files, and Query History.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResultConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResultConfiguration")]
-    pub result_configuration: Option<ResultConfiguration>,
 
 
     /// Property description not available.
@@ -246,21 +248,46 @@ pub struct WorkGroupConfiguration {
     #[serde(rename = "PublishCloudWatchMetricsEnabled")]
     pub publish_cloud_watch_metrics_enabled: Option<bool>,
 
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
 
     /// 
-    /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is       allowed to scan. No default is defined.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// NoteThis property currently supports integer types. Support for long values is         planned.
+    /// Required: Yes
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BytesScannedCutoffPerQuery")]
-    pub bytes_scanned_cutoff_per_query: Option<i64>,
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
+
+
 
 
 /// If query results are encrypted in Amazon S3, indicates the encryption option used (for       example, SSE_KMS or CSE_KMS) and key information.
@@ -293,14 +320,39 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionOption")]
-    pub encryption_option: String,
+    pub encryption_option: EncryptionConfigurationEncryptionOptionEnum,
 
 }
 
 
-/// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EncryptionConfigurationEncryptionOptionEnum {
+
+    /// CSE_KMS
+    #[serde(rename = "CSE_KMS")]
+    Csekms,
+
+    /// SSE_KMS
+    #[serde(rename = "SSE_KMS")]
+    Ssekms,
+
+    /// SSE_S3
+    #[serde(rename = "SSE_S3")]
+    Sses3,
+
+}
+
+impl Default for EncryptionConfigurationEncryptionOptionEnum {
+    fn default() -> Self {
+        EncryptionConfigurationEncryptionOptionEnum::Csekms
+    }
+}
+
+
+
+/// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomerContentEncryptionConfiguration {
+pub struct AclConfiguration {
 
 
     /// Property description not available.
@@ -310,10 +362,12 @@ pub struct CustomerContentEncryptionConfiguration {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KmsKey")]
-    pub kms_key: String,
+    #[serde(rename = "S3AclOption")]
+    pub s3_acl_option: String,
 
 }
+
+
 
 
 /// The Athena engine version for running queries, or the PySpark engine       version for running sessions.
@@ -355,6 +409,8 @@ pub struct EngineVersion {
 }
 
 
+
+
 /// The location in Amazon S3 where query and calculation results are stored and the encryption       option, if any, used for query and calculation results. These are known as "client-side settings". If       workgroup settings override client-side settings, then the query uses the workgroup       settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResultConfiguration {
@@ -388,21 +444,23 @@ pub struct ResultConfiguration {
     ///
     /// Required: No
     ///
-    /// Type: AclConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AclConfiguration")]
-    pub acl_configuration: Option<AclConfiguration>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
     /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpectedBucketOwner")]
     pub expected_bucket_owner: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: AclConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AclConfiguration")]
+    pub acl_configuration: Option<AclConfiguration>,
+
 }
+
+

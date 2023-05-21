@@ -6,18 +6,6 @@ pub struct CfnVpcEndpoint {
 
 
     /// 
-    /// The ID of the subnets from which you access OpenSearch Serverless.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
     /// The name of the endpoint.
     /// 
     /// Required: Yes
@@ -30,15 +18,15 @@ pub struct CfnVpcEndpoint {
 
 
     /// 
-    /// The ID of the VPC from which you access OpenSearch Serverless.
+    /// The ID of the subnets from which you access OpenSearch Serverless.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -52,7 +40,21 @@ pub struct CfnVpcEndpoint {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
+
+    /// 
+    /// The ID of the VPC from which you access OpenSearch Serverless.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVpcEndpoint {
     fn type_string() -> &'static str {

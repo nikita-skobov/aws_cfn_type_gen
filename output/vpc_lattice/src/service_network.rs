@@ -8,18 +8,6 @@ pub struct CfnServiceNetwork {
 
 
     /// 
-    /// The tags for the service network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The type of IAM policy.
     /// 
     /// NONE: The resource does not use an IAM policy. This is the default.     AWS_IAM: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
@@ -46,7 +34,21 @@ pub struct CfnServiceNetwork {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The tags for the service network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnServiceNetwork {
     fn type_string() -> &'static str {
@@ -92,3 +94,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

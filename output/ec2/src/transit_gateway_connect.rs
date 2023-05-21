@@ -8,6 +8,20 @@ pub struct CfnTransitGatewayConnect {
 
 
     /// 
+    /// The Connect attachment options.
+    /// 
+    /// protocol (gre)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: TransitGatewayConnectOptions
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Options")]
+    pub options: TransitGatewayConnectOptions,
+
+
+    /// 
     /// The ID of the attachment from which the Connect attachment was created.
     /// 
     /// Required: Yes
@@ -30,21 +44,9 @@ pub struct CfnTransitGatewayConnect {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The Connect attachment options.
-    /// 
-    /// protocol (gre)
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: TransitGatewayConnectOptions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Options")]
-    pub options: TransitGatewayConnectOptions,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
     fn type_string() -> &'static str {
@@ -55,6 +57,44 @@ impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes the Connect attachment options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TransitGatewayConnectOptions {
+
+
+    /// 
+    /// The tunnel protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: gre
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<TransitGatewayConnectOptionsProtocolEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayConnectOptionsProtocolEnum {
+
+    /// gre
+    #[serde(rename = "gre")]
+    Gre,
+
+}
+
+impl Default for TransitGatewayConnectOptionsProtocolEnum {
+    fn default() -> Self {
+        TransitGatewayConnectOptionsProtocolEnum::Gre
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -92,22 +132,3 @@ pub struct Tag {
 }
 
 
-/// Describes the Connect attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TransitGatewayConnectOptions {
-
-
-    /// 
-    /// The tunnel protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: gre
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
-
-}

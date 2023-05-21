@@ -6,18 +6,6 @@ pub struct CfnClientCertificate {
 
 
     /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The description of the client certificate.
     /// 
     /// Required: No
@@ -28,7 +16,21 @@ pub struct CfnClientCertificate {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnClientCertificate {
     fn type_string() -> &'static str {
@@ -74,3 +76,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

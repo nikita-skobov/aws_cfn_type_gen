@@ -6,17 +6,27 @@ pub struct CfnFaq {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource
-    /// 
-    /// For more information, see Tag.
+    /// A description for the FAQ.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The Amazon Simple Storage Service (Amazon S3) location of the FAQ       input data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3Path
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Path")]
+    pub s3_path: S3Path,
 
 
     /// 
@@ -80,29 +90,21 @@ pub struct CfnFaq {
 
 
     /// 
-    /// A description for the FAQ.
+    /// An array of key-value pairs to apply to this resource
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The Amazon Simple Storage Service (Amazon S3) location of the FAQ       input data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: S3Path
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Path")]
-    pub s3_path: S3Path,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFaq {
     fn type_string() -> &'static str {
@@ -112,47 +114,6 @@ impl cfn_resources::CfnResource for CfnFaq {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Information required to find a specific file in an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Path {
-
-
-    /// 
-    /// The name of the S3 bucket that contains the file.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9]
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
-
-    /// 
-    /// The name of the file.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: String,
-
 }
 
 
@@ -189,3 +150,48 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// Information required to find a specific file in an Amazon S3 bucket.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Path {
+
+
+    /// 
+    /// The name of the file.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The name of the S3 bucket that contains the file.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9]
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+}
+
+

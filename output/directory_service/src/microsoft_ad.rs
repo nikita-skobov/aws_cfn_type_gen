@@ -6,57 +6,19 @@ pub struct CfnMicrosoftAD {
 
 
     /// 
-    /// AWS Managed Microsoft AD is available in two editions: Standard and     Enterprise. Enterprise is the default.
+    /// The password for the default administrative user named Admin.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Enterprise | Standard
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Edition")]
-    pub edition: Option<String>,
-
-
-    /// 
-    /// The fully qualified domain name for the AWS Managed Microsoft AD directory, such as     corp.example.com. This name will resolve inside your VPC only. It does not need    to be publicly resolvable.
+    /// If you need to change the password for the administrator account, see the ResetUserPassword API call in the AWS Directory Service API     Reference.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+$
+    /// Pattern: (?=^.{8,64}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])|(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]))^.*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
-    /// 
-    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CreateAlias")]
-    pub create_alias: Option<bool>,
-
-
-    /// 
-    /// Specifies the VPC settings of the Microsoft AD directory server in AWS.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VpcSettings
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcSettings")]
-    pub vpc_settings: VpcSettings,
+    #[serde(rename = "Password")]
+    pub password: String,
 
 
     /// 
@@ -69,6 +31,20 @@ pub struct CfnMicrosoftAD {
     /// Update requires: No interruption
     #[serde(rename = "EnableSso")]
     pub enable_sso: Option<bool>,
+
+
+    /// 
+    /// AWS Managed Microsoft AD is available in two editions: Standard and     Enterprise. Enterprise is the default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Enterprise | Standard
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Edition")]
+    pub edition: Option<MicrosoftADEditionEnum>,
 
 
     /// 
@@ -86,21 +62,66 @@ pub struct CfnMicrosoftAD {
 
 
     /// 
-    /// The password for the default administrative user named Admin.
-    /// 
-    /// If you need to change the password for the administrator account, see the ResetUserPassword API call in the AWS Directory Service API     Reference.
+    /// The fully qualified domain name for the AWS Managed Microsoft AD directory, such as     corp.example.com. This name will resolve inside your VPC only. It does not need    to be publicly resolvable.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: (?=^.{8,64}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])|(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]))^.*
+    /// Pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Password")]
-    pub password: String,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Specifies the VPC settings of the Microsoft AD directory server in AWS.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VpcSettings
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcSettings")]
+    pub vpc_settings: VpcSettings,
+
+
+    /// 
+    /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
+    /// 
+    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CreateAlias")]
+    pub create_alias: Option<bool>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MicrosoftADEditionEnum {
+
+    /// Enterprise
+    #[serde(rename = "Enterprise")]
+    Enterprise,
+
+    /// Standard
+    #[serde(rename = "Standard")]
+    Standard,
+
+}
+
+impl Default for MicrosoftADEditionEnum {
+    fn default() -> Self {
+        MicrosoftADEditionEnum::Enterprise
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnMicrosoftAD {
     fn type_string() -> &'static str {
@@ -144,3 +165,5 @@ pub struct VpcSettings {
     pub vpc_id: String,
 
 }
+
+

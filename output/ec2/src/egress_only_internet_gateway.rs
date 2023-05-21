@@ -18,6 +18,8 @@ pub struct CfnEgressOnlyInternetGateway {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnEgressOnlyInternetGateway {
     fn type_string() -> &'static str {
         "AWS::EC2::EgressOnlyInternetGateway"

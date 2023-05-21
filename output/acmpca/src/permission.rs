@@ -74,6 +74,8 @@ pub struct CfnPermission {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnPermission {
     fn type_string() -> &'static str {
         "AWS::ACMPCA::Permission"

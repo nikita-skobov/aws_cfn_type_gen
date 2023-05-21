@@ -6,6 +6,18 @@ pub struct CfnFleetMetric {
 
 
     /// 
+    /// The query version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryVersion")]
+    pub query_version: Option<String>,
+
+
+    /// 
     /// Metadata which can be used to manage the fleet metric.
     /// 
     /// Required: No
@@ -15,30 +27,6 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Used to support unit transformation such as milliseconds to seconds. Must be a unit supported by CW metric. Default to null.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
-
-
-    /// 
-    /// The field to aggregate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AggregationField")]
-    pub aggregation_field: Option<String>,
 
 
     /// 
@@ -54,15 +42,15 @@ pub struct CfnFleetMetric {
 
 
     /// 
-    /// The name of the fleet metric to create.
+    /// The field to aggregate.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AggregationField")]
+    pub aggregation_field: Option<String>,
 
 
     /// 
@@ -75,6 +63,18 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Period")]
     pub period: Option<i64>,
+
+
+    /// 
+    /// Used to support unit transformation such as milliseconds to seconds. Must be a unit supported by CW metric. Default to null.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
 
 
     /// 
@@ -102,18 +102,6 @@ pub struct CfnFleetMetric {
 
 
     /// 
-    /// The query version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryVersion")]
-    pub query_version: Option<String>,
-
-
-    /// 
     /// The type of the aggregation query.
     /// 
     /// Required: No
@@ -124,7 +112,21 @@ pub struct CfnFleetMetric {
     #[serde(rename = "AggregationType")]
     pub aggregation_type: Option<AggregationType>,
 
+
+    /// 
+    /// The name of the fleet metric to create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFleetMetric {
     fn type_string() -> &'static str {
@@ -135,6 +137,39 @@ impl cfn_resources::CfnResource for CfnFleetMetric {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The type of aggregation queries.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AggregationType {
+
+
+    /// 
+    /// A list of the values of aggregation types.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
+
+
+    /// 
+    /// The name of the aggregation type.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -172,32 +207,3 @@ pub struct Tag {
 }
 
 
-/// The type of aggregation queries.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AggregationType {
-
-
-    /// 
-    /// A list of the values of aggregation types.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
-    /// The name of the aggregation type.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}

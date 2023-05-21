@@ -28,7 +28,7 @@ pub struct CfnPrefixList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddressFamily")]
-    pub address_family: String,
+    pub address_family: PrefixListAddressFamilyEnum,
 
 
     /// 
@@ -71,6 +71,27 @@ pub struct CfnPrefixList {
     pub prefix_list_name: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PrefixListAddressFamilyEnum {
+
+    /// IPv4
+    #[serde(rename = "IPv4")]
+    Ipv4,
+
+    /// IPv6
+    #[serde(rename = "IPv6")]
+    Ipv6,
+
+}
+
+impl Default for PrefixListAddressFamilyEnum {
+    fn default() -> Self {
+        PrefixListAddressFamilyEnum::Ipv4
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPrefixList {
     fn type_string() -> &'static str {
@@ -118,6 +139,8 @@ pub struct Tag {
 }
 
 
+
+
 /// An entry for a prefix list.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Entry {
@@ -149,3 +172,5 @@ pub struct Entry {
     pub cidr: String,
 
 }
+
+

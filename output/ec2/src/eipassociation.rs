@@ -20,18 +20,6 @@ pub struct CfnEIPAssociation {
 
 
     /// 
-    /// Deprecated.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "EIP")]
-    pub eip: Option<String>,
-
-
-    /// 
     /// The ID of the network interface. If the instance has more than one network interface, you must specify a network interface ID.
     /// 
     /// You can specify either the instance ID or the network interface ID, but not both.
@@ -68,7 +56,21 @@ pub struct CfnEIPAssociation {
     #[serde(rename = "AllocationId")]
     pub allocation_id: Option<String>,
 
+
+    /// 
+    /// Deprecated.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "EIP")]
+    pub eip: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEIPAssociation {
     fn type_string() -> &'static str {

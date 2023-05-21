@@ -12,6 +12,38 @@ pub struct CfnLoggingConfiguration {
 
 
     /// 
+    /// The parts of the request that you want to keep out of the logs. For example, if you     redact the SingleHeader field, the HEADER field in the logs will     be REDACTED.
+    /// 
+    /// NoteYou can specify only the following fields for redaction: UriPath,        QueryString, SingleHeader, Method, and        JsonBody.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of FieldToMatch
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedactedFields")]
+    pub redacted_fields: Option<Vec<FieldToMatch>>,
+
+
+    /// 
+    /// The logging destination configuration that you want to associate with the web     ACL.
+    /// 
+    /// NoteYou can associate one logging destination to a web ACL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogDestinationConfigs")]
+    pub log_destination_configs: Vec<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with       LogDestinationConfigs.
     /// 
     /// Required: Yes
@@ -40,39 +72,9 @@ pub struct CfnLoggingConfiguration {
     #[serde(rename = "LoggingFilter")]
     pub logging_filter: Option<LoggingFilter>,
 
-
-    /// 
-    /// The logging destination configuration that you want to associate with the web     ACL.
-    /// 
-    /// NoteYou can associate one logging destination to a web ACL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogDestinationConfigs")]
-    pub log_destination_configs: Vec<String>,
-
-
-    /// 
-    /// The parts of the request that you want to keep out of the logs. For example, if you     redact the SingleHeader field, the HEADER field in the logs will     be REDACTED.
-    /// 
-    /// NoteYou can specify only the following fields for redaction: UriPath,        QueryString, SingleHeader, Method, and        JsonBody.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of FieldToMatch
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedactedFields")]
-    pub redacted_fields: Option<Vec<FieldToMatch>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLoggingConfiguration {
     fn type_string() -> &'static str {
@@ -83,6 +85,93 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A single logging filter, used in LoggingFilter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Filter {
+
+
+    /// 
+    /// How to handle logs that satisfy the filter's conditions and requirement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DROP | KEEP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Behavior")]
+    pub behavior: FilterBehaviorEnum,
+
+
+    /// 
+    /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy     the filter, a log must match all conditions or must match at least one condition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: MEETS_ALL | MEETS_ANY
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Requirement")]
+    pub requirement: FilterRequirementEnum,
+
+
+    /// 
+    /// Match conditions for the filter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Condition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Conditions")]
+    pub conditions: Vec<Condition>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterBehaviorEnum {
+
+    /// DROP
+    #[serde(rename = "DROP")]
+    Drop,
+
+    /// KEEP
+    #[serde(rename = "KEEP")]
+    Keep,
+
+}
+
+impl Default for FilterBehaviorEnum {
+    fn default() -> Self {
+        FilterBehaviorEnum::Drop
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterRequirementEnum {
+
+    /// MEETS_ALL
+    #[serde(rename = "MEETS_ALL")]
+    Meetsall,
+
+    /// MEETS_ANY
+    #[serde(rename = "MEETS_ANY")]
+    Meetsany,
+
+}
+
+impl Default for FilterRequirementEnum {
+    fn default() -> Self {
+        FilterRequirementEnum::Meetsall
+    }
+}
+
 
 
 /// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
@@ -116,21 +205,67 @@ pub struct SingleHeader {
 }
 
 
+
+
+/// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
+///
+/// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoggingFilter {
+
+
+    /// 
+    /// The filters that you want to apply to the logs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Filter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filters")]
+    pub filters: Vec<Filter>,
+
+
+    /// 
+    /// Default handling for logs that don't match any of the specified filtering conditions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DROP | KEEP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultBehavior")]
+    pub default_behavior: LoggingFilterDefaultBehaviorEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LoggingFilterDefaultBehaviorEnum {
+
+    /// DROP
+    #[serde(rename = "DROP")]
+    Drop,
+
+    /// KEEP
+    #[serde(rename = "KEEP")]
+    Keep,
+
+}
+
+impl Default for LoggingFilterDefaultBehaviorEnum {
+    fn default() -> Self {
+        LoggingFilterDefaultBehaviorEnum::Drop
+    }
+}
+
+
+
 /// A single match condition for a log filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Condition {
-
-
-    /// 
-    /// A single label name condition. This is the fully qualified label name that a log record must contain in order to meet the condition.     Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LabelNameCondition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LabelNameCondition")]
-    pub label_name_condition: Option<LabelNameCondition>,
 
 
     /// 
@@ -144,32 +279,21 @@ pub struct Condition {
     #[serde(rename = "ActionCondition")]
     pub action_condition: Option<ActionCondition>,
 
-}
-
-
-/// A single label name condition for a condition in a logging     filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LabelNameCondition {
-
 
     /// 
-    /// The label name that a log record must contain in order to meet the condition. This must     be a fully qualified label name. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
+    /// A single label name condition. This is the fully qualified label name that a log record must contain in order to meet the condition.     Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    /// Type: LabelNameCondition
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LabelName")]
-    pub label_name: String,
+    #[serde(rename = "LabelNameCondition")]
+    pub label_name_condition: Option<LabelNameCondition>,
 
 }
+
+
 
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
@@ -211,39 +335,144 @@ pub struct MatchPattern {
 }
 
 
-/// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
-///
-/// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
+
+
+/// A single label name condition for a condition in a logging     filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoggingFilter {
+pub struct LabelNameCondition {
 
 
     /// 
-    /// Default handling for logs that don't match any of the specified filtering conditions.
+    /// The label name that a log record must contain in order to meet the condition. This must     be a fully qualified label name. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: DROP | KEEP
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[0-9A-Za-z_\-:]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultBehavior")]
-    pub default_behavior: String,
+    #[serde(rename = "LabelName")]
+    pub label_name: String,
+
+}
+
+
+
+
+/// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
+///
+/// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JsonBody {
 
 
     /// 
-    /// The filters that you want to apply to the logs.
+    /// The parts of the JSON to match against using the MatchPattern. If you     specify All, AWS WAF matches against keys and values.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of Filter
+    /// Type: String
+    ///
+    /// Allowed values: ALL | KEY | VALUE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Filters")]
-    pub filters: Vec<Filter>,
+    #[serde(rename = "MatchScope")]
+    pub match_scope: JsonBodyMatchScopeEnum,
+
+
+    /// 
+    /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
+    /// 
+    /// EVALUATE_AS_STRING - Inspect the body as plain text. AWS WAF        applies the text transformations and inspection criteria that you defined for the        JSON inspection to the body text string.                        MATCH - Treat the web request as matching the rule statement.        AWS WAF applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// If you don't provide this setting, AWS WAF parses and evaluates the content only up to the     first parsing failure that it encounters.
+    /// 
+    /// AWS WAF does its best to parse the entire JSON body, but might be forced to stop for     reasons such as invalid characters, duplicate keys, truncation, and any content whose root     node isn't an object or an array.
+    /// 
+    /// AWS WAF parses the JSON in the following examples as two valid key, value pairs:
+    /// 
+    /// Missing comma: {"key1":"value1""key2":"value2"}                       Missing colon: {"key1":"value1","key2""value2"}                       Extra colons: {"key1"::"value1","key2""value2"}
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EVALUATE_AS_STRING | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InvalidFallbackBehavior")]
+    pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
+
+
+    /// 
+    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MatchPattern
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPattern")]
+    pub match_pattern: MatchPattern,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyInvalidFallbackBehaviorEnum {
+
+    /// EVALUATE_AS_STRING
+    #[serde(rename = "EVALUATE_AS_STRING")]
+    Evaluateasstring,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for JsonBodyInvalidFallbackBehaviorEnum {
+    fn default() -> Self {
+        JsonBodyInvalidFallbackBehaviorEnum::Evaluateasstring
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for JsonBodyMatchScopeEnum {
+    fn default() -> Self {
+        JsonBodyMatchScopeEnum::All
+    }
+}
+
 
 
 /// A single action condition for a condition in a logging filter.
@@ -264,9 +493,46 @@ pub struct ActionCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: ActionConditionActionEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ActionConditionActionEnum {
+
+    /// ALLOW
+    #[serde(rename = "ALLOW")]
+    Allow,
+
+    /// BLOCK
+    #[serde(rename = "BLOCK")]
+    Block,
+
+    /// CAPTCHA
+    #[serde(rename = "CAPTCHA")]
+    Captcha,
+
+    /// CHALLENGE
+    #[serde(rename = "CHALLENGE")]
+    Challenge,
+
+    /// COUNT
+    #[serde(rename = "COUNT")]
+    Count,
+
+    /// EXCLUDED_AS_COUNT
+    #[serde(rename = "EXCLUDED_AS_COUNT")]
+    Excludedascount,
+
+}
+
+impl Default for ActionConditionActionEnum {
+    fn default() -> Self {
+        ActionConditionActionEnum::Allow
+    }
+}
+
 
 
 /// The parts of the request that you want to keep out of the logs. This is used in the logging configuration RedactedFields specification.
@@ -280,42 +546,6 @@ pub struct ActionCondition {
 /// "FieldToMatch": { "Method": { "Name": "DELETE" } }
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldToMatch {
-
-
-    /// 
-    /// Redact the query string. This is the part of a URL that appears after a ?     character, if any.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: Option<serde_json::Value>,
-
-
-    /// 
-    /// Redact the request body JSON.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JsonBody
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonBody")]
-    pub json_body: Option<JsonBody>,
-
-
-    /// 
-    /// Redact the indicated HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Method")]
-    pub method: Option<serde_json::Value>,
 
 
     /// 
@@ -343,114 +573,42 @@ pub struct FieldToMatch {
     #[serde(rename = "SingleHeader")]
     pub single_header: Option<SingleHeader>,
 
-}
-
-
-/// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
-///
-/// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JsonBody {
-
 
     /// 
-    /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
-    /// 
-    /// EVALUATE_AS_STRING - Inspect the body as plain text. AWS WAF        applies the text transformations and inspection criteria that you defined for the        JSON inspection to the body text string.                        MATCH - Treat the web request as matching the rule statement.        AWS WAF applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// If you don't provide this setting, AWS WAF parses and evaluates the content only up to the     first parsing failure that it encounters.
-    /// 
-    /// AWS WAF does its best to parse the entire JSON body, but might be forced to stop for     reasons such as invalid characters, duplicate keys, truncation, and any content whose root     node isn't an object or an array.
-    /// 
-    /// AWS WAF parses the JSON in the following examples as two valid key, value pairs:
-    /// 
-    /// Missing comma: {"key1":"value1""key2":"value2"}                       Missing colon: {"key1":"value1","key2""value2"}                       Extra colons: {"key1"::"value1","key2""value2"}
+    /// Redact the indicated HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: EVALUATE_AS_STRING | MATCH | NO_MATCH
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InvalidFallbackBehavior")]
-    pub invalid_fallback_behavior: Option<String>,
+    #[serde(rename = "Method")]
+    pub method: Option<serde_json::Value>,
 
 
     /// 
-    /// The parts of the JSON to match against using the MatchPattern. If you     specify All, AWS WAF matches against keys and values.
+    /// Redact the request body JSON.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL | KEY | VALUE
+    /// Type: JsonBody
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MatchScope")]
-    pub match_scope: String,
+    #[serde(rename = "JsonBody")]
+    pub json_body: Option<JsonBody>,
 
 
     /// 
-    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
+    /// Redact the query string. This is the part of a URL that appears after a ?     character, if any.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: MatchPattern
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MatchPattern")]
-    pub match_pattern: MatchPattern,
+    #[serde(rename = "QueryString")]
+    pub query_string: Option<serde_json::Value>,
 
 }
 
 
-/// A single logging filter, used in LoggingFilter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Filter {
-
-
-    /// 
-    /// How to handle logs that satisfy the filter's conditions and requirement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DROP | KEEP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Behavior")]
-    pub behavior: String,
-
-
-    /// 
-    /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy     the filter, a log must match all conditions or must match at least one condition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: MEETS_ALL | MEETS_ANY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Requirement")]
-    pub requirement: String,
-
-
-    /// 
-    /// Match conditions for the filter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Condition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Conditions")]
-    pub conditions: Vec<Condition>,
-
-}

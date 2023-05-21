@@ -32,6 +32,8 @@ pub struct CfnSubnetRouteTableAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSubnetRouteTableAssociation {
     fn type_string() -> &'static str {
         "AWS::EC2::SubnetRouteTableAssociation"

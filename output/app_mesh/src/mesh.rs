@@ -10,22 +10,6 @@ pub struct CfnMesh {
 
 
     /// 
-    /// The name to use for the service mesh.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeshName")]
-    pub mesh_name: Option<String>,
-
-
-    /// 
     /// The service mesh specification to apply.
     /// 
     /// Required: No
@@ -50,7 +34,25 @@ pub struct CfnMesh {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The name to use for the service mesh.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeshName")]
+    pub mesh_name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMesh {
     fn type_string() -> &'static str {
@@ -61,6 +63,88 @@ impl cfn_resources::CfnResource for CfnMesh {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// An object that represents the service discovery information for a service mesh.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MeshServiceDiscovery {
+
+
+    /// 
+    /// The IP version to use to control traffic within the mesh.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IPv4_ONLY | IPv4_PREFERRED | IPv6_ONLY | IPv6_PREFERRED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IpPreference")]
+    pub ip_preference: Option<MeshServiceDiscoveryIpPreferenceEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MeshServiceDiscoveryIpPreferenceEnum {
+
+    /// IPv4_ONLY
+    #[serde(rename = "IPv4_ONLY")]
+    Ipv4only,
+
+    /// IPv4_PREFERRED
+    #[serde(rename = "IPv4_PREFERRED")]
+    Ipv4preferred,
+
+    /// IPv6_ONLY
+    #[serde(rename = "IPv6_ONLY")]
+    Ipv6only,
+
+    /// IPv6_PREFERRED
+    #[serde(rename = "IPv6_PREFERRED")]
+    Ipv6preferred,
+
+}
+
+impl Default for MeshServiceDiscoveryIpPreferenceEnum {
+    fn default() -> Self {
+        MeshServiceDiscoveryIpPreferenceEnum::Ipv4only
+    }
+}
+
+
+
+/// An object that represents the specification of a service mesh.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MeshSpec {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: MeshServiceDiscovery
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceDiscovery")]
+    pub service_discovery: Option<MeshServiceDiscovery>,
+
+
+    /// 
+    /// The egress filter rules for the service mesh.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EgressFilter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EgressFilter")]
+    pub egress_filter: Option<EgressFilter>,
+
+}
+
+
 
 
 /// An object that represents the egress filter rules for a service mesh.
@@ -81,60 +165,30 @@ pub struct EgressFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: EgressFilterTypeEnum,
 
 }
 
 
-/// An object that represents the service discovery information for a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MeshServiceDiscovery {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EgressFilterTypeEnum {
 
+    /// ALLOW_ALL
+    #[serde(rename = "ALLOW_ALL")]
+    Allowall,
 
-    /// 
-    /// The IP version to use to control traffic within the mesh.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IPv4_ONLY | IPv4_PREFERRED | IPv6_ONLY | IPv6_PREFERRED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IpPreference")]
-    pub ip_preference: Option<String>,
+    /// DROP_ALL
+    #[serde(rename = "DROP_ALL")]
+    Dropall,
 
 }
 
-
-/// An object that represents the specification of a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MeshSpec {
-
-
-    /// 
-    /// The egress filter rules for the service mesh.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EgressFilter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressFilter")]
-    pub egress_filter: Option<EgressFilter>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: MeshServiceDiscovery
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceDiscovery")]
-    pub service_discovery: Option<MeshServiceDiscovery>,
-
+impl Default for EgressFilterTypeEnum {
+    fn default() -> Self {
+        EgressFilterTypeEnum::Allowall
+    }
 }
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -170,3 +224,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

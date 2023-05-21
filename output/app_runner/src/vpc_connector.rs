@@ -8,20 +8,6 @@ pub struct CfnVpcConnector {
 
 
     /// 
-    /// A list of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single     Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
-    /// 
-    /// Note     App Runner currently only provides support for IPv4.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
-
-    /// 
     /// A list of IDs of security groups that App Runner should use for access to AWS resources under the specified subnets. If not specified, App Runner uses the    default security group of the Amazon VPC. The default security group allows all outbound traffic.
     /// 
     /// Required: No
@@ -31,6 +17,18 @@ pub struct CfnVpcConnector {
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of metadata items that you can associate with your VPC connector resource. A tag is a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -54,17 +52,21 @@ pub struct CfnVpcConnector {
 
 
     /// 
-    /// A list of metadata items that you can associate with your VPC connector resource. A tag is a key-value pair.
+    /// A list of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single     Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
     /// 
-    /// Required: No
+    /// Note     App Runner currently only provides support for IPv4.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVpcConnector {
     fn type_string() -> &'static str {
@@ -110,3 +112,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

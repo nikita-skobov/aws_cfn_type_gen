@@ -24,18 +24,6 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
-
-
-    /// 
     /// A JSON-formatted string for an AWS    resource-based policy. For example policies, see Permissions     policy examples.
     /// 
     /// Required: Yes
@@ -46,7 +34,21 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "ResourcePolicy")]
     pub resource_policy: serde_json::Value,
 
+
+    /// 
+    /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string() -> &'static str {

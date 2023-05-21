@@ -38,24 +38,6 @@ pub struct CfnUserPoolResourceServer {
 
 
     /// 
-    /// The user pool ID for the user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 55
-    ///
-    /// Pattern: [\w-]+_[0-9a-zA-Z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
-
-
-    /// 
     /// A unique resource server identifier for the resource server. This could be an HTTPS    endpoint where the resource server is located. For example:     https://my-weather-api.example.com.
     /// 
     /// Required: Yes
@@ -72,7 +54,27 @@ pub struct CfnUserPoolResourceServer {
     #[serde(rename = "Identifier")]
     pub identifier: String,
 
+
+    /// 
+    /// The user pool ID for the user pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 55
+    ///
+    /// Pattern: [\w-]+_[0-9a-zA-Z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserPoolId")]
+    pub user_pool_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
     fn type_string() -> &'static str {
@@ -124,3 +126,5 @@ pub struct ResourceServerScopeType {
     pub scope_description: String,
 
 }
+
+

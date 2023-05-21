@@ -6,15 +6,45 @@ pub struct CfnLocationHDFS {
 
 
     /// 
-    /// The krb5.conf file that contains the Kerberos configuration information.     You can load the krb5.conf by providing a string of the file's contents or an       Amazon S3 presigned URL of the file. IfKERBEROS is specified for       AuthType, this value is required.
+    /// The number of DataNodes to replicate the data to when writing to the HDFS cluster. By    default, data is replicated to three DataNodes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationFactor")]
+    pub replication_factor: Option<i64>,
+
+
+    /// 
+    /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos     principal and the encrypted keys. Provide the base64-encoded file text. If       KERBEROS is specified for AuthType, this value is required.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KerberosKrb5Conf")]
-    pub kerberos_krb5_conf: Option<String>,
+    #[serde(rename = "KerberosKeytab")]
+    pub kerberos_keytab: Option<String>,
+
+
+    /// 
+    /// The key-value pair that represents the tag that you want to add to the location. The value    can be an empty string. We recommend using tags to name your resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -31,6 +61,109 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "BlockSize")]
     pub block_size: Option<i64>,
+
+
+    /// 
+    /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC)    and data transfer protection settings configured on the Hadoop Distributed File System (HDFS)    cluster. If QopConfiguration isn't specified, RpcProtection and     DataTransferProtection default to PRIVACY. If you set     RpcProtection or DataTransferProtection, the other parameter    assumes the same value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: QopConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QopConfiguration")]
+    pub qop_configuration: Option<QopConfiguration>,
+
+
+    /// 
+    /// The Kerberos principal with access to the files and folders on the HDFS cluster.
+    /// 
+    /// NoteIf KERBEROS is specified for AuthenticationType, this     parameter is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^.+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KerberosPrincipal")]
+    pub kerberos_principal: Option<String>,
+
+
+    /// 
+    /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write    data to the HDFS cluster. If the subdirectory isn't specified, it will default to     /.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
+
+
+    /// 
+    /// The krb5.conf file that contains the Kerberos configuration information.     You can load the krb5.conf by providing a string of the file's contents or an       Amazon S3 presigned URL of the file. IfKERBEROS is specified for       AuthType, this value is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KerberosKrb5Conf")]
+    pub kerberos_krb5_conf: Option<String>,
+
+
+    /// 
+    /// The URI of the HDFS cluster's Key Management Server (KMS).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^kms:\/\/http[s]?@(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])(;(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9]))*:[0-9]{1,5}\/kms$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyProviderUri")]
+    pub kms_key_provider_uri: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Names (ARNs) of the agents that are used to connect to the HDFS    cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: String,
 
 
     /// 
@@ -64,140 +197,9 @@ pub struct CfnLocationHDFS {
     #[serde(rename = "SimpleUser")]
     pub simple_user: Option<String>,
 
-
-    /// 
-    /// The Kerberos principal with access to the files and folders on the HDFS cluster.
-    /// 
-    /// NoteIf KERBEROS is specified for AuthenticationType, this     parameter is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^.+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KerberosPrincipal")]
-    pub kerberos_principal: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Names (ARNs) of the agents that are used to connect to the HDFS    cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
-
-    /// 
-    /// The key-value pair that represents the tag that you want to add to the location. The value    can be an empty string. We recommend using tags to name your resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write    data to the HDFS cluster. If the subdirectory isn't specified, it will default to     /.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
-
-
-    /// 
-    /// The URI of the HDFS cluster's Key Management Server (KMS).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^kms:\/\/http[s]?@(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])(;(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9]))*:[0-9]{1,5}\/kms$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyProviderUri")]
-    pub kms_key_provider_uri: Option<String>,
-
-
-    /// 
-    /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos     principal and the encrypted keys. Provide the base64-encoded file text. If       KERBEROS is specified for AuthType, this value is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KerberosKeytab")]
-    pub kerberos_keytab: Option<String>,
-
-
-    /// 
-    /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC)    and data transfer protection settings configured on the Hadoop Distributed File System (HDFS)    cluster. If QopConfiguration isn't specified, RpcProtection and     DataTransferProtection default to PRIVACY. If you set     RpcProtection or DataTransferProtection, the other parameter    assumes the same value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: QopConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QopConfiguration")]
-    pub qop_configuration: Option<QopConfiguration>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
-
-
-    /// 
-    /// The number of DataNodes to replicate the data to when writing to the HDFS cluster. By    default, data is replicated to three DataNodes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationFactor")]
-    pub replication_factor: Option<i64>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLocationHDFS {
     fn type_string() -> &'static str {
@@ -222,17 +224,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -242,7 +233,112 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+
+
+
+/// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
+/// 
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct QopConfiguration {
+
+
+    /// 
+    /// The data transfer protection setting configured on the HDFS cluster. This setting    corresponds to your dfs.data.transfer.protection setting in the     hdfs-site.xml file on your Hadoop cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AUTHENTICATION | DISABLED | INTEGRITY | PRIVACY
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataTransferProtection")]
+    pub data_transfer_protection: Option<QopConfigurationDataTransferProtectionEnum>,
+
+
+    /// 
+    /// The    Remote Procedure Call (RPC) protection setting configured on the HDFS cluster. This setting    corresponds to your hadoop.rpc.protection setting in your     core-site.xml file on your Hadoop cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AUTHENTICATION | DISABLED | INTEGRITY | PRIVACY
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RpcProtection")]
+    pub rpc_protection: Option<QopConfigurationRpcProtectionEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum QopConfigurationRpcProtectionEnum {
+
+    /// AUTHENTICATION
+    #[serde(rename = "AUTHENTICATION")]
+    Authentication,
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// INTEGRITY
+    #[serde(rename = "INTEGRITY")]
+    Integrity,
+
+    /// PRIVACY
+    #[serde(rename = "PRIVACY")]
+    Privacy,
+
+}
+
+impl Default for QopConfigurationRpcProtectionEnum {
+    fn default() -> Self {
+        QopConfigurationRpcProtectionEnum::Authentication
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum QopConfigurationDataTransferProtectionEnum {
+
+    /// AUTHENTICATION
+    #[serde(rename = "AUTHENTICATION")]
+    Authentication,
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// INTEGRITY
+    #[serde(rename = "INTEGRITY")]
+    Integrity,
+
+    /// PRIVACY
+    #[serde(rename = "PRIVACY")]
+    Privacy,
+
+}
+
+impl Default for QopConfigurationDataTransferProtectionEnum {
+    fn default() -> Self {
+        QopConfigurationDataTransferProtectionEnum::Authentication
+    }
+}
+
 
 
 /// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
@@ -286,37 +382,3 @@ pub struct NameNode {
 }
 
 
-/// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
-/// 
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct QopConfiguration {
-
-
-    /// 
-    /// The    Remote Procedure Call (RPC) protection setting configured on the HDFS cluster. This setting    corresponds to your hadoop.rpc.protection setting in your     core-site.xml file on your Hadoop cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AUTHENTICATION | DISABLED | INTEGRITY | PRIVACY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RpcProtection")]
-    pub rpc_protection: Option<String>,
-
-
-    /// 
-    /// The data transfer protection setting configured on the HDFS cluster. This setting    corresponds to your dfs.data.transfer.protection setting in the     hdfs-site.xml file on your Hadoop cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AUTHENTICATION | DISABLED | INTEGRITY | PRIVACY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataTransferProtection")]
-    pub data_transfer_protection: Option<String>,
-
-}

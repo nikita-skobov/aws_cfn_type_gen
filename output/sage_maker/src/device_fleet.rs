@@ -6,6 +6,24 @@ pub struct CfnDeviceFleet {
 
 
     /// 
+    /// Name of the device fleet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceFleetName")]
+    pub device_fleet_name: String,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) that has access to AWS Internet of       Things (IoT).
     /// 
     /// Required: Yes
@@ -38,36 +56,6 @@ pub struct CfnDeviceFleet {
 
 
     /// 
-    /// The output configuration for storing sample data collected by the fleet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: EdgeOutputConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputConfig")]
-    pub output_config: EdgeOutputConfig,
-
-
-    /// 
-    /// Name of the device fleet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceFleetName")]
-    pub device_fleet_name: String,
-
-
-    /// 
     /// A description of the fleet.
     /// 
     /// Required: No
@@ -78,7 +66,21 @@ pub struct CfnDeviceFleet {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The output configuration for storing sample data collected by the fleet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: EdgeOutputConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputConfig")]
+    pub output_config: EdgeOutputConfig,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeviceFleet {
     fn type_string() -> &'static str {
@@ -89,6 +91,47 @@ impl cfn_resources::CfnResource for CfnDeviceFleet {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The output configuration for storing sample data collected by the fleet.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EdgeOutputConfig {
+
+
+    /// 
+    /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume after compilation job. If       you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3       for your role's account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The Amazon Simple Storage (S3) bucket URI.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3OutputLocation")]
+    pub s3_output_location: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -126,40 +169,3 @@ pub struct Tag {
 }
 
 
-/// The output configuration for storing sample data collected by the fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EdgeOutputConfig {
-
-
-    /// 
-    /// The Amazon Simple Storage (S3) bucket URI.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3OutputLocation")]
-    pub s3_output_location: String,
-
-
-    /// 
-    /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume after compilation job. If       you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3       for your role's account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-}

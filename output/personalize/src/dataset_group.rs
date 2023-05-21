@@ -8,19 +8,33 @@ pub struct CfnDatasetGroup {
 
 
     /// 
-    /// The ARN of the IAM role that has permissions to create the dataset    group.
+    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to    encrypt the datasets.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 256
+    /// Maximum: 2048
     ///
-    /// Pattern: arn:([a-z\d-]+):iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+
+    /// Pattern: arn:aws.*:kms:.*:[0-9]{12}:key/.*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
+
+
+    /// 
+    /// The domain of a Domain dataset group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<DatasetGroupDomainEnum>,
 
 
     /// 
@@ -42,35 +56,42 @@ pub struct CfnDatasetGroup {
 
 
     /// 
-    /// The domain of a Domain dataset group.
+    /// The ARN of the IAM role that has permissions to create the dataset    group.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to    encrypt the datasets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:aws.*:kms:.*:[0-9]{12}:key/.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DatasetGroupDomainEnum {
+
+    /// ECOMMERCE
+    #[serde(rename = "ECOMMERCE")]
+    Ecommerce,
+
+    /// VIDEO_ON_DEMAND
+    #[serde(rename = "VIDEO_ON_DEMAND")]
+    Videoondemand,
+
+}
+
+impl Default for DatasetGroupDomainEnum {
+    fn default() -> Self {
+        DatasetGroupDomainEnum::Ecommerce
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnDatasetGroup {
     fn type_string() -> &'static str {

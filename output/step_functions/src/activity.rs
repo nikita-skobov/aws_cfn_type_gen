@@ -40,6 +40,8 @@ pub struct CfnActivity {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnActivity {
     fn type_string() -> &'static str {
         "AWS::StepFunctions::Activity"
@@ -57,18 +59,6 @@ pub struct TagsEntry {
 
 
     /// 
-    /// The key for a key-value pair in a tag entry.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for a key-value pair in a tag entry.
     /// 
     /// Required: Yes
@@ -79,4 +69,18 @@ pub struct TagsEntry {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key for a key-value pair in a tag entry.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

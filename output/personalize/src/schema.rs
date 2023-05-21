@@ -10,34 +10,6 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The domain of a schema that you created for a dataset in a Domain dataset group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
-
-
-    /// 
-    /// The schema.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Schema")]
-    pub schema: String,
-
-
-    /// 
     /// The name of the schema.
     /// 
     /// Required: Yes
@@ -54,7 +26,56 @@ pub struct CfnSchema {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// The domain of a schema that you created for a dataset in a Domain dataset group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<SchemaDomainEnum>,
+
+
+    /// 
+    /// The schema.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Schema")]
+    pub schema: String,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SchemaDomainEnum {
+
+    /// ECOMMERCE
+    #[serde(rename = "ECOMMERCE")]
+    Ecommerce,
+
+    /// VIDEO_ON_DEMAND
+    #[serde(rename = "VIDEO_ON_DEMAND")]
+    Videoondemand,
+
+}
+
+impl Default for SchemaDomainEnum {
+    fn default() -> Self {
+        SchemaDomainEnum::Ecommerce
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnSchema {
     fn type_string() -> &'static str {

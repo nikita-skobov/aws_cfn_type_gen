@@ -16,6 +16,66 @@ pub struct CfnPublicTypeVersion {
 
 
     /// 
+    /// The version number to assign to this version of the extension.
+    /// 
+    /// Use the following format, and adhere to semantic versioning when assigning a version number to your  extension:
+    /// 
+    /// MAJOR.MINOR.PATCH
+    /// 
+    /// For more information, see Semantic Versioning 2.0.0.
+    /// 
+    /// If you don't specify a version number, CloudFormation increments the version number by one minor  version release.
+    /// 
+    /// You cannot specify a version number the first time you publish a type. AWS CloudFormation automatically sets the first  version number to be 1.0.0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 5
+    ///
+    /// Pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(.*)$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PublicVersionNumber")]
+    pub public_version_number: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Number (ARN) of the extension.
+    /// 
+    /// Conditional: You must specify Arn, or TypeName and Type.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The type of the extension to test.
+    /// 
+    /// Conditional: You must specify Arn, or TypeName and Type.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HOOK | MODULE | RESOURCE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<PublicTypeVersionTypeEnum>,
+
+
+    /// 
     /// The name of the extension to test.
     /// 
     /// Conditional: You must specify Arn, or TypeName and Type.
@@ -33,22 +93,6 @@ pub struct CfnPublicTypeVersion {
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
-
-
-    /// 
-    /// The type of the extension to test.
-    /// 
-    /// Conditional: You must specify Arn, or TypeName and Type.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HOOK | MODULE | RESOURCE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
 
 
     /// 
@@ -76,51 +120,32 @@ pub struct CfnPublicTypeVersion {
     #[serde(rename = "LogDeliveryBucket")]
     pub log_delivery_bucket: Option<String>,
 
-
-    /// 
-    /// The Amazon Resource Number (ARN) of the extension.
-    /// 
-    /// Conditional: You must specify Arn, or TypeName and Type.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
+}
 
 
-    /// 
-    /// The version number to assign to this version of the extension.
-    /// 
-    /// Use the following format, and adhere to semantic versioning when assigning a version number to your  extension:
-    /// 
-    /// MAJOR.MINOR.PATCH
-    /// 
-    /// For more information, see Semantic Versioning 2.0.0.
-    /// 
-    /// If you don't specify a version number, CloudFormation increments the version number by one minor  version release.
-    /// 
-    /// You cannot specify a version number the first time you publish a type. AWS CloudFormation automatically sets the first  version number to be 1.0.0.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 5
-    ///
-    /// Pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(.*)$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PublicVersionNumber")]
-    pub public_version_number: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PublicTypeVersionTypeEnum {
+
+    /// HOOK
+    #[serde(rename = "HOOK")]
+    Hook,
+
+    /// MODULE
+    #[serde(rename = "MODULE")]
+    Module,
+
+    /// RESOURCE
+    #[serde(rename = "RESOURCE")]
+    Resource,
 
 }
+
+impl Default for PublicTypeVersionTypeEnum {
+    fn default() -> Self {
+        PublicTypeVersionTypeEnum::Hook
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPublicTypeVersion {
     fn type_string() -> &'static str {

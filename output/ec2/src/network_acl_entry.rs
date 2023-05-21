@@ -8,6 +8,18 @@ pub struct CfnNetworkAclEntry {
 
 
     /// 
+    /// Rule number to assign to the entry, such as 100. ACL entries are processed in ascending     order by rule number. Entries can't use the same rule number unless one is an egress rule     and the other is an ingress rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RuleNumber")]
+    pub rule_number: i64,
+
+
+    /// 
     /// The IPv4 CIDR range to allow or deny, in CIDR notation (for example, 172.16.0.0/24).     Requirement is conditional: You must specify the CidrBlock or       Ipv6CidrBlock property.
     /// 
     /// Required: No
@@ -44,6 +56,44 @@ pub struct CfnNetworkAclEntry {
 
 
     /// 
+    /// The IPv6 network range to allow or deny, in CIDR notation. Requirement is conditional:     You must specify the CidrBlock or Ipv6CidrBlock property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6CidrBlock")]
+    pub ipv6_cidr_block: Option<String>,
+
+
+    /// 
+    /// The IP protocol that the rule applies to. You must specify -1 or a protocol number. You     can specify -1 for all protocols.
+    /// 
+    /// NoteIf you specify -1, all ports are opened and the PortRange property is       ignored.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: i64,
+
+
+    /// 
+    /// The range of port numbers for the UDP/TCP protocol. Conditional required if specifying 6     (TCP) or 17 (UDP) for the protocol parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PortRange
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortRange")]
+    pub port_range: Option<PortRange>,
+
+
+    /// 
     /// The Internet Control Message Protocol (ICMP) code and type. Requirement is conditional:     Required if specifying 1 (ICMP) for the protocol parameter.
     /// 
     /// Required: No
@@ -66,59 +116,30 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleAction")]
-    pub rule_action: String,
-
-
-    /// 
-    /// Rule number to assign to the entry, such as 100. ACL entries are processed in ascending     order by rule number. Entries can't use the same rule number unless one is an egress rule     and the other is an ingress rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RuleNumber")]
-    pub rule_number: i64,
-
-
-    /// 
-    /// The IPv6 network range to allow or deny, in CIDR notation. Requirement is conditional:     You must specify the CidrBlock or Ipv6CidrBlock property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6CidrBlock")]
-    pub ipv6_cidr_block: Option<String>,
-
-
-    /// 
-    /// The range of port numbers for the UDP/TCP protocol. Conditional required if specifying 6     (TCP) or 17 (UDP) for the protocol parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PortRange
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortRange")]
-    pub port_range: Option<PortRange>,
-
-
-    /// 
-    /// The IP protocol that the rule applies to. You must specify -1 or a protocol number. You     can specify -1 for all protocols.
-    /// 
-    /// NoteIf you specify -1, all ports are opened and the PortRange property is       ignored.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: i64,
+    pub rule_action: NetworkAclEntryRuleActionEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkAclEntryRuleActionEnum {
+
+    /// allow
+    #[serde(rename = "allow")]
+    Allow,
+
+    /// deny
+    #[serde(rename = "deny")]
+    Deny,
+
+}
+
+impl Default for NetworkAclEntryRuleActionEnum {
+    fn default() -> Self {
+        NetworkAclEntryRuleActionEnum::Allow
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnNetworkAclEntry {
     fn type_string() -> &'static str {
@@ -137,18 +158,6 @@ pub struct PortRange {
 
 
     /// 
-    /// The first port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the     protocol parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "From")]
-    pub from: Option<i64>,
-
-
-    /// 
     /// The last port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the protocol     parameter.
     /// 
     /// Required: No
@@ -159,7 +168,21 @@ pub struct PortRange {
     #[serde(rename = "To")]
     pub to: Option<i64>,
 
+
+    /// 
+    /// The first port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the     protocol parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "From")]
+    pub from: Option<i64>,
+
 }
+
+
 
 
 /// Describes the ICMP type and code.
@@ -191,3 +214,5 @@ pub struct Icmp {
     pub code: Option<i64>,
 
 }
+
+

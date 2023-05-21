@@ -6,32 +6,6 @@ pub struct CfnInput {
 
 
     /// 
-    /// The definition of the input.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: InputDefinition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputDefinition")]
-    pub input_definition: InputDefinition,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the input.
     /// 
     /// Required: No
@@ -62,7 +36,35 @@ pub struct CfnInput {
     #[serde(rename = "InputDescription")]
     pub input_description: Option<String>,
 
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The definition of the input.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: InputDefinition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputDefinition")]
+    pub input_definition: InputDefinition,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnInput {
     fn type_string() -> &'static str {
@@ -72,33 +74,6 @@ impl cfn_resources::CfnResource for CfnInput {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Attribute {
-
-
-    /// 
-    /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
-    /// 
-    /// Syntax: <field-name>.<field-name>...
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^((`[\w\- ]+`)|([\w\-]+))(\.((`[\w- ]+`)|([\w\-]+)))*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonPath")]
-    pub json_path: String,
-
 }
 
 
@@ -137,6 +112,8 @@ pub struct Tag {
 }
 
 
+
+
 /// The definition of the input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InputDefinition {
@@ -156,3 +133,34 @@ pub struct InputDefinition {
     pub attributes: Vec<Attribute>,
 
 }
+
+
+
+
+/// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Attribute {
+
+
+    /// 
+    /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
+    /// 
+    /// Syntax: <field-name>.<field-name>...
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^((`[\w\- ]+`)|([\w\-]+))(\.((`[\w- ]+`)|([\w\-]+)))*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JsonPath")]
+    pub json_path: String,
+
+}
+
+

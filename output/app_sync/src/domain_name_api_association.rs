@@ -30,6 +30,8 @@ pub struct CfnDomainNameApiAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDomainNameApiAssociation {
     fn type_string() -> &'static str {
         "AWS::AppSync::DomainNameApiAssociation"

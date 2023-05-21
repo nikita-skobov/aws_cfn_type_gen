@@ -14,33 +14,17 @@ pub struct CfnStream {
 
 
     /// 
-    /// The name of the stream.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The MediaType of the stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MediaType")]
-    pub media_type: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -62,6 +46,24 @@ pub struct CfnStream {
 
 
     /// 
+    /// The MediaType of the stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MediaType")]
+    pub media_type: Option<String>,
+
+
+    /// 
     /// The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams       uses to encrypt data on the stream.
     /// 
     /// Required: No
@@ -80,20 +82,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// How long the stream retains data, in hours.
     /// 
     /// Required: No
@@ -106,7 +94,21 @@ pub struct CfnStream {
     #[serde(rename = "DataRetentionInHours")]
     pub data_retention_in_hours: Option<i64>,
 
+
+    /// 
+    /// The name of the stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStream {
     fn type_string() -> &'static str {
@@ -131,17 +133,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -151,4 +142,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

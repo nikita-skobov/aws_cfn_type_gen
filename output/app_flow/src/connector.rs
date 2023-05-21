@@ -22,20 +22,6 @@ pub struct CfnConnector {
 
 
     /// 
-    /// The provisioning type used to register the connector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: LAMBDA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectorProvisioningType")]
-    pub connector_provisioning_type: String,
-
-
-    /// 
     /// A description about the connector runtime setting.
     /// 
     /// Required: No
@@ -62,7 +48,38 @@ pub struct CfnConnector {
     #[serde(rename = "ConnectorProvisioningConfig")]
     pub connector_provisioning_config: ConnectorProvisioningConfig,
 
+
+    /// 
+    /// The provisioning type used to register the connector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LAMBDA
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectorProvisioningType")]
+    pub connector_provisioning_type: ConnectorConnectorProvisioningTypeEnum,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConnectorConnectorProvisioningTypeEnum {
+
+    /// LAMBDA
+    #[serde(rename = "LAMBDA")]
+    Lambda,
+
+}
+
+impl Default for ConnectorConnectorProvisioningTypeEnum {
+    fn default() -> Self {
+        ConnectorConnectorProvisioningTypeEnum::Lambda
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnConnector {
     fn type_string() -> &'static str {
@@ -94,6 +111,8 @@ pub struct ConnectorProvisioningConfig {
 }
 
 
+
+
 /// Contains information about the configuration of the lambda which is being registered as    the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LambdaConnectorProvisioningConfig {
@@ -115,3 +134,5 @@ pub struct LambdaConnectorProvisioningConfig {
     pub lambda_arn: String,
 
 }
+
+

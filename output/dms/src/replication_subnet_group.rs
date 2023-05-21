@@ -18,18 +18,6 @@ pub struct CfnReplicationSubnetGroup {
 
 
     /// 
-    /// One or more tags to be assigned to the subnet group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The identifier for the replication subnet group. If you don't specify a name, AWS CloudFormation       generates a unique ID and uses that ID for the identifier.
     /// 
     /// Required: No
@@ -39,6 +27,18 @@ pub struct CfnReplicationSubnetGroup {
     /// Update requires: Replacement
     #[serde(rename = "ReplicationSubnetGroupIdentifier")]
     pub replication_subnet_group_identifier: Option<String>,
+
+
+    /// 
+    /// One or more tags to be assigned to the subnet group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -53,6 +53,8 @@ pub struct CfnReplicationSubnetGroup {
     pub subnet_ids: Vec<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnReplicationSubnetGroup {
     fn type_string() -> &'static str {
@@ -77,17 +79,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -97,4 +88,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

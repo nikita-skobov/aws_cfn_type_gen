@@ -18,18 +18,6 @@ pub struct CfnPlacement {
 
 
     /// 
-    /// The devices to associate with the placement, as defined by a mapping of zero or more key-value pairs wherein the key is a template name and the value is a device ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AssociatedDevices")]
-    pub associated_devices: Option<serde_json::Value>,
-
-
-    /// 
     /// The name of the project containing the placement.
     /// 
     /// Required: Yes
@@ -39,6 +27,18 @@ pub struct CfnPlacement {
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
     pub project_name: String,
+
+
+    /// 
+    /// The devices to associate with the placement, as defined by a mapping of zero or more key-value pairs wherein the key is a template name and the value is a device ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AssociatedDevices")]
+    pub associated_devices: Option<serde_json::Value>,
 
 
     /// 
@@ -53,6 +53,8 @@ pub struct CfnPlacement {
     pub attributes: Option<serde_json::Value>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPlacement {
     fn type_string() -> &'static str {

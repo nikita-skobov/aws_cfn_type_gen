@@ -12,15 +12,15 @@ pub struct CfnTrafficMirrorTarget {
 
 
     /// 
-    /// The ID of the Gateway Load Balancer endpoint.
+    /// The network interface ID that is associated with the target.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "GatewayLoadBalancerEndpointId")]
-    pub gateway_load_balancer_endpoint_id: Option<String>,
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: Option<String>,
 
 
     /// 
@@ -36,6 +36,18 @@ pub struct CfnTrafficMirrorTarget {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkLoadBalancerArn")]
+    pub network_load_balancer_arn: Option<String>,
+
+
+    /// 
     /// The tags to assign to the Traffic Mirror target.
     /// 
     /// Required: No
@@ -48,29 +60,19 @@ pub struct CfnTrafficMirrorTarget {
 
 
     /// 
-    /// The network interface ID that is associated with the target.
+    /// The ID of the Gateway Load Balancer endpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkLoadBalancerArn")]
-    pub network_load_balancer_arn: Option<String>,
+    #[serde(rename = "GatewayLoadBalancerEndpointId")]
+    pub gateway_load_balancer_endpoint_id: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTrafficMirrorTarget {
     fn type_string() -> &'static str {
@@ -116,3 +118,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

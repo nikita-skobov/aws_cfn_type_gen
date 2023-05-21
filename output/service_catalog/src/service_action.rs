@@ -6,15 +6,17 @@ pub struct CfnServiceAction {
 
 
     /// 
-    /// A map that defines the self-service action.
+    /// The self-service action description.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of DefinitionParameter
+    /// Type: String
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Definition")]
-    pub definition: Vec<DefinitionParameter>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -36,17 +38,17 @@ pub struct CfnServiceAction {
 
 
     /// 
-    /// The self-service action description.
+    /// The self-service action definition type. For example, SSM_AUTOMATION.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 1024
+    /// Allowed values: SSM_AUTOMATION
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "DefinitionType")]
+    pub definition_type: ServiceActionDefinitionTypeEnum,
 
 
     /// The language code.
@@ -63,19 +65,34 @@ pub struct CfnServiceAction {
 
 
     /// 
-    /// The self-service action definition type. For example, SSM_AUTOMATION.
+    /// A map that defines the self-service action.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: SSM_AUTOMATION
+    /// Type: List of DefinitionParameter
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefinitionType")]
-    pub definition_type: String,
+    #[serde(rename = "Definition")]
+    pub definition: Vec<DefinitionParameter>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ServiceActionDefinitionTypeEnum {
+
+    /// SSM_AUTOMATION
+    #[serde(rename = "SSM_AUTOMATION")]
+    Ssmautomation,
+
+}
+
+impl Default for ServiceActionDefinitionTypeEnum {
+    fn default() -> Self {
+        ServiceActionDefinitionTypeEnum::Ssmautomation
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnServiceAction {
     fn type_string() -> &'static str {
@@ -94,18 +111,6 @@ pub struct DefinitionParameter {
 
 
     /// 
-    /// The value of the parameter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The parameter key.
     /// 
     /// Required: Yes
@@ -116,4 +121,18 @@ pub struct DefinitionParameter {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value of the parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

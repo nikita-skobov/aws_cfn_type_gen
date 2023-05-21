@@ -6,6 +6,18 @@ pub struct CfnXssMatchSet {
 
 
     /// 
+    /// Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of XssMatchTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "XssMatchTuples")]
+    pub xss_match_tuples: Vec<XssMatchTuple>,
+
+
+    /// 
     /// The name, if any, of the XssMatchSet.
     /// 
     /// Required: Yes
@@ -22,19 +34,9 @@ pub struct CfnXssMatchSet {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of XssMatchTuple
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "XssMatchTuples")]
-    pub xss_match_tuples: Vec<XssMatchTuple>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnXssMatchSet {
     fn type_string() -> &'static str {
@@ -65,7 +67,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: FieldToMatchTypeEnum,
 
 
     /// 
@@ -90,6 +92,47 @@ pub struct FieldToMatch {
     pub data: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FieldToMatchTypeEnum {
+
+    /// ALL_QUERY_ARGS
+    #[serde(rename = "ALL_QUERY_ARGS")]
+    Allqueryargs,
+
+    /// BODY
+    #[serde(rename = "BODY")]
+    Body,
+
+    /// HEADER
+    #[serde(rename = "HEADER")]
+    Header,
+
+    /// METHOD
+    #[serde(rename = "METHOD")]
+    Method,
+
+    /// QUERY_STRING
+    #[serde(rename = "QUERY_STRING")]
+    Querystring,
+
+    /// SINGLE_QUERY_ARG
+    #[serde(rename = "SINGLE_QUERY_ARG")]
+    Singlequeryarg,
+
+    /// URI
+    #[serde(rename = "URI")]
+    Uri,
+
+}
+
+impl Default for FieldToMatchTypeEnum {
+    fn default() -> Self {
+        FieldToMatchTypeEnum::Allqueryargs
+    }
+}
+
 
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.
@@ -142,7 +185,7 @@ pub struct XssMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
-    pub text_transformation: String,
+    pub text_transformation: XssMatchTupleTextTransformationEnum,
 
 
     /// 
@@ -157,3 +200,40 @@ pub struct XssMatchTuple {
     pub field_to_match: FieldToMatch,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum XssMatchTupleTextTransformationEnum {
+
+    /// CMD_LINE
+    #[serde(rename = "CMD_LINE")]
+    Cmdline,
+
+    /// COMPRESS_WHITE_SPACE
+    #[serde(rename = "COMPRESS_WHITE_SPACE")]
+    Compresswhitespace,
+
+    /// HTML_ENTITY_DECODE
+    #[serde(rename = "HTML_ENTITY_DECODE")]
+    Htmlentitydecode,
+
+    /// LOWERCASE
+    #[serde(rename = "LOWERCASE")]
+    Lowercase,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// URL_DECODE
+    #[serde(rename = "URL_DECODE")]
+    Urldecode,
+
+}
+
+impl Default for XssMatchTupleTextTransformationEnum {
+    fn default() -> Self {
+        XssMatchTupleTextTransformationEnum::Cmdline
+    }
+}
+

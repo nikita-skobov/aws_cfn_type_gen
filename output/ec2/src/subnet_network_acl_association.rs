@@ -32,6 +32,8 @@ pub struct CfnSubnetNetworkAclAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSubnetNetworkAclAssociation {
     fn type_string() -> &'static str {
         "AWS::EC2::SubnetNetworkAclAssociation"

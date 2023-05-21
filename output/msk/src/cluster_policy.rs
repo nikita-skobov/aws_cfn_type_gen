@@ -30,6 +30,8 @@ pub struct CfnClusterPolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnClusterPolicy {
     fn type_string() -> &'static str {
         "AWS::MSK::ClusterPolicy"

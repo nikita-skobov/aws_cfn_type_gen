@@ -10,6 +10,30 @@ pub struct CfnDBClusterParameterGroup {
 
 
     /// 
+    /// The tags to be assigned to the cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Provides a list of parameters for the cluster parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: serde_json::Value,
+
+
+    /// 
     /// The name of the DB cluster parameter group.
     /// 
     /// Constraints:
@@ -40,18 +64,6 @@ pub struct CfnDBClusterParameterGroup {
 
 
     /// 
-    /// Provides a list of parameters for the cluster parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: serde_json::Value,
-
-
-    /// 
     /// The cluster parameter group family name.
     /// 
     /// Required: Yes
@@ -62,19 +74,9 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Family")]
     pub family: String,
 
-
-    /// 
-    /// The tags to be assigned to the cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
     fn type_string() -> &'static str {
@@ -120,3 +122,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

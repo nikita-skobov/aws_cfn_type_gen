@@ -6,18 +6,6 @@ pub struct CfnRequestValidator {
 
 
     /// 
-    /// A Boolean flag to indicate whether to validate request parameters (true) or not (false).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ValidateRequestParameters")]
-    pub validate_request_parameters: Option<bool>,
-
-
-    /// 
     /// The name of this RequestValidator
     /// 
     /// Required: No
@@ -30,15 +18,15 @@ pub struct CfnRequestValidator {
 
 
     /// 
-    /// The string identifier of the associated RestApi.
+    /// A Boolean flag to indicate whether to validate request parameters (true) or not (false).
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "ValidateRequestParameters")]
+    pub validate_request_parameters: Option<bool>,
 
 
     /// 
@@ -52,7 +40,21 @@ pub struct CfnRequestValidator {
     #[serde(rename = "ValidateRequestBody")]
     pub validate_request_body: Option<bool>,
 
+
+    /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRequestValidator {
     fn type_string() -> &'static str {

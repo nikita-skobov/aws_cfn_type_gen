@@ -5,18 +5,6 @@
 pub struct CfnInsightRule {
 
 
-    /// 
-    /// The name of the rule.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RuleName")]
-    pub rule_name: String,
-
-
     /// The definition of the rule, as a JSON object.     For details about the syntax, see       Contributor Insights Rule Syntax in the Amazon CloudWatch User Guide.
     ///
     /// Required: Yes
@@ -55,7 +43,21 @@ pub struct CfnInsightRule {
     #[serde(rename = "Tags")]
     pub tags: Option<Tags>,
 
+
+    /// 
+    /// The name of the rule.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RuleName")]
+    pub rule_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnInsightRule {
     fn type_string() -> &'static str {
@@ -66,6 +68,19 @@ impl cfn_resources::CfnResource for CfnInsightRule {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A list of key-value pairs to associate with the Contributor Insights rule. You can     associate as many as 50 tags with a rule.
+///
+/// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
+///
+/// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tags {
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -103,12 +118,3 @@ pub struct Tag {
 }
 
 
-/// A list of key-value pairs to associate with the Contributor Insights rule. You can     associate as many as 50 tags with a rule.
-///
-/// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
-///
-/// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tags {
-
-}

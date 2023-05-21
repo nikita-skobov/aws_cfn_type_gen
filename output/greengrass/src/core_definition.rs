@@ -8,6 +8,18 @@ pub struct CfnCoreDefinition {
 
 
     /// 
+    /// The name of the core definition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The core definition version to include when the core definition is created.          Currently, a core definition version can contain only one          core.
     /// 
     /// NoteTo associate a core definition version after the core definition is created, 				   create an AWS::Greengrass::CoreDefinitionVersion 				   resource and specify the ID of this core definition.
@@ -36,19 +48,9 @@ pub struct CfnCoreDefinition {
     #[serde(rename = "Tags")]
     pub tags: Option<serde_json::Value>,
 
-
-    /// 
-    /// The name of the core definition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCoreDefinition {
     fn type_string() -> &'static str {
@@ -82,11 +84,37 @@ pub struct CoreDefinitionVersion {
 }
 
 
+
+
 /// A core is an AWS IoT device that runs the AWS IoT Greengrass core software 		and manages local processes for a Greengrass group. For more information, see    What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the CoreDefinitionVersion property type contains a list       of Core property types. Currently, the list can contain only one core.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Core {
+
+
+    /// 
+    /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SyncShadow")]
+    pub sync_shadow: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: String,
 
 
     /// 
@@ -112,28 +140,6 @@ pub struct Core {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
-
-
-    /// 
-    /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SyncShadow")]
-    pub sync_shadow: Option<bool>,
-
 }
+
+

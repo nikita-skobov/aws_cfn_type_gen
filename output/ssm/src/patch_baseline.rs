@@ -8,6 +8,20 @@ pub struct CfnPatchBaseline {
 
 
     /// 
+    /// Information about the patches to use to update the managed nodes, including target operating  systems and source repositories. Applies to Linux managed nodes only.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PatchSource
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sources")]
+    pub sources: Option<Vec<PatchSource>>,
+
+
+    /// 
     /// A set of rules used to include patches in the baseline.
     /// 
     /// Required: No
@@ -20,19 +34,33 @@ pub struct CfnPatchBaseline {
 
 
     /// 
-    /// A description of the patch baseline.
+    /// A list of explicitly rejected patches for the baseline.
+    /// 
+    /// For information about accepted formats for lists of approved patches and rejected patches,             see About             package name formats for approved and rejected patch lists in the         AWS Systems Manager User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RejectedPatches")]
+    pub rejected_patches: Option<Vec<String>>,
+
+
+    /// 
+    /// Defines the operating system the patch baseline applies to. The default value is   WINDOWS.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Allowed values: AMAZON_LINUX | AMAZON_LINUX_2 | AMAZON_LINUX_2022 | AMAZON_LINUX_2023 | CENTOS | DEBIAN | MACOS | ORACLE_LINUX | RASPBIAN | REDHAT_ENTERPRISE_LINUX | ROCKY_LINUX | SUSE | UBUNTU | WINDOWS
     ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "OperatingSystem")]
+    pub operating_system: Option<PatchBaselineOperatingSystemEnum>,
 
 
     /// 
@@ -54,6 +82,24 @@ pub struct CfnPatchBaseline {
 
 
     /// 
+    /// The name of the patch baseline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// Optional metadata that you assign to a resource. Tags enable you to categorize a resource    in different ways, such as by purpose, owner, or environment. For example, you might want to    tag a patch baseline to identify the severity level of patches it specifies and the operating    system family it applies to.
     /// 
     /// Required: No
@@ -65,48 +111,6 @@ pub struct CfnPatchBaseline {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Information about the patches to use to update the managed nodes, including target operating  systems and source repositories. Applies to Linux managed nodes only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PatchSource
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sources")]
-    pub sources: Option<Vec<PatchSource>>,
-
-
-    /// 
-    /// A list of explicitly rejected patches for the baseline.
-    /// 
-    /// For information about accepted formats for lists of approved patches and rejected patches,             see About             package name formats for approved and rejected patch lists in the         AWS Systems Manager User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RejectedPatches")]
-    pub rejected_patches: Option<Vec<String>>,
-
-
-    /// 
-    /// Indicates whether the list of approved patches includes non-security updates that should be  applied to the managed nodes. The default value is false. Applies to Linux managed  nodes only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApprovedPatchesEnableNonSecurity")]
-    pub approved_patches_enable_non_security: Option<bool>,
 
 
     /// 
@@ -126,35 +130,19 @@ pub struct CfnPatchBaseline {
 
 
     /// 
-    /// The name of the patch baseline.
+    /// The action for Patch Manager to take on patches included in the   RejectedPackages list.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Defines the operating system the patch baseline applies to. The default value is   WINDOWS.
+    /// ALLOW_AS_DEPENDENCY          : A package in the    Rejected patches list is installed only if it is a dependency of another package.   It is considered compliant with the patch baseline, and its status is reported as    InstalledOther. This is the default action if no option is specified.                                   BLOCK          : Packages in the    RejectedPatches list, and packages that include them as dependencies, aren't   installed under any circumstances. If a package was installed before it was added to the   Rejected patches list, it is considered non-compliant with the patch baseline, and its status   is reported as InstalledRejected.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: AMAZON_LINUX | AMAZON_LINUX_2 | AMAZON_LINUX_2022 | AMAZON_LINUX_2023 | CENTOS | DEBIAN | MACOS | ORACLE_LINUX | RASPBIAN | REDHAT_ENTERPRISE_LINUX | ROCKY_LINUX | SUSE | UBUNTU | WINDOWS
+    /// Allowed values: ALLOW_AS_DEPENDENCY | BLOCK
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "OperatingSystem")]
-    pub operating_system: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "RejectedPatchesAction")]
+    pub rejected_patches_action: Option<PatchBaselineRejectedPatchesActionEnum>,
 
 
     /// 
@@ -168,7 +156,19 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatchesComplianceLevel")]
-    pub approved_patches_compliance_level: Option<String>,
+    pub approved_patches_compliance_level: Option<PatchBaselineApprovedPatchesComplianceLevelEnum>,
+
+
+    /// 
+    /// Indicates whether the list of approved patches includes non-security updates that should be  applied to the managed nodes. The default value is false. Applies to Linux managed  nodes only.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApprovedPatchesEnableNonSecurity")]
+    pub approved_patches_enable_non_security: Option<bool>,
 
 
     /// 
@@ -184,21 +184,144 @@ pub struct CfnPatchBaseline {
 
 
     /// 
-    /// The action for Patch Manager to take on patches included in the   RejectedPackages list.
-    /// 
-    /// ALLOW_AS_DEPENDENCY          : A package in the    Rejected patches list is installed only if it is a dependency of another package.   It is considered compliant with the patch baseline, and its status is reported as    InstalledOther. This is the default action if no option is specified.                                   BLOCK          : Packages in the    RejectedPatches list, and packages that include them as dependencies, aren't   installed under any circumstances. If a package was installed before it was added to the   Rejected patches list, it is considered non-compliant with the patch baseline, and its status   is reported as InstalledRejected.
+    /// A description of the patch baseline.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ALLOW_AS_DEPENDENCY | BLOCK
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RejectedPatchesAction")]
-    pub rejected_patches_action: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PatchBaselineOperatingSystemEnum {
+
+    /// AMAZON_LINUX
+    #[serde(rename = "AMAZON_LINUX")]
+    Amazonlinux,
+
+    /// AMAZON_LINUX_2
+    #[serde(rename = "AMAZON_LINUX_2")]
+    Amazonlinux2,
+
+    /// AMAZON_LINUX_2022
+    #[serde(rename = "AMAZON_LINUX_2022")]
+    Amazonlinux2022,
+
+    /// AMAZON_LINUX_2023
+    #[serde(rename = "AMAZON_LINUX_2023")]
+    Amazonlinux2023,
+
+    /// CENTOS
+    #[serde(rename = "CENTOS")]
+    Centos,
+
+    /// DEBIAN
+    #[serde(rename = "DEBIAN")]
+    Debian,
+
+    /// MACOS
+    #[serde(rename = "MACOS")]
+    Macos,
+
+    /// ORACLE_LINUX
+    #[serde(rename = "ORACLE_LINUX")]
+    Oraclelinux,
+
+    /// RASPBIAN
+    #[serde(rename = "RASPBIAN")]
+    Raspbian,
+
+    /// REDHAT_ENTERPRISE_LINUX
+    #[serde(rename = "REDHAT_ENTERPRISE_LINUX")]
+    Redhatenterpriselinux,
+
+    /// ROCKY_LINUX
+    #[serde(rename = "ROCKY_LINUX")]
+    Rockylinux,
+
+    /// SUSE
+    #[serde(rename = "SUSE")]
+    Suse,
+
+    /// UBUNTU
+    #[serde(rename = "UBUNTU")]
+    Ubuntu,
+
+    /// WINDOWS
+    #[serde(rename = "WINDOWS")]
+    Windows,
+
+}
+
+impl Default for PatchBaselineOperatingSystemEnum {
+    fn default() -> Self {
+        PatchBaselineOperatingSystemEnum::Amazonlinux
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PatchBaselineRejectedPatchesActionEnum {
+
+    /// ALLOW_AS_DEPENDENCY
+    #[serde(rename = "ALLOW_AS_DEPENDENCY")]
+    Allowasdependency,
+
+    /// BLOCK
+    #[serde(rename = "BLOCK")]
+    Block,
+
+}
+
+impl Default for PatchBaselineRejectedPatchesActionEnum {
+    fn default() -> Self {
+        PatchBaselineRejectedPatchesActionEnum::Allowasdependency
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PatchBaselineApprovedPatchesComplianceLevelEnum {
+
+    /// CRITICAL
+    #[serde(rename = "CRITICAL")]
+    Critical,
+
+    /// HIGH
+    #[serde(rename = "HIGH")]
+    High,
+
+    /// INFORMATIONAL
+    #[serde(rename = "INFORMATIONAL")]
+    Informational,
+
+    /// LOW
+    #[serde(rename = "LOW")]
+    Low,
+
+    /// MEDIUM
+    #[serde(rename = "MEDIUM")]
+    Medium,
+
+    /// UNSPECIFIED
+    #[serde(rename = "UNSPECIFIED")]
+    Unspecified,
+
+}
+
+impl Default for PatchBaselineApprovedPatchesComplianceLevelEnum {
+    fn default() -> Self {
+        PatchBaselineApprovedPatchesComplianceLevelEnum::Critical
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnPatchBaseline {
     fn type_string() -> &'static str {
@@ -208,64 +331,6 @@ impl cfn_resources::CfnResource for CfnPatchBaseline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// The PatchFilterGroup property type specifies a set of patch filters for an    AWS Systems Manager patch baseline, typically used for approval rules for a Systems Manager    patch baseline.
-///
-/// PatchFilterGroup is the property type for the GlobalFilters property    of the AWS::SSM::PatchBaseline resource and the PatchFilterGroup property of    the Rule property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PatchFilterGroup {
-
-
-    /// 
-    /// The set of patch filters that make up the group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PatchFilter
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PatchFilters")]
-    pub patch_filters: Option<Vec<PatchFilter>>,
-
 }
 
 
@@ -292,6 +357,45 @@ pub struct RuleGroup {
 }
 
 
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+
+
 /// The Rule property type specifies an approval rule for a Systems Manager patch    baseline.
 ///
 /// The PatchRules property of the RuleGroup property type contains a list of Rule property types.
@@ -310,7 +414,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceLevel")]
-    pub compliance_level: Option<String>,
+    pub compliance_level: Option<RuleComplianceLevelEnum>,
 
 
     /// 
@@ -329,6 +433,18 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "ApproveUntilDate")]
     pub approve_until_date: Option<PatchStringDate>,
+
+
+    /// 
+    /// The patch filter group that defines the criteria for the rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PatchFilterGroup
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PatchFilterGroup")]
+    pub patch_filter_group: Option<PatchFilterGroup>,
 
 
     /// 
@@ -362,26 +478,44 @@ pub struct Rule {
     #[serde(rename = "ApproveAfterDays")]
     pub approve_after_days: Option<i64>,
 
-
-    /// 
-    /// The patch filter group that defines the criteria for the rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PatchFilterGroup
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PatchFilterGroup")]
-    pub patch_filter_group: Option<PatchFilterGroup>,
-
 }
 
 
-/// The date for ApproveUntilDate, as a String in the format     YYYY-MM-DD. For example, 2020-12-31.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PatchStringDate {
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RuleComplianceLevelEnum {
+
+    /// CRITICAL
+    #[serde(rename = "CRITICAL")]
+    Critical,
+
+    /// HIGH
+    #[serde(rename = "HIGH")]
+    High,
+
+    /// INFORMATIONAL
+    #[serde(rename = "INFORMATIONAL")]
+    Informational,
+
+    /// LOW
+    #[serde(rename = "LOW")]
+    Low,
+
+    /// MEDIUM
+    #[serde(rename = "MEDIUM")]
+    Medium,
+
+    /// UNSPECIFIED
+    #[serde(rename = "UNSPECIFIED")]
+    Unspecified,
 
 }
+
+impl Default for RuleComplianceLevelEnum {
+    fn default() -> Self {
+        RuleComplianceLevelEnum::Critical
+    }
+}
+
 
 
 /// PatchSource is the property type for the Sources resource of the     AWS::SSM::PatchBaseline resource.
@@ -389,20 +523,6 @@ pub struct PatchStringDate {
 /// The AWS CloudFormation AWS::SSM::PatchSource resource is used to provide    information about the patches to use to update target instances, including target operating    systems and source repository. Applies to Linux instances only.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PatchSource {
-
-
-    /// 
-    /// The specific operating system versions a patch repository applies to, such as    "Ubuntu16.04", "AmazonLinux2016.09", "RedhatEnterpriseLinux7.2" or "Suse12.7". For lists of    supported product values, see PatchFilter in the     AWS Systems Manager API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Products")]
-    pub products: Option<Vec<String>>,
 
 
     /// 
@@ -432,6 +552,20 @@ pub struct PatchSource {
 
 
     /// 
+    /// The specific operating system versions a patch repository applies to, such as    "Ubuntu16.04", "AmazonLinux2016.09", "RedhatEnterpriseLinux7.2" or "Suse12.7". For lists of    supported product values, see PatchFilter in the     AWS Systems Manager API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Products")]
+    pub products: Option<Vec<String>>,
+
+
+    /// 
     /// The name specified to identify the patch source.
     /// 
     /// Required: No
@@ -445,6 +579,17 @@ pub struct PatchSource {
     pub name: Option<String>,
 
 }
+
+
+
+
+/// The date for ApproveUntilDate, as a String in the format     YYYY-MM-DD. For example, 2020-12-31.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PatchStringDate {
+
+}
+
+
 
 
 /// The PatchFilter property type defines a patch filter for an AWS Systems Manager patch baseline.
@@ -469,7 +614,7 @@ pub struct PatchFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: Option<String>,
+    pub key: Option<PatchFilterKeyEnum>,
 
 
     /// 
@@ -488,3 +633,117 @@ pub struct PatchFilter {
     pub values: Option<Vec<String>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PatchFilterKeyEnum {
+
+    /// ADVISORY_ID
+    #[serde(rename = "ADVISORY_ID")]
+    Advisoryid,
+
+    /// ARCH
+    #[serde(rename = "ARCH")]
+    Arch,
+
+    /// BUGZILLA_ID
+    #[serde(rename = "BUGZILLA_ID")]
+    Bugzillaid,
+
+    /// CLASSIFICATION
+    #[serde(rename = "CLASSIFICATION")]
+    Classification,
+
+    /// CVE_ID
+    #[serde(rename = "CVE_ID")]
+    Cveid,
+
+    /// EPOCH
+    #[serde(rename = "EPOCH")]
+    Epoch,
+
+    /// MSRC_SEVERITY
+    #[serde(rename = "MSRC_SEVERITY")]
+    Msrcseverity,
+
+    /// NAME
+    #[serde(rename = "NAME")]
+    Name,
+
+    /// PATCH_ID
+    #[serde(rename = "PATCH_ID")]
+    Patchid,
+
+    /// PATCH_SET
+    #[serde(rename = "PATCH_SET")]
+    Patchset,
+
+    /// PRIORITY
+    #[serde(rename = "PRIORITY")]
+    Priority,
+
+    /// PRODUCT
+    #[serde(rename = "PRODUCT")]
+    Product,
+
+    /// PRODUCT_FAMILY
+    #[serde(rename = "PRODUCT_FAMILY")]
+    Productfamily,
+
+    /// RELEASE
+    #[serde(rename = "RELEASE")]
+    Release,
+
+    /// REPOSITORY
+    #[serde(rename = "REPOSITORY")]
+    Repository,
+
+    /// SECTION
+    #[serde(rename = "SECTION")]
+    Section,
+
+    /// SECURITY
+    #[serde(rename = "SECURITY")]
+    Security,
+
+    /// SEVERITY
+    #[serde(rename = "SEVERITY")]
+    Severity,
+
+    /// VERSION
+    #[serde(rename = "VERSION")]
+    Version,
+
+}
+
+impl Default for PatchFilterKeyEnum {
+    fn default() -> Self {
+        PatchFilterKeyEnum::Advisoryid
+    }
+}
+
+
+
+/// The PatchFilterGroup property type specifies a set of patch filters for an    AWS Systems Manager patch baseline, typically used for approval rules for a Systems Manager    patch baseline.
+///
+/// PatchFilterGroup is the property type for the GlobalFilters property    of the AWS::SSM::PatchBaseline resource and the PatchFilterGroup property of    the Rule property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PatchFilterGroup {
+
+
+    /// 
+    /// The set of patch filters that make up the group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PatchFilter
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PatchFilters")]
+    pub patch_filters: Option<Vec<PatchFilter>>,
+
+}
+
+

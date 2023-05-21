@@ -14,18 +14,6 @@ pub struct CfnOIDCProvider {
 
 
     /// 
-    /// The URL that the IAM OIDC provider resource object is associated with.     For more information, see CreateOpenIDConnectProvider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Url")]
-    pub url: Option<String>,
-
-
-    /// 
     /// A list of tags that are attached to the specified IAM OIDC provider.     The returned list of tags is sorted by tag key. For more information about tagging, see       Tagging IAM resources in the IAM User       Guide.
     /// 
     /// Required: No
@@ -35,18 +23,6 @@ pub struct CfnOIDCProvider {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThumbprintList")]
-    pub thumbprint_list: Vec<String>,
 
 
     /// 
@@ -60,7 +36,33 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "ClientIdList")]
     pub client_id_list: Option<Vec<String>>,
 
+
+    /// 
+    /// The URL that the IAM OIDC provider resource object is associated with.     For more information, see CreateOpenIDConnectProvider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Url")]
+    pub url: Option<String>,
+
+
+    /// 
+    /// A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThumbprintList")]
+    pub thumbprint_list: Vec<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnOIDCProvider {
     fn type_string() -> &'static str {
@@ -106,3 +108,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

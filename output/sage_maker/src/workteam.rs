@@ -8,45 +8,6 @@ pub struct CfnWorkteam {
 
 
     /// 
-    /// A list of MemberDefinition objects that contains objects that identify       the workers that make up the work team.
-    /// 
-    /// Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP).       For private workforces created using Amazon Cognito use       CognitoMemberDefinition. For workforces created using your own OIDC identity       provider (IdP) use OidcMemberDefinition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MemberDefinition
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MemberDefinitions")]
-    pub member_definitions: Option<Vec<MemberDefinition>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkforceName")]
-    pub workforce_name: Option<String>,
-
-
-    /// 
-    /// Configures SNS notifications of available or expiring work items for work       teams.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotificationConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationConfiguration")]
-    pub notification_configuration: Option<NotificationConfiguration>,
-
-
-    /// 
     /// A description of the work team.
     /// 
     /// Required: No
@@ -82,6 +43,33 @@ pub struct CfnWorkteam {
     pub workteam_name: Option<String>,
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkforceName")]
+    pub workforce_name: Option<String>,
+
+
+    /// 
+    /// A list of MemberDefinition objects that contains objects that identify       the workers that make up the work team.
+    /// 
+    /// Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP).       For private workforces created using Amazon Cognito use       CognitoMemberDefinition. For workforces created using your own OIDC identity       provider (IdP) use OidcMemberDefinition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MemberDefinition
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MemberDefinitions")]
+    pub member_definitions: Option<Vec<MemberDefinition>>,
+
+
     /// 
     /// An array of key-value pairs.
     /// 
@@ -93,7 +81,21 @@ pub struct CfnWorkteam {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// Configures SNS notifications of available or expiring work items for work       teams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotificationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationConfiguration")]
+    pub notification_configuration: Option<NotificationConfiguration>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWorkteam {
     fn type_string() -> &'static str {
@@ -124,47 +126,29 @@ pub struct OidcMemberDefinition {
 }
 
 
-/// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
+
+
+/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CognitoMemberDefinition {
+pub struct NotificationConfiguration {
 
 
     /// 
-    /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
+    /// The ARN for the Amazon SNS topic to which notifications should be published.
     /// 
     /// Required: Yes
     ///
     /// Type: String
+    ///
+    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CognitoClientId")]
-    pub cognito_client_id: String,
-
-
-    /// 
-    /// An identifier for a user group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CognitoUserGroup")]
-    pub cognito_user_group: String,
-
-
-    /// 
-    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CognitoUserPool")]
-    pub cognito_user_pool: String,
+    #[serde(rename = "NotificationTopicArn")]
+    pub notification_topic_arn: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -202,6 +186,8 @@ pub struct Tag {
 }
 
 
+
+
 /// Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MemberDefinition {
@@ -233,22 +219,48 @@ pub struct MemberDefinition {
 }
 
 
-/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
+
+
+/// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotificationConfiguration {
+pub struct CognitoMemberDefinition {
 
 
     /// 
-    /// The ARN for the Amazon SNS topic to which notifications should be published.
+    /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
+    /// Update requires: No interruption
+    #[serde(rename = "CognitoClientId")]
+    pub cognito_client_id: String,
+
+
+    /// 
+    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CognitoUserPool")]
+    pub cognito_user_pool: String,
+
+
+    /// 
+    /// An identifier for a user group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: String,
+    #[serde(rename = "CognitoUserGroup")]
+    pub cognito_user_group: String,
 
 }
+
+

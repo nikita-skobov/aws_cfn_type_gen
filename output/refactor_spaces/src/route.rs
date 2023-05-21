@@ -27,18 +27,6 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The route type of the route.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RouteType")]
-    pub route_type: String,
-
-
-    /// 
     /// The unique identifier of the application.
     /// 
     /// Required: Yes
@@ -48,18 +36,6 @@ pub struct CfnRoute {
     /// Update requires: Replacement
     #[serde(rename = "ApplicationIdentifier")]
     pub application_identifier: String,
-
-
-    /// 
-    /// The tags assigned to the route.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -75,15 +51,15 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The configuration for the URI path route type.
+    /// The tags assigned to the route.
     /// 
     /// Required: No
     ///
-    /// Type: UriPathRouteInput
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UriPathRoute")]
-    pub uri_path_route: Option<UriPathRouteInput>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -97,7 +73,33 @@ pub struct CfnRoute {
     #[serde(rename = "EnvironmentIdentifier")]
     pub environment_identifier: String,
 
+
+    /// 
+    /// The route type of the route.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RouteType")]
+    pub route_type: String,
+
+
+    /// 
+    /// The configuration for the URI path route type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: UriPathRouteInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UriPathRoute")]
+    pub uri_path_route: Option<UriPathRouteInput>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRoute {
     fn type_string() -> &'static str {
@@ -108,6 +110,43 @@ impl cfn_resources::CfnResource for CfnRoute {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
 
 
 /// The configuration for the URI path route type.
@@ -140,18 +179,6 @@ pub struct UriPathRouteInput {
 
 
     /// 
-    /// Indicates whether to match all subpaths of the given source path. If this value is     false, requests must match the source path exactly before they are forwarded to    this route's service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IncludeChildPaths")]
-    pub include_child_paths: Option<bool>,
-
-
-    /// 
     /// The path to use to match traffic. Paths must start with / and are relative to    the base of the application.
     /// 
     /// Required: No
@@ -162,7 +189,21 @@ pub struct UriPathRouteInput {
     #[serde(rename = "SourcePath")]
     pub source_path: Option<String>,
 
+
+    /// 
+    /// Indicates whether to match all subpaths of the given source path. If this value is     false, requests must match the source path exactly before they are forwarded to    this route's service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IncludeChildPaths")]
+    pub include_child_paths: Option<bool>,
+
 }
+
+
 
 
 /// The configuration for the default route type.
@@ -184,36 +225,3 @@ pub struct DefaultRouteInput {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}

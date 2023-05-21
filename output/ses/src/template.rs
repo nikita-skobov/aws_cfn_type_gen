@@ -18,6 +18,8 @@ pub struct CfnTemplate {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnTemplate {
     fn type_string() -> &'static str {
         "AWS::SES::Template"
@@ -35,18 +37,6 @@ pub struct Template {
 
 
     /// 
-    /// The subject line of the email.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubjectPart")]
-    pub subject_part: String,
-
-
-    /// 
     /// The name of the template.
     /// 
     /// Required: No
@@ -56,18 +46,6 @@ pub struct Template {
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
     pub template_name: Option<String>,
-
-
-    /// 
-    /// The HTML body of the email.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HtmlPart")]
-    pub html_part: Option<String>,
 
 
     /// 
@@ -81,4 +59,30 @@ pub struct Template {
     #[serde(rename = "TextPart")]
     pub text_part: Option<String>,
 
+
+    /// 
+    /// The subject line of the email.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubjectPart")]
+    pub subject_part: String,
+
+
+    /// 
+    /// The HTML body of the email.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HtmlPart")]
+    pub html_part: Option<String>,
+
 }
+
+

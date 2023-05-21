@@ -6,6 +6,30 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
+    /// The description for the subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBSubnetGroupDescription")]
+    pub dbsubnet_group_description: String,
+
+
+    /// 
+    /// The Amazon EC2 subnet IDs for the subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
+
+
+    /// 
     /// The tags to be assigned to the subnet group.
     /// 
     /// Required: No
@@ -32,31 +56,9 @@ pub struct CfnDBSubnetGroup {
     #[serde(rename = "DBSubnetGroupName")]
     pub dbsubnet_group_name: Option<String>,
 
-
-    /// 
-    /// The description for the subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBSubnetGroupDescription")]
-    pub dbsubnet_group_description: String,
-
-
-    /// 
-    /// The Amazon EC2 subnet IDs for the subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDBSubnetGroup {
     fn type_string() -> &'static str {
@@ -102,3 +104,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

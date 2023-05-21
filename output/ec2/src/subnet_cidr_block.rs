@@ -6,18 +6,6 @@ pub struct CfnSubnetCidrBlock {
 
 
     /// 
-    /// The ID of the subnet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
     /// The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a       /64 prefix length.
     /// 
     /// This parameter is required for an IPv6 only subnet.
@@ -30,7 +18,21 @@ pub struct CfnSubnetCidrBlock {
     #[serde(rename = "Ipv6CidrBlock")]
     pub ipv6_cidr_block: String,
 
+
+    /// 
+    /// The ID of the subnet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSubnetCidrBlock {
     fn type_string() -> &'static str {

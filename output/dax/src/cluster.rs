@@ -6,56 +6,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The description of the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The name of the subnet group to be used for the replication group.
-    /// 
-    /// ImportantDAX clusters can only run in an Amazon VPC environment. All of the subnets         that you specify in a subnet group must exist in the same VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: Option<String>,
-
-
-    /// 
-    /// The parameter group to be associated with the DAX cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: Option<String>,
-
-
-    /// 
-    /// The node type for the nodes in the cluster. (All nodes in a DAX cluster are of       the same type.)
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NodeType")]
-    pub node_type: String,
-
-
-    /// 
     /// The encryption type of the cluster's endpoint. Available values are:
     /// 
     /// NONE - The cluster's endpoint will be unencrypted.               TLS - The cluster's endpoint will be encrypted with Transport           Layer Security, and will provide an x509 certificate for           authentication.
@@ -70,33 +20,19 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterEndpointEncryptionType")]
-    pub cluster_endpoint_encryption_type: Option<String>,
+    pub cluster_endpoint_encryption_type: Option<ClusterClusterEndpointEncryptionTypeEnum>,
 
 
     /// 
-    /// A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX       will assume this role and use the role's permissions to access DynamoDB on your       behalf.
+    /// Represents the settings used to enable server-side encryption on the       cluster.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: SSESpecification
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "IAMRoleARN")]
-    pub iamrole_arn: String,
-
-
-    /// 
-    /// The number of nodes in the DAX cluster. A replication factor of 1       will create a single-node cluster, without any read replicas. For additional fault       tolerance, you can create a multiple node cluster with one or more read replicas. To do       this, set ReplicationFactor to a number between 3 (one primary and two read       replicas) and 10 (one primary and nine read replicas). If the         AvailabilityZones parameter is provided, its length must equal the         ReplicationFactor.
-    /// 
-    /// Note        AWS recommends that you have at least two read replicas per         cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationFactor")]
-    pub replication_factor: i64,
+    /// Update requires: Replacement
+    #[serde(rename = "SSESpecification")]
+    pub ssespecification: Option<SSESpecification>,
 
 
     /// 
@@ -112,29 +48,27 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which       notifications will be sent.
-    /// 
-    /// NoteThe Amazon SNS topic owner must be same as the DAX         cluster owner.
+    /// The description of the cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicARN")]
-    pub notification_topic_arn: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
-    /// Represents the settings used to enable server-side encryption on the       cluster.
+    /// The parameter group to be associated with the DAX cluster.
     /// 
     /// Required: No
     ///
-    /// Type: SSESpecification
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "SSESpecification")]
-    pub ssespecification: Option<SSESpecification>,
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterGroupName")]
+    pub parameter_group_name: Option<String>,
 
 
     /// 
@@ -164,6 +98,30 @@ pub struct CfnCluster {
 
 
     /// 
+    /// The name of the DAX cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: Option<String>,
+
+
+    /// 
+    /// The node type for the nodes in the cluster. (All nodes in a DAX cluster are of       the same type.)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NodeType")]
+    pub node_type: String,
+
+
+    /// 
     /// The Availability Zones (AZs) in which the cluster nodes will reside after the       cluster has been created or updated. If provided, the length of this list must equal the         ReplicationFactor parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest       availability.
     /// 
     /// Required: No
@@ -176,17 +134,80 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The name of the DAX cluster.
+    /// The number of nodes in the DAX cluster. A replication factor of 1       will create a single-node cluster, without any read replicas. For additional fault       tolerance, you can create a multiple node cluster with one or more read replicas. To do       this, set ReplicationFactor to a number between 3 (one primary and two read       replicas) and 10 (one primary and nine read replicas). If the         AvailabilityZones parameter is provided, its length must equal the         ReplicationFactor.
+    /// 
+    /// Note        AWS recommends that you have at least two read replicas per         cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationFactor")]
+    pub replication_factor: i64,
+
+
+    /// 
+    /// The name of the subnet group to be used for the replication group.
+    /// 
+    /// ImportantDAX clusters can only run in an Amazon VPC environment. All of the subnets         that you specify in a subnet group must exist in the same VPC.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: Option<String>,
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which       notifications will be sent.
+    /// 
+    /// NoteThe Amazon SNS topic owner must be same as the DAX         cluster owner.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTopicARN")]
+    pub notification_topic_arn: Option<String>,
+
+
+    /// 
+    /// A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX       will assume this role and use the role's permissions to access DynamoDB on your       behalf.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "IAMRoleARN")]
+    pub iamrole_arn: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ClusterClusterEndpointEncryptionTypeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// TLS
+    #[serde(rename = "TLS")]
+    Tls,
+
+}
+
+impl Default for ClusterClusterEndpointEncryptionTypeEnum {
+    fn default() -> Self {
+        ClusterClusterEndpointEncryptionTypeEnum::None
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnCluster {
     fn type_string() -> &'static str {
@@ -216,3 +237,5 @@ pub struct SSESpecification {
     pub sseenabled: Option<bool>,
 
 }
+
+

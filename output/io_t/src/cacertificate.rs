@@ -20,17 +20,15 @@ pub struct CfnCACertificate {
 
 
     /// 
-    /// The status of the CA certificate.
+    /// Information about the registration configuration.
     /// 
-    /// Valid values are "ACTIVE" and "INACTIVE".
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: RegistrationConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
+    #[serde(rename = "RegistrationConfig")]
+    pub registration_config: Option<RegistrationConfig>,
 
 
     /// 
@@ -43,30 +41,6 @@ pub struct CfnCACertificate {
     /// Update requires: Replacement
     #[serde(rename = "VerificationCertificatePem")]
     pub verification_certificate_pem: Option<String>,
-
-
-    /// 
-    /// Whether the CA certificate is configured for auto registration of device certificates.     Valid values are "ENABLE" and "DISABLE".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoRegistrationStatus")]
-    pub auto_registration_status: Option<String>,
-
-
-    /// 
-    /// Information about the registration configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RegistrationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegistrationConfig")]
-    pub registration_config: Option<RegistrationConfig>,
 
 
     /// 
@@ -98,6 +72,20 @@ pub struct CfnCACertificate {
 
 
     /// 
+    /// The status of the CA certificate.
+    /// 
+    /// Valid values are "ACTIVE" and "INACTIVE".
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: String,
+
+
+    /// 
     /// The certificate data in PEM format.
     /// 
     /// Required: Yes
@@ -108,7 +96,21 @@ pub struct CfnCACertificate {
     #[serde(rename = "CACertificatePem")]
     pub cacertificate_pem: String,
 
+
+    /// 
+    /// Whether the CA certificate is configured for auto registration of device certificates.     Valid values are "ENABLE" and "DISABLE".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoRegistrationStatus")]
+    pub auto_registration_status: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCACertificate {
     fn type_string() -> &'static str {
@@ -156,9 +158,23 @@ pub struct Tag {
 }
 
 
+
+
 /// The registration configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegistrationConfig {
+
+
+    /// 
+    /// The ARN of the role.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 
     /// 
@@ -184,16 +200,6 @@ pub struct RegistrationConfig {
     #[serde(rename = "TemplateName")]
     pub template_name: Option<String>,
 
-
-    /// 
-    /// The ARN of the role.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
 }
+
+

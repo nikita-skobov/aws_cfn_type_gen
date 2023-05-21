@@ -6,6 +6,18 @@ pub struct CfnDiscoverer {
 
 
     /// 
+    /// Allows for the discovery of the event schemas that are sent to the event bus from another account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CrossAccount")]
+    pub cross_account: Option<bool>,
+
+
+    /// 
     /// A description for the discoverer.
     /// 
     /// Required: No
@@ -30,18 +42,6 @@ pub struct CfnDiscoverer {
 
 
     /// 
-    /// Allows for the discovery of the event schemas that are sent to the event bus from another account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CrossAccount")]
-    pub cross_account: Option<bool>,
-
-
-    /// 
     /// The ARN of the event bus.
     /// 
     /// Required: Yes
@@ -53,6 +53,8 @@ pub struct CfnDiscoverer {
     pub source_arn: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDiscoverer {
     fn type_string() -> &'static str {
@@ -94,3 +96,5 @@ pub struct TagsEntry {
     pub value: String,
 
 }
+
+

@@ -10,63 +10,17 @@ pub struct CfnJobTemplate {
 
 
     /// 
-    /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
+    /// Specify, in JSON format, the transcoding job settings for this job template. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
     /// 
-    /// Required: No
+    /// For more information about MediaConvert job templates, see Working with AWS Elemental MediaConvert Job Templates in the           AWS Elemental MediaConvert User Guide.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: List of HopDestination
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HopDestinations")]
-    pub hop_destinations: Option<Vec<HopDestination>>,
-
-
-    /// 
-    /// The name of the job template you are creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AccelerationSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccelerationSettings")]
-    pub acceleration_settings: Option<AccelerationSettings>,
-
-
-    /// 
-    /// Optional. A description of the job template you are creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Optional. The queue that jobs created from this template are assigned to. Specify the       Amazon Resource Name (ARN) of the queue. For example,       arn:aws:mediaconvert:us-west-2:505474453218:queues/Default. If you don't specify this,       jobs will go to the default queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Queue")]
-    pub queue: Option<String>,
+    #[serde(rename = "SettingsJson")]
+    pub settings_json: serde_json::Value,
 
 
     /// 
@@ -105,20 +59,6 @@ pub struct CfnJobTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<serde_json::Value>,
-
-
-    /// 
-    /// Specify, in JSON format, the transcoding job settings for this job template. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
-    /// 
-    /// For more information about MediaConvert job templates, see Working with AWS Elemental MediaConvert Job Templates in the           AWS Elemental MediaConvert User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SettingsJson")]
-    pub settings_json: serde_json::Value,
 
 
     /// 
@@ -164,7 +104,69 @@ pub struct CfnJobTemplate {
     #[serde(rename = "StatusUpdateInterval")]
     pub status_update_interval: Option<String>,
 
+
+    /// 
+    /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AccelerationSettings
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccelerationSettings")]
+    pub acceleration_settings: Option<AccelerationSettings>,
+
+
+    /// 
+    /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of HopDestination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HopDestinations")]
+    pub hop_destinations: Option<Vec<HopDestination>>,
+
+
+    /// 
+    /// Optional. A description of the job template you are creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name of the job template you are creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Optional. The queue that jobs created from this template are assigned to. Specify the       Amazon Resource Name (ARN) of the queue. For example,       arn:aws:mediaconvert:us-west-2:505474453218:queues/Default. If you don't specify this,       jobs will go to the default queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Queue")]
+    pub queue: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnJobTemplate {
     fn type_string() -> &'static str {
@@ -196,21 +198,11 @@ pub struct AccelerationSettings {
 }
 
 
+
+
 /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HopDestination {
-
-
-    /// 
-    /// Required for setting up a job to use queue hopping. Minimum wait time in minutes until the job can hop to the destination queue. Valid range is 1 to 4320 minutes, inclusive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WaitMinutes")]
-    pub wait_minutes: Option<i64>,
 
 
     /// 
@@ -236,4 +228,18 @@ pub struct HopDestination {
     #[serde(rename = "Queue")]
     pub queue: Option<String>,
 
+
+    /// 
+    /// Required for setting up a job to use queue hopping. Minimum wait time in minutes until the job can hop to the destination queue. Valid range is 1 to 4320 minutes, inclusive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WaitMinutes")]
+    pub wait_minutes: Option<i64>,
+
 }
+
+

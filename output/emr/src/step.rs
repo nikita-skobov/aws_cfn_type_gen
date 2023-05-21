@@ -6,30 +6,6 @@ pub struct CfnStep {
 
 
     /// 
-    /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: HadoopJarStepConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HadoopJarStep")]
-    pub hadoop_jar_step: HadoopJarStepConfig,
-
-
-    /// 
-    /// The name of the cluster step.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// This specifies what action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
     /// 
     /// Required: Yes
@@ -39,6 +15,18 @@ pub struct CfnStep {
     /// Update requires: Replacement
     #[serde(rename = "ActionOnFailure")]
     pub action_on_failure: String,
+
+
+    /// 
+    /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: HadoopJarStepConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HadoopJarStep")]
+    pub hadoop_jar_step: HadoopJarStepConfig,
 
 
     /// 
@@ -58,7 +46,21 @@ pub struct CfnStep {
     #[serde(rename = "JobFlowId")]
     pub job_flow_id: String,
 
+
+    /// 
+    /// The name of the cluster step.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnStep {
     fn type_string() -> &'static str {
@@ -114,9 +116,29 @@ pub struct KeyValue {
 }
 
 
+
+
 /// A job flow step consisting of a JAR file whose main function will be executed. The main     function submits a job for Hadoop to execute and waits for the job to finish or     fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HadoopJarStepConfig {
+
+
+    /// 
+    /// A path to a JAR file run during the step.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Jar")]
+    pub jar: String,
 
 
     /// 
@@ -138,18 +160,6 @@ pub struct HadoopJarStepConfig {
 
 
     /// 
-    /// A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of KeyValue
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StepProperties")]
-    pub step_properties: Option<Vec<KeyValue>>,
-
-
-    /// 
     /// A list of command line arguments passed to the JAR file's main function when     executed.
     /// 
     /// Required: No
@@ -162,20 +172,16 @@ pub struct HadoopJarStepConfig {
 
 
     /// 
-    /// A path to a JAR file run during the step.
+    /// A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Type: List of KeyValue
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Jar")]
-    pub jar: String,
+    #[serde(rename = "StepProperties")]
+    pub step_properties: Option<Vec<KeyValue>>,
 
 }
+
+

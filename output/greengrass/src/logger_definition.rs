@@ -50,6 +50,8 @@ pub struct CfnLoggerDefinition {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnLoggerDefinition {
     fn type_string() -> &'static str {
         "AWS::Greengrass::LoggerDefinition"
@@ -61,56 +63,11 @@ impl cfn_resources::CfnResource for CfnLoggerDefinition {
 }
 
 
-/// A logger definition version contains a list of loggers.
-///
-/// In an AWS CloudFormation template, LoggerDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::LoggerDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoggerDefinitionVersion {
-
-
-    /// 
-    /// The loggers in this version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Logger
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Loggers")]
-    pub loggers: Vec<Logger>,
-
-}
-
-
 /// A logger represents logging settings for the AWS IoT Greengrass group, which can be stored in CloudWatch and the local file system of your core device. All log   entries include a timestamp, log level, and information about the event. For more information, see Monitoring with AWS IoT Greengrass Logs in the    AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the LoggerDefinitionVersion property type contains a list       of Logger property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Logger {
-
-
-    /// 
-    /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Level")]
-    pub level: String,
-
-
-    /// 
-    /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
 
 
     /// 
@@ -123,6 +80,18 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Space")]
     pub space: Option<i64>,
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
@@ -148,4 +117,41 @@ pub struct Logger {
     #[serde(rename = "Component")]
     pub component: String,
 
+
+    /// 
+    /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Level")]
+    pub level: String,
+
 }
+
+
+
+
+/// A logger definition version contains a list of loggers.
+///
+/// In an AWS CloudFormation template, LoggerDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::LoggerDefinition resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoggerDefinitionVersion {
+
+
+    /// 
+    /// The loggers in this version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Logger
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Loggers")]
+    pub loggers: Vec<Logger>,
+
+}
+
+

@@ -6,15 +6,17 @@ pub struct CfnAsset {
 
 
     /// 
-    /// A description for the asset.
+    /// The list of asset properties for the asset.
+    /// 
+    /// This object doesn't include properties that you define in composite models. You can find    composite model properties in the assetCompositeModels object.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of AssetProperty
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AssetDescription")]
-    pub asset_description: Option<String>,
+    #[serde(rename = "AssetProperties")]
+    pub asset_properties: Option<Vec<AssetProperty>>,
 
 
     /// 
@@ -32,6 +34,18 @@ pub struct CfnAsset {
 
 
     /// 
+    /// A list of key-value pairs that contain metadata for the asset. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The ID of the asset model from which to create the asset.
     /// 
     /// Required: Yes
@@ -41,20 +55,6 @@ pub struct CfnAsset {
     /// Update requires: No interruption
     #[serde(rename = "AssetModelId")]
     pub asset_model_id: String,
-
-
-    /// 
-    /// The list of asset properties for the asset.
-    /// 
-    /// This object doesn't include properties that you define in composite models. You can find    composite model properties in the assetCompositeModels object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AssetProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetProperties")]
-    pub asset_properties: Option<Vec<AssetProperty>>,
 
 
     /// 
@@ -70,17 +70,19 @@ pub struct CfnAsset {
 
 
     /// 
-    /// A list of key-value pairs that contain metadata for the asset. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// A description for the asset.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AssetDescription")]
+    pub asset_description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAsset {
     fn type_string() -> &'static str {
@@ -90,69 +92,6 @@ impl cfn_resources::CfnResource for CfnAsset {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Contains asset property information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AssetProperty {
-
-
-    /// 
-    /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
-    /// 
-    /// If you omit this parameter, the notification state is set to DISABLED.
-    /// 
-    /// NoteYou must use all caps for the NotificationState parameter. If you use lower case letters, you         will receive a schema validation error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationState")]
-    pub notification_state: Option<String>,
-
-
-    /// 
-    /// The LogicalID of the asset property.
-    /// 
-    /// The maximum length is 256 characters, with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogicalId")]
-    pub logical_id: String,
-
-
-    /// 
-    /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
-    /// 
-    /// The property alias must have 1-1000 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Alias")]
-    pub alias: Option<String>,
-
-
-    /// 
-    /// The unit (such as Newtons or RPM) of the asset property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
-
 }
 
 
@@ -189,6 +128,73 @@ pub struct AssetHierarchy {
 }
 
 
+
+
+/// Contains asset property information.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AssetProperty {
+
+
+    /// 
+    /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
+    /// 
+    /// If you omit this parameter, the notification state is set to DISABLED.
+    /// 
+    /// NoteYou must use all caps for the NotificationState parameter. If you use lower case letters, you         will receive a schema validation error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationState")]
+    pub notification_state: Option<String>,
+
+
+    /// 
+    /// The unit (such as Newtons or RPM) of the asset property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
+
+
+    /// 
+    /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// The property alias must have 1-1000 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Alias")]
+    pub alias: Option<String>,
+
+
+    /// 
+    /// The LogicalID of the asset property.
+    /// 
+    /// The maximum length is 256 characters, with the pattern [^\u0000-\u001F\u007F]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogicalId")]
+    pub logical_id: String,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -201,17 +207,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -221,4 +216,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

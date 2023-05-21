@@ -6,6 +6,22 @@ pub struct CfnPreparedStatement {
 
 
     /// 
+    /// The description of the prepared statement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The workgroup to which the prepared statement belongs.
     /// 
     /// Required: Yes
@@ -50,23 +66,9 @@ pub struct CfnPreparedStatement {
     #[serde(rename = "StatementName")]
     pub statement_name: String,
 
-
-    /// 
-    /// The description of the prepared statement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPreparedStatement {
     fn type_string() -> &'static str {

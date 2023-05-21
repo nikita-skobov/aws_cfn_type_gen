@@ -10,15 +10,19 @@ pub struct CfnApplication {
 
 
     /// 
-    /// Metadata to assign to the application. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
+    /// A description of the application.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tags
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -38,21 +42,19 @@ pub struct CfnApplication {
 
 
     /// 
-    /// A description of the application.
+    /// Metadata to assign to the application. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Type: List of Tags
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string() -> &'static str {
@@ -71,18 +73,6 @@ pub struct Tags {
 
 
     /// 
-    /// The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
     /// 
     /// Required: No
@@ -93,4 +83,18 @@ pub struct Tags {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
+
+    /// 
+    /// The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
 }
+
+

@@ -6,6 +6,24 @@ pub struct CfnPipeline {
 
 
     /// 
+    /// The display name of the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,255}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDisplayName")]
+    pub pipeline_display_name: Option<String>,
+
+
+    /// 
     /// The tags of the pipeline.
     /// 
     /// Required: No
@@ -49,36 +67,6 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// The display name of the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,255}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDisplayName")]
-    pub pipeline_display_name: Option<String>,
-
-
-    /// 
-    /// The definition of the pipeline. This can be either a JSON string or an Amazon S3       location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: PipelineDefinition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDefinition")]
-    pub pipeline_definition: PipelineDefinition,
-
-
-    /// 
     /// The description of the pipeline.
     /// 
     /// Required: No
@@ -94,6 +82,18 @@ pub struct CfnPipeline {
     /// Update requires: No interruption
     #[serde(rename = "PipelineDescription")]
     pub pipeline_description: Option<String>,
+
+
+    /// 
+    /// The definition of the pipeline. This can be either a JSON string or an Amazon S3       location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: PipelineDefinition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDefinition")]
+    pub pipeline_definition: PipelineDefinition,
 
 
     /// 
@@ -115,6 +115,8 @@ pub struct CfnPipeline {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string() -> &'static str {
         "AWS::SageMaker::Pipeline"
@@ -123,27 +125,6 @@ impl cfn_resources::CfnResource for CfnPipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ParallelismConfiguration {
-
-
-    /// 
-    /// The max number of steps that can be executed in parallel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxParallelExecutionSteps")]
-    pub max_parallel_execution_steps: i64,
-
 }
 
 
@@ -176,17 +157,6 @@ pub struct S3Location {
 
     /// Property description not available.
     ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// Property description not available.
-    ///
     /// Required: No
     ///
     /// Type: String
@@ -195,36 +165,20 @@ pub struct S3Location {
     #[serde(rename = "Version")]
     pub version: Option<String>,
 
-}
-
-
-/// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PipelineDefinition {
-
 
     /// Property description not available.
     ///
-    /// Required: No
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDefinitionS3Location")]
-    pub pipeline_definition_s3_location: Option<S3Location>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PipelineDefinitionBody")]
-    pub pipeline_definition_body: Option<String>,
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -260,3 +214,59 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PipelineDefinition {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDefinitionBody")]
+    pub pipeline_definition_body: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDefinitionS3Location")]
+    pub pipeline_definition_s3_location: Option<S3Location>,
+
+}
+
+
+
+
+/// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ParallelismConfiguration {
+
+
+    /// 
+    /// The max number of steps that can be executed in parallel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxParallelExecutionSteps")]
+    pub max_parallel_execution_steps: i64,
+
+}
+
+

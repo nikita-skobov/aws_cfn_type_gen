@@ -11,6 +11,18 @@
 pub struct CfnSegment {
 
 
+    /// 
+    /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Pattern")]
+    pub pattern: Option<String>,
+
+
     /// An optional description for this segment.
     ///
     /// Required: No
@@ -42,18 +54,6 @@ pub struct CfnSegment {
     pub tags: Option<Vec<Tag>>,
 
 
-    /// 
-    /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Pattern")]
-    pub pattern: Option<String>,
-
-
     /// A name for the segment.
     ///
     /// Required: Yes
@@ -65,6 +65,8 @@ pub struct CfnSegment {
     pub name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnSegment {
     fn type_string() -> &'static str {
@@ -89,17 +91,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -109,4 +100,17 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+

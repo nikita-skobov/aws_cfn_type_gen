@@ -22,6 +22,8 @@ pub struct CfnResourceGroup {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnResourceGroup {
     fn type_string() -> &'static str {
         "AWS::Inspector::ResourceGroup"
@@ -66,3 +68,5 @@ pub struct Tag {
     pub key: String,
 
 }
+
+

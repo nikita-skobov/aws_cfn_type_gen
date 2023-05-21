@@ -36,6 +36,8 @@ pub struct CfnSecurityConfiguration {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnSecurityConfiguration {
     fn type_string() -> &'static str {
         "AWS::EMR::SecurityConfiguration"

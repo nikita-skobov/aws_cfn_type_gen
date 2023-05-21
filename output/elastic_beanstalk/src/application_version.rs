@@ -6,17 +6,19 @@ pub struct CfnApplicationVersion {
 
 
     /// 
-    /// The Amazon S3 bucket and key that identify the location of the source bundle for this    version.
-    /// 
-    /// NoteThe Amazon S3 bucket must be in the same region as the    environment.
+    /// The name of the Elastic Beanstalk application that is associated with this application    version.
     /// 
     /// Required: Yes
     ///
-    /// Type: SourceBundle
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceBundle")]
-    pub source_bundle: SourceBundle,
+    #[serde(rename = "ApplicationName")]
+    pub application_name: String,
 
 
     /// 
@@ -34,21 +36,21 @@ pub struct CfnApplicationVersion {
 
 
     /// 
-    /// The name of the Elastic Beanstalk application that is associated with this application    version.
+    /// The Amazon S3 bucket and key that identify the location of the source bundle for this    version.
+    /// 
+    /// NoteThe Amazon S3 bucket must be in the same region as the    environment.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
+    /// Type: SourceBundle
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    #[serde(rename = "SourceBundle")]
+    pub source_bundle: SourceBundle,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnApplicationVersion {
     fn type_string() -> &'static str {
@@ -67,20 +69,6 @@ pub struct SourceBundle {
 
 
     /// 
-    /// The Amazon S3 key where the data is located.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
-
-
-    /// 
     /// The Amazon S3 bucket where the data is located.
     /// 
     /// Required: Yes
@@ -93,4 +81,20 @@ pub struct SourceBundle {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
+
+    /// 
+    /// The Amazon S3 key where the data is located.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
+
 }
+
+

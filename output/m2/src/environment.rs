@@ -6,53 +6,17 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The identifier of a customer managed key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The list of subnets associated with the VPC for this runtime environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The instance type of the runtime environment.
+    /// The target platform for the runtime environment.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: \S{1,20}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
-    /// The list of security groups for the VPC associated with this runtime environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
+    /// Allowed values: bluage | microfocus
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(rename = "EngineType")]
+    pub engine_type: EnvironmentEngineTypeEnum,
 
 
     /// 
@@ -65,6 +29,32 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "StorageConfigurations")]
     pub storage_configurations: Option<Vec<StorageConfiguration>>,
+
+
+    /// 
+    /// Defines the details of a high availability configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HighAvailabilityConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HighAvailabilityConfig")]
+    pub high_availability_config: Option<HighAvailabilityConfig>,
+
+
+    /// 
+    /// The version of the runtime engine.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: \S{1,10}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
 
 
     /// 
@@ -82,17 +72,27 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The target platform for the runtime environment.
+    /// The list of subnets associated with the VPC for this runtime environment.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: bluage | microfocus
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EngineType")]
-    pub engine_type: String,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The list of security groups for the VPC associated with this runtime environment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -112,15 +112,17 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// Specifies whether the runtime environment is publicly accessible.
+    /// The name of the runtime environment.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Pattern: [A-Za-z0-9][A-Za-z0-9_\-]{1,59}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PubliclyAccessible")]
-    pub publicly_accessible: Option<bool>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -138,45 +140,64 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The name of the runtime environment.
+    /// The identifier of a customer managed key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// Specifies whether the runtime environment is publicly accessible.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PubliclyAccessible")]
+    pub publicly_accessible: Option<bool>,
+
+
+    /// 
+    /// The instance type of the runtime environment.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: [A-Za-z0-9][A-Za-z0-9_\-]{1,59}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The version of the runtime engine.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: \S{1,10}
+    /// Pattern: \S{1,20}
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// Defines the details of a high availability configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HighAvailabilityConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HighAvailabilityConfig")]
-    pub high_availability_config: Option<HighAvailabilityConfig>,
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EnvironmentEngineTypeEnum {
+
+    /// bluage
+    #[serde(rename = "bluage")]
+    Bluage,
+
+    /// microfocus
+    #[serde(rename = "microfocus")]
+    Microfocus,
+
+}
+
+impl Default for EnvironmentEngineTypeEnum {
+    fn default() -> Self {
+        EnvironmentEngineTypeEnum::Bluage
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEnvironment {
     fn type_string() -> &'static str {
@@ -187,6 +208,39 @@ impl cfn_resources::CfnResource for CfnEnvironment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Defines the storage configuration for a runtime environment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StorageConfiguration {
+
+
+    /// 
+    /// Defines the storage configuration for an Amazon FSx file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FsxStorageConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Fsx")]
+    pub fsx: Option<FsxStorageConfiguration>,
+
+
+    /// 
+    /// Defines the storage configuration for an Amazon EFS file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EfsStorageConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Efs")]
+    pub efs: Option<EfsStorageConfiguration>,
+
+}
+
+
 
 
 /// Defines the details of a high availability configuration.
@@ -212,35 +266,6 @@ pub struct HighAvailabilityConfig {
 }
 
 
-/// Defines the storage configuration for a runtime environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StorageConfiguration {
-
-
-    /// 
-    /// Defines the storage configuration for an Amazon EFS file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EfsStorageConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Efs")]
-    pub efs: Option<EfsStorageConfiguration>,
-
-
-    /// 
-    /// Defines the storage configuration for an Amazon FSx file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FsxStorageConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Fsx")]
-    pub fsx: Option<FsxStorageConfiguration>,
-
-}
 
 
 /// Defines the storage configuration for an Amazon EFS file system.
@@ -278,6 +303,8 @@ pub struct EfsStorageConfiguration {
 }
 
 
+
+
 /// Defines the storage configuration for an Amazon FSx file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FsxStorageConfiguration {
@@ -311,3 +338,5 @@ pub struct FsxStorageConfiguration {
     pub file_system_id: String,
 
 }
+
+

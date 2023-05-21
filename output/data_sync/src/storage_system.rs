@@ -6,6 +6,52 @@ pub struct CfnStorageSystem {
 
 
     /// 
+    /// Specifies the ARN of the Amazon CloudWatch log group for monitoring and logging    discovery job events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 562
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]+:[0-9]{12}:log-group:([^:\*]*)(:\*)?$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogGroupArn")]
+    pub cloud_watch_log_group_arn: Option<String>,
+
+
+    /// 
+    /// Specifies the user name and password for accessing your on-premises storage system's    management interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ServerCredentials
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCredentials")]
+    pub server_credentials: Option<ServerCredentials>,
+
+
+    /// 
+    /// Specifies a familiar name for your on-premises storage system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[\p{L}\p{M}\p{N}\s+=._:@\/-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
     /// 
     /// Required: Yes
@@ -32,22 +78,6 @@ pub struct CfnStorageSystem {
 
 
     /// 
-    /// Specifies the ARN of the Amazon CloudWatch log group for monitoring and logging    discovery job events.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 562
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]+:[0-9]{12}:log-group:([^:\*]*)(:\*)?$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogGroupArn")]
-    pub cloud_watch_log_group_arn: Option<String>,
-
-
-    /// 
     /// Specifies the type of on-premises storage system that you want DataSync Discovery to collect    information about.
     /// 
     /// NoteDataSync Discovery currently supports NetApp     Fabric-Attached     Storage (FAS) and All Flash FAS (AFF) systems running ONTAP 9.7 or     later.
@@ -60,7 +90,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SystemType")]
-    pub system_type: String,
+    pub system_type: StorageSystemSystemTypeEnum,
 
 
     /// 
@@ -76,37 +106,24 @@ pub struct CfnStorageSystem {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Specifies a familiar name for your on-premises storage system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[\p{L}\p{M}\p{N}\s+=._:@\/-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+}
 
 
-    /// 
-    /// Specifies the user name and password for accessing your on-premises storage system's    management interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ServerCredentials
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCredentials")]
-    pub server_credentials: Option<ServerCredentials>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum StorageSystemSystemTypeEnum {
+
+    /// NetAppONTAP
+    #[serde(rename = "NetAppONTAP")]
+    Netappontap,
 
 }
+
+impl Default for StorageSystemSystemTypeEnum {
+    fn default() -> Self {
+        StorageSystemSystemTypeEnum::Netappontap
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnStorageSystem {
     fn type_string() -> &'static str {
@@ -160,6 +177,49 @@ pub struct ServerCredentials {
 }
 
 
+
+
+/// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServerConfiguration {
+
+
+    /// 
+    /// The network port for accessing the storage system's management interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerPort")]
+    pub server_port: Option<i64>,
+
+
+    /// 
+    /// The domain name or IP address of your storage system's management interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: String,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -195,40 +255,3 @@ pub struct Tag {
 }
 
 
-/// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServerConfiguration {
-
-
-    /// 
-    /// The domain name or IP address of your storage system's management interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: String,
-
-
-    /// 
-    /// The network port for accessing the storage system's management interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerPort")]
-    pub server_port: Option<i64>,
-
-}

@@ -7,17 +7,6 @@ pub struct CfnBatchScramSecret {
 
     /// Property description not available.
     ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArnList")]
-    pub secret_arn_list: Option<Vec<String>>,
-
-
-    /// Property description not available.
-    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -26,7 +15,20 @@ pub struct CfnBatchScramSecret {
     #[serde(rename = "ClusterArn")]
     pub cluster_arn: String,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArnList")]
+    pub secret_arn_list: Option<Vec<String>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnBatchScramSecret {
     fn type_string() -> &'static str {

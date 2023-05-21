@@ -6,24 +6,6 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The KMS key id used to encrypt in the FinSpace environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^[a-zA-Z-0-9-:\/]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
     /// Configuration information for the superuser.
     /// 
     /// Required: No
@@ -33,6 +15,24 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "SuperuserParameters")]
     pub superuser_parameters: Option<SuperuserParameters>,
+
+
+    /// 
+    /// The name of the FinSpace environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9-]*[a-zA-Z0-9]$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -66,35 +66,21 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The authentication mode for the environment.
+    /// The KMS key id used to encrypt in the FinSpace environment.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: FEDERATED | LOCAL
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FederationMode")]
-    pub federation_mode: Option<String>,
-
-
-    /// 
-    /// The name of the FinSpace environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
     /// Minimum: 1
     ///
-    /// Maximum: 255
+    /// Maximum: 1000
     ///
-    /// Pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9-]*[a-zA-Z0-9]$
+    /// Pattern: ^[a-zA-Z-0-9-:\/]*$
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// Property description not available.
@@ -107,7 +93,42 @@ pub struct CfnEnvironment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The authentication mode for the environment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: FEDERATED | LOCAL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FederationMode")]
+    pub federation_mode: Option<EnvironmentFederationModeEnum>,
+
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EnvironmentFederationModeEnum {
+
+    /// FEDERATED
+    #[serde(rename = "FEDERATED")]
+    Federated,
+
+    /// LOCAL
+    #[serde(rename = "LOCAL")]
+    Local,
+
+}
+
+impl Default for EnvironmentFederationModeEnum {
+    fn default() -> Self {
+        EnvironmentFederationModeEnum::Federated
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnEnvironment {
     fn type_string() -> &'static str {
@@ -118,6 +139,69 @@ impl cfn_resources::CfnResource for CfnEnvironment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Configuration information for the superuser.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SuperuserParameters {
+
+
+    /// 
+    /// The first name of the superuser.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: ^[a-zA-Z0-9]{1,50}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FirstName")]
+    pub first_name: Option<String>,
+
+
+    /// 
+    /// The email address of the superuser.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+[.]+[A-Za-z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EmailAddress")]
+    pub email_address: Option<String>,
+
+
+    /// 
+    /// The last name of the superuser.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: ^[a-zA-Z0-9]{1,50}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LastName")]
+    pub last_name: Option<String>,
+
+}
+
+
 
 
 /// Configuration information when authentication mode is FEDERATED.
@@ -144,15 +228,21 @@ pub struct FederationParameters {
 
 
     /// 
-    /// SAML attribute name and value. The name must always be Email and the value should be set to     the attribute definition in which user email is set. For example, name would be Email and     value http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress.     Please check your SAML 2.0 compliant identity provider (IdP) documentation for details.
+    /// Provide the metadata URL from your SAML 2.0 compliant identity provider (IdP).
     /// 
     /// Required: No
     ///
-    /// Type: List of AttributeMapItems
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: ^https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AttributeMap")]
-    pub attribute_map: Option<Vec<AttributeMapItems>>,
+    #[serde(rename = "SamlMetadataURL")]
+    pub saml_metadata_url: Option<String>,
 
 
     /// 
@@ -174,42 +264,6 @@ pub struct FederationParameters {
 
 
     /// 
-    /// The redirect or sign-in URL that should be entered into the SAML 2.0 compliant identity provider configuration    (IdP).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationCallBackURL")]
-    pub application_call_back_url: Option<String>,
-
-
-    /// 
-    /// Provide the metadata URL from your SAML 2.0 compliant identity provider (IdP).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SamlMetadataURL")]
-    pub saml_metadata_url: Option<String>,
-
-
-    /// 
     /// Name of the identity provider (IdP).
     /// 
     /// Required: No
@@ -226,68 +280,39 @@ pub struct FederationParameters {
     #[serde(rename = "FederationProviderName")]
     pub federation_provider_name: Option<String>,
 
+
+    /// 
+    /// SAML attribute name and value. The name must always be Email and the value should be set to     the attribute definition in which user email is set. For example, name would be Email and     value http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress.     Please check your SAML 2.0 compliant identity provider (IdP) documentation for details.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AttributeMapItems
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AttributeMap")]
+    pub attribute_map: Option<Vec<AttributeMapItems>>,
+
+
+    /// 
+    /// The redirect or sign-in URL that should be entered into the SAML 2.0 compliant identity provider configuration    (IdP).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: ^https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationCallBackURL")]
+    pub application_call_back_url: Option<String>,
+
 }
 
 
-/// Configuration information for the superuser.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SuperuserParameters {
-
-
-    /// 
-    /// The last name of the superuser.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: ^[a-zA-Z0-9]{1,50}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LastName")]
-    pub last_name: Option<String>,
-
-
-    /// 
-    /// The email address of the superuser.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+[.]+[A-Za-z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EmailAddress")]
-    pub email_address: Option<String>,
-
-
-    /// 
-    /// The first name of the superuser.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: ^[a-zA-Z0-9]{1,50}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FirstName")]
-    pub first_name: Option<String>,
-
-}
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -325,6 +350,8 @@ pub struct Tag {
 }
 
 
+
+
 /// The AttributeMapItems property type specifies Property description not available. for an AWS::FinSpace::Environment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AttributeMapItems {
@@ -337,8 +364,8 @@ pub struct AttributeMapItems {
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 
     /// Property description not available.
@@ -348,7 +375,9 @@ pub struct AttributeMapItems {
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
 
 }
+
+

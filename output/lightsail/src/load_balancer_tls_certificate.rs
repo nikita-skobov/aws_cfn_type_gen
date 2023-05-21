@@ -6,18 +6,6 @@ pub struct CfnLoadBalancerTlsCertificate {
 
 
     /// 
-    /// The domain name for the SSL/TLS certificate. For example, example.com or www.example.com.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "CertificateDomainName")]
-    pub certificate_domain_name: String,
-
-
-    /// 
     /// The name of the load balancer that the SSL/TLS certificate is attached to.
     /// 
     /// Required: Yes
@@ -29,18 +17,6 @@ pub struct CfnLoadBalancerTlsCertificate {
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
     pub load_balancer_name: String,
-
-
-    /// 
-    /// The name of the SSL/TLS certificate.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateName")]
-    pub certificate_name: String,
 
 
     /// 
@@ -80,7 +56,33 @@ pub struct CfnLoadBalancerTlsCertificate {
     #[serde(rename = "IsAttached")]
     pub is_attached: Option<bool>,
 
+
+    /// 
+    /// The domain name for the SSL/TLS certificate. For example, example.com or www.example.com.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "CertificateDomainName")]
+    pub certificate_domain_name: String,
+
+
+    /// 
+    /// The name of the SSL/TLS certificate.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateName")]
+    pub certificate_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLoadBalancerTlsCertificate {
     fn type_string() -> &'static str {

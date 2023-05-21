@@ -6,6 +6,22 @@ pub struct CfnTracker {
 
 
     /// 
+    /// An optional description for the tracker resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// A key identifier for an       AWS         KMS customer managed key. Enter a key ID, key ARN, alias name, or alias ARN.
     /// 
     /// Required: No
@@ -38,7 +54,7 @@ pub struct CfnTracker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PositionFiltering")]
-    pub position_filtering: Option<String>,
+    pub position_filtering: Option<TrackerPositionFilteringEnum>,
 
 
     /// 
@@ -62,23 +78,32 @@ pub struct CfnTracker {
     #[serde(rename = "TrackerName")]
     pub tracker_name: String,
 
+}
 
-    /// 
-    /// An optional description for the tracker resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TrackerPositionFilteringEnum {
+
+    /// AccuracyBased
+    #[serde(rename = "AccuracyBased")]
+    Accuracybased,
+
+    /// DistanceBased
+    #[serde(rename = "DistanceBased")]
+    Distancebased,
+
+    /// TimeBased
+    #[serde(rename = "TimeBased")]
+    Timebased,
 
 }
+
+impl Default for TrackerPositionFilteringEnum {
+    fn default() -> Self {
+        TrackerPositionFilteringEnum::Accuracybased
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnTracker {
     fn type_string() -> &'static str {

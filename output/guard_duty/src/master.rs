@@ -6,15 +6,15 @@ pub struct CfnMaster {
 
 
     /// 
-    /// The AWS account ID of the account designated as the administrator account.
+    /// The ID of the invitation that is sent to the account designated as a member          account. You can find the invitation ID by using the ListInvitation action of the             API.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MasterId")]
-    pub master_id: String,
+    #[serde(rename = "InvitationId")]
+    pub invitation_id: Option<String>,
 
 
     /// 
@@ -34,17 +34,19 @@ pub struct CfnMaster {
 
 
     /// 
-    /// The ID of the invitation that is sent to the account designated as a member          account. You can find the invitation ID by using the ListInvitation action of the             API.
+    /// The AWS account ID of the account designated as the administrator account.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InvitationId")]
-    pub invitation_id: Option<String>,
+    #[serde(rename = "MasterId")]
+    pub master_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnMaster {
     fn type_string() -> &'static str {

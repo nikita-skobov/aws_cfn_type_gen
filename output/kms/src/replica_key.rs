@@ -20,6 +20,32 @@ pub struct CfnReplicaKey {
 
 
     /// 
+    /// Specifies the number of days in the waiting period before AWS KMS deletes a    replica key that has been removed from a CloudFormation stack. Enter a value between 7 and 30    days. The default value is 30 days.
+    /// 
+    /// When you remove a replica key from a CloudFormation stack, AWS KMS schedules    the replica key for deletion and starts the mandatory waiting period. The     PendingWindowInDays property determines the length of waiting period. During    the waiting period, the key state of replica key is Pending Deletion, which    prevents it from being used in cryptographic operations. When the waiting period expires,     AWS KMS permanently deletes the replica key.
+    /// 
+    /// If the KMS key is a multi-Region primary key with replica keys, the waiting period begins when    the last of its replica keys is deleted. Otherwise, the waiting period begins    immediately.
+    /// 
+    /// You cannot use a CloudFormation template to cancel deletion of the replica after you    remove it from the stack, regardless of the waiting period. However, if you specify a replica    key in your template that is based on the same primary key as the original replica key,    CloudFormation creates a new replica key with the same key ID, key material, and other shared    properties of the original replica key. This new replica key can decrypt ciphertext that was    encrypted under the original replica key, or any related multi-Region key.
+    /// 
+    /// For detailed information about deleting multi-Region keys, see Deleting multi-Region     keys in the AWS Key Management Service Developer Guide.
+    /// 
+    /// For information about the PendingDeletion key state, see Key state: Effect on     your KMS key in the AWS Key Management Service Developer Guide. For    more information about deleting KMS keys, see the ScheduleKeyDeletion    operation in the AWS Key Management Service API Reference and Deleting KMS     keys in the AWS Key Management Service Developer Guide.
+    /// 
+    /// Minimum: 7
+    /// 
+    /// Maximum: 30
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PendingWindowInDays")]
+    pub pending_window_in_days: Option<i64>,
+
+
+    /// 
     /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in    cryptographic operations.
     /// 
     /// When Enabled is true, the key state of the    KMS key is Enabled. When Enabled is false, the key state of    the KMS key is Disabled. The default value is true.
@@ -35,6 +61,26 @@ pub struct CfnReplicaKey {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
+
+
+    /// 
+    /// Specifies the multi-Region primary key to replicate. The primary key must be in a    different AWS Region of the same AWS partition. You can    create only one replica of a given primary key in each AWS Region .
+    /// 
+    /// ImportantIf you change the PrimaryKeyArn value of a replica key, the existing     replica key is scheduled for deletion and a new replica key is created based on the     specified primary key. While it is scheduled for deletion, the existing replica key becomes     unusable. You can cancel the scheduled deletion of the key outside of CloudFormation.However, if you inadvertently delete a replica key, you can decrypt ciphertext encrypted     by that replica key by using any related multi-Region key. If necessary, you can recreate     the replica in the same Region after the previous one is completely deleted. For details,     see Deleting multi-Region      keys in the AWS Key Management Service Developer Guide
+    /// 
+    /// Specify the key ARN of an existing multi-Region primary key. For example,     arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrimaryKeyArn")]
+    pub primary_key_arn: String,
 
 
     /// 
@@ -58,23 +104,23 @@ pub struct CfnReplicaKey {
 
 
     /// 
-    /// Specifies the multi-Region primary key to replicate. The primary key must be in a    different AWS Region of the same AWS partition. You can    create only one replica of a given primary key in each AWS Region .
+    /// A description of the KMS key.
     /// 
-    /// ImportantIf you change the PrimaryKeyArn value of a replica key, the existing     replica key is scheduled for deletion and a new replica key is created based on the     specified primary key. While it is scheduled for deletion, the existing replica key becomes     unusable. You can cancel the scheduled deletion of the key outside of CloudFormation.However, if you inadvertently delete a replica key, you can decrypt ciphertext encrypted     by that replica key by using any related multi-Region key. If necessary, you can recreate     the replica in the same Region after the previous one is completely deleted. For details,     see Deleting multi-Region      keys in the AWS Key Management Service Developer Guide
+    /// The default value is an empty string (no description).
     /// 
-    /// Specify the key ARN of an existing multi-Region primary key. For example,     arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab.
+    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
-    /// Maximum: 2048
+    /// Maximum: 8192
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrimaryKeyArn")]
-    pub primary_key_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -102,53 +148,9 @@ pub struct CfnReplicaKey {
     #[serde(rename = "KeyPolicy")]
     pub key_policy: serde_json::Value,
 
-
-    /// 
-    /// A description of the KMS key.
-    /// 
-    /// The default value is an empty string (no description).
-    /// 
-    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Specifies the number of days in the waiting period before AWS KMS deletes a    replica key that has been removed from a CloudFormation stack. Enter a value between 7 and 30    days. The default value is 30 days.
-    /// 
-    /// When you remove a replica key from a CloudFormation stack, AWS KMS schedules    the replica key for deletion and starts the mandatory waiting period. The     PendingWindowInDays property determines the length of waiting period. During    the waiting period, the key state of replica key is Pending Deletion, which    prevents it from being used in cryptographic operations. When the waiting period expires,     AWS KMS permanently deletes the replica key.
-    /// 
-    /// If the KMS key is a multi-Region primary key with replica keys, the waiting period begins when    the last of its replica keys is deleted. Otherwise, the waiting period begins    immediately.
-    /// 
-    /// You cannot use a CloudFormation template to cancel deletion of the replica after you    remove it from the stack, regardless of the waiting period. However, if you specify a replica    key in your template that is based on the same primary key as the original replica key,    CloudFormation creates a new replica key with the same key ID, key material, and other shared    properties of the original replica key. This new replica key can decrypt ciphertext that was    encrypted under the original replica key, or any related multi-Region key.
-    /// 
-    /// For detailed information about deleting multi-Region keys, see Deleting multi-Region     keys in the AWS Key Management Service Developer Guide.
-    /// 
-    /// For information about the PendingDeletion key state, see Key state: Effect on     your KMS key in the AWS Key Management Service Developer Guide. For    more information about deleting KMS keys, see the ScheduleKeyDeletion    operation in the AWS Key Management Service API Reference and Deleting KMS     keys in the AWS Key Management Service Developer Guide.
-    /// 
-    /// Minimum: 7
-    /// 
-    /// Maximum: 30
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PendingWindowInDays")]
-    pub pending_window_in_days: Option<i64>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnReplicaKey {
     fn type_string() -> &'static str {
@@ -173,17 +175,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -193,4 +184,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

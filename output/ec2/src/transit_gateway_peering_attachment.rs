@@ -20,18 +20,6 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The ID of the transit gateway peering attachment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayId")]
-    pub transit_gateway_id: String,
-
-
-    /// 
     /// The ID of the AWS account that owns the transit gateway.
     /// 
     /// Required: Yes
@@ -44,15 +32,15 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The ID of the transit gateway.
+    /// The ID of the transit gateway peering attachment.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PeerTransitGatewayId")]
-    pub peer_transit_gateway_id: String,
+    #[serde(rename = "TransitGatewayId")]
+    pub transit_gateway_id: String,
 
 
     /// 
@@ -66,7 +54,21 @@ pub struct CfnTransitGatewayPeeringAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The ID of the transit gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeerTransitGatewayId")]
+    pub peer_transit_gateway_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {
     fn type_string() -> &'static str {
@@ -76,37 +78,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The status of the transit gateway peering attachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PeeringAttachmentStatus {
-
-
-    /// 
-    /// The status message, if applicable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
-
-
-    /// 
-    /// The status code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Code")]
-    pub code: Option<String>,
-
 }
 
 
@@ -143,3 +114,38 @@ pub struct Tag {
     pub value: String,
 
 }
+
+
+
+
+/// The status of the transit gateway peering attachment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PeeringAttachmentStatus {
+
+
+    /// 
+    /// The status code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Code")]
+    pub code: Option<String>,
+
+
+    /// 
+    /// The status message, if applicable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
+
+}
+
+

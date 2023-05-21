@@ -12,18 +12,6 @@ pub struct CfnBucketPolicy {
 
 
     /// 
-    /// A policy document containing permissions to add to the specified bucket. In IAM, you must    provide policy documents in JSON format. However, in CloudFormation you can provide the policy    in JSON or YAML format because CloudFormation converts YAML to JSON before submitting it to    IAM. For more information, see the AWS::IAM::Policy PolicyDocument resource description in this guide and Access Policy Language     Overview in the Amazon S3 User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyDocument")]
-    pub policy_document: serde_json::Value,
-
-
-    /// 
     /// The name of the Amazon S3 bucket to which the policy applies.
     /// 
     /// Required: Yes
@@ -34,7 +22,21 @@ pub struct CfnBucketPolicy {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
+
+    /// 
+    /// A policy document containing permissions to add to the specified bucket. In IAM, you must    provide policy documents in JSON format. However, in CloudFormation you can provide the policy    in JSON or YAML format because CloudFormation converts YAML to JSON before submitting it to    IAM. For more information, see the AWS::IAM::Policy PolicyDocument resource description in this guide and Access Policy Language     Overview in the Amazon S3 User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDocument")]
+    pub policy_document: serde_json::Value,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnBucketPolicy {
     fn type_string() -> &'static str {

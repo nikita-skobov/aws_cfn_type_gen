@@ -6,18 +6,6 @@ pub struct CfnCidrCollection {
 
 
     /// 
-    /// A complex type that contains information about the list of CIDR locations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Locations")]
-    pub locations: Option<Vec<Location>>,
-
-
-    /// 
     /// The name of a CIDR collection.
     /// 
     /// Required: Yes
@@ -34,7 +22,21 @@ pub struct CfnCidrCollection {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// A complex type that contains information about the list of CIDR locations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Locations")]
+    pub locations: Option<Vec<Location>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCidrCollection {
     fn type_string() -> &'static str {
@@ -50,6 +52,20 @@ impl cfn_resources::CfnResource for CfnCidrCollection {
 /// Specifies the list of CIDR blocks for a CIDR location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Location {
+
+
+    /// 
+    /// List of CIDR blocks.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CidrList")]
+    pub cidr_list: Vec<String>,
 
 
     /// 
@@ -69,18 +85,6 @@ pub struct Location {
     #[serde(rename = "LocationName")]
     pub location_name: String,
 
-
-    /// 
-    /// List of CIDR blocks.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CidrList")]
-    pub cidr_list: Vec<String>,
-
 }
+
+

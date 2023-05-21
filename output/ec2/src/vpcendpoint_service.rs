@@ -22,17 +22,15 @@ pub struct CfnVPCEndpointService {
 
 
     /// 
-    /// The entity that is responsible for the endpoint costs. The default is the endpoint owner.       If you set the payer responsibility to the service owner, you cannot set it back to the       endpoint owner.
+    /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ServiceOwner
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PayerResponsibility")]
-    pub payer_responsibility: Option<String>,
+    #[serde(rename = "AcceptanceRequired")]
+    pub acceptance_required: Option<bool>,
 
 
     /// 
@@ -48,6 +46,20 @@ pub struct CfnVPCEndpointService {
 
 
     /// 
+    /// The entity that is responsible for the endpoint costs. The default is the endpoint owner.       If you set the payer responsibility to the service owner, you cannot set it back to the       endpoint owner.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ServiceOwner
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PayerResponsibility")]
+    pub payer_responsibility: Option<VPCEndpointServicePayerResponsibilityEnum>,
+
+
+    /// 
     /// The Amazon Resource Names (ARNs) of the Gateway Load Balancers.
     /// 
     /// Required: No
@@ -58,19 +70,24 @@ pub struct CfnVPCEndpointService {
     #[serde(rename = "GatewayLoadBalancerArns")]
     pub gateway_load_balancer_arns: Option<Vec<String>>,
 
+}
 
-    /// 
-    /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcceptanceRequired")]
-    pub acceptance_required: Option<bool>,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VPCEndpointServicePayerResponsibilityEnum {
+
+    /// ServiceOwner
+    #[serde(rename = "ServiceOwner")]
+    Serviceowner,
 
 }
+
+impl Default for VPCEndpointServicePayerResponsibilityEnum {
+    fn default() -> Self {
+        VPCEndpointServicePayerResponsibilityEnum::Serviceowner
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnVPCEndpointService {
     fn type_string() -> &'static str {

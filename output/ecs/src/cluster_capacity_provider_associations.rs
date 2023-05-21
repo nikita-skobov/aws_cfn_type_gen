@@ -18,18 +18,6 @@ pub struct CfnClusterCapacityProviderAssociations {
 
 
     /// 
-    /// The capacity providers to associate with the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapacityProviders")]
-    pub capacity_providers: Vec<String>,
-
-
-    /// 
     /// The default capacity provider strategy to associate with the cluster.
     /// 
     /// Required: Yes
@@ -40,7 +28,21 @@ pub struct CfnClusterCapacityProviderAssociations {
     #[serde(rename = "DefaultCapacityProviderStrategy")]
     pub default_capacity_provider_strategy: Vec<CapacityProviderStrategy>,
 
+
+    /// 
+    /// The capacity providers to associate with the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProviders")]
+    pub capacity_providers: Vec<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnClusterCapacityProviderAssociations {
     fn type_string() -> &'static str {
@@ -56,18 +58,6 @@ impl cfn_resources::CfnResource for CfnClusterCapacityProviderAssociations {
 /// The CapacityProviderStrategy property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityProviderStrategy {
-
-
-    /// 
-    /// The base value designates how many tasks, at a minimum, to run on the specified capacity  provider. Only one capacity provider in a capacity provider strategy can have a base defined. If  no value is specified, the default value of 0 is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Base")]
-    pub base: Option<i64>,
 
 
     /// 
@@ -97,4 +87,18 @@ pub struct CapacityProviderStrategy {
     #[serde(rename = "Weight")]
     pub weight: Option<i64>,
 
+
+    /// 
+    /// The base value designates how many tasks, at a minimum, to run on the specified capacity  provider. Only one capacity provider in a capacity provider strategy can have a base defined. If  no value is specified, the default value of 0 is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Base")]
+    pub base: Option<i64>,
+
 }
+
+

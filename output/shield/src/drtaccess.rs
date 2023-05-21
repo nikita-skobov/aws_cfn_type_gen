@@ -16,6 +16,8 @@ pub struct CfnDRTAccess {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnDRTAccess {
     fn type_string() -> &'static str {
         "AWS::Shield::DRTAccess"

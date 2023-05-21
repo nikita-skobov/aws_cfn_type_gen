@@ -6,6 +6,20 @@ pub struct CfnUrl {
 
 
     /// 
+    /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AWS_IAM | NONE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthType")]
+    pub auth_type: UrlAuthTypeEnum,
+
+
+    /// 
     /// The Cross-Origin Resource Sharing (CORS) settings    for your function URL.
     /// 
     /// Required: No
@@ -30,7 +44,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvokeMode")]
-    pub invoke_mode: Option<String>,
+    pub invoke_mode: Option<UrlInvokeModeEnum>,
 
 
     /// 
@@ -60,21 +74,47 @@ pub struct CfnUrl {
     #[serde(rename = "Qualifier")]
     pub qualifier: Option<String>,
 
+}
 
-    /// 
-    /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AWS_IAM | NONE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthType")]
-    pub auth_type: String,
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UrlInvokeModeEnum {
+
+    /// BUFFERED
+    #[serde(rename = "BUFFERED")]
+    Buffered,
+
+    /// RESPONSE_STREAM
+    #[serde(rename = "RESPONSE_STREAM")]
+    Responsestream,
 
 }
+
+impl Default for UrlInvokeModeEnum {
+    fn default() -> Self {
+        UrlInvokeModeEnum::Buffered
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UrlAuthTypeEnum {
+
+    /// AWS_IAM
+    #[serde(rename = "AWS_IAM")]
+    Awsiam,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for UrlAuthTypeEnum {
+    fn default() -> Self {
+        UrlAuthTypeEnum::Awsiam
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnUrl {
     fn type_string() -> &'static str {
@@ -93,29 +133,17 @@ pub struct Cors {
 
 
     /// 
-    /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowCredentials")]
-    pub allow_credentials: Option<bool>,
-
-
-    /// 
-    /// The HTTP headers in your function response that you want to expose to origins that call your function URL. For example:    Date, Keep-Alive, X-Custom-Header.
+    /// The HTTP methods that are allowed when calling your function URL. For example: GET, POST, DELETE,    or the wildcard character (*).
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Maximum: 100
+    /// Maximum: 6
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ExposeHeaders")]
-    pub expose_headers: Option<Vec<String>>,
+    #[serde(rename = "AllowMethods")]
+    pub allow_methods: Option<Vec<String>>,
 
 
     /// 
@@ -135,20 +163,6 @@ pub struct Cors {
 
 
     /// 
-    /// The HTTP headers that origins can include in requests to your function URL. For example: Date, Keep-Alive,    X-Custom-Header.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowHeaders")]
-    pub allow_headers: Option<Vec<String>>,
-
-
-    /// 
     /// The maximum amount of time, in seconds, that browsers can cache results of a preflight request. By default, this is set to 0,    which means the browser will not cache results.
     /// 
     /// Required: No
@@ -165,16 +179,44 @@ pub struct Cors {
 
 
     /// 
-    /// The HTTP methods that are allowed when calling your function URL. For example: GET, POST, DELETE,    or the wildcard character (*).
+    /// The HTTP headers that origins can include in requests to your function URL. For example: Date, Keep-Alive,    X-Custom-Header.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Maximum: 6
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowMethods")]
-    pub allow_methods: Option<Vec<String>>,
+    #[serde(rename = "AllowHeaders")]
+    pub allow_headers: Option<Vec<String>>,
+
+
+    /// 
+    /// The HTTP headers in your function response that you want to expose to origins that call your function URL. For example:    Date, Keep-Alive, X-Custom-Header.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExposeHeaders")]
+    pub expose_headers: Option<Vec<String>>,
+
+
+    /// 
+    /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowCredentials")]
+    pub allow_credentials: Option<bool>,
 
 }
+
+

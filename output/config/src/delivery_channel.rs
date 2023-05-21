@@ -14,27 +14,31 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
+    /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
+    /// 
+    /// If you specify a bucket that belongs to another AWS account, 			that bucket must have policies that grant access permissions to AWS Config. For more information, see Permissions for the Amazon S3 Bucket in the         AWS Config 			Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3BucketName")]
+    pub s3_bucket_name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
+    /// 
+    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3KmsKeyArn")]
-    pub s3_kms_key_arn: Option<String>,
-
-
-    /// 
-    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConfigSnapshotDeliveryProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
-    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
+    #[serde(rename = "SnsTopicARN")]
+    pub sns_topic_arn: Option<String>,
 
 
     /// 
@@ -68,33 +72,31 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
-    /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
+    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
     /// 
-    /// If you specify a bucket that belongs to another AWS account, 			that bucket must have policies that grant access permissions to AWS Config. For more information, see Permissions for the Amazon S3 Bucket in the         AWS Config 			Developer Guide.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: ConfigSnapshotDeliveryProperties
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
+    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
+    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
-    /// 
-    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
+    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnsTopicARN")]
-    pub sns_topic_arn: Option<String>,
+    #[serde(rename = "S3KmsKeyArn")]
+    pub s3_kms_key_arn: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDeliveryChannel {
     fn type_string() -> &'static str {
@@ -131,6 +133,39 @@ pub struct ConfigSnapshotDeliveryProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryFrequency")]
-    pub delivery_frequency: Option<String>,
+    pub delivery_frequency: Option<ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
+
+    /// One_Hour
+    #[serde(rename = "One_Hour")]
+    Onehour,
+
+    /// Six_Hours
+    #[serde(rename = "Six_Hours")]
+    Sixhours,
+
+    /// Three_Hours
+    #[serde(rename = "Three_Hours")]
+    Threehours,
+
+    /// Twelve_Hours
+    #[serde(rename = "Twelve_Hours")]
+    Twelvehours,
+
+    /// TwentyFour_Hours
+    #[serde(rename = "TwentyFour_Hours")]
+    Twentyfourhours,
+
+}
+
+impl Default for ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
+    fn default() -> Self {
+        ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum::Onehour
+    }
+}
+

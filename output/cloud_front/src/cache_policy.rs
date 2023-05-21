@@ -22,6 +22,8 @@ pub struct CfnCachePolicy {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnCachePolicy {
     fn type_string() -> &'static str {
         "AWS::CloudFront::CachePolicy"
@@ -31,6 +33,70 @@ impl cfn_resources::CfnResource for CfnCachePolicy {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct QueryStringsConfig {
+
+
+    /// 
+    /// Determines whether any URL query strings in viewer requests are included in the cache key 			and in requests that CloudFront sends to the origin. Valid values are:
+    /// 
+    /// none – No query strings in viewer requests are included in the cache key or 					in requests that CloudFront sends to the origin. Even when this field is set to 					none, any query strings that are listed in an 					OriginRequestPolicy          are included in origin 					requests.                        whitelist – Only the query strings in viewer requests that are listed in the 					QueryStringNames type are included in the cache key and in requests 					that CloudFront sends to the origin.                        allExcept – All query strings in viewer requests are included in the cache 					key and in requests that CloudFront sends to the origin,            except          those that are listed in the 					QueryStringNames type, which are not included.                        all – All query strings in viewer requests are included in the cache key and 					in requests that CloudFront sends to the origin.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: all | allExcept | none | whitelist
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStringBehavior")]
+    pub query_string_behavior: QueryStringsConfigQueryStringBehaviorEnum,
+
+
+    /// 
+    /// Contains a list of query string names.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStrings")]
+    pub query_strings: Option<Vec<String>>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum QueryStringsConfigQueryStringBehaviorEnum {
+
+    /// all
+    #[serde(rename = "all")]
+    All,
+
+    /// allExcept
+    #[serde(rename = "allExcept")]
+    Allexcept,
+
+    /// none
+    #[serde(rename = "none")]
+    None,
+
+    /// whitelist
+    #[serde(rename = "whitelist")]
+    Whitelist,
+
+}
+
+impl Default for QueryStringsConfigQueryStringBehaviorEnum {
+    fn default() -> Self {
+        QueryStringsConfigQueryStringBehaviorEnum::All
+    }
+}
+
 
 
 /// A cache policy configuration.
@@ -69,6 +135,18 @@ pub struct CachePolicyConfig {
 
 
     /// 
+    /// A comment to describe the cache policy. The comment cannot be longer than 128 			characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
+
+
+    /// 
     /// A unique name to identify the cache policy.
     /// 
     /// Required: Yes
@@ -93,18 +171,6 @@ pub struct CachePolicyConfig {
 
 
     /// 
-    /// A comment to describe the cache policy. The comment cannot be longer than 128 			characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
-
-
-    /// 
     /// The default amount of time, in seconds, that you want objects to stay in the CloudFront 			cache before CloudFront sends another request to the origin to see if the object has been 			updated. CloudFront uses this value as the object's time to live (TTL) only when the origin 			does not send Cache-Control or Expires 			headers with the object. For more information, see Managing How Long Content Stays in an Edge Cache (Expiration) in the 				Amazon CloudFront Developer Guide.
     /// 
     /// The default value for this field is 86400 seconds (one day). If the value of 				MinTTL is more than 86400 seconds, then the default value for this 			field is the same as the value of MinTTL.
@@ -120,44 +186,23 @@ pub struct CachePolicyConfig {
 }
 
 
-/// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
+
+
+/// An object that determines whether any HTTP headers (and if so, which headers) are included 			in the cache key and in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct QueryStringsConfig {
+pub struct HeadersConfig {
 
 
     /// 
-    /// Determines whether any URL query strings in viewer requests are included in the cache key 			and in requests that CloudFront sends to the origin. Valid values are:
-    /// 
-    /// none – No query strings in viewer requests are included in the cache key or 					in requests that CloudFront sends to the origin. Even when this field is set to 					none, any query strings that are listed in an 					OriginRequestPolicy          are included in origin 					requests.                        whitelist – Only the query strings in viewer requests that are listed in the 					QueryStringNames type are included in the cache key and in requests 					that CloudFront sends to the origin.                        allExcept – All query strings in viewer requests are included in the cache 					key and in requests that CloudFront sends to the origin,            except          those that are listed in the 					QueryStringNames type, which are not included.                        all – All query strings in viewer requests are included in the cache key and 					in requests that CloudFront sends to the origin.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: all | allExcept | none | whitelist
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStringBehavior")]
-    pub query_string_behavior: String,
-
-
-    /// 
-    /// Contains a list of query string names.
+    /// Contains a list of HTTP header names.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "QueryStrings")]
-    pub query_strings: Option<Vec<String>>,
-
-}
-
-
-/// An object that determines whether any HTTP headers (and if so, which headers) are included 			in the cache key and in requests that CloudFront sends to the origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HeadersConfig {
+    #[serde(rename = "Headers")]
+    pub headers: Option<Vec<String>>,
 
 
     /// 
@@ -173,21 +218,94 @@ pub struct HeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderBehavior")]
-    pub header_behavior: String,
+    pub header_behavior: HeadersConfigHeaderBehaviorEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HeadersConfigHeaderBehaviorEnum {
+
+    /// none
+    #[serde(rename = "none")]
+    None,
+
+    /// whitelist
+    #[serde(rename = "whitelist")]
+    Whitelist,
+
+}
+
+impl Default for HeadersConfigHeaderBehaviorEnum {
+    fn default() -> Self {
+        HeadersConfigHeaderBehaviorEnum::None
+    }
+}
+
+
+
+/// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CookiesConfig {
 
 
     /// 
-    /// Contains a list of HTTP header names.
+    /// Contains a list of cookie names.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Headers")]
-    pub headers: Option<Vec<String>>,
+    #[serde(rename = "Cookies")]
+    pub cookies: Option<Vec<String>>,
+
+
+    /// 
+    /// Determines whether any cookies in viewer requests are included in the cache key and in 			requests that CloudFront sends to the origin. Valid values are:
+    /// 
+    /// none – No cookies in viewer requests are included in the cache key or in 					requests that CloudFront sends to the origin. Even when this field is set to 					none, any cookies that are listed in an 					OriginRequestPolicy          are included in origin 					requests.                        whitelist – Only the cookies in viewer requests that are listed in the 					CookieNames type are included in the cache key and in requests that 					CloudFront sends to the origin.                        allExcept – All cookies in viewer requests are included in the cache key and 					in requests that CloudFront sends to the origin,            except          for those that are listed in the 					CookieNames type, which are not included.                        all – All cookies in viewer requests are included in the cache key and in 					requests that CloudFront sends to the origin.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: all | allExcept | none | whitelist
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CookieBehavior")]
+    pub cookie_behavior: CookiesConfigCookieBehaviorEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CookiesConfigCookieBehaviorEnum {
+
+    /// all
+    #[serde(rename = "all")]
+    All,
+
+    /// allExcept
+    #[serde(rename = "allExcept")]
+    Allexcept,
+
+    /// none
+    #[serde(rename = "none")]
+    None,
+
+    /// whitelist
+    #[serde(rename = "whitelist")]
+    Whitelist,
+
+}
+
+impl Default for CookiesConfigCookieBehaviorEnum {
+    fn default() -> Self {
+        CookiesConfigCookieBehaviorEnum::All
+    }
+}
+
 
 
 /// This object determines the values that CloudFront includes in the cache key. These values 			can include HTTP headers, cookies, and URL query strings. CloudFront uses the cache key to 			find an object in its cache that it can return to the viewer.
@@ -195,40 +313,6 @@ pub struct HeadersConfig {
 /// The headers, cookies, and query strings that are included in the cache key are also included 			in requests that CloudFront sends to the origin. CloudFront sends a request when it can't find an 			object in its cache that matches the request's cache key. If you want to send values to 			the origin but not include them in the cache key, use 			OriginRequestPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ParametersInCacheKeyAndForwardedToOrigin {
-
-
-    /// 
-    /// A flag that can affect whether the Accept-Encoding HTTP header is 			included in the cache key and included in requests that CloudFront sends to the origin.
-    /// 
-    /// This field is related to the EnableAcceptEncodingGzip field. If one or 			both of these fields is true       and the viewer request includes the Accept-Encoding 			header, then CloudFront does the following:
-    /// 
-    /// Normalizes the value of the viewer's Accept-Encoding 					header               Includes the normalized header in the cache key               Includes the normalized header in the request to the origin, if a request is 					necessary
-    /// 
-    /// For more information, see Compression support in the 				Amazon CloudFront Developer Guide.
-    /// 
-    /// If you set this value to true, and this cache behavior also has an origin 			request policy attached, do not include the Accept-Encoding header in the 			origin request policy. CloudFront always includes the Accept-Encoding header in 			origin requests when the value of this field is true, so including this 			header in an origin request policy has no effect.
-    /// 
-    /// If both of these fields are false, then CloudFront treats the 				Accept-Encoding header the same as any other HTTP header in the viewer 			request. By default, it's not included in the cache key and it's not included in origin 			requests. In this case, you can manually add Accept-Encoding to the headers 			whitelist like any other HTTP header.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableAcceptEncodingBrotli")]
-    pub enable_accept_encoding_brotli: Option<bool>,
-
-
-    /// 
-    /// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CookiesConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CookiesConfig")]
-    pub cookies_config: CookiesConfig,
 
 
     /// 
@@ -254,18 +338,6 @@ pub struct ParametersInCacheKeyAndForwardedToOrigin {
 
 
     /// 
-    /// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: QueryStringsConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStringsConfig")]
-    pub query_strings_config: QueryStringsConfig,
-
-
-    /// 
     /// An object that determines whether any HTTP headers (and if so, which headers) are included 			in the cache key and in requests that CloudFront sends to the origin.
     /// 
     /// Required: Yes
@@ -276,39 +348,52 @@ pub struct ParametersInCacheKeyAndForwardedToOrigin {
     #[serde(rename = "HeadersConfig")]
     pub headers_config: HeadersConfig,
 
-}
-
-
-/// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CookiesConfig {
-
 
     /// 
-    /// Determines whether any cookies in viewer requests are included in the cache key and in 			requests that CloudFront sends to the origin. Valid values are:
-    /// 
-    /// none – No cookies in viewer requests are included in the cache key or in 					requests that CloudFront sends to the origin. Even when this field is set to 					none, any cookies that are listed in an 					OriginRequestPolicy          are included in origin 					requests.                        whitelist – Only the cookies in viewer requests that are listed in the 					CookieNames type are included in the cache key and in requests that 					CloudFront sends to the origin.                        allExcept – All cookies in viewer requests are included in the cache key and 					in requests that CloudFront sends to the origin,            except          for those that are listed in the 					CookieNames type, which are not included.                        all – All cookies in viewer requests are included in the cache key and in 					requests that CloudFront sends to the origin.
+    /// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: all | allExcept | none | whitelist
+    /// Type: CookiesConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CookieBehavior")]
-    pub cookie_behavior: String,
+    #[serde(rename = "CookiesConfig")]
+    pub cookies_config: CookiesConfig,
 
 
     /// 
-    /// Contains a list of cookie names.
+    /// A flag that can affect whether the Accept-Encoding HTTP header is 			included in the cache key and included in requests that CloudFront sends to the origin.
+    /// 
+    /// This field is related to the EnableAcceptEncodingGzip field. If one or 			both of these fields is true       and the viewer request includes the Accept-Encoding 			header, then CloudFront does the following:
+    /// 
+    /// Normalizes the value of the viewer's Accept-Encoding 					header               Includes the normalized header in the cache key               Includes the normalized header in the request to the origin, if a request is 					necessary
+    /// 
+    /// For more information, see Compression support in the 				Amazon CloudFront Developer Guide.
+    /// 
+    /// If you set this value to true, and this cache behavior also has an origin 			request policy attached, do not include the Accept-Encoding header in the 			origin request policy. CloudFront always includes the Accept-Encoding header in 			origin requests when the value of this field is true, so including this 			header in an origin request policy has no effect.
+    /// 
+    /// If both of these fields are false, then CloudFront treats the 				Accept-Encoding header the same as any other HTTP header in the viewer 			request. By default, it's not included in the cache key and it's not included in origin 			requests. In this case, you can manually add Accept-Encoding to the headers 			whitelist like any other HTTP header.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Cookies")]
-    pub cookies: Option<Vec<String>>,
+    #[serde(rename = "EnableAcceptEncodingBrotli")]
+    pub enable_accept_encoding_brotli: Option<bool>,
+
+
+    /// 
+    /// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: QueryStringsConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStringsConfig")]
+    pub query_strings_config: QueryStringsConfig,
 
 }
+
+

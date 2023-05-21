@@ -28,18 +28,6 @@ pub struct CfnUserPoolUICustomizationAttachment {
 
 
     /// 
-    /// The CSS values in the UI customization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CSS")]
-    pub css: Option<String>,
-
-
-    /// 
     /// The user pool ID for the user pool.
     /// 
     /// Required: Yes
@@ -56,7 +44,21 @@ pub struct CfnUserPoolUICustomizationAttachment {
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
 
+
+    /// 
+    /// The CSS values in the UI customization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CSS")]
+    pub css: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnUserPoolUICustomizationAttachment {
     fn type_string() -> &'static str {

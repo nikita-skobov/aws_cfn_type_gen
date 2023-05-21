@@ -10,20 +10,6 @@ pub struct CfnPreset {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
     /// Specify, in JSON format, the transcoding job settings for this output preset. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
     /// 
     /// For more information about MediaConvert output presets, see Working       with AWS Elemental MediaConvert Output Presets in the AWS Elemental MediaConvert User Guide.
@@ -35,18 +21,6 @@ pub struct CfnPreset {
     /// Update requires: No interruption
     #[serde(rename = "SettingsJson")]
     pub settings_json: serde_json::Value,
-
-
-    /// 
-    /// The name of the preset that you are       modifying.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -62,6 +36,32 @@ pub struct CfnPreset {
 
 
     /// 
+    /// The name of the preset that you are       modifying.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
+    /// 
     /// The new description for the preset, if you are changing it.
     /// 
     /// Required: No
@@ -73,6 +73,8 @@ pub struct CfnPreset {
     pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPreset {
     fn type_string() -> &'static str {

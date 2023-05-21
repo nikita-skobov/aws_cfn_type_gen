@@ -6,18 +6,6 @@ pub struct CfnBasePathMapping {
 
 
     /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: Option<String>,
-
-
-    /// 
     /// The domain name of the BasePathMapping resource to be described.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnBasePathMapping {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: String,
+
+
+    /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: Option<String>,
 
 
     /// 
@@ -64,6 +64,8 @@ pub struct CfnBasePathMapping {
     pub stage: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnBasePathMapping {
     fn type_string() -> &'static str {

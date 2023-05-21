@@ -6,18 +6,6 @@ pub struct CfnAccessPointPolicy {
 
 
     /// 
-    /// An access point with an attached AWS Lambda function used to access transformed data from an Amazon S3     bucket.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectLambdaAccessPoint")]
-    pub object_lambda_access_point: String,
-
-
-    /// 
     /// Object Lambda Access Point resource policy document.
     /// 
     /// Required: Yes
@@ -28,7 +16,21 @@ pub struct CfnAccessPointPolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
 
+
+    /// 
+    /// An access point with an attached AWS Lambda function used to access transformed data from an Amazon S3     bucket.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectLambdaAccessPoint")]
+    pub object_lambda_access_point: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAccessPointPolicy {
     fn type_string() -> &'static str {

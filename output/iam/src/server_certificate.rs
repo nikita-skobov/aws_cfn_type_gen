@@ -12,42 +12,6 @@ pub struct CfnServerCertificate {
 
 
     /// 
-    /// The contents of the public key certificate chain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2097152
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateChain")]
-    pub certificate_chain: Option<String>,
-
-
-    /// 
-    /// The contents of the public key certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16384
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateBody")]
-    pub certificate_body: Option<String>,
-
-
-    /// 
     /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
     /// 
     /// Required: No
@@ -104,6 +68,42 @@ pub struct CfnServerCertificate {
 
 
     /// 
+    /// The contents of the public key certificate chain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2097152
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateChain")]
+    pub certificate_chain: Option<String>,
+
+
+    /// 
+    /// The contents of the public key certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 16384
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateBody")]
+    pub certificate_body: Option<String>,
+
+
+    /// 
     /// The contents of the private key in PEM-encoded format.
     /// 
     /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
@@ -125,6 +125,8 @@ pub struct CfnServerCertificate {
     pub private_key: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnServerCertificate {
     fn type_string() -> &'static str {
@@ -149,17 +151,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -169,4 +160,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
+
+

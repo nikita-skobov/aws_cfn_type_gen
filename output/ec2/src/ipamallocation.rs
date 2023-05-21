@@ -6,34 +6,6 @@ pub struct CfnIPAMAllocation {
 
 
     /// 
-    /// The netmask length of the CIDR you would like to allocate from the IPAM pool. Note the following:
-    /// 
-    /// If there is no DefaultNetmaskLength allocation rule set on the pool, you must specify either the NetmaskLength or the CIDR.               If the DefaultNetmaskLength allocation rule is set on the pool, you can specify either the NetmaskLength or the CIDR and the DefaultNetmaskLength allocation rule will be ignored.
-    /// 
-    /// Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetmaskLength")]
-    pub netmask_length: Option<i64>,
-
-
-    /// 
-    /// The ID of the IPAM pool from which you would like to allocate a CIDR.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpamPoolId")]
-    pub ipam_pool_id: String,
-
-
-    /// 
     /// The CIDR you would like to allocate from the IPAM pool. Note the following:
     /// 
     /// If there is no DefaultNetmaskLength allocation rule set on the pool, you must specify either the NetmaskLength or the CIDR.               If the DefaultNetmaskLength allocation rule is set on the pool, you can specify either the NetmaskLength or the CIDR and the DefaultNetmaskLength allocation rule will be ignored.
@@ -50,6 +22,34 @@ pub struct CfnIPAMAllocation {
 
 
     /// 
+    /// The ID of the IPAM pool from which you would like to allocate a CIDR.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpamPoolId")]
+    pub ipam_pool_id: String,
+
+
+    /// 
+    /// The netmask length of the CIDR you would like to allocate from the IPAM pool. Note the following:
+    /// 
+    /// If there is no DefaultNetmaskLength allocation rule set on the pool, you must specify either the NetmaskLength or the CIDR.               If the DefaultNetmaskLength allocation rule is set on the pool, you can specify either the NetmaskLength or the CIDR and the DefaultNetmaskLength allocation rule will be ignored.
+    /// 
+    /// Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask lengths for IPv6 addresses are 0 - 128.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetmaskLength")]
+    pub netmask_length: Option<i64>,
+
+
+    /// 
     /// A description for the allocation.
     /// 
     /// Required: No
@@ -61,6 +61,8 @@ pub struct CfnIPAMAllocation {
     pub description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIPAMAllocation {
     fn type_string() -> &'static str {

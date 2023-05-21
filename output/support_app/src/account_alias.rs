@@ -20,6 +20,8 @@ pub struct CfnAccountAlias {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnAccountAlias {
     fn type_string() -> &'static str {
         "AWS::SupportApp::AccountAlias"

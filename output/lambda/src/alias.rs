@@ -8,34 +8,6 @@ pub struct CfnAlias {
 
 
     /// 
-    /// The routing     configuration of the alias.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AliasRoutingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoutingConfig")]
-    pub routing_config: Option<AliasRoutingConfiguration>,
-
-
-    /// 
-    /// A description of the alias.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The function version that the alias invokes.
     /// 
     /// Required: Yes
@@ -51,6 +23,18 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "FunctionVersion")]
     pub function_version: String,
+
+
+    /// 
+    /// Specifies a provisioned concurrency configuration for a function's alias.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionedConcurrencyConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedConcurrencyConfig")]
+    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
 
     /// 
@@ -76,18 +60,6 @@ pub struct CfnAlias {
 
 
     /// 
-    /// Specifies a provisioned concurrency configuration for a function's alias.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionedConcurrencyConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedConcurrencyConfig")]
-    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
-
-
-    /// 
     /// The name of the alias.
     /// 
     /// Required: Yes
@@ -104,7 +76,37 @@ pub struct CfnAlias {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// A description of the alias.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The routing     configuration of the alias.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AliasRoutingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoutingConfig")]
+    pub routing_config: Option<AliasRoutingConfiguration>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAlias {
     fn type_string() -> &'static str {
@@ -114,25 +116,6 @@ impl cfn_resources::CfnResource for CfnAlias {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// The traffic-shifting configuration of a Lambda function alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AliasRoutingConfiguration {
-
-
-    /// 
-    /// The second version, and the percentage of traffic that's routed to it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of VersionWeight
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalVersionWeights")]
-    pub additional_version_weights: Vec<VersionWeight>,
-
 }
 
 
@@ -167,6 +150,29 @@ pub struct VersionWeight {
 }
 
 
+
+
+/// The traffic-shifting configuration of a Lambda function alias.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AliasRoutingConfiguration {
+
+
+    /// 
+    /// The second version, and the percentage of traffic that's routed to it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of VersionWeight
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalVersionWeights")]
+    pub additional_version_weights: Vec<VersionWeight>,
+
+}
+
+
+
+
 /// A provisioned concurrency configuration for a function's alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisionedConcurrencyConfiguration {
@@ -184,3 +190,5 @@ pub struct ProvisionedConcurrencyConfiguration {
     pub provisioned_concurrent_executions: i64,
 
 }
+
+

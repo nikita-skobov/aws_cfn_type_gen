@@ -6,6 +6,18 @@ pub struct CfnAlert {
 
 
     /// 
+    /// The name of the alert.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlertName")]
+    pub alert_name: Option<String>,
+
+
+    /// 
     /// The ARN of the detector to which the alert is attached.
     /// 
     /// Required: Yes
@@ -15,30 +27,6 @@ pub struct CfnAlert {
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorArn")]
     pub anomaly_detector_arn: String,
-
-
-    /// 
-    /// A description of the alert.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlertDescription")]
-    pub alert_description: Option<String>,
-
-
-    /// 
-    /// Action that will be triggered when there is an alert.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Action
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: Action,
 
 
     /// 
@@ -54,17 +42,31 @@ pub struct CfnAlert {
 
 
     /// 
-    /// The name of the alert.
+    /// Action that will be triggered when there is an alert.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Action
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: Action,
+
+
+    /// 
+    /// A description of the alert.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AlertName")]
-    pub alert_name: Option<String>,
+    #[serde(rename = "AlertDescription")]
+    pub alert_description: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnAlert {
     fn type_string() -> &'static str {
@@ -75,6 +77,72 @@ impl cfn_resources::CfnResource for CfnAlert {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Contains information about a Lambda configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LambdaConfiguration {
+
+
+    /// 
+    /// The ARN of the Lambda function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LambdaArn")]
+    pub lambda_arn: String,
+
+
+    /// 
+    /// The ARN of an IAM role that has permission to invoke the Lambda function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+}
+
+
+
+
+/// A configuration that specifies the action to perform when anomalies are detected.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Action {
+
+
+    /// 
+    /// A configuration for an AWS Lambda channel.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LambdaConfiguration")]
+    pub lambda_configuration: Option<LambdaConfiguration>,
+
+
+    /// 
+    /// A configuration for an Amazon SNS channel.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SNSConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SNSConfiguration")]
+    pub snsconfiguration: Option<SNSConfiguration>,
+
+}
+
+
 
 
 /// Contains information about the SNS topic to which you want to send your alerts and the IAM role that has    access to that topic.
@@ -108,63 +176,3 @@ pub struct SNSConfiguration {
 }
 
 
-/// Contains information about a Lambda configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LambdaConfiguration {
-
-
-    /// 
-    /// The ARN of an IAM role that has permission to invoke the Lambda function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The ARN of the Lambda function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LambdaArn")]
-    pub lambda_arn: String,
-
-}
-
-
-/// A configuration that specifies the action to perform when anomalies are detected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Action {
-
-
-    /// 
-    /// A configuration for an AWS Lambda channel.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LambdaConfiguration")]
-    pub lambda_configuration: Option<LambdaConfiguration>,
-
-
-    /// 
-    /// A configuration for an Amazon SNS channel.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SNSConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SNSConfiguration")]
-    pub snsconfiguration: Option<SNSConfiguration>,
-
-}

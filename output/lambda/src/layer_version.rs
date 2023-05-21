@@ -6,19 +6,17 @@ pub struct CfnLayerVersion {
 
 
     /// 
-    /// The description of the version.
+    /// A list of compatible  instruction set architectures.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
+    /// Maximum: 2
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "CompatibleArchitectures")]
+    pub compatible_architectures: Option<Vec<String>>,
 
 
     /// 
@@ -36,20 +34,6 @@ pub struct CfnLayerVersion {
 
 
     /// 
-    /// A list of compatible  instruction set architectures.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 2
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CompatibleArchitectures")]
-    pub compatible_architectures: Option<Vec<String>>,
-
-
-    /// 
     /// The layer's software license. It can be any of the following:
     /// 
     /// An SPDX license identifier. For example,      MIT.               The URL of a license hosted on the internet. For example,      https://opensource.org/licenses/MIT.               The full text of the license.
@@ -63,6 +47,22 @@ pub struct CfnLayerVersion {
     /// Update requires: Replacement
     #[serde(rename = "LicenseInfo")]
     pub license_info: Option<String>,
+
+
+    /// 
+    /// The description of the version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -96,6 +96,8 @@ pub struct CfnLayerVersion {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnLayerVersion {
     fn type_string() -> &'static str {
         "AWS::Lambda::LayerVersion"
@@ -110,22 +112,6 @@ impl cfn_resources::CfnResource for CfnLayerVersion {
 /// A ZIP archive that contains the contents of an Lambda layer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Content {
-
-
-    /// 
-    /// For versioned objects, the version of the layer archive object to use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3ObjectVersion")]
-    pub s3_object_version: Option<String>,
 
 
     /// 
@@ -161,4 +147,22 @@ pub struct Content {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
+
+    /// 
+    /// For versioned objects, the version of the layer archive object to use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3ObjectVersion")]
+    pub s3_object_version: Option<String>,
+
 }
+
+

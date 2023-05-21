@@ -24,26 +24,6 @@ pub struct CfnResourceDefaultVersion {
 
 
     /// 
-    /// The ID of a specific version of the resource. The version ID is the value at the end of the Amazon Resource Name  (ARN) assigned to the resource version when it's registered.
-    /// 
-    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [A-Za-z0-9-]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VersionId")]
-    pub version_id: Option<String>,
-
-
-    /// 
     /// The name of the resource.
     /// 
     /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
@@ -62,7 +42,29 @@ pub struct CfnResourceDefaultVersion {
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
 
+
+    /// 
+    /// The ID of a specific version of the resource. The version ID is the value at the end of the Amazon Resource Name  (ARN) assigned to the resource version when it's registered.
+    /// 
+    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [A-Za-z0-9-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VersionId")]
+    pub version_id: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnResourceDefaultVersion {
     fn type_string() -> &'static str {

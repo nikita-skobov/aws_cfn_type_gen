@@ -6,33 +6,6 @@ pub struct CfnResolverEndpoint {
 
 
     /// 
-    /// A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreferredInstanceType")]
-    pub preferred_instance_type: Option<String>,
-
-
-    /// 
     /// The subnets and IP addresses in your VPC that DNS queries originate from (for outbound endpoints) or that you forward 			DNS queries to (for inbound endpoints). The subnet ID uniquely identifies a VPC.
     /// 
     /// Required: Yes
@@ -46,31 +19,46 @@ pub struct CfnResolverEndpoint {
     pub ip_addresses: Vec<IpAddressRequest>,
 
 
-    /// Property description not available.
+    /// 
+    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
+    /// 
+    /// Required: Yes
     ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+
+    /// 
+    /// The Resolver endpoint IP address type.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "OutpostArn")]
-    pub outpost_arn: Option<String>,
+    /// Allowed values: DUALSTACK | IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResolverEndpointType")]
+    pub resolver_endpoint_type: Option<ResolverEndpointResolverEndpointTypeEnum>,
 
 
     /// 
-    /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
+    /// A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.
     /// 
-    /// INBOUND: allows DNS queries to your VPC from your network                        OUTBOUND: allows DNS queries from your VPC to your network
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: INBOUND | OUTBOUND
+    /// Maximum: 64
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Direction")]
-    pub direction: String,
+    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -87,32 +75,88 @@ pub struct CfnResolverEndpoint {
     pub tags: Option<Vec<Tag>>,
 
 
-    /// 
-    /// The Resolver endpoint IP address type.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DUALSTACK | IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResolverEndpointType")]
-    pub resolver_endpoint_type: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "PreferredInstanceType")]
+    pub preferred_instance_type: Option<String>,
 
 
     /// 
-    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
+    /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
+    /// 
+    /// INBOUND: allows DNS queries to your VPC from your network                        OUTBOUND: allows DNS queries from your VPC to your network
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Allowed values: INBOUND | OUTBOUND
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
+    #[serde(rename = "Direction")]
+    pub direction: ResolverEndpointDirectionEnum,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OutpostArn")]
+    pub outpost_arn: Option<String>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResolverEndpointDirectionEnum {
+
+    /// INBOUND
+    #[serde(rename = "INBOUND")]
+    Inbound,
+
+    /// OUTBOUND
+    #[serde(rename = "OUTBOUND")]
+    Outbound,
+
+}
+
+impl Default for ResolverEndpointDirectionEnum {
+    fn default() -> Self {
+        ResolverEndpointDirectionEnum::Inbound
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResolverEndpointResolverEndpointTypeEnum {
+
+    /// DUALSTACK
+    #[serde(rename = "DUALSTACK")]
+    Dualstack,
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for ResolverEndpointResolverEndpointTypeEnum {
+    fn default() -> Self {
+        ResolverEndpointResolverEndpointTypeEnum::Dualstack
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnResolverEndpoint {
     fn type_string() -> &'static str {
@@ -180,6 +224,8 @@ pub struct IpAddressRequest {
 }
 
 
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -213,3 +259,5 @@ pub struct Tag {
     pub value: String,
 
 }
+
+

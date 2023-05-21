@@ -6,18 +6,6 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OpenSearchServiceConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OpenSearchServiceConfig")]
-    pub open_search_service_config: Option<OpenSearchServiceConfig>,
-
-
-    /// 
     /// An EventBridge configuration that contains a valid ARN of an event bus.
     /// 
     /// Required: No
@@ -30,53 +18,27 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// An ARN of a Lambda function in valid ARN format. This can be the ARN of a Lambda function that exists in the     current account or in another account.
+    /// AWS Region and TableName for an Amazon DynamoDB table in your account.
     /// 
     /// Required: No
     ///
-    /// Type: LambdaConfig
+    /// Type: DynamoDBConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LambdaConfig")]
-    pub lambda_config: Option<LambdaConfig>,
+    #[serde(rename = "DynamoDBConfig")]
+    pub dynamo_dbconfig: Option<DynamoDBConfig>,
 
 
     /// 
-    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
-    /// 
-    /// As of September 2021, Amazon Elasticsearch Service is Amazon OpenSearch Service. This property is deprecated.     For new data sources, use OpenSearchServiceConfig to specify an OpenSearch Service data     source.
+    /// Relational Database configuration of the relational database data source.
     /// 
     /// Required: No
     ///
-    /// Type: ElasticsearchConfig
+    /// Type: RelationalDatabaseConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ElasticsearchConfig")]
-    pub elasticsearch_config: Option<ElasticsearchConfig>,
-
-
-    /// 
-    /// Endpoints for an HTTP data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HttpConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpConfig")]
-    pub http_config: Option<HttpConfig>,
+    #[serde(rename = "RelationalDatabaseConfig")]
+    pub relational_database_config: Option<RelationalDatabaseConfig>,
 
 
     /// 
@@ -94,15 +56,15 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// AWS Region and TableName for an Amazon DynamoDB table in your account.
+    /// An ARN of a Lambda function in valid ARN format. This can be the ARN of a Lambda function that exists in the     current account or in another account.
     /// 
     /// Required: No
     ///
-    /// Type: DynamoDBConfig
+    /// Type: LambdaConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DynamoDBConfig")]
-    pub dynamo_dbconfig: Option<DynamoDBConfig>,
+    #[serde(rename = "LambdaConfig")]
+    pub lambda_config: Option<LambdaConfig>,
 
 
     /// 
@@ -118,15 +80,29 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// Relational Database configuration of the relational database data source.
+    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
     /// 
     /// Required: No
     ///
-    /// Type: RelationalDatabaseConfig
+    /// Type: OpenSearchServiceConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RelationalDatabaseConfig")]
-    pub relational_database_config: Option<RelationalDatabaseConfig>,
+    #[serde(rename = "OpenSearchServiceConfig")]
+    pub open_search_service_config: Option<OpenSearchServiceConfig>,
+
+
+    /// 
+    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
+    /// 
+    /// As of September 2021, Amazon Elasticsearch Service is Amazon OpenSearch Service. This property is deprecated.     For new data sources, use OpenSearchServiceConfig to specify an OpenSearch Service data     source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ElasticsearchConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ElasticsearchConfig")]
+    pub elasticsearch_config: Option<ElasticsearchConfig>,
 
 
     /// 
@@ -154,7 +130,33 @@ pub struct CfnDataSource {
     #[serde(rename = "ServiceRoleArn")]
     pub service_role_arn: Option<String>,
 
+
+    /// 
+    /// Endpoints for an HTTP data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HttpConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpConfig")]
+    pub http_config: Option<HttpConfig>,
+
+
+    /// 
+    /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnDataSource {
     fn type_string() -> &'static str {
@@ -165,6 +167,240 @@ impl cfn_resources::CfnResource for CfnDataSource {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The AuthorizationConfig property type specifies the authorization type and configuration for an       AWS AppSync http data source.
+///
+/// AuthorizationConfig is a property of the AWS AppSync DataSource HttpConfig property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthorizationConfig {
+
+
+    /// 
+    /// The authorization type that the HTTP endpoint requires.
+    /// 
+    /// AWS_IAM: The authorization type is Signature        Version 4 (SigV4).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationType")]
+    pub authorization_type: String,
+
+
+    /// 
+    /// The AWS Identity and Access Management settings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AwsIamConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsIamConfig")]
+    pub aws_iam_config: Option<AwsIamConfig>,
+
+}
+
+
+
+
+/// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
+///
+/// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RelationalDatabaseConfig {
+
+
+    /// 
+    /// The type of relational data source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RelationalDatabaseSourceType")]
+    pub relational_database_source_type: String,
+
+
+    /// 
+    /// Information about the Amazon RDS resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RdsHttpEndpointConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RdsHttpEndpointConfig")]
+    pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
+
+}
+
+
+
+
+/// Use the AwsIamConfig property type to specify AwsIamConfig for a AWS AppSync authorizaton.
+///
+/// AwsIamConfig is a property of the AWS AppSync DataSource AuthorizationConfig resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AwsIamConfig {
+
+
+    /// 
+    /// The signing service name for AWS Identity and Access Management authorization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningServiceName")]
+    pub signing_service_name: Option<String>,
+
+
+    /// 
+    /// The signing Region for AWS Identity and Access Management authorization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningRegion")]
+    pub signing_region: Option<String>,
+
+}
+
+
+
+
+/// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
+///
+/// HttpConfig is a property of the AWS::AppSync::DataSource resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HttpConfig {
+
+
+    /// 
+    /// The endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Endpoint")]
+    pub endpoint: String,
+
+
+    /// 
+    /// The authorization configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthorizationConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationConfig")]
+    pub authorization_config: Option<AuthorizationConfig>,
+
+}
+
+
+
+
+/// The DynamoDBConfig property type specifies the AwsRegion and       TableName for an Amazon DynamoDB table in your account for an AWS AppSync data source.
+///
+/// DynamoDBConfig is a property of the AWS::AppSync::DataSource property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DynamoDBConfig {
+
+
+    /// 
+    /// The DeltaSyncConfig for a versioned datasource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeltaSyncConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeltaSyncConfig")]
+    pub delta_sync_config: Option<DeltaSyncConfig>,
+
+
+    /// 
+    /// The AWS Region.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: String,
+
+
+    /// 
+    /// The table name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TableName")]
+    pub table_name: String,
+
+
+    /// 
+    /// Set to TRUE to use AWS Identity and Access Management with this data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseCallerCredentials")]
+    pub use_caller_credentials: Option<bool>,
+
+
+    /// 
+    /// Set to TRUE to use Conflict Detection and Resolution with this data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Versioned")]
+    pub versioned: Option<bool>,
+
+}
+
+
+
+
+/// The data source. This can be an API destination, resource, or AWS service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EventBridgeConfig {
+
+
+    /// 
+    /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventBusArn")]
+    pub event_bus_arn: String,
+
+}
+
+
 
 
 /// The ElasticsearchConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
@@ -202,200 +438,29 @@ pub struct ElasticsearchConfig {
 }
 
 
-/// The data source. This can be an API destination, resource, or AWS service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EventBridgeConfig {
 
 
-    /// 
-    /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventBusArn")]
-    pub event_bus_arn: String,
-
-}
-
-
-/// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
+/// The LambdaConfig property type specifies the Lambda function ARN for an AWS AppSync data source.
 ///
-/// HttpConfig is a property of the AWS::AppSync::DataSource resource.
+/// LambdaConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HttpConfig {
+pub struct LambdaConfig {
 
 
     /// 
-    /// The authorization configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthorizationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationConfig")]
-    pub authorization_config: Option<AuthorizationConfig>,
-
-
-    /// 
-    /// The endpoint.
+    /// The ARN for the Lambda function.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    #[serde(rename = "LambdaFunctionArn")]
+    pub lambda_function_arn: String,
 
 }
 
 
-/// The AuthorizationConfig property type specifies the authorization type and configuration for an       AWS AppSync http data source.
-///
-/// AuthorizationConfig is a property of the AWS AppSync DataSource HttpConfig property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthorizationConfig {
-
-
-    /// 
-    /// The AWS Identity and Access Management settings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AwsIamConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsIamConfig")]
-    pub aws_iam_config: Option<AwsIamConfig>,
-
-
-    /// 
-    /// The authorization type that the HTTP endpoint requires.
-    /// 
-    /// AWS_IAM: The authorization type is Signature        Version 4 (SigV4).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationType")]
-    pub authorization_type: String,
-
-}
-
-
-/// Describes a Delta Sync configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeltaSyncConfig {
-
-
-    /// 
-    /// The number of minutes that an Item is stored in the data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BaseTableTTL")]
-    pub base_table_ttl: String,
-
-
-    /// 
-    /// The Delta Sync table name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncTableName")]
-    pub delta_sync_table_name: String,
-
-
-    /// 
-    /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync     table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncTableTTL")]
-    pub delta_sync_table_ttl: String,
-
-}
-
-
-/// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
-///
-/// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RelationalDatabaseConfig {
-
-
-    /// 
-    /// Information about the Amazon RDS resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RdsHttpEndpointConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RdsHttpEndpointConfig")]
-    pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
-
-
-    /// 
-    /// The type of relational data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RelationalDatabaseSourceType")]
-    pub relational_database_source_type: String,
-
-}
-
-
-/// Use the AwsIamConfig property type to specify AwsIamConfig for a AWS AppSync authorizaton.
-///
-/// AwsIamConfig is a property of the AWS AppSync DataSource AuthorizationConfig resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AwsIamConfig {
-
-
-    /// 
-    /// The signing service name for AWS Identity and Access Management authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningServiceName")]
-    pub signing_service_name: Option<String>,
-
-
-    /// 
-    /// The signing Region for AWS Identity and Access Management authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningRegion")]
-    pub signing_region: Option<String>,
-
-}
 
 
 /// Use the RdsHttpEndpointConfig property type to specify the RdsHttpEndpoint for an       AWS AppSync relational database.
@@ -418,18 +483,6 @@ pub struct RdsHttpEndpointConfig {
 
 
     /// 
-    /// AWS Region for RDS HTTP endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
-
-
-    /// 
     /// Amazon RDS cluster Amazon Resource Name (ARN).
     /// 
     /// Required: Yes
@@ -439,6 +492,18 @@ pub struct RdsHttpEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "DbClusterIdentifier")]
     pub db_cluster_identifier: String,
+
+
+    /// 
+    /// The ARN for database credentials stored in AWS Secrets Manager.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsSecretStoreArn")]
+    pub aws_secret_store_arn: String,
 
 
     /// 
@@ -454,17 +519,19 @@ pub struct RdsHttpEndpointConfig {
 
 
     /// 
-    /// The ARN for database credentials stored in AWS Secrets Manager.
+    /// AWS Region for RDS HTTP endpoint.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AwsSecretStoreArn")]
-    pub aws_secret_store_arn: String,
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: String,
 
 }
+
+
 
 
 /// The OpenSearchServiceConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
@@ -500,91 +567,48 @@ pub struct OpenSearchServiceConfig {
 }
 
 
-/// The DynamoDBConfig property type specifies the AwsRegion and       TableName for an Amazon DynamoDB table in your account for an AWS AppSync data source.
-///
-/// DynamoDBConfig is a property of the AWS::AppSync::DataSource property type.
+
+
+/// Describes a Delta Sync configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DynamoDBConfig {
+pub struct DeltaSyncConfig {
 
 
     /// 
-    /// The DeltaSyncConfig for a versioned datasource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeltaSyncConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncConfig")]
-    pub delta_sync_config: Option<DeltaSyncConfig>,
-
-
-    /// 
-    /// The table name.
+    /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync     table.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TableName")]
-    pub table_name: String,
+    #[serde(rename = "DeltaSyncTableTTL")]
+    pub delta_sync_table_ttl: String,
 
 
     /// 
-    /// Set to TRUE to use Conflict Detection and Resolution with this data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Versioned")]
-    pub versioned: Option<bool>,
-
-
-    /// 
-    /// The AWS Region.
+    /// The number of minutes that an Item is stored in the data source.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
+    #[serde(rename = "BaseTableTTL")]
+    pub base_table_ttl: String,
 
 
     /// 
-    /// Set to TRUE to use AWS Identity and Access Management with this data source.
+    /// The Delta Sync table name.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UseCallerCredentials")]
-    pub use_caller_credentials: Option<bool>,
+    #[serde(rename = "DeltaSyncTableName")]
+    pub delta_sync_table_name: String,
 
 }
 
 
-/// The LambdaConfig property type specifies the Lambda function ARN for an AWS AppSync data source.
-///
-/// LambdaConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LambdaConfig {
-
-
-    /// 
-    /// The ARN for the Lambda function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaFunctionArn")]
-    pub lambda_function_arn: String,
-
-}

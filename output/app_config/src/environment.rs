@@ -10,19 +10,19 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// A name for the environment.
+    /// A description of the environment.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
-    /// Maximum: 64
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -54,6 +54,22 @@ pub struct CfnEnvironment {
 
 
     /// 
+    /// A name for the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// Metadata to assign to the environment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
     /// 
     /// Required: No
@@ -64,23 +80,9 @@ pub struct CfnEnvironment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tags>>,
 
-
-    /// 
-    /// A description of the environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnEnvironment {
     fn type_string() -> &'static str {
@@ -99,18 +101,6 @@ pub struct Tags {
 
 
     /// 
-    /// The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
     /// 
     /// Required: No
@@ -121,12 +111,42 @@ pub struct Tags {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
+
+    /// 
+    /// The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
 }
+
+
 
 
 /// Amazon CloudWatch alarms to monitor during the deployment process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Monitors {
+
+
+    /// 
+    /// Amazon Resource Name (ARN) of the Amazon CloudWatch alarm.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmArn")]
+    pub alarm_arn: Option<String>,
 
 
     /// 
@@ -146,20 +166,6 @@ pub struct Monitors {
     #[serde(rename = "AlarmRoleArn")]
     pub alarm_role_arn: Option<String>,
 
-
-    /// 
-    /// Amazon Resource Name (ARN) of the Amazon CloudWatch alarm.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmArn")]
-    pub alarm_arn: Option<String>,
-
 }
+
+

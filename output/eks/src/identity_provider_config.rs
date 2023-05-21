@@ -8,27 +8,15 @@ pub struct CfnIdentityProviderConfig {
 
 
     /// 
-    /// The name of the configuration.
+    /// An object representing an OpenID Connect (OIDC) identity provider       configuration.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: OidcIdentityProviderConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "IdentityProviderConfigName")]
-    pub identity_provider_config_name: Option<String>,
-
-
-    /// 
-    /// The cluster that the configuration is associated to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    #[serde(rename = "Oidc")]
+    pub oidc: Option<OidcIdentityProviderConfig>,
 
 
     /// 
@@ -56,17 +44,31 @@ pub struct CfnIdentityProviderConfig {
 
 
     /// 
-    /// An object representing an OpenID Connect (OIDC) identity provider       configuration.
+    /// The name of the configuration.
     /// 
     /// Required: No
     ///
-    /// Type: OidcIdentityProviderConfig
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Oidc")]
-    pub oidc: Option<OidcIdentityProviderConfig>,
+    #[serde(rename = "IdentityProviderConfigName")]
+    pub identity_provider_config_name: Option<String>,
+
+
+    /// 
+    /// The cluster that the configuration is associated to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
     fn type_string() -> &'static str {
@@ -76,37 +78,6 @@ impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
-
-
-/// A key-value pair that describes a required claim in the identity token. If set, each       claim is verified to be present in the token with a matching value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RequiredClaim {
-
-
-    /// 
-    /// The value for the key from the token.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key to match from the token.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: String,
-
 }
 
 
@@ -145,45 +116,11 @@ pub struct Tag {
 }
 
 
+
+
 /// An object representing the configuration for an OpenID Connect (OIDC) identity       provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OidcIdentityProviderConfig {
-
-
-    /// 
-    /// The JSON web token (JWT) claim that the provider uses to return your groups.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupsClaim")]
-    pub groups_claim: Option<String>,
-
-
-    /// 
-    /// The key-value pairs that describe required claims in the identity token. If set, each       claim is verified to be present in the token with a matching value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of RequiredClaim
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RequiredClaims")]
-    pub required_claims: Option<Vec<RequiredClaim>>,
-
-
-    /// 
-    /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
 
 
     /// 
@@ -199,15 +136,15 @@ pub struct OidcIdentityProviderConfig {
 
 
     /// 
-    /// The prefix that is prepended to group claims to prevent clashes with existing names       (such as system: groups). For example, the value oidc: creates       group names like oidc:engineering and oidc:infra. The prefix       can't contain system:
+    /// The prefix that is prepended to username claims to prevent clashes with existing       names. The prefix can't contain system:
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "GroupsPrefix")]
-    pub groups_prefix: Option<String>,
+    #[serde(rename = "UsernamePrefix")]
+    pub username_prefix: Option<String>,
 
 
     /// 
@@ -223,14 +160,85 @@ pub struct OidcIdentityProviderConfig {
 
 
     /// 
-    /// The prefix that is prepended to username claims to prevent clashes with existing       names. The prefix can't contain system:
+    /// The JSON web token (JWT) claim that the provider uses to return your groups.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UsernamePrefix")]
-    pub username_prefix: Option<String>,
+    #[serde(rename = "GroupsClaim")]
+    pub groups_claim: Option<String>,
+
+
+    /// 
+    /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
+
+
+    /// 
+    /// The key-value pairs that describe required claims in the identity token. If set, each       claim is verified to be present in the token with a matching value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of RequiredClaim
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RequiredClaims")]
+    pub required_claims: Option<Vec<RequiredClaim>>,
+
+
+    /// 
+    /// The prefix that is prepended to group claims to prevent clashes with existing names       (such as system: groups). For example, the value oidc: creates       group names like oidc:engineering and oidc:infra. The prefix       can't contain system:
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupsPrefix")]
+    pub groups_prefix: Option<String>,
 
 }
+
+
+
+
+/// A key-value pair that describes a required claim in the identity token. If set, each       claim is verified to be present in the token with a matching value.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RequiredClaim {
+
+
+    /// 
+    /// The value for the key from the token.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key to match from the token.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+

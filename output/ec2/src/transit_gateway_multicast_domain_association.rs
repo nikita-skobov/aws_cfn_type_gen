@@ -20,18 +20,6 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
 
 
     /// 
-    /// The ID of the transit gateway attachment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayAttachmentId")]
-    pub transit_gateway_attachment_id: String,
-
-
-    /// 
     /// The ID of the transit gateway multicast domain.
     /// 
     /// Required: Yes
@@ -42,7 +30,21 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     #[serde(rename = "TransitGatewayMulticastDomainId")]
     pub transit_gateway_multicast_domain_id: String,
 
+
+    /// 
+    /// The ID of the transit gateway attachment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayAttachmentId")]
+    pub transit_gateway_attachment_id: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomainAssociation {
     fn type_string() -> &'static str {

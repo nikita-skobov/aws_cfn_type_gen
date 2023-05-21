@@ -18,39 +18,15 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// The operation name for the route.
+    /// The model selection expression for the route. Supported only for WebSocket APIs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OperationName")]
-    pub operation_name: Option<String>,
-
-
-    /// 
-    /// The authorization type for the route. For WebSocket APIs, valid values are        NONE for open access, AWS_IAM for using AWS IAM        permissions, and CUSTOM for using a Lambda        authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM         permissions, and CUSTOM for using a Lambda authorizer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationType")]
-    pub authorization_type: Option<String>,
+    #[serde(rename = "ModelSelectionExpression")]
+    pub model_selection_expression: Option<String>,
 
 
     /// 
@@ -66,27 +42,27 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The model selection expression for the route. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ModelSelectionExpression")]
-    pub model_selection_expression: Option<String>,
-
-
-    /// 
-    /// The route key for the route. For HTTP APIs, the route key can be either $default, or a combination of an HTTP method and resource path, for example, GET /pets.
+    /// The API identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+
+    /// 
+    /// The authorization scopes supported by this route.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "RouteKey")]
-    pub route_key: String,
+    #[serde(rename = "AuthorizationScopes")]
+    pub authorization_scopes: Option<Vec<String>>,
 
 
     /// 
@@ -114,15 +90,27 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The authorization scopes supported by this route.
+    /// The route key for the route. For HTTP APIs, the route key can be either $default, or a combination of an HTTP method and resource path, for example, GET /pets.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RouteKey")]
+    pub route_key: String,
+
+
+    /// 
+    /// The request models for the route. Supported only for WebSocket APIs.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizationScopes")]
-    pub authorization_scopes: Option<Vec<String>>,
+    #[serde(rename = "RequestModels")]
+    pub request_models: Option<serde_json::Value>,
 
 
     /// 
@@ -138,17 +126,31 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The request models for the route. Supported only for WebSocket APIs.
+    /// The authorization type for the route. For WebSocket APIs, valid values are        NONE for open access, AWS_IAM for using AWS IAM        permissions, and CUSTOM for using a Lambda        authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM         permissions, and CUSTOM for using a Lambda authorizer.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RequestModels")]
-    pub request_models: Option<serde_json::Value>,
+    #[serde(rename = "AuthorizationType")]
+    pub authorization_type: Option<String>,
+
+
+    /// 
+    /// The operation name for the route.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OperationName")]
+    pub operation_name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnRoute {
     fn type_string() -> &'static str {

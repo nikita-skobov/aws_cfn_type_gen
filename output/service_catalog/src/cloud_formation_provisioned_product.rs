@@ -10,13 +10,9 @@ pub struct CfnCloudFormationProvisionedProduct {
 
 
     /// 
-    /// The name of the Service Catalog product.
+    /// A user-friendly name for the provisioned product. This value must be     unique for the AWS account and cannot be updated after the product is provisioned.
     /// 
-    /// Each time a stack is created or updated, if ProductName is provided it will     successfully resolve to ProductId as long as only one product exists in the     account or Region with that ProductName.
-    /// 
-    /// NoteYou must specify either       the name or the ID of the product, but not both.
-    /// 
-    /// Required: Conditional
+    /// Required: No
     ///
     /// Type: String
     ///
@@ -26,9 +22,119 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Pattern: [a-zA-Z0-9][a-zA-Z0-9._-]*
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProvisionedProductName")]
+    pub provisioned_product_name: Option<String>,
+
+
+    /// 
+    /// The product identifier.
+    /// 
+    /// NoteYou must specify either the ID or the name of the product,        but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "ProductName")]
-    pub product_name: Option<String>,
+    #[serde(rename = "ProductId")]
+    pub product_id: Option<String>,
+
+
+    /// 
+    /// The name of the path. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
+    /// 
+    /// NoteYou must provide the name or ID, but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PathName")]
+    pub path_name: Option<String>,
+
+
+    /// 
+    /// The name of the provisioning artifact (also known as a version) for the product. This     name must be unique for the product.
+    /// 
+    /// Note You must specify either the name or the ID of the provisioning artifact, but not both. You must also specify either the name or the ID of the product, but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 8192
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisioningArtifactName")]
+    pub provisioning_artifact_name: Option<String>,
+
+
+    /// 
+    /// The path identifier of the product. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
+    /// 
+    /// NoteYou must provide the name or ID, but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PathId")]
+    pub path_id: Option<String>,
+
+
+    /// 
+    /// The identifier of the provisioning artifact (also known as a version).
+    /// 
+    /// NoteYou must specify either the ID or the name of the provisioning artifact, but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisioningArtifactId")]
+    pub provisioning_artifact_id: Option<String>,
+
+
+    /// 
+    /// One or more tags.
+    /// 
+    /// NoteRequires the provisioned product to have an ResourceUpdateConstraint resource with       TagUpdatesOnProvisionedProduct set to ALLOWED to allow tag       updates. If RESOURCE_UPDATE constraint is not present, tags updates are ignored.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -60,74 +166,6 @@ pub struct CfnCloudFormationProvisionedProduct {
 
 
     /// 
-    /// Passed to AWS CloudFormation. The SNS topic ARNs to which to publish stack-related     events.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NotificationArns")]
-    pub notification_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the path. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
-    /// 
-    /// NoteYou must provide the name or ID, but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PathName")]
-    pub path_name: Option<String>,
-
-
-    /// 
-    /// One or more tags.
-    /// 
-    /// NoteRequires the provisioned product to have an ResourceUpdateConstraint resource with       TagUpdatesOnProvisionedProduct set to ALLOWED to allow tag       updates. If RESOURCE_UPDATE constraint is not present, tags updates are ignored.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The path identifier of the product. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
-    /// 
-    /// NoteYou must provide the name or ID, but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PathId")]
-    pub path_id: Option<String>,
-
-
-    /// 
     /// StackSet preferences that are required for provisioning the product or updating a provisioned product.
     /// 
     /// Required: No
@@ -140,45 +178,13 @@ pub struct CfnCloudFormationProvisionedProduct {
 
 
     /// 
-    /// The name of the provisioning artifact (also known as a version) for the product. This     name must be unique for the product.
+    /// The name of the Service Catalog product.
     /// 
-    /// Note You must specify either the name or the ID of the provisioning artifact, but not both. You must also specify either the name or the ID of the product, but not both.
+    /// Each time a stack is created or updated, if ProductName is provided it will     successfully resolve to ProductId as long as only one product exists in the     account or Region with that ProductName.
     /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisioningArtifactName")]
-    pub provisioning_artifact_name: Option<String>,
-
-
-    /// 
-    /// The product identifier.
-    /// 
-    /// NoteYou must specify either the ID or the name of the product,        but not both.
+    /// NoteYou must specify either       the name or the ID of the product, but not both.
     /// 
     /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProductId")]
-    pub product_id: Option<String>,
-
-
-    /// 
-    /// A user-friendly name for the provisioned product. This value must be     unique for the AWS account and cannot be updated after the product is provisioned.
-    /// 
-    /// Required: No
     ///
     /// Type: String
     ///
@@ -188,31 +194,27 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Pattern: [a-zA-Z0-9][a-zA-Z0-9._-]*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProvisionedProductName")]
-    pub provisioned_product_name: Option<String>,
-
-
-    /// 
-    /// The identifier of the provisioning artifact (also known as a version).
-    /// 
-    /// NoteYou must specify either the ID or the name of the provisioning artifact, but not both.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ProvisioningArtifactId")]
-    pub provisioning_artifact_id: Option<String>,
+    #[serde(rename = "ProductName")]
+    pub product_name: Option<String>,
+
+
+    /// 
+    /// Passed to AWS CloudFormation. The SNS topic ARNs to which to publish stack-related     events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NotificationArns")]
+    pub notification_arns: Option<Vec<String>>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
     fn type_string() -> &'static str {
@@ -237,17 +239,6 @@ pub struct Tag {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -257,7 +248,20 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
+
+
 
 
 /// The user-defined preferences that will be applied when updating a provisioned     product. Not all preferences are applicable to all provisioned product type
@@ -271,46 +275,6 @@ pub struct Tag {
 /// If no values are specified, the default value is all accounts from the       STACKSET constraint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningPreferences {
-
-
-    /// 
-    /// The maximum number of accounts in which to perform this operation at one time. This is dependent on the value of StackSetFailureToleranceCount. StackSetMaxConcurrentCount is at most one more than the StackSetFailureToleranceCount.
-    /// 
-    /// Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling.
-    /// 
-    /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
-    /// Conditional: You must specify either StackSetMaxConcurrentCount or StackSetMaxConcurrentPercentage, but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StackSetMaxConcurrencyCount")]
-    pub stack_set_max_concurrency_count: Option<i64>,
-
-
-    /// 
-    /// The number of accounts, per Region, for which this operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
-    /// 
-    /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
-    /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
-    /// 
-    /// The default value is 0 if no value is specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StackSetFailureToleranceCount")]
-    pub stack_set_failure_tolerance_count: Option<i64>,
 
 
     /// 
@@ -335,28 +299,6 @@ pub struct ProvisioningPreferences {
     /// Update requires: No interruption
     #[serde(rename = "StackSetMaxConcurrencyPercentage")]
     pub stack_set_max_concurrency_percentage: Option<i64>,
-
-
-    /// 
-    /// The percentage of accounts, per Region, for which this stack operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
-    /// 
-    /// When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number.
-    /// 
-    /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
-    /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StackSetFailureTolerancePercentage")]
-    pub stack_set_failure_tolerance_percentage: Option<i64>,
 
 
     /// 
@@ -396,6 +338,68 @@ pub struct ProvisioningPreferences {
 
 
     /// 
+    /// The maximum number of accounts in which to perform this operation at one time. This is dependent on the value of StackSetFailureToleranceCount. StackSetMaxConcurrentCount is at most one more than the StackSetFailureToleranceCount.
+    /// 
+    /// Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling.
+    /// 
+    /// Applicable only to a CFN_STACKSET provisioned product type.
+    /// 
+    /// Conditional: You must specify either StackSetMaxConcurrentCount or StackSetMaxConcurrentPercentage, but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StackSetMaxConcurrencyCount")]
+    pub stack_set_max_concurrency_count: Option<i64>,
+
+
+    /// 
+    /// The percentage of accounts, per Region, for which this stack operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
+    /// 
+    /// When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number.
+    /// 
+    /// Applicable only to a CFN_STACKSET provisioned product type.
+    /// 
+    /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StackSetFailureTolerancePercentage")]
+    pub stack_set_failure_tolerance_percentage: Option<i64>,
+
+
+    /// 
+    /// The number of accounts, per Region, for which this operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
+    /// 
+    /// Applicable only to a CFN_STACKSET provisioned product type.
+    /// 
+    /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
+    /// 
+    /// The default value is 0 if no value is specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StackSetFailureToleranceCount")]
+    pub stack_set_failure_tolerance_count: Option<i64>,
+
+
+    /// 
     /// Determines what action AWS Service Catalog performs to a stack set or a stack instance represented by the provisioned product. The default value is UPDATE if nothing is specified.
     /// 
     /// Applicable only to a CFN_STACKSET provisioned product type.
@@ -410,9 +414,34 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetOperationType")]
-    pub stack_set_operation_type: Option<String>,
+    pub stack_set_operation_type: Option<ProvisioningPreferencesStackSetOperationTypeEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ProvisioningPreferencesStackSetOperationTypeEnum {
+
+    /// CREATE
+    #[serde(rename = "CREATE")]
+    Create,
+
+    /// DELETE
+    #[serde(rename = "DELETE")]
+    Delete,
+
+    /// UPDATE
+    #[serde(rename = "UPDATE")]
+    Update,
+
+}
+
+impl Default for ProvisioningPreferencesStackSetOperationTypeEnum {
+    fn default() -> Self {
+        ProvisioningPreferencesStackSetOperationTypeEnum::Create
+    }
+}
+
 
 
 /// Information about a parameter used to provision a product.
@@ -450,3 +479,5 @@ pub struct ProvisioningParameter {
     pub key: String,
 
 }
+
+

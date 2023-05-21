@@ -5,6 +5,17 @@
 pub struct CfnWorkflow {
 
 
+    /// The tags to use with this workflow.
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
     /// A collection of properties to be used as part of each execution of the workflow
     ///
     /// Required: No
@@ -16,15 +27,15 @@ pub struct CfnWorkflow {
     pub default_run_properties: Option<serde_json::Value>,
 
 
-    /// The name of the workflow representing the flow
+    /// A description of the workflow
     ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -39,28 +50,19 @@ pub struct CfnWorkflow {
     pub max_concurrent_runs: Option<i64>,
 
 
-    /// A description of the workflow
+    /// The name of the workflow representing the flow
     ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// The tags to use with this workflow.
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnWorkflow {
     fn type_string() -> &'static str {

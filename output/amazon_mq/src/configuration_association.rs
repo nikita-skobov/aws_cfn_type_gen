@@ -30,6 +30,8 @@ pub struct CfnConfigurationAssociation {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnConfigurationAssociation {
     fn type_string() -> &'static str {
         "AWS::AmazonMQ::ConfigurationAssociation"
@@ -47,18 +49,6 @@ pub struct ConfigurationId {
 
 
     /// 
-    /// The unique ID that Amazon MQ generates for the configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
     /// The revision number of the configuration.
     /// 
     /// Required: Yes
@@ -69,4 +59,18 @@ pub struct ConfigurationId {
     #[serde(rename = "Revision")]
     pub revision: i64,
 
+
+    /// 
+    /// The unique ID that Amazon MQ generates for the configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: String,
+
 }
+
+

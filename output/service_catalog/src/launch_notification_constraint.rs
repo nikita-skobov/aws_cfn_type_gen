@@ -18,20 +18,6 @@ pub struct CfnLaunchNotificationConstraint {
 
 
     /// 
-    /// The description of the constraint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -47,6 +33,20 @@ pub struct CfnLaunchNotificationConstraint {
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
+
+
+    /// 
+    /// The description of the constraint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -83,6 +83,8 @@ pub struct CfnLaunchNotificationConstraint {
     pub product_id: String,
 
 }
+
+
 
 impl cfn_resources::CfnResource for CfnLaunchNotificationConstraint {
     fn type_string() -> &'static str {

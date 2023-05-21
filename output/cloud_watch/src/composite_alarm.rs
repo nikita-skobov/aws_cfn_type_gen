@@ -16,18 +16,6 @@ pub struct CfnCompositeAlarm {
 
 
     /// 
-    /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InsufficientDataActions")]
-    pub insufficient_data_actions: Option<Vec<String>>,
-
-
-    /// 
     /// Actions will be suppressed       if the suppressor alarm is       in the ALARM state.       ActionsSuppressor can be an AlarmName or an Amazon Resource Name (ARN)       from an existing alarm.
     /// 
     /// Required: No
@@ -37,30 +25,6 @@ pub struct CfnCompositeAlarm {
     /// Update requires: No interruption
     #[serde(rename = "ActionsSuppressor")]
     pub actions_suppressor: Option<String>,
-
-
-    /// 
-    /// The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions     that you can specify, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmActions")]
-    pub alarm_actions: Option<Vec<String>>,
-
-
-    /// 
-    /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActionsEnabled")]
-    pub actions_enabled: Option<bool>,
 
 
     /// 
@@ -89,6 +53,30 @@ pub struct CfnCompositeAlarm {
 
 
     /// 
+    /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InsufficientDataActions")]
+    pub insufficient_data_actions: Option<Vec<String>>,
+
+
+    /// 
+    /// The name for the composite alarm. This name must be unique within your AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlarmName")]
+    pub alarm_name: Option<String>,
+
+
+    /// 
     /// An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state. For each       alarm that you reference, you designate a function that specifies whether that alarm needs to be in ALARM state, OK state,       or INSUFFICIENT_DATA state. You can use operators (AND, OR and NOT) to combine multiple functions in a       single expression. You can use parenthesis to logically group the functions in your expression.
     /// 
     /// You can use either alarm names or ARNs to reference the other alarms that are to be evaluated.
@@ -111,27 +99,15 @@ pub struct CfnCompositeAlarm {
 
 
     /// 
-    /// The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
+    /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OKActions")]
-    pub okactions: Option<Vec<String>>,
-
-
-    /// 
-    /// The name for the composite alarm. This name must be unique within your AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlarmName")]
-    pub alarm_name: Option<String>,
+    #[serde(rename = "ActionsEnabled")]
+    pub actions_enabled: Option<bool>,
 
 
     /// 
@@ -147,7 +123,33 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "ActionsSuppressorExtensionPeriod")]
     pub actions_suppressor_extension_period: Option<i64>,
 
+
+    /// 
+    /// The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OKActions")]
+    pub okactions: Option<Vec<String>>,
+
+
+    /// 
+    /// The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions     that you can specify, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmActions")]
+    pub alarm_actions: Option<Vec<String>>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnCompositeAlarm {
     fn type_string() -> &'static str {

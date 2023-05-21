@@ -6,18 +6,6 @@ pub struct CfnPullThroughCacheRule {
 
 
     /// 
-    /// The upstream registry URL associated with the pull through cache rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UpstreamRegistryUrl")]
-    pub upstream_registry_url: Option<String>,
-
-
-    /// 
     /// The Amazon ECR repository prefix associated with the pull through cache rule.
     /// 
     /// Required: No
@@ -34,7 +22,21 @@ pub struct CfnPullThroughCacheRule {
     #[serde(rename = "EcrRepositoryPrefix")]
     pub ecr_repository_prefix: Option<String>,
 
+
+    /// 
+    /// The upstream registry URL associated with the pull through cache rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UpstreamRegistryUrl")]
+    pub upstream_registry_url: Option<String>,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnPullThroughCacheRule {
     fn type_string() -> &'static str {

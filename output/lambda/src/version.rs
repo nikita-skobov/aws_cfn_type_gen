@@ -18,28 +18,6 @@ pub struct CfnVersion {
 
 
     /// 
-    /// The name of the Lambda function.
-    /// 
-    /// Name formats                                            Function name - MyFunction.                        Function ARN - arn:aws:lambda:us-west-2:123456789012:function:MyFunction.                        Partial ARN - 123456789012:function:MyFunction.
-    /// 
-    /// The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64    characters in length.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 140
-    ///
-    /// Pattern: (arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\d{1}:)?(\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\$LATEST|[a-zA-Z0-9-_]+))?
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FunctionName")]
-    pub function_name: String,
-
-
-    /// 
     /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
     /// 
     /// Required: No
@@ -66,7 +44,31 @@ pub struct CfnVersion {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The name of the Lambda function.
+    /// 
+    /// Name formats                                            Function name - MyFunction.                        Function ARN - arn:aws:lambda:us-west-2:123456789012:function:MyFunction.                        Partial ARN - 123456789012:function:MyFunction.
+    /// 
+    /// The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64    characters in length.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 140
+    ///
+    /// Pattern: (arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\d{1}:)?(\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\$LATEST|[a-zA-Z0-9-_]+))?
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionName")]
+    pub function_name: String,
+
 }
+
+
 
 impl cfn_resources::CfnResource for CfnVersion {
     fn type_string() -> &'static str {
@@ -96,3 +98,5 @@ pub struct ProvisionedConcurrencyConfiguration {
     pub provisioned_concurrent_executions: i64,
 
 }
+
+

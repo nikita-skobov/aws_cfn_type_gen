@@ -14,6 +14,42 @@ pub struct CfnFunction {
 
 
     /// 
+    /// Contains configuration information about a CloudFront function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FunctionConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionConfig")]
+    pub function_config: FunctionConfig,
+
+
+    /// 
+    /// Contains metadata about a CloudFront function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FunctionMetadata
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionMetadata")]
+    pub function_metadata: Option<FunctionMetadata>,
+
+
+    /// 
+    /// The function code. For more information about writing a CloudFront function, see Writing 				function code for CloudFront Functions in the 			Amazon CloudFront Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionCode")]
+    pub function_code: String,
+
+
+    /// 
     /// A name to identify the function.
     /// 
     /// Required: Yes
@@ -42,43 +78,9 @@ pub struct CfnFunction {
     #[serde(rename = "AutoPublish")]
     pub auto_publish: Option<bool>,
 
-
-    /// 
-    /// Contains configuration information about a CloudFront function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FunctionConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionConfig")]
-    pub function_config: FunctionConfig,
-
-
-    /// 
-    /// The function code. For more information about writing a CloudFront function, see Writing 				function code for CloudFront Functions in the 			Amazon CloudFront Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionCode")]
-    pub function_code: String,
-
-
-    /// 
-    /// Contains metadata about a CloudFront function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FunctionMetadata
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionMetadata")]
-    pub function_metadata: Option<FunctionMetadata>,
-
 }
+
+
 
 impl cfn_resources::CfnResource for CfnFunction {
     fn type_string() -> &'static str {
@@ -110,6 +112,8 @@ pub struct FunctionMetadata {
 }
 
 
+
+
 /// Contains configuration information about a CloudFront function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FunctionConfig {
@@ -138,6 +142,23 @@ pub struct FunctionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
-    pub runtime: String,
+    pub runtime: FunctionConfigRuntimeEnum,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FunctionConfigRuntimeEnum {
+
+    /// cloudfront-js-1.0
+    #[serde(rename = "cloudfront-js-1.0")]
+    Cloudfrontjs10,
+
+}
+
+impl Default for FunctionConfigRuntimeEnum {
+    fn default() -> Self {
+        FunctionConfigRuntimeEnum::Cloudfrontjs10
+    }
+}
+

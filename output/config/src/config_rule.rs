@@ -20,20 +20,6 @@ pub struct CfnConfigRule {
 
 
     /// 
-    /// Defines which resources can trigger an evaluation for the rule. 			The scope can include one or more resource types, a combination of 			one resource type and one resource ID, or a combination of a tag key 			and value. Specify a scope to constrain the resources that can 			trigger an evaluation for the rule. If you do not specify a scope, 			evaluations are triggered when any resource in the recording group 			changes.
-    /// 
-    /// NoteThe scope can be empty.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Scope
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<Scope>,
-
-
-    /// 
     /// Provides the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule identifier, 			and the notifications that cause the function to evaluate your AWS 			resources.
     /// 
     /// Required: Yes
@@ -43,6 +29,22 @@ pub struct CfnConfigRule {
     /// Update requires: No interruption
     #[serde(rename = "Source")]
     pub source: Source,
+
+
+    /// 
+    /// The description that you provide for the AWS Config 			rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -64,24 +66,6 @@ pub struct CfnConfigRule {
 
 
     /// 
-    /// The maximum frequency with which AWS Config runs evaluations 			for a rule. You can specify a value for 				MaximumExecutionFrequency when:
-    /// 
-    /// You are using an AWS managed rule that is triggered at 					a periodic frequency. 			     				      Your custom rule is triggered when AWS Config delivers 				        the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties.
-    /// 
-    /// NoteBy default, rules with a periodic trigger are evaluated 				every 24 hours. To change the frequency, specify a valid value 				for the MaximumExecutionFrequency 				parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumExecutionFrequency")]
-    pub maximum_execution_frequency: Option<String>,
-
-
-    /// 
     /// A string, in JSON format, that is passed to the AWS Config rule 			Lambda function.
     /// 
     /// Required: No
@@ -98,21 +82,70 @@ pub struct CfnConfigRule {
 
 
     /// 
-    /// The description that you provide for the AWS Config 			rule.
+    /// Defines which resources can trigger an evaluation for the rule. 			The scope can include one or more resource types, a combination of 			one resource type and one resource ID, or a combination of a tag key 			and value. Specify a scope to constrain the resources that can 			trigger an evaluation for the rule. If you do not specify a scope, 			evaluations are triggered when any resource in the recording group 			changes.
+    /// 
+    /// NoteThe scope can be empty.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Scope
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<Scope>,
+
+
+    /// 
+    /// The maximum frequency with which AWS Config runs evaluations 			for a rule. You can specify a value for 				MaximumExecutionFrequency when:
+    /// 
+    /// You are using an AWS managed rule that is triggered at 					a periodic frequency. 			     				      Your custom rule is triggered when AWS Config delivers 				        the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties.
+    /// 
+    /// NoteBy default, rules with a periodic trigger are evaluated 				every 24 hours. To change the frequency, specify a valid value 				for the MaximumExecutionFrequency 				parameter.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
+    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "MaximumExecutionFrequency")]
+    pub maximum_execution_frequency: Option<ConfigRuleMaximumExecutionFrequencyEnum>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ConfigRuleMaximumExecutionFrequencyEnum {
+
+    /// One_Hour
+    #[serde(rename = "One_Hour")]
+    Onehour,
+
+    /// Six_Hours
+    #[serde(rename = "Six_Hours")]
+    Sixhours,
+
+    /// Three_Hours
+    #[serde(rename = "Three_Hours")]
+    Threehours,
+
+    /// Twelve_Hours
+    #[serde(rename = "Twelve_Hours")]
+    Twelvehours,
+
+    /// TwentyFour_Hours
+    #[serde(rename = "TwentyFour_Hours")]
+    Twentyfourhours,
+
+}
+
+impl Default for ConfigRuleMaximumExecutionFrequencyEnum {
+    fn default() -> Self {
+        ConfigRuleMaximumExecutionFrequencyEnum::Onehour
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnConfigRule {
     fn type_string() -> &'static str {
@@ -128,34 +161,6 @@ impl cfn_resources::CfnResource for CfnConfigRule {
 /// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Source {
-
-
-    /// 
-    /// Provides the source and the message types that cause AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
-    /// 
-    /// If the owner is set to CUSTOM_POLICY, the only acceptable values for the AWS Config rule trigger message type are ConfigurationItemChangeNotification and OversizedConfigurationItemChangeNotification.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of SourceDetail
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceDetails")]
-    pub source_details: Option<Vec<SourceDetail>>,
-
-
-    /// 
-    /// Provides the runtime system, policy definition, and whether debug logging is enabled. Required when owner is set to CUSTOM_POLICY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomPolicyDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomPolicyDetails")]
-    pub custom_policy_details: Option<CustomPolicyDetails>,
 
 
     /// 
@@ -179,6 +184,18 @@ pub struct Source {
 
 
     /// 
+    /// Provides the runtime system, policy definition, and whether debug logging is enabled. Required when owner is set to CUSTOM_POLICY.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomPolicyDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomPolicyDetails")]
+    pub custom_policy_details: Option<CustomPolicyDetails>,
+
+
+    /// 
     /// Indicates whether AWS or the customer owns and manages the AWS Config rule.
     /// 
     /// AWS Config Managed Rules are predefined rules owned by AWS. For more information, see AWS Config Managed Rules in the         AWS Config developer guide.
@@ -193,14 +210,217 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Owner")]
-    pub owner: String,
+    pub owner: SourceOwnerEnum,
+
+
+    /// 
+    /// Provides the source and the message types that cause AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
+    /// 
+    /// If the owner is set to CUSTOM_POLICY, the only acceptable values for the AWS Config rule trigger message type are ConfigurationItemChangeNotification and OversizedConfigurationItemChangeNotification.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of SourceDetail
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceDetails")]
+    pub source_details: Option<Vec<SourceDetail>>,
 
 }
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceOwnerEnum {
+
+    /// AWS
+    #[serde(rename = "AWS")]
+    Aws,
+
+    /// CUSTOM_LAMBDA
+    #[serde(rename = "CUSTOM_LAMBDA")]
+    Customlambda,
+
+    /// CUSTOM_POLICY
+    #[serde(rename = "CUSTOM_POLICY")]
+    Custompolicy,
+
+}
+
+impl Default for SourceOwnerEnum {
+    fn default() -> Self {
+        SourceOwnerEnum::Aws
+    }
+}
+
+
+
+/// Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also 			provides the frequency with which you want AWS Config to run 			evaluations for the rule if the trigger type is periodic. You can 			specify the parameter values for SourceDetail only for 			custom rules.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SourceDetail {
+
+
+    /// 
+    /// The type of notification that triggers AWS Config to run an 			evaluation for a rule. You can specify the following notification 			types:
+    /// 
+    /// ConfigurationItemChangeNotification - Triggers 					an evaluation when AWS Config delivers a configuration item 					as a result of a resource change.                        OversizedConfigurationItemChangeNotification 					- Triggers an evaluation when AWS Config delivers an 					oversized configuration item. AWS Config may generate this 					notification type when a resource changes and the 					notification exceeds the maximum size allowed by Amazon 					SNS.                        ScheduledNotification - Triggers a 					periodic evaluation at the frequency specified for 						MaximumExecutionFrequency.                        ConfigurationSnapshotDeliveryCompleted - 					Triggers a periodic evaluation when AWS Config delivers a 					configuration snapshot.
+    /// 
+    /// If you want your custom rule to be triggered by configuration 			changes, specify two SourceDetail objects, one for 				ConfigurationItemChangeNotification and one for 				OversizedConfigurationItemChangeNotification.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ConfigurationItemChangeNotification | ConfigurationSnapshotDeliveryCompleted | OversizedConfigurationItemChangeNotification | ScheduledNotification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageType")]
+    pub message_type: SourceDetailMessageTypeEnum,
+
+
+    /// 
+    /// The source of the event, such as an AWS service, that triggers 			AWS Config to evaluate your AWS resources.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: aws.config
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventSource")]
+    pub event_source: SourceDetailEventSourceEnum,
+
+
+    /// 
+    /// The frequency at which you want AWS Config to run evaluations 			for a custom rule with a periodic trigger. If you specify a value 			for MaximumExecutionFrequency, then 				MessageType must use the 				ScheduledNotification value.
+    /// 
+    /// NoteBy default, rules with a periodic trigger are evaluated 				every 24 hours. To change the frequency, specify a valid value 				for the MaximumExecutionFrequency 				parameter.Based on the valid value you choose, AWS Config runs 				evaluations once for each valid value. For example, if you 				choose Three_Hours, AWS Config runs evaluations 				once every three hours. In this case, Three_Hours 				is the frequency of this rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumExecutionFrequency")]
+    pub maximum_execution_frequency: Option<SourceDetailMaximumExecutionFrequencyEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceDetailMaximumExecutionFrequencyEnum {
+
+    /// One_Hour
+    #[serde(rename = "One_Hour")]
+    Onehour,
+
+    /// Six_Hours
+    #[serde(rename = "Six_Hours")]
+    Sixhours,
+
+    /// Three_Hours
+    #[serde(rename = "Three_Hours")]
+    Threehours,
+
+    /// Twelve_Hours
+    #[serde(rename = "Twelve_Hours")]
+    Twelvehours,
+
+    /// TwentyFour_Hours
+    #[serde(rename = "TwentyFour_Hours")]
+    Twentyfourhours,
+
+}
+
+impl Default for SourceDetailMaximumExecutionFrequencyEnum {
+    fn default() -> Self {
+        SourceDetailMaximumExecutionFrequencyEnum::Onehour
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceDetailEventSourceEnum {
+
+    /// aws.config
+    #[serde(rename = "aws.config")]
+    Awsconfig,
+
+}
+
+impl Default for SourceDetailEventSourceEnum {
+    fn default() -> Self {
+        SourceDetailEventSourceEnum::Awsconfig
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceDetailMessageTypeEnum {
+
+    /// ConfigurationItemChangeNotification
+    #[serde(rename = "ConfigurationItemChangeNotification")]
+    Configurationitemchangenotification,
+
+    /// ConfigurationSnapshotDeliveryCompleted
+    #[serde(rename = "ConfigurationSnapshotDeliveryCompleted")]
+    Configurationsnapshotdeliverycompleted,
+
+    /// OversizedConfigurationItemChangeNotification
+    #[serde(rename = "OversizedConfigurationItemChangeNotification")]
+    Oversizedconfigurationitemchangenotification,
+
+    /// ScheduledNotification
+    #[serde(rename = "ScheduledNotification")]
+    Schedulednotification,
+
+}
+
+impl Default for SourceDetailMessageTypeEnum {
+    fn default() -> Self {
+        SourceDetailMessageTypeEnum::Configurationitemchangenotification
+    }
+}
+
 
 
 /// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Scope {
+
+
+    /// 
+    /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 768
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceId")]
+    pub compliance_resource_id: Option<String>,
+
+
+    /// 
+    /// The tag value applied to only those AWS resources that you want 			to trigger an evaluation for the rule. If you specify a value for 				TagValue, you must also specify a value for 				TagKey.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagValue")]
+    pub tag_value: Option<String>,
 
 
     /// 
@@ -232,127 +452,14 @@ pub struct Scope {
     #[serde(rename = "TagKey")]
     pub tag_key: Option<String>,
 
-
-    /// 
-    /// The tag value applied to only those AWS resources that you want 			to trigger an evaluation for the rule. If you specify a value for 				TagValue, you must also specify a value for 				TagKey.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagValue")]
-    pub tag_value: Option<String>,
-
-
-    /// 
-    /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 768
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceId")]
-    pub compliance_resource_id: Option<String>,
-
 }
 
 
-/// Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also 			provides the frequency with which you want AWS Config to run 			evaluations for the rule if the trigger type is periodic. You can 			specify the parameter values for SourceDetail only for 			custom rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceDetail {
-
-
-    /// 
-    /// The frequency at which you want AWS Config to run evaluations 			for a custom rule with a periodic trigger. If you specify a value 			for MaximumExecutionFrequency, then 				MessageType must use the 				ScheduledNotification value.
-    /// 
-    /// NoteBy default, rules with a periodic trigger are evaluated 				every 24 hours. To change the frequency, specify a valid value 				for the MaximumExecutionFrequency 				parameter.Based on the valid value you choose, AWS Config runs 				evaluations once for each valid value. For example, if you 				choose Three_Hours, AWS Config runs evaluations 				once every three hours. In this case, Three_Hours 				is the frequency of this rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumExecutionFrequency")]
-    pub maximum_execution_frequency: Option<String>,
-
-
-    /// 
-    /// The type of notification that triggers AWS Config to run an 			evaluation for a rule. You can specify the following notification 			types:
-    /// 
-    /// ConfigurationItemChangeNotification - Triggers 					an evaluation when AWS Config delivers a configuration item 					as a result of a resource change.                        OversizedConfigurationItemChangeNotification 					- Triggers an evaluation when AWS Config delivers an 					oversized configuration item. AWS Config may generate this 					notification type when a resource changes and the 					notification exceeds the maximum size allowed by Amazon 					SNS.                        ScheduledNotification - Triggers a 					periodic evaluation at the frequency specified for 						MaximumExecutionFrequency.                        ConfigurationSnapshotDeliveryCompleted - 					Triggers a periodic evaluation when AWS Config delivers a 					configuration snapshot.
-    /// 
-    /// If you want your custom rule to be triggered by configuration 			changes, specify two SourceDetail objects, one for 				ConfigurationItemChangeNotification and one for 				OversizedConfigurationItemChangeNotification.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ConfigurationItemChangeNotification | ConfigurationSnapshotDeliveryCompleted | OversizedConfigurationItemChangeNotification | ScheduledNotification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageType")]
-    pub message_type: String,
-
-
-    /// 
-    /// The source of the event, such as an AWS service, that triggers 			AWS Config to evaluate your AWS resources.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: aws.config
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventSource")]
-    pub event_source: String,
-
-}
 
 
 /// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomPolicyDetails {
-
-
-    /// 
-    /// The policy definition containing the logic for your AWS Config Custom Policy rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyText")]
-    pub policy_text: Option<String>,
-
-
-    /// 
-    /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDebugLogDelivery")]
-    pub enable_debug_log_delivery: Option<bool>,
 
 
     /// 
@@ -372,4 +479,34 @@ pub struct CustomPolicyDetails {
     #[serde(rename = "PolicyRuntime")]
     pub policy_runtime: Option<String>,
 
+
+    /// 
+    /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDebugLogDelivery")]
+    pub enable_debug_log_delivery: Option<bool>,
+
+
+    /// 
+    /// The policy definition containing the logic for your AWS Config Custom Policy rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyText")]
+    pub policy_text: Option<String>,
+
 }
+
+

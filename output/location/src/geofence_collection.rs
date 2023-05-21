@@ -60,6 +60,8 @@ pub struct CfnGeofenceCollection {
 
 }
 
+
+
 impl cfn_resources::CfnResource for CfnGeofenceCollection {
     fn type_string() -> &'static str {
         "AWS::Location::GeofenceCollection"
