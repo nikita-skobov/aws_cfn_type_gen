@@ -12,7 +12,7 @@ pub struct CfnClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The name of the cluster parameter group family that this cluster parameter group is       compatible with. You can create a custom parameter group and then associate your cluster with it. For more information, see        Amazon Redshift parameter groups.
@@ -25,7 +25,7 @@ pub struct CfnClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupFamily")]
-    pub parameter_group_family: String,
+    pub parameter_group_family: cfn_resources::StrVal,
 
     ///
     /// The name of the cluster parameter group.
@@ -39,7 +39,7 @@ pub struct CfnClusterParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_group_name: Option<String>,
+    pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of parameters to be modified. A maximum of 20 parameters can be modified       in a single request.
@@ -82,22 +82,28 @@ impl cfn_resources::CfnResource for CfnClusterParameterGroup {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.description;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'description'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_group_family;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'parameter_group_family'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'parameter_group_family'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.parameter_group_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'parameter_group_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'parameter_group_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
@@ -119,7 +125,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
+    pub parameter_name: cfn_resources::StrVal,
 
     ///
     /// The value of the parameter. If ParameterName is wlm_json_configuration,       then the maximum size of ParameterValue is 8000 characters.
@@ -132,7 +138,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
+    pub parameter_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Parameter {
@@ -147,20 +153,18 @@ impl cfn_resources::CfnResource for Parameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.parameter_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_name'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         let the_val = &self.parameter_value;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_value'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'parameter_value'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         Ok(())
@@ -184,7 +188,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -194,7 +198,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

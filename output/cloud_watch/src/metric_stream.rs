@@ -32,7 +32,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirehoseArn")]
-    pub firehose_arn: String,
+    pub firehose_arn: cfn_resources::StrVal,
 
     ///
     /// If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.       You cannot specify both IncludeFilters and ExcludeFilters in the same metric stream.
@@ -74,7 +74,7 @@ pub struct CfnMetricStream {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The output format for the stream. Valid values are json and       opentelemetry0.7 For more information about metric stream output formats, see                Metric streams output formats.
@@ -87,7 +87,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFormat")]
-    pub output_format: String,
+    pub output_format: cfn_resources::StrVal,
 
     ///
     /// The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Firehose       resources. This IAM role must already exist and must be in the same account as the metric stream.       This IAM role must include the firehose:PutRecord and firehose:PutRecordBatch     permissions.
@@ -98,7 +98,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     /// By default, a     metric stream always sends the MAX, MIN, SUM, and SAMPLECOUNT statistics for each metric that is streamed.     You can use this parameter to have the metric stream also send additional statistics in the stream. This     array can have up to 100 members.
     ///
@@ -174,7 +174,7 @@ pub struct MetricStreamFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricStreamFilter {
@@ -242,7 +242,7 @@ pub struct MetricStreamStatisticsMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     /// The namespace of the metric.
     ///
@@ -252,7 +252,7 @@ pub struct MetricStreamStatisticsMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricStreamStatisticsMetric {
@@ -286,7 +286,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -296,7 +296,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

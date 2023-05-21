@@ -10,7 +10,7 @@ pub struct CfnEnabledControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ControlIdentifier")]
-    pub control_identifier: String,
+    pub control_identifier: cfn_resources::StrVal,
 
     ///
     /// The ARN of the organizational unit.
@@ -21,7 +21,7 @@ pub struct CfnEnabledControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetIdentifier")]
-    pub target_identifier: String,
+    pub target_identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnEnabledControl {

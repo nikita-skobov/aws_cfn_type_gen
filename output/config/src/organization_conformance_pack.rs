@@ -31,7 +31,7 @@ pub struct CfnOrganizationConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_s3_bucket: Option<String>,
+    pub delivery_s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// Any folder structure you want to add to an Amazon S3 bucket.
@@ -49,7 +49,7 @@ pub struct CfnOrganizationConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_s3_key_prefix: Option<String>,
+    pub delivery_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// A comma-separated list of accounts excluded from organization conformance pack.
@@ -80,7 +80,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationConformancePackName")]
-    pub organization_conformance_pack_name: String,
+    pub organization_conformance_pack_name: cfn_resources::StrVal,
 
     ///
     /// A string containing full conformance pack template body. Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
@@ -92,7 +92,7 @@ pub struct CfnOrganizationConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_body: Option<String>,
+    pub template_body: Option<cfn_resources::StrVal>,
 
     ///
     /// Location of file containing the template body. The uri must point to the conformance pack template (max size: 300 KB).
@@ -104,7 +104,7 @@ pub struct CfnOrganizationConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "TemplateS3Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_s3_uri: Option<String>,
+    pub template_s3_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
@@ -124,35 +124,37 @@ impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
         }
 
         if let Some(the_val) = &self.delivery_s3_bucket {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'delivery_s3_bucket'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'delivery_s3_bucket'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.delivery_s3_bucket {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'delivery_s3_bucket'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'delivery_s3_bucket'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.delivery_s3_key_prefix {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'delivery_s3_key_prefix'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'delivery_s3_key_prefix'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.delivery_s3_key_prefix {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'delivery_s3_key_prefix'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'delivery_s3_key_prefix'. {} is less than 0", s.len()));
+                }
             }
         }
 
@@ -167,14 +169,18 @@ impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
 
         let the_val = &self.organization_conformance_pack_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'organization_conformance_pack_name'. {} is greater than 128", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!("Max validation failed on field 'organization_conformance_pack_name'. {} is greater than 128", s.len()));
+            }
         }
 
         let the_val = &self.organization_conformance_pack_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'organization_conformance_pack_name'. {} is less than 1", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'organization_conformance_pack_name'. {} is less than 1", s.len()));
+            }
         }
 
         Ok(())
@@ -197,7 +203,7 @@ pub struct ConformancePackInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
+    pub parameter_name: cfn_resources::StrVal,
 
     ///
     /// One part of a key-value pair.
@@ -212,7 +218,7 @@ pub struct ConformancePackInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
+    pub parameter_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ConformancePackInputParameter {
@@ -227,38 +233,46 @@ impl cfn_resources::CfnResource for ConformancePackInputParameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.parameter_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parameter_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parameter_name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parameter_name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_value;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_value'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parameter_value'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parameter_value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parameter_value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

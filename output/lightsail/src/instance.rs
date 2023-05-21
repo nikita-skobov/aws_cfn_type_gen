@@ -25,7 +25,7 @@ pub struct CfnInstance {
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The blueprint ID for the instance (for example, os_amlinux_2016_03).
@@ -36,7 +36,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "BlueprintId")]
-    pub blueprint_id: String,
+    pub blueprint_id: cfn_resources::StrVal,
 
     ///
     /// The bundle ID for the instance (for example, micro_1_0).
@@ -47,7 +47,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "BundleId")]
-    pub bundle_id: String,
+    pub bundle_id: cfn_resources::StrVal,
 
     ///
     /// The hardware properties for the instance, such as the vCPU count, attached disks, and     amount of RAM.
@@ -74,7 +74,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceName")]
-    pub instance_name: String,
+    pub instance_name: cfn_resources::StrVal,
 
     ///
     /// The name of the key pair to use for the instance.
@@ -88,7 +88,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "KeyPairName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_pair_name: Option<String>,
+    pub key_pair_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The location for the instance, such as the AWS Region and Availability     Zone.
@@ -160,7 +160,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_data: Option<String>,
+    pub user_data: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnInstance {
@@ -205,7 +205,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOnType")]
-    pub add_on_type: String,
+    pub add_on_type: cfn_resources::StrVal,
 
     ///
     /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
@@ -288,7 +288,7 @@ pub struct AutoSnapshotAddOn {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_time_of_day: Option<String>,
+    pub snapshot_time_of_day: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AutoSnapshotAddOn {
@@ -318,7 +318,7 @@ pub struct Disk {
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachedTo")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attached_to: Option<String>,
+    pub attached_to: Option<cfn_resources::StrVal>,
 
     ///
     /// (Deprecated) The attachment state of the disk.
@@ -332,7 +332,7 @@ pub struct Disk {
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachmentState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attachment_state: Option<String>,
+    pub attachment_state: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique name of the disk.
@@ -343,7 +343,7 @@ pub struct Disk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DiskName")]
-    pub disk_name: String,
+    pub disk_name: cfn_resources::StrVal,
 
     ///
     /// The input/output operations per second (IOPS) of the disk.
@@ -378,7 +378,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Path")]
-    pub path: String,
+    pub path: cfn_resources::StrVal,
 
     ///
     /// The size of the disk in GB.
@@ -390,7 +390,7 @@ pub struct Disk {
     /// Update requires: Updates are not supported.
     #[serde(rename = "SizeInGb")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub size_in_gb: Option<String>,
+    pub size_in_gb: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Disk {
@@ -480,7 +480,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the AWS Region for the instance.
@@ -492,7 +492,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region_name: Option<String>,
+    pub region_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Location {
@@ -522,7 +522,7 @@ pub struct MonthlyTransfer {
     /// Update requires: No interruption
     #[serde(rename = "GbPerMonthAllocated")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gb_per_month_allocated: Option<String>,
+    pub gb_per_month_allocated: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MonthlyTransfer {
@@ -599,7 +599,7 @@ pub struct Port {
     /// Update requires: No interruption
     #[serde(rename = "AccessDirection")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_direction: Option<String>,
+    pub access_direction: Option<cfn_resources::StrVal>,
 
     ///
     /// The location from which access is allowed. For example, Anywhere       (0.0.0.0/0), or Custom if a specific IP address or range of IP     addresses is allowed.
@@ -611,7 +611,7 @@ pub struct Port {
     /// Update requires: No interruption
     #[serde(rename = "AccessFrom")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_from: Option<String>,
+    pub access_from: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of access (Public or Private).
@@ -623,7 +623,7 @@ pub struct Port {
     /// Update requires: No interruption
     #[serde(rename = "AccessType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_type: Option<String>,
+    pub access_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An alias that defines access for a preconfigured range of IP addresses.
@@ -667,7 +667,7 @@ pub struct Port {
     /// Update requires: No interruption
     #[serde(rename = "CommonName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub common_name: Option<String>,
+    pub common_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The first port in a range of open ports on an instance.
@@ -713,7 +713,7 @@ pub struct Port {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The last port in a range of open ports on an instance.
@@ -771,7 +771,7 @@ pub struct State {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for State {
@@ -805,7 +805,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -815,7 +815,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -32,7 +32,7 @@ pub struct CfnConnector {
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connector_description: Option<String>,
+    pub connector_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the connector.
@@ -43,7 +43,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorName")]
-    pub connector_name: String,
+    pub connector_name: cfn_resources::StrVal,
 
     ///
     /// The details of the Apache Kafka cluster to which the connector is connected.
@@ -87,7 +87,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KafkaConnectVersion")]
-    pub kafka_connect_version: String,
+    pub kafka_connect_version: cfn_resources::StrVal,
 
     ///
     /// The settings for delivering connector logs to Amazon CloudWatch Logs.
@@ -121,7 +121,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceExecutionRoleArn")]
-    pub service_execution_role_arn: String,
+    pub service_execution_role_arn: cfn_resources::StrVal,
 
     ///
     /// The worker configurations that are in use with the connector.
@@ -178,7 +178,7 @@ pub struct ApacheKafkaCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BootstrapServers")]
-    pub bootstrap_servers: String,
+    pub bootstrap_servers: cfn_resources::StrVal,
 
     ///
     /// Details of an Amazon VPC which has network connectivity to the Apache Kafka     cluster.
@@ -359,7 +359,7 @@ pub struct CloudWatchLogsLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "LogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group: Option<String>,
+    pub log_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
@@ -388,7 +388,7 @@ pub struct CustomPlugin {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomPluginArn")]
-    pub custom_plugin_arn: String,
+    pub custom_plugin_arn: cfn_resources::StrVal,
 
     ///
     /// The revision of the custom plugin.
@@ -429,7 +429,7 @@ pub struct FirehoseLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStream")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_stream: Option<String>,
+    pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
@@ -500,7 +500,7 @@ pub struct KafkaClusterClientAuthentication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
+    pub authentication_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
@@ -529,7 +529,7 @@ pub struct KafkaClusterEncryptionInTransit {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
+    pub encryption_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
@@ -662,7 +662,7 @@ pub struct S3LogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether connector logs get sent to the specified Amazon S3 destination.
@@ -685,7 +685,7 @@ pub struct S3LogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3LogDelivery {
@@ -823,7 +823,7 @@ pub struct WorkerConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkerConfigurationArn")]
-    pub worker_configuration_arn: String,
+    pub worker_configuration_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for WorkerConfiguration {

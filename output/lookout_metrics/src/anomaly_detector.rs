@@ -22,7 +22,7 @@ pub struct CfnAnomalyDetector {
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectorDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub anomaly_detector_description: Option<String>,
+    pub anomaly_detector_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the detector.
@@ -34,7 +34,7 @@ pub struct CfnAnomalyDetector {
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub anomaly_detector_name: Option<String>,
+    pub anomaly_detector_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the KMS key to use to encrypt your data.
@@ -46,7 +46,7 @@ pub struct CfnAnomalyDetector {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The detector's dataset.
@@ -88,7 +88,7 @@ pub struct AnomalyDetectorConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectorFrequency")]
-    pub anomaly_detector_frequency: String,
+    pub anomaly_detector_frequency: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AnomalyDetectorConfig {
@@ -117,7 +117,7 @@ pub struct AppFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowName")]
-    pub flow_name: String,
+    pub flow_name: cfn_resources::StrVal,
 
     ///
     /// An IAM role that gives Amazon Lookout for Metrics permission to access the flow.
@@ -128,7 +128,7 @@ pub struct AppFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AppFlowConfig {
@@ -157,7 +157,7 @@ pub struct CloudwatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudwatchConfig {
@@ -187,7 +187,7 @@ pub struct CsvFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub charset: Option<String>,
+    pub charset: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether or not the source CSV file contains a header.
@@ -211,7 +211,7 @@ pub struct CsvFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// The level of compression of the source CSV file.
@@ -223,7 +223,7 @@ pub struct CsvFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_compression: Option<String>,
+    pub file_compression: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the source CSV file's headers, if any.
@@ -247,7 +247,7 @@ pub struct CsvFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub quote_symbol: Option<String>,
+    pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CsvFormatDescriptor {
@@ -327,7 +327,7 @@ pub struct JsonFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub charset: Option<String>,
+    pub charset: Option<cfn_resources::StrVal>,
 
     ///
     /// The level of compression of the source CSV file.
@@ -339,7 +339,7 @@ pub struct JsonFormatDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_compression: Option<String>,
+    pub file_compression: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for JsonFormatDescriptor {
@@ -368,7 +368,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    pub aggregation_function: String,
+    pub aggregation_function: cfn_resources::StrVal,
 
     ///
     /// The name of the metric.
@@ -379,7 +379,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The namespace for the metric.
@@ -391,7 +391,7 @@ pub struct Metric {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Metric {
@@ -444,7 +444,7 @@ pub struct MetricSet {
     /// Update requires: No interruption
     #[serde(rename = "MetricSetDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_set_description: Option<String>,
+    pub metric_set_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The frequency with which the source data will be analyzed for anomalies.
@@ -456,7 +456,7 @@ pub struct MetricSet {
     /// Update requires: No interruption
     #[serde(rename = "MetricSetFrequency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_set_frequency: Option<String>,
+    pub metric_set_frequency: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the dataset.
@@ -467,7 +467,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricSetName")]
-    pub metric_set_name: String,
+    pub metric_set_name: cfn_resources::StrVal,
 
     ///
     /// Contains information about how the source data should be interpreted.
@@ -514,7 +514,7 @@ pub struct MetricSet {
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone: Option<String>,
+    pub timezone: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MetricSet {
@@ -647,7 +647,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceIdentifier")]
-    pub dbinstance_identifier: String,
+    pub dbinstance_identifier: cfn_resources::StrVal,
 
     ///
     /// The host name of the database.
@@ -658,7 +658,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseHost")]
-    pub database_host: String,
+    pub database_host: cfn_resources::StrVal,
 
     ///
     /// The name of the RDS database.
@@ -669,7 +669,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The port number where the database can be accessed.
@@ -691,7 +691,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Secrets Manager role.
@@ -702,7 +702,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
-    pub secret_manager_arn: String,
+    pub secret_manager_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the table in the database.
@@ -713,7 +713,7 @@ pub struct RDSSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 
     ///
     /// An object containing information about the Amazon Virtual Private Cloud (VPC) configuration.
@@ -755,7 +755,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 
     ///
     /// The name of the database host.
@@ -766,7 +766,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseHost")]
-    pub database_host: String,
+    pub database_host: cfn_resources::StrVal,
 
     ///
     /// The Redshift database name.
@@ -777,7 +777,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The port number where the database can be accessed.
@@ -799,7 +799,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Secrets Manager role.
@@ -810,7 +810,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
-    pub secret_manager_arn: String,
+    pub secret_manager_arn: cfn_resources::StrVal,
 
     ///
     /// The table name of the Redshift database.
@@ -821,7 +821,7 @@ pub struct RedshiftSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 
     ///
     /// Contains information about the Amazon Virtual Private Cloud (VPC) configuration.
@@ -886,7 +886,7 @@ pub struct S3SourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A list of templated paths to the source files.
@@ -930,7 +930,7 @@ pub struct TimestampColumn {
     /// Update requires: No interruption
     #[serde(rename = "ColumnFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub column_format: Option<String>,
+    pub column_format: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the timestamp column.
@@ -942,7 +942,7 @@ pub struct TimestampColumn {
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub column_name: Option<String>,
+    pub column_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TimestampColumn {

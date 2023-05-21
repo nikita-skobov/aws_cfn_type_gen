@@ -12,7 +12,7 @@ pub struct CfnNode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberId")]
-    pub member_id: String,
+    pub member_id: cfn_resources::StrVal,
 
     ///
     /// The unique identifier of the network for the node.
@@ -31,7 +31,7 @@ pub struct CfnNode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
-    pub network_id: String,
+    pub network_id: cfn_resources::StrVal,
 
     ///
     /// Configuration properties of a peer node.
@@ -57,20 +57,24 @@ impl cfn_resources::CfnResource for CfnNode {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.network_id;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'network_id'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'network_id'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.network_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'network_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'network_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.node_configuration.validate()?;
@@ -91,7 +95,7 @@ pub struct NodeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    pub availability_zone: cfn_resources::StrVal,
 
     ///
     /// The Amazon Managed Blockchain instance type for the node.
@@ -102,7 +106,7 @@ pub struct NodeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NodeConfiguration {

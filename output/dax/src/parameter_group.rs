@@ -11,7 +11,7 @@ pub struct CfnParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the parameter group.
@@ -23,7 +23,7 @@ pub struct CfnParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_group_name: Option<String>,
+    pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of name-value pairs for the parameters in the group. Each element in the       array represents a single parameter.

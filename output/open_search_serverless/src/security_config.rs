@@ -11,7 +11,7 @@ pub struct CfnSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the security configuration.
@@ -23,7 +23,7 @@ pub struct CfnSecurityConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// SAML options for the security configuration in the form of a key-value map.
@@ -47,7 +47,7 @@ pub struct CfnSecurityConfig {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnSecurityConfig {
@@ -81,7 +81,7 @@ pub struct SamlConfigOptions {
     /// Update requires: No interruption
     #[serde(rename = "GroupAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_attribute: Option<String>,
+    pub group_attribute: Option<cfn_resources::StrVal>,
 
     ///
     /// The XML IdP metadata file generated from your identity provider.
@@ -92,7 +92,7 @@ pub struct SamlConfigOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
-    pub metadata: String,
+    pub metadata: cfn_resources::StrVal,
 
     ///
     /// The session timeout, in minutes. Default is 60 minutes (12 hours).
@@ -116,7 +116,7 @@ pub struct SamlConfigOptions {
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_attribute: Option<String>,
+    pub user_attribute: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SamlConfigOptions {

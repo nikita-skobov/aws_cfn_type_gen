@@ -89,7 +89,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTPMethod")]
-    pub httpmethod: String,
+    pub httpmethod: cfn_resources::StrVal,
 
     ///
     /// Matches the hostname from a request URL.
@@ -102,7 +102,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// The priority of the sampling rule.
@@ -143,7 +143,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
@@ -157,7 +157,7 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rule_arn: Option<String>,
+    pub rule_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the sampling rule. Specify a rule by either name or ARN, but not both.
@@ -173,7 +173,7 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rule_name: Option<String>,
+    pub rule_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Matches the name that the service uses to identify itself in segments.
@@ -186,7 +186,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    pub service_name: String,
+    pub service_name: cfn_resources::StrVal,
 
     ///
     /// Matches the origin that the service uses to identify its type in segments.
@@ -199,7 +199,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceType")]
-    pub service_type: String,
+    pub service_type: cfn_resources::StrVal,
 
     ///
     /// Matches the path from a request URL.
@@ -212,7 +212,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URLPath")]
-    pub urlpath: String,
+    pub urlpath: cfn_resources::StrVal,
 
     ///
     /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
@@ -241,20 +241,24 @@ impl cfn_resources::CfnResource for SamplingRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.httpmethod;
 
-        if the_val.len() > 10 as _ {
-            return Err(format!(
-                "Max validation failed on field 'httpmethod'. {} is greater than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'httpmethod'. {} is greater than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.priority;
@@ -286,56 +290,68 @@ impl cfn_resources::CfnResource for SamplingRule {
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 500 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 500",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.rule_name {
-            if the_val.len() > 32 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 500 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'rule_name'. {} is greater than 32",
-                    the_val.len()
+                    "Max validation failed on field 'resource_arn'. {} is greater than 500",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.rule_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'rule_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'rule_name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.rule_name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'rule_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.service_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.service_type;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_type'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_type'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.urlpath;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'urlpath'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'urlpath'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.version {
@@ -368,7 +384,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -378,7 +394,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

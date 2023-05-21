@@ -24,7 +24,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The ID of the packaging group associated with this asset.
@@ -35,7 +35,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PackagingGroupId")]
-    pub packaging_group_id: String,
+    pub packaging_group_id: cfn_resources::StrVal,
 
     ///
     /// Unique identifier for this asset, as it's configured in the key provider service.
@@ -47,7 +47,7 @@ pub struct CfnAsset {
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN for the source content in Amazon S3.
@@ -58,7 +58,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
-    pub source_arn: String,
+    pub source_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN for the IAM role that provides AWS Elemental MediaPackage access to the Amazon S3 bucket where the source content is stored. Valid format: arn:aws:iam::{accountID}:role/{name}
@@ -69,7 +69,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceRoleArn")]
-    pub source_role_arn: String,
+    pub source_role_arn: cfn_resources::StrVal,
 
     ///
     /// The tags to assign to the asset.
@@ -110,7 +110,7 @@ pub struct EgressEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PackagingConfigurationId")]
-    pub packaging_configuration_id: String,
+    pub packaging_configuration_id: cfn_resources::StrVal,
 
     ///
     /// The URL that's used to request content from this endpoint.
@@ -121,7 +121,7 @@ pub struct EgressEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EgressEndpoint {
@@ -155,7 +155,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -165,7 +165,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

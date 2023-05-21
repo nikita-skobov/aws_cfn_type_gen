@@ -54,7 +54,7 @@ pub struct CfnLayerVersion {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name or Amazon Resource Name (ARN) of the layer.
@@ -72,7 +72,7 @@ pub struct CfnLayerVersion {
     /// Update requires: Replacement
     #[serde(rename = "LayerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub layer_name: Option<String>,
+    pub layer_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The layer's software license. It can be any of the following:
@@ -88,7 +88,7 @@ pub struct CfnLayerVersion {
     /// Update requires: Replacement
     #[serde(rename = "LicenseInfo")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub license_info: Option<String>,
+    pub license_info: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLayerVersion {
@@ -119,47 +119,57 @@ impl cfn_resources::CfnResource for CfnLayerVersion {
         self.content.validate()?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.layer_name {
-            if the_val.len() > 140 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'layer_name'. {} is greater than 140",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'layer_name'. {} is greater than 140",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.layer_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'layer_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'layer_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.license_info {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'license_info'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'license_info'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -185,7 +195,7 @@ pub struct Content {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     ///
     /// The Amazon S3 key of the layer archive.
@@ -200,7 +210,7 @@ pub struct Content {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 
     ///
     /// For versioned objects, the version of the layer archive object to use.
@@ -216,7 +226,7 @@ pub struct Content {
     /// Update requires: Replacement
     #[serde(rename = "S3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_object_version: Option<String>,
+    pub s3_object_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Content {
@@ -231,55 +241,64 @@ impl cfn_resources::CfnResource for Content {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.s3_bucket;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_bucket'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_bucket;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 's3_bucket'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.s3_key;
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_key'. {} is greater than 1024",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.s3_key;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 's3_key'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 's3_object_version'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 's3_bucket'. {} is less than 3",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.s3_key;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_key'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.s3_key;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 's3_key'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_object_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.s3_object_version {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_object_version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

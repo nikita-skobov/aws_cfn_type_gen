@@ -12,7 +12,7 @@ pub struct CfnSubnetNetworkAclAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkAclId")]
-    pub network_acl_id: String,
+    pub network_acl_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet.
@@ -23,7 +23,7 @@ pub struct CfnSubnetNetworkAclAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSubnetNetworkAclAssociation {

@@ -28,7 +28,7 @@ pub struct CfnGeoMatchSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnGeoMatchSet {
@@ -43,20 +43,24 @@ impl cfn_resources::CfnResource for CfnGeoMatchSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -11,7 +11,7 @@ pub struct CfnApplicationFleetAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationArn")]
-    pub application_arn: String,
+    pub application_arn: cfn_resources::StrVal,
 
     /// The name of the fleet.
     ///
@@ -23,7 +23,7 @@ pub struct CfnApplicationFleetAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FleetName")]
-    pub fleet_name: String,
+    pub fleet_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
@@ -38,11 +38,13 @@ impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.fleet_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'fleet_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'fleet_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

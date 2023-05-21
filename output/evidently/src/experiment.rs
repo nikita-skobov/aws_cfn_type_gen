@@ -13,7 +13,7 @@ pub struct CfnExperiment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of structures that defines the metrics used for the experiment, and whether a higher       or lower value for each metric is the goal. You can use up to three metrics in an experiment.
@@ -35,7 +35,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A structure that contains the configuration of which variation to use as the "control"       version. The "control" version is used for comparison with other variations. This structure       also specifies how much experiment traffic is allocated to each variation.
@@ -57,7 +57,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Project")]
-    pub project: String,
+    pub project: cfn_resources::StrVal,
 
     ///
     /// When Evidently assigns a particular user session to an experiment, it must use a randomization ID       to determine which variation the user session is served. This randomization ID is a combination of the entity ID       and randomizationSalt. If you omit randomizationSalt, Evidently uses       the experiment name as the randomizationSalt.
@@ -69,7 +69,7 @@ pub struct CfnExperiment {
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub randomization_salt: Option<String>,
+    pub randomization_salt: Option<cfn_resources::StrVal>,
 
     ///
     /// Set this to true to remove the segment that is associated with this experiment. You can't     use this parameter if the experiment is currently running.
@@ -120,7 +120,7 @@ pub struct CfnExperiment {
     /// Update requires: No interruption
     #[serde(rename = "Segment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment: Option<String>,
+    pub segment: Option<cfn_resources::StrVal>,
 
     ///
     /// Assigns one or more tags (key-value pairs) to the experiment.
@@ -188,7 +188,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredChange")]
-    pub desired_change: String,
+    pub desired_change: cfn_resources::StrVal,
 
     ///
     /// The entity, such as a user or session, that does an action that causes a metric     value to be recorded. An example is userDetails.userID.
@@ -199,7 +199,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityIdKey")]
-    pub entity_id_key: String,
+    pub entity_id_key: cfn_resources::StrVal,
 
     ///
     /// The EventBridge event pattern that defines how the metric is recorded.
@@ -213,7 +213,7 @@ pub struct MetricGoalObject {
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_pattern: Option<String>,
+    pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the metric. It can include up to 255 characters.
@@ -224,7 +224,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// A label for the units that the metric is measuring.
@@ -236,7 +236,7 @@ pub struct MetricGoalObject {
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit_label: Option<String>,
+    pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The JSON path to reference the numerical metric value in the event.
@@ -247,7 +247,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
-    pub value_key: String,
+    pub value_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricGoalObject {
@@ -277,7 +277,7 @@ pub struct OnlineAbConfigObject {
     /// Update requires: No interruption
     #[serde(rename = "ControlTreatmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub control_treatment_name: Option<String>,
+    pub control_treatment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A set of key-value pairs. The keys are treatment names, and the values are the portion       of experiment traffic to be assigned to that treatment. Specify the traffic portion in       thousandths of a percent, so 20,000 for a variation would allocate 20% of the experiment       traffic to that variation.
@@ -318,7 +318,7 @@ pub struct RunningStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "AnalysisCompleteTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub analysis_complete_time: Option<String>,
+    pub analysis_complete_time: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this     experiment, specify either COMPLETED or CANCELLED here to indicate how to classify this   experiment.
     ///
@@ -329,7 +329,7 @@ pub struct RunningStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub desired_state: Option<String>,
+    pub desired_state: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this   experiment, this is an optional field that you can use to record why the experiment is being stopped or cancelled.
     ///
@@ -340,7 +340,7 @@ pub struct RunningStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reason: Option<String>,
+    pub reason: Option<cfn_resources::StrVal>,
 
     /// To start the experiment now, specify START   for this parameter. If this experiment is currently running and you want to stop it now, specify STOP.
     ///
@@ -350,7 +350,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RunningStatusObject {
@@ -384,7 +384,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -394,7 +394,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -424,7 +424,7 @@ pub struct TreatmentObject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the feature for this experiment.
@@ -435,7 +435,7 @@ pub struct TreatmentObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Feature")]
-    pub feature: String,
+    pub feature: cfn_resources::StrVal,
 
     ///
     /// A name for this treatment. It can include up to 127 characters.
@@ -446,7 +446,7 @@ pub struct TreatmentObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatmentName")]
-    pub treatment_name: String,
+    pub treatment_name: cfn_resources::StrVal,
 
     ///
     /// The name of the variation to use for this treatment.
@@ -457,7 +457,7 @@ pub struct TreatmentObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
-    pub variation: String,
+    pub variation: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TreatmentObject {
@@ -497,7 +497,7 @@ pub struct TreatmentToWeight {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Treatment")]
-    pub treatment: String,
+    pub treatment: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TreatmentToWeight {

@@ -28,7 +28,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceFleetName")]
-    pub device_fleet_name: String,
+    pub device_fleet_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs that contain metadata to help you categorize and organize       your devices. Each tag consists of a key and a value, both of which you define.
@@ -59,20 +59,24 @@ impl cfn_resources::CfnResource for CfnDevice {
 
         let the_val = &self.device_fleet_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'device_fleet_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'device_fleet_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.device_fleet_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'device_fleet_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'device_fleet_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -107,7 +111,7 @@ pub struct Device {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the device.
@@ -124,7 +128,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
-    pub device_name: String,
+    pub device_name: cfn_resources::StrVal,
 
     ///
     /// AWS Internet of Things (IoT) object name.
@@ -140,7 +144,7 @@ pub struct Device {
     /// Update requires: No interruption
     #[serde(rename = "IotThingName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iot_thing_name: Option<String>,
+    pub iot_thing_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Device {
@@ -154,47 +158,57 @@ impl cfn_resources::CfnResource for Device {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 40 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 40",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 40 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 40",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.device_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'device_name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.device_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'device_name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.device_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'device_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'device_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.iot_thing_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'iot_thing_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'iot_thing_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -219,7 +233,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -229,7 +243,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -16,7 +16,7 @@ pub struct CfnVolumeAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Device")]
-    pub device: String,
+    pub device: cfn_resources::StrVal,
 
     ///
     /// The ID of the instance to which the volume attaches. This value can be a reference to an       AWS::EC2::Instance resource, or it can be the physical ID of an     existing EC2 instance.
@@ -27,7 +27,7 @@ pub struct CfnVolumeAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Amazon EBS volume. The volume and instance must be within the same     Availability Zone. This value can be a reference to an AWS::EC2::Volume resource, or it can be the volume ID of an     existing Amazon EBS volume.
@@ -38,7 +38,7 @@ pub struct CfnVolumeAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeId")]
-    pub volume_id: String,
+    pub volume_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVolumeAttachment {

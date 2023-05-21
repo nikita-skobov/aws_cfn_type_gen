@@ -24,7 +24,7 @@ pub struct CfnCustomerGateway {
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// IPv4 address for the customer gateway device's outside interface. The address must be static.
@@ -35,7 +35,7 @@ pub struct CfnCustomerGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
-    pub ip_address: String,
+    pub ip_address: cfn_resources::StrVal,
 
     ///
     /// One or more tags for the customer gateway.
@@ -107,7 +107,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -117,7 +117,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

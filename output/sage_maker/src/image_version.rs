@@ -14,7 +14,7 @@ pub struct CfnImageVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BaseImage")]
-    pub base_image: String,
+    pub base_image: cfn_resources::StrVal,
 
     ///
     /// The name of the parent image.
@@ -29,7 +29,7 @@ pub struct CfnImageVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageName")]
-    pub image_name: String,
+    pub image_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnImageVersion {

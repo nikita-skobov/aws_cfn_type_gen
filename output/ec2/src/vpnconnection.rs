@@ -16,7 +16,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomerGatewayId")]
-    pub customer_gateway_id: String,
+    pub customer_gateway_id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the VPN connection uses static routes only. Static routes must be used     for devices that don't support BGP.
@@ -56,7 +56,7 @@ pub struct CfnVPNConnection {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transit_gateway_id: Option<String>,
+    pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of VPN connection.
@@ -83,7 +83,7 @@ pub struct CfnVPNConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpnGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpn_gateway_id: Option<String>,
+    pub vpn_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tunnel options for the VPN connection.
@@ -142,7 +142,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -152,7 +152,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -184,7 +184,7 @@ pub struct VpnTunnelOptionsSpecification {
     /// Update requires: Replacement
     #[serde(rename = "PreSharedKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pre_shared_key: Option<String>,
+    pub pre_shared_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The range of inside IP addresses for the tunnel. Any specified CIDR blocks must be     unique across all VPN connections that use the same virtual private gateway.
@@ -200,7 +200,7 @@ pub struct VpnTunnelOptionsSpecification {
     /// Update requires: Replacement
     #[serde(rename = "TunnelInsideCidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tunnel_inside_cidr: Option<String>,
+    pub tunnel_inside_cidr: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpnTunnelOptionsSpecification {

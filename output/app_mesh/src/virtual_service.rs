@@ -18,7 +18,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
-    pub mesh_name: String,
+    pub mesh_name: cfn_resources::StrVal,
 
     ///
     /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then        the account that you specify must share the mesh with your account before you can create        the resource in the service mesh. For more information about mesh sharing, see Working with shared meshes.
@@ -34,7 +34,7 @@ pub struct CfnVirtualService {
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mesh_owner: Option<String>,
+    pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The virtual service specification to apply.
@@ -70,7 +70,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualServiceName")]
-    pub virtual_service_name: String,
+    pub virtual_service_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVirtualService {
@@ -85,37 +85,45 @@ impl cfn_resources::CfnResource for CfnVirtualService {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.mesh_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'mesh_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'mesh_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.mesh_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'mesh_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() > 12 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'mesh_owner'. {} is greater than 12",
-                    the_val.len()
+                    "Min validation failed on field 'mesh_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'mesh_owner'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'mesh_owner'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.mesh_owner {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'mesh_owner'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -151,7 +159,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -161,7 +169,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -194,7 +202,7 @@ pub struct VirtualNodeServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualNodeName")]
-    pub virtual_node_name: String,
+    pub virtual_node_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualNodeServiceProvider {
@@ -209,20 +217,24 @@ impl cfn_resources::CfnResource for VirtualNodeServiceProvider {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.virtual_node_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'virtual_node_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'virtual_node_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.virtual_node_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'virtual_node_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'virtual_node_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -245,7 +257,7 @@ pub struct VirtualRouterServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualRouterName")]
-    pub virtual_router_name: String,
+    pub virtual_router_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualRouterServiceProvider {
@@ -260,20 +272,24 @@ impl cfn_resources::CfnResource for VirtualRouterServiceProvider {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.virtual_router_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'virtual_router_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'virtual_router_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.virtual_router_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'virtual_router_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'virtual_router_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

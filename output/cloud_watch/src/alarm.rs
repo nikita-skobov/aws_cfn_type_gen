@@ -46,7 +46,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "AlarmDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alarm_description: Option<String>,
+    pub alarm_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the alarm. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the alarm name.
@@ -64,7 +64,7 @@ pub struct CfnAlarm {
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alarm_name: Option<String>,
+    pub alarm_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The arithmetic operation to use when comparing the specified 			statistic and threshold. The specified statistic value is used as the first operand.
@@ -125,7 +125,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "EvaluateLowSampleCountPercentile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub evaluate_low_sample_count_percentile: Option<String>,
+    pub evaluate_low_sample_count_percentile: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of periods over which data is compared to the specified threshold. 		      If you are setting an alarm that requires that a number of consecutive data points be 		      breaching to trigger the alarm, this value specifies that number. If you 		      are setting an "M out of N" alarm, this value is the N, and DatapointsToAlarm 		      is the M.
@@ -156,7 +156,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "ExtendedStatistic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extended_statistic: Option<String>,
+    pub extended_statistic: Option<cfn_resources::StrVal>,
 
     ///
     /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state 			from any other state. Each action is specified as an Amazon Resource Name (ARN).
@@ -186,7 +186,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_name: Option<String>,
+    pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array that enables you to create an alarm based on the result of a metric math expression. Each     item in the array either retrieves a metric or performs a math expression.
@@ -220,7 +220,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The actions to execute when this alarm transitions to the OK state 			from any other state. Each action is specified as an Amazon Resource Name (ARN).
@@ -296,7 +296,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "ThresholdMetricId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub threshold_metric_id: Option<String>,
+    pub threshold_metric_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets how this alarm is to handle missing data points. Valid values are breaching, notBreaching, ignore,      and missing. For more information, see         Configuring How CloudWatchAlarms Treat Missing Data in the       Amazon CloudWatchUser Guide.
@@ -314,7 +314,7 @@ pub struct CfnAlarm {
     /// Update requires: No interruption
     #[serde(rename = "TreatMissingData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub treat_missing_data: Option<String>,
+    pub treat_missing_data: Option<cfn_resources::StrVal>,
 
     ///
     /// The unit of the metric associated with the alarm. Specify this only if you are creating an alarm 		      based on a single metric. Do not specify this if you are specifying a Metrics array.
@@ -536,38 +536,43 @@ impl cfn_resources::CfnResource for CfnAlarm {
         }
 
         if let Some(the_val) = &self.alarm_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'alarm_description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'alarm_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.alarm_description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'alarm_description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'alarm_description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.alarm_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'alarm_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'alarm_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.alarm_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'alarm_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'alarm_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -590,14 +595,18 @@ impl cfn_resources::CfnResource for CfnAlarm {
         }
 
         if let Some(the_val) = &self.evaluate_low_sample_count_percentile {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'evaluate_low_sample_count_percentile'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'evaluate_low_sample_count_percentile'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.evaluate_low_sample_count_percentile {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'evaluate_low_sample_count_percentile'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'evaluate_low_sample_count_percentile'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -617,38 +626,46 @@ impl cfn_resources::CfnResource for CfnAlarm {
         }
 
         if let Some(the_val) = &self.metric_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'metric_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'metric_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.metric_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'metric_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'metric_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.namespace {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'namespace'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'namespace'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.namespace {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'namespace'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'namespace'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -671,38 +688,40 @@ impl cfn_resources::CfnResource for CfnAlarm {
         }
 
         if let Some(the_val) = &self.threshold_metric_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'threshold_metric_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'threshold_metric_id'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.threshold_metric_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'threshold_metric_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'threshold_metric_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.treat_missing_data {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'treat_missing_data'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'treat_missing_data'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.treat_missing_data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'treat_missing_data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'treat_missing_data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -726,7 +745,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value for the dimension, from 1–255 characters in length.
@@ -741,7 +760,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Dimension {
@@ -756,38 +775,46 @@ impl cfn_resources::CfnResource for Dimension {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -825,7 +852,7 @@ pub struct Metric {
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_name: Option<String>,
+    pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The namespace of the metric that the alarm will watch.
@@ -843,7 +870,7 @@ pub struct Metric {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Metric {
@@ -866,38 +893,46 @@ impl cfn_resources::CfnResource for Metric {
         }
 
         if let Some(the_val) = &self.metric_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'metric_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'metric_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.metric_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'metric_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'metric_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.namespace {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'namespace'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'namespace'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.namespace {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'namespace'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'namespace'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -920,7 +955,7 @@ pub struct MetricDataQuery {
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub account_id: Option<String>,
+    pub account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The math expression to be performed on the returned data, if this object is performing a math expression. This expression 			can use the Id of the other metrics to refer to those metrics, and can also use the Id of other 			expressions to use the result of those expressions. For more information about metric math expressions, see 			Metric Math Syntax and Functions in the 			Amazon CloudWatch User Guide.
@@ -938,7 +973,7 @@ pub struct MetricDataQuery {
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression: Option<String>,
+    pub expression: Option<cfn_resources::StrVal>,
 
     ///
     /// A short name used to tie this object to the results in the response. This name must be 			unique within a single call to GetMetricData. If you are performing math 			expressions on this set of data, this name represents that data and can serve as a 			variable in the mathematical expression. The valid characters are letters, numbers, and 			underscore. The first character must be a lowercase letter.
@@ -953,7 +988,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know 			what the value represents. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown. If Label is omitted, CloudWatch 			generates a default.
@@ -965,7 +1000,7 @@ pub struct MetricDataQuery {
     /// Update requires: No interruption
     #[serde(rename = "Label")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub label: Option<String>,
+    pub label: Option<cfn_resources::StrVal>,
 
     ///
     /// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric 			and not performing a math expression on returned data.
@@ -1023,39 +1058,47 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.expression {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'expression'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'expression'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.expression {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'expression'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'expression'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'id'. {} is greater than 255",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.id;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'id'. {} is greater than 255",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.metric_stat
@@ -1117,7 +1160,7 @@ pub struct MetricStat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stat")]
-    pub stat: String,
+    pub stat: cfn_resources::StrVal,
 
     ///
     /// The unit to use for the returned data points.

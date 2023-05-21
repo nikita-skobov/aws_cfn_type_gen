@@ -11,7 +11,7 @@ pub struct CfnForm {
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub app_id: Option<String>,
+    pub app_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The FormCTA object that stores the call to action configuration for the    form.
@@ -46,7 +46,7 @@ pub struct CfnForm {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_name: Option<String>,
+    pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration information for the form's fields.
@@ -68,7 +68,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormActionType")]
-    pub form_action_type: String,
+    pub form_action_type: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -79,7 +79,7 @@ pub struct CfnForm {
     /// Update requires: No interruption
     #[serde(rename = "LabelDecorator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub label_decorator: Option<String>,
+    pub label_decorator: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the form.
@@ -90,7 +90,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The schema version of the form.
@@ -101,7 +101,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersion")]
-    pub schema_version: String,
+    pub schema_version: cfn_resources::StrVal,
 
     ///
     /// The configuration information for the visual helper elements for the form. These elements    are not associated with any data.
@@ -195,7 +195,7 @@ pub struct FieldConfig {
     /// Update requires: No interruption
     #[serde(rename = "Label")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub label: Option<String>,
+    pub label: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the field position.
@@ -269,7 +269,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefaultCountryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_country_code: Option<String>,
+    pub default_country_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The default value for the field.
@@ -281,7 +281,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The text to display to describe the field.
@@ -293,7 +293,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "DescriptiveText")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub descriptive_text: Option<String>,
+    pub descriptive_text: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -351,7 +351,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The text to display as a placeholder for the field.
@@ -363,7 +363,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "Placeholder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placeholder: Option<String>,
+    pub placeholder: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a read only field.
@@ -410,7 +410,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The value for the field.
@@ -422,7 +422,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 
     ///
     /// The information to use to customize the input fields with data at runtime.
@@ -471,7 +471,7 @@ pub struct FieldPosition {
     /// Update requires: No interruption
     #[serde(rename = "Below")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub below: Option<String>,
+    pub below: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -482,7 +482,7 @@ pub struct FieldPosition {
     /// Update requires: No interruption
     #[serde(rename = "Fixed")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fixed: Option<String>,
+    pub fixed: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -493,7 +493,7 @@ pub struct FieldPosition {
     /// Update requires: No interruption
     #[serde(rename = "RightOf")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub right_of: Option<String>,
+    pub right_of: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FieldPosition {
@@ -546,7 +546,7 @@ pub struct FieldValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The validation message to display.
@@ -558,7 +558,7 @@ pub struct FieldValidationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ValidationMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub validation_message: Option<String>,
+    pub validation_message: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FieldValidationConfiguration {
@@ -596,7 +596,7 @@ pub struct FileUploaderFieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLevel")]
-    pub access_level: String,
+    pub access_level: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -670,7 +670,7 @@ pub struct FormButton {
     /// Update requires: No interruption
     #[serde(rename = "Children")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub children: Option<String>,
+    pub children: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the button is visible on the form.
@@ -752,7 +752,7 @@ pub struct FormCTA {
     /// Update requires: No interruption
     #[serde(rename = "Position")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub position: Option<String>,
+    pub position: Option<cfn_resources::StrVal>,
 
     ///
     /// Displays a submit button.
@@ -799,7 +799,7 @@ pub struct FormDataTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceType")]
-    pub data_source_type: String,
+    pub data_source_type: cfn_resources::StrVal,
 
     ///
     /// The unique name of the data type you are using as the data source for the form.
@@ -810,7 +810,7 @@ pub struct FormDataTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTypeName")]
-    pub data_type_name: String,
+    pub data_type_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FormDataTypeConfig {
@@ -840,7 +840,7 @@ pub struct FormInputValueProperty {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FormInputValueProperty {
@@ -935,7 +935,7 @@ pub struct FormStyleConfig {
     /// Update requires: No interruption
     #[serde(rename = "TokenReference")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token_reference: Option<String>,
+    pub token_reference: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -946,7 +946,7 @@ pub struct FormStyleConfig {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FormStyleConfig {
@@ -999,7 +999,7 @@ pub struct SectionalElement {
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub orientation: Option<String>,
+    pub orientation: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the position of the text in a field for a Text sectional    element.
@@ -1023,7 +1023,7 @@ pub struct SectionalElement {
     /// Update requires: No interruption
     #[serde(rename = "Text")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of sectional element. Valid values are Heading, Text,    and Divider.
@@ -1034,7 +1034,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SectionalElement {

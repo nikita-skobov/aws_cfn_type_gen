@@ -21,7 +21,7 @@ pub struct CfnSchemaVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
+    pub schema_definition: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSchemaVersion {
@@ -53,7 +53,7 @@ pub struct Schema {
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub registry_name: Option<String>,
+    pub registry_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
@@ -65,7 +65,7 @@ pub struct Schema {
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema_arn: Option<String>,
+    pub schema_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
@@ -77,7 +77,7 @@ pub struct Schema {
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema_name: Option<String>,
+    pub schema_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Schema {

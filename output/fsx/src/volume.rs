@@ -11,7 +11,7 @@ pub struct CfnVolume {
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_id: Option<String>,
+    pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the volume.
@@ -28,7 +28,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The configuration of an Amazon FSx for NetApp ONTAP volume.
@@ -112,20 +112,24 @@ impl cfn_resources::CfnResource for CfnVolume {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 203 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 203",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 203 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 203",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.ontap_configuration
@@ -158,7 +162,7 @@ pub struct ClientConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Clients")]
-    pub clients: String,
+    pub clients: cfn_resources::StrVal,
 
     ///
     /// The options to use when mounting the file system. For a list of options that you can       use with Network File System (NFS), see the exports(5) - Linux man page. When       choosing your options, consider the following:
@@ -188,20 +192,24 @@ impl cfn_resources::CfnResource for ClientConfigurations {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.clients;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'clients'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'clients'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.clients;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'clients'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'clients'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.options;
@@ -270,7 +278,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToBackups")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub copy_tags_to_backups: Option<String>,
+    pub copy_tags_to_backups: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the location in the SVM's namespace where the volume is mounted.       This parameter is required. The JunctionPath must have a leading       forward slash, such as /vol3.
@@ -288,7 +296,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "JunctionPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub junction_path: Option<String>,
+    pub junction_path: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the type of volume you are creating. Valid values are the following:
@@ -337,7 +345,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMegabytes")]
-    pub size_in_megabytes: String,
+    pub size_in_megabytes: cfn_resources::StrVal,
 
     ///
     /// Specifies the snapshot policy for the volume. There are three built-in snapshot policies:
@@ -359,7 +367,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_policy: Option<String>,
+    pub snapshot_policy: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to true to enable deduplication, compression, and compaction storage       efficiency features on the volume, or set to false to disable them.       This parameter is required.
@@ -371,7 +379,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StorageEfficiencyEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_efficiency_enabled: Option<String>,
+    pub storage_efficiency_enabled: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the ONTAP SVM in which to create the volume.
@@ -388,7 +396,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageVirtualMachineId")]
-    pub storage_virtual_machine_id: String,
+    pub storage_virtual_machine_id: cfn_resources::StrVal,
 
     ///
     /// Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent       tiering automatically transitions a volume's data between the file system's primary storage and capacity       pool storage based on your access patterns.
@@ -462,72 +470,82 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.junction_path {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'junction_path'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'junction_path'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.junction_path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'junction_path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'junction_path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.size_in_megabytes;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'size_in_megabytes'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'size_in_megabytes'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         let the_val = &self.size_in_megabytes;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'size_in_megabytes'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.snapshot_policy {
-            if the_val.len() > 255 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'snapshot_policy'. {} is greater than 255",
-                    the_val.len()
+                    "Min validation failed on field 'size_in_megabytes'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.snapshot_policy {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'snapshot_policy'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'snapshot_policy'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.snapshot_policy {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'snapshot_policy'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.storage_virtual_machine_id;
 
-        if the_val.len() > 21 as _ {
-            return Err(format!("Max validation failed on field 'storage_virtual_machine_id'. {} is greater than 21", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 21 as _ {
+                return Err(format!("Max validation failed on field 'storage_virtual_machine_id'. {} is greater than 21", s.len()));
+            }
         }
 
         let the_val = &self.storage_virtual_machine_id;
 
-        if the_val.len() < 21 as _ {
-            return Err(format!(
-                "Min validation failed on field 'storage_virtual_machine_id'. {} is less than 21",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 21 as _ {
+                return Err(format!("Min validation failed on field 'storage_virtual_machine_id'. {} is less than 21", s.len()));
+            }
         }
 
         self.tiering_policy
@@ -624,7 +642,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentVolumeId")]
-    pub parent_volume_id: String,
+    pub parent_volume_id: cfn_resources::StrVal,
 
     ///
     /// A Boolean value indicating whether the volume is read-only.
@@ -758,20 +776,24 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 
         let the_val = &self.parent_volume_id;
 
-        if the_val.len() > 23 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parent_volume_id'. {} is greater than 23",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 23 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parent_volume_id'. {} is greater than 23",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parent_volume_id;
 
-        if the_val.len() < 23 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parent_volume_id'. {} is less than 23",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 23 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parent_volume_id'. {} is less than 23",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.record_size_ki_b {
@@ -853,7 +875,7 @@ pub struct OriginSnapshot {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotARN")]
-    pub snapshot_arn: String,
+    pub snapshot_arn: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -904,7 +926,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -914,7 +936,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

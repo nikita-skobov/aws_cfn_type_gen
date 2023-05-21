@@ -12,7 +12,7 @@ pub struct CfnSpace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainId")]
-    pub domain_id: String,
+    pub domain_id: cfn_resources::StrVal,
 
     ///
     /// The name of the space.
@@ -27,7 +27,7 @@ pub struct CfnSpace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpaceName")]
-    pub space_name: String,
+    pub space_name: cfn_resources::StrVal,
 
     ///
     /// A collection of space settings.
@@ -70,20 +70,24 @@ impl cfn_resources::CfnResource for CfnSpace {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain_id;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_id'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_id'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.space_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'space_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'space_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.space_settings
@@ -119,7 +123,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppImageConfigName")]
-    pub app_image_config_name: String,
+    pub app_image_config_name: cfn_resources::StrVal,
 
     ///
     /// The name of the CustomImage. Must be unique to your account.
@@ -136,7 +140,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
-    pub image_name: String,
+    pub image_name: cfn_resources::StrVal,
 
     ///
     /// The version number of the CustomImage.
@@ -165,29 +169,35 @@ impl cfn_resources::CfnResource for CustomImage {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.app_image_config_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.image_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'image_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.image_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'image_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.image_version_number {
@@ -329,7 +339,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_arn: Option<String>,
+    pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the image version created on the instance.
@@ -345,7 +355,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_version_arn: Option<String>,
+    pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -608,17 +618,18 @@ impl cfn_resources::CfnResource for ResourceSpec {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.sage_maker_image_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -693,7 +704,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -703,7 +714,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

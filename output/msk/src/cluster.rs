@@ -33,7 +33,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// Represents the configuration that you want MSK to use for the cluster.
@@ -57,7 +57,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "CurrentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub current_version: Option<String>,
+    pub current_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Includes all encryption-related information.
@@ -81,7 +81,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "EnhancedMonitoring")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhanced_monitoring: Option<String>,
+    pub enhanced_monitoring: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of Apache Kafka. You can use Amazon MSK to create clusters that use Apache Kafka versions 1.1.1 and 2.2.1.
@@ -92,7 +92,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KafkaVersion")]
-    pub kafka_version: String,
+    pub kafka_version: cfn_resources::StrVal,
 
     ///
     /// Logging Info details.
@@ -139,7 +139,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "StorageMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_mode: Option<String>,
+    pub storage_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Create tags when creating the cluster.
@@ -267,7 +267,7 @@ pub struct BrokerNodeGroupInfo {
     /// Update requires: Replacement
     #[serde(rename = "BrokerAZDistribution")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub broker_azdistribution: Option<String>,
+    pub broker_azdistribution: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of subnets to connect to in the client virtual private cloud (VPC). Amazon creates elastic network interfaces inside these subnets.         Client applications use elastic network interfaces to produce and consume data.
@@ -305,7 +305,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The security groups to associate with the elastic network interfaces in order to specify who can connect to and communicate with the Amazon MSK cluster. If you don't specify a security group, Amazon MSK uses the default security group associated with the VPC. If you specify security groups that were shared with you, you must ensure that you have permissions to them. Specifically, you need the ec2:DescribeSecurityGroups permission.
@@ -440,7 +440,7 @@ pub struct CloudWatchLogs {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group: Option<String>,
+    pub log_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogs {
@@ -469,7 +469,7 @@ pub struct ConfigurationInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The revision of the configuration to use.
@@ -605,7 +605,7 @@ pub struct EncryptionAtRest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataVolumeKMSKeyId")]
-    pub data_volume_kmskey_id: String,
+    pub data_volume_kmskey_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EncryptionAtRest {
@@ -643,7 +643,7 @@ pub struct EncryptionInTransit {
     /// Update requires: No interruption
     #[serde(rename = "ClientBroker")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_broker: Option<String>,
+    pub client_broker: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to true, it indicates that data communication among the broker nodes of the cluster is encrypted. When set to false, the communication happens in plaintext.
@@ -737,7 +737,7 @@ pub struct Firehose {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_stream: Option<String>,
+    pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether broker logs get send to the specified Kinesis Data Firehose delivery stream.
@@ -1019,7 +1019,7 @@ pub struct PublicAccess {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PublicAccess {
@@ -1049,7 +1049,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether broker logs get sent to the specified Amazon S3 destination.
@@ -1072,7 +1072,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3 {

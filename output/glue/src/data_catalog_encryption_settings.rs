@@ -10,7 +10,7 @@ pub struct CfnDataCatalogEncryptionSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// Contains configuration information for maintaining Data Catalog security.
@@ -59,7 +59,7 @@ pub struct ConnectionPasswordEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// When the ReturnConnectionPasswordEncrypted flag is set to "true", passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently from catalog encryption.
@@ -171,7 +171,7 @@ pub struct EncryptionAtRest {
     /// Update requires: No interruption
     #[serde(rename = "SseAwsKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sse_aws_kms_key_id: Option<String>,
+    pub sse_aws_kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -202,20 +202,21 @@ impl cfn_resources::CfnResource for EncryptionAtRest {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.sse_aws_kms_key_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sse_aws_kms_key_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'sse_aws_kms_key_id'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sse_aws_kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sse_aws_kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sse_aws_kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -10,7 +10,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheSecurityGroupName")]
-    pub cache_security_group_name: String,
+    pub cache_security_group_name: cfn_resources::StrVal,
 
     ///
     /// Name of the EC2 Security Group to include in the authorization.
@@ -21,7 +21,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupName")]
-    pub ec2_security_group_name: String,
+    pub ec2_security_group_name: cfn_resources::StrVal,
 
     ///
     /// Specifies the Amazon Account ID of the owner of the EC2 security group specified in the EC2SecurityGroupName property. The Amazon access key ID is not an acceptable value.
@@ -33,7 +33,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_owner_id: Option<String>,
+    pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnSecurityGroupIngress {

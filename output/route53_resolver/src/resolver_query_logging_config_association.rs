@@ -15,7 +15,7 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResolverQueryLogConfigId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resolver_query_log_config_id: Option<String>,
+    pub resolver_query_log_config_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Amazon VPC that is associated with the query logging configuration.
@@ -31,7 +31,7 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfigAssociation {
@@ -45,32 +45,40 @@ impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfigAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.resolver_query_log_config_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!("Max validation failed on field 'resolver_query_log_config_id'. {} is greater than 64", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!("Max validation failed on field 'resolver_query_log_config_id'. {} is greater than 64", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.resolver_query_log_config_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'resolver_query_log_config_id'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'resolver_query_log_config_id'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

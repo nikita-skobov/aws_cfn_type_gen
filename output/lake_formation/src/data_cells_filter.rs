@@ -36,7 +36,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
@@ -49,7 +49,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A PartiQL predicate.
@@ -74,7 +74,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableCatalogId")]
-    pub table_catalog_id: String,
+    pub table_catalog_id: cfn_resources::StrVal,
 
     ///
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
@@ -87,7 +87,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDataCellsFilter {
@@ -167,7 +167,7 @@ pub struct RowFilter {
     /// Update requires: Replacement
     #[serde(rename = "FilterExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_expression: Option<String>,
+    pub filter_expression: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RowFilter {

@@ -48,7 +48,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Parameters for Microsoft Smooth Streaming packaging.
@@ -71,7 +71,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PackagingGroupId")]
-    pub packaging_group_id: String,
+    pub packaging_group_id: cfn_resources::StrVal,
 
     ///
     /// The tags to assign to the packaging configuration.
@@ -260,7 +260,7 @@ pub struct DashManifest {
     /// Update requires: No interruption
     #[serde(rename = "ManifestLayout")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_layout: Option<String>,
+    pub manifest_layout: Option<cfn_resources::StrVal>,
 
     ///
     /// A short string that's appended to the end of the endpoint URL to create a unique path to this packaging configuration.
@@ -272,7 +272,7 @@ pub struct DashManifest {
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_name: Option<String>,
+    pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Minimum amount of content (measured in seconds) that a player must keep available in the buffer.
@@ -296,7 +296,7 @@ pub struct DashManifest {
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile: Option<String>,
+    pub profile: Option<cfn_resources::StrVal>,
 
     ///
     /// The source of scte markers used.
@@ -312,7 +312,7 @@ pub struct DashManifest {
     /// Update requires: No interruption
     #[serde(rename = "ScteMarkersSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte_markers_source: Option<String>,
+    pub scte_markers_source: Option<cfn_resources::StrVal>,
 
     ///
     /// Limitations for outputs from the endpoint, based on the video bitrate.
@@ -433,7 +433,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "SegmentTemplateFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_template_format: Option<String>,
+    pub segment_template_format: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DashPackage {
@@ -487,7 +487,7 @@ pub struct HlsEncryption {
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_initialization_vector: Option<String>,
+    pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
     /// HLS encryption type.
@@ -499,7 +499,7 @@ pub struct HlsEncryption {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_method: Option<String>,
+    pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters for the SPEKE key provider.
@@ -546,7 +546,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ad_markers: Option<String>,
+    pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies to stream sets with a single video track only. When enabled, the output includes an additional I-frame only stream, along with the other tracks.
@@ -570,7 +570,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_name: Option<String>,
+    pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Inserts EXT-X-PROGRAM-DATE-TIME tags in the output manifest at the interval that you specify. Additionally, ID3Timed metadata messages are generated every 5     seconds starting when the content was ingested.
@@ -756,7 +756,7 @@ pub struct MssManifest {
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_name: Option<String>,
+    pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Video bitrate limitations for outputs from this packaging configuration.
@@ -870,7 +870,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// List of unique identifiers for the DRM systems to use, as defined in the CPIX specification.
@@ -892,7 +892,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SpekeKeyProvider {
@@ -952,7 +952,7 @@ pub struct StreamSelection {
     /// Update requires: No interruption
     #[serde(rename = "StreamOrder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_order: Option<String>,
+    pub stream_order: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StreamSelection {
@@ -986,7 +986,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -996,7 +996,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -12,7 +12,7 @@ pub struct CfnVPNConnectionRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
+    pub destination_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The ID of the VPN connection.
@@ -23,7 +23,7 @@ pub struct CfnVPNConnectionRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpnConnectionId")]
-    pub vpn_connection_id: String,
+    pub vpn_connection_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPNConnectionRoute {

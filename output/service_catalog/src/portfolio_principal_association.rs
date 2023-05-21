@@ -15,7 +15,7 @@ pub struct CfnPortfolioPrincipalAssociation {
     /// Update requires: Replacement
     #[serde(rename = "AcceptLanguage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accept_language: Option<String>,
+    pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
     /// The portfolio identifier.
@@ -32,7 +32,7 @@ pub struct CfnPortfolioPrincipalAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
-    pub portfolio_id: String,
+    pub portfolio_id: cfn_resources::StrVal,
 
     ///
     /// The ARN of the principal (IAM user, role, or group).
@@ -47,7 +47,7 @@ pub struct CfnPortfolioPrincipalAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrincipalARN")]
-    pub principal_arn: String,
+    pub principal_arn: cfn_resources::StrVal,
 
     ///
     /// The principal type. The supported value is IAM.
@@ -87,48 +87,58 @@ impl cfn_resources::CfnResource for CfnPortfolioPrincipalAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.accept_language {
-            if the_val.len() > 100 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'accept_language'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.portfolio_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'accept_language'. {} is greater than 100",
-                    the_val.len()
+                    "Max validation failed on field 'portfolio_id'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.portfolio_id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'portfolio_id'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.portfolio_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'portfolio_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'portfolio_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.principal_arn;
 
-        if the_val.len() > 1000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'principal_arn'. {} is greater than 1000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'principal_arn'. {} is greater than 1000",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.principal_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'principal_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'principal_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

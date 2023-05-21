@@ -16,7 +16,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// A JSON-formatted string for an AWS resource-based policy.
@@ -50,20 +50,24 @@ impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

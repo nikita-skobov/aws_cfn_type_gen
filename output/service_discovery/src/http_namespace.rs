@@ -15,7 +15,7 @@ pub struct CfnHttpNamespace {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name that you want to assign to this namespace.
@@ -30,7 +30,7 @@ pub struct CfnHttpNamespace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The tags for the namespace. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
@@ -58,21 +58,25 @@ impl cfn_resources::CfnResource for CfnHttpNamespace {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -105,7 +109,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -115,7 +119,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

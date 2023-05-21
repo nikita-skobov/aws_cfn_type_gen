@@ -19,7 +19,7 @@ pub struct CfnWorkteam {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of MemberDefinition objects that contains objects that identify       the workers that make up the work team.
@@ -70,7 +70,7 @@ pub struct CfnWorkteam {
     /// Update requires: Replacement
     #[serde(rename = "WorkforceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workforce_name: Option<String>,
+    pub workforce_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the work team.
@@ -88,7 +88,7 @@ pub struct CfnWorkteam {
     /// Update requires: Replacement
     #[serde(rename = "WorkteamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workteam_name: Option<String>,
+    pub workteam_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnWorkteam {
@@ -102,20 +102,24 @@ impl cfn_resources::CfnResource for CfnWorkteam {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -133,20 +137,24 @@ impl cfn_resources::CfnResource for CfnWorkteam {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.workteam_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'workteam_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'workteam_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.workteam_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'workteam_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'workteam_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -166,7 +174,7 @@ pub struct CognitoMemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoClientId")]
-    pub cognito_client_id: String,
+    pub cognito_client_id: cfn_resources::StrVal,
 
     ///
     /// An identifier for a user group.
@@ -177,7 +185,7 @@ pub struct CognitoMemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoUserGroup")]
-    pub cognito_user_group: String,
+    pub cognito_user_group: cfn_resources::StrVal,
 
     ///
     /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
@@ -188,7 +196,7 @@ pub struct CognitoMemberDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CognitoUserPool")]
-    pub cognito_user_pool: String,
+    pub cognito_user_pool: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CognitoMemberDefinition {
@@ -269,7 +277,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: String,
+    pub notification_topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NotificationConfiguration {
@@ -331,7 +339,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -341,7 +349,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -18,7 +18,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The metadata for the database.
@@ -44,20 +44,24 @@ impl cfn_resources::CfnResource for CfnDatabase {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.catalog_id;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'catalog_id'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'catalog_id'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.catalog_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'catalog_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'catalog_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.database_input.validate()?;
@@ -83,7 +87,7 @@ pub struct DataLakePrincipal {
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_lake_principal_identifier: Option<String>,
+    pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataLakePrincipal {
@@ -97,14 +101,18 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.data_lake_principal_identifier {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'data_lake_principal_identifier'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'data_lake_principal_identifier'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.data_lake_principal_identifier {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'data_lake_principal_identifier'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'data_lake_principal_identifier'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -125,7 +133,7 @@ pub struct DatabaseIdentifier {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the catalog database.
@@ -137,7 +145,7 @@ pub struct DatabaseIdentifier {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DatabaseIdentifier {
@@ -185,7 +193,7 @@ pub struct DatabaseInput {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -214,7 +222,7 @@ pub struct DatabaseInput {
     /// Update requires: No interruption
     #[serde(rename = "LocationUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_uri: Option<String>,
+    pub location_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the database. For Hive compatibility, this is folded to lowercase when it is    stored.
@@ -232,7 +240,7 @@ pub struct DatabaseInput {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// These key-value pairs define parameters and properties    of the database.
@@ -270,20 +278,24 @@ impl cfn_resources::CfnResource for DatabaseInput {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -292,38 +304,46 @@ impl cfn_resources::CfnResource for DatabaseInput {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.location_uri {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'location_uri'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'location_uri'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.location_uri {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'location_uri'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'location_uri'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -347,7 +367,7 @@ pub struct FederatedDatabase {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -358,7 +378,7 @@ pub struct FederatedDatabase {
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identifier: Option<String>,
+    pub identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FederatedDatabase {

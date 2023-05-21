@@ -15,7 +15,7 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "ChangeDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub change_description: Option<String>,
+    pub change_description: Option<cfn_resources::StrVal>,
 
     ///
     /// Component data contains inline YAML document content for the component. 			Alternatively, you can specify the uri of a YAML document file stored in 			Amazon S3. However, you cannot specify both properties.
@@ -33,7 +33,7 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "Data")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data: Option<String>,
+    pub data: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the contents of the component.
@@ -49,7 +49,7 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the KMS key that is used to encrypt this component.
@@ -65,7 +65,7 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the component.
@@ -78,7 +78,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The operating system platform of the component.
@@ -131,7 +131,7 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uri: Option<String>,
+    pub uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The component version. For example, 1.0.0.
@@ -142,7 +142,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -173,74 +173,87 @@ impl cfn_resources::CfnResource for CfnComponent {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.change_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'change_description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'change_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.change_description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'change_description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'change_description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.data {
-            if the_val.len() > 16000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'data'. {} is greater than 16000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 16000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'data'. {} is greater than 16000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

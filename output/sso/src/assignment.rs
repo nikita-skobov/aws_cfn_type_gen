@@ -16,7 +16,7 @@ pub struct CfnAssignment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceArn")]
-    pub instance_arn: String,
+    pub instance_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the permission set.
@@ -33,7 +33,7 @@ pub struct CfnAssignment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PermissionSetArn")]
-    pub permission_set_arn: String,
+    pub permission_set_arn: cfn_resources::StrVal,
 
     ///
     /// An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the IAM Identity Center Identity Store API Reference.
@@ -50,7 +50,7 @@ pub struct CfnAssignment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrincipalId")]
-    pub principal_id: String,
+    pub principal_id: cfn_resources::StrVal,
 
     ///
     /// The entity type for which the assignment will be created.
@@ -80,7 +80,7 @@ pub struct CfnAssignment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetId")]
-    pub target_id: String,
+    pub target_id: cfn_resources::StrVal,
 
     ///
     /// The entity type for which the assignment will be created.
@@ -138,74 +138,90 @@ impl cfn_resources::CfnResource for CfnAssignment {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_arn;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_arn'. {} is greater than 1224",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_arn'. {} is greater than 1224",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_arn;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_arn'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_arn'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.permission_set_arn;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'permission_set_arn'. {} is greater than 1224",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'permission_set_arn'. {} is greater than 1224",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.permission_set_arn;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'permission_set_arn'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'permission_set_arn'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.principal_id;
 
-        if the_val.len() > 47 as _ {
-            return Err(format!(
-                "Max validation failed on field 'principal_id'. {} is greater than 47",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 47 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'principal_id'. {} is greater than 47",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.principal_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'principal_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'principal_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_id;
 
-        if the_val.len() > 12 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_id'. {} is greater than 12",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 12 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_id'. {} is greater than 12",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_id;
 
-        if the_val.len() < 12 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_id'. {} is less than 12",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 12 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_id'. {} is less than 12",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

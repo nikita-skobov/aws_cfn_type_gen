@@ -9,7 +9,7 @@ pub struct CfnApplicationEntitlementAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationIdentifier")]
-    pub application_identifier: String,
+    pub application_identifier: cfn_resources::StrVal,
 
     /// The name of the entitlement.
     ///
@@ -19,7 +19,7 @@ pub struct CfnApplicationEntitlementAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntitlementName")]
-    pub entitlement_name: String,
+    pub entitlement_name: cfn_resources::StrVal,
 
     /// The name of the stack.
     ///
@@ -29,7 +29,7 @@ pub struct CfnApplicationEntitlementAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackName")]
-    pub stack_name: String,
+    pub stack_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnApplicationEntitlementAssociation {

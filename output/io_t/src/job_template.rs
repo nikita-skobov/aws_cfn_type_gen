@@ -22,7 +22,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The job document.
@@ -36,7 +36,7 @@ pub struct CfnJobTemplate {
     /// Update requires: Replacement
     #[serde(rename = "Document")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document: Option<String>,
+    pub document: Option<cfn_resources::StrVal>,
 
     ///
     /// An S3 link to the job document to use in the template. Required if you don't specify a value for document.
@@ -50,7 +50,7 @@ pub struct CfnJobTemplate {
     /// Update requires: Replacement
     #[serde(rename = "DocumentSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document_source: Option<String>,
+    pub document_source: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the job to use as the basis for the job template.
@@ -62,7 +62,7 @@ pub struct CfnJobTemplate {
     /// Update requires: Replacement
     #[serde(rename = "JobArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_arn: Option<String>,
+    pub job_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Allows you to create the criteria to retry a job.
@@ -97,7 +97,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobTemplateId")]
-    pub job_template_id: String,
+    pub job_template_id: cfn_resources::StrVal,
 
     ///
     /// An optional configuration within the SchedulingConfig to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
@@ -223,7 +223,7 @@ pub struct AbortCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 
     ///
     /// The type of job execution failures that can initiate a job abort.
@@ -234,7 +234,7 @@ pub struct AbortCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FailureType")]
-    pub failure_type: String,
+    pub failure_type: cfn_resources::StrVal,
 
     ///
     /// The minimum number of things which must receive job execution notifications before the job       can be aborted.
@@ -429,7 +429,7 @@ pub struct MaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MaintenanceWindow {
@@ -472,7 +472,7 @@ pub struct PresignedUrlConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PresignedUrlConfig {
@@ -544,7 +544,7 @@ pub struct RetryCriteria {
     /// Update requires: No interruption
     #[serde(rename = "FailureType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub failure_type: Option<String>,
+    pub failure_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of retries allowed for a failure type for the job.
@@ -590,7 +590,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -600,7 +600,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

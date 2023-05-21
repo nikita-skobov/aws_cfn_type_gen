@@ -24,7 +24,7 @@ pub struct CfnInput {
     /// Update requires: No interruption
     #[serde(rename = "InputDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_description: Option<String>,
+    pub input_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the input.
@@ -42,7 +42,7 @@ pub struct CfnInput {
     /// Update requires: Replacement
     #[serde(rename = "InputName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_name: Option<String>,
+    pub input_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -72,29 +72,32 @@ impl cfn_resources::CfnResource for CfnInput {
         self.input_definition.validate()?;
 
         if let Some(the_val) = &self.input_description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'input_description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'input_description'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'input_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'input_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'input_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'input_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -122,7 +125,7 @@ pub struct Attribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonPath")]
-    pub json_path: String,
+    pub json_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Attribute {
@@ -137,20 +140,24 @@ impl cfn_resources::CfnResource for Attribute {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.json_path;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'json_path'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'json_path'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.json_path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'json_path'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'json_path'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -214,7 +221,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -224,7 +231,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

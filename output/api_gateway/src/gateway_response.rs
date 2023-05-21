@@ -47,7 +47,7 @@ pub struct CfnGatewayResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 
     ///
     /// The HTTP status code for this GatewayResponse.
@@ -59,7 +59,7 @@ pub struct CfnGatewayResponse {
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status_code: Option<String>,
+    pub status_code: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

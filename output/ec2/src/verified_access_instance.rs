@@ -11,7 +11,7 @@ pub struct CfnVerifiedAccessInstance {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The current logging configuration for the Verified Access instances.
@@ -105,7 +105,7 @@ pub struct CloudWatchLogs {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group: Option<String>,
+    pub log_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogs {
@@ -135,7 +135,7 @@ pub struct KinesisDataFirehose {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_stream: Option<String>,
+    pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether logging is enabled.
@@ -177,7 +177,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS account number that owns the bucket.
@@ -189,7 +189,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_owner: Option<String>,
+    pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether logging is enabled.
@@ -213,7 +213,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3 {
@@ -247,7 +247,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -257,7 +257,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -351,7 +351,7 @@ pub struct VerifiedAccessTrustProvider {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of device-based trust provider.
@@ -405,7 +405,7 @@ pub struct VerifiedAccessTrustProvider {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviderId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub verified_access_trust_provider_id: Option<String>,
+    pub verified_access_trust_provider_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

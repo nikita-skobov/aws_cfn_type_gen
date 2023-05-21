@@ -28,7 +28,7 @@ pub struct CfnCidrCollection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnCidrCollection {
@@ -43,20 +43,24 @@ impl cfn_resources::CfnResource for CfnCidrCollection {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -94,7 +98,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationName")]
-    pub location_name: String,
+    pub location_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Location {
@@ -118,20 +122,24 @@ impl cfn_resources::CfnResource for Location {
 
         let the_val = &self.location_name;
 
-        if the_val.len() > 16 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location_name'. {} is greater than 16",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 16 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location_name'. {} is greater than 16",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.location_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

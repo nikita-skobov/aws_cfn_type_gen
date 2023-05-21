@@ -10,7 +10,7 @@ pub struct CfnWebACLAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// A unique identifier (ID) for the web ACL.
@@ -21,7 +21,7 @@ pub struct CfnWebACLAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WebACLId")]
-    pub web_aclid: String,
+    pub web_aclid: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnWebACLAssociation {

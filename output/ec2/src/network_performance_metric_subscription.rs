@@ -10,7 +10,7 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 
     ///
     /// The metric used for the subscription.
@@ -34,7 +34,7 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The statistic used for the subscription.

@@ -25,7 +25,7 @@ pub struct CfnVPCCidrBlock {
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_block: Option<String>,
+    pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
@@ -37,7 +37,7 @@ pub struct CfnVPCCidrBlock {
     /// Update requires: Replacement
     #[serde(rename = "Ipv4IpamPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv4_ipam_pool_id: Option<String>,
+    pub ipv4_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The netmask length of the IPv4 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
@@ -63,7 +63,7 @@ pub struct CfnVPCCidrBlock {
     /// Update requires: Replacement
     #[serde(rename = "Ipv6CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_cidr_block: Option<String>,
+    pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
@@ -75,7 +75,7 @@ pub struct CfnVPCCidrBlock {
     /// Update requires: Replacement
     #[serde(rename = "Ipv6IpamPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_ipam_pool_id: Option<String>,
+    pub ipv6_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The netmask length of the IPv6 CIDR you would like to associate from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
@@ -99,7 +99,7 @@ pub struct CfnVPCCidrBlock {
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Pool")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_pool: Option<String>,
+    pub ipv6_pool: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the VPC.
@@ -110,7 +110,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPCCidrBlock {

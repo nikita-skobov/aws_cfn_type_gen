@@ -31,7 +31,7 @@ pub struct CfnVPCConnection {
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_account_id: Option<String>,
+    pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of IP addresses of DNS resolver endpoints for the VPC connection.
@@ -59,7 +59,7 @@ pub struct CfnVPCConnection {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the         IAM role associated with the VPC       connection.
@@ -71,7 +71,7 @@ pub struct CfnVPCConnection {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon EC2 security group IDs associated with the VPC connection.
@@ -129,7 +129,7 @@ pub struct CfnVPCConnection {
     /// Update requires: Replacement
     #[serde(rename = "VPCConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpcconnection_id: Option<String>,
+    pub vpcconnection_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -164,38 +164,46 @@ impl cfn_resources::CfnResource for CfnVPCConnection {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'aws_account_id'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'aws_account_id'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'aws_account_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'aws_account_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -227,20 +235,21 @@ impl cfn_resources::CfnResource for CfnVPCConnection {
         }
 
         if let Some(the_val) = &self.vpcconnection_id {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'vpcconnection_id'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!("Max validation failed on field 'vpcconnection_id'. {} is greater than 1000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.vpcconnection_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'vpcconnection_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'vpcconnection_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -261,7 +270,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// An error message.
@@ -273,7 +282,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "ErrorMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub error_message: Option<String>,
+    pub error_message: Option<cfn_resources::StrVal>,
 
     ///
     /// The network interface ID.
@@ -289,7 +298,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the network interface.
@@ -321,7 +330,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -384,29 +393,32 @@ impl cfn_resources::CfnResource for NetworkInterface {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.network_interface_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'network_interface_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'network_interface_id'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subnet_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subnet_id'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'subnet_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'subnet_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -431,7 +443,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -441,7 +453,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

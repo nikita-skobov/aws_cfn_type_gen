@@ -12,7 +12,7 @@ pub struct CfnThingPrincipalAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 
     ///
     /// The name of the AWS IoT thing.
@@ -23,7 +23,7 @@ pub struct CfnThingPrincipalAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingName")]
-    pub thing_name: String,
+    pub thing_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnThingPrincipalAttachment {

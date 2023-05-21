@@ -15,7 +15,7 @@ pub struct CfnComponentVersion {
     /// Update requires: Replacement
     #[serde(rename = "InlineRecipe")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub inline_recipe: Option<String>,
+    pub inline_recipe: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters to create a component from a Lambda function.
@@ -83,7 +83,7 @@ pub struct ComponentDependencyRequirement {
     /// Update requires: Replacement
     #[serde(rename = "DependencyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dependency_type: Option<String>,
+    pub dependency_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The component version requirement for the component dependency.
@@ -97,7 +97,7 @@ pub struct ComponentDependencyRequirement {
     /// Update requires: Replacement
     #[serde(rename = "VersionRequirement")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_requirement: Option<String>,
+    pub version_requirement: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentDependencyRequirement {
@@ -141,7 +141,7 @@ pub struct ComponentPlatform {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentPlatform {
@@ -255,7 +255,7 @@ pub struct LambdaDeviceMount {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The permission to access the device: read/only (ro) or read/write     (rw).
@@ -269,7 +269,7 @@ pub struct LambdaDeviceMount {
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub permission: Option<String>,
+    pub permission: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaDeviceMount {
@@ -299,7 +299,7 @@ pub struct LambdaEventSource {
     /// Update requires: Replacement
     #[serde(rename = "Topic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub topic: Option<String>,
+    pub topic: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of event source. Choose from the following options:
@@ -313,7 +313,7 @@ pub struct LambdaEventSource {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaEventSource {
@@ -381,7 +381,7 @@ pub struct LambdaExecutionParameters {
     /// Update requires: Replacement
     #[serde(rename = "InputPayloadEncodingType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_payload_encoding_type: Option<String>,
+    pub input_payload_encoding_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters for the Linux process that contains the Lambda    function.
@@ -530,7 +530,7 @@ pub struct LambdaFunctionRecipeSource {
     /// Update requires: Replacement
     #[serde(rename = "ComponentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_name: Option<String>,
+    pub component_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The platforms that the component version supports.
@@ -556,7 +556,7 @@ pub struct LambdaFunctionRecipeSource {
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_version: Option<String>,
+    pub component_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Lambda function. The ARN must include the version of the    function to import. You can't use version aliases like $LATEST.
@@ -568,7 +568,7 @@ pub struct LambdaFunctionRecipeSource {
     /// Update requires: Replacement
     #[serde(rename = "LambdaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_arn: Option<String>,
+    pub lambda_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaFunctionRecipeSource {
@@ -616,7 +616,7 @@ pub struct LambdaLinuxProcessParams {
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub isolation_mode: Option<String>,
+    pub isolation_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaLinuxProcessParams {
@@ -664,7 +664,7 @@ pub struct LambdaVolumeMount {
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_path: Option<String>,
+    pub destination_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The permission to access the volume: read/only (ro) or read/write     (rw).
@@ -678,7 +678,7 @@ pub struct LambdaVolumeMount {
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub permission: Option<String>,
+    pub permission: Option<cfn_resources::StrVal>,
 
     ///
     /// The path to the physical volume in the file system.
@@ -690,7 +690,7 @@ pub struct LambdaVolumeMount {
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_path: Option<String>,
+    pub source_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaVolumeMount {

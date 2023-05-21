@@ -17,7 +17,7 @@ pub struct CfnAgent {
     /// Update requires: Replacement
     #[serde(rename = "ActivationKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub activation_key: Option<String>,
+    pub activation_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a name for your agent. You can see this name in the DataSync    console.
@@ -35,7 +35,7 @@ pub struct CfnAgent {
     /// Update requires: No interruption
     #[serde(rename = "AgentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub agent_name: Option<String>,
+    pub agent_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Names (ARNs) of the security groups used to protect your data     transfer task subnets. See SecurityGroupArns.
@@ -97,7 +97,7 @@ pub struct CfnAgent {
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnAgent {
@@ -111,29 +111,35 @@ impl cfn_resources::CfnResource for CfnAgent {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.activation_key {
-            if the_val.len() > 29 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'activation_key'. {} is greater than 29",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 29 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'activation_key'. {} is greater than 29",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.agent_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'agent_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'agent_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.agent_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'agent_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'agent_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -185,7 +191,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -195,7 +201,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

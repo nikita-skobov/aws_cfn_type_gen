@@ -26,7 +26,7 @@ pub struct CfnApplicationOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// An array of objects, each describing one output configuration. In the output       configuration, you specify the name of an in-application stream, a destination (that is,       an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an AWS Lambda function), and record the formation to use when writing to the       destination.
@@ -52,20 +52,24 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.output.validate()?;
@@ -141,7 +145,7 @@ pub struct KinesisFirehoseOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
@@ -158,7 +162,7 @@ pub struct KinesisFirehoseOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisFirehoseOutput {
@@ -173,38 +177,46 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -229,7 +241,7 @@ pub struct KinesisStreamsOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
@@ -246,7 +258,7 @@ pub struct KinesisStreamsOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisStreamsOutput {
@@ -261,38 +273,46 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -319,7 +339,7 @@ pub struct LambdaOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination function on your behalf. You need to grant the necessary permissions to this       role.
@@ -336,7 +356,7 @@ pub struct LambdaOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaOutput {
@@ -351,38 +371,46 @@ impl cfn_resources::CfnResource for LambdaOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -455,7 +483,7 @@ pub struct Output {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Output {
@@ -483,20 +511,24 @@ impl cfn_resources::CfnResource for Output {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

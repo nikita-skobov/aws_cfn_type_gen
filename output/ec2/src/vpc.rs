@@ -17,7 +17,7 @@ pub struct CfnVPC {
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_block: Option<String>,
+    pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the instances launched in the VPC get DNS hostnames. If enabled,     instances in the VPC get DNS hostnames; otherwise, they do not. Disabled by default for     nondefault VPCs. For more information, see DNS attributes in your       VPC.
@@ -75,7 +75,7 @@ pub struct CfnVPC {
     /// Update requires: Replacement
     #[serde(rename = "Ipv4IpamPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv4_ipam_pool_id: Option<String>,
+    pub ipv4_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The netmask length of the IPv4 CIDR you want to allocate to this VPC from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
@@ -154,7 +154,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -164,7 +164,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

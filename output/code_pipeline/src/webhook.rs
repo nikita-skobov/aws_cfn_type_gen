@@ -58,7 +58,7 @@ pub struct CfnWebhook {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Configures a connection between the webhook that was created and the external tool       with events to be detected.
@@ -87,7 +87,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAction")]
-    pub target_action: String,
+    pub target_action: cfn_resources::StrVal,
 
     ///
     /// The name of the pipeline you want to connect to the webhook.
@@ -104,7 +104,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetPipeline")]
-    pub target_pipeline: String,
+    pub target_pipeline: cfn_resources::StrVal,
 
     ///
     /// The version number of the pipeline to be connected to the trigger request.
@@ -167,57 +167,69 @@ impl cfn_resources::CfnResource for CfnWebhook {
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.target_action;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'target_action'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.target_action;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_action'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.target_action;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_action'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_action'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_pipeline;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_pipeline'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_pipeline'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_pipeline;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_pipeline'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_pipeline'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -241,7 +253,7 @@ pub struct WebhookAuthConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AllowedIPRange")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allowed_iprange: Option<String>,
+    pub allowed_iprange: Option<cfn_resources::StrVal>,
 
     ///
     /// The property used to configure GitHub authentication. For GITHUB_HMAC, only the         SecretToken property must be set.
@@ -257,7 +269,7 @@ pub struct WebhookAuthConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SecretToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_token: Option<String>,
+    pub secret_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for WebhookAuthConfiguration {
@@ -271,38 +283,46 @@ impl cfn_resources::CfnResource for WebhookAuthConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.allowed_iprange {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'allowed_iprange'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'allowed_iprange'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.allowed_iprange {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'allowed_iprange'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'allowed_iprange'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_token {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'secret_token'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'secret_token'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_token {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'secret_token'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'secret_token'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -326,7 +346,7 @@ pub struct WebhookFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonPath")]
-    pub json_path: String,
+    pub json_path: cfn_resources::StrVal,
 
     ///
     /// The value selected by the JsonPath expression must match what is       supplied in the MatchEquals field. Otherwise, the request is ignored.       Properties from the target action configuration can be included as placeholders in this       value by surrounding the action configuration key with curly brackets. For example, if       the value supplied here is "refs/heads/{Branch}" and the target action has an action       configuration property called "Branch" with a value of "main", the         MatchEquals value is evaluated as "refs/heads/main". For a list of       action configuration properties for built-in action types, see Pipeline Structure Reference Action Requirements.
@@ -342,7 +362,7 @@ pub struct WebhookFilterRule {
     /// Update requires: No interruption
     #[serde(rename = "MatchEquals")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub match_equals: Option<String>,
+    pub match_equals: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for WebhookFilterRule {
@@ -357,37 +377,45 @@ impl cfn_resources::CfnResource for WebhookFilterRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.json_path;
 
-        if the_val.len() > 150 as _ {
-            return Err(format!(
-                "Max validation failed on field 'json_path'. {} is greater than 150",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 150 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'json_path'. {} is greater than 150",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.json_path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'json_path'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.match_equals {
-            if the_val.len() > 150 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'match_equals'. {} is greater than 150",
-                    the_val.len()
+                    "Min validation failed on field 'json_path'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.match_equals {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'match_equals'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 150 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'match_equals'. {} is greater than 150",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.match_equals {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'match_equals'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

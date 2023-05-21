@@ -17,7 +17,7 @@ pub struct CfnCustomDataIdentifier {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of character sequences (ignore words) to exclude from       the results. If text matches the regular expression (Regex) but it contains       a string in this array, Amazon Macie ignores the text and doesn't include it       in the results.
@@ -72,7 +72,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The regular expression (regex) that defines the text pattern to       match. The expression can contain 1-512 characters.
@@ -83,7 +83,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Regex")]
-    pub regex: String,
+    pub regex: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnCustomDataIdentifier {

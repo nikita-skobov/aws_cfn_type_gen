@@ -31,7 +31,7 @@ pub struct CfnDataSource {
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_account_id: Option<String>,
+    pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The credentials Amazon QuickSight that uses to connect to your underlying source. Currently, only 			credentials based on user name and password are supported.
@@ -55,7 +55,7 @@ pub struct CfnDataSource {
     /// Update requires: Replacement
     #[serde(rename = "DataSourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_source_id: Option<String>,
+    pub data_source_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters that Amazon QuickSight uses to connect to your underlying source.
@@ -95,7 +95,7 @@ pub struct CfnDataSource {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of resource permissions on the data source.
@@ -296,20 +296,24 @@ impl cfn_resources::CfnResource for CfnDataSource {
         }
 
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'aws_account_id'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'aws_account_id'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'aws_account_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'aws_account_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -326,20 +330,24 @@ impl cfn_resources::CfnResource for CfnDataSource {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -389,7 +397,7 @@ pub struct AmazonElasticsearchParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
-    pub domain: String,
+    pub domain: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AmazonElasticsearchParameters {
@@ -404,20 +412,24 @@ impl cfn_resources::CfnResource for AmazonElasticsearchParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -440,7 +452,7 @@ pub struct AmazonOpenSearchParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
-    pub domain: String,
+    pub domain: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AmazonOpenSearchParameters {
@@ -455,20 +467,24 @@ impl cfn_resources::CfnResource for AmazonOpenSearchParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -492,7 +508,7 @@ pub struct AthenaParameters {
     /// Update requires: No interruption
     #[serde(rename = "WorkGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub work_group: Option<String>,
+    pub work_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AthenaParameters {
@@ -506,20 +522,24 @@ impl cfn_resources::CfnResource for AthenaParameters {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.work_group {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'work_group'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'work_group'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.work_group {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'work_group'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'work_group'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -543,7 +563,7 @@ pub struct AuroraParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -558,7 +578,7 @@ pub struct AuroraParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -588,38 +608,46 @@ impl cfn_resources::CfnResource for AuroraParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -660,7 +688,7 @@ pub struct AuroraPostgreSqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// The Amazon Aurora PostgreSQL-Compatible host to connect to.
@@ -675,7 +703,7 @@ pub struct AuroraPostgreSqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// The port that Amazon Aurora PostgreSQL is listening on.
@@ -705,38 +733,46 @@ impl cfn_resources::CfnResource for AuroraPostgreSqlParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -791,7 +827,7 @@ pub struct CredentialPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// User name.
@@ -806,7 +842,7 @@ pub struct CredentialPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CredentialPair {
@@ -827,38 +863,46 @@ impl cfn_resources::CfnResource for CredentialPair {
 
         let the_val = &self.password;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.password;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'password'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'password'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'username'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'username'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -880,7 +924,7 @@ pub struct DataSourceCredentials {
     /// Update requires: No interruption
     #[serde(rename = "CopySourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub copy_source_arn: Option<String>,
+    pub copy_source_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Credential pair. For more information, see               CredentialPair       .
@@ -904,7 +948,7 @@ pub struct DataSourceCredentials {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataSourceCredentials {
@@ -938,7 +982,7 @@ pub struct DataSourceErrorInfo {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 
     ///
     /// Error type.
@@ -1328,7 +1372,7 @@ pub struct DatabricksParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// The port for the Databricks data source.
@@ -1350,7 +1394,7 @@ pub struct DatabricksParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlEndpointPath")]
-    pub sql_endpoint_path: String,
+    pub sql_endpoint_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatabricksParameters {
@@ -1383,7 +1427,7 @@ pub struct ManifestFileLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// Amazon S3 key that identifies an object.
@@ -1398,7 +1442,7 @@ pub struct ManifestFileLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ManifestFileLocation {
@@ -1413,38 +1457,46 @@ impl cfn_resources::CfnResource for ManifestFileLocation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1467,7 +1519,7 @@ pub struct MariaDbParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -1482,7 +1534,7 @@ pub struct MariaDbParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -1512,38 +1564,46 @@ impl cfn_resources::CfnResource for MariaDbParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -1584,7 +1644,7 @@ pub struct MySqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -1599,7 +1659,7 @@ pub struct MySqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -1629,38 +1689,46 @@ impl cfn_resources::CfnResource for MySqlParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -1697,7 +1765,7 @@ pub struct OracleParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -1708,7 +1776,7 @@ pub struct OracleParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -1752,7 +1820,7 @@ pub struct PostgreSqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -1767,7 +1835,7 @@ pub struct PostgreSqlParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -1797,38 +1865,46 @@ impl cfn_resources::CfnResource for PostgreSqlParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -1867,7 +1943,7 @@ pub struct PrestoParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Catalog")]
-    pub catalog: String,
+    pub catalog: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -1882,7 +1958,7 @@ pub struct PrestoParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -1912,29 +1988,35 @@ impl cfn_resources::CfnResource for PrestoParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.catalog;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'catalog'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'catalog'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -1975,7 +2057,7 @@ pub struct RdsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Instance ID.
@@ -1990,7 +2072,7 @@ pub struct RdsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RdsParameters {
@@ -2005,38 +2087,46 @@ impl cfn_resources::CfnResource for RdsParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2060,7 +2150,7 @@ pub struct RedshiftParameters {
     /// Update requires: No interruption
     #[serde(rename = "ClusterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_id: Option<String>,
+    pub cluster_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Database.
@@ -2075,7 +2165,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host. This field can be blank if ClusterId is provided.
@@ -2091,7 +2181,7 @@ pub struct RedshiftParameters {
     /// Update requires: No interruption
     #[serde(rename = "Host")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host: Option<String>,
+    pub host: Option<cfn_resources::StrVal>,
 
     ///
     /// Port. This field can be blank if the ClusterId is provided.
@@ -2121,56 +2211,68 @@ impl cfn_resources::CfnResource for RedshiftParameters {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cluster_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cluster_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cluster_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cluster_id {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cluster_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.database;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'cluster_id'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.database;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.host {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'host'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.host {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'host'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'host'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.host {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'host'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2221,7 +2323,7 @@ pub struct ResourcePermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourcePermission {
@@ -2285,7 +2387,7 @@ pub struct SnowflakeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -2300,7 +2402,7 @@ pub struct SnowflakeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Warehouse.
@@ -2313,7 +2415,7 @@ pub struct SnowflakeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Warehouse")]
-    pub warehouse: String,
+    pub warehouse: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnowflakeParameters {
@@ -2328,47 +2430,57 @@ impl cfn_resources::CfnResource for SnowflakeParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.warehouse;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'warehouse'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'warehouse'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2391,7 +2503,7 @@ pub struct SparkParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -2421,20 +2533,24 @@ impl cfn_resources::CfnResource for SparkParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -2475,7 +2591,7 @@ pub struct SqlServerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -2490,7 +2606,7 @@ pub struct SqlServerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -2520,38 +2636,46 @@ impl cfn_resources::CfnResource for SqlServerParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -2623,7 +2747,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2633,7 +2757,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2666,7 +2790,7 @@ pub struct TeradataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// Host.
@@ -2681,7 +2805,7 @@ pub struct TeradataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    pub host: String,
+    pub host: cfn_resources::StrVal,
 
     ///
     /// Port.
@@ -2711,38 +2835,46 @@ impl cfn_resources::CfnResource for TeradataParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'host'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.host;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'host'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -2779,7 +2911,7 @@ pub struct VpcConnectionProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectionArn")]
-    pub vpc_connection_arn: String,
+    pub vpc_connection_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VpcConnectionProperties {

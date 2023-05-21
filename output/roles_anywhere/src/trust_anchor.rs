@@ -30,7 +30,7 @@ pub struct CfnTrustAnchor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The trust anchor type and its related certificate data.
@@ -70,20 +70,24 @@ impl cfn_resources::CfnResource for CfnTrustAnchor {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.source.validate()?;
@@ -183,7 +187,7 @@ pub struct SourceData {
     /// Update requires: No interruption
     #[serde(rename = "AcmPcaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub acm_pca_arn: Option<String>,
+    pub acm_pca_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The PEM-encoded data for the certificate anchor. Included for trust anchors of type CERTIFICATE_BUNDLE.
@@ -199,7 +203,7 @@ pub struct SourceData {
     /// Update requires: No interruption
     #[serde(rename = "X509CertificateData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub x509_certificate_data: Option<String>,
+    pub x509_certificate_data: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SourceData {
@@ -213,17 +217,21 @@ impl cfn_resources::CfnResource for SourceData {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.x509_certificate_data {
-            if the_val.len() > 8000 as _ {
-                return Err(format!("Max validation failed on field 'x509_certificate_data'. {} is greater than 8000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 8000 as _ {
+                    return Err(format!("Max validation failed on field 'x509_certificate_data'. {} is greater than 8000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.x509_certificate_data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'x509_certificate_data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'x509_certificate_data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -248,7 +256,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -258,7 +266,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

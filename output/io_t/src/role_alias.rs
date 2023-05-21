@@ -25,7 +25,7 @@ pub struct CfnRoleAlias {
     /// Update requires: Replacement
     #[serde(rename = "RoleAlias")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_alias: Option<String>,
+    pub role_alias: Option<cfn_resources::StrVal>,
 
     ///
     /// The role ARN.
@@ -36,7 +36,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -84,7 +84,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -94,7 +94,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

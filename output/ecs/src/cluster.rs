@@ -29,7 +29,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_name: Option<String>,
+    pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
@@ -160,7 +160,7 @@ pub struct CapacityProviderStrategyItem {
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub capacity_provider: Option<String>,
+    pub capacity_provider: Option<cfn_resources::StrVal>,
 
     ///
     /// The weight value designates the relative percentage of the total 			number of tasks launched that should use the specified capacity provider. The 				weight value is taken into consideration after the base 			value, if defined, is satisfied.
@@ -296,7 +296,7 @@ pub struct ClusterSettings {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -339,7 +339,7 @@ pub struct ExecuteCommandConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket. When logging=OVERRIDE is 			specified, a logConfiguration must be provided.
@@ -436,7 +436,7 @@ pub struct ExecuteCommandLogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_log_group_name: Option<String>,
+    pub cloud_watch_log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the S3 bucket to send logs to.
@@ -450,7 +450,7 @@ pub struct ExecuteCommandLogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_name: Option<String>,
+    pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether to use encryption on the S3 logs. If not specified, encryption is 			not used.
@@ -474,7 +474,7 @@ pub struct ExecuteCommandLogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ExecuteCommandLogConfiguration {
@@ -514,7 +514,7 @@ pub struct ServiceConnectDefaults {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ServiceConnectDefaults {
@@ -548,7 +548,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -558,7 +558,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

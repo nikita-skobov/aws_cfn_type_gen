@@ -20,7 +20,7 @@ pub struct CfnQueryDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// The query string    to use for this query definition. For more information, see         CloudWatch Logs Insights Query Syntax.
     ///
@@ -30,7 +30,7 @@ pub struct CfnQueryDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    pub query_string: String,
+    pub query_string: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnQueryDefinition {

@@ -15,7 +15,7 @@ pub struct CfnTrafficMirrorFilterRule {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination CIDR block to assign to the Traffic Mirror rule.
@@ -26,7 +26,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
+    pub destination_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The destination port range.
@@ -87,7 +87,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceCidrBlock")]
-    pub source_cidr_block: String,
+    pub source_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The source port range.
@@ -123,7 +123,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrafficMirrorFilterId")]
-    pub traffic_mirror_filter_id: String,
+    pub traffic_mirror_filter_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

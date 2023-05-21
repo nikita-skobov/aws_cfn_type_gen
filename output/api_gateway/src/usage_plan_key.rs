@@ -10,7 +10,7 @@ pub struct CfnUsagePlanKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyId")]
-    pub key_id: String,
+    pub key_id: cfn_resources::StrVal,
 
     ///
     /// The type of a UsagePlanKey resource for a plan customer.
@@ -21,7 +21,7 @@ pub struct CfnUsagePlanKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyType")]
-    pub key_type: String,
+    pub key_type: cfn_resources::StrVal,
 
     ///
     /// The Id of the UsagePlan resource representing the usage plan containing the to-be-deleted UsagePlanKey resource representing a plan customer.
@@ -32,7 +32,7 @@ pub struct CfnUsagePlanKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsagePlanId")]
-    pub usage_plan_id: String,
+    pub usage_plan_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUsagePlanKey {

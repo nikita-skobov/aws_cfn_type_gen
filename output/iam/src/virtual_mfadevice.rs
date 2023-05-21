@@ -23,7 +23,7 @@ pub struct CfnVirtualMFADevice {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
@@ -68,7 +68,7 @@ pub struct CfnVirtualMFADevice {
     /// Update requires: Replacement
     #[serde(rename = "VirtualMfaDeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_mfa_device_name: Option<String>,
+    pub virtual_mfa_device_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnVirtualMFADevice {
@@ -82,20 +82,24 @@ impl cfn_resources::CfnResource for CfnVirtualMFADevice {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -109,11 +113,10 @@ impl cfn_resources::CfnResource for CfnVirtualMFADevice {
         }
 
         if let Some(the_val) = &self.virtual_mfa_device_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'virtual_mfa_device_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'virtual_mfa_device_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -138,7 +141,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -148,7 +151,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

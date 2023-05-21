@@ -17,7 +17,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "AccessKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_key: Option<String>,
+    pub access_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
@@ -48,7 +48,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the secret key (for example, a password) if credentials are required to    authenticate with the object storage server.
@@ -66,7 +66,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "SecretKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_key: Option<String>,
+    pub secret_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a file with the certificates that are used to sign the object storage server's    certificate (for example, file:///home/user/.ssh/storage_sys_certificate.pem).    The file you specify must include the following:
@@ -84,7 +84,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_certificate: Option<String>,
+    pub server_certificate: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
@@ -100,7 +100,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_hostname: Option<String>,
+    pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
@@ -146,7 +146,7 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the key-value pair that represents a tag that you want to add to the resource.    Tags can help you manage, filter, and search for your resources. We recommend creating a name    tag for your location.
@@ -191,20 +191,24 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_key {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_key'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_key'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.access_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'access_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'access_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -218,47 +222,57 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
         }
 
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_key {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'secret_key'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'secret_key'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'secret_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'secret_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.server_hostname {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'server_hostname'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -281,11 +295,13 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -319,7 +335,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -329,7 +345,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

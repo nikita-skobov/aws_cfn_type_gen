@@ -12,7 +12,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Account")]
-    pub account: String,
+    pub account: cfn_resources::StrVal,
 
     ///
     /// The cluster identifier.
@@ -25,7 +25,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 
     ///
     /// Indicates whether to force the revoke action.       If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted.
@@ -64,17 +64,21 @@ impl cfn_resources::CfnResource for CfnEndpointAuthorization {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.account;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'account'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'account'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.cluster_identifier;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         Ok(())

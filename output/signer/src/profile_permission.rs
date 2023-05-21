@@ -10,7 +10,7 @@ pub struct CfnProfilePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 
     ///
     /// The AWS principal receiving cross-account permissions. This             may be an IAM role or another AWS account ID.
@@ -21,7 +21,7 @@ pub struct CfnProfilePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 
     ///
     /// The human-readable name of the signing profile.
@@ -32,7 +32,7 @@ pub struct CfnProfilePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProfileName")]
-    pub profile_name: String,
+    pub profile_name: cfn_resources::StrVal,
 
     ///
     /// The version of the signing profile.
@@ -44,7 +44,7 @@ pub struct CfnProfilePermission {
     /// Update requires: Replacement
     #[serde(rename = "ProfileVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile_version: Option<String>,
+    pub profile_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique identifier for the cross-account permission statement.
@@ -55,7 +55,7 @@ pub struct CfnProfilePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatementId")]
-    pub statement_id: String,
+    pub statement_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnProfilePermission {

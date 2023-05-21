@@ -10,7 +10,7 @@ pub struct CfnVpcConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Authentication")]
-    pub authentication: String,
+    pub authentication: cfn_resources::StrVal,
 
     ///
     /// The list of subnets in the client VPC to connect to.
@@ -55,7 +55,7 @@ pub struct CfnVpcConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetClusterArn")]
-    pub target_cluster_arn: String,
+    pub target_cluster_arn: cfn_resources::StrVal,
 
     ///
     /// The VPC id of the remote client.
@@ -66,7 +66,7 @@ pub struct CfnVpcConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVpcConnection {

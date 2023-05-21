@@ -10,7 +10,7 @@ pub struct CfnVpcLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A list of security group IDs for the VPC link.

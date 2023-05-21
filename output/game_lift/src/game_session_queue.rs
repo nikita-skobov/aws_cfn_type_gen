@@ -17,7 +17,7 @@ pub struct CfnGameSessionQueue {
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_event_data: Option<String>,
+    pub custom_event_data: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in the queue.   Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in order of placement preference.
@@ -58,7 +58,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An SNS topic ARN that is set up to receive game session placement notifications. See         Setting up         notifications for game session placement.
@@ -76,7 +76,7 @@ pub struct CfnGameSessionQueue {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_target: Option<String>,
+    pub notification_target: Option<cfn_resources::StrVal>,
 
     ///
     /// A set of policies that act as a sliding cap on player latency. FleetIQ works to       deliver low latency for most players in a game session. These policies ensure that no       individual player can be placed into a game with unreasonably high latency. Use multiple       policies to gradually relax latency requirements a step at a time. Multiple policies are applied based on their       maximum allowed latency, starting with the lowest value.
@@ -142,20 +142,21 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_event_data {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_event_data'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'custom_event_data'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_event_data {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_event_data'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_event_data'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -165,37 +166,42 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.notification_target {
-            if the_val.len() > 300 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'notification_target'. {} is greater than 300",
-                    the_val.len()
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.notification_target {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'notification_target'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 300 as _ {
+                    return Err(format!("Max validation failed on field 'notification_target'. {} is greater than 300", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.notification_target {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'notification_target'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -244,7 +250,7 @@ pub struct Destination {
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_arn: Option<String>,
+    pub destination_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Destination {
@@ -258,20 +264,24 @@ impl cfn_resources::CfnResource for Destination {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.destination_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'destination_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'destination_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.destination_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'destination_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'destination_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -466,7 +476,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -476,7 +486,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

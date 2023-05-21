@@ -10,7 +10,7 @@ pub struct CfnModelExplainabilityJobDefinition {
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_name: Option<String>,
+    pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model explainability job definition. The name must be unique within an         AWS Region in the AWS account.
@@ -22,7 +22,7 @@ pub struct CfnModelExplainabilityJobDefinition {
     /// Update requires: Replacement
     #[serde(rename = "JobDefinitionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_definition_name: Option<String>,
+    pub job_definition_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Identifies the resources to deploy for a monitoring job.
@@ -101,7 +101,7 @@ pub struct CfnModelExplainabilityJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A time limit for how long the monitoring job is allowed to run before stopping.
@@ -175,7 +175,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCapturedDestinationS3Uri")]
-    pub data_captured_destination_s3_uri: String,
+    pub data_captured_destination_s3_uri: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -196,7 +196,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub features_attribute: Option<String>,
+    pub features_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -207,7 +207,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "InferenceAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub inference_attribute: Option<String>,
+    pub inference_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -217,7 +217,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -228,7 +228,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub probability_attribute: Option<String>,
+    pub probability_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -239,7 +239,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "S3DataDistributionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_data_distribution_type: Option<String>,
+    pub s3_data_distribution_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -250,7 +250,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "S3InputMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_input_mode: Option<String>,
+    pub s3_input_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BatchTransformInput {
@@ -292,7 +292,7 @@ pub struct ClusterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute       instance(s) that run the model monitoring job.
@@ -304,7 +304,7 @@ pub struct ClusterConfig {
     /// Update requires: Replacement
     #[serde(rename = "VolumeKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_kms_key_id: Option<String>,
+    pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
@@ -345,7 +345,7 @@ pub struct ConstraintsResource {
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_uri: Option<String>,
+    pub s3_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConstraintsResource {
@@ -462,7 +462,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
+    pub endpoint_name: cfn_resources::StrVal,
 
     ///
     /// The attributes of the input data that are the input features.
@@ -474,7 +474,7 @@ pub struct EndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub features_attribute: Option<String>,
+    pub features_attribute: Option<cfn_resources::StrVal>,
 
     ///
     /// The attribute of the input data that represents the ground truth label.
@@ -486,7 +486,7 @@ pub struct EndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "InferenceAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub inference_attribute: Option<String>,
+    pub inference_attribute: Option<cfn_resources::StrVal>,
 
     ///
     /// Path to the filesystem where the endpoint data is available to the container.
@@ -501,7 +501,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     ///
     /// In a classification problem, the attribute that represents the class probability.
@@ -513,7 +513,7 @@ pub struct EndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub probability_attribute: Option<String>,
+    pub probability_attribute: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
@@ -590,20 +590,24 @@ impl cfn_resources::CfnResource for EndpointInput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.endpoint_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.local_path;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'local_path'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'local_path'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -655,7 +659,7 @@ pub struct ModelExplainabilityAppSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigUri")]
-    pub config_uri: String,
+    pub config_uri: cfn_resources::StrVal,
 
     ///
     /// Sets the environment variables in the Docker container.
@@ -682,7 +686,7 @@ pub struct ModelExplainabilityAppSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageUri")]
-    pub image_uri: String,
+    pub image_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ModelExplainabilityAppSpecification {
@@ -697,20 +701,24 @@ impl cfn_resources::CfnResource for ModelExplainabilityAppSpecification {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.config_uri;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'config_uri'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'config_uri'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.image_uri;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image_uri'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'image_uri'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -736,7 +744,7 @@ pub struct ModelExplainabilityBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "BaseliningJobName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub baselining_job_name: Option<String>,
+    pub baselining_job_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The constraints resource for a model explainability job.
@@ -762,20 +770,21 @@ impl cfn_resources::CfnResource for ModelExplainabilityBaselineConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.baselining_job_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'baselining_job_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'baselining_job_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.baselining_job_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'baselining_job_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'baselining_job_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -883,7 +892,7 @@ pub struct MonitoringOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Monitoring outputs for monitoring jobs. This is where the output of the periodic     monitoring jobs is uploaded.
@@ -910,11 +919,13 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1032,7 +1043,7 @@ pub struct S3Output {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     ///
     /// Whether to upload the results of the monitoring job continuously or after the job       completes.
@@ -1044,7 +1055,7 @@ pub struct S3Output {
     /// Update requires: Replacement
     #[serde(rename = "S3UploadMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_upload_mode: Option<String>,
+    pub s3_upload_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
@@ -1055,7 +1066,7 @@ pub struct S3Output {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Output {
@@ -1139,7 +1150,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1149,7 +1160,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

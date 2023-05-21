@@ -11,7 +11,7 @@ pub struct CfnMultiRegionAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The PublicAccessBlock configuration that you want to apply to this Multi-Region Access    Point. You can enable the configuration options in any combination. For more information about    when Amazon S3 considers an object public, see The Meaning of "Public" in the Amazon S3 User Guide.
@@ -143,7 +143,7 @@ pub struct Region {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -154,7 +154,7 @@ pub struct Region {
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_account_id: Option<String>,
+    pub bucket_account_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Region {

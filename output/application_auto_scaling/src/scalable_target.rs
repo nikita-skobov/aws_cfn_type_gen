@@ -42,7 +42,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 
     ///
     /// Specify the Amazon Resource Name (ARN) of an Identity and Access Management (IAM) role    that allows Application Auto Scaling to modify the scalable target on your behalf. This can be    either an IAM service role that Application Auto Scaling can assume to make calls to other     AWS resources on your behalf, or a service-linked role for the specified    service. For more information, see How Application     Auto Scaling works with IAM in the Application Auto Scaling User     Guide.
@@ -55,7 +55,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The scalable dimension associated with the scalable target.    This string consists of the service namespace, resource type, and scaling property.
@@ -284,20 +284,24 @@ impl cfn_resources::CfnResource for CfnScalableTarget {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_id;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_id'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_id'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.suspended_state
@@ -365,7 +369,7 @@ pub struct ScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_time: Option<String>,
+    pub end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The new minimum and maximum capacity. You can set both values or just one. At the     scheduled time, if the current capacity is below the minimum capacity, Application Auto Scaling scales out     to the minimum capacity. If the current capacity is above the maximum capacity, Application Auto Scaling     scales in to the maximum capacity.
@@ -404,7 +408,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    pub schedule: String,
+    pub schedule: cfn_resources::StrVal,
 
     ///
     /// The name of the scheduled action. This name must be unique among all other scheduled    actions on the specified scalable target.
@@ -421,7 +425,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActionName")]
-    pub scheduled_action_name: String,
+    pub scheduled_action_name: cfn_resources::StrVal,
 
     ///
     /// The date and time that the action is scheduled to begin, in UTC.
@@ -433,7 +437,7 @@ pub struct ScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The time zone used when referring to the date and time of a scheduled action, when the     scheduled action uses an at or cron expression.
@@ -451,7 +455,7 @@ pub struct ScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone: Option<String>,
+    pub timezone: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ScheduledAction {
@@ -470,55 +474,64 @@ impl cfn_resources::CfnResource for ScheduledAction {
 
         let the_val = &self.schedule;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schedule'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.schedule;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'schedule'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.scheduled_action_name;
-
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'scheduled_action_name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.scheduled_action_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'scheduled_action_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.timezone {
-            if the_val.len() > 1600 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'timezone'. {} is greater than 1600",
-                    the_val.len()
+                    "Min validation failed on field 'schedule'. {} is less than 1",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.scheduled_action_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'scheduled_action_name'. {} is greater than 256", s.len()));
+            }
+        }
+
+        let the_val = &self.scheduled_action_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'scheduled_action_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.timezone {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'timezone'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1600 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'timezone'. {} is greater than 1600",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.timezone {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'timezone'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

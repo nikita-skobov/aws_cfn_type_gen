@@ -37,7 +37,7 @@ pub struct CfnEntitlement {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the entitlement.
@@ -50,7 +50,7 @@ pub struct CfnEntitlement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The name of the stack.
@@ -63,7 +63,7 @@ pub struct CfnEntitlement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackName")]
-    pub stack_name: String,
+    pub stack_name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -94,11 +94,13 @@ impl cfn_resources::CfnResource for CfnEntitlement {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -121,7 +123,7 @@ pub struct Attribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
     ///
@@ -131,7 +133,7 @@ pub struct Attribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Attribute {

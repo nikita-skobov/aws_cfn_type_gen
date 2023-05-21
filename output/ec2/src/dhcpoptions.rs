@@ -13,7 +13,7 @@ pub struct CfnDHCPOptions {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS.      The default is AmazonProvidedDNS. To have your instance receive a custom      DNS hostname as specified in DomainName, you must set this property to a      custom DNS server.
@@ -107,7 +107,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -117,7 +117,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

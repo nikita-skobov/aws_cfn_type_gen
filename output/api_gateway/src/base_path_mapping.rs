@@ -11,7 +11,7 @@ pub struct CfnBasePathMapping {
     /// Update requires: Replacement
     #[serde(rename = "BasePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_path: Option<String>,
+    pub base_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The domain name of the BasePathMapping resource to be described.
@@ -22,7 +22,7 @@ pub struct CfnBasePathMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -33,7 +33,7 @@ pub struct CfnBasePathMapping {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -45,7 +45,7 @@ pub struct CfnBasePathMapping {
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rest_api_id: Option<String>,
+    pub rest_api_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the associated stage.
@@ -57,7 +57,7 @@ pub struct CfnBasePathMapping {
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage: Option<String>,
+    pub stage: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnBasePathMapping {

@@ -21,7 +21,7 @@ pub struct CfnDBClusterParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_parameter_group_name: Option<String>,
+    pub dbcluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A friendly description for this DB cluster parameter group.
@@ -32,7 +32,7 @@ pub struct CfnDBClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The DB cluster parameter group family name. A DB cluster parameter group can be       associated with one and only one DB cluster parameter group family, and can be applied       only to a DB cluster running a DB engine and engine version compatible with that DB       cluster parameter group family.
@@ -53,7 +53,7 @@ pub struct CfnDBClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
-    pub family: String,
+    pub family: cfn_resources::StrVal,
 
     ///
     /// Provides a list of parameters for the DB cluster parameter group.
@@ -110,7 +110,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -120,7 +120,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

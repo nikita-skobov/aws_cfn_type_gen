@@ -27,7 +27,7 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the target group.
@@ -62,7 +62,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTargetGroup {
@@ -154,7 +154,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The port used when performing health checks on targets. The default setting is the port that  a target receives traffic on.
@@ -178,7 +178,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol version used when performing health checks on targets. The possible protocol  versions are HTTP1 and HTTP2.
@@ -190,7 +190,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "ProtocolVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol_version: Option<String>,
+    pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of consecutive failed health checks required before considering a target  unhealthy. The range is 2–10. The default is 2.
@@ -233,7 +233,7 @@ pub struct Matcher {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpCode")]
-    pub http_code: String,
+    pub http_code: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Matcher {
@@ -267,7 +267,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -277,7 +277,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -306,7 +306,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The port on which the target is listening. For HTTP, the default is 80. For  HTTPS, the default is 443.
@@ -360,7 +360,7 @@ pub struct TargetGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "IpAddressType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip_address_type: Option<String>,
+    pub ip_address_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The port on which the targets are listening. For HTTP, the default is 80. For  HTTPS, the default is 443
@@ -382,7 +382,7 @@ pub struct TargetGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 
     ///
     /// The protocol version. Default value is HTTP1.
@@ -394,7 +394,7 @@ pub struct TargetGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "ProtocolVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol_version: Option<String>,
+    pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the VPC.
@@ -405,7 +405,7 @@ pub struct TargetGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcIdentifier")]
-    pub vpc_identifier: String,
+    pub vpc_identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TargetGroupConfig {

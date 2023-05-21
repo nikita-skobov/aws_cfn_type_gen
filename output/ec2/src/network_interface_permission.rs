@@ -10,7 +10,7 @@ pub struct CfnNetworkInterfacePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: String,
+    pub aws_account_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the network interface.
@@ -21,7 +21,7 @@ pub struct CfnNetworkInterfacePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+    pub network_interface_id: cfn_resources::StrVal,
 
     ///
     /// The type of permission to grant: INSTANCE-ATTACH or       EIP-ASSOCIATE.

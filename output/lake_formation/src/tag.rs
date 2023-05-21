@@ -13,7 +13,7 @@ pub struct CfnTag {
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
@@ -28,7 +28,7 @@ pub struct CfnTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
-    pub tag_key: String,
+    pub tag_key: cfn_resources::StrVal,
 
     ///
     /// An array of UTF-8 strings, not less than 1 or more than 50 strings.

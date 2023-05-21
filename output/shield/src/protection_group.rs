@@ -3,7 +3,7 @@
 pub struct CfnProtectionGroup {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-aggregation
     #[serde(rename = "Aggregation")]
-    pub aggregation: String,
+    pub aggregation: cfn_resources::StrVal,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-members
     #[serde(rename = "Members")]
@@ -12,16 +12,16 @@ pub struct CfnProtectionGroup {
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-pattern
     #[serde(rename = "Pattern")]
-    pub pattern: String,
+    pub pattern: cfn_resources::StrVal,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-protectiongroupid
     #[serde(rename = "ProtectionGroupId")]
-    pub protection_group_id: String,
+    pub protection_group_id: cfn_resources::StrVal,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-resourcetype
     #[serde(rename = "ResourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_type: Option<String>,
+    pub resource_type: Option<cfn_resources::StrVal>,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-tags
     #[serde(rename = "Tags")]
@@ -48,11 +48,11 @@ impl cfn_resources::CfnResource for CfnProtectionGroup {
 pub struct Tag {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html#cfn-resource-tags-key
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html#cfn-resource-tags-value
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

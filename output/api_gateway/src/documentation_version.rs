@@ -11,7 +11,7 @@ pub struct CfnDocumentationVersion {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The version identifier of the to-be-updated documentation version.
@@ -22,7 +22,7 @@ pub struct CfnDocumentationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentationVersion")]
-    pub documentation_version: String,
+    pub documentation_version: cfn_resources::StrVal,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -33,7 +33,7 @@ pub struct CfnDocumentationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDocumentationVersion {

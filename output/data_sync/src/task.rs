@@ -19,7 +19,7 @@ pub struct CfnTask {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_log_group_arn: Option<String>,
+    pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of an AWS storage resource's     location.
@@ -30,7 +30,7 @@ pub struct CfnTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationLocationArn")]
-    pub destination_location_arn: String,
+    pub destination_location_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies a list of filter rules that exclude specific data during your transfer. For more    information and examples, see Filtering data transferred by DataSync.
@@ -76,7 +76,7 @@ pub struct CfnTask {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the configuration options for a task. Some options include preserving file or    object metadata and verifying data integrity.
@@ -117,7 +117,7 @@ pub struct CfnTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceLocationArn")]
-    pub source_location_arn: String,
+    pub source_location_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies the tags that you want to apply to the Amazon Resource Name (ARN)    representing the task.
@@ -147,8 +147,10 @@ impl cfn_resources::CfnResource for CfnTask {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cloud_watch_log_group_arn {
-            if the_val.len() > 562 as _ {
-                return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 562 as _ {
+                    return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", s.len()));
+                }
             }
         }
 
@@ -171,20 +173,24 @@ impl cfn_resources::CfnResource for CfnTask {
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -196,11 +202,13 @@ impl cfn_resources::CfnResource for CfnTask {
 
         let the_val = &self.source_location_arn;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_location_arn'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_location_arn'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -249,7 +257,7 @@ pub struct FilterRule {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -276,11 +284,13 @@ impl cfn_resources::CfnResource for FilterRule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.value {
-            if the_val.len() > 102400 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 102400",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 102400 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 102400",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -891,7 +901,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -901,7 +911,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -934,7 +944,7 @@ pub struct TaskSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
+    pub schedule_expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TaskSchedule {
@@ -949,11 +959,13 @@ impl cfn_resources::CfnResource for TaskSchedule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.schedule_expression;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schedule_expression'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule_expression'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

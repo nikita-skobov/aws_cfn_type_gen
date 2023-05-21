@@ -56,7 +56,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProviderName")]
-    pub provider_name: String,
+    pub provider_name: cfn_resources::StrVal,
 
     ///
     /// The IdP type.
@@ -86,7 +86,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -143,38 +143,46 @@ impl cfn_resources::CfnResource for CfnUserPoolIdentityProvider {
 
         let the_val = &self.provider_name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'provider_name'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'provider_name'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.provider_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'provider_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provider_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

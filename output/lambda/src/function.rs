@@ -50,7 +50,7 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningConfigArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub code_signing_config_arn: Option<String>,
+    pub code_signing_config_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A dead-letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events    when they fail processing. For more information, see Dead-letter queues.
@@ -78,7 +78,7 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Environment variables that are accessible from function code during execution.
@@ -132,7 +132,7 @@ pub struct CfnFunction {
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function_name: Option<String>,
+    pub function_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the method within your code that Lambda calls to run your function. Handler is required if the deployment package is a .zip file archive. The format includes the    file name. It can also include namespaces and other qualifiers, depending on the runtime. For more information,    see Lambda programming model.
@@ -148,7 +148,7 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "Handler")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub handler: Option<String>,
+    pub handler: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration values that override the container image Dockerfile settings. For more information, see Container image    settings.
@@ -174,7 +174,7 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of function layers    to add to the function's execution environment. Specify each layer by its ARN, including the version.
@@ -243,7 +243,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// The identifier of the function's runtime. Runtime is required if the deployment package is a .zip file archive.
@@ -504,8 +504,10 @@ impl cfn_resources::CfnResource for CfnFunction {
         self.code.validate()?;
 
         if let Some(the_val) = &self.code_signing_config_arn {
-            if the_val.len() > 200 as _ {
-                return Err(format!("Max validation failed on field 'code_signing_config_arn'. {} is greater than 200", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!("Max validation failed on field 'code_signing_config_arn'. {} is greater than 200", s.len()));
+                }
             }
         }
 
@@ -514,20 +516,24 @@ impl cfn_resources::CfnResource for CfnFunction {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -549,11 +555,13 @@ impl cfn_resources::CfnResource for CfnFunction {
         }
 
         if let Some(the_val) = &self.handler {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'handler'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'handler'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -629,7 +637,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_uri: Option<String>,
+    pub image_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon S3 bucket in the same AWS Region as your function. The bucket can be in a different AWS account.
@@ -647,7 +655,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket: Option<String>,
+    pub s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 key of the deployment package.
@@ -663,7 +671,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key: Option<String>,
+    pub s3_key: Option<cfn_resources::StrVal>,
 
     ///
     /// For versioned objects, the version of the deployment package object to use.
@@ -679,7 +687,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_object_version: Option<String>,
+    pub s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// (Node.js and Python) The source code of your Lambda function. If you include your function source inline with    this parameter, AWS CloudFormation places it in a file named index and zips it to create a    deployment package.    This zip file cannot exceed 4MB. For the Handler property, the first part of the handler identifier must be    index. For example, index.handler.
@@ -695,7 +703,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "ZipFile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub zip_file: Option<String>,
+    pub zip_file: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Code {
@@ -709,56 +717,65 @@ impl cfn_resources::CfnResource for Code {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.s3_bucket {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_bucket'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_bucket {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_bucket'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_bucket'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_key'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_key'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_object_version'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_object_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_object_version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -781,7 +798,7 @@ pub struct DeadLetterConfig {
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_arn: Option<String>,
+    pub target_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeadLetterConfig {
@@ -895,7 +912,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The path where the function can access the file system, starting with /mnt/.
@@ -910,7 +927,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalMountPath")]
-    pub local_mount_path: String,
+    pub local_mount_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FileSystemConfig {
@@ -925,20 +942,24 @@ impl cfn_resources::CfnResource for FileSystemConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.arn;
 
-        if the_val.len() > 200 as _ {
-            return Err(format!(
-                "Max validation failed on field 'arn'. {} is greater than 200",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 200",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.local_mount_path;
 
-        if the_val.len() > 160 as _ {
-            return Err(format!(
-                "Max validation failed on field 'local_mount_path'. {} is greater than 160",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 160 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'local_mount_path'. {} is greater than 160",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -988,7 +1009,7 @@ pub struct ImageConfig {
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub working_directory: Option<String>,
+    pub working_directory: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ImageConfig {
@@ -1020,11 +1041,10 @@ impl cfn_resources::CfnResource for ImageConfig {
         }
 
         if let Some(the_val) = &self.working_directory {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'working_directory'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!("Max validation failed on field 'working_directory'. {} is greater than 1000", s.len()));
+                }
             }
         }
 
@@ -1053,7 +1073,7 @@ pub struct RuntimeManagementConfig {
     /// Update requires: No interruption
     #[serde(rename = "RuntimeVersionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub runtime_version_arn: Option<String>,
+    pub runtime_version_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify the runtime update mode.
@@ -1103,20 +1123,21 @@ impl cfn_resources::CfnResource for RuntimeManagementConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.runtime_version_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'runtime_version_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'runtime_version_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.runtime_version_arn {
-            if the_val.len() < 26 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'runtime_version_arn'. {} is less than 26",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 26 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'runtime_version_arn'. {} is less than 26",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1269,7 +1290,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1279,7 +1300,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

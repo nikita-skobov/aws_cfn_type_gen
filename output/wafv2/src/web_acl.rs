@@ -68,7 +68,7 @@ pub struct CfnWebACL {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the web ACL. You cannot change the name of a web ACL after you create it.
@@ -86,7 +86,7 @@ pub struct CfnWebACL {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The rule statements used to identify the web requests that you      want to allow, block, or count. Each rule includes one top-level statement that AWS WAF uses to identify matching      web requests, and parameters that govern how AWS WAF handles them.
@@ -113,7 +113,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scope")]
-    pub scope: String,
+    pub scope: cfn_resources::StrVal,
 
     ///
     /// Key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
@@ -174,38 +174,46 @@ impl cfn_resources::CfnResource for CfnWebACL {
         self.default_action.validate()?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -229,7 +237,7 @@ pub struct AWSManagedRulesATPRuleSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoginPath")]
-    pub login_path: String,
+    pub login_path: cfn_resources::StrVal,
 
     ///
     /// The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage.
@@ -294,7 +302,7 @@ pub struct AWSManagedRulesBotControlRuleSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InspectionLevel")]
-    pub inspection_level: String,
+    pub inspection_level: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AWSManagedRulesBotControlRuleSet {
@@ -546,7 +554,7 @@ pub struct ByteMatchStatement {
     /// Update requires: No interruption
     #[serde(rename = "SearchString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub search_string: Option<String>,
+    pub search_string: Option<cfn_resources::StrVal>,
 
     ///
     /// String to search for in a web request component, base64-encoded. If you don't want to encode the string, specify the unencoded value in SearchString instead.
@@ -560,7 +568,7 @@ pub struct ByteMatchStatement {
     /// Update requires: No interruption
     #[serde(rename = "SearchStringBase64")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub search_string_base64: Option<String>,
+    pub search_string_base64: Option<cfn_resources::StrVal>,
 
     ///
     /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
@@ -1016,7 +1024,7 @@ pub struct CustomHTTPHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value of the custom header.
@@ -1033,7 +1041,7 @@ pub struct CustomHTTPHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomHTTPHeader {
@@ -1048,38 +1056,46 @@ impl cfn_resources::CfnResource for CustomHTTPHeader {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1140,7 +1156,7 @@ pub struct CustomResponse {
     /// Update requires: No interruption
     #[serde(rename = "CustomResponseBodyKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_response_body_key: Option<String>,
+    pub custom_response_body_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP status code to return to the client.
@@ -1185,17 +1201,18 @@ impl cfn_resources::CfnResource for CustomResponse {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_response_body_key {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'custom_response_body_key'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'custom_response_body_key'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_response_body_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_response_body_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'custom_response_body_key'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -1243,7 +1260,7 @@ pub struct CustomResponseBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    pub content: String,
+    pub content: cfn_resources::StrVal,
 
     ///
     /// The type of content in the payload that you are defining in the Content     string.
@@ -1292,20 +1309,24 @@ impl cfn_resources::CfnResource for CustomResponseBody {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.content;
 
-        if the_val.len() > 10240 as _ {
-            return Err(format!(
-                "Max validation failed on field 'content'. {} is greater than 10240",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10240 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'content'. {} is greater than 10240",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.content;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'content'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'content'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1376,7 +1397,7 @@ pub struct ExcludedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ExcludedRule {
@@ -1391,20 +1412,24 @@ impl cfn_resources::CfnResource for ExcludedRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1427,7 +1452,7 @@ pub struct FieldIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
-    pub identifier: String,
+    pub identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FieldIdentifier {
@@ -1669,7 +1694,7 @@ pub struct ForwardedIPConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderName")]
-    pub header_name: String,
+    pub header_name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1701,20 +1726,24 @@ impl cfn_resources::CfnResource for ForwardedIPConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.header_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'header_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'header_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.header_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'header_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'header_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2013,7 +2042,7 @@ pub struct IPSetForwardedIPConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderName")]
-    pub header_name: String,
+    pub header_name: cfn_resources::StrVal,
 
     ///
     /// The position in the header to search for the IP address. The header can contain IP     addresses of the original client and also of proxies. For example, the header value could     be 10.1.1.1, 127.0.0.0, 10.10.10.10 where the first IP address identifies the     original client and the rest identify proxies that the request went through.
@@ -2083,20 +2112,24 @@ impl cfn_resources::CfnResource for IPSetForwardedIPConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.header_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'header_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'header_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.header_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'header_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'header_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2123,7 +2156,7 @@ pub struct IPSetReferenceStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
@@ -2152,20 +2185,24 @@ impl cfn_resources::CfnResource for IPSetReferenceStatement {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.ipset_forwarded_ipconfig
@@ -2436,7 +2473,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Label {
@@ -2451,20 +2488,24 @@ impl cfn_resources::CfnResource for Label {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2495,7 +2536,7 @@ pub struct LabelMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// Specify whether you want to match using the label name or just the namespace.
@@ -2540,20 +2581,24 @@ impl cfn_resources::CfnResource for LabelMatchStatement {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2609,7 +2654,7 @@ pub struct ManagedRuleGroupConfig {
     /// Update requires: No interruption
     #[serde(rename = "LoginPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub login_path: Option<String>,
+    pub login_path: Option<cfn_resources::StrVal>,
 
     ///
     /// NoteInstead of this setting, provide your configuration under AWSManagedRulesATPRuleSet        RequestInspection.
@@ -2686,20 +2731,24 @@ impl cfn_resources::CfnResource for ManagedRuleGroupConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.login_path {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'login_path'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'login_path'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.login_path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'login_path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'login_path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2767,7 +2816,7 @@ pub struct ManagedRuleGroupStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Action settings to use in the place of the rule actions that are configured inside the rule group. You specify one override for each rule whose action you want to change.
@@ -2810,7 +2859,7 @@ pub struct ManagedRuleGroupStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VendorName")]
-    pub vendor_name: String,
+    pub vendor_name: cfn_resources::StrVal,
 
     ///
     /// The version of the managed rule group to use. If you specify this, the version setting     is fixed until you change it. If you don't specify this, AWS WAF uses the vendor's     default version, and then keeps the version at the vendor's default when the vendor updates     the managed rule group settings.
@@ -2828,7 +2877,7 @@ pub struct ManagedRuleGroupStatement {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ManagedRuleGroupStatement {
@@ -2852,20 +2901,24 @@ impl cfn_resources::CfnResource for ManagedRuleGroupStatement {
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.scope_down_statement
@@ -2874,37 +2927,45 @@ impl cfn_resources::CfnResource for ManagedRuleGroupStatement {
 
         let the_val = &self.vendor_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vendor_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vendor_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vendor_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vendor_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.version {
-            if the_val.len() > 64 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'version'. {} is greater than 64",
-                    the_val.len()
+                    "Min validation failed on field 'vendor_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'version'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.version {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3178,7 +3239,7 @@ pub struct RegexMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegexString")]
-    pub regex_string: String,
+    pub regex_string: cfn_resources::StrVal,
 
     ///
     /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
@@ -3206,20 +3267,24 @@ impl cfn_resources::CfnResource for RegexMatchStatement {
 
         let the_val = &self.regex_string;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'regex_string'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'regex_string'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.regex_string;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'regex_string'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'regex_string'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3246,7 +3311,7 @@ pub struct RegexPatternSetReferenceStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -3283,20 +3348,24 @@ impl cfn_resources::CfnResource for RegexPatternSetReferenceStatement {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.field_to_match.validate()?;
@@ -3576,7 +3645,7 @@ pub struct ResponseInspectionHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Values in the response header with the specified name that indicate a successful login attempt. To be counted as a successful login, the value must be an exact match, including case. Each value must be unique among the success and failure values.
@@ -3615,20 +3684,24 @@ impl cfn_resources::CfnResource for ResponseInspectionHeader {
 
         let the_val = &self.name;
 
-        if the_val.len() > 200 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 200",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 200",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.success_values;
@@ -3679,7 +3752,7 @@ pub struct ResponseInspectionJson {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
-    pub identifier: String,
+    pub identifier: cfn_resources::StrVal,
 
     ///
     /// Values for the specified identifier in the response JSON that indicate a successful login attempt. To be counted as a successful login, the value must be an exact match, including case. Each value must be unique among the success and failure values.
@@ -3718,20 +3791,24 @@ impl cfn_resources::CfnResource for ResponseInspectionJson {
 
         let the_val = &self.identifier;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'identifier'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'identifier'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.identifier;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'identifier'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'identifier'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.success_values;
@@ -3873,7 +3950,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The override action to apply to the rules in a rule group, instead of the individual rule action settings. This is used only for rules whose statements reference a rule group. Rule statements that reference a rule group are RuleGroupReferenceStatement and ManagedRuleGroupStatement.
@@ -3971,20 +4048,24 @@ impl cfn_resources::CfnResource for Rule {
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.override_action
@@ -4129,7 +4210,7 @@ pub struct RuleActionOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RuleActionOverride {
@@ -4168,7 +4249,7 @@ pub struct RuleGroupReferenceStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// Rules in the referenced rule group whose actions are set to Count.
@@ -4213,20 +4294,24 @@ impl cfn_resources::CfnResource for RuleGroupReferenceStatement {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.excluded_rules {
@@ -4266,7 +4351,7 @@ pub struct SingleHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SingleHeader {
@@ -4281,20 +4366,24 @@ impl cfn_resources::CfnResource for SingleHeader {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -4323,7 +4412,7 @@ pub struct SingleQueryArgument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SingleQueryArgument {
@@ -4338,20 +4427,24 @@ impl cfn_resources::CfnResource for SingleQueryArgument {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -4863,7 +4956,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -4873,7 +4966,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -5117,7 +5210,7 @@ pub struct VisibilityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// A boolean indicating whether AWS WAF should store a sampling of the web requests that     match the rules. You can view the sampled requests through the AWS WAF console.
@@ -5143,20 +5236,24 @@ impl cfn_resources::CfnResource for VisibilityConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.metric_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'metric_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metric_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metric_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'metric_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'metric_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

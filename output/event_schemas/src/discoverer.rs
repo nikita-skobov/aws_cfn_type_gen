@@ -23,7 +23,7 @@ pub struct CfnDiscoverer {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the event bus.
@@ -34,7 +34,7 @@ pub struct CfnDiscoverer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
-    pub source_arn: String,
+    pub source_arn: cfn_resources::StrVal,
 
     ///
     /// Tags associated with the resource.
@@ -75,7 +75,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// They value of a key-value pair.
@@ -86,7 +86,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsEntry {

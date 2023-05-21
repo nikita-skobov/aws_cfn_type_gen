@@ -24,7 +24,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_node_type: Option<String>,
+    pub cache_node_type: Option<cfn_resources::StrVal>,
 
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
     ///
@@ -35,7 +35,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_parameter_group_name: Option<String>,
+    pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elasticache Redis engine version.
@@ -47,7 +47,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     /// The number of node groups that comprise the Global Datastore.
     ///
@@ -70,7 +70,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_replication_group_description: Option<String>,
+    pub global_replication_group_description: Option<cfn_resources::StrVal>,
 
     /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
     ///
@@ -81,7 +81,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupIdSuffix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_replication_group_id_suffix: Option<String>,
+    pub global_replication_group_id_suffix: Option<cfn_resources::StrVal>,
 
     ///
     /// The replication groups that comprise the Global datastore.
@@ -133,7 +133,7 @@ pub struct GlobalReplicationGroupMember {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group_id: Option<String>,
+    pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon region of the Global datastore member.
@@ -145,7 +145,7 @@ pub struct GlobalReplicationGroupMember {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group_region: Option<String>,
+    pub replication_group_region: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the role of the replication group, PRIMARY or SECONDARY.
@@ -157,7 +157,7 @@ pub struct GlobalReplicationGroupMember {
     /// Update requires: No interruption
     #[serde(rename = "Role")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role: Option<String>,
+    pub role: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
@@ -187,7 +187,7 @@ pub struct RegionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group_id: Option<String>,
+    pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon region where the cluster is stored
@@ -199,7 +199,7 @@ pub struct RegionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group_region: Option<String>,
+    pub replication_group_region: Option<cfn_resources::StrVal>,
 
     /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
     ///
@@ -246,7 +246,7 @@ pub struct ReshardingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "NodeGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub node_group_id: Option<String>,
+    pub node_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of preferred availability zones for the nodes in this cluster.
@@ -272,20 +272,24 @@ impl cfn_resources::CfnResource for ReshardingConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.node_group_id {
-            if the_val.len() > 4 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'node_group_id'. {} is greater than 4",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'node_group_id'. {} is greater than 4",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.node_group_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'node_group_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'node_group_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

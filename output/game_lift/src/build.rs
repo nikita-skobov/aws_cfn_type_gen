@@ -15,7 +15,7 @@ pub struct CfnBuild {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The operating system that your game server binaries run on. This value determines the       type of fleet resources that you use for this build. If your game build contains       multiple executables, they all must run on the same operating system. You must specify a       valid operating system in this request. There is no default value. You can't change a       build's operating system later.
@@ -47,7 +47,7 @@ pub struct CfnBuild {
     /// Update requires: Replacement
     #[serde(rename = "ServerSdkVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_sdk_version: Option<String>,
+    pub server_sdk_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Information indicating where your game build files are stored. Use this parameter only       when creating a build with files stored in an Amazon S3 bucket that you own. The storage       location must specify an Amazon S3 bucket name and key. The location must also specify a role       ARN that you set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket and your       new build must be in the same Region.
@@ -77,7 +77,7 @@ pub struct CfnBuild {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -116,29 +116,32 @@ impl cfn_resources::CfnResource for CfnBuild {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.server_sdk_version {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'server_sdk_version'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'server_sdk_version'. {} is greater than 128", s.len()));
+                }
             }
         }
 
@@ -147,20 +150,24 @@ impl cfn_resources::CfnResource for CfnBuild {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.version {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'version'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'version'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -184,7 +191,7 @@ pub struct StorageLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The name of the zip file that contains the build files or script files.
@@ -197,7 +204,7 @@ pub struct StorageLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift    uses this information when retrieving files from your S3 bucket. To retrieve a specific    version of the file, provide an object version. To retrieve the latest version of the    file, do not set this parameter.
@@ -211,7 +218,7 @@ pub struct StorageLocation {
     /// Update requires: Replacement
     #[serde(rename = "ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_version: Option<String>,
+    pub object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access the S3 bucket.
@@ -224,7 +231,7 @@ pub struct StorageLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StorageLocation {
@@ -239,38 +246,46 @@ impl cfn_resources::CfnResource for StorageLocation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.object_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'object_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'object_version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

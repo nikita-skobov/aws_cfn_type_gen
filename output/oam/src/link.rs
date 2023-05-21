@@ -23,7 +23,7 @@ pub struct CfnLink {
     /// Update requires: Replacement
     #[serde(rename = "LabelTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub label_template: Option<String>,
+    pub label_template: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of strings that define which types of data that the source account shares with the monitoring   account. Valid values are AWS::CloudWatch::Metric | AWS::Logs::LogGroup | AWS::XRay::Trace.
@@ -45,7 +45,7 @@ pub struct CfnLink {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SinkIdentifier")]
-    pub sink_identifier: String,
+    pub sink_identifier: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to the link.

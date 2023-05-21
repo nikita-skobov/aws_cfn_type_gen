@@ -244,7 +244,7 @@ pub struct AwsOrg {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AwsOrg {
@@ -647,7 +647,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
-    pub account_id: String,
+    pub account_id: cfn_resources::StrVal,
 
     ///
     /// This property contains the details of the ARN of the bucket destination of the S3 Storage    Lens export.
@@ -658,7 +658,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// This property contains the details of the encryption of the bucket destination of the    Amazon S3 Storage Lens metrics export.
@@ -681,7 +681,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    pub format: String,
+    pub format: cfn_resources::StrVal,
 
     ///
     /// This property contains the details of the output schema version of the S3 Storage Lens    export bucket destination.
@@ -692,7 +692,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputSchemaVersion")]
-    pub output_schema_version: String,
+    pub output_schema_version: cfn_resources::StrVal,
 
     ///
     /// This property contains the details of the prefix of the bucket destination of the S3    Storage Lens export .
@@ -704,7 +704,7 @@ pub struct S3BucketDestination {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3BucketDestination {
@@ -737,7 +737,7 @@ pub struct SSEKMS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyId")]
-    pub key_id: String,
+    pub key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SSEKMS {
@@ -767,7 +767,7 @@ pub struct SelectionCriteria {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// This property contains the details of the max depth that S3 Storage Lens will collect    metrics up to.
@@ -867,7 +867,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// This property contains the details of the bucket and or Regions included for Amazon S3    Storage Lens configuration.
@@ -902,7 +902,7 @@ pub struct StorageLensConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StorageLensArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_lens_arn: Option<String>,
+    pub storage_lens_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StorageLensConfiguration {
@@ -948,7 +948,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -958,7 +958,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

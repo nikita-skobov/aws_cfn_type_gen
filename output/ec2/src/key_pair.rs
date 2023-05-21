@@ -18,7 +18,7 @@ pub struct CfnKeyPair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
-    pub key_name: String,
+    pub key_name: cfn_resources::StrVal,
 
     ///
     /// The type of key pair. Note that ED25519 keys are not supported for Windows instances.
@@ -48,7 +48,7 @@ pub struct CfnKeyPair {
     /// Update requires: No interruption
     #[serde(rename = "PublicKeyMaterial")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub public_key_material: Option<String>,
+    pub public_key_material: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply to the key pair.
@@ -111,7 +111,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -121,7 +121,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

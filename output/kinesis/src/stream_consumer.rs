@@ -20,7 +20,7 @@ pub struct CfnStreamConsumer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConsumerName")]
-    pub consumer_name: String,
+    pub consumer_name: cfn_resources::StrVal,
 
     ///
     /// The ARN of the stream with which you registered the consumer.
@@ -37,7 +37,7 @@ pub struct CfnStreamConsumer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StreamARN")]
-    pub stream_arn: String,
+    pub stream_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnStreamConsumer {
@@ -52,38 +52,46 @@ impl cfn_resources::CfnResource for CfnStreamConsumer {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.consumer_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'consumer_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'consumer_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.consumer_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'consumer_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'consumer_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stream_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'stream_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'stream_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stream_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'stream_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'stream_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

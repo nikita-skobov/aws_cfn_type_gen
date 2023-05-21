@@ -22,7 +22,7 @@ pub struct CfnGitHubRepository {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_arn: Option<String>,
+    pub connection_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to enable issues for the GitHub repository. You can use GitHub       issues to track information and bugs for your repository.
@@ -58,7 +58,7 @@ pub struct CfnGitHubRepository {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryAccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_access_token: Option<String>,
+    pub repository_access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// A comment or description about the new repository. This description is displayed in       GitHub after the repository is created.
@@ -70,7 +70,7 @@ pub struct CfnGitHubRepository {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_description: Option<String>,
+    pub repository_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the repository you want to create in GitHub with AWS CloudFormation       stack creation.
@@ -81,7 +81,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryName")]
-    pub repository_name: String,
+    pub repository_name: cfn_resources::StrVal,
 
     ///
     /// The GitHub user name for the owner of the GitHub repository to be created. If this       repository should be owned by a GitHub organization, provide its name.
@@ -92,7 +92,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryOwner")]
-    pub repository_owner: String,
+    pub repository_owner: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnGitHubRepository {
@@ -158,7 +158,7 @@ pub struct S3 {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The S3 object key or file name for the ZIP file.
@@ -169,7 +169,7 @@ pub struct S3 {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The object version of the ZIP file, if versioning is enabled for the Amazon S3       bucket.
@@ -181,7 +181,7 @@ pub struct S3 {
     /// Update requires: Updates are not supported.
     #[serde(rename = "ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_version: Option<String>,
+    pub object_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3 {

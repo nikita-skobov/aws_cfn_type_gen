@@ -25,7 +25,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "AssociationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub association_name: Option<String>,
+    pub association_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Choose the parameter that will define how your automation will branch out. This target is required for associations that use an  Automation runbook and target resources by using rate controls. Automation is a capability of  AWS Systems Manager.
@@ -41,7 +41,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "AutomationTargetParameterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub automation_target_parameter_name: Option<String>,
+    pub automation_target_parameter_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The names or Amazon Resource Names (ARNs) of the Change Calendar type documents your  associations are gated under. The associations only run when that Change Calendar is open. For  more information, see AWS Systems Manager Change   Calendar.
@@ -83,7 +83,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document_version: Option<String>,
+    pub document_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the instance that the SSM document is associated with. You must specify the     InstanceId or Targets property.
@@ -99,7 +99,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum number of targets allowed to run the association at the same time. You can  specify a number, for example 10, or a percentage of the target set, for example 10%. The default  value is 100%, which means all targets run the association at the same time.
@@ -119,7 +119,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_concurrency: Option<String>,
+    pub max_concurrency: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of errors that are allowed before the system stops sending requests to run the  association on additional targets. You can specify either an absolute number of errors, for  example 10, or a percentage of the target set, for example 10%. If you specify 3, for example,  the system stops sending requests when the fourth error is received. If you specify 0, then the  system stops sending requests after the first error is returned. If you run an association on 50  managed nodes and set MaxError to 10%, then the system stops sending the request  when the sixth error is received.
@@ -139,7 +139,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "MaxErrors")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_errors: Option<String>,
+    pub max_errors: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the SSM document that contains the configuration information for the instance.    You can specify Command or Automation documents. The documents can    be AWS-predefined documents, documents you created, or a document that is shared with you from    another account. For SSM documents that are shared with you from other AWS accounts, you must    specify the complete SSM document ARN, in the following format:
@@ -158,7 +158,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An Amazon Simple Storage Service (Amazon S3) bucket where you want to store the output  details of the request.
@@ -198,7 +198,7 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_expression: Option<String>,
+    pub schedule_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// Number of days to wait after the scheduled day to run an association.
@@ -318,50 +318,62 @@ impl cfn_resources::CfnResource for CfnAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.automation_target_parameter_name {
-            if the_val.len() > 50 as _ {
-                return Err(format!("Max validation failed on field 'automation_target_parameter_name'. {} is greater than 50", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!("Max validation failed on field 'automation_target_parameter_name'. {} is greater than 50", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.automation_target_parameter_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'automation_target_parameter_name'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'automation_target_parameter_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.max_concurrency {
-            if the_val.len() > 7 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'max_concurrency'. {} is greater than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 7 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'max_concurrency'. {} is greater than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.max_concurrency {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'max_concurrency'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'max_concurrency'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.max_errors {
-            if the_val.len() > 7 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'max_errors'. {} is greater than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 7 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'max_errors'. {} is greater than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.max_errors {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'max_errors'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'max_errors'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -370,20 +382,21 @@ impl cfn_resources::CfnResource for CfnAssociation {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.schedule_expression {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'schedule_expression'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.schedule_expression {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'schedule_expression'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'schedule_expression'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -471,7 +484,7 @@ pub struct S3OutputLocation {
     /// Update requires: No interruption
     #[serde(rename = "OutputS3BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_s3_bucket_name: Option<String>,
+    pub output_s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The S3 bucket subfolder.
@@ -485,7 +498,7 @@ pub struct S3OutputLocation {
     /// Update requires: No interruption
     #[serde(rename = "OutputS3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_s3_key_prefix: Option<String>,
+    pub output_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region of the S3 bucket.
@@ -501,7 +514,7 @@ pub struct S3OutputLocation {
     /// Update requires: No interruption
     #[serde(rename = "OutputS3Region")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_s3_region: Option<String>,
+    pub output_s3_region: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3OutputLocation {
@@ -515,47 +528,51 @@ impl cfn_resources::CfnResource for S3OutputLocation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.output_s3_bucket_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'output_s3_bucket_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'output_s3_bucket_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.output_s3_bucket_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'output_s3_bucket_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'output_s3_bucket_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.output_s3_key_prefix {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'output_s3_key_prefix'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!("Max validation failed on field 'output_s3_key_prefix'. {} is greater than 500", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.output_s3_region {
-            if the_val.len() > 20 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'output_s3_region'. {} is greater than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'output_s3_region'. {} is greater than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.output_s3_region {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'output_s3_region'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'output_s3_region'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -581,7 +598,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
@@ -611,20 +628,24 @@ impl cfn_resources::CfnResource for Target {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 163 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 163",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 163 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 163",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.values;

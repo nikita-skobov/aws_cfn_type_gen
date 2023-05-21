@@ -41,7 +41,7 @@ pub struct CfnLedger {
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the ledger that you want to create. The name must be unique among all of the     ledgers in your AWS account in the current Region.
@@ -61,7 +61,7 @@ pub struct CfnLedger {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
@@ -123,29 +123,35 @@ impl cfn_resources::CfnResource for CfnLedger {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key {
-            if the_val.len() > 1600 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key'. {} is greater than 1600",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1600 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key'. {} is greater than 1600",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -170,7 +176,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -180,7 +186,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -14,7 +14,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The name for the Resolver rule, which you specified when you created the Resolver rule.
@@ -30,7 +30,7 @@ pub struct CfnResolverRule {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the endpoint that the rule is associated with.
@@ -46,7 +46,7 @@ pub struct CfnResolverRule {
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resolver_endpoint_id: Option<String>,
+    pub resolver_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// When you want to forward DNS queries for specified domain name to resolvers on your network, specify FORWARD.
@@ -127,46 +127,53 @@ impl cfn_resources::CfnResource for CfnResolverRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resolver_endpoint_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resolver_endpoint_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!("Max validation failed on field 'resolver_endpoint_id'. {} is greater than 64", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.resolver_endpoint_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resolver_endpoint_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resolver_endpoint_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -200,7 +207,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -210,7 +217,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -244,7 +251,7 @@ pub struct TargetAddress {
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip: Option<String>,
+    pub ip: Option<cfn_resources::StrVal>,
 
     ///
     /// One IPv6 address that you want to forward DNS queries to.
@@ -260,7 +267,7 @@ pub struct TargetAddress {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6: Option<String>,
+    pub ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// The port at Ip that you want to forward DNS queries to.
@@ -276,7 +283,7 @@ pub struct TargetAddress {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TargetAddress {
@@ -290,56 +297,68 @@ impl cfn_resources::CfnResource for TargetAddress {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.ip {
-            if the_val.len() > 36 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ip'. {} is greater than 36",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 36 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ip'. {} is greater than 36",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ip {
-            if the_val.len() < 7 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ip'. {} is less than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 7 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ip'. {} is less than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ipv6 {
-            if the_val.len() > 39 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ipv6'. {} is greater than 39",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 39 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ipv6'. {} is greater than 39",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ipv6 {
-            if the_val.len() < 7 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ipv6'. {} is less than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 7 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ipv6'. {} is less than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.port {
-            if the_val.len() > 65535 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'port'. {} is greater than 65535",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 65535 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'port'. {} is greater than 65535",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.port {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'port'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'port'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

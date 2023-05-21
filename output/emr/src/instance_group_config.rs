@@ -29,7 +29,7 @@ pub struct CfnInstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bid_price: Option<String>,
+    pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
     /// NoteAmazon EMR releases 4.x or later.
@@ -61,7 +61,7 @@ pub struct CfnInstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_ami_id: Option<String>,
+    pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
@@ -114,7 +114,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The ID of an Amazon EMR cluster that you want to associate this instance group with.
@@ -125,7 +125,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobFlowId")]
-    pub job_flow_id: String,
+    pub job_flow_id: cfn_resources::StrVal,
 
     ///
     /// Market type of the EC2 instances used to create a cluster node.
@@ -157,7 +157,7 @@ pub struct CfnInstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -205,38 +205,46 @@ impl cfn_resources::CfnResource for CfnInstanceGroupConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bid_price'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bid_price'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bid_price'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bid_price'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_ami_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_ami_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -246,37 +254,45 @@ impl cfn_resources::CfnResource for CfnInstanceGroupConfig {
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -375,7 +391,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The namespace for the CloudWatch metric. The default is       AWS/ElasticMapReduce.
@@ -387,7 +403,7 @@ pub struct CloudWatchAlarmDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
@@ -640,7 +656,7 @@ pub struct Configuration {
     /// Update requires: Replacement
     #[serde(rename = "Classification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub classification: Option<String>,
+    pub classification: Option<cfn_resources::StrVal>,
 
     ///
     /// Within a configuration classification, a set of properties that represent the settings that you want to change in the configuration file. Duplicates not allowed.
@@ -778,7 +794,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The dimension value.
@@ -789,7 +805,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricDimension {
@@ -932,7 +948,7 @@ pub struct ScalingRule {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
@@ -943,7 +959,7 @@ pub struct ScalingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
@@ -1117,7 +1133,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    pub volume_type: String,
+    pub volume_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VolumeSpecification {

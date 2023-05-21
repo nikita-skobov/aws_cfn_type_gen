@@ -65,7 +65,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The stack name to display.
@@ -79,7 +79,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains that you want to host embedded AppStream 2.0 streaming sessions.
@@ -107,7 +107,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "FeedbackURL")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub feedback_url: Option<String>,
+    pub feedback_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the stack.
@@ -121,7 +121,7 @@ pub struct CfnStack {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL that users are redirected to after their streaming session ends.
@@ -135,7 +135,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "RedirectURL")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub redirect_url: Option<String>,
+    pub redirect_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The storage connectors to enable.
@@ -209,20 +209,24 @@ impl cfn_resources::CfnResource for CfnStack {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.display_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'display_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'display_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -236,20 +240,24 @@ impl cfn_resources::CfnResource for CfnStack {
         }
 
         if let Some(the_val) = &self.feedback_url {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'feedback_url'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'feedback_url'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.redirect_url {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'redirect_url'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'redirect_url'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -288,7 +296,7 @@ pub struct AccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpceId")]
-    pub vpce_id: String,
+    pub vpce_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -316,11 +324,13 @@ impl cfn_resources::CfnResource for AccessEndpoint {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.vpce_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpce_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpce_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -353,7 +363,7 @@ pub struct ApplicationSettings {
     /// Update requires: No interruption
     #[serde(rename = "SettingsGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub settings_group: Option<String>,
+    pub settings_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ApplicationSettings {
@@ -367,11 +377,13 @@ impl cfn_resources::CfnResource for ApplicationSettings {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.settings_group {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'settings_group'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'settings_group'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -419,7 +431,7 @@ pub struct StorageConnector {
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -531,7 +543,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -541,7 +553,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

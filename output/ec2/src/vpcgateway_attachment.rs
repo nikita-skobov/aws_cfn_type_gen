@@ -13,7 +13,7 @@ pub struct CfnVPCGatewayAttachment {
     /// Update requires: No interruption
     #[serde(rename = "InternetGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internet_gateway_id: Option<String>,
+    pub internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the VPC.
@@ -24,7 +24,7 @@ pub struct CfnVPCGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the virtual private gateway.
@@ -38,7 +38,7 @@ pub struct CfnVPCGatewayAttachment {
     /// Update requires: No interruption
     #[serde(rename = "VpnGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpn_gateway_id: Option<String>,
+    pub vpn_gateway_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnVPCGatewayAttachment {

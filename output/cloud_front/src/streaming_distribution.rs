@@ -52,7 +52,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you don't 			want to enable logging when you create a streaming distribution or if you want to 			disable logging for an existing streaming distribution, specify false for 				Enabled, and specify empty Bucket and Prefix 			elements. If you specify false for Enabled but you specify 			values for Bucket and Prefix, the values are automatically 			deleted.
@@ -74,7 +74,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    pub prefix: String,
+    pub prefix: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Logging {
@@ -103,7 +103,7 @@ pub struct S3Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The CloudFront origin access identity to associate with the distribution. Use an origin 			access identity to configure the distribution so that end users can only access objects 			in an Amazon S3 bucket through CloudFront.
@@ -122,7 +122,7 @@ pub struct S3Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessIdentity")]
-    pub origin_access_identity: String,
+    pub origin_access_identity: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Origin {
@@ -163,7 +163,7 @@ pub struct StreamingDistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    pub comment: String,
+    pub comment: cfn_resources::StrVal,
 
     ///
     /// Whether the streaming distribution is enabled to accept user requests for 			content.
@@ -283,7 +283,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -293,7 +293,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

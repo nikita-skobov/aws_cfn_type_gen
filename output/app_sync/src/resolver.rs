@@ -10,7 +10,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The caching configuration for the resolver.
@@ -34,7 +34,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "Code")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    pub code: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 endpoint.
@@ -46,7 +46,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "CodeS3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub code_s3_location: Option<String>,
+    pub code_s3_location: Option<cfn_resources::StrVal>,
 
     ///
     /// The resolver data source name.
@@ -58,7 +58,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "DataSourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_source_name: Option<String>,
+    pub data_source_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The GraphQL field on a type that invokes the resolver.
@@ -69,7 +69,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FieldName")]
-    pub field_name: String,
+    pub field_name: cfn_resources::StrVal,
 
     ///
     /// The resolver type.
@@ -83,7 +83,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "Kind")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kind: Option<String>,
+    pub kind: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum number of resolver request inputs that will be sent to a single AWS Lambda     function in a BatchInvoke operation.
@@ -121,7 +121,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_mapping_template: Option<String>,
+    pub request_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of a request mapping template in an Amazon S3 bucket. Use this if you want to     provision with a template file in Amazon S3 rather than embedding it in your CloudFormation template.
@@ -133,7 +133,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplateS3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_mapping_template_s3_location: Option<String>,
+    pub request_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
     /// The response mapping template.
@@ -145,7 +145,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub response_mapping_template: Option<String>,
+    pub response_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of a response mapping template in an Amazon S3 bucket. Use this if you want to     provision with a template file in Amazon S3 rather than embedding it in your CloudFormation template.
@@ -157,7 +157,7 @@ pub struct CfnResolver {
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplateS3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub response_mapping_template_s3_location: Option<String>,
+    pub response_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync     function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must     also be specified.
@@ -192,7 +192,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
-    pub type_name: String,
+    pub type_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResolver {
@@ -235,7 +235,7 @@ pub struct AppSyncRuntime {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The version of the runtime to use. Currently, the only allowed version is 1.0.0.
@@ -246,7 +246,7 @@ pub struct AppSyncRuntime {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeVersion")]
-    pub runtime_version: String,
+    pub runtime_version: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AppSyncRuntime {
@@ -321,7 +321,7 @@ pub struct LambdaConflictHandlerConfig {
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_conflict_handler_arn: Option<String>,
+    pub lambda_conflict_handler_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaConflictHandlerConfig {
@@ -386,7 +386,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConflictDetection")]
-    pub conflict_detection: String,
+    pub conflict_detection: cfn_resources::StrVal,
 
     ///
     /// The Conflict Resolution strategy to perform in the event of a conflict.
@@ -400,7 +400,7 @@ pub struct SyncConfig {
     /// Update requires: No interruption
     #[serde(rename = "ConflictHandler")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conflict_handler: Option<String>,
+    pub conflict_handler: Option<cfn_resources::StrVal>,
 
     ///
     /// The LambdaConflictHandlerConfig when configuring LAMBDA as the     Conflict Handler.

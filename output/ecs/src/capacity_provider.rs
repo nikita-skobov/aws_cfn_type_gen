@@ -24,7 +24,7 @@ pub struct CfnCapacityProvider {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The metadata that you apply to the capacity provider to help you categorize and 			organize it. Each tag consists of a key and an optional value. You define both.
@@ -82,7 +82,7 @@ pub struct AutoScalingGroupProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupArn")]
-    pub auto_scaling_group_arn: String,
+    pub auto_scaling_group_arn: cfn_resources::StrVal,
 
     ///
     /// The managed scaling settings for the Auto Scaling group capacity provider.
@@ -354,7 +354,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -364,7 +364,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

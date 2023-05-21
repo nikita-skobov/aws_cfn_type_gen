@@ -16,7 +16,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    pub application_id: cfn_resources::StrVal,
 
     ///
     /// A description of the configuration profile.
@@ -32,7 +32,7 @@ pub struct CfnConfigurationProfile {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A URI to locate the configuration. You can specify the following:
@@ -49,7 +49,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocationUri")]
-    pub location_uri: String,
+    pub location_uri: cfn_resources::StrVal,
 
     ///
     /// A name for the configuration profile.
@@ -64,7 +64,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The ARN of an IAM role with permission to access the configuration at the specified       LocationUri.
@@ -84,7 +84,7 @@ pub struct CfnConfigurationProfile {
     /// Update requires: No interruption
     #[serde(rename = "RetrievalRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub retrieval_role_arn: Option<String>,
+    pub retrieval_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
@@ -114,7 +114,7 @@ pub struct CfnConfigurationProfile {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of methods for validating the configuration.
@@ -142,74 +142,87 @@ impl cfn_resources::CfnResource for CfnConfigurationProfile {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.location_uri;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'location_uri'. {} is greater than 2048",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.location_uri;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location_uri'. {} is greater than 2048",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.location_uri;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location_uri'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.retrieval_role_arn {
-            if the_val.len() > 2048 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'retrieval_role_arn'. {} is greater than 2048",
-                    the_val.len()
+                    "Min validation failed on field 'location_uri'. {} is less than 1",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.retrieval_role_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'retrieval_role_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'retrieval_role_arn'. {} is greater than 2048", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.retrieval_role_arn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'retrieval_role_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -239,7 +252,7 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The tag value can be up to 256 characters.
@@ -251,7 +264,7 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Tags {
@@ -285,7 +298,7 @@ pub struct Validators {
     /// Update requires: No interruption
     #[serde(rename = "Content")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content: Option<String>,
+    pub content: Option<cfn_resources::StrVal>,
 
     ///
     /// AWS AppConfig supports validators of type JSON_SCHEMA and       LAMBDA
@@ -330,20 +343,24 @@ impl cfn_resources::CfnResource for Validators {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.content {
-            if the_val.len() > 32768 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content'. {} is greater than 32768",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32768 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content'. {} is greater than 32768",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.content {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'content'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'content'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

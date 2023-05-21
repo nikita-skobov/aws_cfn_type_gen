@@ -20,7 +20,7 @@ pub struct CfnMatchmakingRuleSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A collection of matchmaking rules, formatted as a JSON string. Comments are not       allowed in JSON, but most elements support a description field.
@@ -35,7 +35,7 @@ pub struct CfnMatchmakingRuleSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuleSetBody")]
-    pub rule_set_body: String,
+    pub rule_set_body: cfn_resources::StrVal,
 
     ///
     /// A list of labels to assign to the new matchmaking rule set resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
@@ -64,29 +64,35 @@ impl cfn_resources::CfnResource for CfnMatchmakingRuleSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_set_body;
 
-        if the_val.len() > 65535 as _ {
-            return Err(format!(
-                "Max validation failed on field 'rule_set_body'. {} is greater than 65535",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rule_set_body'. {} is greater than 65535",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_set_body;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'rule_set_body'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'rule_set_body'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -119,7 +125,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -129,7 +135,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

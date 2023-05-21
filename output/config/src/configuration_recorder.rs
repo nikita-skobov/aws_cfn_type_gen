@@ -25,7 +25,7 @@ pub struct CfnConfigurationRecorder {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to record configurations for all supported resources or for a list of resource types. The resource types that you list must be supported by AWS Config.
@@ -48,7 +48,7 @@ pub struct CfnConfigurationRecorder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnConfigurationRecorder {
@@ -62,20 +62,24 @@ impl cfn_resources::CfnResource for CfnConfigurationRecorder {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

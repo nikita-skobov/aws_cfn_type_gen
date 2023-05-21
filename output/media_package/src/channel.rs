@@ -13,7 +13,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Configures egress access logs.
@@ -48,7 +48,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Configures ingress access logs.
@@ -143,7 +143,7 @@ pub struct IngestEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The system-generated password for WebDAV input authentication.
@@ -154,7 +154,7 @@ pub struct IngestEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The input URL where the source stream should be sent.
@@ -165,7 +165,7 @@ pub struct IngestEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 
     ///
     /// The system-generated username for WebDAV input authentication.
@@ -176,7 +176,7 @@ pub struct IngestEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for IngestEndpoint {
@@ -206,7 +206,7 @@ pub struct LogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LogConfiguration {
@@ -240,7 +240,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -250,7 +250,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

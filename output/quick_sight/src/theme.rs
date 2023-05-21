@@ -18,7 +18,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: String,
+    pub aws_account_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of 			the starting themes defined by Amazon QuickSight. For a list of the starting themes, use 				ListThemes or choose Themes from 			within an analysis.
@@ -36,7 +36,7 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_theme_id: Option<String>,
+    pub base_theme_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The theme configuration, which contains the theme display properties.
@@ -64,7 +64,7 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A valid grouping of resource permissions to apply to the new theme.
@@ -109,7 +109,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThemeId")]
-    pub theme_id: String,
+    pub theme_id: cfn_resources::StrVal,
 
     ///
     /// A description of the first version of the theme that you're creating. Every time 				UpdateTheme is called, a new version is created. Each version of the 			theme has a description of the version in the VersionDescription 			field.
@@ -125,7 +125,7 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_description: Option<String>,
+    pub version_description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnTheme {
@@ -140,37 +140,45 @@ impl cfn_resources::CfnResource for CfnTheme {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.aws_account_id;
 
-        if the_val.len() > 12 as _ {
-            return Err(format!(
-                "Max validation failed on field 'aws_account_id'. {} is greater than 12",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 12 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'aws_account_id'. {} is greater than 12",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.aws_account_id;
 
-        if the_val.len() < 12 as _ {
-            return Err(format!(
-                "Min validation failed on field 'aws_account_id'. {} is less than 12",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.base_theme_id {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 12 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'base_theme_id'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'aws_account_id'. {} is less than 12",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.base_theme_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'base_theme_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'base_theme_id'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.base_theme_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'base_theme_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -179,20 +187,24 @@ impl cfn_resources::CfnResource for CfnTheme {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -216,37 +228,42 @@ impl cfn_resources::CfnResource for CfnTheme {
 
         let the_val = &self.theme_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'theme_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'theme_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.theme_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'theme_id'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.version_description {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'version_description'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'theme_id'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.version_description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version_description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'version_description'. {} is greater than 512", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.version_description {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version_description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -313,7 +330,7 @@ pub struct DataColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "EmptyFillColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub empty_fill_color: Option<String>,
+    pub empty_fill_color: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum and maximum hexadecimal codes that describe a color gradient.
@@ -374,7 +391,7 @@ pub struct Font {
     /// Update requires: No interruption
     #[serde(rename = "FontFamily")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_family: Option<String>,
+    pub font_family: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Font {
@@ -476,7 +493,7 @@ pub struct ResourcePermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourcePermission {
@@ -558,7 +575,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -568,7 +585,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -679,7 +696,7 @@ pub struct ThemeError {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of error.
@@ -736,7 +753,7 @@ pub struct ThemeVersion {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon QuickSight-defined ID of the theme that a custom theme inherits from. All       themes initially inherit from a default Amazon QuickSight theme.
@@ -754,7 +771,7 @@ pub struct ThemeVersion {
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_theme_id: Option<String>,
+    pub base_theme_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The theme configuration, which contains all the theme display properties.
@@ -778,7 +795,7 @@ pub struct ThemeVersion {
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_time: Option<String>,
+    pub created_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the theme.
@@ -794,7 +811,7 @@ pub struct ThemeVersion {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Errors associated with the theme.
@@ -883,20 +900,24 @@ impl cfn_resources::CfnResource for ThemeVersion {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.base_theme_id {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'base_theme_id'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'base_theme_id'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.base_theme_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'base_theme_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'base_theme_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -905,20 +926,24 @@ impl cfn_resources::CfnResource for ThemeVersion {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1048,7 +1073,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Accent")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accent: Option<String>,
+    pub accent: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       accent color.
@@ -1062,7 +1087,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "AccentForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accent_foreground: Option<String>,
+    pub accent_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The color that applies to error messages.
@@ -1076,7 +1101,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Danger")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub danger: Option<String>,
+    pub danger: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       error color.
@@ -1090,7 +1115,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "DangerForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub danger_foreground: Option<String>,
+    pub danger_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The color that applies to the names of fields that are identified as       dimensions.
@@ -1104,7 +1129,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Dimension")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dimension: Option<String>,
+    pub dimension: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       dimension color.
@@ -1118,7 +1143,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "DimensionForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dimension_foreground: Option<String>,
+    pub dimension_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The color that applies to the names of fields that are identified as measures.
@@ -1132,7 +1157,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Measure")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub measure: Option<String>,
+    pub measure: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       measure color.
@@ -1146,7 +1171,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "MeasureForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub measure_foreground: Option<String>,
+    pub measure_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The background color that applies to visuals and other high emphasis UI.
@@ -1160,7 +1185,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "PrimaryBackground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub primary_background: Option<String>,
+    pub primary_background: Option<cfn_resources::StrVal>,
 
     ///
     /// The color of text and other foreground elements that appear over the primary       background regions, such as grid lines, borders, table banding, icons, and so on.
@@ -1174,7 +1199,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "PrimaryForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub primary_foreground: Option<String>,
+    pub primary_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The background color that applies to the sheet background and sheet controls.
@@ -1188,7 +1213,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryBackground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secondary_background: Option<String>,
+    pub secondary_background: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any sheet title, sheet control text, or UI that       appears over the secondary background.
@@ -1202,7 +1227,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secondary_foreground: Option<String>,
+    pub secondary_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// The color that applies to success messages, for example the check mark for a       successful download.
@@ -1216,7 +1241,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Success")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub success: Option<String>,
+    pub success: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       success color.
@@ -1230,7 +1255,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "SuccessForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub success_foreground: Option<String>,
+    pub success_foreground: Option<cfn_resources::StrVal>,
 
     ///
     /// This color that applies to warning and informational messages.
@@ -1244,7 +1269,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "Warning")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub warning: Option<String>,
+    pub warning: Option<cfn_resources::StrVal>,
 
     ///
     /// The foreground color that applies to any text or other elements that appear over the       warning color.
@@ -1258,7 +1283,7 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "WarningForeground")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub warning_foreground: Option<String>,
+    pub warning_foreground: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for UIColorPalette {

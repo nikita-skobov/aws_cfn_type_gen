@@ -16,7 +16,7 @@ pub struct CfnLinkAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceId")]
-    pub device_id: String,
+    pub device_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the global network.
@@ -33,7 +33,7 @@ pub struct CfnLinkAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    pub global_network_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the link.
@@ -50,7 +50,7 @@ pub struct CfnLinkAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinkId")]
-    pub link_id: String,
+    pub link_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnLinkAssociation {
@@ -65,56 +65,68 @@ impl cfn_resources::CfnResource for CfnLinkAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.device_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'device_id'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'device_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.device_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'device_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'device_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.global_network_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'global_network_id'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'global_network_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.global_network_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'global_network_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'global_network_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.link_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'link_id'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'link_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.link_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'link_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'link_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

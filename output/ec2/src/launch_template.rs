@@ -34,7 +34,7 @@ pub struct CfnLaunchTemplate {
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply to the launch template on creation. To tag the launch template, the       resource type must be launch-template.
@@ -64,7 +64,7 @@ pub struct CfnLaunchTemplate {
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_description: Option<String>,
+    pub version_description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLaunchTemplate {
@@ -80,38 +80,40 @@ impl cfn_resources::CfnResource for CfnLaunchTemplate {
         self.launch_template_data.validate()?;
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version_description {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'version_description'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'version_description'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.version_description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version_description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version_description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -260,7 +262,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters used to automatically set up EBS volumes when the instance is       launched.
@@ -284,7 +286,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_device: Option<String>,
+    pub no_device: Option<cfn_resources::StrVal>,
 
     ///
     /// The virtual device name (ephemeralN). Instance store volumes are numbered starting       from 0. An instance type with 2 available instance store volumes can specify mappings       for ephemeral0 and ephemeral1. The number of available instance store volumes depends on       the instance type. After you connect to the instance, you must mount the volume.
@@ -296,7 +298,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_name: Option<String>,
+    pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
@@ -400,7 +402,7 @@ pub struct CapacityReservationTarget {
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub capacity_reservation_id: Option<String>,
+    pub capacity_reservation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Capacity Reservation resource group in which to run the instance.
@@ -412,7 +414,7 @@ pub struct CapacityReservationTarget {
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationResourceGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub capacity_reservation_resource_group_arn: Option<String>,
+    pub capacity_reservation_resource_group_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CapacityReservationTarget {
@@ -521,7 +523,7 @@ pub struct CreditSpecification {
     /// Update requires: No interruption
     #[serde(rename = "CpuCredits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cpu_credits: Option<String>,
+    pub cpu_credits: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CreditSpecification {
@@ -597,7 +599,7 @@ pub struct Ebs {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the snapshot.
@@ -609,7 +611,7 @@ pub struct Ebs {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The throughput to provision for a gp3 volume, with a maximum of 1,000       MiB/s.
@@ -720,7 +722,7 @@ pub struct ElasticGpuSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ElasticGpuSpecification {
@@ -818,7 +820,7 @@ pub struct IamInstanceProfile {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the instance profile.
@@ -830,7 +832,7 @@ pub struct IamInstanceProfile {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IamInstanceProfile {
@@ -1442,7 +1444,7 @@ pub struct Ipv4PrefixSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Ipv4Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv4_prefix: Option<String>,
+    pub ipv4_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Ipv4PrefixSpecification {
@@ -1474,7 +1476,7 @@ pub struct Ipv6Add {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_address: Option<String>,
+    pub ipv6_address: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Ipv6Add {
@@ -1506,7 +1508,7 @@ pub struct Ipv6PrefixSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_prefix: Option<String>,
+    pub ipv6_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Ipv6PrefixSpecification {
@@ -1688,7 +1690,7 @@ pub struct LaunchTemplateData {
     /// Update requires: No interruption
     #[serde(rename = "ImageId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether an instance stops or terminates when you initiate shutdown from the       instance (using the operating system command for system shutdown).
@@ -1761,7 +1763,7 @@ pub struct LaunchTemplateData {
     /// Update requires: No interruption
     #[serde(rename = "KernelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kernel_id: Option<String>,
+    pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the key pair. You can create a key pair using CreateKeyPair or         ImportKeyPair.
@@ -1775,7 +1777,7 @@ pub struct LaunchTemplateData {
     /// Update requires: No interruption
     #[serde(rename = "KeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_name: Option<String>,
+    pub key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The license configurations.
@@ -1873,7 +1875,7 @@ pub struct LaunchTemplateData {
     /// Update requires: No interruption
     #[serde(rename = "RamDiskId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ram_disk_id: Option<String>,
+    pub ram_disk_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IDs of the security groups. You can specify the IDs of existing security groups and     references to resources created by the stack template.
@@ -1931,7 +1933,7 @@ pub struct LaunchTemplateData {
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_data: Option<String>,
+    pub user_data: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -4597,7 +4599,7 @@ pub struct LaunchTemplateElasticInferenceAccelerator {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplateElasticInferenceAccelerator {
@@ -5033,7 +5035,7 @@ pub struct LicenseSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub license_configuration_arn: Option<String>,
+    pub license_configuration_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LicenseSpecification {
@@ -5480,7 +5482,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The device index for the network interface attachment.
@@ -5520,7 +5522,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "InterfaceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub interface_type: Option<String>,
+    pub interface_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of IPv4 prefixes to be automatically assigned to the network interface. You       cannot use this option if you use the Ipv4Prefix option.
@@ -5616,7 +5618,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The primary private IPv4 address of the network interface.
@@ -5628,7 +5630,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more private IPv4 addresses.
@@ -5664,7 +5666,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NetworkInterface {
@@ -5738,7 +5740,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "Affinity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub affinity: Option<String>,
+    pub affinity: Option<cfn_resources::StrVal>,
 
     ///
     /// The Availability Zone for the instance.
@@ -5750,7 +5752,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The Group Id of a placement group. You must specify the Placement Group Group Id to launch an instance in a shared placement       group.
@@ -5762,7 +5764,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the placement group for the instance.
@@ -5774,7 +5776,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Dedicated Host for the instance.
@@ -5786,7 +5788,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "HostId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_id: Option<String>,
+    pub host_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the host resource group in which to launch the instances. If you specify a       host resource group ARN, omit the Tenancy parameter or       set it to host.
@@ -5798,7 +5800,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "HostResourceGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_resource_group_arn: Option<String>,
+    pub host_resource_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of the partition the instance should launch in. Valid only if the placement       group strategy is set to partition.
@@ -5822,7 +5824,7 @@ pub struct Placement {
     /// Update requires: No interruption
     #[serde(rename = "SpreadDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spread_domain: Option<String>,
+    pub spread_domain: Option<cfn_resources::StrVal>,
 
     ///
     /// The tenancy of the instance. An instance with a       tenancy of dedicated runs on single-tenant hardware.
@@ -5974,7 +5976,7 @@ pub struct PrivateIpAdd {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PrivateIpAdd {
@@ -6034,7 +6036,7 @@ pub struct SpotOptions {
     /// Update requires: No interruption
     #[serde(rename = "MaxPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_price: Option<String>,
+    pub max_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The Spot Instance request type.
@@ -6066,7 +6068,7 @@ pub struct SpotOptions {
     /// Update requires: No interruption
     #[serde(rename = "ValidUntil")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_until: Option<String>,
+    pub valid_until: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -6138,7 +6140,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -6148,7 +6150,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

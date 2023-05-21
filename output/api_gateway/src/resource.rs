@@ -10,7 +10,7 @@ pub struct CfnResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentId")]
-    pub parent_id: String,
+    pub parent_id: cfn_resources::StrVal,
 
     ///
     /// The last path segment for this resource.
@@ -21,7 +21,7 @@ pub struct CfnResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PathPart")]
-    pub path_part: String,
+    pub path_part: cfn_resources::StrVal,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -32,7 +32,7 @@ pub struct CfnResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResource {

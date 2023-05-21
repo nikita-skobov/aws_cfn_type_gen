@@ -15,7 +15,7 @@ pub struct CfnService {
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_type: Option<String>,
+    pub auth_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the certificate.
@@ -27,7 +27,7 @@ pub struct CfnService {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The custom domain name of the service.
@@ -39,7 +39,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "CustomDomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_domain_name: Option<String>,
+    pub custom_domain_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -64,7 +64,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the service.
@@ -110,7 +110,7 @@ pub struct DnsEntry {
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the hosted zone.
@@ -122,7 +122,7 @@ pub struct DnsEntry {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DnsEntry {
@@ -156,7 +156,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -166,7 +166,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

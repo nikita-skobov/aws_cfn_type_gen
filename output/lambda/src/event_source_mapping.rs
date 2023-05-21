@@ -97,7 +97,7 @@ pub struct CfnEventSourceMapping {
     /// Update requires: Replacement
     #[serde(rename = "EventSourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_source_arn: Option<String>,
+    pub event_source_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that defines the filter criteria that   determine whether Lambda should process an event. For more information, see Lambda event filtering.
@@ -130,7 +130,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    pub function_name: cfn_resources::StrVal,
 
     ///
     /// (Streams and SQS) A list of current response type enums applied to the event source mapping.
@@ -296,7 +296,7 @@ pub struct CfnEventSourceMapping {
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub starting_position: Option<String>,
+    pub starting_position: Option<cfn_resources::StrVal>,
 
     ///
     /// With StartingPosition set to AT_TIMESTAMP, the time from which to start    reading, in Unix time seconds.
@@ -387,20 +387,24 @@ impl cfn_resources::CfnResource for CfnEventSourceMapping {
 
         let the_val = &self.function_name;
 
-        if the_val.len() > 140 as _ {
-            return Err(format!(
-                "Max validation failed on field 'function_name'. {} is greater than 140",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 140 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'function_name'. {} is greater than 140",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.function_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'function_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'function_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.maximum_batching_window_in_seconds {
@@ -528,7 +532,7 @@ pub struct AmazonManagedKafkaEventSourceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consumer_group_id: Option<String>,
+    pub consumer_group_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AmazonManagedKafkaEventSourceConfig {
@@ -542,20 +546,21 @@ impl cfn_resources::CfnResource for AmazonManagedKafkaEventSourceConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.consumer_group_id {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'consumer_group_id'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!("Max validation failed on field 'consumer_group_id'. {} is greater than 200", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.consumer_group_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'consumer_group_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'consumer_group_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -616,7 +621,7 @@ pub struct DocumentDBEventSourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "CollectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub collection_name: Option<String>,
+    pub collection_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the database to consume within the DocumentDB cluster.
@@ -634,7 +639,7 @@ pub struct DocumentDBEventSourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines what DocumentDB sends to your event stream during document update operations. If set to UpdateLookup, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes.
@@ -679,38 +684,46 @@ impl cfn_resources::CfnResource for DocumentDBEventSourceConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.collection_name {
-            if the_val.len() > 57 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'collection_name'. {} is greater than 57",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 57 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'collection_name'. {} is greater than 57",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.collection_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'collection_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'collection_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'database_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'database_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'database_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'database_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -767,7 +780,7 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern: Option<String>,
+    pub pattern: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Filter {
@@ -781,20 +794,24 @@ impl cfn_resources::CfnResource for Filter {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.pattern {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'pattern'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'pattern'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pattern {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'pattern'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pattern'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -851,7 +868,7 @@ pub struct OnFailure {
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination: Option<String>,
+    pub destination: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OnFailure {
@@ -865,20 +882,24 @@ impl cfn_resources::CfnResource for OnFailure {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.destination {
-            if the_val.len() > 350 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'destination'. {} is greater than 350",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 350 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'destination'. {} is greater than 350",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.destination {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'destination'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'destination'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -991,7 +1012,7 @@ pub struct SelfManagedKafkaEventSourceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consumer_group_id: Option<String>,
+    pub consumer_group_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SelfManagedKafkaEventSourceConfig {
@@ -1005,20 +1026,21 @@ impl cfn_resources::CfnResource for SelfManagedKafkaEventSourceConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.consumer_group_id {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'consumer_group_id'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!("Max validation failed on field 'consumer_group_id'. {} is greater than 200", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.consumer_group_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'consumer_group_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'consumer_group_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1061,7 +1083,7 @@ pub struct SourceAccessConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "URI")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uri: Option<String>,
+    pub uri: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1116,20 +1138,24 @@ impl cfn_resources::CfnResource for SourceAccessConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.uri {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'uri'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'uri'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.uri {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'uri'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'uri'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

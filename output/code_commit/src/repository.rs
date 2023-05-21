@@ -28,7 +28,7 @@ pub struct CfnRepository {
     /// Update requires: No interruption
     #[serde(rename = "RepositoryDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_description: Option<String>,
+    pub repository_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the new repository to be created.
@@ -47,7 +47,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
-    pub repository_name: String,
+    pub repository_name: cfn_resources::StrVal,
 
     ///
     /// One or more tag key-value pairs to use when tagging this repository.
@@ -87,27 +87,33 @@ impl cfn_resources::CfnResource for CfnRepository {
         self.code.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.repository_description {
-            if the_val.len() > 1000 as _ {
-                return Err(format!("Max validation failed on field 'repository_description'. {} is greater than 1000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!("Max validation failed on field 'repository_description'. {} is greater than 1000", s.len()));
+                }
             }
         }
 
         let the_val = &self.repository_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'repository_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'repository_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.repository_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'repository_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'repository_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -127,7 +133,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "BranchName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub branch_name: Option<String>,
+    pub branch_name: Option<cfn_resources::StrVal>,
 
     /// Information about the Amazon S3 bucket that contains a ZIP file of code     to be committed to the repository. Changes to this property are ignored after initial resource creation.
     ///
@@ -183,7 +189,7 @@ pub struct RepositoryTrigger {
     /// Update requires: No interruption
     #[serde(rename = "CustomData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_data: Option<String>,
+    pub custom_data: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the resource that is the target for a trigger (for example, the ARN of a       topic in Amazon SNS).
@@ -194,7 +200,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    pub destination_arn: String,
+    pub destination_arn: cfn_resources::StrVal,
 
     ///
     /// The repository events that cause the trigger to run actions in another service, such       as sending a notification through Amazon SNS.
@@ -218,7 +224,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RepositoryTrigger {
@@ -246,7 +252,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     /// The key to use for accessing the Amazon S3 bucket. Changes to this property are     ignored after initial resource creation. For more information, see Creating object key names     and Uploading objects in the Amazon S3 User Guide.
     ///
@@ -256,7 +262,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     /// The object version of the ZIP file, if versioning is enabled for the Amazon S3 bucket.     Changes to this property are ignored after initial resource creation.
     ///
@@ -267,7 +273,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_version: Option<String>,
+    pub object_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3 {
@@ -301,7 +307,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -311,7 +317,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

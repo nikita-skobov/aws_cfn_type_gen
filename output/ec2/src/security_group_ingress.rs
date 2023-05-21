@@ -25,7 +25,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "CidrIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ip: Option<String>,
+    pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 address range, in CIDR format.
@@ -41,7 +41,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "CidrIpv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ipv6: Option<String>,
+    pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// Updates the description of an ingress (inbound) security group rule. You can replace an     existing description, or add a description to a rule that did not have one     previously.
@@ -55,7 +55,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A     value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6     types, you must specify all codes.
@@ -81,7 +81,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "GroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the security group.
@@ -97,7 +97,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
@@ -110,7 +110,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpProtocol")]
-    pub ip_protocol: String,
+    pub ip_protocol: cfn_resources::StrVal,
 
     ///
     /// The ID of a prefix list.
@@ -122,7 +122,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "SourcePrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_prefix_list_id: Option<String>,
+    pub source_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the security group. You must specify either the security group ID or the     security group name. For security groups in a nondefault VPC, you must specify the security     group ID.
@@ -134,7 +134,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_id: Option<String>,
+    pub source_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// [Default VPC] The name of the source security group. You must specify either the security group ID      or the security group name. You can't specify the group name in combination with an IP address range.      Creates rules that grant full ICMP, UDP, and TCP access.
@@ -148,7 +148,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_name: Option<String>,
+    pub source_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// [nondefault VPC] The AWS account ID for the source security group, if     the source security group is in a different account. You can't specify this property with     an IP address range. Creates rules that grant full ICMP, UDP, and TCP access.
@@ -162,7 +162,7 @@ pub struct CfnSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_owner_id: Option<String>,
+    pub source_security_group_owner_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of     -1 indicates all ICMP/ICMPv6 codes for the specified ICMP type. If you     specify all ICMP/ICMPv6 types, you must specify all codes.

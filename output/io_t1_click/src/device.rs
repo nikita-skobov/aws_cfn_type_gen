@@ -10,7 +10,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceId")]
-    pub device_id: String,
+    pub device_id: cfn_resources::StrVal,
 
     ///
     /// A Boolean value indicating whether the device is enabled (true) or not (false).

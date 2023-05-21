@@ -15,7 +15,7 @@ pub struct CfnWorkGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The workgroup name.
@@ -28,7 +28,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The option to delete a workgroup and its contents even if the workgroup contains any       named queries. The default is false.
@@ -109,20 +109,24 @@ impl cfn_resources::CfnResource for CfnWorkGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -145,7 +149,7 @@ pub struct AclConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3AclOption")]
-    pub s3_acl_option: String,
+    pub s3_acl_option: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AclConfiguration {
@@ -173,7 +177,7 @@ pub struct CustomerContentEncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
-    pub kms_key: String,
+    pub kms_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomerContentEncryptionConfiguration {
@@ -218,7 +222,7 @@ pub struct EncryptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -273,7 +277,7 @@ pub struct EngineVersion {
     /// Update requires: No interruption
     #[serde(rename = "EffectiveEngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub effective_engine_version: Option<String>,
+    pub effective_engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The engine version requested by the user. Possible values are determined by the output       of ListEngineVersions, including AUTO. The default is AUTO.
@@ -289,7 +293,7 @@ pub struct EngineVersion {
     /// Update requires: No interruption
     #[serde(rename = "SelectedEngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected_engine_version: Option<String>,
+    pub selected_engine_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EngineVersion {
@@ -303,32 +307,34 @@ impl cfn_resources::CfnResource for EngineVersion {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.effective_engine_version {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'effective_engine_version'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'effective_engine_version'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.effective_engine_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'effective_engine_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'effective_engine_version'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.selected_engine_version {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'selected_engine_version'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'selected_engine_version'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.selected_engine_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'selected_engine_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'selected_engine_version'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -371,7 +377,7 @@ pub struct ResultConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ExpectedBucketOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expected_bucket_owner: Option<String>,
+    pub expected_bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The location in Amazon S3 where your query results are stored, such as         s3://path/to/query/bucket/. To run a query, you must specify the query       results location using either a client-side setting for individual queries or a location       specified by the workgroup. If workgroup settings override client-side settings, then       the query uses the location specified for the workgroup. If no query location is set,       Athena issues an error. For more information, see Working with Query Results, Output Files, and         Query History and EnforceWorkGroupConfiguration.
@@ -383,7 +389,7 @@ pub struct ResultConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_location: Option<String>,
+    pub output_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ResultConfiguration {
@@ -425,7 +431,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -435,7 +441,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -464,7 +470,7 @@ pub struct WorkGroupConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AdditionalConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_configuration: Option<String>,
+    pub additional_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is       allowed to scan. No default is defined.
@@ -523,7 +529,7 @@ pub struct WorkGroupConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role: Option<String>,
+    pub execution_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates that the Amazon CloudWatch metrics are enabled for the workgroup.

@@ -28,7 +28,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AliasName")]
-    pub alias_name: String,
+    pub alias_name: cfn_resources::StrVal,
 
     ///
     /// Associates the alias with the specified customer managed key. The    KMS key must be in the same AWS account and Region.
@@ -55,7 +55,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetKeyId")]
-    pub target_key_id: String,
+    pub target_key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAlias {
@@ -70,38 +70,46 @@ impl cfn_resources::CfnResource for CfnAlias {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.alias_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'alias_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'alias_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.alias_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'alias_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'alias_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_key_id;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_key_id'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_key_id'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_key_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_key_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_key_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -15,7 +15,7 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "CIDRIP")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidrip: Option<String>,
+    pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the DB security group to add authorization to.
@@ -26,7 +26,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBSecurityGroupName")]
-    pub dbsecurity_group_name: String,
+    pub dbsecurity_group_name: cfn_resources::StrVal,
 
     ///
     /// Id of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
@@ -38,7 +38,7 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_id: Option<String>,
+    pub ec2_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Name of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName    or EC2SecurityGroupId must be provided.
@@ -50,7 +50,7 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_name: Option<String>,
+    pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// AWS account number of the owner of the EC2 security group     specified in the EC2SecurityGroupName parameter.     The AWS access key ID isn't an acceptable value.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
@@ -62,7 +62,7 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_owner_id: Option<String>,
+    pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDBSecurityGroupIngress {

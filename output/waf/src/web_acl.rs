@@ -27,7 +27,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it.
@@ -44,7 +44,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array that contains the action for each Rule in a WebACL, the priority of the Rule, 			and the ID of the Rule.
@@ -73,38 +73,46 @@ impl cfn_resources::CfnResource for CfnWebACL {
 
         let the_val = &self.metric_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'metric_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metric_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metric_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'metric_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'metric_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -160,7 +168,7 @@ pub struct ActivatedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleId")]
-    pub rule_id: String,
+    pub rule_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ActivatedRule {
@@ -177,20 +185,24 @@ impl cfn_resources::CfnResource for ActivatedRule {
 
         let the_val = &self.rule_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'rule_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rule_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'rule_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'rule_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

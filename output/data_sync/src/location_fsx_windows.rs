@@ -15,7 +15,7 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
@@ -31,7 +31,7 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fsx_filesystem_arn: Option<String>,
+    pub fsx_filesystem_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the password of the user who has the permissions to access files and folders in    the file system.
@@ -47,7 +47,7 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Names (ARNs) of the security groups that are used to configure the     FSx for Windows File Server file system.
@@ -78,7 +78,7 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
@@ -109,7 +109,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: Replacement
     #[serde(rename = "User")]
-    pub user: String,
+    pub user: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnLocationFSxWindows {
@@ -123,38 +123,43 @@ impl cfn_resources::CfnResource for CfnLocationFSxWindows {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.domain {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.fsx_filesystem_arn {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() > 104 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 104",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 104 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 104",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -169,11 +174,13 @@ impl cfn_resources::CfnResource for CfnLocationFSxWindows {
 
         let the_val = &self.user;
 
-        if the_val.len() > 104 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user'. {} is greater than 104",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 104 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user'. {} is greater than 104",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -197,7 +204,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -207,7 +214,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

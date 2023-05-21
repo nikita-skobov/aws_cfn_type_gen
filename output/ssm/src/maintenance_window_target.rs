@@ -15,7 +15,7 @@ pub struct CfnMaintenanceWindowTarget {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the maintenance window target.
@@ -33,7 +33,7 @@ pub struct CfnMaintenanceWindowTarget {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A user-provided value that will be included in any Amazon CloudWatch Events events that are  raised while running tasks for these targets in this maintenance window.
@@ -49,7 +49,7 @@ pub struct CfnMaintenanceWindowTarget {
     /// Update requires: No interruption
     #[serde(rename = "OwnerInformation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub owner_information: Option<String>,
+    pub owner_information: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of target that is being registered with the maintenance window.
@@ -94,7 +94,7 @@ pub struct CfnMaintenanceWindowTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WindowId")]
-    pub window_id: String,
+    pub window_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -125,56 +125,65 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.owner_information {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'owner_information'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'owner_information'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.owner_information {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'owner_information'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'owner_information'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -189,20 +198,24 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
 
         let the_val = &self.window_id;
 
-        if the_val.len() > 20 as _ {
-            return Err(format!(
-                "Max validation failed on field 'window_id'. {} is greater than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'window_id'. {} is greater than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.window_id;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'window_id'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'window_id'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -229,7 +242,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
@@ -259,20 +272,24 @@ impl cfn_resources::CfnResource for Targets {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 163 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 163",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 163 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 163",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.values;

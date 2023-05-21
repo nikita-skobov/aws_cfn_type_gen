@@ -12,7 +12,7 @@ pub struct CfnTransitGatewayRouteTableAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayAttachmentId")]
-    pub transit_gateway_attachment_id: String,
+    pub transit_gateway_attachment_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the route table for the transit gateway.
@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayRouteTableAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableId")]
-    pub transit_gateway_route_table_id: String,
+    pub transit_gateway_route_table_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTableAssociation {

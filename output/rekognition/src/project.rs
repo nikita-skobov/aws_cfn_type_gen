@@ -16,7 +16,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
-    pub project_name: String,
+    pub project_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnProject {
@@ -31,20 +31,24 @@ impl cfn_resources::CfnResource for CfnProject {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.project_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'project_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'project_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.project_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'project_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'project_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

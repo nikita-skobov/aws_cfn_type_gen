@@ -13,7 +13,7 @@ pub struct CfnNetworkAclEntry {
     /// Update requires: No interruption
     #[serde(rename = "CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_block: Option<String>,
+    pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether this rule applies to egress traffic from the subnet (true) or     ingress traffic to the subnet (false). By default, AWS CloudFormation     specifies false.
@@ -49,7 +49,7 @@ pub struct CfnNetworkAclEntry {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_cidr_block: Option<String>,
+    pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the ACL for the entry.
@@ -60,7 +60,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkAclId")]
-    pub network_acl_id: String,
+    pub network_acl_id: cfn_resources::StrVal,
 
     ///
     /// The range of port numbers for the UDP/TCP protocol. Conditional required if specifying 6     (TCP) or 17 (UDP) for the protocol parameter.

@@ -13,7 +13,7 @@ pub struct CfnSimulation {
     /// Update requires: Replacement
     #[serde(rename = "MaximumDuration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maximum_duration: Option<String>,
+    pub maximum_duration: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the simulation.
@@ -24,7 +24,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role     that the simulation assumes to perform actions.      For more information about ARNs, see Amazon Resource Names (ARNs)     in the AWS General Reference.     For more information about IAM roles,     see IAM       roles in the AWS Identity and Access Management User Guide.
@@ -35,7 +35,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The location of the simulation schema in Amazon Simple Storage Service (Amazon S3).     For more information about Amazon S3, see the     Amazon Simple Storage Service User Guide.
@@ -104,7 +104,7 @@ pub struct S3Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The key name of an object in Amazon S3. For more information about Amazon S3 objects and object     keys, see Uploading,       downloading, and working with objects in Amazon S3 in the Amazon Simple Storage Service User       Guide.
@@ -115,7 +115,7 @@ pub struct S3Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectKey")]
-    pub object_key: String,
+    pub object_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Location {

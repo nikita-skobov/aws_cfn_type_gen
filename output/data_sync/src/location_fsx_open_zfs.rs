@@ -15,7 +15,7 @@ pub struct CfnLocationFSxOpenZFS {
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fsx_filesystem_arn: Option<String>,
+    pub fsx_filesystem_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of protocol that AWS DataSync uses to access your file system.
@@ -59,7 +59,7 @@ pub struct CfnLocationFSxOpenZFS {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value pair that represents a tag that you want to add to the resource. The value    can be an empty string. This value helps you manage, filter, and search for your resources. We    recommend that you create a name tag for your location.
@@ -87,11 +87,10 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.fsx_filesystem_arn {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128", s.len()));
+                }
             }
         }
 
@@ -107,11 +106,13 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -269,7 +270,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -279,7 +280,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

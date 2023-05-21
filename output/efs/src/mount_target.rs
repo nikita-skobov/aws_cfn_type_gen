@@ -14,7 +14,7 @@ pub struct CfnMountTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// Valid IPv4 address within the address range of the specified subnet.
@@ -32,7 +32,7 @@ pub struct CfnMountTarget {
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip_address: Option<String>,
+    pub ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Up to five VPC security group IDs, of the form sg-xxxxxxxx. These must be    for the same VPC as subnet specified.
@@ -62,7 +62,7 @@ pub struct CfnMountTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnMountTarget {
@@ -77,28 +77,34 @@ impl cfn_resources::CfnResource for CfnMountTarget {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.file_system_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'file_system_id'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.ip_address {
-            if the_val.len() > 15 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'ip_address'. {} is greater than 15",
-                    the_val.len()
+                    "Max validation failed on field 'file_system_id'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.ip_address {
-            if the_val.len() < 7 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ip_address'. {} is less than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ip_address'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.ip_address {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 7 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ip_address'. {} is less than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -113,20 +119,24 @@ impl cfn_resources::CfnResource for CfnMountTarget {
 
         let the_val = &self.subnet_id;
 
-        if the_val.len() > 47 as _ {
-            return Err(format!(
-                "Max validation failed on field 'subnet_id'. {} is greater than 47",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 47 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_id'. {} is greater than 47",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.subnet_id;
 
-        if the_val.len() < 15 as _ {
-            return Err(format!(
-                "Min validation failed on field 'subnet_id'. {} is less than 15",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 15 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'subnet_id'. {} is less than 15",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

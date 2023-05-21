@@ -33,7 +33,7 @@ pub struct CfnAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_token: Option<String>,
+    pub client_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the EFS file system that the access point applies to. Accepts only the ID format for input when specifying a file system, for example fs-0123456789abcedf2.
@@ -48,7 +48,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// The full POSIX identity, including the user ID, group ID, and secondary group IDs on the access point that is used for all file operations by    NFS clients using the access point.
@@ -86,30 +86,36 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.client_token {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_token'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_token'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_token {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'client_token'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'client_token'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.file_system_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'file_system_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'file_system_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         self.posix_user
@@ -143,7 +149,7 @@ pub struct AccessPointTag {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the tag key.
@@ -159,7 +165,7 @@ pub struct AccessPointTag {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AccessPointTag {
@@ -173,29 +179,35 @@ impl cfn_resources::CfnResource for AccessPointTag {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -217,7 +229,7 @@ pub struct CreationInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerGid")]
-    pub owner_gid: String,
+    pub owner_gid: cfn_resources::StrVal,
 
     ///
     /// Specifies the POSIX user ID to apply to the RootDirectory. Accepts values from 0 to 2^32 (4294967295).
@@ -228,7 +240,7 @@ pub struct CreationInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerUid")]
-    pub owner_uid: String,
+    pub owner_uid: cfn_resources::StrVal,
 
     ///
     /// Specifies the POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
@@ -245,7 +257,7 @@ pub struct CreationInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permissions")]
-    pub permissions: String,
+    pub permissions: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CreationInfo {
@@ -260,20 +272,24 @@ impl cfn_resources::CfnResource for CreationInfo {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.permissions;
 
-        if the_val.len() > 4 as _ {
-            return Err(format!(
-                "Max validation failed on field 'permissions'. {} is greater than 4",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'permissions'. {} is greater than 4",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.permissions;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'permissions'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'permissions'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -292,7 +308,7 @@ pub struct PosixUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Gid")]
-    pub gid: String,
+    pub gid: cfn_resources::StrVal,
 
     ///
     /// Secondary POSIX group IDs used for all file system operations using this access point.
@@ -317,7 +333,7 @@ pub struct PosixUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Uid")]
-    pub uid: String,
+    pub uid: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PosixUser {
@@ -376,7 +392,7 @@ pub struct RootDirectory {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RootDirectory {
@@ -394,20 +410,24 @@ impl cfn_resources::CfnResource for RootDirectory {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

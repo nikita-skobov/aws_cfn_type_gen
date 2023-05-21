@@ -18,7 +18,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
-    pub mesh_name: String,
+    pub mesh_name: cfn_resources::StrVal,
 
     ///
     /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then        the account that you specify must share the mesh with your account before you can create        the resource in the service mesh. For more information about mesh sharing, see Working with shared meshes.
@@ -34,7 +34,7 @@ pub struct CfnRoute {
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mesh_owner: Option<String>,
+    pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The name to use for the route.
@@ -50,7 +50,7 @@ pub struct CfnRoute {
     /// Update requires: Replacement
     #[serde(rename = "RouteName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub route_name: Option<String>,
+    pub route_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The route specification to apply.
@@ -90,7 +90,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualRouterName")]
-    pub virtual_router_name: String,
+    pub virtual_router_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRoute {
@@ -105,55 +105,67 @@ impl cfn_resources::CfnResource for CfnRoute {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.mesh_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'mesh_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'mesh_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.mesh_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'mesh_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() > 12 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'mesh_owner'. {} is greater than 12",
-                    the_val.len()
+                    "Min validation failed on field 'mesh_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'mesh_owner'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'mesh_owner'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.mesh_owner {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'mesh_owner'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.route_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'route_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'route_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.route_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'route_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'route_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -170,20 +182,24 @@ impl cfn_resources::CfnResource for CfnRoute {
 
         let the_val = &self.virtual_router_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'virtual_router_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'virtual_router_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.virtual_router_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'virtual_router_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'virtual_router_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -507,7 +523,7 @@ pub struct GrpcRouteMatch {
     /// Update requires: No interruption
     #[serde(rename = "MethodName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub method_name: Option<String>,
+    pub method_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port number to match on.
@@ -535,7 +551,7 @@ pub struct GrpcRouteMatch {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_name: Option<String>,
+    pub service_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GrpcRouteMatch {
@@ -558,20 +574,24 @@ impl cfn_resources::CfnResource for GrpcRouteMatch {
         }
 
         if let Some(the_val) = &self.method_name {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'method_name'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'method_name'. {} is greater than 50",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.method_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'method_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'method_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -637,7 +657,7 @@ pub struct GrpcRouteMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GrpcRouteMetadata {
@@ -656,20 +676,24 @@ impl cfn_resources::CfnResource for GrpcRouteMetadata {
 
         let the_val = &self.name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -693,7 +717,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exact: Option<String>,
+    pub exact: Option<cfn_resources::StrVal>,
 
     ///
     /// The value sent by the client must begin with the specified characters.
@@ -709,7 +733,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that represents the range of values to match on.
@@ -737,7 +761,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regex: Option<String>,
+    pub regex: Option<cfn_resources::StrVal>,
 
     ///
     /// The value sent by the client must end with the specified characters.
@@ -753,7 +777,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
+    pub suffix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GrpcRouteMetadataMatchMethod {
@@ -767,76 +791,92 @@ impl cfn_resources::CfnResource for GrpcRouteMetadataMatchMethod {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.exact {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'exact'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'exact'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.exact {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'exact'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'exact'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.prefix {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'prefix'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'prefix'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'regex'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'regex'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'regex'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'regex'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.suffix {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'suffix'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'suffix'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.suffix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'suffix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'suffix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -909,7 +949,7 @@ pub struct HeaderMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exact: Option<String>,
+    pub exact: Option<cfn_resources::StrVal>,
 
     ///
     /// The value sent by the client must begin with the specified characters.
@@ -925,7 +965,7 @@ pub struct HeaderMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that represents the range of values to match on.
@@ -953,7 +993,7 @@ pub struct HeaderMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regex: Option<String>,
+    pub regex: Option<cfn_resources::StrVal>,
 
     ///
     /// The value sent by the client must end with the specified characters.
@@ -969,7 +1009,7 @@ pub struct HeaderMatchMethod {
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
+    pub suffix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HeaderMatchMethod {
@@ -983,76 +1023,92 @@ impl cfn_resources::CfnResource for HeaderMatchMethod {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.exact {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'exact'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'exact'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.exact {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'exact'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'exact'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.prefix {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'prefix'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'prefix'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'regex'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'regex'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'regex'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'regex'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.suffix {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'suffix'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'suffix'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.suffix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'suffix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'suffix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1077,7 +1133,7 @@ pub struct HttpPathMatch {
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exact: Option<String>,
+    pub exact: Option<cfn_resources::StrVal>,
 
     ///
     /// The regex used to match the path.
@@ -1093,7 +1149,7 @@ pub struct HttpPathMatch {
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regex: Option<String>,
+    pub regex: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HttpPathMatch {
@@ -1107,38 +1163,46 @@ impl cfn_resources::CfnResource for HttpPathMatch {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.exact {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'exact'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'exact'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.exact {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'exact'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'exact'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'regex'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'regex'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'regex'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'regex'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1159,7 +1223,7 @@ pub struct HttpQueryParameterMatch {
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exact: Option<String>,
+    pub exact: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HttpQueryParameterMatch {
@@ -1420,7 +1484,7 @@ pub struct HttpRouteHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HttpRouteHeader {
@@ -1439,20 +1503,24 @@ impl cfn_resources::CfnResource for HttpRouteHeader {
 
         let the_val = &self.name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1528,7 +1596,7 @@ pub struct HttpRouteMatch {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The client request query parameters to match on.
@@ -1785,7 +1853,7 @@ pub struct QueryParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for QueryParameter {
@@ -1939,7 +2007,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1949,7 +2017,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2183,7 +2251,7 @@ pub struct WeightedTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualNode")]
-    pub virtual_node: String,
+    pub virtual_node: cfn_resources::StrVal,
 
     ///
     /// The relative weight of the weighted target.
@@ -2231,20 +2299,24 @@ impl cfn_resources::CfnResource for WeightedTarget {
 
         let the_val = &self.virtual_node;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'virtual_node'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'virtual_node'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.virtual_node;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'virtual_node'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'virtual_node'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.weight;

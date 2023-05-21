@@ -10,7 +10,7 @@ pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityPoolId")]
-    pub identity_pool_id: String,
+    pub identity_pool_id: cfn_resources::StrVal,
 
     ///
     /// How users for a specific identity provider are mapped to roles. This is a string to the     RoleMapping object map. The string identifies the identity provider. For    example: graph.facebook.com or     cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id.
@@ -67,7 +67,7 @@ pub struct MappingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Claim")]
-    pub claim: String,
+    pub claim: cfn_resources::StrVal,
 
     ///
     /// The match condition that specifies how closely the claim value in the IdP token must match     Value.
@@ -80,7 +80,7 @@ pub struct MappingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchType")]
-    pub match_type: String,
+    pub match_type: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the role.
@@ -91,7 +91,7 @@ pub struct MappingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A brief string that the claim must match. For example, "paid" or "yes".
@@ -102,7 +102,7 @@ pub struct MappingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MappingRule {
@@ -134,7 +134,7 @@ pub struct RoleMapping {
     /// Update requires: No interruption
     #[serde(rename = "AmbiguousRoleResolution")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ambiguous_role_resolution: Option<String>,
+    pub ambiguous_role_resolution: Option<cfn_resources::StrVal>,
 
     ///
     /// Identifier for the identity provider for which the role is mapped. For example:     graph.facebook.com or     cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id     (http://cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id). This    is the identity provider that is used by the user for authentication.
@@ -148,7 +148,7 @@ pub struct RoleMapping {
     /// Update requires: No interruption
     #[serde(rename = "IdentityProvider")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_provider: Option<String>,
+    pub identity_provider: Option<cfn_resources::StrVal>,
 
     ///
     /// The rules to be used for mapping users to roles. If you specify "Rules" as the    role-mapping type, RulesConfiguration is required.
@@ -173,7 +173,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RoleMapping {

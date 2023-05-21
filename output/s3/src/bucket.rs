@@ -27,7 +27,7 @@ pub struct CfnBucket {
     /// Update requires: No interruption
     #[serde(rename = "AccessControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_control: Option<String>,
+    pub access_control: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the configuration and any analyses for the analytics filter of an Amazon S3     bucket.
@@ -65,7 +65,7 @@ pub struct CfnBucket {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more     information, see Enabling       Cross-Origin Resource Sharing in the     Amazon S3 User Guide.
@@ -447,7 +447,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The prefix that an object must have to be included in the analytics results.
@@ -459,7 +459,7 @@ pub struct AnalyticsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains data related to access patterns to be collected and made available to analyze     the tradeoffs between different storage classes.
@@ -622,7 +622,7 @@ pub struct CorsRule {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// The time in seconds that your browser is to cache the preflight response for the     specified resource.
@@ -847,7 +847,7 @@ pub struct Destination {
     /// Update requires: No interruption
     #[serde(rename = "BucketAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_account_id: Option<String>,
+    pub bucket_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the bucket to which data is exported.
@@ -858,7 +858,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketArn")]
-    pub bucket_arn: String,
+    pub bucket_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies the file format used when exporting data to Amazon S3.
@@ -883,7 +883,7 @@ pub struct Destination {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -933,7 +933,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicaKmsKeyID")]
-    pub replica_kms_key_id: String,
+    pub replica_kms_key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EncryptionConfiguration {
@@ -1007,7 +1007,7 @@ pub struct FilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1055,7 +1055,7 @@ pub struct IntelligentTieringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// An object key name prefix that identifies the subset of objects to which the rule    applies.
@@ -1067,7 +1067,7 @@ pub struct IntelligentTieringConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the status of the configuration.
@@ -1173,7 +1173,7 @@ pub struct InventoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Object versions to include in the inventory list. If set to All, the list     includes all the object versions, which adds the version-related fields       VersionId, IsLatest, and DeleteMarker to the     list. If set to Current, the list does not contain these version-related     fields.
@@ -1212,7 +1212,7 @@ pub struct InventoryConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the schedule for generating inventory results.
@@ -1290,7 +1290,7 @@ pub struct LambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Event")]
-    pub event: String,
+    pub event: cfn_resources::StrVal,
 
     ///
     /// The filtering rules that determine which objects invoke the AWS Lambda    function. For example, you can create a filter so that only image files with a     .jpg extension invoke the function when they are added to the Amazon S3    bucket.
@@ -1313,7 +1313,7 @@ pub struct LambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Function")]
-    pub function: String,
+    pub function: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaConfiguration {
@@ -1374,7 +1374,7 @@ pub struct LoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DestinationBucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_bucket_name: Option<String>,
+    pub destination_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a     single bucket, you can use a prefix to distinguish which log files came from which     bucket.
@@ -1386,7 +1386,7 @@ pub struct LoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogFilePrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_file_prefix: Option<String>,
+    pub log_file_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingConfiguration {
@@ -1480,7 +1480,7 @@ pub struct MetricsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AccessPointArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_point_arn: Option<String>,
+    pub access_point_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID used to identify the metrics configuration. This can be any value you choose that    helps you identify your metrics configuration.
@@ -1491,7 +1491,7 @@ pub struct MetricsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The prefix that an object must have to be included in the metrics results.
@@ -1503,7 +1503,7 @@ pub struct MetricsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a list of tag filters to use as a metrics configuration filter. The metrics    configuration includes only objects that meet the filter's criteria.
@@ -2028,7 +2028,7 @@ pub struct QueueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Event")]
-    pub event: String,
+    pub event: cfn_resources::StrVal,
 
     ///
     /// The filtering rules that determine which objects trigger notifications. For example, you    can create a filter so that Amazon S3 sends notifications only when image files with a     .jpg extension are added to the bucket. For more information, see Configuring event notifications using object key name filtering in the     Amazon S3 User Guide.
@@ -2051,7 +2051,7 @@ pub struct QueueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
-    pub queue: String,
+    pub queue: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for QueueConfiguration {
@@ -2082,7 +2082,7 @@ pub struct RedirectAllRequestsTo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostName")]
-    pub host_name: String,
+    pub host_name: cfn_resources::StrVal,
 
     ///
     /// Protocol to use when redirecting requests. The default is the protocol that is used in     the original request.
@@ -2143,7 +2143,7 @@ pub struct RedirectRule {
     /// Update requires: No interruption
     #[serde(rename = "HostName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_name: Option<String>,
+    pub host_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP redirect code to use on the response. Not required if one of the siblings is     present.
@@ -2155,7 +2155,7 @@ pub struct RedirectRule {
     /// Update requires: No interruption
     #[serde(rename = "HttpRedirectCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_redirect_code: Option<String>,
+    pub http_redirect_code: Option<cfn_resources::StrVal>,
 
     ///
     /// Protocol to use when redirecting requests. The default is the protocol that is used in     the original request.
@@ -2183,7 +2183,7 @@ pub struct RedirectRule {
     /// Update requires: No interruption
     #[serde(rename = "ReplaceKeyPrefixWith")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replace_key_prefix_with: Option<String>,
+    pub replace_key_prefix_with: Option<cfn_resources::StrVal>,
 
     ///
     /// The specific object key to use in the redirect request. For example, redirect request to       error.html. Not required if one of the siblings is present. Can be present     only if ReplaceKeyPrefixWith is not provided.
@@ -2197,7 +2197,7 @@ pub struct RedirectRule {
     /// Update requires: No interruption
     #[serde(rename = "ReplaceKeyWith")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replace_key_with: Option<String>,
+    pub replace_key_with: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2291,7 +2291,7 @@ pub struct ReplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// A container for one or more replication rules. A replication configuration must have at     least one rule and can contain a maximum of 1,000 rules.
@@ -2346,7 +2346,7 @@ pub struct ReplicationDestination {
     /// Update requires: No interruption
     #[serde(rename = "Account")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub account: Option<String>,
+    pub account: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the     results.
@@ -2357,7 +2357,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// Specifies encryption-related information.
@@ -2543,7 +2543,7 @@ pub struct ReplicationRule {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// An object key name prefix that identifies the object or objects to which the rule applies.    The maximum prefix length is 1,024 characters. To include all objects in a bucket, specify an    empty string. To filter using a V1 replication configuration, add the Prefix    directly as a child element of the Rule element.
@@ -2557,7 +2557,7 @@ pub struct ReplicationRule {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The priority indicates which rule has precedence whenever two or more replication rules     conflict. Amazon S3 will attempt to replicate objects according to all replication rules.     However, if there are two or more rules with the same destination bucket, then objects will     be replicated according to the rule with the highest priority. The higher the number, the     higher the priority.
@@ -2657,7 +2657,7 @@ pub struct ReplicationRuleAndOperator {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of tags containing key and value pairs.
@@ -2715,7 +2715,7 @@ pub struct ReplicationRuleFilter {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// A container for specifying a tag key and value.
@@ -2906,7 +2906,7 @@ pub struct RoutingRuleCondition {
     /// Update requires: No interruption
     #[serde(rename = "HttpErrorCodeReturnedEquals")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_error_code_returned_equals: Option<String>,
+    pub http_error_code_returned_equals: Option<cfn_resources::StrVal>,
 
     ///
     /// The object key name prefix when the redirect is applied. For example, to redirect requests    for ExamplePage.html, the key prefix will be ExamplePage.html. To    redirect request for all pages with the prefix docs/, the key prefix will be     /docs, which identifies all objects in the docs/ folder.
@@ -2920,7 +2920,7 @@ pub struct RoutingRuleCondition {
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefixEquals")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_prefix_equals: Option<String>,
+    pub key_prefix_equals: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RoutingRuleCondition {
@@ -2964,7 +2964,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "ExpirationDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expiration_date: Option<String>,
+    pub expiration_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the number of days after creation when objects are deleted from Amazon S3 and    Amazon S3 Glacier. If you specify an expiration and transition time, you must use the same    time unit for both properties (either in days or by date). The expiration time must also be    later than the transition time.
@@ -3000,7 +3000,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies when noncurrent object versions expire. Upon expiration, Amazon S3    permanently deletes the noncurrent object versions. You set this lifecycle configuration    action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's    lifetime.
@@ -3086,7 +3086,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// If Enabled, the rule is currently being applied. If Disabled,     the rule is not currently being applied.
@@ -3235,7 +3235,7 @@ pub struct ServerSideEncryptionByDefault {
     /// Update requires: No interruption
     #[serde(rename = "KMSMasterKeyID")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmsmaster_key_id: Option<String>,
+    pub kmsmaster_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Server-side encryption algorithm to use for the default encryption.
@@ -3479,7 +3479,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -3489,7 +3489,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -3518,7 +3518,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The tag value.
@@ -3529,7 +3529,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagFilter {
@@ -3617,7 +3617,7 @@ pub struct TopicConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Event")]
-    pub event: String,
+    pub event: cfn_resources::StrVal,
 
     ///
     /// The filtering rules that determine for which objects to send notifications. For example,    you can create a filter so that Amazon S3 sends notifications only when image files with a     .jpg extension are added to the bucket.
@@ -3640,7 +3640,7 @@ pub struct TopicConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Topic")]
-    pub topic: String,
+    pub topic: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TopicConfiguration {
@@ -3685,7 +3685,7 @@ pub struct Transition {
     /// Update requires: No interruption
     #[serde(rename = "TransitionDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transition_date: Option<String>,
+    pub transition_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the number of days after creation when objects are transitioned to the     specified storage class. The value must be a positive integer.
@@ -3808,7 +3808,7 @@ pub struct WebsiteConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ErrorDocument")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub error_document: Option<String>,
+    pub error_document: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the index document for the website.
@@ -3820,7 +3820,7 @@ pub struct WebsiteConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IndexDocument")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_document: Option<String>,
+    pub index_document: Option<cfn_resources::StrVal>,
 
     ///
     /// The redirect behavior for every request to this bucket's website endpoint.

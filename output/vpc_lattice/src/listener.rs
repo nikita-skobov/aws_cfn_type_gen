@@ -24,7 +24,7 @@ pub struct CfnListener {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The listener port. You can specify a value from 1 to 65535. For  HTTP, the default is 80. For HTTPS, the default is 443.
@@ -47,7 +47,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 
     ///
     /// The ID or Amazon Resource Name (ARN) of the service.
@@ -59,7 +59,7 @@ pub struct CfnListener {
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_identifier: Option<String>,
+    pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the listener.
@@ -215,7 +215,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -225,7 +225,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -254,7 +254,7 @@ pub struct WeightedTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupIdentifier")]
-    pub target_group_identifier: String,
+    pub target_group_identifier: cfn_resources::StrVal,
 
     ///
     /// Only required if you specify multiple target groups for a forward action. The "weight"  determines how requests are distributed to the target group. For example, if you specify two  target groups, each with a weight of 10, each target group receives half the requests. If you  specify two target groups, one with a weight of 10 and the other with a weight of 20, the target  group with a weight of 20 receives twice as many requests as the other target group. If there's  only one target group specified, then the default value is 100.

@@ -22,7 +22,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConformancePackName")]
-    pub conformance_pack_name: String,
+    pub conformance_pack_name: cfn_resources::StrVal,
 
     ///
     /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
@@ -34,7 +34,7 @@ pub struct CfnConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_s3_bucket: Option<String>,
+    pub delivery_s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix for the Amazon S3 bucket.
@@ -46,7 +46,7 @@ pub struct CfnConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delivery_s3_key_prefix: Option<String>,
+    pub delivery_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// A string containing full conformance pack template body. Structure containing the template body with a     minimum length of 1 byte and a maximum length of 51,200 bytes.
@@ -60,7 +60,7 @@ pub struct CfnConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_body: Option<String>,
+    pub template_body: Option<cfn_resources::StrVal>,
 
     ///
     /// Location of file containing the template body (s3://bucketname/prefix). The uri must point to the conformance pack template (max size: 300 KB)       that is located in an Amazon S3 bucket.
@@ -74,7 +74,7 @@ pub struct CfnConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "TemplateS3Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_s3_uri: Option<String>,
+    pub template_s3_uri: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -122,7 +122,7 @@ pub struct ConformancePackInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
+    pub parameter_name: cfn_resources::StrVal,
 
     ///
     /// Another part of the key-value pair.
@@ -137,7 +137,7 @@ pub struct ConformancePackInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
+    pub parameter_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ConformancePackInputParameter {
@@ -152,38 +152,46 @@ impl cfn_resources::CfnResource for ConformancePackInputParameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.parameter_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parameter_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parameter_name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parameter_name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_value;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parameter_value'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parameter_value'. {} is greater than 4096",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parameter_value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parameter_value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parameter_value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -207,7 +215,7 @@ pub struct TemplateSSMDocumentDetails {
     /// Update requires: No interruption
     #[serde(rename = "DocumentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document_name: Option<String>,
+    pub document_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the SSM document to use to create a conformance pack. By default, AWS Config uses the latest version.
@@ -223,7 +231,7 @@ pub struct TemplateSSMDocumentDetails {
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document_version: Option<String>,
+    pub document_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TemplateSSMDocumentDetails {

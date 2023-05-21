@@ -31,7 +31,7 @@ pub struct CfnDeploymentConfig {
     /// Update requires: Replacement
     #[serde(rename = "DeploymentConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_config_name: Option<String>,
+    pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum number of healthy instances that should be available at any time during the    deployment. There are two parameters expected in the input: type and value.
@@ -100,17 +100,18 @@ impl cfn_resources::CfnResource for CfnDeploymentConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.deployment_config_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.deployment_config_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'deployment_config_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'deployment_config_name'. {} is less than 1", s.len()));
+                }
             }
         }
 

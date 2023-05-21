@@ -18,7 +18,7 @@ pub struct CfnTrackerConsumer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConsumerArn")]
-    pub consumer_arn: String,
+    pub consumer_arn: cfn_resources::StrVal,
 
     ///
     /// The name for the tracker resource.
@@ -39,7 +39,7 @@ pub struct CfnTrackerConsumer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrackerName")]
-    pub tracker_name: String,
+    pub tracker_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTrackerConsumer {
@@ -54,38 +54,46 @@ impl cfn_resources::CfnResource for CfnTrackerConsumer {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.consumer_arn;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'consumer_arn'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'consumer_arn'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.consumer_arn;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'consumer_arn'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'consumer_arn'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.tracker_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'tracker_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tracker_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.tracker_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'tracker_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'tracker_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -24,7 +24,7 @@ pub struct CfnRobot {
     /// Update requires: Replacement
     #[serde(rename = "Fleet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fleet: Option<String>,
+    pub fleet: Option<cfn_resources::StrVal>,
 
     ///
     /// The Greengrass group associated with the robot.
@@ -41,7 +41,7 @@ pub struct CfnRobot {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GreengrassGroupId")]
-    pub greengrass_group_id: String,
+    pub greengrass_group_id: cfn_resources::StrVal,
 
     ///
     /// The name of the robot.
@@ -59,7 +59,7 @@ pub struct CfnRobot {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A map that contains tag keys and tag values that are attached to the robot.
@@ -107,37 +107,45 @@ impl cfn_resources::CfnResource for CfnRobot {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.greengrass_group_id;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'greengrass_group_id'. {} is greater than 1224",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'greengrass_group_id'. {} is greater than 1224",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.greengrass_group_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'greengrass_group_id'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
+                    "Min validation failed on field 'greengrass_group_id'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

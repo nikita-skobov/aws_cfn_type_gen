@@ -28,7 +28,7 @@ pub struct CfnConnectorProfile {
     /// Update requires: Replacement
     #[serde(rename = "ConnectorLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connector_label: Option<String>,
+    pub connector_label: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines the connector-specific configuration and credentials.
@@ -55,7 +55,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorProfileName")]
-    pub connector_profile_name: String,
+    pub connector_profile_name: cfn_resources::StrVal,
 
     ///
     /// The type of connector, such as Salesforce, Amplitude, and so on.
@@ -86,7 +86,7 @@ pub struct CfnConnectorProfile {
     /// Update requires: No interruption
     #[serde(rename = "KMSArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmsarn: Option<String>,
+    pub kmsarn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -222,11 +222,13 @@ impl cfn_resources::CfnResource for CfnConnectorProfile {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.connector_label {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'connector_label'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'connector_label'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -236,28 +238,31 @@ impl cfn_resources::CfnResource for CfnConnectorProfile {
 
         let the_val = &self.connector_profile_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'connector_profile_name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.kmsarn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kmsarn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", s.len()));
             }
         }
 
         if let Some(the_val) = &self.kmsarn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kmsarn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kmsarn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.kmsarn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kmsarn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -281,7 +286,7 @@ pub struct AmplitudeConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
-    pub api_key: String,
+    pub api_key: cfn_resources::StrVal,
 
     ///
     /// The Secret Access Key portion of the credentials.
@@ -296,7 +301,7 @@ pub struct AmplitudeConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretKey")]
-    pub secret_key: String,
+    pub secret_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
@@ -311,20 +316,24 @@ impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.secret_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'secret_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'secret_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -347,7 +356,7 @@ pub struct ApiKeyCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
-    pub api_key: String,
+    pub api_key: cfn_resources::StrVal,
 
     ///
     /// The API secret key required for API key authentication.
@@ -363,7 +372,7 @@ pub struct ApiKeyCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ApiSecretKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_secret_key: Option<String>,
+    pub api_secret_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ApiKeyCredentials {
@@ -378,19 +387,23 @@ impl cfn_resources::CfnResource for ApiKeyCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.api_secret_key {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'api_secret_key'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'api_secret_key'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -414,7 +427,7 @@ pub struct BasicAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The username to use to connect to a resource.
@@ -429,7 +442,7 @@ pub struct BasicAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BasicAuthCredentials {
@@ -444,20 +457,24 @@ impl cfn_resources::CfnResource for BasicAuthCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -481,7 +498,7 @@ pub struct ConnectorOAuthRequest {
     /// Update requires: No interruption
     #[serde(rename = "AuthCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_code: Option<String>,
+    pub auth_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL to which the authentication server redirects the browser after authorization has    been granted.
@@ -497,7 +514,7 @@ pub struct ConnectorOAuthRequest {
     /// Update requires: No interruption
     #[serde(rename = "RedirectUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub redirect_uri: Option<String>,
+    pub redirect_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConnectorOAuthRequest {
@@ -511,20 +528,24 @@ impl cfn_resources::CfnResource for ConnectorOAuthRequest {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.auth_code {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'auth_code'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'auth_code'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.redirect_uri {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'redirect_uri'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'redirect_uri'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1132,7 +1153,7 @@ pub struct CustomAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomAuthenticationType")]
-    pub custom_authentication_type: String,
+    pub custom_authentication_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomAuthCredentials {
@@ -1147,8 +1168,10 @@ impl cfn_resources::CfnResource for CustomAuthCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.custom_authentication_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'custom_authentication_type'. {} is greater than 256", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'custom_authentication_type'. {} is greater than 256", s.len()));
+            }
         }
 
         Ok(())
@@ -1329,7 +1352,7 @@ pub struct DatadogConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
-    pub api_key: String,
+    pub api_key: cfn_resources::StrVal,
 
     ///
     /// Application keys, in conjunction with your API key, give you full access to Datadog’s    programmatic API. Application keys are associated with the user account that created them. The    application key is used to log all requests made to the API.
@@ -1344,7 +1367,7 @@ pub struct DatadogConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationKey")]
-    pub application_key: String,
+    pub application_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
@@ -1359,20 +1382,24 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_key;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_key'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_key'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1395,7 +1422,7 @@ pub struct DatadogConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
@@ -1410,11 +1437,13 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1437,7 +1466,7 @@ pub struct DynatraceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiToken")]
-    pub api_token: String,
+    pub api_token: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
@@ -1452,11 +1481,13 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_token;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_token'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_token'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1479,7 +1510,7 @@ pub struct DynatraceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
@@ -1494,11 +1525,13 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1522,7 +1555,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the desired client.
@@ -1537,7 +1570,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization server.
@@ -1552,7 +1585,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 
     ///
     /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
@@ -1580,7 +1613,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_token: Option<String>,
+    pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
@@ -1594,30 +1627,36 @@ impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_secret'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_secret'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.connector_oauth_request
@@ -1625,11 +1664,13 @@ impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.refresh_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'refresh_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'refresh_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1653,7 +1694,7 @@ pub struct InforNexusConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessKeyId")]
-    pub access_key_id: String,
+    pub access_key_id: cfn_resources::StrVal,
 
     ///
     /// The encryption keys used to encrypt data.
@@ -1668,7 +1709,7 @@ pub struct InforNexusConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datakey")]
-    pub datakey: String,
+    pub datakey: cfn_resources::StrVal,
 
     ///
     /// The secret key used to sign requests.
@@ -1683,7 +1724,7 @@ pub struct InforNexusConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretAccessKey")]
-    pub secret_access_key: String,
+    pub secret_access_key: cfn_resources::StrVal,
 
     ///
     /// The identifier for the user.
@@ -1698,7 +1739,7 @@ pub struct InforNexusConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserId")]
-    pub user_id: String,
+    pub user_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
@@ -1713,38 +1754,46 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.access_key_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'access_key_id'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_key_id'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.datakey;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'datakey'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'datakey'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.secret_access_key;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'secret_access_key'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'secret_access_key'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1767,7 +1816,7 @@ pub struct InforNexusConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
@@ -1782,11 +1831,13 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1810,7 +1861,7 @@ pub struct MarketoConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the desired client.
@@ -1825,7 +1876,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization server.
@@ -1840,7 +1891,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 
     ///
     /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
@@ -1866,30 +1917,36 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_secret'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_secret'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.connector_oauth_request
@@ -1916,7 +1973,7 @@ pub struct MarketoConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
@@ -1931,11 +1988,13 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1959,7 +2018,7 @@ pub struct OAuth2Credentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the desired client.
@@ -1975,7 +2034,7 @@ pub struct OAuth2Credentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_id: Option<String>,
+    pub client_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization    server.
@@ -1991,7 +2050,7 @@ pub struct OAuth2Credentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_secret: Option<String>,
+    pub client_secret: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2018,7 +2077,7 @@ pub struct OAuth2Credentials {
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_token: Option<String>,
+    pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OAuth2Credentials {
@@ -2032,29 +2091,35 @@ impl cfn_resources::CfnResource for OAuth2Credentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_id {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_id'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_id'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_secret {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_secret'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_secret'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2063,11 +2128,13 @@ impl cfn_resources::CfnResource for OAuth2Credentials {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.refresh_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'refresh_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'refresh_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2106,7 +2173,7 @@ pub struct OAuth2Properties {
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token_url: Option<String>,
+    pub token_url: Option<cfn_resources::StrVal>,
 
     ///
     /// Associates your token URL with a map of properties that you define. Use this parameter to    provide any additional details that the connector requires to authenticate your    request.
@@ -2153,11 +2220,13 @@ impl cfn_resources::CfnResource for OAuth2Properties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.token_url {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'token_url'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'token_url'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2182,7 +2251,7 @@ pub struct OAuthCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the desired client.
@@ -2198,7 +2267,7 @@ pub struct OAuthCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_id: Option<String>,
+    pub client_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization server.
@@ -2214,7 +2283,7 @@ pub struct OAuthCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_secret: Option<String>,
+    pub client_secret: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2241,7 +2310,7 @@ pub struct OAuthCredentials {
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_token: Option<String>,
+    pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OAuthCredentials {
@@ -2255,29 +2324,35 @@ impl cfn_resources::CfnResource for OAuthCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_id {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_id'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_id'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_secret {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_secret'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_secret'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2286,11 +2361,13 @@ impl cfn_resources::CfnResource for OAuthCredentials {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.refresh_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'refresh_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'refresh_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2315,7 +2392,7 @@ pub struct OAuthProperties {
     /// Update requires: No interruption
     #[serde(rename = "AuthCodeUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_code_url: Option<String>,
+    pub auth_code_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The OAuth scopes required for OAuth type authentication.
@@ -2343,7 +2420,7 @@ pub struct OAuthProperties {
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token_url: Option<String>,
+    pub token_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OAuthProperties {
@@ -2357,20 +2434,24 @@ impl cfn_resources::CfnResource for OAuthProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.auth_code_url {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'auth_code_url'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'auth_code_url'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.token_url {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'token_url'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'token_url'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2390,7 +2471,7 @@ pub struct PardotConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2401,7 +2482,7 @@ pub struct PardotConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_credentials_arn: Option<String>,
+    pub client_credentials_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2423,7 +2504,7 @@ pub struct PardotConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_token: Option<String>,
+    pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PardotConnectorProfileCredentials {
@@ -2455,7 +2536,7 @@ pub struct PardotConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BusinessUnitId")]
-    pub business_unit_id: String,
+    pub business_unit_id: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -2466,7 +2547,7 @@ pub struct PardotConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_url: Option<String>,
+    pub instance_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2511,7 +2592,7 @@ pub struct RedshiftConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the user.
@@ -2527,7 +2608,7 @@ pub struct RedshiftConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
@@ -2541,20 +2622,24 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.password {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.username {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'username'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'username'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2580,7 +2665,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object key for the destination bucket in which Amazon AppFlow places the files.
@@ -2596,7 +2681,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2607,7 +2692,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_identifier: Option<String>,
+    pub cluster_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2618,7 +2703,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "DataApiRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_api_role_arn: Option<String>,
+    pub data_api_role_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2629,7 +2714,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The JDBC URL of the Amazon Redshift cluster.
@@ -2645,7 +2730,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_url: Option<String>,
+    pub database_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2671,7 +2756,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -2682,7 +2767,7 @@ pub struct RedshiftConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workgroup_name: Option<String>,
+    pub workgroup_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
@@ -2697,47 +2782,57 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.bucket_name;
-
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
-        if let Some(the_val) = &self.database_url {
-            if the_val.len() > 512 as _ {
+        let the_val = &self.bucket_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'database_url'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
                 ));
+            }
+        }
+
+        if let Some(the_val) = &self.bucket_prefix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.database_url {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'database_url'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2811,7 +2906,7 @@ pub struct SAPODataConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationHostUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_host_url: Option<String>,
+    pub application_host_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The application path to catalog service.
@@ -2827,7 +2922,7 @@ pub struct SAPODataConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationServicePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_service_path: Option<String>,
+    pub application_service_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The client number for the client creating the connection.
@@ -2845,7 +2940,7 @@ pub struct SAPODataConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "ClientNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_number: Option<String>,
+    pub client_number: Option<cfn_resources::StrVal>,
 
     ///
     /// The logon language of SAPOData instance.
@@ -2861,7 +2956,7 @@ pub struct SAPODataConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "LogonLanguage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logon_language: Option<String>,
+    pub logon_language: Option<cfn_resources::StrVal>,
 
     ///
     /// The SAPOData OAuth properties required for OAuth type authentication.
@@ -2905,7 +3000,7 @@ pub struct SAPODataConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_link_service_name: Option<String>,
+    pub private_link_service_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
@@ -2919,44 +3014,51 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.application_host_url {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'application_host_url'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'application_host_url'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.application_service_path {
-            if the_val.len() > 512 as _ {
-                return Err(format!("Max validation failed on field 'application_service_path'. {} is greater than 512", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'application_service_path'. {} is greater than 512", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_number {
-            if the_val.len() > 3 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_number'. {} is greater than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 3 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_number'. {} is greater than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_number {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'client_number'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'client_number'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.logon_language {
-            if the_val.len() > 2 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'logon_language'. {} is greater than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'logon_language'. {} is greater than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2983,8 +3085,10 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
         }
 
         if let Some(the_val) = &self.private_link_service_name {
-            if the_val.len() > 512 as _ {
-                return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", s.len()));
+                }
             }
         }
 
@@ -3009,7 +3113,7 @@ pub struct SalesforceConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The secret manager ARN, which contains the client ID and client secret of the connected    app.
@@ -3027,7 +3131,7 @@ pub struct SalesforceConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_credentials_arn: Option<String>,
+    pub client_credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
@@ -3050,7 +3154,7 @@ pub struct SalesforceConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "JwtToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub jwt_token: Option<String>,
+    pub jwt_token: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -3061,7 +3165,7 @@ pub struct SalesforceConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "OAuth2GrantType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub oauth2_grant_type: Option<String>,
+    pub oauth2_grant_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The credentials used to acquire new access tokens.
@@ -3077,7 +3181,7 @@ pub struct SalesforceConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_token: Option<String>,
+    pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
@@ -3091,26 +3195,29 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_credentials_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'client_credentials_arn'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'client_credentials_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_credentials_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'client_credentials_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'client_credentials_arn'. {} is less than 20", s.len()));
+                }
             }
         }
 
@@ -3119,11 +3226,13 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.refresh_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'refresh_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'refresh_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3148,7 +3257,7 @@ pub struct SalesforceConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_url: Option<String>,
+    pub instance_url: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the connector profile applies to a sandbox or production environment.
@@ -3185,11 +3294,13 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.instance_url {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'instance_url'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'instance_url'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3213,7 +3324,7 @@ pub struct ServiceNowConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The name of the user.
@@ -3228,7 +3339,7 @@ pub struct ServiceNowConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
@@ -3243,20 +3354,24 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3279,7 +3394,7 @@ pub struct ServiceNowConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
@@ -3294,11 +3409,13 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3321,7 +3438,7 @@ pub struct SingularConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
-    pub api_key: String,
+    pub api_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
@@ -3336,11 +3453,13 @@ impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3364,7 +3483,7 @@ pub struct SlackConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the client.
@@ -3379,7 +3498,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization server.
@@ -3394,7 +3513,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 
     ///
     /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
@@ -3420,30 +3539,36 @@ impl cfn_resources::CfnResource for SlackConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_secret'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_secret'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.connector_oauth_request
@@ -3470,7 +3595,7 @@ pub struct SlackConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
@@ -3485,11 +3610,13 @@ impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3512,7 +3639,7 @@ pub struct SnowflakeConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The name of the user.
@@ -3527,7 +3654,7 @@ pub struct SnowflakeConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
@@ -3542,20 +3669,24 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3579,7 +3710,7 @@ pub struct SnowflakeConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "AccountName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub account_name: Option<String>,
+    pub account_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon S3 bucket associated with Snowflake.
@@ -3596,7 +3727,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The bucket path that refers to the Amazon S3 bucket associated with Snowflake.
@@ -3612,7 +3743,7 @@ pub struct SnowflakeConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The Snowflake Private Link service name to be used for private data transfers.
@@ -3628,7 +3759,7 @@ pub struct SnowflakeConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_link_service_name: Option<String>,
+    pub private_link_service_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region of the Snowflake account.
@@ -3644,7 +3775,7 @@ pub struct SnowflakeConnectorProfileProperties {
     /// Update requires: No interruption
     #[serde(rename = "Region")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region: Option<String>,
+    pub region: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: <    Database>< Schema><Stage Name>.
@@ -3659,7 +3790,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    pub stage: String,
+    pub stage: cfn_resources::StrVal,
 
     ///
     /// The name of the Snowflake warehouse.
@@ -3674,7 +3805,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Warehouse")]
-    pub warehouse: String,
+    pub warehouse: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
@@ -3688,72 +3819,88 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.account_name {
-            if the_val.len() > 512 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'account_name'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.bucket_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'account_name'. {} is greater than 512",
-                    the_val.len()
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.bucket_name;
-
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.private_link_service_name {
-            if the_val.len() > 512 as _ {
-                return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.region {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'region'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'region'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.stage;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'stage'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'stage'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.warehouse;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'warehouse'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'warehouse'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3776,7 +3923,7 @@ pub struct TrendmicroConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiSecretKey")]
-    pub api_secret_key: String,
+    pub api_secret_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
@@ -3791,11 +3938,13 @@ impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_secret_key;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_secret_key'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_secret_key'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3818,7 +3967,7 @@ pub struct VeevaConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The name of the user.
@@ -3833,7 +3982,7 @@ pub struct VeevaConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
@@ -3848,20 +3997,24 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3884,7 +4037,7 @@ pub struct VeevaConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
@@ -3899,11 +4052,13 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3927,7 +4082,7 @@ pub struct ZendeskConnectorProfileCredentials {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the desired client.
@@ -3942,7 +4097,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The client secret used by the OAuth client to authenticate to the authorization server.
@@ -3957,7 +4112,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 
     ///
     /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
@@ -3983,30 +4138,36 @@ impl cfn_resources::CfnResource for ZendeskConnectorProfileCredentials {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_token {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_token'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_token'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_secret'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_secret'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.connector_oauth_request
@@ -4033,7 +4194,7 @@ pub struct ZendeskConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    pub instance_url: String,
+    pub instance_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ZendeskConnectorProfileProperties {
@@ -4048,11 +4209,13 @@ impl cfn_resources::CfnResource for ZendeskConnectorProfileProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_url;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_url'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_url'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

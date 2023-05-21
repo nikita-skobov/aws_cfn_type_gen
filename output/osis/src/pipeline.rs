@@ -44,7 +44,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineConfigurationBody")]
-    pub pipeline_configuration_body: String,
+    pub pipeline_configuration_body: cfn_resources::StrVal,
 
     ///
     /// The name of the pipeline.
@@ -55,7 +55,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PipelineName")]
-    pub pipeline_name: String,
+    pub pipeline_name: cfn_resources::StrVal,
 
     ///
     /// List of tags to add to the pipeline upon creation.
@@ -116,7 +116,7 @@ pub struct CloudWatchLogDestination {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group: Option<String>,
+    pub log_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogDestination {
@@ -196,7 +196,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -206,7 +206,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -236,7 +236,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID for your VPC. AWS PrivateLink generates this value when you create a  VPC.
@@ -248,7 +248,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the VPC, including associated subnets and security groups.

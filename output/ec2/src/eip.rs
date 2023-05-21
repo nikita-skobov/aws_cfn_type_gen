@@ -33,7 +33,7 @@ pub struct CfnEIP {
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
@@ -49,7 +49,7 @@ pub struct CfnEIP {
     /// Update requires: Replacement
     #[serde(rename = "NetworkBorderGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_border_group: Option<String>,
+    pub network_border_group: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of an address pool that you own. Use this parameter to let Amazon EC2 select an       address from the address pool.
@@ -63,7 +63,7 @@ pub struct CfnEIP {
     /// Update requires: No interruption
     #[serde(rename = "PublicIpv4Pool")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub public_ipv4_pool: Option<String>,
+    pub public_ipv4_pool: Option<cfn_resources::StrVal>,
 
     ///
     /// Any tags assigned to the Elastic IP address.
@@ -89,7 +89,7 @@ pub struct CfnEIP {
     /// Update requires: Replacement
     #[serde(rename = "TransferAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transfer_address: Option<String>,
+    pub transfer_address: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -140,7 +140,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -150,7 +150,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

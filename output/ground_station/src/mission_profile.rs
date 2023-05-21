@@ -56,7 +56,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -78,7 +78,7 @@ pub struct CfnMissionProfile {
     /// Update requires: No interruption
     #[serde(rename = "StreamsKmsRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub streams_kms_role: Option<String>,
+    pub streams_kms_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Tags assigned to the mission profile.
@@ -101,7 +101,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrackingConfigArn")]
-    pub tracking_config_arn: String,
+    pub tracking_config_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnMissionProfile {
@@ -135,7 +135,7 @@ pub struct DataflowEdge {
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination: Option<String>,
+    pub destination: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the source for this dataflow edge.       For example, specify the ARN of an antenna downlink config for a downlink edge or a dataflow endpoint config for an uplink edge.
@@ -147,7 +147,7 @@ pub struct DataflowEdge {
     /// Update requires: No interruption
     #[serde(rename = "Source")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source: Option<String>,
+    pub source: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataflowEdge {
@@ -176,7 +176,7 @@ pub struct StreamsKmsKey {
     /// Update requires: No interruption
     #[serde(rename = "KmsAliasArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_alias_arn: Option<String>,
+    pub kms_alias_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -187,7 +187,7 @@ pub struct StreamsKmsKey {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StreamsKmsKey {
@@ -221,7 +221,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -231,7 +231,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

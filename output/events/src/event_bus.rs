@@ -17,7 +17,7 @@ pub struct CfnEventBus {
     /// Update requires: Replacement
     #[serde(rename = "EventSourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_source_name: Option<String>,
+    pub event_source_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the new event bus.
@@ -38,7 +38,7 @@ pub struct CfnEventBus {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Tags to associate with the event bus.
@@ -64,39 +64,44 @@ impl cfn_resources::CfnResource for CfnEventBus {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.event_source_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'event_source_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'event_source_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.event_source_name {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'event_source_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'event_source_name'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -119,7 +124,7 @@ pub struct TagEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the specified tag key.
@@ -134,7 +139,7 @@ pub struct TagEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagEntry {
@@ -149,38 +154,46 @@ impl cfn_resources::CfnResource for TagEntry {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

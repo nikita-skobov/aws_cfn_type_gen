@@ -27,7 +27,7 @@ pub struct CfnTaskDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Cpu")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<String>,
+    pub cpu: Option<cfn_resources::StrVal>,
 
     ///
     /// The ephemeral storage settings to use for tasks run with the task definition.
@@ -51,7 +51,7 @@ pub struct CfnTaskDefinition {
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a family that this task definition is registered to. Up to 255 letters (uppercase and lowercase),  numbers, hyphens, and underscores are allowed.
@@ -67,7 +67,7 @@ pub struct CfnTaskDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Family")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub family: Option<String>,
+    pub family: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elastic Inference accelerators to use for the containers in the task.
@@ -119,7 +119,7 @@ pub struct CfnTaskDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub memory: Option<String>,
+    pub memory: Option<cfn_resources::StrVal>,
 
     ///
     /// The Docker networking mode to use for the containers in the task. The valid values are         none, bridge, awsvpc, and host.       If no network mode is specified, the default is bridge.
@@ -249,7 +249,7 @@ pub struct CfnTaskDefinition {
     /// Update requires: Replacement
     #[serde(rename = "TaskRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task_role_arn: Option<String>,
+    pub task_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of data volume definitions for the task. For more information, see Using data volumes in tasks in the Amazon Elastic Container Service Developer Guide.
@@ -377,7 +377,7 @@ pub struct AuthorizationConfig {
     /// Update requires: Replacement
     #[serde(rename = "AccessPointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_point_id: Option<String>,
+    pub access_point_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether to use the Amazon ECS task role defined in a task definition when 			mounting the Amazon EFS file system. If it is turned on, transit encryption must be turned on in the 				EFSVolumeConfiguration. If this parameter is omitted, the default value 			of DISABLED is used. For more information, see Using 				Amazon EFS access points in the Amazon Elastic Container Service Developer Guide.
@@ -670,7 +670,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hostname: Option<String>,
+    pub hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The image used to start a container. This string is passed directly to the Docker 			daemon. By default, images in the Docker Hub registry are available. Other repositories 			are specified with either         repository-url/image:tag       or         repository-url/image@digest       . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to Image in the 			Create a container section of the Docker Remote API and the 				IMAGE parameter of docker 				run.
@@ -683,7 +683,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     ///
     /// When this parameter is true, you can deploy containerized applications 			that require stdin or a tty to be allocated. This parameter 			maps to OpenStdin in the Create a container section of the 			Docker Remote API and the --interactive option to docker run.
@@ -812,7 +812,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The list of port mappings for the container. Port mappings allow containers to access ports on the host  container instance to send or receive traffic.
@@ -996,7 +996,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "User")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user: Option<String>,
+    pub user: Option<cfn_resources::StrVal>,
 
     ///
     /// Data volumes to mount from another container. This parameter maps to 				VolumesFrom in the Create a container section of the 			Docker Remote API and the --volumes-from option to docker run.
@@ -1020,7 +1020,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub working_directory: Option<String>,
+    pub working_directory: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ContainerDefinition {
@@ -1088,7 +1088,7 @@ pub struct ContainerDependency {
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_name: Option<String>,
+    pub container_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1143,7 +1143,7 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_path: Option<String>,
+    pub container_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The path for the device on the host container instance.
@@ -1155,7 +1155,7 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "HostPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_path: Option<String>,
+    pub host_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The explicit permissions to provide to the container for the device. By default, the 			container has permissions for read, write, and 				mknod for the device.
@@ -1211,7 +1211,7 @@ pub struct DockerVolumeConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Driver")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub driver: Option<String>,
+    pub driver: Option<cfn_resources::StrVal>,
 
     ///
     /// A map of Docker driver-specific options passed through. This parameter maps to 				DriverOpts in the Create a volume section of the 			Docker Remote API and the xxopt option to docker 				volume create.
@@ -1307,7 +1307,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilesystemId")]
-    pub filesystem_id: String,
+    pub filesystem_id: cfn_resources::StrVal,
 
     ///
     /// The directory within the Amazon EFS file system to mount as the root directory inside the 			host. If this parameter is omitted, the root of the Amazon EFS volume will be used. 			Specifying / will have the same effect as omitting this parameter.
@@ -1321,7 +1321,7 @@ pub struct EFSVolumeConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "RootDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub root_directory: Option<String>,
+    pub root_directory: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether to use encryption for Amazon EFS data in transit between the Amazon ECS host 			and the Amazon EFS server. Transit encryption must be turned on if Amazon EFS IAM authorization is 			used. If this parameter is omitted, the default value of DISABLED is used. 			For more information, see Encrypting data in transit in 			the Amazon Elastic File System User Guide.
@@ -1416,7 +1416,7 @@ pub struct EnvironmentFile {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1648,7 +1648,7 @@ pub struct HostEntry {
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hostname: Option<String>,
+    pub hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP address to use in the /etc/hosts entry.
@@ -1660,7 +1660,7 @@ pub struct HostEntry {
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip_address: Option<String>,
+    pub ip_address: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HostEntry {
@@ -1692,7 +1692,7 @@ pub struct HostVolumeProperties {
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_path: Option<String>,
+    pub source_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HostVolumeProperties {
@@ -1722,7 +1722,7 @@ pub struct InferenceAccelerator {
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elastic Inference accelerator type to use.
@@ -1734,7 +1734,7 @@ pub struct InferenceAccelerator {
     /// Update requires: Replacement
     #[serde(rename = "DeviceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_type: Option<String>,
+    pub device_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InferenceAccelerator {
@@ -1812,7 +1812,7 @@ pub struct KeyValuePair {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the key-value pair. For environment variables, this is the value of the 			environment variable.
@@ -1824,7 +1824,7 @@ pub struct KeyValuePair {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for KeyValuePair {
@@ -2080,7 +2080,7 @@ pub struct MountPoint {
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_path: Option<String>,
+    pub container_path: Option<cfn_resources::StrVal>,
 
     ///
     /// If this value is true, the container has read-only access to the volume. 			If this value is false, then the container can write to the volume. The 			default value is false.
@@ -2104,7 +2104,7 @@ pub struct MountPoint {
     /// Update requires: Replacement
     #[serde(rename = "SourceVolume")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_volume: Option<String>,
+    pub source_volume: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MountPoint {
@@ -2178,7 +2178,7 @@ pub struct PortMapping {
     /// Update requires: Replacement
     #[serde(rename = "ContainerPortRange")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_port_range: Option<String>,
+    pub container_port_range: Option<cfn_resources::StrVal>,
 
     ///
     /// The port number on the container instance to reserve for your container.
@@ -2216,7 +2216,7 @@ pub struct PortMapping {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol used for the port mapping. Valid values are tcp and 				udp. The default is tcp.
@@ -2299,7 +2299,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
-    pub container_name: String,
+    pub container_name: cfn_resources::StrVal,
 
     ///
     /// The set of network configuration parameters to provide the Container Network Interface 			(CNI) plugin, specified as key-value pairs.
@@ -2372,7 +2372,7 @@ pub struct RepositoryCredentials {
     /// Update requires: Replacement
     #[serde(rename = "CredentialsParameter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub credentials_parameter: Option<String>,
+    pub credentials_parameter: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RepositoryCredentials {
@@ -2418,7 +2418,7 @@ pub struct ResourceRequirement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2574,7 +2574,7 @@ pub struct Secret {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The secret to expose to the container. The supported values are either the full ARN 			of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter 			Store.
@@ -2589,7 +2589,7 @@ pub struct Secret {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValueFrom")]
-    pub value_from: String,
+    pub value_from: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Secret {
@@ -2621,7 +2621,7 @@ pub struct SystemControl {
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The value for the namespaced kernel parameter that's specified in 				namespace.
@@ -2633,7 +2633,7 @@ pub struct SystemControl {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SystemControl {
@@ -2667,7 +2667,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2677,7 +2677,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2707,7 +2707,7 @@ pub struct TaskDefinitionPlacementConstraint {
     /// Update requires: Replacement
     #[serde(rename = "Expression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression: Option<String>,
+    pub expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of constraint. The MemberOf constraint restricts selection to be 			from a group of valid candidates.
@@ -2763,7 +2763,7 @@ pub struct Tmpfs {
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_path: Option<String>,
+    pub container_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of tmpfs volume mount options.
@@ -2986,7 +2986,7 @@ pub struct Volume {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Volume {
@@ -3038,7 +3038,7 @@ pub struct VolumeFrom {
     /// Update requires: Replacement
     #[serde(rename = "SourceContainer")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_container: Option<String>,
+    pub source_container: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VolumeFrom {

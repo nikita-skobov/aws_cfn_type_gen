@@ -16,7 +16,7 @@ pub struct CfnUserPoolResourceServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Identifier")]
-    pub identifier: String,
+    pub identifier: cfn_resources::StrVal,
 
     ///
     /// A friendly name for the resource server.
@@ -33,7 +33,7 @@ pub struct CfnUserPoolResourceServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A list of scopes. Each scope is a map with keys ScopeName and     ScopeDescription.
@@ -64,7 +64,7 @@ pub struct CfnUserPoolResourceServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
@@ -79,38 +79,46 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.identifier;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'identifier'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'identifier'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.identifier;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'identifier'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'identifier'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.scopes {
@@ -124,20 +132,24 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -160,7 +172,7 @@ pub struct ResourceServerScopeType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScopeDescription")]
-    pub scope_description: String,
+    pub scope_description: cfn_resources::StrVal,
 
     ///
     /// The name of the scope.
@@ -177,7 +189,7 @@ pub struct ResourceServerScopeType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScopeName")]
-    pub scope_name: String,
+    pub scope_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourceServerScopeType {
@@ -192,38 +204,46 @@ impl cfn_resources::CfnResource for ResourceServerScopeType {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.scope_description;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'scope_description'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'scope_description'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.scope_description;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'scope_description'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'scope_description'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.scope_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'scope_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'scope_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.scope_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'scope_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'scope_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

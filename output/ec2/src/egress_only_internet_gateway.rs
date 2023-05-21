@@ -10,7 +10,7 @@ pub struct CfnEgressOnlyInternetGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnEgressOnlyInternetGateway {

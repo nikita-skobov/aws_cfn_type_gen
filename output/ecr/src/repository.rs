@@ -71,7 +71,7 @@ pub struct CfnRepository {
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_name: Option<String>,
+    pub repository_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The JSON repository policy text to apply to the repository. For more information, see         Amazon ECR repository         policies in the Amazon Elastic Container Registry User Guide.
@@ -142,20 +142,24 @@ impl cfn_resources::CfnResource for CfnRepository {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.repository_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'repository_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'repository_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.repository_name {
-            if the_val.len() < 2 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'repository_name'. {} is less than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 2 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'repository_name'. {} is less than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -201,7 +205,7 @@ pub struct EncryptionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -232,20 +236,24 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -300,7 +308,7 @@ pub struct LifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicyText")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lifecycle_policy_text: Option<String>,
+    pub lifecycle_policy_text: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS account ID associated with the registry that contains the repository. If you       do  not specify a registry, the default registry is assumed.
@@ -314,7 +322,7 @@ pub struct LifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub registry_id: Option<String>,
+    pub registry_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LifecyclePolicy {
@@ -328,17 +336,18 @@ impl cfn_resources::CfnResource for LifecyclePolicy {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.lifecycle_policy_text {
-            if the_val.len() > 30720 as _ {
-                return Err(format!("Max validation failed on field 'lifecycle_policy_text'. {} is greater than 30720", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 30720 as _ {
+                    return Err(format!("Max validation failed on field 'lifecycle_policy_text'. {} is greater than 30720", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.lifecycle_policy_text {
-            if the_val.len() < 100 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'lifecycle_policy_text'. {} is less than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 100 as _ {
+                    return Err(format!("Min validation failed on field 'lifecycle_policy_text'. {} is less than 100", s.len()));
+                }
             }
         }
 
@@ -363,7 +372,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -373,7 +382,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

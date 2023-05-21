@@ -21,7 +21,7 @@ pub struct CfnInstanceProfile {
     /// Update requires: Replacement
     #[serde(rename = "InstanceProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_profile_name: Option<String>,
+    pub instance_profile_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The path to the instance profile. For more information about paths, see IAM         Identifiers in the IAM User Guide.
@@ -43,7 +43,7 @@ pub struct CfnInstanceProfile {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the role to associate with the instance profile. Only one role can be     assigned to an EC2 instance at a time, and all applications on the instance share the same     role and permissions.
@@ -68,35 +68,43 @@ impl cfn_resources::CfnResource for CfnInstanceProfile {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.instance_profile_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'instance_profile_name'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'instance_profile_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.instance_profile_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'instance_profile_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'instance_profile_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

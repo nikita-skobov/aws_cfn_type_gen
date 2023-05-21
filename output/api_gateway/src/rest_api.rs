@@ -11,7 +11,7 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "ApiKeySourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_key_source_type: Option<String>,
+    pub api_key_source_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
@@ -59,7 +59,7 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "CloneFrom")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub clone_from: Option<String>,
+    pub clone_from: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the RestApi.
@@ -71,7 +71,7 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether clients can invoke your API by using the default execute-api endpoint.    By default, clients can invoke your API with the default    https://{api_id}.execute-api.{region}.amazonaws.com endpoint. To require that clients use a    custom domain name to invoke your API, disable the default endpoint
@@ -141,7 +141,7 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mode: Option<String>,
+    pub mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the RestApi. A name is required if the REST API is not based on an OpenAPI specification.
@@ -153,7 +153,7 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Custom header parameters as part of the request. For example, to exclude DocumentationParts from an imported API, set ignore=documentation as a parameters value, as in the AWS CLI command of aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'.
@@ -271,7 +271,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 ETag (a file checksum) of the OpenAPI file. If you don't specify a value, API Gateway skips ETag validation of your OpenAPI file.
@@ -283,7 +283,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etag: Option<String>,
+    pub etag: Option<cfn_resources::StrVal>,
 
     ///
     /// The file name of the OpenAPI file (Amazon S3 object name).
@@ -295,7 +295,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// For versioning-enabled buckets, a specific version of the OpenAPI file.
@@ -307,7 +307,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -341,7 +341,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -351,7 +351,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

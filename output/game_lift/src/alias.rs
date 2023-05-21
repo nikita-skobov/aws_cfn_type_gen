@@ -15,7 +15,7 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A descriptive label that is associated with an alias. Alias names do not need to be unique.
@@ -32,7 +32,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The routing configuration, including routing type and fleet target, for the alias.
@@ -57,39 +57,47 @@ impl cfn_resources::CfnResource for CfnAlias {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.routing_strategy.validate()?;
@@ -113,7 +121,7 @@ pub struct RoutingStrategy {
     /// Update requires: No interruption
     #[serde(rename = "FleetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fleet_id: Option<String>,
+    pub fleet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The message text to be used with a terminal routing strategy. If you specify    TERMINAL for the Type property, you must specify this    property.
@@ -125,7 +133,7 @@ pub struct RoutingStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 
     ///
     /// A type of routing strategy.

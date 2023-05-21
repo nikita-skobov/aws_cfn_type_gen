@@ -38,7 +38,7 @@ pub struct CfnSourceCredential {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Token")]
-    pub token: String,
+    pub token: cfn_resources::StrVal,
 
     ///
     /// The Bitbucket username when the authType is BASIC_AUTH. This parameter       is not valid for other types of source providers or connections.
@@ -52,7 +52,7 @@ pub struct CfnSourceCredential {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -109,19 +109,23 @@ impl cfn_resources::CfnResource for CfnSourceCredential {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.token;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'token'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'token'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.username {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'username'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'username'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

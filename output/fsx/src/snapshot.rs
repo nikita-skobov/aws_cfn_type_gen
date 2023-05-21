@@ -16,7 +16,7 @@ pub struct CfnSnapshot {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -47,7 +47,7 @@ pub struct CfnSnapshot {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeId")]
-    pub volume_id: String,
+    pub volume_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSnapshot {
@@ -62,38 +62,46 @@ impl cfn_resources::CfnResource for CfnSnapshot {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 203 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 203",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 203 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 203",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.volume_id;
 
-        if the_val.len() > 23 as _ {
-            return Err(format!(
-                "Max validation failed on field 'volume_id'. {} is greater than 23",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 23 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'volume_id'. {} is greater than 23",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.volume_id;
 
-        if the_val.len() < 23 as _ {
-            return Err(format!(
-                "Min validation failed on field 'volume_id'. {} is less than 23",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 23 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'volume_id'. {} is less than 23",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -117,7 +125,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -127,7 +135,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -15,7 +15,7 @@ pub struct CfnLocationEFS {
     /// Update requires: Replacement
     #[serde(rename = "AccessPointArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_point_arn: Option<String>,
+    pub access_point_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the subnet and security groups DataSync uses to access your Amazon EFS file system.
@@ -42,7 +42,7 @@ pub struct CfnLocationEFS {
     /// Update requires: Replacement
     #[serde(rename = "EfsFilesystemArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub efs_filesystem_arn: Option<String>,
+    pub efs_filesystem_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies an AWS Identity and Access Management (IAM) role that DataSync    assumes when mounting the Amazon EFS file system.
@@ -58,7 +58,7 @@ pub struct CfnLocationEFS {
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_system_access_role_arn: Option<String>,
+    pub file_system_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether you want DataSync to use Transport Layer Security (TLS) 1.2    encryption when it copies data to or from the Amazon EFS file system.
@@ -92,7 +92,7 @@ pub struct CfnLocationEFS {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the key-value pair that represents a tag that you want to add to the    resource. The value can be an empty string. This value helps you manage, filter, and search    for your resources. We recommend that you create a name tag for your location.
@@ -137,37 +137,42 @@ impl cfn_resources::CfnResource for CfnLocationEFS {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.access_point_arn {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'access_point_arn'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'access_point_arn'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.ec2_config.validate()?;
 
         if let Some(the_val) = &self.efs_filesystem_arn {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'efs_filesystem_arn'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'efs_filesystem_arn'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_access_role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'file_system_access_role_arn'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'file_system_access_role_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -219,7 +224,7 @@ pub struct Ec2Config {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetArn")]
-    pub subnet_arn: String,
+    pub subnet_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Ec2Config {
@@ -243,11 +248,13 @@ impl cfn_resources::CfnResource for Ec2Config {
 
         let the_val = &self.subnet_arn;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'subnet_arn'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_arn'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -271,7 +278,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -281,7 +288,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

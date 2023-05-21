@@ -35,7 +35,7 @@ pub struct CfnLogGroup {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
@@ -53,7 +53,7 @@ pub struct CfnLogGroup {
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days to retain the log events in the specified log group.    Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653.
@@ -95,29 +95,35 @@ impl cfn_resources::CfnResource for CfnLogGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_group_name {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'log_group_name'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'log_group_name'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_group_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'log_group_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'log_group_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -142,7 +148,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -152,7 +158,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -29,7 +29,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "DeduplicationScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deduplication_scope: Option<String>,
+    pub deduplication_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The time in seconds for which the delivery of all messages in the queue is delayed. You    can specify an integer value of 0 to 900 (15 minutes). The default    value is 0.
@@ -67,7 +67,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "FifoThroughputLimit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fifo_throughput_limit: Option<String>,
+    pub fifo_throughput_limit: Option<cfn_resources::StrVal>,
 
     ///
     /// The length of time in seconds for which Amazon SQS can reuse a data key to encrypt    or decrypt messages before calling AWS KMS again. The value must be an integer    between 60 (1 minute) and 86,400 (24 hours). The default is 300 (5 minutes).
@@ -95,7 +95,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_master_key_id: Option<String>,
+    pub kms_master_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The limit of how many bytes that a message can contain before Amazon SQS rejects    it. You can specify an integer value from 1,024 bytes (1 KiB) to     262,144 bytes (256 KiB). The default value is 262,144 (256    KiB).
@@ -135,7 +135,7 @@ pub struct CfnQueue {
     /// Update requires: Replacement
     #[serde(rename = "QueueName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub queue_name: Option<String>,
+    pub queue_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the duration, in seconds, that the ReceiveMessage action call waits until a    message is in the queue in order to include it in the response, rather than returning an empty    response if a message isn't yet available. You can specify an integer from 1 to 20. Short    polling is used as the default or when you specify 0 for this property. For more information,    see Consuming messages using long polling in the Amazon SQS Developer     Guide.
@@ -261,7 +261,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -271,7 +271,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

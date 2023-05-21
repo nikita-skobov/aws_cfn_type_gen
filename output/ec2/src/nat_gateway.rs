@@ -17,7 +17,7 @@ pub struct CfnNatGateway {
     /// Update requires: Replacement
     #[serde(rename = "AllocationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allocation_id: Option<String>,
+    pub allocation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
@@ -59,7 +59,7 @@ pub struct CfnNatGateway {
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
@@ -114,7 +114,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 
     ///
     /// The tags for the NAT gateway.
@@ -201,7 +201,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -211,7 +211,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

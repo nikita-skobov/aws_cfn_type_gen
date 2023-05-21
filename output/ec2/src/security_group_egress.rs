@@ -29,7 +29,7 @@ pub struct CfnSecurityGroupEgress {
     /// Update requires: Replacement
     #[serde(rename = "CidrIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ip: Option<String>,
+    pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 address range, in CIDR format.
@@ -45,7 +45,7 @@ pub struct CfnSecurityGroupEgress {
     /// Update requires: Replacement
     #[serde(rename = "CidrIpv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ipv6: Option<String>,
+    pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of an egress (outbound) security group rule.
@@ -59,7 +59,7 @@ pub struct CfnSecurityGroupEgress {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix list IDs for an AWS service. This is the       AWS service that you want to access through a VPC endpoint from     instances associated with the security group.
@@ -73,7 +73,7 @@ pub struct CfnSecurityGroupEgress {
     /// Update requires: Replacement
     #[serde(rename = "DestinationPrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_prefix_list_id: Option<String>,
+    pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the security group.
@@ -87,7 +87,7 @@ pub struct CfnSecurityGroupEgress {
     /// Update requires: Replacement
     #[serde(rename = "DestinationSecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_security_group_id: Option<String>,
+    pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If the protocol is TCP or UDP, this is the start of the port range.     If the protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all ICMP/ICMPv6 types.     If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
@@ -110,7 +110,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupId")]
-    pub group_id: String,
+    pub group_id: cfn_resources::StrVal,
 
     ///
     /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
@@ -123,7 +123,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpProtocol")]
-    pub ip_protocol: String,
+    pub ip_protocol: cfn_resources::StrVal,
 
     ///
     /// If the protocol is TCP or UDP, this is the end of the port range.      If the protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all ICMP/ICMPv6 codes.      If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.

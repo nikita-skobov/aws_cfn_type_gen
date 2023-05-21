@@ -17,7 +17,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub home_directory: Option<String>,
+    pub home_directory: Option<cfn_resources::StrVal>,
 
     ///
     /// Logical directory mappings that specify what Amazon S3 paths and keys should be visible     to your user and how you want to make them visible. You will need to specify the       "Entry" and "Target" pair, where Entry shows how     the path is made visible and Target is the actual Amazon S3 path. If you only     specify a target, it will be displayed as is. You will need to also make sure that your IAM     role provides access to paths in Target. The following is an example.
@@ -67,7 +67,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy: Option<String>,
+    pub policy: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
@@ -96,7 +96,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// A system-assigned unique identifier for a server instance. This is the specific server    that you added your user to.
@@ -113,7 +113,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerId")]
-    pub server_id: String,
+    pub server_id: cfn_resources::StrVal,
 
     ///
     /// Specifies the public key portion of the Secure Shell (SSH) keys stored for the described    user.
@@ -158,7 +158,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
-    pub user_name: String,
+    pub user_name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -189,11 +189,13 @@ impl cfn_resources::CfnResource for CfnUser {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.home_directory {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'home_directory'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'home_directory'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -204,11 +206,13 @@ impl cfn_resources::CfnResource for CfnUser {
         }
 
         if let Some(the_val) = &self.policy {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'policy'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'policy'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -218,38 +222,46 @@ impl cfn_resources::CfnResource for CfnUser {
 
         let the_val = &self.role;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.server_id;
 
-        if the_val.len() > 19 as _ {
-            return Err(format!(
-                "Max validation failed on field 'server_id'. {} is greater than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_id'. {} is greater than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.server_id;
 
-        if the_val.len() < 19 as _ {
-            return Err(format!(
-                "Min validation failed on field 'server_id'. {} is less than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'server_id'. {} is less than 19",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.ssh_public_keys {
@@ -272,20 +284,24 @@ impl cfn_resources::CfnResource for CfnUser {
 
         let the_val = &self.user_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -308,7 +324,7 @@ pub struct HomeDirectoryMapEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Entry")]
-    pub entry: String,
+    pub entry: cfn_resources::StrVal,
 
     ///
     /// Represents the map target that is used in a HomeDirectorymapEntry.
@@ -323,7 +339,7 @@ pub struct HomeDirectoryMapEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
@@ -338,20 +354,24 @@ impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.entry;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'entry'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'entry'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -468,7 +488,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -478,7 +498,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -23,7 +23,7 @@ pub struct CfnTopicRuleDestination {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// Properties of the virtual private cloud (VPC) connection.
@@ -73,7 +73,7 @@ pub struct HttpUrlDestinationSummary {
     /// Update requires: Replacement
     #[serde(rename = "ConfirmationUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub confirmation_url: Option<String>,
+    pub confirmation_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HttpUrlDestinationSummary {
@@ -103,7 +103,7 @@ pub struct VpcDestinationProperties {
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The security groups of the VPC destination.
@@ -139,7 +139,7 @@ pub struct VpcDestinationProperties {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcDestinationProperties {

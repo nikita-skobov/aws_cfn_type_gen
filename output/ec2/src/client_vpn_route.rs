@@ -12,7 +12,7 @@ pub struct CfnClientVpnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientVpnEndpointId")]
-    pub client_vpn_endpoint_id: String,
+    pub client_vpn_endpoint_id: cfn_resources::StrVal,
 
     ///
     /// A brief description of the route.
@@ -24,7 +24,7 @@ pub struct CfnClientVpnRoute {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 address range, in CIDR notation, of the route destination. For example:
@@ -37,7 +37,7 @@ pub struct CfnClientVpnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
+    pub destination_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet through which you want to route traffic. The specified subnet must be 			an existing target network of the Client VPN endpoint.
@@ -50,7 +50,7 @@ pub struct CfnClientVpnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetVpcSubnetId")]
-    pub target_vpc_subnet_id: String,
+    pub target_vpc_subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnClientVpnRoute {

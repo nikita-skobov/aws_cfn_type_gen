@@ -22,7 +22,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
-    pub connection_arn: String,
+    pub connection_arn: cfn_resources::StrVal,
 
     ///
     /// A description for the API destination to create.
@@ -38,7 +38,7 @@ pub struct CfnApiDestination {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The method to use for the request to the HTTP invocation endpoint.
@@ -68,7 +68,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationEndpoint")]
-    pub invocation_endpoint: String,
+    pub invocation_endpoint: cfn_resources::StrVal,
 
     ///
     /// The maximum number of requests per second to send to the HTTP invocation endpoint.
@@ -100,7 +100,7 @@ pub struct CfnApiDestination {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -152,47 +152,57 @@ impl cfn_resources::CfnResource for CfnApiDestination {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.connection_arn;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'connection_arn'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'connection_arn'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.connection_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'connection_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'connection_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.invocation_endpoint;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
+                    "Max validation failed on field 'invocation_endpoint'. {} is greater than 2048",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.invocation_endpoint;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'invocation_endpoint'. {} is greater than 2048",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.invocation_endpoint;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'invocation_endpoint'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'invocation_endpoint'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.invocation_rate_limit_per_second {
@@ -202,20 +212,24 @@ impl cfn_resources::CfnResource for CfnApiDestination {
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

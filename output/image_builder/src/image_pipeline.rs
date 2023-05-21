@@ -11,7 +11,7 @@ pub struct CfnImagePipeline {
     /// Update requires: No interruption
     #[serde(rename = "ContainerRecipeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_recipe_arn: Option<String>,
+    pub container_recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of this image pipeline.
@@ -27,7 +27,7 @@ pub struct CfnImagePipeline {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the distribution configuration associated with this 			image pipeline.
@@ -39,7 +39,7 @@ pub struct CfnImagePipeline {
     /// Update requires: No interruption
     #[serde(rename = "DistributionConfigurationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub distribution_configuration_arn: Option<String>,
+    pub distribution_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Collects additional information about the image being created, including the operating 			system (OS) version and package list. This information is used to enhance the overall 			experience of using EC2 Image Builder. Enabled by default.
@@ -63,7 +63,7 @@ pub struct CfnImagePipeline {
     /// Update requires: No interruption
     #[serde(rename = "ImageRecipeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_recipe_arn: Option<String>,
+    pub image_recipe_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -97,7 +97,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InfrastructureConfigurationArn")]
-    pub infrastructure_configuration_arn: String,
+    pub infrastructure_configuration_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the image pipeline.
@@ -110,7 +110,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The schedule of the image pipeline. A schedule configures how often and when a pipeline 			automatically creates a new image.
@@ -179,20 +179,24 @@ impl cfn_resources::CfnResource for CfnImagePipeline {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -235,7 +239,7 @@ pub struct EcrConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_name: Option<String>,
+    pub repository_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EcrConfiguration {
@@ -395,7 +399,7 @@ pub struct Schedule {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_expression: Option<String>,
+    pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -426,20 +430,21 @@ impl cfn_resources::CfnResource for Schedule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.schedule_expression {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'schedule_expression'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.schedule_expression {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'schedule_expression'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'schedule_expression'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

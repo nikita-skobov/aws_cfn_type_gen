@@ -29,7 +29,7 @@ pub struct CfnPermissionSet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The inline policy that is attached to the permission set.
@@ -66,7 +66,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceArn")]
-    pub instance_arn: String,
+    pub instance_arn: cfn_resources::StrVal,
 
     ///
     /// A structure that stores the details of the AWS managed policy.
@@ -95,7 +95,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Specifies the configuration of the AWS managed or customer managed policy that you want    to set as a permissions boundary. Specify either CustomerManagedPolicyReference    to use the name and path of a customer managed policy, or ManagedPolicyArn to use    the ARN of an AWS managed policy. A permissions boundary represents the maximum permissions    that any policy can grant your role. For more information, see Permissions boundaries for IAM     entities in the IAM User Guide.
@@ -127,7 +127,7 @@ pub struct CfnPermissionSet {
     /// Update requires: No interruption
     #[serde(rename = "RelayStateType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub relay_state_type: Option<String>,
+    pub relay_state_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The length of time that the application user sessions are valid for in the ISO-8601    standard.
@@ -145,7 +145,7 @@ pub struct CfnPermissionSet {
     /// Update requires: No interruption
     #[serde(rename = "SessionDuration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub session_duration: Option<String>,
+    pub session_duration: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to attach to the new AWS::SSO::PermissionSet.
@@ -173,57 +173,69 @@ impl cfn_resources::CfnResource for CfnPermissionSet {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 700 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 700",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 700 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 700",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.instance_arn;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'instance_arn'. {} is greater than 1224",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.instance_arn;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_arn'. {} is greater than 1224",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.instance_arn;
-
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_arn'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_arn'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.permissions_boundary
@@ -231,38 +243,46 @@ impl cfn_resources::CfnResource for CfnPermissionSet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.relay_state_type {
-            if the_val.len() > 240 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'relay_state_type'. {} is greater than 240",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 240 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'relay_state_type'. {} is greater than 240",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.relay_state_type {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'relay_state_type'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'relay_state_type'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.session_duration {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'session_duration'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'session_duration'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.session_duration {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'session_duration'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'session_duration'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -297,7 +317,7 @@ pub struct CustomerManagedPolicyReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The path to the IAM policy that you have configured in each account where you want to deploy your permission set. The default is /. For more information, see Friendly    names and paths in the IAM User Guide.
@@ -315,7 +335,7 @@ pub struct CustomerManagedPolicyReference {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomerManagedPolicyReference {
@@ -330,37 +350,45 @@ impl cfn_resources::CfnResource for CustomerManagedPolicyReference {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.path {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -399,7 +427,7 @@ pub struct PermissionsBoundary {
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub managed_policy_arn: Option<String>,
+    pub managed_policy_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PermissionsBoundary {
@@ -417,20 +445,21 @@ impl cfn_resources::CfnResource for PermissionsBoundary {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.managed_policy_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'managed_policy_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'managed_policy_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.managed_policy_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'managed_policy_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'managed_policy_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -455,7 +484,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -465,7 +494,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -11,7 +11,7 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceDiscoveryAssociationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_resource_discovery_association_id: Option<String>,
+    pub default_resource_discovery_association_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPAM's default resource discovery ID.
@@ -23,7 +23,7 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceDiscoveryId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_resource_discovery_id: Option<String>,
+    pub default_resource_discovery_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The description for the IPAM.
@@ -35,7 +35,7 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
@@ -92,7 +92,7 @@ pub struct IpamOperatingRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
-    pub region_name: String,
+    pub region_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for IpamOperatingRegion {
@@ -126,7 +126,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -136,7 +136,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

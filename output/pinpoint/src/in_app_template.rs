@@ -37,7 +37,7 @@ pub struct CfnInAppTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Layout")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub layout: Option<String>,
+    pub layout: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -63,7 +63,7 @@ pub struct CfnInAppTemplate {
     /// Update requires: No interruption
     #[serde(rename = "TemplateDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_description: Option<String>,
+    pub template_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the in-app message template.
@@ -74,7 +74,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
-    pub template_name: String,
+    pub template_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnInAppTemplate {
@@ -104,7 +104,7 @@ pub struct BodyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alignment: Option<String>,
+    pub alignment: Option<cfn_resources::StrVal>,
 
     ///
     /// The main body text of the message.
@@ -116,7 +116,7 @@ pub struct BodyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Body")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub body: Option<String>,
+    pub body: Option<cfn_resources::StrVal>,
 
     ///
     /// The color of the body text, expressed as a hex color code (such as #000000 for       black).
@@ -128,7 +128,7 @@ pub struct BodyConfig {
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_color: Option<String>,
+    pub text_color: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BodyConfig {
@@ -234,7 +234,7 @@ pub struct DefaultButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub background_color: Option<String>,
+    pub background_color: Option<cfn_resources::StrVal>,
 
     ///
     /// The border radius of a button.
@@ -260,7 +260,7 @@ pub struct DefaultButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ButtonAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub button_action: Option<String>,
+    pub button_action: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination (such as a URL) for a button.
@@ -272,7 +272,7 @@ pub struct DefaultButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Link")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub link: Option<String>,
+    pub link: Option<cfn_resources::StrVal>,
 
     ///
     /// The text that appears on a button in an in-app message.
@@ -284,7 +284,7 @@ pub struct DefaultButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Text")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<cfn_resources::StrVal>,
 
     ///
     /// The color of the body text in a button, expressed as a hex color code (such as #000000       for black).
@@ -296,7 +296,7 @@ pub struct DefaultButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_color: Option<String>,
+    pub text_color: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DefaultButtonConfiguration {
@@ -326,7 +326,7 @@ pub struct HeaderConfig {
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alignment: Option<String>,
+    pub alignment: Option<cfn_resources::StrVal>,
 
     ///
     /// The title text of the in-app message.
@@ -338,7 +338,7 @@ pub struct HeaderConfig {
     /// Update requires: No interruption
     #[serde(rename = "Header")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub header: Option<String>,
+    pub header: Option<cfn_resources::StrVal>,
 
     ///
     /// The color of the title text, expressed as a hex color code (such as #000000 for       black).
@@ -350,7 +350,7 @@ pub struct HeaderConfig {
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_color: Option<String>,
+    pub text_color: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HeaderConfig {
@@ -380,7 +380,7 @@ pub struct InAppMessageContent {
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub background_color: Option<String>,
+    pub background_color: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that contains configuration information about the header or title           text of the in-app message.
@@ -416,7 +416,7 @@ pub struct InAppMessageContent {
     /// Update requires: No interruption
     #[serde(rename = "ImageUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<String>,
+    pub image_url: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that contains configuration information about the primary button in           an in-app message.
@@ -488,7 +488,7 @@ pub struct OverrideButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ButtonAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub button_action: Option<String>,
+    pub button_action: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination (such as a URL) for a button.
@@ -500,7 +500,7 @@ pub struct OverrideButtonConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Link")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub link: Option<String>,
+    pub link: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OverrideButtonConfiguration {

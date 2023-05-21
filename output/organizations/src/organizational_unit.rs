@@ -24,7 +24,7 @@ pub struct CfnOrganizationalUnit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The unique identifier (ID) of the parent root or OU that you want to create the new OU       in.
@@ -45,7 +45,7 @@ pub struct CfnOrganizationalUnit {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentId")]
-    pub parent_id: String,
+    pub parent_id: cfn_resources::StrVal,
 
     ///
     /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
@@ -74,29 +74,35 @@ impl cfn_resources::CfnResource for CfnOrganizationalUnit {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.parent_id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parent_id'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parent_id'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -120,7 +126,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -130,7 +136,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

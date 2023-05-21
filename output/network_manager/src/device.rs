@@ -19,7 +19,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the global network.
@@ -36,7 +36,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    pub global_network_id: cfn_resources::StrVal,
 
     ///
     /// The site location.
@@ -68,7 +68,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Model")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model: Option<String>,
+    pub model: Option<cfn_resources::StrVal>,
 
     ///
     /// The serial number of the device.
@@ -88,7 +88,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "SerialNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub serial_number: Option<String>,
+    pub serial_number: Option<cfn_resources::StrVal>,
 
     ///
     /// The site ID.
@@ -106,7 +106,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "SiteId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub site_id: Option<String>,
+    pub site_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the device.
@@ -136,7 +136,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The vendor of the device.
@@ -156,7 +156,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Vendor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vendor: Option<String>,
+    pub vendor: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDevice {
@@ -170,39 +170,47 @@ impl cfn_resources::CfnResource for CfnDevice {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.global_network_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'global_network_id'. {} is greater than 50",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.global_network_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'global_network_id'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.global_network_id;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'global_network_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'global_network_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         self.location
@@ -210,92 +218,112 @@ impl cfn_resources::CfnResource for CfnDevice {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'model'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.model {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'model'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'model'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.serial_number {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'serial_number'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'serial_number'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.serial_number {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'serial_number'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'serial_number'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.site_id {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'site_id'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'site_id'. {} is greater than 50",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.site_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'site_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'site_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cfn_type {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cfn_type'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cfn_type'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cfn_type {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'cfn_type'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cfn_type'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.vendor {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'vendor'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'vendor'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.vendor {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'vendor'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'vendor'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -322,7 +350,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The latitude.
@@ -340,7 +368,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "Latitude")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub latitude: Option<String>,
+    pub latitude: Option<cfn_resources::StrVal>,
 
     ///
     /// The longitude.
@@ -358,7 +386,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "Longitude")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub longitude: Option<String>,
+    pub longitude: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Location {
@@ -372,56 +400,68 @@ impl cfn_resources::CfnResource for Location {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.address {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'address'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'address'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.latitude {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'latitude'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'latitude'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.latitude {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'latitude'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'latitude'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.longitude {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'longitude'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'longitude'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.longitude {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'longitude'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'longitude'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -446,7 +486,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -456,7 +496,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

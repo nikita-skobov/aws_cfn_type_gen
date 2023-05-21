@@ -10,7 +10,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
+    pub core_network_id: cfn_resources::StrVal,
 
     ///
     /// Options for creating the VPC attachment.
@@ -56,7 +56,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcArn")]
-    pub vpc_arn: String,
+    pub vpc_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVpcAttachment {
@@ -106,7 +106,7 @@ pub struct ProposedSegmentChange {
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_name: Option<String>,
+    pub segment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of key-value tags that changed for the segment.
@@ -132,20 +132,24 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.segment_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'segment_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'segment_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.segment_name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'segment_name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'segment_name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -170,7 +174,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -180,7 +184,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

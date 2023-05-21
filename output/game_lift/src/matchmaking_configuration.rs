@@ -70,7 +70,7 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_event_data: Option<String>,
+    pub custom_event_data: Option<cfn_resources::StrVal>,
 
     ///
     /// A description for the matchmaking configuration.
@@ -86,7 +86,7 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether this matchmaking configuration is being used with Amazon GameLift hosting or       as a standalone matchmaking solution.
@@ -132,7 +132,7 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "GameSessionData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub game_session_data: Option<String>,
+    pub game_session_data: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) that is assigned to a Amazon GameLift game session queue resource and uniquely identifies it. ARNs are unique across all Regions. Format is arn:aws:gamelift:<region>::gamesessionqueue/<queue name>. Queues can be located in any Region. Queues are used to start new       Amazon GameLift-hosted game sessions for matches that are created with this matchmaking       configuration. If FlexMatchMode is set to STANDALONE, do not       set this parameter.
@@ -159,7 +159,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An SNS topic ARN that is set up to receive matchmaking notifications. See         Setting up notifications for matchmaking for more information.
@@ -177,7 +177,7 @@ pub struct CfnMatchmakingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_target: Option<String>,
+    pub notification_target: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum duration, in seconds, that a matchmaking ticket can remain in process       before timing out. Requests that fail due to timing out can be resubmitted as       needed.
@@ -209,7 +209,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleSetName")]
-    pub rule_set_name: String,
+    pub rule_set_name: cfn_resources::StrVal,
 
     ///
     /// A list of labels to assign to the new matchmaking configuration resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
@@ -292,38 +292,43 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
         }
 
         if let Some(the_val) = &self.custom_event_data {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_event_data'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'custom_event_data'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_event_data {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_event_data'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_event_data'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -337,47 +342,51 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
         }
 
         if let Some(the_val) = &self.game_session_data {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'game_session_data'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!("Max validation failed on field 'game_session_data'. {} is greater than 4096", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.game_session_data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'game_session_data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'game_session_data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.notification_target {
-            if the_val.len() > 300 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'notification_target'. {} is greater than 300",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.notification_target {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'notification_target'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 300 as _ {
+                    return Err(format!("Max validation failed on field 'notification_target'. {} is greater than 300", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.notification_target {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'notification_target'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -398,20 +407,24 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
 
         let the_val = &self.rule_set_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'rule_set_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rule_set_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_set_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'rule_set_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'rule_set_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -441,7 +454,7 @@ pub struct GameProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The game property value.
@@ -454,7 +467,7 @@ pub struct GameProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GameProperty {
@@ -469,20 +482,24 @@ impl cfn_resources::CfnResource for GameProperty {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 96 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 96",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 96 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 96",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -506,7 +523,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -516,7 +533,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

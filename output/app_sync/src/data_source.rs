@@ -10,7 +10,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The description of the data source.
@@ -22,7 +22,7 @@ pub struct CfnDataSource {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// AWS Region and TableName for an Amazon DynamoDB table in your account.
@@ -95,7 +95,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
@@ -133,7 +133,7 @@ pub struct CfnDataSource {
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_role_arn: Option<String>,
+    pub service_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the data source.
@@ -146,7 +146,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDataSource {
@@ -207,7 +207,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    pub authorization_type: String,
+    pub authorization_type: cfn_resources::StrVal,
 
     ///
     /// The AWS Identity and Access Management settings.
@@ -255,7 +255,7 @@ pub struct AwsIamConfig {
     /// Update requires: No interruption
     #[serde(rename = "SigningRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub signing_region: Option<String>,
+    pub signing_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The signing service name for AWS Identity and Access Management authorization.
@@ -267,7 +267,7 @@ pub struct AwsIamConfig {
     /// Update requires: No interruption
     #[serde(rename = "SigningServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub signing_service_name: Option<String>,
+    pub signing_service_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AwsIamConfig {
@@ -296,7 +296,7 @@ pub struct DeltaSyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseTableTTL")]
-    pub base_table_ttl: String,
+    pub base_table_ttl: cfn_resources::StrVal,
 
     ///
     /// The Delta Sync table name.
@@ -307,7 +307,7 @@ pub struct DeltaSyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaSyncTableName")]
-    pub delta_sync_table_name: String,
+    pub delta_sync_table_name: cfn_resources::StrVal,
 
     ///
     /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync     table.
@@ -318,7 +318,7 @@ pub struct DeltaSyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaSyncTableTTL")]
-    pub delta_sync_table_ttl: String,
+    pub delta_sync_table_ttl: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DeltaSyncConfig {
@@ -349,7 +349,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
+    pub aws_region: cfn_resources::StrVal,
 
     ///
     /// The DeltaSyncConfig for a versioned datasource.
@@ -372,7 +372,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 
     ///
     /// Set to TRUE to use AWS Identity and Access Management with this data source.
@@ -433,7 +433,7 @@ pub struct ElasticsearchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
+    pub aws_region: cfn_resources::StrVal,
 
     ///
     /// The endpoint.
@@ -444,7 +444,7 @@ pub struct ElasticsearchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    pub endpoint: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ElasticsearchConfig {
@@ -473,7 +473,7 @@ pub struct EventBridgeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBusArn")]
-    pub event_bus_arn: String,
+    pub event_bus_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EventBridgeConfig {
@@ -516,7 +516,7 @@ pub struct HttpConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    pub endpoint: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HttpConfig {
@@ -551,7 +551,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
-    pub lambda_function_arn: String,
+    pub lambda_function_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaConfig {
@@ -582,7 +582,7 @@ pub struct OpenSearchServiceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
+    pub aws_region: cfn_resources::StrVal,
 
     ///
     /// The endpoint.
@@ -593,7 +593,7 @@ pub struct OpenSearchServiceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    pub endpoint: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OpenSearchServiceConfig {
@@ -624,7 +624,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
+    pub aws_region: cfn_resources::StrVal,
 
     ///
     /// The ARN for database credentials stored in AWS Secrets Manager.
@@ -635,7 +635,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsSecretStoreArn")]
-    pub aws_secret_store_arn: String,
+    pub aws_secret_store_arn: cfn_resources::StrVal,
 
     ///
     /// Logical database name.
@@ -647,7 +647,7 @@ pub struct RdsHttpEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Amazon RDS cluster Amazon Resource Name (ARN).
@@ -658,7 +658,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbClusterIdentifier")]
-    pub db_cluster_identifier: String,
+    pub db_cluster_identifier: cfn_resources::StrVal,
 
     ///
     /// Logical schema name.
@@ -670,7 +670,7 @@ pub struct RdsHttpEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema: Option<String>,
+    pub schema: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RdsHttpEndpointConfig {
@@ -713,7 +713,7 @@ pub struct RelationalDatabaseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalDatabaseSourceType")]
-    pub relational_database_source_type: String,
+    pub relational_database_source_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RelationalDatabaseConfig {

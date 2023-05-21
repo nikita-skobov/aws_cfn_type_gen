@@ -17,7 +17,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_description: Option<String>,
+    pub application_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the web application.
@@ -34,7 +34,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// The ARN of the role that the web application assumes when it interacts with AWS IoT Core.
@@ -49,7 +49,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A set of key/value pairs that you can use to manage the web application resource.
@@ -75,36 +75,41 @@ impl cfn_resources::CfnResource for CfnApplication {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.application_description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'application_description'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'application_description'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.application_description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'application_description'. {} is less than 1", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.application_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'application_description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.application_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -128,7 +133,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -138,7 +143,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

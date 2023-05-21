@@ -10,7 +10,7 @@ pub struct CfnElasticLoadBalancerAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticLoadBalancerName")]
-    pub elastic_load_balancer_name: String,
+    pub elastic_load_balancer_name: cfn_resources::StrVal,
 
     ///
     /// The AWS OpsWorks layer ID to which the Elastic Load Balancing load balancer is attached.
@@ -21,7 +21,7 @@ pub struct CfnElasticLoadBalancerAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LayerId")]
-    pub layer_id: String,
+    pub layer_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnElasticLoadBalancerAttachment {

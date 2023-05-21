@@ -15,7 +15,7 @@ pub struct CfnFirewallPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The traffic filtering behavior of a firewall policy, defined in a collection of stateless     and stateful rule groups and other settings.
@@ -43,7 +43,7 @@ pub struct CfnFirewallPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallPolicyName")]
-    pub firewall_policy_name: String,
+    pub firewall_policy_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -73,11 +73,13 @@ impl cfn_resources::CfnResource for CfnFirewallPolicy {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -85,20 +87,24 @@ impl cfn_resources::CfnResource for CfnFirewallPolicy {
 
         let the_val = &self.firewall_policy_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'firewall_policy_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'firewall_policy_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.firewall_policy_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'firewall_policy_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'firewall_policy_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -183,7 +189,7 @@ pub struct CustomAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionName")]
-    pub action_name: String,
+    pub action_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomAction {
@@ -200,20 +206,24 @@ impl cfn_resources::CfnResource for CustomAction {
 
         let the_val = &self.action_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'action_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'action_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.action_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'action_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'action_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -242,7 +252,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Dimension {
@@ -257,20 +267,24 @@ impl cfn_resources::CfnResource for Dimension {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.value;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -692,7 +706,7 @@ pub struct StatefulRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StatefulRuleGroupReference {
@@ -729,20 +743,24 @@ impl cfn_resources::CfnResource for StatefulRuleGroupReference {
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -782,7 +800,7 @@ pub struct StatelessRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StatelessRuleGroupReference {
@@ -815,20 +833,24 @@ impl cfn_resources::CfnResource for StatelessRuleGroupReference {
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -852,7 +874,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -862,7 +884,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

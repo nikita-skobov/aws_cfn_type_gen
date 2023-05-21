@@ -16,7 +16,7 @@ pub struct CfnContact {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Alias")]
-    pub alias: String,
+    pub alias: cfn_resources::StrVal,
 
     ///
     /// The full name of the contact or escalation plan.
@@ -33,7 +33,7 @@ pub struct CfnContact {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    pub display_name: String,
+    pub display_name: cfn_resources::StrVal,
 
     ///
     /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
@@ -96,38 +96,46 @@ impl cfn_resources::CfnResource for CfnContact {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.alias;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'alias'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'alias'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.alias;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'alias'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'alias'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.display_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'display_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'display_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.display_name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'display_name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'display_name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -152,7 +160,7 @@ pub struct ChannelTargetInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelId")]
-    pub channel_id: String,
+    pub channel_id: cfn_resources::StrVal,
 
     ///
     /// The number of minutes to wait before retrying to send engagement if the engagement     initially failed.
@@ -182,20 +190,24 @@ impl cfn_resources::CfnResource for ChannelTargetInfo {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.channel_id;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'channel_id'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'channel_id'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.channel_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'channel_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'channel_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.retry_interval_in_minutes;
@@ -238,7 +250,7 @@ pub struct ContactTargetInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactId")]
-    pub contact_id: String,
+    pub contact_id: cfn_resources::StrVal,
 
     ///
     /// A Boolean value determining if the contact's acknowledgement stops the progress of     stages in the plan.
@@ -264,20 +276,24 @@ impl cfn_resources::CfnResource for ContactTargetInfo {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.contact_id;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'contact_id'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'contact_id'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.contact_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'contact_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'contact_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

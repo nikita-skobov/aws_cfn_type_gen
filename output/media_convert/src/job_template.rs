@@ -27,7 +27,7 @@ pub struct CfnJobTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Category")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub category: Option<String>,
+    pub category: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional. A description of the job template you are creating.
@@ -39,7 +39,7 @@ pub struct CfnJobTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
@@ -63,7 +63,7 @@ pub struct CfnJobTemplate {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify the relative priority for this job. In any given queue, the service begins       processing the job with the highest value first. When more than one job has the same       priority, the service begins processing the job that you submitted first. If you don't       specify a priority, the service uses the default value 0. Minimum: -50 Maximum:       50
@@ -87,7 +87,7 @@ pub struct CfnJobTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub queue: Option<String>,
+    pub queue: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify, in JSON format, the transcoding job settings for this job template. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
@@ -144,7 +144,7 @@ pub struct CfnJobTemplate {
     /// Update requires: No interruption
     #[serde(rename = "StatusUpdateInterval")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status_update_interval: Option<String>,
+    pub status_update_interval: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -200,7 +200,7 @@ pub struct AccelerationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    pub mode: String,
+    pub mode: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AccelerationSettings {
@@ -242,7 +242,7 @@ pub struct HopDestination {
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub queue: Option<String>,
+    pub queue: Option<cfn_resources::StrVal>,
 
     ///
     /// Required for setting up a job to use queue hopping. Minimum wait time in minutes until the job can hop to the destination queue. Valid range is 1 to 4320 minutes, inclusive.

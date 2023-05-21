@@ -10,7 +10,7 @@ pub struct CfnAccessLogSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    pub destination_arn: String,
+    pub destination_arn: cfn_resources::StrVal,
 
     ///
     /// The ID or Amazon Resource Name (ARN) of the service network or service.
@@ -22,7 +22,7 @@ pub struct CfnAccessLogSubscription {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the access log subscription.
@@ -68,7 +68,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -78,7 +78,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

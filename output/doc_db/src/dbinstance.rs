@@ -29,7 +29,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the cluster that the instance will belong to.
@@ -40,7 +40,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: String,
+    pub dbcluster_identifier: cfn_resources::StrVal,
 
     ///
     /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
@@ -51,7 +51,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
+    pub dbinstance_class: cfn_resources::StrVal,
 
     ///
     /// The instance identifier. This parameter is stored as a lowercase string.
@@ -69,7 +69,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_identifier: Option<String>,
+    pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -100,7 +100,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to be assigned to the instance. You can assign up to      10 tags to an instance.
@@ -146,7 +146,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -156,7 +156,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -78,7 +78,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Key Management Service customer master key (CMK) to be used for encrypting the build output    artifacts.
@@ -96,7 +96,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_key: Option<String>,
+    pub encryption_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The build environment settings for the project, such as the environment type or the       environment variables to use for the build environment.
@@ -149,7 +149,7 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of minutes a build is allowed to be queued before it times out.
@@ -179,7 +179,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "ResourceAccessRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_access_role: Option<String>,
+    pub resource_access_role: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Artifacts objects. Each artifacts object specifies output settings that the project generates during a build.
@@ -234,7 +234,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
-    pub service_role: String,
+    pub service_role: cfn_resources::StrVal,
 
     ///
     /// The source code settings for the project, such as the source code's repository type and location.
@@ -263,7 +263,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "SourceVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_version: Option<String>,
+    pub source_version: Option<cfn_resources::StrVal>,
 
     ///
     /// An arbitrary set of tags (key-value pairs) for the AWS CodeBuild project.
@@ -321,7 +321,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<String>,
+    pub visibility: Option<cfn_resources::StrVal>,
 
     ///
     /// VpcConfig specifies settings that enable AWS CodeBuild to access resources in an Amazon VPC. For more information, see       Use AWS CodeBuild with Amazon Virtual Private Cloud in       the AWS CodeBuild User Guide.
@@ -355,29 +355,35 @@ impl cfn_resources::CfnResource for CfnProject {
         self.cache.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.encryption_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'encryption_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'encryption_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -388,20 +394,24 @@ impl cfn_resources::CfnResource for CfnProject {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 2 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 2 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -421,11 +431,13 @@ impl cfn_resources::CfnResource for CfnProject {
         }
 
         if let Some(the_val) = &self.resource_access_role {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_access_role'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_access_role'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -455,11 +467,13 @@ impl cfn_resources::CfnResource for CfnProject {
 
         let the_val = &self.service_role;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'service_role'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'service_role'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.source.validate()?;
@@ -516,7 +530,7 @@ pub struct Artifacts {
     /// Update requires: No interruption
     #[serde(rename = "ArtifactIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub artifact_identifier: Option<String>,
+    pub artifact_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to true if you do not want your output artifacts encrypted. This option is valid     only if your artifacts type is Amazon Simple Storage Service (Amazon S3). If this is set with another artifacts type, an       invalidInputException is thrown.
@@ -544,7 +558,7 @@ pub struct Artifacts {
     /// Update requires: No interruption
     #[serde(rename = "Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location: Option<String>,
+    pub location: Option<cfn_resources::StrVal>,
 
     ///
     /// Along with path and namespaceType, the pattern that AWS CodeBuild uses     to name and store the output artifact:
@@ -564,7 +578,7 @@ pub struct Artifacts {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Along with path and name, the pattern that AWS CodeBuild uses to       determine the name and location to store the output artifact:
@@ -626,7 +640,7 @@ pub struct Artifacts {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of build output artifact. Valid values include:
@@ -770,7 +784,7 @@ pub struct BuildStatusConfig {
     /// Update requires: No interruption
     #[serde(rename = "Context")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub context: Option<String>,
+    pub context: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the target url of the build status CodeBuild sends to the source provider. The       usage of this parameter depends on the source provider.
@@ -784,7 +798,7 @@ pub struct BuildStatusConfig {
     /// Update requires: No interruption
     #[serde(rename = "TargetUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_url: Option<String>,
+    pub target_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BuildStatusConfig {
@@ -814,7 +828,7 @@ pub struct CloudWatchLogsConfig {
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The current status of the logs in CloudWatch Logs for a build project. Valid values are:
@@ -841,7 +855,7 @@ pub struct CloudWatchLogsConfig {
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_name: Option<String>,
+    pub stream_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -888,7 +902,7 @@ pub struct Environment {
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate: Option<String>,
+    pub certificate: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of compute environment. This determines the number of CPU cores and memory the build environment uses. Available values     include:
@@ -903,7 +917,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeType")]
-    pub compute_type: String,
+    pub compute_type: cfn_resources::StrVal,
 
     ///
     /// A set of environment variables to make available to builds for this build       project.
@@ -932,7 +946,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     ///
     /// The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid       values:
@@ -1070,11 +1084,13 @@ impl cfn_resources::CfnResource for Environment {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.image;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'image'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.registry_credential
@@ -1099,7 +1115,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The type of environment variable. Valid values include:
@@ -1128,7 +1144,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1164,11 +1180,13 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1331,7 +1349,7 @@ pub struct ProjectBuildBatchConfig {
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_role: Option<String>,
+    pub service_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the maximum amount of time, in minutes, that the batch build must be completed in.
@@ -1378,11 +1396,13 @@ impl cfn_resources::CfnResource for ProjectBuildBatchConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.service_role {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'service_role'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'service_role'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1405,7 +1425,7 @@ pub struct ProjectCache {
     /// Update requires: No interruption
     #[serde(rename = "Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location: Option<String>,
+    pub location: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of strings that specify the local cache modes. You can use one or more local       cache modes at the same time. This is only used for LOCAL cache       types.
@@ -1488,7 +1508,7 @@ pub struct ProjectFileSystemLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
-    pub identifier: String,
+    pub identifier: cfn_resources::StrVal,
 
     ///
     /// A string that specifies the location of the file system created by Amazon EFS. Its       format is efs-dns-name:/directory-path. You can find the DNS name of file       system when you view it in the Amazon EFS console. The directory path is a path to a       directory in the file system that CodeBuild mounts. For example, if the DNS name of a       file system is fs-abcd1234.efs.us-west-2.amazonaws.com, and its mount       directory is my-efs-mount-directory, then the location is         fs-abcd1234.efs.us-west-2.amazonaws.com:/my-efs-mount-directory.
@@ -1501,7 +1521,7 @@ pub struct ProjectFileSystemLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    pub location: String,
+    pub location: cfn_resources::StrVal,
 
     ///
     /// The mount options for a file system created by Amazon EFS. The default mount options       used by CodeBuild are         nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2. For       more information, see Recommended NFS Mount         Options.
@@ -1513,7 +1533,7 @@ pub struct ProjectFileSystemLocation {
     /// Update requires: No interruption
     #[serde(rename = "MountOptions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mount_options: Option<String>,
+    pub mount_options: Option<cfn_resources::StrVal>,
 
     ///
     /// The location in the container where you mount the file system.
@@ -1524,7 +1544,7 @@ pub struct ProjectFileSystemLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
-    pub mount_point: String,
+    pub mount_point: cfn_resources::StrVal,
 
     ///
     /// The type of the file system. The one supported type is EFS.
@@ -1579,7 +1599,7 @@ pub struct ProjectSourceVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIdentifier")]
-    pub source_identifier: String,
+    pub source_identifier: cfn_resources::StrVal,
 
     ///
     /// The source version for the corresponding source identifier. If specified, must be one      of:
@@ -1595,7 +1615,7 @@ pub struct ProjectSourceVersion {
     /// Update requires: No interruption
     #[serde(rename = "SourceVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_version: Option<String>,
+    pub source_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ProjectSourceVersion {
@@ -1627,7 +1647,7 @@ pub struct ProjectTriggers {
     /// Update requires: No interruption
     #[serde(rename = "BuildType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_type: Option<String>,
+    pub build_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of lists of WebhookFilter objects used to determine which webhook      events are triggered. At least one WebhookFilter in the array must specify EVENT as its type.
@@ -1686,7 +1706,7 @@ pub struct RegistryCredential {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credential")]
-    pub credential: String,
+    pub credential: cfn_resources::StrVal,
 
     ///
     /// The service that created the credentials to access a private Docker registry. The       valid value, SECRETS_MANAGER, is for AWS Secrets Manager.
@@ -1727,11 +1747,13 @@ impl cfn_resources::CfnResource for RegistryCredential {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.credential;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'credential'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'credential'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1763,7 +1785,7 @@ pub struct S3LogsConfig {
     /// Update requires: No interruption
     #[serde(rename = "Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location: Option<String>,
+    pub location: Option<cfn_resources::StrVal>,
 
     ///
     /// The current status of the S3 build logs. Valid values are:
@@ -1839,7 +1861,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_spec: Option<String>,
+    pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains information that defines how the build project reports the build status to    the source provider. This option is only used when the source provider is    GITHUB, GITHUB_ENTERPRISE, or    BITBUCKET.
@@ -1905,7 +1927,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location: Option<String>,
+    pub location: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to true to report the status of a build's start and finish to your source provider.     This option is valid only when your source provider is GitHub, GitHub Enterprise, or     Bitbucket. If this is set and you use a different source provider, an invalidInputException     is thrown.
@@ -1929,7 +1951,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "SourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_identifier: Option<String>,
+    pub source_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of repository that contains the source code to be built. Valid values       include:
@@ -2034,7 +2056,7 @@ pub struct SourceAuth {
     /// Update requires: No interruption
     #[serde(rename = "Resource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource: Option<String>,
+    pub resource: Option<cfn_resources::StrVal>,
 
     ///
     /// The authorization type to use. The only valid value is OAUTH, which     represents the OAuth authorization type.
@@ -2096,7 +2118,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2106,7 +2128,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2166,7 +2188,7 @@ pub struct VpcConfig {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcConfig {
@@ -2198,11 +2220,13 @@ impl cfn_resources::CfnResource for VpcConfig {
         }
 
         if let Some(the_val) = &self.vpc_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'vpc_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'vpc_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2236,7 +2260,7 @@ pub struct WebhookFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
-    pub pattern: String,
+    pub pattern: cfn_resources::StrVal,
 
     ///
     /// The type of webhook filter. There are six webhook filter types: EVENT,         ACTOR_ACCOUNT_ID, HEAD_REF, BASE_REF,         FILE_PATH, and COMMIT_MESSAGE.

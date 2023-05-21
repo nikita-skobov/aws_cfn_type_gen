@@ -40,7 +40,7 @@ pub struct CfnReportGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tag key and value pairs associated with this report group.
@@ -104,20 +104,24 @@ impl cfn_resources::CfnResource for CfnReportGroup {
         self.export_config.validate()?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 2 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 2 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -214,7 +218,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The AWS account identifier of the owner of the Amazon S3 bucket. This allows report data to be exported to an Amazon S3 bucket     that is owned by an account other than the account running the build.
@@ -226,7 +230,7 @@ pub struct S3ReportExportConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_owner: Option<String>,
+    pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// A boolean value that specifies if the results of a report are encrypted.
@@ -252,7 +256,7 @@ pub struct S3ReportExportConfig {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_key: Option<String>,
+    pub encryption_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of build output artifact to create. Valid values include:
@@ -280,7 +284,7 @@ pub struct S3ReportExportConfig {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -312,19 +316,23 @@ impl cfn_resources::CfnResource for S3ReportExportConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.encryption_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'encryption_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'encryption_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -349,7 +357,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -359,7 +367,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

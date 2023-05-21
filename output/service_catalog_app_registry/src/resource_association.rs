@@ -10,7 +10,7 @@ pub struct CfnResourceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Application")]
-    pub application: String,
+    pub application: cfn_resources::StrVal,
 
     ///
     /// The name or ID      of the resource      of which the application      will be associated.
@@ -21,7 +21,7 @@ pub struct CfnResourceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
-    pub resource: String,
+    pub resource: cfn_resources::StrVal,
 
     ///
     /// The type      of resource     of which the application will be associated.
@@ -32,7 +32,7 @@ pub struct CfnResourceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourceAssociation {

@@ -27,7 +27,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectAttachmentId")]
-    pub connect_attachment_id: String,
+    pub connect_attachment_id: cfn_resources::StrVal,
 
     ///
     /// The IP address of a core network.
@@ -45,7 +45,7 @@ pub struct CfnConnectPeer {
     /// Update requires: Replacement
     #[serde(rename = "CoreNetworkAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub core_network_address: Option<String>,
+    pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The inside IP addresses used for a Connect peer configuration.
@@ -73,7 +73,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerAddress")]
-    pub peer_address: String,
+    pub peer_address: cfn_resources::StrVal,
 
     ///
     /// The list of key-value tags associated with the Connect peer.
@@ -104,56 +104,65 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
 
         let the_val = &self.connect_attachment_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'connect_attachment_id'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'connect_attachment_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.connect_attachment_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'connect_attachment_id'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.core_network_address {
-            if the_val.len() > 50 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
-                    the_val.len()
+                    "Min validation failed on field 'connect_attachment_id'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.core_network_address {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.core_network_address {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'core_network_address'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.peer_address;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'core_network_address'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'peer_address'. {} is greater than 50",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.peer_address;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'peer_address'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.peer_address;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'peer_address'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'peer_address'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -209,7 +218,7 @@ pub struct ConnectPeerBgpConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub core_network_address: Option<String>,
+    pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The ASN of the Coret Network.
@@ -239,7 +248,7 @@ pub struct ConnectPeerBgpConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_address: Option<String>,
+    pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The ASN of the Connect peer.
@@ -265,38 +274,43 @@ impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.core_network_address {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.core_network_address {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'core_network_address'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'core_network_address'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_address {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'peer_address'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'peer_address'. {} is greater than 50",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_address {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'peer_address'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'peer_address'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -335,7 +349,7 @@ pub struct ConnectPeerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub core_network_address: Option<String>,
+    pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The inside IP addresses used for a Connect peer configuration.
@@ -365,7 +379,7 @@ pub struct ConnectPeerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_address: Option<String>,
+    pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol used for a Connect peer configuration.
@@ -406,38 +420,43 @@ impl cfn_resources::CfnResource for ConnectPeerConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.core_network_address {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.core_network_address {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'core_network_address'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'core_network_address'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_address {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'peer_address'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'peer_address'. {} is greater than 50",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_address {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'peer_address'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'peer_address'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -462,7 +481,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -472,7 +491,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

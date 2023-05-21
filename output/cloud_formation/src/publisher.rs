@@ -34,7 +34,7 @@ pub struct CfnPublisher {
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_arn: Option<String>,
+    pub connection_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnPublisher {
@@ -48,20 +48,24 @@ impl cfn_resources::CfnResource for CfnPublisher {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.connection_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'connection_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'connection_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.connection_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'connection_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'connection_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

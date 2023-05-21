@@ -11,7 +11,7 @@ pub struct CfnClientVpnAuthorizationRule {
     /// Update requires: Replacement
     #[serde(rename = "AccessGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_group_id: Option<String>,
+    pub access_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to grant access to all clients. Specify true to grant all       clients who successfully establish a VPN connection access to the network. Must be set       to true if AccessGroupId is not specified.
@@ -34,7 +34,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientVpnEndpointId")]
-    pub client_vpn_endpoint_id: String,
+    pub client_vpn_endpoint_id: cfn_resources::StrVal,
 
     ///
     /// A brief description of the authorization rule.
@@ -46,7 +46,7 @@ pub struct CfnClientVpnAuthorizationRule {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 address range, in CIDR notation, of the network for which access is being authorized.
@@ -57,7 +57,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetNetworkCidr")]
-    pub target_network_cidr: String,
+    pub target_network_cidr: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnClientVpnAuthorizationRule {

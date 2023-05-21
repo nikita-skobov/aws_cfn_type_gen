@@ -24,7 +24,7 @@ pub struct CfnWebACLAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with the     resource.
@@ -41,7 +41,7 @@ pub struct CfnWebACLAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WebACLArn")]
-    pub web_aclarn: String,
+    pub web_aclarn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnWebACLAssociation {
@@ -56,38 +56,46 @@ impl cfn_resources::CfnResource for CfnWebACLAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.web_aclarn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'web_aclarn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'web_aclarn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.web_aclarn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'web_aclarn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'web_aclarn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

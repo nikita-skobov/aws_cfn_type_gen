@@ -11,7 +11,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The options for device-identity trust provider.
@@ -60,7 +60,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolicyReferenceName")]
-    pub policy_reference_name: String,
+    pub policy_reference_name: cfn_resources::StrVal,
 
     ///
     /// The tags.
@@ -188,7 +188,7 @@ pub struct DeviceOptions {
     /// Update requires: Replacement
     #[serde(rename = "TenantId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tenant_id: Option<String>,
+    pub tenant_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeviceOptions {
@@ -218,7 +218,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authorization_endpoint: Option<String>,
+    pub authorization_endpoint: Option<cfn_resources::StrVal>,
 
     ///
     /// The client identifier.
@@ -230,7 +230,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_id: Option<String>,
+    pub client_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The client secret.
@@ -242,7 +242,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_secret: Option<String>,
+    pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
     /// The OIDC issuer.
@@ -254,7 +254,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub issuer: Option<String>,
+    pub issuer: Option<cfn_resources::StrVal>,
 
     ///
     /// The OpenID Connect (OIDC) scope specified.
@@ -266,7 +266,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scope: Option<String>,
+    pub scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The OIDC token endpoint.
@@ -278,7 +278,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "TokenEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token_endpoint: Option<String>,
+    pub token_endpoint: Option<cfn_resources::StrVal>,
 
     ///
     /// The OIDC user info endpoint.
@@ -290,7 +290,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "UserInfoEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_info_endpoint: Option<String>,
+    pub user_info_endpoint: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OidcOptions {
@@ -324,7 +324,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -334,7 +334,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

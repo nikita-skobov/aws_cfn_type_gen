@@ -31,7 +31,7 @@ pub struct CfnRotation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Information about the rule that specifies when shift team members rotate.
@@ -53,7 +53,7 @@ pub struct CfnRotation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    pub start_time: String,
+    pub start_time: cfn_resources::StrVal,
 
     ///
     /// Optional metadata to assign to the rotation. Tags enable you to categorize a resource       in different ways, such as by purpose, owner, or environment. For more information, see         Tagging Incident Manager resources in the Incident Manager User         Guide.
@@ -82,7 +82,7 @@ pub struct CfnRotation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZoneId")]
-    pub time_zone_id: String,
+    pub time_zone_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRotation {
@@ -106,40 +106,48 @@ impl cfn_resources::CfnResource for CfnRotation {
 
         let the_val = &self.name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.recurrence.validate()?;
 
         let the_val = &self.time_zone_id;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'time_zone_id'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'time_zone_id'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.time_zone_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'time_zone_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'time_zone_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -158,7 +166,7 @@ pub struct CoverageTime {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    pub end_time: String,
+    pub end_time: cfn_resources::StrVal,
 
     ///
     /// Information about when an on-call rotation shift begins.
@@ -169,7 +177,7 @@ pub struct CoverageTime {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    pub start_time: String,
+    pub start_time: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CoverageTime {
@@ -213,7 +221,7 @@ pub struct MonthlySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HandOffTime")]
-    pub hand_off_time: String,
+    pub hand_off_time: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MonthlySetting {
@@ -392,7 +400,7 @@ pub struct ShiftCoverage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    pub day_of_week: String,
+    pub day_of_week: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ShiftCoverage {
@@ -426,7 +434,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -436,7 +444,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -478,7 +486,7 @@ pub struct WeeklySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HandOffTime")]
-    pub hand_off_time: String,
+    pub hand_off_time: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

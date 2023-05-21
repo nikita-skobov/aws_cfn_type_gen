@@ -10,7 +10,7 @@ pub struct CfnLoggerDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggerDefinitionId")]
-    pub logger_definition_id: String,
+    pub logger_definition_id: cfn_resources::StrVal,
 
     ///
     /// The loggers in this version.
@@ -52,7 +52,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Component")]
-    pub component: String,
+    pub component: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -63,7 +63,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
@@ -74,7 +74,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Level")]
-    pub level: String,
+    pub level: cfn_resources::StrVal,
 
     ///
     /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
@@ -97,7 +97,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Logger {

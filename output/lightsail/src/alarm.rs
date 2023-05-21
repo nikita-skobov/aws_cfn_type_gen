@@ -10,7 +10,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
-    pub alarm_name: String,
+    pub alarm_name: cfn_resources::StrVal,
 
     ///
     /// The arithmetic operation to use when comparing the specified statistic and     threshold.
@@ -84,7 +84,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "MonitoredResourceName")]
-    pub monitored_resource_name: String,
+    pub monitored_resource_name: cfn_resources::StrVal,
 
     ///
     /// A Boolean value indicating whether the alarm is enabled.

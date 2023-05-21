@@ -43,7 +43,7 @@ pub struct CfnEventDataStore {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the event data store includes events from all regions, or only from     the region in which the event data store is created.
@@ -73,7 +73,7 @@ pub struct CfnEventDataStore {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether an event data store collects events logged for an organization in       AWS Organizations.
@@ -141,38 +141,46 @@ impl cfn_resources::CfnResource for CfnEventDataStore {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 350 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 350",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 350 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 350",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -239,7 +247,7 @@ pub struct AdvancedEventSelector {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AdvancedEventSelector {
@@ -253,20 +261,24 @@ impl cfn_resources::CfnResource for AdvancedEventSelector {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -322,7 +334,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    pub field: String,
+    pub field: cfn_resources::StrVal,
 
     ///
     /// An operator that excludes events that match the last few characters of the event record     field specified as the value of Field.
@@ -385,20 +397,24 @@ impl cfn_resources::CfnResource for AdvancedFieldSelector {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.field;
 
-        if the_val.len() > 1000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'field'. {} is greater than 1000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field'. {} is greater than 1000",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.field;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'field'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'field'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -422,7 +438,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -432,7 +448,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

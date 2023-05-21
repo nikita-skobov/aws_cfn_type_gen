@@ -29,7 +29,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_name: Option<String>,
+    pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The path to one or more Java .jar files in an S3 bucket that should be       loaded in your DevEndpoint.
@@ -43,7 +43,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ExtraJarsS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extra_jars_s3_path: Option<String>,
+    pub extra_jars_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded       in your DevEndpoint. Multiple values must be complete paths separated by a       comma.
@@ -57,7 +57,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ExtraPythonLibsS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extra_python_libs_s3_path: Option<String>,
+    pub extra_python_libs_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version indicates the version supported for running your ETL scripts on development endpoints.
@@ -75,7 +75,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub glue_version: Option<String>,
+    pub glue_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of AWS Glue Data Processing Units (DPUs) allocated to this         DevEndpoint.
@@ -113,7 +113,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "PublicKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub public_key: Option<String>,
+    pub public_key: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of public keys to be used by the DevEndpoints for authentication.    Using this attribute is preferred over a single public key because the public keys allow you    to have a different private key per client.
@@ -142,7 +142,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the SecurityConfiguration structure to be used with this     DevEndpoint.
@@ -160,7 +160,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_configuration: Option<String>,
+    pub security_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of security group identifiers used in this DevEndpoint.
@@ -184,7 +184,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to use with this DevEndpoint.
@@ -212,7 +212,7 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub worker_type: Option<String>,
+    pub worker_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDevEndpoint {
@@ -235,17 +235,18 @@ impl cfn_resources::CfnResource for CfnDevEndpoint {
         }
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'security_configuration'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", s.len()));
+                }
             }
         }
 

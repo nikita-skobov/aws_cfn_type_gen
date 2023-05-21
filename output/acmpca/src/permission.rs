@@ -29,7 +29,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateAuthorityArn")]
-    pub certificate_authority_arn: String,
+    pub certificate_authority_arn: cfn_resources::StrVal,
 
     ///
     /// The AWS service or entity that holds the permission. At this time, the only valid 			principal is acm.amazonaws.com.
@@ -46,7 +46,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 
     ///
     /// The ID of the account that assigned the permission.
@@ -64,7 +64,7 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "SourceAccount")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_account: Option<String>,
+    pub source_account: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnPermission {
@@ -88,52 +88,64 @@ impl cfn_resources::CfnResource for CfnPermission {
 
         let the_val = &self.certificate_authority_arn;
 
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 200", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 200 as _ {
+                return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 200", s.len()));
+            }
         }
 
         let the_val = &self.certificate_authority_arn;
 
-        if the_val.len() < 5 as _ {
-            return Err(format!(
-                "Min validation failed on field 'certificate_authority_arn'. {} is less than 5",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.principal;
-
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'principal'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.principal;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'principal'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.source_account {
-            if the_val.len() > 12 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 5 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'source_account'. {} is greater than 12",
-                    the_val.len()
+                    "Min validation failed on field 'certificate_authority_arn'. {} is less than 5",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.principal;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'principal'. {} is greater than 128",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.principal;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'principal'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.source_account {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_account'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_account'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.source_account {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_account'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 

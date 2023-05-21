@@ -27,7 +27,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_id: Option<String>,
+    pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks CM deletes the oldest backups if this number is exceeded.     The default value is 1.
@@ -59,7 +59,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "CustomCertificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_certificate: Option<String>,
+    pub custom_certificate: Option<cfn_resources::StrVal>,
 
     ///
     /// Supported on servers running Chef Automate 2.0 only. An optional public endpoint of a       server, such as https://aws.my-company.com. To access the server, create a       CNAME DNS record in your preferred DNS service that points the custom domain to the       endpoint that is generated when the server is created (the value of the CreateServer       Endpoint attribute). You cannot access the server by using the generated         Endpoint value if the server is using a custom domain. If you specify a       custom domain, you must also specify values for CustomCertificate and         CustomPrivateKey.
@@ -75,7 +75,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "CustomDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_domain: Option<String>,
+    pub custom_domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Supported on servers running Chef Automate 2.0 only. A private key in PEM format for       connecting to the server by using HTTPS. The private key must not be encrypted; it       cannot be protected by a password or passphrase. If you specify a custom private key,       you must also specify values for CustomDomain and         CustomCertificate.
@@ -91,7 +91,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "CustomPrivateKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_private_key: Option<String>,
+    pub custom_private_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Enable or disable scheduled backups. Valid values are true or false. The default value is true.
@@ -119,7 +119,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine: Option<String>,
+    pub engine: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional engine attributes on a specified server.
@@ -151,7 +151,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "EngineModel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_model: Option<String>,
+    pub engine_model: Option<cfn_resources::StrVal>,
 
     ///
     /// The major release version of the engine that you want to use. For a Chef server, the valid value for EngineVersion     is currently 2. For a Puppet server, valid values are 2019 or 2017.
@@ -167,7 +167,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the instance profile that your Amazon EC2 instances use.
@@ -182,7 +182,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceProfileArn")]
-    pub instance_profile_arn: String,
+    pub instance_profile_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon EC2 instance type to use. For example, m5.large.
@@ -197,7 +197,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH.
@@ -213,7 +213,7 @@ pub struct CfnServer {
     /// Update requires: Replacement
     #[serde(rename = "KeyPair")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_pair: Option<String>,
+    pub key_pair: Option<cfn_resources::StrVal>,
 
     ///
     /// The start time for a one-hour period during which AWS OpsWorks CM backs up application-level data on your server    if automated backups are enabled. Valid values must be specified in one of the following formats:
@@ -233,7 +233,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_backup_window: Option<String>,
+    pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The start time for a one-hour period each week during which AWS OpsWorks CM performs maintenance on the instance.    Valid values must be specified in the following format: DDD:HH:MM. MM must be specified as 00. The specified time is in coordinated universal time (UTC).    The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See TimeWindowDefinition for more information.
@@ -247,7 +247,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups    must be within the VPC that is specified by SubnetIds.
@@ -276,7 +276,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceRoleArn")]
-    pub service_role_arn: String,
+    pub service_role_arn: cfn_resources::StrVal,
 
     ///
     /// The IDs of subnets in which to launch the server EC2 instance.
@@ -324,11 +324,13 @@ impl cfn_resources::CfnResource for CfnServer {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.backup_id {
-            if the_val.len() > 79 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'backup_id'. {} is greater than 79",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 79 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'backup_id'. {} is greater than 79",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -342,90 +344,104 @@ impl cfn_resources::CfnResource for CfnServer {
         }
 
         if let Some(the_val) = &self.custom_certificate {
-            if the_val.len() > 2097152 as _ {
-                return Err(format!("Max validation failed on field 'custom_certificate'. {} is greater than 2097152", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2097152 as _ {
+                    return Err(format!("Max validation failed on field 'custom_certificate'. {} is greater than 2097152", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_domain {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_domain'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_domain'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_private_key {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_private_key'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!("Max validation failed on field 'custom_private_key'. {} is greater than 4096", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.engine {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'engine'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'engine'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.engine_model {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'engine_model'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'engine_model'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.engine_version {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'engine_version'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'engine_version'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.instance_profile_arn;
 
-        if the_val.len() > 10000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_profile_arn'. {} is greater than 10000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10000 as _ {
+                return Err(format!("Max validation failed on field 'instance_profile_arn'. {} is greater than 10000", s.len()));
+            }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 10000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 10000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_type'. {} is greater than 10000",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.key_pair {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key_pair'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key_pair'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.service_role_arn;
 
-        if the_val.len() > 10000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_role_arn'. {} is greater than 10000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_role_arn'. {} is greater than 10000",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -466,7 +482,7 @@ pub struct EngineAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the engine attribute.
@@ -490,7 +506,7 @@ pub struct EngineAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EngineAttribute {
@@ -504,20 +520,24 @@ impl cfn_resources::CfnResource for EngineAttribute {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 10000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 10000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 10000",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -542,7 +562,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -552,7 +572,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

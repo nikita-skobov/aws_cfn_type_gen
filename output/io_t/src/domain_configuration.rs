@@ -23,7 +23,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "DomainConfigurationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_configuration_name: Option<String>,
+    pub domain_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The status to which the domain configuration should be updated.
@@ -37,7 +37,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DomainConfigurationStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_configuration_status: Option<String>,
+    pub domain_configuration_status: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the domain.
@@ -49,7 +49,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARNs of the certificates that AWS IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN.    This value is not required for AWS-managed domains.
@@ -75,7 +75,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ServiceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_type: Option<String>,
+    pub service_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata which can be used to manage the domain configuration.
@@ -112,7 +112,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ValidationCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub validation_certificate_arn: Option<String>,
+    pub validation_certificate_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDomainConfiguration {
@@ -162,7 +162,7 @@ pub struct AuthorizerConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefaultAuthorizerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_authorizer_name: Option<String>,
+    pub default_authorizer_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AuthorizerConfig {
@@ -192,7 +192,7 @@ pub struct ServerCertificateSummary {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_certificate_arn: Option<String>,
+    pub server_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the server certificate.
@@ -204,7 +204,7 @@ pub struct ServerCertificateSummary {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_certificate_status: Option<String>,
+    pub server_certificate_status: Option<cfn_resources::StrVal>,
 
     ///
     /// Details that explain the status of the server certificate.
@@ -216,7 +216,7 @@ pub struct ServerCertificateSummary {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatusDetail")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_certificate_status_detail: Option<String>,
+    pub server_certificate_status_detail: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ServerCertificateSummary {
@@ -250,7 +250,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -260,7 +260,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -289,7 +289,7 @@ pub struct TlsConfig {
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_policy: Option<String>,
+    pub security_policy: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TlsConfig {

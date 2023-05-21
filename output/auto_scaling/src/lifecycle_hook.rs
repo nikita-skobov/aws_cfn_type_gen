@@ -14,7 +14,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
-    pub auto_scaling_group_name: String,
+    pub auto_scaling_group_name: cfn_resources::StrVal,
 
     ///
     /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an       unexpected failure occurs. The default value is ABANDON.
@@ -28,7 +28,7 @@ pub struct CfnLifecycleHook {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_result: Option<String>,
+    pub default_result: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum time, in seconds, that can elapse before the lifecycle hook times out. The       range is from 30 to 7200 seconds. The default value is         3600 seconds (1 hour).
@@ -58,7 +58,7 @@ pub struct CfnLifecycleHook {
     /// Update requires: Replacement
     #[serde(rename = "LifecycleHookName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lifecycle_hook_name: Option<String>,
+    pub lifecycle_hook_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The lifecycle transition. For Auto Scaling groups, there are two major lifecycle       transitions.
@@ -71,7 +71,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleTransition")]
-    pub lifecycle_transition: String,
+    pub lifecycle_transition: cfn_resources::StrVal,
 
     ///
     /// Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to       the notification target.
@@ -89,7 +89,7 @@ pub struct CfnLifecycleHook {
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_metadata: Option<String>,
+    pub notification_metadata: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the notification target that Amazon EC2 Auto Scaling sends       notifications to when an instance is in a wait state for the lifecycle hook. You can       specify an Amazon SNS topic or an Amazon SQS queue.
@@ -101,7 +101,7 @@ pub struct CfnLifecycleHook {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_target_arn: Option<String>,
+    pub notification_target_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the IAM role that allows the Auto Scaling group to publish to the specified       notification target. For information about creating this role, see Configure a notification target for a lifecycle hook in the         Amazon EC2 Auto Scaling User Guide.
@@ -115,7 +115,7 @@ pub struct CfnLifecycleHook {
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLifecycleHook {
@@ -129,35 +129,40 @@ impl cfn_resources::CfnResource for CfnLifecycleHook {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.lifecycle_hook_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.lifecycle_hook_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'lifecycle_hook_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'lifecycle_hook_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.notification_metadata {
-            if the_val.len() > 1023 as _ {
-                return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1023 as _ {
+                    return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.notification_metadata {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'notification_metadata'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'notification_metadata'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

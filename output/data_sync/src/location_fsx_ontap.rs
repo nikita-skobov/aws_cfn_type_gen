@@ -43,7 +43,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageVirtualMachineArn")]
-    pub storage_virtual_machine_arn: String,
+    pub storage_virtual_machine_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies a path to the file share in the SVM where you'll copy your data.
@@ -63,7 +63,7 @@ pub struct CfnLocationFSxONTAP {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
@@ -105,16 +105,20 @@ impl cfn_resources::CfnResource for CfnLocationFSxONTAP {
 
         let the_val = &self.storage_virtual_machine_arn;
 
-        if the_val.len() > 162 as _ {
-            return Err(format!("Max validation failed on field 'storage_virtual_machine_arn'. {} is greater than 162", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 162 as _ {
+                return Err(format!("Max validation failed on field 'storage_virtual_machine_arn'. {} is greater than 162", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -288,7 +292,7 @@ pub struct SMB {
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies how DataSync can access a location using the SMB protocol.
@@ -314,7 +318,7 @@ pub struct SMB {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// Specifies a user name that can mount the location and access the files, folders, and metadata that you need in the SVM.
@@ -337,7 +341,7 @@ pub struct SMB {
     ///
     /// Update requires: Replacement
     #[serde(rename = "User")]
-    pub user: String,
+    pub user: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SMB {
@@ -351,11 +355,13 @@ impl cfn_resources::CfnResource for SMB {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.domain {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -363,20 +369,24 @@ impl cfn_resources::CfnResource for SMB {
 
         let the_val = &self.password;
 
-        if the_val.len() > 104 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 104",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 104 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 104",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user;
 
-        if the_val.len() > 104 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user'. {} is greater than 104",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 104 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user'. {} is greater than 104",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -465,7 +475,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -475,7 +485,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

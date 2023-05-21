@@ -22,7 +22,7 @@ pub struct CfnAlert {
     /// Update requires: Replacement
     #[serde(rename = "AlertDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alert_description: Option<String>,
+    pub alert_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the alert.
@@ -34,7 +34,7 @@ pub struct CfnAlert {
     /// Update requires: Replacement
     #[serde(rename = "AlertName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alert_name: Option<String>,
+    pub alert_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An integer from 0 to 100 specifying the alert sensitivity threshold.
@@ -56,7 +56,7 @@ pub struct CfnAlert {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorArn")]
-    pub anomaly_detector_arn: String,
+    pub anomaly_detector_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAlert {
@@ -137,7 +137,7 @@ pub struct LambdaConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaArn")]
-    pub lambda_arn: String,
+    pub lambda_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of an IAM role that has permission to invoke the Lambda function.
@@ -148,7 +148,7 @@ pub struct LambdaConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaConfiguration {
@@ -177,7 +177,7 @@ pub struct SNSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the target SNS topic.
@@ -188,7 +188,7 @@ pub struct SNSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
+    pub sns_topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SNSConfiguration {

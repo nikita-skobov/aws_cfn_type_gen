@@ -12,7 +12,7 @@ pub struct CfnAppBlock {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// The display name of the app block.
     ///
@@ -25,7 +25,7 @@ pub struct CfnAppBlock {
     /// Update requires: Replacement
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     /// The name of the app block.
     ///
@@ -39,7 +39,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// The setup script details of the app block.
     ///
@@ -84,30 +84,36 @@ impl cfn_resources::CfnResource for CfnAppBlock {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.display_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'display_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'display_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.setup_script_details.validate()?;
@@ -130,7 +136,7 @@ pub struct S3Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     ///
     /// The S3 key of the S3 object of the virtual hard disk.
@@ -141,7 +147,7 @@ pub struct S3Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -171,7 +177,7 @@ pub struct ScriptDetails {
     /// Update requires: Replacement
     #[serde(rename = "ExecutableParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub executable_parameters: Option<String>,
+    pub executable_parameters: Option<cfn_resources::StrVal>,
 
     ///
     /// The run path for the script.
@@ -182,7 +188,7 @@ pub struct ScriptDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutablePath")]
-    pub executable_path: String,
+    pub executable_path: cfn_resources::StrVal,
 
     ///
     /// The S3 object location of the script.
@@ -240,7 +246,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -250,7 +256,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

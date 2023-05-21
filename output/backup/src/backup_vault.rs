@@ -28,7 +28,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupVaultName")]
-    pub backup_vault_name: String,
+    pub backup_vault_name: cfn_resources::StrVal,
 
     ///
     /// Metadata that you can assign to help organize the resources that you create. Each tag is     a key-value pair.
@@ -54,7 +54,7 @@ pub struct CfnBackupVault {
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_key_arn: Option<String>,
+    pub encryption_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration for AWS Backup Vault     Lock.
@@ -193,7 +193,7 @@ pub struct NotificationObjectType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SNSTopicArn")]
-    pub snstopic_arn: String,
+    pub snstopic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NotificationObjectType {

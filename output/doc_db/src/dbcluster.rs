@@ -58,7 +58,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_identifier: Option<String>,
+    pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the cluster parameter group to associate with this       cluster.
@@ -70,7 +70,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBClusterParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_parameter_group_name: Option<String>,
+    pub dbcluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A subnet group to associate with this cluster.
@@ -86,7 +86,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsubnet_group_name: Option<String>,
+    pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Protects clusters from being accidentally deleted. If enabled, the     cluster cannot be deleted unless it is modified and      DeletionProtection is disabled.
@@ -122,7 +122,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS KMS key identifier for an encrypted cluster.
@@ -142,7 +142,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The password for the master database user. This password can       contain any printable ASCII character except forward slash (/),       double quote ("), or the "at" symbol (@).
@@ -156,7 +156,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_password: Option<String>,
+    pub master_user_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the master user for the cluster.
@@ -172,7 +172,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "MasterUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_username: Option<String>,
+    pub master_username: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the port that the database engine is listening on.
@@ -202,7 +202,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_backup_window: Option<String>,
+    pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The weekly time range during which system maintenance can occur,       in Universal Coordinated Time (UTC).
@@ -222,7 +222,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -233,7 +233,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "RestoreToTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub restore_to_time: Option<String>,
+    pub restore_to_time: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -244,7 +244,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "RestoreType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub restore_type: Option<String>,
+    pub restore_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the snapshot or cluster snapshot to restore from.
@@ -262,7 +262,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_identifier: Option<String>,
+    pub snapshot_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -273,7 +273,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbcluster_identifier: Option<String>,
+    pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the cluster is encrypted.
@@ -354,7 +354,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -364,7 +364,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

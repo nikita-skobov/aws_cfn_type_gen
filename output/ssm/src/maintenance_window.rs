@@ -43,7 +43,7 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The duration of the maintenance window in hours.
@@ -70,7 +70,7 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<String>,
+    pub end_date: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the maintenance window.
@@ -87,7 +87,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The schedule of the maintenance window in the form of a cron or rate expression.
@@ -102,7 +102,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    pub schedule: String,
+    pub schedule: cfn_resources::StrVal,
 
     ///
     /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
@@ -130,7 +130,7 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleTimezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_timezone: Option<String>,
+    pub schedule_timezone: Option<cfn_resources::StrVal>,
 
     ///
     /// The date and time, in ISO-8601 Extended format, for when the maintenance window is    scheduled to become active. StartDate allows you to delay activation of the Maintenance Window    until the specified future date.
@@ -142,7 +142,7 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<String>,
+    pub start_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a maintenance window to    identify the type of tasks it will run, the types of targets, and the environment it will run    in.
@@ -188,20 +188,24 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindow {
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -225,38 +229,46 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindow {
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.schedule;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schedule'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.schedule;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'schedule'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'schedule'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.schedule_offset {
@@ -307,7 +319,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -317,7 +329,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

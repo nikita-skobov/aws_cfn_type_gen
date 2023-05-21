@@ -15,7 +15,7 @@ pub struct CfnFeature {
     /// Update requires: No interruption
     #[serde(rename = "DefaultVariation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_variation: Option<String>,
+    pub default_variation: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional description of the feature.
@@ -27,7 +27,7 @@ pub struct CfnFeature {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify users that should always be served a specific variation of a feature. Each user       is specified by a key-value pair . For each key, specify a user by entering their user ID,       account ID, or some other identifier. For the value, specify the name of the variation that       they are to be served.
@@ -51,7 +51,7 @@ pub struct CfnFeature {
     /// Update requires: No interruption
     #[serde(rename = "EvaluationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub evaluation_strategy: Option<String>,
+    pub evaluation_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the feature. It can include up to 127 characters.
@@ -62,7 +62,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The name or ARN of the project that is to contain the new feature.
@@ -73,7 +73,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Project")]
-    pub project: String,
+    pub project: cfn_resources::StrVal,
 
     ///
     /// Assigns one or more tags (key-value pairs) to the feature.
@@ -136,7 +136,7 @@ pub struct EntityOverride {
     /// Update requires: No interruption
     #[serde(rename = "EntityId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entity_id: Option<String>,
+    pub entity_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the variation to serve to the user session that matches the EntityId.
@@ -148,7 +148,7 @@ pub struct EntityOverride {
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub variation: Option<String>,
+    pub variation: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EntityOverride {
@@ -182,7 +182,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -192,7 +192,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -258,7 +258,7 @@ pub struct VariationObject {
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub string_value: Option<String>,
+    pub string_value: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the variation. It can include up to 127 characters.
@@ -269,7 +269,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariationName")]
-    pub variation_name: String,
+    pub variation_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VariationObject {

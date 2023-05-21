@@ -21,7 +21,7 @@ pub struct CfnSecret {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A structure that specifies how to generate a password to encrypt and store in the secret. To include a specific string    in the secret, use SecretString instead. If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
@@ -53,7 +53,7 @@ pub struct CfnSecret {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the new secret.
@@ -69,7 +69,7 @@ pub struct CfnSecret {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom type that specifies a Region and the KmsKeyId for a replica secret.
@@ -93,7 +93,7 @@ pub struct CfnSecret {
     /// Update requires: No interruption
     #[serde(rename = "SecretString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_string: Option<String>,
+    pub secret_string: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags to attach to the secret. Each tag is a key and value pair of strings in a    JSON text string, for example:
@@ -153,7 +153,7 @@ pub struct GenerateSecretString {
     /// Update requires: No interruption
     #[serde(rename = "ExcludeCharacters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclude_characters: Option<String>,
+    pub exclude_characters: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to exclude lowercase letters from the password. If    you don't include this switch, the password can contain lowercase letters.
@@ -213,7 +213,7 @@ pub struct GenerateSecretString {
     /// Update requires: No interruption
     #[serde(rename = "GenerateStringKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub generate_string_key: Option<String>,
+    pub generate_string_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to include the space character. If you    include this switch, the password can contain space characters.
@@ -261,7 +261,7 @@ pub struct GenerateSecretString {
     /// Update requires: No interruption
     #[serde(rename = "SecretStringTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_string_template: Option<String>,
+    pub secret_string_template: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GenerateSecretString {
@@ -291,7 +291,7 @@ pub struct ReplicaRegion {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) A string that represents a Region, for example "us-east-1".
@@ -302,7 +302,7 @@ pub struct ReplicaRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    pub region: String,
+    pub region: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ReplicaRegion {
@@ -336,7 +336,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -346,7 +346,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

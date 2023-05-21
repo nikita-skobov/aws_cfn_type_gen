@@ -149,7 +149,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_identifier: Option<String>,
+    pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6gd.xlarge.       Not all DB instance classes are available in all AWS Regions, or for all database engines.
@@ -167,7 +167,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBClusterInstanceClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_instance_class: Option<String>,
+    pub dbcluster_instance_class: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the DB cluster parameter group to associate with this DB cluster.
@@ -187,7 +187,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBClusterParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_parameter_group_name: Option<String>,
+    pub dbcluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the DB parameter group to apply to all instances of the DB cluster.
@@ -207,7 +207,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_parameter_group_name: Option<String>,
+    pub dbinstance_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A DB subnet group that you want to associate with this DB cluster.
@@ -223,7 +223,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsubnet_group_name: Option<String>,
+    pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Reserved for future use.
@@ -235,7 +235,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBSystemId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsystem_id: Option<String>,
+    pub dbsystem_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of your database. If you don't provide a name, then Amazon RDS won't create a       database in this DB cluster. For naming constraints, see Naming         Constraints in the Amazon Aurora User Guide.
@@ -249,7 +249,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether the DB cluster has deletion protection enabled.       The database can't be deleted when deletion protection is enabled. By default,       deletion protection is disabled.
@@ -281,7 +281,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the name of the IAM role to use when making API calls to the Directory Service.
@@ -295,7 +295,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DomainIAMRoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_iamrole_name: Option<String>,
+    pub domain_iamrole_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of log types that need to be enabled for exporting to CloudWatch Logs. The values       in the list depend on the DB engine being used. For more information, see                Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide.
@@ -369,7 +369,7 @@ pub struct CfnDBCluster {
     /// Update requires: Some interruptions
     #[serde(rename = "Engine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine: Option<String>,
+    pub engine: Option<cfn_resources::StrVal>,
 
     ///
     /// The DB engine mode of the DB cluster, either provisioned, serverless,       parallelquery, global, or multimaster.
@@ -397,7 +397,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "EngineMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_mode: Option<String>,
+    pub engine_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the database engine to use.
@@ -423,7 +423,7 @@ pub struct CfnDBCluster {
     /// Update requires: Some interruptions
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// If you are configuring an Aurora global database cluster and want your Aurora DB cluster to be a secondary member in the global database       cluster, specify the global cluster ID of the global database cluster. To define the primary database cluster of the global cluster,       use the AWS::RDS::GlobalCluster       resource.
@@ -443,7 +443,7 @@ pub struct CfnDBCluster {
     /// Update requires: Some interruptions
     #[serde(rename = "GlobalClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_cluster_identifier: Option<String>,
+    pub global_cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of Provisioned IOPS (input/output operations per second) to be initially allocated       for each DB instance in the Multi-AZ DB cluster.
@@ -479,7 +479,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether to manage the master user password with AWS Secrets Manager.
@@ -515,7 +515,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_password: Option<String>,
+    pub master_user_password: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
@@ -545,7 +545,7 @@ pub struct CfnDBCluster {
     /// Update requires: Some interruptions
     #[serde(rename = "MasterUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_username: Option<String>,
+    pub master_username: Option<cfn_resources::StrVal>,
 
     ///
     /// The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off       collecting Enhanced Monitoring metrics, specify 0. The default is 0.
@@ -579,7 +579,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "MonitoringRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub monitoring_role_arn: Option<String>,
+    pub monitoring_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The network type of the DB cluster.
@@ -601,7 +601,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "NetworkType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_type: Option<String>,
+    pub network_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether to turn on Performance Insights for the DB cluster.
@@ -635,7 +635,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PerformanceInsightsKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub performance_insights_kms_key_id: Option<String>,
+    pub performance_insights_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days to retain Performance Insights data. The default is 7 days. The following values are valid:
@@ -695,7 +695,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_backup_window: Option<String>,
+    pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
@@ -717,7 +717,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether the DB cluster is publicly accessible.
@@ -759,7 +759,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationSourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_source_identifier: Option<String>,
+    pub replication_source_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The date and time to restore the DB cluster to.
@@ -801,7 +801,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "RestoreType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub restore_type: Option<String>,
+    pub restore_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
@@ -859,7 +859,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_identifier: Option<String>,
+    pub snapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// When restoring a DB cluster to a point in time, the identifier of the source DB cluster from which to restore.
@@ -877,7 +877,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbcluster_identifier: Option<String>,
+    pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region which contains the source DB cluster when replicating a DB cluster. For       example, us-east-1.
@@ -891,7 +891,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SourceRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_region: Option<String>,
+    pub source_region: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the DB cluster is encrypted.
@@ -935,7 +935,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "StorageType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_type: Option<String>,
+    pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional array of key-value pairs to apply to this DB cluster.
@@ -1034,7 +1034,7 @@ pub struct DBClusterRole {
     /// Update requires: No interruption
     #[serde(rename = "FeatureName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub feature_name: Option<String>,
+    pub feature_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
@@ -1045,7 +1045,7 @@ pub struct DBClusterRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DBClusterRole {
@@ -1075,7 +1075,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the port that the database engine is listening on.
@@ -1087,7 +1087,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Endpoint {
@@ -1119,7 +1119,7 @@ pub struct MasterUserSecret {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the secret.
@@ -1131,7 +1131,7 @@ pub struct MasterUserSecret {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MasterUserSecret {
@@ -1167,7 +1167,7 @@ pub struct ReadEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ReadEndpoint {
@@ -1289,7 +1289,7 @@ pub struct ScalingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TimeoutAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timeout_action: Option<String>,
+    pub timeout_action: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ScalingConfiguration {
@@ -1373,7 +1373,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1383,7 +1383,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

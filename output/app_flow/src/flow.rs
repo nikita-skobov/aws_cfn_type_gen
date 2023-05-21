@@ -15,7 +15,7 @@ pub struct CfnFlow {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration that controls how Amazon AppFlow places data in the destination    connector.
@@ -41,7 +41,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FlowName")]
-    pub flow_name: String,
+    pub flow_name: cfn_resources::StrVal,
 
     ///
     /// Indicates the current status of the flow.
@@ -73,7 +73,7 @@ pub struct CfnFlow {
     /// Update requires: Replacement
     #[serde(rename = "KMSArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmsarn: Option<String>,
+    pub kmsarn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -176,38 +176,46 @@ impl cfn_resources::CfnResource for CfnFlow {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.flow_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'flow_name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.kmsarn {
-            if the_val.len() > 2048 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'kmsarn'. {} is greater than 2048",
-                    the_val.len()
+                    "Max validation failed on field 'flow_name'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.kmsarn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kmsarn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kmsarn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.kmsarn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kmsarn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -299,7 +307,7 @@ pub struct AmplitudeSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AmplitudeSourceProperties {
@@ -314,11 +322,13 @@ impl cfn_resources::CfnResource for AmplitudeSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -435,7 +445,7 @@ pub struct ConnectorOperator {
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pardot: Option<String>,
+    pub pardot: Option<cfn_resources::StrVal>,
 
     ///
     /// The operation to be performed on the provided Amazon S3 source fields.
@@ -1750,7 +1760,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityName")]
-    pub entity_name: String,
+    pub entity_name: cfn_resources::StrVal,
 
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the custom connector as destination.
@@ -1828,11 +1838,13 @@ impl cfn_resources::CfnResource for CustomConnectorDestinationProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.entity_name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'entity_name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'entity_name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         self.error_handling_config
@@ -1871,7 +1883,7 @@ pub struct CustomConnectorSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityName")]
-    pub entity_name: String,
+    pub entity_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomConnectorSourceProperties {
@@ -1886,11 +1898,13 @@ impl cfn_resources::CfnResource for CustomConnectorSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.entity_name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'entity_name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'entity_name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1913,7 +1927,7 @@ pub struct DatadogSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatadogSourceProperties {
@@ -1928,11 +1942,13 @@ impl cfn_resources::CfnResource for DatadogSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2144,7 +2160,7 @@ pub struct DestinationFlowConfig {
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_version: Option<String>,
+    pub api_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the connector profile. This name must be unique for each connector profile in    the AWS account.
@@ -2160,7 +2176,7 @@ pub struct DestinationFlowConfig {
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connector_profile_name: Option<String>,
+    pub connector_profile_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of destination connector, such as Sales force, Amazon S3, and so on.
@@ -2227,17 +2243,21 @@ impl cfn_resources::CfnResource for DestinationFlowConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.api_version {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'api_version'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'api_version'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.connector_profile_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -2263,7 +2283,7 @@ pub struct DynatraceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DynatraceSourceProperties {
@@ -2278,11 +2298,13 @@ impl cfn_resources::CfnResource for DynatraceSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2308,7 +2330,7 @@ pub struct ErrorHandlingConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the Amazon S3 bucket prefix.
@@ -2324,7 +2346,7 @@ pub struct ErrorHandlingConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies if the flow should fail after the first instance of a failure when attempting    to place data in the destination.
@@ -2350,29 +2372,35 @@ impl cfn_resources::CfnResource for ErrorHandlingConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2412,7 +2440,7 @@ pub struct EventBridgeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EventBridgeDestinationProperties {
@@ -2431,11 +2459,13 @@ impl cfn_resources::CfnResource for EventBridgeDestinationProperties {
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2453,7 +2483,7 @@ pub struct GlueDataCatalog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -2463,7 +2493,7 @@ pub struct GlueDataCatalog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -2473,7 +2503,7 @@ pub struct GlueDataCatalog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TablePrefix")]
-    pub table_prefix: String,
+    pub table_prefix: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GlueDataCatalog {
@@ -2506,7 +2536,7 @@ pub struct GoogleAnalyticsSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GoogleAnalyticsSourceProperties {
@@ -2521,11 +2551,13 @@ impl cfn_resources::CfnResource for GoogleAnalyticsSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2549,7 +2581,7 @@ pub struct IncrementalPullConfig {
     /// Update requires: No interruption
     #[serde(rename = "DatetimeTypeFieldName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub datetime_type_field_name: Option<String>,
+    pub datetime_type_field_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IncrementalPullConfig {
@@ -2563,8 +2595,10 @@ impl cfn_resources::CfnResource for IncrementalPullConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.datetime_type_field_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'datetime_type_field_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'datetime_type_field_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -2588,7 +2622,7 @@ pub struct InforNexusSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InforNexusSourceProperties {
@@ -2603,11 +2637,13 @@ impl cfn_resources::CfnResource for InforNexusSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2627,7 +2663,7 @@ pub struct LookoutMetricsDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "Object")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object: Option<String>,
+    pub object: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LookoutMetricsDestinationProperties {
@@ -2672,7 +2708,7 @@ pub struct MarketoDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MarketoDestinationProperties {
@@ -2691,11 +2727,13 @@ impl cfn_resources::CfnResource for MarketoDestinationProperties {
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2718,7 +2756,7 @@ pub struct MarketoSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MarketoSourceProperties {
@@ -2733,11 +2771,13 @@ impl cfn_resources::CfnResource for MarketoSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2788,7 +2828,7 @@ pub struct PardotSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PardotSourceProperties {
@@ -2929,7 +2969,7 @@ pub struct RedshiftDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the Amazon Redshift destination. For example, this setting would determine if the flow    should fail after one insertion error, or continue and attempt to insert every record    regardless of the initial failure. ErrorHandlingConfig is a part of the    destination connector details.
@@ -2958,7 +2998,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntermediateBucketName")]
-    pub intermediate_bucket_name: String,
+    pub intermediate_bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object specified in the Amazon Redshift flow destination.
@@ -2973,7 +3013,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RedshiftDestinationProperties {
@@ -2987,11 +3027,13 @@ impl cfn_resources::CfnResource for RedshiftDestinationProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3001,29 +3043,32 @@ impl cfn_resources::CfnResource for RedshiftDestinationProperties {
 
         let the_val = &self.intermediate_bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63", s.len()));
+            }
         }
 
         let the_val = &self.intermediate_bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'intermediate_bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'intermediate_bucket_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3048,7 +3093,7 @@ pub struct S3DestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object key for the destination bucket in which Amazon AppFlow places the files.
@@ -3064,7 +3109,7 @@ pub struct S3DestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration that determines how Amazon AppFlow should format the flow output    data when Amazon S3 is used as the destination.
@@ -3091,28 +3136,34 @@ impl cfn_resources::CfnResource for S3DestinationProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3287,7 +3338,7 @@ pub struct S3SourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object key for the Amazon S3 bucket in which the source files are stored.
@@ -3302,7 +3353,7 @@ pub struct S3SourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    pub bucket_prefix: String,
+    pub bucket_prefix: cfn_resources::StrVal,
 
     ///
     /// When you use Amazon S3 as the source, the configuration format that you provide    the flow input data.
@@ -3329,29 +3380,35 @@ impl cfn_resources::CfnResource for S3SourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_prefix;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.s3_input_format_config
@@ -3402,7 +3459,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectPath")]
-    pub object_path: String,
+    pub object_path: cfn_resources::StrVal,
 
     ///
     /// Determines how Amazon AppFlow handles the success response that it gets from the    connector after placing data.
@@ -3428,7 +3485,7 @@ pub struct SAPODataDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub write_operation_type: Option<String>,
+    pub write_operation_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SAPODataDestinationProperties {
@@ -3447,11 +3504,13 @@ impl cfn_resources::CfnResource for SAPODataDestinationProperties {
 
         let the_val = &self.object_path;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object_path'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object_path'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.success_response_handling_config
@@ -3478,7 +3537,7 @@ pub struct SAPODataSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectPath")]
-    pub object_path: String,
+    pub object_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SAPODataSourceProperties {
@@ -3493,11 +3552,13 @@ impl cfn_resources::CfnResource for SAPODataSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object_path;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object_path'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object_path'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3560,7 +3621,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 
     ///
     /// This specifies the type of write operation to be performed in Salesforce. When the value    is UPSERT, then idFieldNames is required.
@@ -3639,11 +3700,13 @@ impl cfn_resources::CfnResource for SalesforceDestinationProperties {
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3706,7 +3769,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -3742,11 +3805,13 @@ impl cfn_resources::CfnResource for SalesforceSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3818,7 +3883,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
+    pub schedule_expression: cfn_resources::StrVal,
 
     ///
     /// Specifies the optional offset that is added to the time interval for a schedule-triggered    flow.
@@ -3860,7 +3925,7 @@ pub struct ScheduledTriggerProperties {
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_zone: Option<String>,
+    pub time_zone: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -3892,19 +3957,23 @@ impl cfn_resources::CfnResource for ScheduledTriggerProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.schedule_expression;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schedule_expression'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule_expression'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.time_zone {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'time_zone'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'time_zone'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -3928,7 +3997,7 @@ pub struct ServiceNowSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ServiceNowSourceProperties {
@@ -3943,11 +4012,13 @@ impl cfn_resources::CfnResource for ServiceNowSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3970,7 +4041,7 @@ pub struct SingularSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SingularSourceProperties {
@@ -3985,11 +4056,13 @@ impl cfn_resources::CfnResource for SingularSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -4012,7 +4085,7 @@ pub struct SlackSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SlackSourceProperties {
@@ -4027,11 +4100,13 @@ impl cfn_resources::CfnResource for SlackSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -4055,7 +4130,7 @@ pub struct SnowflakeDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the Snowflake destination. For example, this setting would determine if the flow should fail    after one insertion error, or continue and attempt to insert every record regardless of the    initial failure. ErrorHandlingConfig is a part of the destination connector    details.
@@ -4084,7 +4159,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntermediateBucketName")]
-    pub intermediate_bucket_name: String,
+    pub intermediate_bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object specified in the Snowflake flow destination.
@@ -4099,7 +4174,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
@@ -4113,11 +4188,13 @@ impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -4127,29 +4204,32 @@ impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
 
         let the_val = &self.intermediate_bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63", s.len()));
+            }
         }
 
         let the_val = &self.intermediate_bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'intermediate_bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'intermediate_bucket_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -4448,7 +4528,7 @@ pub struct SourceFlowConfig {
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_version: Option<String>,
+    pub api_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the connector profile. This name must be unique for each connector profile in    the AWS account.
@@ -4464,7 +4544,7 @@ pub struct SourceFlowConfig {
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connector_profile_name: Option<String>,
+    pub connector_profile_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of connector, such as Salesforce, Amplitude, and so on.
@@ -4619,17 +4699,21 @@ impl cfn_resources::CfnResource for SourceFlowConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.api_version {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'api_version'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'api_version'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.connector_profile_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -4664,7 +4748,7 @@ pub struct SuccessResponseHandlingConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 bucket prefix.
@@ -4680,7 +4764,7 @@ pub struct SuccessResponseHandlingConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SuccessResponseHandlingConfig {
@@ -4694,29 +4778,35 @@ impl cfn_resources::CfnResource for SuccessResponseHandlingConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -4741,7 +4831,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -4751,7 +4841,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -4797,7 +4887,7 @@ pub struct Task {
     /// Update requires: No interruption
     #[serde(rename = "DestinationField")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_field: Option<String>,
+    pub destination_field: Option<cfn_resources::StrVal>,
 
     ///
     /// The source fields to which a particular task is applied.
@@ -4892,11 +4982,10 @@ impl cfn_resources::CfnResource for Task {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.destination_field {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'destination_field'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'destination_field'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -4929,7 +5018,7 @@ pub struct TaskPropertiesObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -5031,7 +5120,7 @@ pub struct TrendmicroSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TrendmicroSourceProperties {
@@ -5046,11 +5135,13 @@ impl cfn_resources::CfnResource for TrendmicroSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -5143,7 +5234,7 @@ pub struct UpsolverDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The object key for the destination Upsolver Amazon S3 bucket in which Amazon AppFlow places the files.
@@ -5159,7 +5250,7 @@ pub struct UpsolverDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration that determines how data is formatted when Upsolver is used as the flow    destination.
@@ -5185,28 +5276,34 @@ impl cfn_resources::CfnResource for UpsolverDestinationProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 16 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 16",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 16 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 16",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -5315,7 +5412,7 @@ pub struct VeevaSourceProperties {
     /// Update requires: No interruption
     #[serde(rename = "DocumentType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub document_type: Option<String>,
+    pub document_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Boolean value to include All Versions of files in Veeva document extract flow.
@@ -5366,7 +5463,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VeevaSourceProperties {
@@ -5380,21 +5477,25 @@ impl cfn_resources::CfnResource for VeevaSourceProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.document_type {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'document_type'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'document_type'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -5441,7 +5542,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 
     ///
     /// The possible write operations in the destination connector. When this value is not    provided, this defaults to the INSERT operation.
@@ -5453,7 +5554,7 @@ pub struct ZendeskDestinationProperties {
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub write_operation_type: Option<String>,
+    pub write_operation_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ZendeskDestinationProperties {
@@ -5472,11 +5573,13 @@ impl cfn_resources::CfnResource for ZendeskDestinationProperties {
 
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -5499,7 +5602,7 @@ pub struct ZendeskSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    pub object: String,
+    pub object: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ZendeskSourceProperties {
@@ -5514,11 +5617,13 @@ impl cfn_resources::CfnResource for ZendeskSourceProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

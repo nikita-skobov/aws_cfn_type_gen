@@ -14,7 +14,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// An optional description for this configuration.
@@ -28,7 +28,7 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of an environment whose settings you want to use to create the configuration    template. You must specify EnvironmentId if you don't specify     PlatformArn, SolutionStackName, or     SourceConfiguration.
@@ -40,7 +40,7 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_id: Option<String>,
+    pub environment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these    values override the values obtained from the solution stack or the source configuration    template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the             AWS Elastic Beanstalk Developer Guide.
@@ -66,7 +66,7 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "PlatformArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_arn: Option<String>,
+    pub platform_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For    example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack    specifies the operating system, runtime, and application server for a configuration template.    It also determines the set of configuration options as well as the possible and default    values. For more information, see Supported Platforms in the             AWS Elastic Beanstalk Developer Guide.
@@ -82,7 +82,7 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "SolutionStackName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub solution_stack_name: Option<String>,
+    pub solution_stack_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An Elastic Beanstalk configuration template to base this one on. If specified, Elastic Beanstalk uses the configuration values from the specified    configuration template to create a new configuration.
@@ -115,28 +115,34 @@ impl cfn_resources::CfnResource for CfnConfigurationTemplate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -164,7 +170,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 
     ///
     /// The name of the configuration option.
@@ -175,7 +181,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionName")]
-    pub option_name: String,
+    pub option_name: cfn_resources::StrVal,
 
     ///
     /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
@@ -191,7 +197,7 @@ pub struct ConfigurationOptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_name: Option<String>,
+    pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The current value for the configuration option.
@@ -203,7 +209,7 @@ pub struct ConfigurationOptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConfigurationOptionSetting {
@@ -217,20 +223,24 @@ impl cfn_resources::CfnResource for ConfigurationOptionSetting {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.resource_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -254,7 +264,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// The name of the configuration template.
@@ -269,7 +279,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
-    pub template_name: String,
+    pub template_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SourceConfiguration {
@@ -284,38 +294,46 @@ impl cfn_resources::CfnResource for SourceConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.template_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'template_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'template_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.template_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'template_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'template_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

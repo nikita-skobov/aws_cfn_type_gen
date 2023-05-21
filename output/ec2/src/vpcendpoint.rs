@@ -72,7 +72,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
-    pub service_name: String,
+    pub service_name: cfn_resources::StrVal,
 
     ///
     /// The IDs of the subnets in which to create endpoint network interfaces.      You must specify this property for an interface endpoint or a Gateway Load Balancer endpoint.      You can't specify this property for a gateway endpoint.      For a Gateway Load Balancer endpoint, you can specify only one subnet.
@@ -111,7 +111,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

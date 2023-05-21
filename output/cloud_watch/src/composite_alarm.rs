@@ -33,7 +33,7 @@ pub struct CfnCompositeAlarm {
     /// Update requires: No interruption
     #[serde(rename = "ActionsSuppressor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub actions_suppressor: Option<String>,
+    pub actions_suppressor: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum time     in seconds     that the composite alarm waits     after suppressor alarm goes out     of the ALARM state.     After this time,     the composite alarm performs its actions.
@@ -84,7 +84,7 @@ pub struct CfnCompositeAlarm {
     /// Update requires: No interruption
     #[serde(rename = "AlarmDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alarm_description: Option<String>,
+    pub alarm_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the composite alarm. This name must be unique within your AWS account.
@@ -96,7 +96,7 @@ pub struct CfnCompositeAlarm {
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alarm_name: Option<String>,
+    pub alarm_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state. For each       alarm that you reference, you designate a function that specifies whether that alarm needs to be in ALARM state, OK state,       or INSUFFICIENT_DATA state. You can use operators (AND, OR and NOT) to combine multiple functions in a       single expression. You can use parenthesis to logically group the functions in your expression.
@@ -117,7 +117,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmRule")]
-    pub alarm_rule: String,
+    pub alarm_rule: cfn_resources::StrVal,
 
     ///
     /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.

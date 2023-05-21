@@ -23,7 +23,7 @@ pub struct CfnAssetModel {
     /// Update requires: No interruption
     #[serde(rename = "AssetModelDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub asset_model_description: Option<String>,
+    pub asset_model_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The hierarchy definitions of the asset model. Each hierarchy specifies an asset model    whose assets can be children of any other assets created from this asset model. For more    information, see Defining relationships between assets in the AWS IoT SiteWiseUser Guide.
@@ -50,7 +50,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelName")]
-    pub asset_model_name: String,
+    pub asset_model_name: cfn_resources::StrVal,
 
     ///
     /// The property definitions of the asset model. For more information, see       Defining data properties in the AWS IoT SiteWise User Guide.
@@ -122,7 +122,7 @@ pub struct AssetModelCompositeModel {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the composite model.
@@ -133,7 +133,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The type of the composite model. For alarm composite models, this type is     AWS/ALARM.
@@ -144,7 +144,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AssetModelCompositeModel {
@@ -173,7 +173,7 @@ pub struct AssetModelHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChildAssetModelId")]
-    pub child_asset_model_id: String,
+    pub child_asset_model_id: cfn_resources::StrVal,
 
     ///
     /// The LogicalID of the asset model hierarchy. This ID is a hierarchyLogicalId.
@@ -186,7 +186,7 @@ pub struct AssetModelHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
-    pub logical_id: String,
+    pub logical_id: cfn_resources::StrVal,
 
     ///
     /// The name of the asset model hierarchy.
@@ -199,7 +199,7 @@ pub struct AssetModelHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AssetModelHierarchy {
@@ -228,7 +228,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
-    pub data_type: String,
+    pub data_type: cfn_resources::StrVal,
 
     ///
     /// The data type of the structure for this property. This parameter exists on properties that    have the STRUCT data type.
@@ -240,7 +240,7 @@ pub struct AssetModelProperty {
     /// Update requires: No interruption
     #[serde(rename = "DataTypeSpec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_type_spec: Option<String>,
+    pub data_type_spec: Option<cfn_resources::StrVal>,
 
     ///
     /// The LogicalID of the asset model property.
@@ -253,7 +253,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
-    pub logical_id: String,
+    pub logical_id: cfn_resources::StrVal,
 
     ///
     /// The name of the asset model property.
@@ -266,7 +266,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
@@ -289,7 +289,7 @@ pub struct AssetModelProperty {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit: Option<String>,
+    pub unit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AssetModelProperty {
@@ -321,7 +321,7 @@ pub struct Attribute {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Attribute {
@@ -352,7 +352,7 @@ pub struct ExpressionVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The variable that identifies an asset property from which to use values.
@@ -400,7 +400,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    pub expression: String,
+    pub expression: cfn_resources::StrVal,
 
     ///
     /// The list of variables used in the expression.
@@ -529,7 +529,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    pub type_name: String,
+    pub type_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PropertyType {
@@ -573,7 +573,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -583,7 +583,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -616,7 +616,7 @@ pub struct Transform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    pub expression: String,
+    pub expression: cfn_resources::StrVal,
 
     ///
     /// The list of variables used in the expression.
@@ -664,7 +664,7 @@ pub struct TumblingWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    pub interval: String,
+    pub interval: cfn_resources::StrVal,
 
     ///
     /// The offset for the tumbling window. The offset parameter accepts the    following:
@@ -678,7 +678,7 @@ pub struct TumblingWindow {
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<String>,
+    pub offset: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TumblingWindow {
@@ -710,7 +710,7 @@ pub struct VariableValue {
     /// Update requires: No interruption
     #[serde(rename = "HierarchyLogicalId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hierarchy_logical_id: Option<String>,
+    pub hierarchy_logical_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The LogicalID of the property to use as the variable.
@@ -721,7 +721,7 @@ pub struct VariableValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyLogicalId")]
-    pub property_logical_id: String,
+    pub property_logical_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VariableValue {

@@ -20,7 +20,7 @@ pub struct CfnFargateProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The name of the Fargate profile.
@@ -32,7 +32,7 @@ pub struct CfnFargateProfile {
     /// Update requires: Replacement
     #[serde(rename = "FargateProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fargate_profile_name: Option<String>,
+    pub fargate_profile_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the pod execution role to use for pods that match the selectors in       the Fargate profile. The pod execution role allows Fargate       infrastructure to register with your cluster as a node, and it provides read access to         Amazon ECR image repositories. For more information, see Pod         Execution Role in the Amazon EKS User Guide.
@@ -43,7 +43,7 @@ pub struct CfnFargateProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PodExecutionRoleArn")]
-    pub pod_execution_role_arn: String,
+    pub pod_execution_role_arn: cfn_resources::StrVal,
 
     ///
     /// The selectors to match for pods to use this Fargate profile. Each       selector must have an associated namespace. Optionally, you can also specify labels for       a namespace. You may specify up to five selectors in a Fargate       profile.
@@ -107,7 +107,7 @@ pub struct Label {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// Enter a value.
@@ -118,7 +118,7 @@ pub struct Label {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Label {
@@ -159,7 +159,7 @@ pub struct Selector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Selector {
@@ -193,7 +193,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -203,7 +203,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

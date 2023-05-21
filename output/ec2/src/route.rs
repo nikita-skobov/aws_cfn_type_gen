@@ -15,7 +15,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "CarrierGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub carrier_gateway_id: Option<String>,
+    pub carrier_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 CIDR block used for the destination match.
@@ -27,7 +27,7 @@ pub struct CfnRoute {
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_cidr_block: Option<String>,
+    pub destination_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 CIDR block used for the destination match.
@@ -39,7 +39,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "DestinationIpv6CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_ipv6_cidr_block: Option<String>,
+    pub destination_ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the egress-only internet gateway.
@@ -51,7 +51,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "EgressOnlyInternetGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub egress_only_internet_gateway_id: Option<String>,
+    pub egress_only_internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of an internet gateway or virtual private gateway attached to your VPC.
@@ -63,7 +63,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "GatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gateway_id: Option<String>,
+    pub gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a NAT instance in your VPC.
@@ -75,7 +75,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the local gateway.
@@ -87,7 +87,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "LocalGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_gateway_id: Option<String>,
+    pub local_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a NAT gateway.
@@ -99,7 +99,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "NatGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nat_gateway_id: Option<String>,
+    pub nat_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the network interface.
@@ -111,7 +111,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the route table. The routing table must be associated with the same VPC that       the virtual private gateway is attached to.
@@ -122,7 +122,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RouteTableId")]
-    pub route_table_id: String,
+    pub route_table_id: cfn_resources::StrVal,
 
     ///
     /// The ID of a transit gateway.
@@ -134,7 +134,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transit_gateway_id: Option<String>,
+    pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints only.
@@ -146,7 +146,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a VPC peering connection.
@@ -158,7 +158,7 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_peering_connection_id: Option<String>,
+    pub vpc_peering_connection_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnRoute {

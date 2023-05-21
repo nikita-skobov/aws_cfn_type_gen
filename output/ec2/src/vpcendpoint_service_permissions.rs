@@ -24,7 +24,7 @@ pub struct CfnVPCEndpointServicePermissions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
-    pub service_id: String,
+    pub service_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPCEndpointServicePermissions {

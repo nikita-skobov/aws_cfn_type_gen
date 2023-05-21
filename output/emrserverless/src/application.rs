@@ -87,7 +87,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The network configuration for customer VPC connectivity for the application.
@@ -116,7 +116,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReleaseLabel")]
-    pub release_label: String,
+    pub release_label: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the application.
@@ -139,7 +139,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -194,20 +194,24 @@ impl cfn_resources::CfnResource for CfnApplication {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -217,20 +221,24 @@ impl cfn_resources::CfnResource for CfnApplication {
 
         let the_val = &self.release_label;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'release_label'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'release_label'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.release_label;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'release_label'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'release_label'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -340,7 +348,7 @@ pub struct ImageConfigurationInput {
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_uri: Option<String>,
+    pub image_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ImageConfigurationInput {
@@ -439,7 +447,7 @@ pub struct InitialCapacityConfigKeyValuePair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the initial capacity configuration per worker.
@@ -465,20 +473,24 @@ impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.value.validate()?;
@@ -505,7 +517,7 @@ pub struct MaximumAllowedResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
-    pub cpu: String,
+    pub cpu: cfn_resources::StrVal,
 
     ///
     /// The maximum allowed disk for an application.
@@ -523,7 +535,7 @@ pub struct MaximumAllowedResources {
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub disk: Option<String>,
+    pub disk: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum allowed resources for an application.
@@ -540,7 +552,7 @@ pub struct MaximumAllowedResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
-    pub memory: String,
+    pub memory: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MaximumAllowedResources {
@@ -555,56 +567,68 @@ impl cfn_resources::CfnResource for MaximumAllowedResources {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cpu;
 
-        if the_val.len() > 15 as _ {
-            return Err(format!(
-                "Max validation failed on field 'cpu'. {} is greater than 15",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cpu'. {} is greater than 15",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.cpu;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'cpu'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.disk {
-            if the_val.len() > 15 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'disk'. {} is greater than 15",
-                    the_val.len()
+                    "Min validation failed on field 'cpu'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.disk {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'disk'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.disk {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'disk'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.memory;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 15 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'disk'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'memory'. {} is greater than 15",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.memory;
 
-        if the_val.len() > 15 as _ {
-            return Err(format!(
-                "Max validation failed on field 'memory'. {} is greater than 15",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.memory;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'memory'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'memory'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -718,7 +742,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -728,7 +752,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -761,7 +785,7 @@ pub struct WorkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
-    pub cpu: String,
+    pub cpu: cfn_resources::StrVal,
 
     ///
     /// Minimum: 1
@@ -777,7 +801,7 @@ pub struct WorkerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub disk: Option<String>,
+    pub disk: Option<cfn_resources::StrVal>,
 
     ///
     /// Minimum: 1
@@ -792,7 +816,7 @@ pub struct WorkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
-    pub memory: String,
+    pub memory: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for WorkerConfiguration {
@@ -807,56 +831,68 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cpu;
 
-        if the_val.len() > 15 as _ {
-            return Err(format!(
-                "Max validation failed on field 'cpu'. {} is greater than 15",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cpu'. {} is greater than 15",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.cpu;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'cpu'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.disk {
-            if the_val.len() > 15 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'disk'. {} is greater than 15",
-                    the_val.len()
+                    "Min validation failed on field 'cpu'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.disk {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'disk'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.disk {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'disk'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.memory;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 15 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'disk'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'memory'. {} is greater than 15",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.memory;
 
-        if the_val.len() > 15 as _ {
-            return Err(format!(
-                "Max validation failed on field 'memory'. {} is greater than 15",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.memory;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'memory'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'memory'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

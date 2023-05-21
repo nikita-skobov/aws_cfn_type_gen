@@ -31,7 +31,7 @@ pub struct CfnDeployment {
     /// Update requires: Replacement
     #[serde(rename = "DeploymentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_name: Option<String>,
+    pub deployment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The deployment policies for the deployment. These policies define how the deployment    updates components and handles failure.
@@ -67,7 +67,7 @@ pub struct CfnDeployment {
     /// Update requires: Replacement
     #[serde(rename = "ParentTargetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parent_target_arn: Option<String>,
+    pub parent_target_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Application-specific metadata to attach to the deployment. You can use tags in IAM policies to control access to AWS IoT Greengrass resources. You can also use    tags to categorize your resources. For more information, see Tag your AWS IoT Greengrass Version 2     resources in the AWS IoT Greengrass V2 Developer Guide.
@@ -94,7 +94,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetArn")]
-    pub target_arn: String,
+    pub target_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDeployment {
@@ -132,7 +132,7 @@ pub struct ComponentConfigurationUpdate {
     /// Update requires: Replacement
     #[serde(rename = "Merge")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub merge: Option<String>,
+    pub merge: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of configuration nodes to reset to default values on target devices. Use JSON    pointers to specify each node to reset. JSON pointers start with a forward slash     (/) and use forward slashes to separate the key for each level in the object.    For more information, see the JSON pointer     specification and Reset configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
@@ -174,7 +174,7 @@ pub struct ComponentDeploymentSpecification {
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_version: Option<String>,
+    pub component_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration updates to deploy for the component. You can define reset updates and    merge updates. A reset updates the keys that you specify to the default configuration for the    component. A merge updates the core device's component configuration with the keys and values    that you specify. The AWS IoT Greengrass Core software applies reset updates before it    applies merge updates. For more information, see Update component     configuration.
@@ -236,7 +236,7 @@ pub struct ComponentRunWith {
     /// Update requires: Replacement
     #[serde(rename = "PosixUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub posix_user: Option<String>,
+    pub posix_user: Option<cfn_resources::StrVal>,
 
     ///
     /// The system resource limits to apply to this component's process on the core device.     AWS IoT Greengrass supports this feature only on Linux core devices.
@@ -264,7 +264,7 @@ pub struct ComponentRunWith {
     /// Update requires: Replacement
     #[serde(rename = "WindowsUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub windows_user: Option<String>,
+    pub windows_user: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentRunWith {
@@ -304,7 +304,7 @@ pub struct DeploymentComponentUpdatePolicy {
     /// Update requires: Replacement
     #[serde(rename = "Action")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub action: Option<String>,
+    pub action: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time in seconds that each component on a device has to report that it's safe    to update. If the component waits for longer than this timeout, then the deployment proceeds    on the device.
@@ -472,7 +472,7 @@ pub struct DeploymentPolicies {
     /// Update requires: Replacement
     #[serde(rename = "FailureHandlingPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub failure_handling_policy: Option<String>,
+    pub failure_handling_policy: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeploymentPolicies {
@@ -540,7 +540,7 @@ pub struct IoTJobAbortCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 
     ///
     /// The type of job deployment failure that can cancel a job.
@@ -551,7 +551,7 @@ pub struct IoTJobAbortCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FailureType")]
-    pub failure_type: String,
+    pub failure_type: cfn_resources::StrVal,
 
     ///
     /// The minimum number of things that receive the configuration before the job can    cancel.

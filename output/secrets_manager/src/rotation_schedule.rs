@@ -53,7 +53,7 @@ pub struct CfnRotationSchedule {
     /// Update requires: No interruption
     #[serde(rename = "RotationLambdaARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rotation_lambda_arn: Option<String>,
+    pub rotation_lambda_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A structure that defines the rotation configuration for this secret.
@@ -78,7 +78,7 @@ pub struct CfnRotationSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretId")]
-    pub secret_id: String,
+    pub secret_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRotationSchedule {
@@ -120,7 +120,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "ExcludeCharacters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclude_characters: Option<String>,
+    pub exclude_characters: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the KMS key that Secrets Manager uses to encrypt the secret. If you don't    specify this value, then Secrets Manager uses the key aws/secretsmanager. If     aws/secretsmanager doesn't yet exist, then Secrets Manager creates it for you    automatically the first time it encrypts the secret value.
@@ -132,7 +132,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the secret that contains superuser credentials, if you use the    Alternating users rotation strategy. CloudFormation grants the execution role for the Lambda rotation function GetSecretValue permission to the secret in this property. For more information, see Lambda rotation function execution role permissions for Secrets Manager.
@@ -150,7 +150,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "MasterSecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_secret_arn: Option<String>,
+    pub master_secret_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the KMS key that Secrets Manager used to encrypt the superuser secret, if    you use the alternating users strategy and the superuser secret is encrypted with a customer managed key. You don't need to specify this property if the superuser secret is encrypted using the key aws/secretsmanager. CloudFormation grants the execution role for the Lambda rotation function Decrypt, DescribeKey, and GenerateDataKey permission to the key in this property. For more information, see Lambda rotation function execution role permissions for Secrets Manager.
@@ -164,7 +164,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "MasterSecretKmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_secret_kms_key_arn: Option<String>,
+    pub master_secret_kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Lambda rotation function.
@@ -176,7 +176,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "RotationLambdaName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rotation_lambda_name: Option<String>,
+    pub rotation_lambda_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The rotation template to base the rotation function on, one of the following:
@@ -189,7 +189,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationType")]
-    pub rotation_type: String,
+    pub rotation_type: cfn_resources::StrVal,
 
     ///
     /// The Python runtime version associated with the Lambda function.
@@ -201,7 +201,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub runtime: Option<String>,
+    pub runtime: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the secret that contains superuser credentials, if you use the    Alternating users rotation strategy. CloudFormation grants the execution role for the Lambda rotation function GetSecretValue permission to the secret in this property. For more information, see Lambda rotation function execution role permissions for Secrets Manager.
@@ -219,7 +219,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "SuperuserSecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub superuser_secret_arn: Option<String>,
+    pub superuser_secret_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the KMS key that Secrets Manager used to encrypt the superuser secret, if    you use the alternating users strategy and the superuser secret is encrypted with a customer managed key. You don't need to specify this property if the superuser secret is encrypted using the key aws/secretsmanager. CloudFormation grants the execution role for the Lambda rotation function Decrypt, DescribeKey, and GenerateDataKey permission to the key in this property. For more information, see Lambda rotation function execution role permissions for Secrets Manager.
@@ -233,7 +233,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "SuperuserSecretKmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub superuser_secret_kms_key_arn: Option<String>,
+    pub superuser_secret_kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A comma-separated list of security group IDs applied to the target database.
@@ -247,7 +247,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_security_group_ids: Option<String>,
+    pub vpc_security_group_ids: Option<cfn_resources::StrVal>,
 
     ///
     /// A comma separated list of VPC subnet IDs of the target database network. The Lambda    rotation function is in the same subnet group.
@@ -259,7 +259,7 @@ pub struct HostedRotationLambda {
     /// Update requires: No interruption
     #[serde(rename = "VpcSubnetIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_subnet_ids: Option<String>,
+    pub vpc_subnet_ids: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HostedRotationLambda {
@@ -303,7 +303,7 @@ pub struct RotationRules {
     /// Update requires: No interruption
     #[serde(rename = "Duration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub duration: Option<String>,
+    pub duration: Option<cfn_resources::StrVal>,
 
     ///
     /// A cron() or rate() expression that defines the schedule for    rotating your secret. Secrets Manager rotation schedules use UTC time zone. Secrets Manager rotates your secret any time during a rotation window.
@@ -319,7 +319,7 @@ pub struct RotationRules {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_expression: Option<String>,
+    pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RotationRules {

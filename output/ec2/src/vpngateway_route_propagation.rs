@@ -23,7 +23,7 @@ pub struct CfnVPNGatewayRoutePropagation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnGatewayId")]
-    pub vpn_gateway_id: String,
+    pub vpn_gateway_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPNGatewayRoutePropagation {

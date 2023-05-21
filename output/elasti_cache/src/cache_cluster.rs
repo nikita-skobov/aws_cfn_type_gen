@@ -50,7 +50,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
-    pub cache_node_type: String,
+    pub cache_node_type: cfn_resources::StrVal,
 
     ///
     /// The name of the parameter group to associate with this cluster.       If this argument is omitted, the default parameter group for the specified engine is used.       You cannot use any parameter group which has cluster-enabled='yes' when creating a cluster.
@@ -62,7 +62,7 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_parameter_group_name: Option<String>,
+    pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of security group names to associate with this cluster.
@@ -92,7 +92,7 @@ pub struct CfnCacheCluster {
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_subnet_group_name: Option<String>,
+    pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the cache cluster. If you don't specify a name, AWSCloudFormation generates a     unique physical ID and uses that ID for the cache cluster. For more information,     see Name Type.
@@ -106,7 +106,7 @@ pub struct CfnCacheCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_name: Option<String>,
+    pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the cache engine to be used for this cluster.
@@ -119,7 +119,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    pub engine: String,
+    pub engine: cfn_resources::StrVal,
 
     ///
     /// The version number of the cache engine to be used for this cluster.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
@@ -133,7 +133,7 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The network type you choose when modifying a cluster, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
@@ -186,7 +186,7 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_topic_arn: Option<String>,
+    pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of cache nodes that the cache cluster should have.
@@ -227,7 +227,7 @@ pub struct CfnCacheCluster {
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredAvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_availability_zone: Option<String>,
+    pub preferred_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the Availability Zones in which cache nodes are created. The order of the zones in the list is not important.
@@ -267,7 +267,7 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies       a Redis RDB snapshot file stored in Amazon S3.       The snapshot file is used to populate the node group (shard).       The Amazon S3 object name in the ARN cannot contain any commas.
@@ -297,7 +297,7 @@ pub struct CfnCacheCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_name: Option<String>,
+    pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days for which ElastiCache retains automatic snapshots before deleting them.      For example, if you set SnapshotRetentionLimit to 5,      a snapshot taken today is retained for 5 days before being deleted.
@@ -331,7 +331,7 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_window: Option<String>,
+    pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags to be added to this resource.
@@ -452,7 +452,7 @@ pub struct CloudWatchLogsDestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
-    pub log_group: String,
+    pub log_group: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
@@ -528,7 +528,7 @@ pub struct KinesisFirehoseDestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: String,
+    pub delivery_stream: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
@@ -566,7 +566,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationType")]
-    pub destination_type: String,
+    pub destination_type: cfn_resources::StrVal,
 
     /// Valid values are either json or text.
     ///
@@ -576,7 +576,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogFormat")]
-    pub log_format: String,
+    pub log_format: cfn_resources::StrVal,
 
     /// Valid value is either slow-log, which refers to slow-log or engine-log.
     ///
@@ -586,7 +586,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogType")]
-    pub log_type: String,
+    pub log_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
@@ -622,7 +622,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -632,7 +632,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

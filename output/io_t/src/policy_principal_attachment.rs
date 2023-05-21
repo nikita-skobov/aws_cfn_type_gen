@@ -12,7 +12,7 @@ pub struct CfnPolicyPrincipalAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 
     ///
     /// The principal, which can be a certificate ARN (as returned from the       CreateCertificate operation) or an Amazon Cognito ID.
@@ -23,7 +23,7 @@ pub struct CfnPolicyPrincipalAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnPolicyPrincipalAttachment {

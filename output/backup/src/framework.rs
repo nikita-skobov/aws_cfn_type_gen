@@ -30,7 +30,7 @@ pub struct CfnFramework {
     /// Update requires: No interruption
     #[serde(rename = "FrameworkDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework_description: Option<String>,
+    pub framework_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique name of a framework. This name is between 1 and 256 characters, starting with     a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
@@ -48,7 +48,7 @@ pub struct CfnFramework {
     /// Update requires: Replacement
     #[serde(rename = "FrameworkName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework_name: Option<String>,
+    pub framework_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags with which to tag your framework.
@@ -74,35 +74,43 @@ impl cfn_resources::CfnResource for CfnFramework {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.framework_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'framework_description'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'framework_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.framework_description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'framework_description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'framework_description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.framework_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'framework_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'framework_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.framework_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'framework_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'framework_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -122,7 +130,7 @@ pub struct ControlInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
+    pub parameter_name: cfn_resources::StrVal,
 
     ///
     /// The value of parameter, for example, hourly.
@@ -133,7 +141,7 @@ pub struct ControlInputParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
+    pub parameter_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ControlInputParameter {
@@ -236,7 +244,7 @@ pub struct FrameworkControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlName")]
-    pub control_name: String,
+    pub control_name: cfn_resources::StrVal,
 
     ///
     /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
@@ -286,7 +294,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -296,7 +304,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

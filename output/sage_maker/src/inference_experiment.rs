@@ -33,7 +33,7 @@ pub struct CfnInferenceExperiment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The desired state of the experiment after stopping. The possible states are the following:
@@ -64,7 +64,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
+    pub endpoint_name: cfn_resources::StrVal,
 
     ///
     /// The AWS Key Management Service key that Amazon SageMaker uses to encrypt captured data at rest using Amazon S3      server-side encryption.
@@ -80,7 +80,7 @@ pub struct CfnInferenceExperiment {
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of ModelVariantConfigSummary objects. There is one for each variant in the inference      experiment. Each ModelVariantConfigSummary object in the array describes the infrastructure      configuration for deploying the corresponding variant.
@@ -108,7 +108,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The ARN of the IAM role that Amazon SageMaker can assume to access model artifacts and container images, and manage      Amazon SageMaker Inference endpoints for model deployment.
@@ -125,7 +125,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The duration for which the inference experiment ran or will run.
@@ -167,7 +167,7 @@ pub struct CfnInferenceExperiment {
     /// Update requires: No interruption
     #[serde(rename = "StatusReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status_reason: Option<String>,
+    pub status_reason: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -242,66 +242,80 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.endpoint_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.kms_key {
-            if the_val.len() > 2048 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 120 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 120",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 120 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 120",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.schedule
@@ -313,11 +327,13 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.status_reason {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'status_reason'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'status_reason'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -419,7 +435,7 @@ pub struct DataStorageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 
     ///
     /// The AWS Key Management Service key that Amazon SageMaker uses to encrypt captured data at rest using Amazon S3      server-side encryption.
@@ -435,7 +451,7 @@ pub struct DataStorageConfig {
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataStorageConfig {
@@ -454,19 +470,23 @@ impl cfn_resources::CfnResource for DataStorageConfig {
 
         let the_val = &self.destination;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.kms_key {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -491,7 +511,7 @@ pub struct EndpointMetadata {
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_config_name: Option<String>,
+    pub endpoint_config_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the endpoint.
@@ -506,7 +526,7 @@ pub struct EndpointMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
+    pub endpoint_name: cfn_resources::StrVal,
 
     ///
     /// The status of the endpoint. For possible values of the status of an endpoint, see       https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferenceexperiment-endpointmetadata.html#cfn-sagemaker-inferenceexperiment-endpointmetadata-endpointstatus.
@@ -575,21 +595,22 @@ impl cfn_resources::CfnResource for EndpointMetadata {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.endpoint_config_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         let the_val = &self.endpoint_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -611,7 +632,7 @@ pub struct InferenceExperimentSchedule {
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_time: Option<String>,
+    pub end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The timestamp at which the inference experiment started or will start.
@@ -623,7 +644,7 @@ pub struct InferenceExperimentSchedule {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InferenceExperimentSchedule {
@@ -726,7 +747,7 @@ pub struct ModelVariantConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelName")]
-    pub model_name: String,
+    pub model_name: cfn_resources::StrVal,
 
     ///
     /// The name of the variant.
@@ -741,7 +762,7 @@ pub struct ModelVariantConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariantName")]
-    pub variant_name: String,
+    pub variant_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ModelVariantConfig {
@@ -758,20 +779,24 @@ impl cfn_resources::CfnResource for ModelVariantConfig {
 
         let the_val = &self.model_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'model_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.variant_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'variant_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'variant_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1145,7 +1170,7 @@ pub struct ShadowModeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceModelVariantName")]
-    pub source_model_variant_name: String,
+    pub source_model_variant_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ShadowModeConfig {
@@ -1169,11 +1194,10 @@ impl cfn_resources::CfnResource for ShadowModeConfig {
 
         let the_val = &self.source_model_variant_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_model_variant_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'source_model_variant_name'. {} is greater than 63", s.len()));
+            }
         }
 
         Ok(())
@@ -1209,7 +1233,7 @@ pub struct ShadowModelVariantConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowModelVariantName")]
-    pub shadow_model_variant_name: String,
+    pub shadow_model_variant_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ShadowModelVariantConfig {
@@ -1233,11 +1257,10 @@ impl cfn_resources::CfnResource for ShadowModelVariantConfig {
 
         let the_val = &self.shadow_model_variant_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'shadow_model_variant_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'shadow_model_variant_name'. {} is greater than 63", s.len()));
+            }
         }
 
         Ok(())
@@ -1261,7 +1284,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1271,7 +1294,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

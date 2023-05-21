@@ -15,7 +15,7 @@ pub struct CfnResolverRuleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Resolver rule that you associated with the VPC that is specified by VPCId.
@@ -30,7 +30,7 @@ pub struct CfnResolverRuleAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResolverRuleId")]
-    pub resolver_rule_id: String,
+    pub resolver_rule_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the VPC that you associated the Resolver rule with.
@@ -45,7 +45,7 @@ pub struct CfnResolverRuleAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VPCId")]
-    pub vpcid: String,
+    pub vpcid: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResolverRuleAssociation {
@@ -59,48 +59,58 @@ impl cfn_resources::CfnResource for CfnResolverRuleAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.resolver_rule_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
+                    "Max validation failed on field 'resolver_rule_id'. {} is greater than 64",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.resolver_rule_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resolver_rule_id'. {} is greater than 64",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.resolver_rule_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resolver_rule_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resolver_rule_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpcid;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpcid'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpcid'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpcid;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpcid'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpcid'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

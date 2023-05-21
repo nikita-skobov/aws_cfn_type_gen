@@ -67,7 +67,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster is created.
@@ -93,7 +93,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZoneRelocationStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone_relocation_status: Option<String>,
+    pub availability_zone_relocation_status: Option<cfn_resources::StrVal>,
 
     ///
     /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
@@ -125,7 +125,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_identifier: Option<String>,
+    pub cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the parameter group to be associated with this cluster.
@@ -145,7 +145,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ClusterParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_parameter_group_name: Option<String>,
+    pub cluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of security groups to be associated with this cluster.
@@ -175,7 +175,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_subnet_group_name: Option<String>,
+    pub cluster_subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the cluster. When cluster type is specified as
@@ -214,7 +214,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ClusterVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_version: Option<String>,
+    pub cluster_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the first database to be created when the cluster is created.
@@ -235,7 +235,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBName")]
-    pub dbname: String,
+    pub dbname: cfn_resources::StrVal,
 
     ///
     /// A Boolean indicating whether to enable the deferred maintenance window.
@@ -271,7 +271,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenanceEndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub defer_maintenance_end_time: Option<String>,
+    pub defer_maintenance_end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// A timestamp indicating the start time for the deferred maintenance window.
@@ -283,7 +283,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub defer_maintenance_start_time: Option<String>,
+    pub defer_maintenance_start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination region that snapshots are automatically copied to when cross-region       snapshot copy is enabled.
@@ -297,7 +297,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "DestinationRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_region: Option<String>,
+    pub destination_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elastic IP (EIP) address for the cluster.
@@ -313,7 +313,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ElasticIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub elastic_ip: Option<String>,
+    pub elastic_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, the data in the cluster is encrypted at rest.
@@ -369,7 +369,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "HsmClientCertificateIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hsm_client_certificate_identifier: Option<String>,
+    pub hsm_client_certificate_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the name of the HSM configuration that contains the information the       Amazon Redshift cluster can use to retrieve and store keys in an HSM.
@@ -383,7 +383,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "HsmConfigurationIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hsm_configuration_identifier: Option<String>,
+    pub hsm_configuration_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of AWS Identity and Access Management (IAM) roles that can be used by the       cluster to access other AWS services. You must supply the IAM roles in their Amazon       Resource Name (ARN) format.
@@ -411,7 +411,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
@@ -437,7 +437,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceTrackName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_track_name: Option<String>,
+    pub maintenance_track_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The default number of days to retain a manual snapshot. If the value is -1, the       snapshot is retained indefinitely. This setting doesn't change the retention period       of existing snapshots.
@@ -468,7 +468,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
-    pub master_user_password: String,
+    pub master_user_password: cfn_resources::StrVal,
 
     ///
     /// The user name associated with the admin user for the cluster that is being       created.
@@ -485,7 +485,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MasterUsername")]
-    pub master_username: String,
+    pub master_username: cfn_resources::StrVal,
 
     ///
     /// The node type to be provisioned for the cluster. For information about node types,       go to Working with         Clusters in the Amazon Redshift Cluster Management Guide.
@@ -534,7 +534,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "OwnerAccount")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub owner_account: Option<String>,
+    pub owner_account: Option<cfn_resources::StrVal>,
 
     ///
     /// The port number on which the cluster accepts incoming connections.
@@ -574,7 +574,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, the cluster can be accessed from a public network.
@@ -598,7 +598,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ResourceAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_action: Option<String>,
+    pub resource_action: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes a RevisionTarget object.
@@ -610,7 +610,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "RevisionTarget")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub revision_target: Option<String>,
+    pub revision_target: Option<cfn_resources::StrVal>,
 
     ///
     /// Rotates the encryption keys for a cluster.
@@ -636,7 +636,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_cluster_identifier: Option<String>,
+    pub snapshot_cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the snapshot copy grant.
@@ -650,7 +650,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotCopyGrantName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_copy_grant_name: Option<String>,
+    pub snapshot_copy_grant_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to apply the snapshot retention period to newly copied manual       snapshots instead of automated snapshots.
@@ -702,7 +702,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_identifier: Option<String>,
+    pub snapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tag instances.
@@ -825,62 +825,77 @@ impl cfn_resources::CfnResource for CfnCluster {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.availability_zone {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.availability_zone_relocation_status {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'availability_zone_relocation_status'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'availability_zone_relocation_status'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.cluster_identifier {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.cluster_parameter_group_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'cluster_parameter_group_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'cluster_parameter_group_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.cluster_subnet_group_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'cluster_subnet_group_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'cluster_subnet_group_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.cluster_version {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'cluster_version'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'cluster_version'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         let the_val = &self.dbname;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dbname'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'dbname'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.destination_region {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'destination_region'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'destination_region'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.elastic_ip {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'elastic_ip'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'elastic_ip'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
@@ -889,23 +904,26 @@ impl cfn_resources::CfnResource for CfnCluster {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.hsm_client_certificate_identifier {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'hsm_client_certificate_identifier'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'hsm_client_certificate_identifier'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.hsm_configuration_identifier {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'hsm_configuration_identifier'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'hsm_configuration_identifier'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
@@ -914,56 +932,66 @@ impl cfn_resources::CfnResource for CfnCluster {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.maintenance_track_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'maintenance_track_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'maintenance_track_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         let the_val = &self.master_user_password;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'master_user_password'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'master_user_password'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         let the_val = &self.master_username;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'master_username'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'master_username'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.owner_account {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'owner_account'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'owner_account'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.preferred_maintenance_window {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'preferred_maintenance_window'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'preferred_maintenance_window'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.snapshot_cluster_identifier {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'snapshot_cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'snapshot_cluster_identifier'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.snapshot_copy_grant_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'snapshot_copy_grant_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'snapshot_copy_grant_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.snapshot_identifier {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'snapshot_identifier'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'snapshot_identifier'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
@@ -986,7 +1014,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that the database engine is listening on. This property is read only.
@@ -998,7 +1026,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Endpoint {
@@ -1012,11 +1040,13 @@ impl cfn_resources::CfnResource for Endpoint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.address {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'address'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'address'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1042,7 +1072,7 @@ pub struct LoggingProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The prefix applied to the log file names.
@@ -1060,7 +1090,7 @@ pub struct LoggingProperties {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingProperties {
@@ -1075,19 +1105,20 @@ impl cfn_resources::CfnResource for LoggingProperties {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.s3_key_prefix {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_key_prefix'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 's3_key_prefix'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
@@ -1112,7 +1143,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1122,7 +1153,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

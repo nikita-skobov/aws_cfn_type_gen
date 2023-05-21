@@ -10,7 +10,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The API mapping key.
@@ -22,7 +22,7 @@ pub struct CfnApiMapping {
     /// Update requires: No interruption
     #[serde(rename = "ApiMappingKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_mapping_key: Option<String>,
+    pub api_mapping_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The domain name.
@@ -33,7 +33,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The API stage.
@@ -44,7 +44,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    pub stage: String,
+    pub stage: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnApiMapping {

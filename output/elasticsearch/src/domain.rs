@@ -71,7 +71,7 @@ pub struct CfnDomain {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
@@ -109,7 +109,7 @@ pub struct CfnDomain {
     /// Update requires: Some interruptions
     #[serde(rename = "ElasticsearchVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub elasticsearch_version: Option<String>,
+    pub elasticsearch_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service    key to use. See Encryption of data at     rest for Amazon OpenSearch Service.
@@ -325,7 +325,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_pool_id: Option<String>,
+    pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The AmazonESCognitoAccess role that allows OpenSearch Service to configure    your user pool and identity pool. Required if you enable Cognito authentication.
@@ -337,7 +337,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch    Dashboards authentication. Required if you enable Cognito authentication.
@@ -349,7 +349,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_pool_id: Option<String>,
+    pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CognitoOptions {
@@ -408,7 +408,7 @@ pub struct DomainEndpointOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_endpoint: Option<String>,
+    pub custom_endpoint: Option<cfn_resources::StrVal>,
 
     /// The AWS Certificate Manager ARN for your domain's SSL/TLS certificate. Required if you    enabled a custom endpoint for the domain.
     ///
@@ -419,7 +419,7 @@ pub struct DomainEndpointOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_endpoint_certificate_arn: Option<String>,
+    pub custom_endpoint_certificate_arn: Option<cfn_resources::StrVal>,
 
     /// True to enable a custom endpoint for the domain. If enabled, you must also provide values for CustomEndpoint and CustomEndpointCertificateArn.
     ///
@@ -454,7 +454,7 @@ pub struct DomainEndpointOptions {
     /// Update requires: No interruption
     #[serde(rename = "TLSSecurityPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tlssecurity_policy: Option<String>,
+    pub tlssecurity_policy: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DomainEndpointOptions {
@@ -520,7 +520,7 @@ pub struct EBSOptions {
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_type: Option<String>,
+    pub volume_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EBSOptions {
@@ -586,7 +586,7 @@ pub struct ElasticsearchClusterConfig {
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dedicated_master_type: Option<String>,
+    pub dedicated_master_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of data nodes (instances) to use in the OpenSearch Service domain.
@@ -610,7 +610,7 @@ pub struct ElasticsearchClusterConfig {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<String>,
+    pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of warm nodes in the cluster. Required if you enable warm storage.
@@ -646,7 +646,7 @@ pub struct ElasticsearchClusterConfig {
     /// Update requires: No interruption
     #[serde(rename = "WarmType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub warm_type: Option<String>,
+    pub warm_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
@@ -720,7 +720,7 @@ pub struct EncryptionAtRestOptions {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EncryptionAtRestOptions {
@@ -752,7 +752,7 @@ pub struct LogPublishingOption {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_logs_log_group_arn: Option<String>,
+    pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, enables the publishing of logs to CloudWatch.
@@ -795,7 +795,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_arn: Option<String>,
+    pub master_user_arn: Option<cfn_resources::StrVal>,
 
     /// Username for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
     ///
@@ -806,7 +806,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_name: Option<String>,
+    pub master_user_name: Option<cfn_resources::StrVal>,
 
     /// Password for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
     ///
@@ -817,7 +817,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_password: Option<String>,
+    pub master_user_password: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MasterUserOptions {
@@ -913,7 +913,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -923,7 +923,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

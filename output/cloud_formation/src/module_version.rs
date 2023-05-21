@@ -20,7 +20,7 @@ pub struct CfnModuleVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModuleName")]
-    pub module_name: String,
+    pub module_name: cfn_resources::StrVal,
 
     ///
     /// A URL to the S3 bucket containing the package that contains the template fragment and schema files for the  module version to register.
@@ -37,7 +37,7 @@ pub struct CfnModuleVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModulePackage")]
-    pub module_package: String,
+    pub module_package: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnModuleVersion {
@@ -52,38 +52,46 @@ impl cfn_resources::CfnResource for CfnModuleVersion {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.module_name;
 
-        if the_val.len() > 204 as _ {
-            return Err(format!(
-                "Max validation failed on field 'module_name'. {} is greater than 204",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 204 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'module_name'. {} is greater than 204",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.module_name;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'module_name'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'module_name'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.module_package;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'module_package'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'module_package'. {} is greater than 4096",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.module_package;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'module_package'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'module_package'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

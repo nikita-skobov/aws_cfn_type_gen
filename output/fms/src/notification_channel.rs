@@ -12,7 +12,7 @@ pub struct CfnNotificationChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsRoleName")]
-    pub sns_role_name: String,
+    pub sns_role_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the SNS topic that collects notifications from AWS Firewall Manager.
@@ -23,7 +23,7 @@ pub struct CfnNotificationChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
+    pub sns_topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnNotificationChannel {

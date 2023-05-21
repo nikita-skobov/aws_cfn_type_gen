@@ -29,7 +29,7 @@ pub struct CfnDataset {
     /// Update requires: No interruption
     #[serde(rename = "DataFrequency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_frequency: Option<String>,
+    pub data_frequency: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the dataset.
@@ -46,7 +46,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetName")]
-    pub dataset_name: String,
+    pub dataset_name: cfn_resources::StrVal,
 
     ///
     /// The dataset type.
@@ -181,39 +181,47 @@ impl cfn_resources::CfnResource for CfnDataset {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.data_frequency {
-            if the_val.len() > 5 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'data_frequency'. {} is greater than 5",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 5 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'data_frequency'. {} is greater than 5",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.data_frequency {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'data_frequency'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.dataset_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'data_frequency'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'dataset_name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.dataset_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dataset_name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.dataset_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'dataset_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'dataset_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.encryption_config
@@ -238,7 +246,7 @@ pub struct AttributesItems {
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_name: Option<String>,
+    pub attribute_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -249,7 +257,7 @@ pub struct AttributesItems {
     /// Update requires: No interruption
     #[serde(rename = "AttributeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_type: Option<String>,
+    pub attribute_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AttributesItems {
@@ -283,7 +291,7 @@ pub struct EncryptionConfig {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the IAM role that Amazon Forecast can assume to access the AWS KMS key.
@@ -301,7 +309,7 @@ pub struct EncryptionConfig {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EncryptionConfig {
@@ -315,20 +323,24 @@ impl cfn_resources::CfnResource for EncryptionConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -388,7 +400,7 @@ pub struct TagsItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -398,7 +410,7 @@ pub struct TagsItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsItems {

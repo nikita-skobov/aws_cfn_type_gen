@@ -23,7 +23,7 @@ pub struct CfnServerCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_body: Option<String>,
+    pub certificate_body: Option<cfn_resources::StrVal>,
 
     ///
     /// The contents of the public key certificate chain.
@@ -41,7 +41,7 @@ pub struct CfnServerCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateChain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_chain: Option<String>,
+    pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
     /// The path for the server certificate. For more information about paths, see IAM         identifiers in the IAM User Guide.
@@ -63,7 +63,7 @@ pub struct CfnServerCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The contents of the private key in PEM-encoded format.
@@ -85,7 +85,7 @@ pub struct CfnServerCertificate {
     /// Update requires: Replacement
     #[serde(rename = "PrivateKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_key: Option<String>,
+    pub private_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the server certificate. Do not include the path in this value. The name       of the certificate cannot contain any spaces.
@@ -105,7 +105,7 @@ pub struct CfnServerCertificate {
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_certificate_name: Option<String>,
+    pub server_certificate_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
@@ -133,86 +133,100 @@ impl cfn_resources::CfnResource for CfnServerCertificate {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.certificate_body {
-            if the_val.len() > 16384 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'certificate_body'. {} is greater than 16384",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 16384 as _ {
+                    return Err(format!("Max validation failed on field 'certificate_body'. {} is greater than 16384", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.certificate_body {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'certificate_body'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'certificate_body'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.certificate_chain {
-            if the_val.len() > 2097152 as _ {
-                return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 2097152", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2097152 as _ {
+                    return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 2097152", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.certificate_chain {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'certificate_chain'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'certificate_chain'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.private_key {
-            if the_val.len() > 16384 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'private_key'. {} is greater than 16384",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 16384 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'private_key'. {} is greater than 16384",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.private_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'private_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'private_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.server_certificate_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'server_certificate_name'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'server_certificate_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.server_certificate_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'server_certificate_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'server_certificate_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -246,7 +260,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -256,7 +270,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

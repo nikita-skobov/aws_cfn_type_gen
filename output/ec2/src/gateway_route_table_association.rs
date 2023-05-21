@@ -10,7 +10,7 @@ pub struct CfnGatewayRouteTableAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GatewayId")]
-    pub gateway_id: String,
+    pub gateway_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the route table.
@@ -21,7 +21,7 @@ pub struct CfnGatewayRouteTableAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableId")]
-    pub route_table_id: String,
+    pub route_table_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnGatewayRouteTableAssociation {

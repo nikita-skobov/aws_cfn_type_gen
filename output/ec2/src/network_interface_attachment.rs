@@ -22,7 +22,7 @@ pub struct CfnNetworkInterfaceAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceIndex")]
-    pub device_index: String,
+    pub device_index: cfn_resources::StrVal,
 
     ///
     /// The ID of the instance to which you will attach the ENI.
@@ -33,7 +33,7 @@ pub struct CfnNetworkInterfaceAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the ENI that you want to attach.
@@ -44,7 +44,7 @@ pub struct CfnNetworkInterfaceAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+    pub network_interface_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnNetworkInterfaceAttachment {

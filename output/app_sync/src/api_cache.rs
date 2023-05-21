@@ -12,7 +12,7 @@ pub struct CfnApiCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiCachingBehavior")]
-    pub api_caching_behavior: String,
+    pub api_caching_behavior: cfn_resources::StrVal,
 
     ///
     /// The GraphQL API ID.
@@ -23,7 +23,7 @@ pub struct CfnApiCache {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// At-rest encryption flag for cache. You cannot update this setting after creation.
@@ -79,7 +79,7 @@ pub struct CfnApiCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnApiCache {

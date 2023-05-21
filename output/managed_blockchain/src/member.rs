@@ -17,7 +17,7 @@ pub struct CfnMember {
     /// Update requires: No interruption
     #[serde(rename = "InvitationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub invitation_id: Option<String>,
+    pub invitation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration properties of the member.
@@ -52,7 +52,7 @@ pub struct CfnMember {
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_id: Option<String>,
+    pub network_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnMember {
@@ -66,20 +66,24 @@ impl cfn_resources::CfnResource for CfnMember {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.invitation_id {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'invitation_id'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'invitation_id'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.invitation_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'invitation_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'invitation_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -223,7 +227,7 @@ pub struct MemberConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration properties of the blockchain framework relevant to the member.
@@ -252,7 +256,7 @@ pub struct MemberConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MemberConfiguration {
@@ -266,11 +270,13 @@ impl cfn_resources::CfnResource for MemberConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -280,20 +286,24 @@ impl cfn_resources::CfnResource for MemberConfiguration {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -318,7 +328,7 @@ pub struct MemberFabricConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminPassword")]
-    pub admin_password: String,
+    pub admin_password: cfn_resources::StrVal,
 
     ///
     /// The user name for the member's initial administrative user.
@@ -335,7 +345,7 @@ pub struct MemberFabricConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
-    pub admin_username: String,
+    pub admin_username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MemberFabricConfiguration {
@@ -350,38 +360,46 @@ impl cfn_resources::CfnResource for MemberFabricConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.admin_password;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'admin_password'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'admin_password'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.admin_password;
 
-        if the_val.len() < 8 as _ {
-            return Err(format!(
-                "Min validation failed on field 'admin_password'. {} is less than 8",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 8 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'admin_password'. {} is less than 8",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.admin_username;
 
-        if the_val.len() > 16 as _ {
-            return Err(format!(
-                "Max validation failed on field 'admin_username'. {} is greater than 16",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 16 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'admin_username'. {} is greater than 16",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.admin_username;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'admin_username'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'admin_username'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -436,7 +454,7 @@ pub struct NetworkConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The blockchain framework that the network uses.
@@ -464,7 +482,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkVersion")]
-    pub framework_version: String,
+    pub framework_version: cfn_resources::StrVal,
 
     ///
     /// The name of the network.
@@ -481,7 +499,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Configuration properties relevant to the network for the blockchain framework that the network uses.
@@ -535,48 +553,58 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.framework_version;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 8 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
+                    "Max validation failed on field 'framework_version'. {} is greater than 8",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.framework_version;
 
-        if the_val.len() > 8 as _ {
-            return Err(format!(
-                "Max validation failed on field 'framework_version'. {} is greater than 8",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.framework_version;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'framework_version'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'framework_version'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.network_framework_configuration

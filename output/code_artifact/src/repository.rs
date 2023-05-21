@@ -15,7 +15,7 @@ pub struct CfnRepository {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the domain that contains the repository.
@@ -32,7 +32,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The 12-digit account number of the AWS account that owns the domain that contains the repository. It does not include     dashes or spaces.
@@ -50,7 +50,7 @@ pub struct CfnRepository {
     /// Update requires: Replacement
     #[serde(rename = "DomainOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_owner: Option<String>,
+    pub domain_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of external connections associated with the repository.
@@ -91,7 +91,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
-    pub repository_name: String,
+    pub repository_name: cfn_resources::StrVal,
 
     ///
     /// A list of tags to be applied to the repository.
@@ -129,66 +129,80 @@ impl cfn_resources::CfnResource for CfnRepository {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1000 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.domain_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1000",
-                    the_val.len()
+                    "Max validation failed on field 'domain_name'. {} is greater than 50",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_name'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.domain_name;
-
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain_name'. {} is less than 2",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.domain_owner {
-            if the_val.len() > 12 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'domain_owner'. {} is greater than 12",
-                    the_val.len()
+                    "Min validation failed on field 'domain_name'. {} is less than 2",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.domain_owner {
-            if the_val.len() < 12 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain_owner'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.domain_owner {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'domain_owner'. {} is less than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.repository_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'domain_owner'. {} is less than 12",
-                    the_val.len()
+                    "Max validation failed on field 'repository_name'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.repository_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'repository_name'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.repository_name;
-
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'repository_name'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'repository_name'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -212,7 +226,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -222,7 +236,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

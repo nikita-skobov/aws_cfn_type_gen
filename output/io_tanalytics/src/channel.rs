@@ -17,7 +17,7 @@ pub struct CfnChannel {
     /// Update requires: Replacement
     #[serde(rename = "ChannelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub channel_name: Option<String>,
+    pub channel_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Where channel data is stored.
@@ -71,20 +71,24 @@ impl cfn_resources::CfnResource for CfnChannel {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.channel_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'channel_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'channel_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.channel_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'channel_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'channel_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -173,7 +177,7 @@ pub struct CustomerManagedS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// (Optional) The prefix used to create the keys of the channel data objects. Each object in    an S3 bucket has a key that is its unique identifier within the bucket (each object in a    bucket has exactly one key). The prefix must end with a forward slash (/).
@@ -191,7 +195,7 @@ pub struct CustomerManagedS3 {
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_prefix: Option<String>,
+    pub key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the role that grants AWS IoT Analytics permission to interact with your Amazon S3    resources.
@@ -206,7 +210,7 @@ pub struct CustomerManagedS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomerManagedS3 {
@@ -221,56 +225,68 @@ impl cfn_resources::CfnResource for CustomerManagedS3 {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.key_prefix {
-            if the_val.len() > 255 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'key_prefix'. {} is greater than 255",
-                    the_val.len()
+                    "Min validation failed on field 'bucket'. {} is less than 3",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.key_prefix {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key_prefix'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.key_prefix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.role_arn;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'key_prefix'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.role_arn;
-
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -347,7 +363,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -357,7 +373,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

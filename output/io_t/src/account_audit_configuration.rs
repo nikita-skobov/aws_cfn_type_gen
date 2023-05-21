@@ -10,7 +10,7 @@ pub struct CfnAccountAuditConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccountId")]
-    pub account_id: String,
+    pub account_id: cfn_resources::StrVal,
 
     ///
     /// Specifies which audit checks are enabled and disabled for this account.
@@ -52,7 +52,7 @@ pub struct CfnAccountAuditConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAccountAuditConfiguration {
@@ -403,7 +403,7 @@ pub struct AuditNotificationTarget {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the target (SNS topic) to which audit notifications are sent.
@@ -415,7 +415,7 @@ pub struct AuditNotificationTarget {
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_arn: Option<String>,
+    pub target_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AuditNotificationTarget {

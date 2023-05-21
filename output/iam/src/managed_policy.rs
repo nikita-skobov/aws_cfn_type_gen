@@ -23,7 +23,7 @@ pub struct CfnManagedPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name (friendly name, not ARN) of the group to attach the policy to.
@@ -61,7 +61,7 @@ pub struct CfnManagedPolicy {
     /// Update requires: Replacement
     #[serde(rename = "ManagedPolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub managed_policy_name: Option<String>,
+    pub managed_policy_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The path for the policy.
@@ -87,7 +87,7 @@ pub struct CfnManagedPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The JSON policy document that you want to use as the content for the new       policy.
@@ -164,11 +164,13 @@ impl cfn_resources::CfnResource for CfnManagedPolicy {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -191,20 +193,24 @@ impl cfn_resources::CfnResource for CfnManagedPolicy {
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

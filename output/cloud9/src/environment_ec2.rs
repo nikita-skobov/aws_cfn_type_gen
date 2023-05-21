@@ -43,7 +43,7 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. To choose an AMI for the instance, you must specify a valid AMI alias or a valid AWS Systems Manager path.
@@ -67,7 +67,7 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of instance to connect to the environment (for example, t2.micro).
@@ -84,7 +84,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The name of the environment.
@@ -96,7 +96,7 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the environment owner. This ARN can be the ARN of any AWS Identity and Access Management principal. If this value is not specified, the ARN defaults to this environment's creator.
@@ -110,7 +110,7 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: Replacement
     #[serde(rename = "OwnerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub owner_arn: Option<String>,
+    pub owner_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Any AWS CodeCommit source code repositories to be cloned into the development environment.
@@ -140,7 +140,7 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs that will be associated with the new AWS Cloud9 development    environment.
@@ -197,56 +197,68 @@ impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.image_id {
-            if the_val.len() > 512 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'image_id'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.instance_type;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 20 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'image_id'. {} is greater than 512",
-                    the_val.len()
+                    "Max validation failed on field 'instance_type'. {} is greater than 20",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 20 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 20",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.instance_type;
-
-        if the_val.len() < 5 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 5",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.subnet_id {
-            if the_val.len() > 24 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 5 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'subnet_id'. {} is greater than 24",
-                    the_val.len()
+                    "Min validation failed on field 'instance_type'. {} is less than 5",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() < 15 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'subnet_id'. {} is less than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 24 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subnet_id'. {} is greater than 24",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.subnet_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 15 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'subnet_id'. {} is less than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -275,7 +287,7 @@ pub struct Repository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathComponent")]
-    pub path_component: String,
+    pub path_component: cfn_resources::StrVal,
 
     ///
     /// The clone URL of the AWS CodeCommit repository to be cloned. For example, for an AWS CodeCommit repository this might be https://git-codecommit.us-east-2.amazonaws.com/v1/repos/REPOSITORY_NAME.
@@ -286,7 +298,7 @@ pub struct Repository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryUrl")]
-    pub repository_url: String,
+    pub repository_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Repository {
@@ -320,7 +332,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -330,7 +342,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

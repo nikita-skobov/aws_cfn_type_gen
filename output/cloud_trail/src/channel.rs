@@ -31,7 +31,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the partner or external event source. You cannot change this name after you create the      channel. A maximum of one channel is allowed per source.
@@ -51,7 +51,7 @@ pub struct CfnChannel {
     /// Update requires: Replacement
     #[serde(rename = "Source")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source: Option<String>,
+    pub source: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags.
@@ -88,38 +88,46 @@ impl cfn_resources::CfnResource for CfnChannel {
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -154,7 +162,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    pub location: String,
+    pub location: cfn_resources::StrVal,
 
     ///
     /// The type of destination for events arriving from a channel. For channels used for a CloudTrail Lake integration, the value is EventDataStore. For service-linked channels,      the value is AWS_SERVICE.
@@ -199,20 +207,24 @@ impl cfn_resources::CfnResource for Destination {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.location;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.location;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -236,7 +248,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -246,7 +258,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

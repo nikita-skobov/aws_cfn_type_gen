@@ -18,7 +18,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
@@ -35,7 +35,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
@@ -62,38 +62,46 @@ impl cfn_resources::CfnResource for CfnRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.metric_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'metric_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metric_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metric_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'metric_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'metric_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -118,7 +126,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataId")]
-    pub data_id: String,
+    pub data_id: cfn_resources::StrVal,
 
     ///
     /// Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the 		     specified ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet. 			For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow or block requests based on that IP address.
@@ -196,20 +204,24 @@ impl cfn_resources::CfnResource for Predicate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.data_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'data_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'data_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.data_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'data_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'data_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

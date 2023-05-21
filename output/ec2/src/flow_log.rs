@@ -13,7 +13,7 @@ pub struct CfnFlowLog {
     /// Update requires: Replacement
     #[serde(rename = "DeliverLogsPermissionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deliver_logs_permission_arn: Option<String>,
+    pub deliver_logs_permission_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination options. The following options are supported:
@@ -41,7 +41,7 @@ pub struct CfnFlowLog {
     /// Update requires: Replacement
     #[serde(rename = "LogDestination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_destination: Option<String>,
+    pub log_destination: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of destination for the flow log data.
@@ -71,7 +71,7 @@ pub struct CfnFlowLog {
     /// Update requires: Replacement
     #[serde(rename = "LogFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_format: Option<String>,
+    pub log_format: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs.
@@ -85,7 +85,7 @@ pub struct CfnFlowLog {
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.       The possible values are 60 seconds (1 minute) or 600 seconds (10 minutes).       This parameter must be 60 seconds for transit gateway resource types.
@@ -112,7 +112,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 
     ///
     /// The type of resource to monitor.
@@ -330,7 +330,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -340,7 +340,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

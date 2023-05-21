@@ -39,7 +39,7 @@ pub struct CfnEndpointConfig {
     /// Update requires: Replacement
     #[serde(rename = "EndpointConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_config_name: Option<String>,
+    pub endpoint_config_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -72,7 +72,7 @@ pub struct CfnEndpointConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of ProductionVariant objects, one for each model that you want       to host at this endpoint.
@@ -137,11 +137,10 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.endpoint_config_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
@@ -150,11 +149,13 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -276,7 +277,7 @@ pub struct AsyncInferenceNotificationConfig {
     /// Update requires: Replacement
     #[serde(rename = "ErrorTopic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub error_topic: Option<String>,
+    pub error_topic: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -299,7 +300,7 @@ pub struct AsyncInferenceNotificationConfig {
     /// Update requires: Replacement
     #[serde(rename = "SuccessTopic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub success_topic: Option<String>,
+    pub success_topic: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
@@ -329,7 +330,7 @@ pub struct AsyncInferenceOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the configuration for notifications of inference results for asynchronous       inference.
@@ -352,7 +353,7 @@ pub struct AsyncInferenceOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "S3FailurePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_failure_path: Option<String>,
+    pub s3_failure_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 location to upload inference responses to.
@@ -364,7 +365,7 @@ pub struct AsyncInferenceOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "S3OutputPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_output_path: Option<String>,
+    pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
@@ -509,7 +510,7 @@ pub struct ClarifyExplainerConfig {
     /// Update requires: Replacement
     #[serde(rename = "EnableExplanations")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enable_explanations: Option<String>,
+    pub enable_explanations: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -601,7 +602,7 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ContentTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_template: Option<String>,
+    pub content_template: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -634,7 +635,7 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub features_attribute: Option<String>,
+    pub features_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -645,7 +646,7 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "LabelAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub label_attribute: Option<String>,
+    pub label_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -700,7 +701,7 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub probability_attribute: Option<String>,
+    pub probability_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -740,7 +741,7 @@ pub struct ClarifyShapBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "MimeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mime_type: Option<String>,
+    pub mime_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -751,7 +752,7 @@ pub struct ClarifyShapBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "ShapBaseline")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub shap_baseline: Option<String>,
+    pub shap_baseline: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -762,7 +763,7 @@ pub struct ClarifyShapBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "ShapBaselineUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub shap_baseline_uri: Option<String>,
+    pub shap_baseline_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
@@ -868,7 +869,7 @@ pub struct ClarifyTextConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Granularity")]
-    pub granularity: String,
+    pub granularity: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -878,7 +879,7 @@ pub struct ClarifyTextConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Language")]
-    pub language: String,
+    pub language: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ClarifyTextConfig {
@@ -936,7 +937,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationS3Uri")]
-    pub destination_s3_uri: String,
+    pub destination_s3_uri: cfn_resources::StrVal,
 
     ///
     /// Set to True to enable data capture.
@@ -979,7 +980,7 @@ pub struct DataCaptureConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataCaptureConfig {
@@ -1007,11 +1008,13 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
 
         let the_val = &self.destination_s3_uri;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination_s3_uri'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination_s3_uri'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.initial_sampling_percentage;
@@ -1030,11 +1033,13 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1177,7 +1182,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelName")]
-    pub model_name: String,
+    pub model_name: cfn_resources::StrVal,
 
     ///
     /// The serverless configuration for an endpoint. Specifies a serverless endpoint configuration instead of an instance-based endpoint configuration.
@@ -1204,7 +1209,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VariantName")]
-    pub variant_name: String,
+    pub variant_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1869,11 +1874,13 @@ impl cfn_resources::CfnResource for ProductionVariant {
 
         let the_val = &self.model_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'model_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.serverless_config
@@ -1882,11 +1889,13 @@ impl cfn_resources::CfnResource for ProductionVariant {
 
         let the_val = &self.variant_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'variant_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'variant_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2005,7 +2014,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2015,7 +2024,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

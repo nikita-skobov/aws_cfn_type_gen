@@ -10,7 +10,7 @@ pub struct CfnPrimaryTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cluster")]
-    pub cluster: String,
+    pub cluster: cfn_resources::StrVal,
 
     ///
     /// The short name or full Amazon Resource Name (ARN) of the service that the task set exists in.
@@ -21,7 +21,7 @@ pub struct CfnPrimaryTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Service")]
-    pub service: String,
+    pub service: cfn_resources::StrVal,
 
     ///
     /// The short name or full Amazon Resource Name (ARN) of the task set to set as the primary task set in the 			deployment.
@@ -32,7 +32,7 @@ pub struct CfnPrimaryTaskSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskSetId")]
-    pub task_set_id: String,
+    pub task_set_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnPrimaryTaskSet {

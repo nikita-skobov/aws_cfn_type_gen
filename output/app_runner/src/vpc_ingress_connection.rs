@@ -29,7 +29,7 @@ pub struct CfnVpcIngressConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceArn")]
-    pub service_arn: String,
+    pub service_arn: cfn_resources::StrVal,
 
     ///
     /// An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
@@ -59,7 +59,7 @@ pub struct CfnVpcIngressConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcIngressConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_ingress_connection_name: Option<String>,
+    pub vpc_ingress_connection_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnVpcIngressConnection {
@@ -76,31 +76,39 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
 
         let the_val = &self.service_arn;
 
-        if the_val.len() > 1011 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_arn'. {} is greater than 1011",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_arn'. {} is greater than 1011",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.service_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'service_arn'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.vpc_ingress_connection_name {
-            if the_val.len() > 40 as _ {
-                return Err(format!("Max validation failed on field 'vpc_ingress_connection_name'. {} is greater than 40", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'service_arn'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.vpc_ingress_connection_name {
-            if the_val.len() < 4 as _ {
-                return Err(format!("Min validation failed on field 'vpc_ingress_connection_name'. {} is less than 4", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 40 as _ {
+                    return Err(format!("Max validation failed on field 'vpc_ingress_connection_name'. {} is greater than 40", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.vpc_ingress_connection_name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 4 as _ {
+                    return Err(format!("Min validation failed on field 'vpc_ingress_connection_name'. {} is less than 4", s.len()));
+                }
             }
         }
 
@@ -126,7 +134,7 @@ pub struct IngressVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    pub vpc_endpoint_id: String,
+    pub vpc_endpoint_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the VPC that is used for the VPC endpoint.
@@ -143,7 +151,7 @@ pub struct IngressVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for IngressVpcConfiguration {
@@ -158,38 +166,46 @@ impl cfn_resources::CfnResource for IngressVpcConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.vpc_endpoint_id;
 
-        if the_val.len() > 51200 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpc_endpoint_id'. {} is greater than 51200",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 51200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_endpoint_id'. {} is greater than 51200",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_endpoint_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpc_endpoint_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_endpoint_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() > 51200 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpc_id'. {} is greater than 51200",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 51200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_id'. {} is greater than 51200",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpc_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -213,7 +229,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -223,7 +239,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

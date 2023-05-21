@@ -12,7 +12,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The name of the configuration.
@@ -24,7 +24,7 @@ pub struct CfnIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "IdentityProviderConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_provider_config_name: Option<String>,
+    pub identity_provider_config_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An object representing an OpenID Connect (OIDC) identity provider       configuration.
@@ -59,7 +59,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
@@ -90,7 +90,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The JSON web token (JWT) claim that the provider uses to return your groups.
@@ -102,7 +102,7 @@ pub struct OidcIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "GroupsClaim")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub groups_claim: Option<String>,
+    pub groups_claim: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix that is prepended to group claims to prevent clashes with existing names       (such as system: groups). For example, the value oidc: creates       group names like oidc:engineering and oidc:infra. The prefix       can't contain system:
@@ -114,7 +114,7 @@ pub struct OidcIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "GroupsPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub groups_prefix: Option<String>,
+    pub groups_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL of the OIDC identity provider that allows the API server to discover public       signing keys for verifying tokens.
@@ -125,7 +125,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IssuerUrl")]
-    pub issuer_url: String,
+    pub issuer_url: cfn_resources::StrVal,
 
     ///
     /// The key-value pairs that describe required claims in the identity token. If set, each       claim is verified to be present in the token with a matching value.
@@ -149,7 +149,7 @@ pub struct OidcIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "UsernameClaim")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username_claim: Option<String>,
+    pub username_claim: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix that is prepended to username claims to prevent clashes with existing       names. The prefix can't contain system:
@@ -161,7 +161,7 @@ pub struct OidcIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "UsernamePrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username_prefix: Option<String>,
+    pub username_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OidcIdentityProviderConfig {
@@ -190,7 +190,7 @@ pub struct RequiredClaim {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the key from the token.
@@ -201,7 +201,7 @@ pub struct RequiredClaim {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RequiredClaim {
@@ -235,7 +235,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -245,7 +245,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -14,7 +14,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    pub policy_document: String,
+    pub policy_document: cfn_resources::StrVal,
 
     ///
     /// The name of the resource policy.
@@ -25,7 +25,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
@@ -40,20 +40,24 @@ impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.policy_document;
 
-        if the_val.len() > 5120 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_document'. {} is greater than 5120",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 5120 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy_document'. {} is greater than 5120",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.policy_document;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_document'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_document'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

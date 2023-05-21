@@ -19,7 +19,7 @@ pub struct CfnCodeRepository {
     /// Update requires: Replacement
     #[serde(rename = "CodeRepositoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub code_repository_name: Option<String>,
+    pub code_repository_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration details for the Git repository, including the URL where it is located       and the ARN of the AWS Secrets Manager secret that contains the       credentials used to access the repository.
@@ -56,20 +56,21 @@ impl cfn_resources::CfnResource for CfnCodeRepository {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.code_repository_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'code_repository_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'code_repository_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.code_repository_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'code_repository_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'code_repository_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -98,7 +99,7 @@ pub struct GitConfig {
     /// Update requires: Replacement
     #[serde(rename = "Branch")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub branch: Option<String>,
+    pub branch: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL where the Git repository is located.
@@ -111,7 +112,7 @@ pub struct GitConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryUrl")]
-    pub repository_url: String,
+    pub repository_url: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that       contains the credentials used to access the git repository. The secret must have a       staging label of AWSCURRENT and must be in the following format:
@@ -131,7 +132,7 @@ pub struct GitConfig {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GitConfig {
@@ -145,38 +146,46 @@ impl cfn_resources::CfnResource for GitConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.branch {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'branch'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'branch'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.branch {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'branch'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'branch'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'secret_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'secret_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.secret_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'secret_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'secret_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -201,7 +210,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -211,7 +220,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

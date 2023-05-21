@@ -16,7 +16,7 @@ pub struct CfnSizeConstraintSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The size constraint and the part of the web request to check.
@@ -42,20 +42,24 @@ impl cfn_resources::CfnResource for CfnSizeConstraintSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -85,7 +89,7 @@ pub struct FieldToMatch {
     /// Update requires: No interruption
     #[serde(rename = "Data")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data: Option<String>,
+    pub data: Option<cfn_resources::StrVal>,
 
     ///
     /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
@@ -151,20 +155,24 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.data {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'data'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'data'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -10,7 +10,7 @@ pub struct CfnCoreDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDefinitionId")]
-    pub core_definition_id: String,
+    pub core_definition_id: cfn_resources::StrVal,
 
     ///
     /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.
@@ -52,7 +52,7 @@ pub struct Core {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
+    pub certificate_arn: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the core. This value must be unique within the core definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -63,7 +63,7 @@ pub struct Core {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
@@ -86,7 +86,7 @@ pub struct Core {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
+    pub thing_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Core {

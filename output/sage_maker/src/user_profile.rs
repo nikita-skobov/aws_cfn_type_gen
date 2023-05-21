@@ -12,7 +12,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainId")]
-    pub domain_id: String,
+    pub domain_id: cfn_resources::StrVal,
 
     ///
     /// A specifier for the type of value specified in SingleSignOnUserValue. Currently, the       only supported value is "UserName". If the Domain's AuthMode is IAM Identity Center, this       field is required. If the Domain's AuthMode is not IAM Identity Center, this field cannot       be specified.
@@ -24,7 +24,7 @@ pub struct CfnUserProfile {
     /// Update requires: Replacement
     #[serde(rename = "SingleSignOnUserIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub single_sign_on_user_identifier: Option<String>,
+    pub single_sign_on_user_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The username of the associated AWS Single Sign-On User for this       UserProfile. If the Domain's AuthMode is IAM Identity Center, this field is required, and       must match a valid username of a user in your directory. If the Domain's AuthMode is not         IAM Identity Center, this field cannot be specified.
@@ -36,7 +36,7 @@ pub struct CfnUserProfile {
     /// Update requires: Replacement
     #[serde(rename = "SingleSignOnUserValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub single_sign_on_user_value: Option<String>,
+    pub single_sign_on_user_value: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -67,7 +67,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserProfileName")]
-    pub user_profile_name: String,
+    pub user_profile_name: cfn_resources::StrVal,
 
     ///
     /// A collection of settings that apply to users of Amazon SageMaker Studio.
@@ -94,20 +94,24 @@ impl cfn_resources::CfnResource for CfnUserProfile {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain_id;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_id'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_id'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_profile_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_profile_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_profile_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.user_settings
@@ -134,7 +138,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppImageConfigName")]
-    pub app_image_config_name: String,
+    pub app_image_config_name: cfn_resources::StrVal,
 
     ///
     /// The name of the CustomImage. Must be unique to your account.
@@ -151,7 +155,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
-    pub image_name: String,
+    pub image_name: cfn_resources::StrVal,
 
     ///
     /// The version number of the CustomImage.
@@ -180,29 +184,35 @@ impl cfn_resources::CfnResource for CustomImage {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.app_image_config_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.image_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'image_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.image_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'image_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.image_version_number {
@@ -424,7 +434,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_arn: Option<String>,
+    pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the image version created on the instance.
@@ -440,7 +450,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_version_arn: Option<String>,
+    pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -703,17 +713,18 @@ impl cfn_resources::CfnResource for ResourceSpec {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.sage_maker_image_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -752,7 +763,7 @@ pub struct SharingSettings {
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_kms_key_id: Option<String>,
+    pub s3_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// When NotebookOutputOption is Allowed, the Amazon S3 bucket used     to store the shared notebook snapshots.
@@ -768,7 +779,7 @@ pub struct SharingSettings {
     /// Update requires: No interruption
     #[serde(rename = "S3OutputPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_output_path: Option<String>,
+    pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -799,20 +810,24 @@ impl cfn_resources::CfnResource for SharingSettings {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.s3_kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_output_path {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_output_path'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_output_path'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -837,7 +852,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -847,7 +862,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -885,7 +900,7 @@ pub struct UserSettings {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role: Option<String>,
+    pub execution_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The Jupyter server's app settings.
@@ -967,20 +982,24 @@ impl cfn_resources::CfnResource for UserSettings {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.execution_role {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'execution_role'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'execution_role'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_role {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'execution_role'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'execution_role'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 

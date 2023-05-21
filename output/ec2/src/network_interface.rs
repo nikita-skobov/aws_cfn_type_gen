@@ -11,7 +11,7 @@ pub struct CfnNetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The security group IDs associated with this network interface.
@@ -73,7 +73,7 @@ pub struct CfnNetworkInterface {
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Assigns private IP addresses to the network interface. You can specify a primary private       IP address by setting the value of the Primary property to true       in the PrivateIpAddressSpecification property. If you want EC2 to       automatically assign private IP addresses, use the       SecondaryPrivateIpAddressCount property and do not specify this       property.
@@ -122,7 +122,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 
     ///
     /// An arbitrary set of tags (key-value pairs) for this network interface.
@@ -184,7 +184,7 @@ pub struct InstanceIpv6Address {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: String,
+    pub ipv6_address: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InstanceIpv6Address {
@@ -224,7 +224,7 @@ pub struct PrivateIpAddressSpecification {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: String,
+    pub private_ip_address: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
@@ -258,7 +258,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -268,7 +268,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

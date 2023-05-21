@@ -10,7 +10,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    pub content: String,
+    pub content: cfn_resources::StrVal,
 
     ///
     /// A description of the schema.
@@ -22,7 +22,7 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the schema registry.
@@ -33,7 +33,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
-    pub registry_name: String,
+    pub registry_name: cfn_resources::StrVal,
 
     ///
     /// The name of the schema.
@@ -45,7 +45,7 @@ pub struct CfnSchema {
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema_name: Option<String>,
+    pub schema_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Tags associated with the schema.
@@ -70,7 +70,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSchema {
@@ -99,7 +99,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// They value of a key-value pair.
@@ -110,7 +110,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsEntry {

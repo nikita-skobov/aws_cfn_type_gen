@@ -10,7 +10,7 @@ pub struct CfnResourceDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceDefinitionId")]
-    pub resource_definition_id: String,
+    pub resource_definition_id: cfn_resources::StrVal,
 
     ///
     /// The resources in this version.
@@ -64,7 +64,7 @@ pub struct GroupOwnerSetting {
     /// Update requires: Replacement
     #[serde(rename = "GroupOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_owner: Option<String>,
+    pub group_owner: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GroupOwnerSetting {
@@ -107,7 +107,7 @@ pub struct LocalDeviceResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    pub source_path: String,
+    pub source_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LocalDeviceResourceData {
@@ -142,7 +142,7 @@ pub struct LocalVolumeResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
-    pub destination_path: String,
+    pub destination_path: cfn_resources::StrVal,
 
     ///
     /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process.
@@ -165,7 +165,7 @@ pub struct LocalVolumeResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    pub source_path: String,
+    pub source_path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LocalVolumeResourceData {
@@ -301,7 +301,7 @@ pub struct ResourceDownloadOwnerSetting {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwner")]
-    pub group_owner: String,
+    pub group_owner: cfn_resources::StrVal,
 
     ///
     /// The permissions that the group owner has to the machine learning resource. Valid values are rw (read-write) or ro (read-only).
@@ -312,7 +312,7 @@ pub struct ResourceDownloadOwnerSetting {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupPermission")]
-    pub group_permission: String,
+    pub group_permission: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourceDownloadOwnerSetting {
@@ -343,7 +343,7 @@ pub struct ResourceInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Maximum length 128 characters with pattern [a-zA-Z0-9:_-]+. This must be unique within a Greengrass group.
@@ -354,7 +354,7 @@ pub struct ResourceInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A container for resource data. The container takes only one of the following supported resource data types: 				 LocalDeviceResourceData, LocalVolumeResourceData, 				 SageMakerMachineLearningModelResourceData, S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
@@ -400,7 +400,7 @@ pub struct S3MachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
-    pub destination_path: String,
+    pub destination_path: cfn_resources::StrVal,
 
     ///
     /// The owner setting for the downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -423,7 +423,7 @@ pub struct S3MachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3MachineLearningModelResourceData {
@@ -458,7 +458,7 @@ pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
-    pub destination_path: String,
+    pub destination_path: cfn_resources::StrVal,
 
     ///
     /// The owner setting for the downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -481,7 +481,7 @@ pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SageMakerJobArn")]
-    pub sage_maker_job_arn: String,
+    pub sage_maker_job_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SageMakerMachineLearningModelResourceData {
@@ -516,7 +516,7 @@ pub struct SecretsManagerSecretResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ARN")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The staging labels whose values you want to make available on the core, in addition to AWSCURRENT.

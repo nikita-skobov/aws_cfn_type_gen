@@ -50,7 +50,7 @@ pub struct CfnPrefixList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListName")]
-    pub prefix_list_name: String,
+    pub prefix_list_name: cfn_resources::StrVal,
 
     ///
     /// The tags for the prefix list.
@@ -117,7 +117,7 @@ pub struct Entry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
-    pub cidr: String,
+    pub cidr: cfn_resources::StrVal,
 
     ///
     /// A description for the entry.
@@ -131,7 +131,7 @@ pub struct Entry {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Entry {
@@ -165,7 +165,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -175,7 +175,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

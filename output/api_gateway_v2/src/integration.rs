@@ -10,7 +10,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the VPC link for a private integration. Supported only for HTTP APIs.
@@ -22,7 +22,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_id: Option<String>,
+    pub connection_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the network connection to the integration endpoint. Specify INTERNET for connections through the public routable internet or          VPC_LINK for private connections between API Gateway and resources in a VPC. The default value is INTERNET.
@@ -34,7 +34,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_type: Option<String>,
+    pub connection_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Supported only for WebSocket APIs. Specifies how to handle response payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
@@ -52,7 +52,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "ContentHandlingStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_handling_strategy: Option<String>,
+    pub content_handling_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string arn:aws:iam::*:user/*. To use resource-based permissions on supported AWS services, don't specify this parameter.
@@ -64,7 +64,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub credentials_arn: Option<String>,
+    pub credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the integration.
@@ -76,7 +76,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the integration's HTTP method type.
@@ -88,7 +88,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "IntegrationMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub integration_method: Option<String>,
+    pub integration_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS service action to invoke. To learn more, see Integration subtype reference.
@@ -100,7 +100,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "IntegrationSubtype")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub integration_subtype: Option<String>,
+    pub integration_subtype: Option<cfn_resources::StrVal>,
 
     ///
     /// The integration type of an integration. One of the following:
@@ -121,7 +121,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationType")]
-    pub integration_type: String,
+    pub integration_type: cfn_resources::StrVal,
 
     ///
     /// For a Lambda integration, specify the URI of a Lambda function.
@@ -137,7 +137,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "IntegrationUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub integration_uri: Option<String>,
+    pub integration_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the requestTemplates property on the Integration resource. There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and NEVER. Supported only for WebSocket APIs.
@@ -155,7 +155,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub passthrough_behavior: Option<String>,
+    pub passthrough_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the format of the payload sent to an integration. Required for HTTP           APIs. For HTTP APIs, supported values for Lambda proxy integrations are             1.0 and 2.0. For all other integrations,             1.0 is the only supported value. To learn more, see           Working with AWS Lambda proxy integrations for HTTP APIs.
@@ -167,7 +167,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub payload_format_version: Option<String>,
+    pub payload_format_version: Option<cfn_resources::StrVal>,
 
     ///
     /// For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the backend. The method request parameter value must match the pattern of method.request.{location}.{name}                 , where                   {location}                  is querystring, path, or header; and                   {name}                  must be a valid and unique method request parameter name.
@@ -219,7 +219,7 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "TemplateSelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_selection_expression: Option<String>,
+    pub template_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and           between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29           seconds for WebSocket APIs and 30 seconds for HTTP APIs.
@@ -276,7 +276,7 @@ pub struct ResponseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 
     ///
     /// Specifies the data to update the parameter with. To learn more, see Transforming API requests and responses.
@@ -287,7 +287,7 @@ pub struct ResponseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResponseParameter {
@@ -347,7 +347,7 @@ pub struct TlsConfig {
     /// Update requires: No interruption
     #[serde(rename = "ServerNameToVerify")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_name_to_verify: Option<String>,
+    pub server_name_to_verify: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TlsConfig {

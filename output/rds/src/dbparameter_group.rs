@@ -25,7 +25,7 @@ pub struct CfnDBParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "DBParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbparameter_group_name: Option<String>,
+    pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Provides the customer-specified description for this DB parameter group.
@@ -36,7 +36,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The DB parameter group family name. A DB parameter group can be associated with one       and only one DB parameter group family, and can be applied only to a DB instance running       a DB engine and engine version compatible with that DB parameter group family.
@@ -57,7 +57,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
-    pub family: String,
+    pub family: cfn_resources::StrVal,
 
     ///
     /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
@@ -123,7 +123,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -133,7 +133,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

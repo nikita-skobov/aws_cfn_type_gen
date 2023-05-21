@@ -45,7 +45,7 @@ pub struct Template {
     /// Update requires: No interruption
     #[serde(rename = "HtmlPart")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub html_part: Option<String>,
+    pub html_part: Option<cfn_resources::StrVal>,
 
     ///
     /// The subject line of the email.
@@ -56,7 +56,7 @@ pub struct Template {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectPart")]
-    pub subject_part: String,
+    pub subject_part: cfn_resources::StrVal,
 
     ///
     /// The name of the template.
@@ -68,7 +68,7 @@ pub struct Template {
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_name: Option<String>,
+    pub template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The email body that is visible to recipients whose email clients do not display HTML       content.
@@ -80,7 +80,7 @@ pub struct Template {
     /// Update requires: No interruption
     #[serde(rename = "TextPart")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_part: Option<String>,
+    pub text_part: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Template {

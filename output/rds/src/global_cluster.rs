@@ -33,7 +33,7 @@ pub struct CfnGlobalCluster {
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine: Option<String>,
+    pub engine: Option<cfn_resources::StrVal>,
 
     ///
     /// The engine version of the Aurora global database.
@@ -45,7 +45,7 @@ pub struct CfnGlobalCluster {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The cluster identifier of the global database cluster.
@@ -57,7 +57,7 @@ pub struct CfnGlobalCluster {
     /// Update requires: Replacement
     #[serde(rename = "GlobalClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_cluster_identifier: Option<String>,
+    pub global_cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The DB cluster identifier or Amazon Resource Name (ARN) to use as the primary cluster of the global database.
@@ -71,7 +71,7 @@ pub struct CfnGlobalCluster {
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbcluster_identifier: Option<String>,
+    pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The storage encryption setting for the global database cluster.

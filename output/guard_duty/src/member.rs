@@ -10,7 +10,7 @@ pub struct CfnMember {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
-    pub detector_id: String,
+    pub detector_id: cfn_resources::StrVal,
 
     ///
     /// Specifies whether or not to disable email notification for the member account that          you invite.
@@ -33,7 +33,7 @@ pub struct CfnMember {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Email")]
-    pub email: String,
+    pub email: cfn_resources::StrVal,
 
     ///
     /// The AWS account ID of the account to designate as a          member.
@@ -44,7 +44,7 @@ pub struct CfnMember {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemberId")]
-    pub member_id: String,
+    pub member_id: cfn_resources::StrVal,
 
     ///
     /// The invitation message that you want to send to the accounts that you're inviting to    GuardDuty as members.
@@ -56,7 +56,7 @@ pub struct CfnMember {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 
     ///
     /// You can use the Status property to update the status of the          relationship between the member account and its administrator account. Valid          values are Created and Invited when using an             AWS::GuardDuty::Member resource. If the value for this property          is not provided or set to Created, a member account is created but          not invited. If the value of this property is set to Invited, a          member account is created and invited.
@@ -68,7 +68,7 @@ pub struct CfnMember {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnMember {

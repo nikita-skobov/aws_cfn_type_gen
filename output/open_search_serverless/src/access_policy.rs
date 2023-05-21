@@ -11,7 +11,7 @@ pub struct CfnAccessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the policy.
@@ -22,7 +22,7 @@ pub struct CfnAccessPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The JSON policy document without any whitespaces.
@@ -33,7 +33,7 @@ pub struct CfnAccessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    pub policy: String,
+    pub policy: cfn_resources::StrVal,
 
     ///
     /// The type of access policy. Currently the only option is data.
@@ -44,7 +44,7 @@ pub struct CfnAccessPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAccessPolicy {

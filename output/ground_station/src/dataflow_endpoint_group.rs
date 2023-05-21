@@ -77,7 +77,7 @@ pub struct AwsGroundStationAgentEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "AgentStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub agent_status: Option<String>,
+    pub agent_status: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -88,7 +88,7 @@ pub struct AwsGroundStationAgentEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "AuditResults")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audit_results: Option<String>,
+    pub audit_results: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -121,7 +121,7 @@ pub struct AwsGroundStationAgentEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AwsGroundStationAgentEndpoint {
@@ -229,7 +229,7 @@ pub struct DataflowEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataflowEndpoint {
@@ -409,7 +409,7 @@ pub struct RangedSocketAddress {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -456,7 +456,7 @@ pub struct SecurityDetails {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The security group Ids of the security role, such as       sg-1234567890abcdef0.
@@ -510,7 +510,7 @@ pub struct SocketAddress {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port of the endpoint, such as       55888.
@@ -556,7 +556,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -566,7 +566,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

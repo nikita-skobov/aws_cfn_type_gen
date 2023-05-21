@@ -17,7 +17,7 @@ pub struct CfnDataSet {
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_account_id: Option<String>,
+    pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Groupings of columns that work together in certain Amazon QuickSight features. Currently, only geospatial hierarchy is supported.
@@ -55,7 +55,7 @@ pub struct CfnDataSet {
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_set_id: Option<String>,
+    pub data_set_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The usage configuration to apply to child datasets that reference this dataset as a source.
@@ -133,7 +133,7 @@ pub struct CfnDataSet {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of resource permissions on the dataset.
@@ -216,20 +216,24 @@ impl cfn_resources::CfnResource for CfnDataSet {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'aws_account_id'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'aws_account_id'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.aws_account_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'aws_account_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'aws_account_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -251,20 +255,24 @@ impl cfn_resources::CfnResource for CfnDataSet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -310,7 +318,7 @@ pub struct CalculatedColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnId")]
-    pub column_id: String,
+    pub column_id: cfn_resources::StrVal,
 
     ///
     /// Column name.
@@ -325,7 +333,7 @@ pub struct CalculatedColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    pub column_name: String,
+    pub column_name: cfn_resources::StrVal,
 
     ///
     /// An expression that defines the calculated column.
@@ -340,7 +348,7 @@ pub struct CalculatedColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    pub expression: String,
+    pub expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CalculatedColumn {
@@ -355,56 +363,68 @@ impl cfn_resources::CfnResource for CalculatedColumn {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.column_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'column_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'column_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'column_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'column_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'column_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'column_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.expression;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'expression'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'expression'. {} is greater than 4096",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.expression;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'expression'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'expression'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -427,7 +447,7 @@ pub struct CastColumnTypeOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    pub column_name: String,
+    pub column_name: cfn_resources::StrVal,
 
     ///
     /// When casting a column from string to datetime type, you can supply a string in a       format supported by Amazon QuickSight to denote the source data format.
@@ -441,7 +461,7 @@ pub struct CastColumnTypeOperation {
     /// Update requires: No interruption
     #[serde(rename = "Format")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub format: Option<String>,
+    pub format: Option<cfn_resources::StrVal>,
 
     ///
     /// New column data type.
@@ -494,28 +514,34 @@ impl cfn_resources::CfnResource for CastColumnTypeOperation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.column_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'column_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'column_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.format {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'format'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'format'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -540,7 +566,7 @@ pub struct ColumnDescription {
     /// Update requires: No interruption
     #[serde(rename = "Text")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ColumnDescription {
@@ -554,20 +580,24 @@ impl cfn_resources::CfnResource for ColumnDescription {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.text {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'text'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'text'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.text {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'text'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'text'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -801,7 +831,7 @@ pub struct CustomSql {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceArn")]
-    pub data_source_arn: String,
+    pub data_source_arn: cfn_resources::StrVal,
 
     ///
     /// A display name for the SQL query result.
@@ -816,7 +846,7 @@ pub struct CustomSql {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The SQL query.
@@ -831,7 +861,7 @@ pub struct CustomSql {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlQuery")]
-    pub sql_query: String,
+    pub sql_query: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomSql {
@@ -855,38 +885,46 @@ impl cfn_resources::CfnResource for CustomSql {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.sql_query;
 
-        if the_val.len() > 65536 as _ {
-            return Err(format!(
-                "Max validation failed on field 'sql_query'. {} is greater than 65536",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 65536 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sql_query'. {} is greater than 65536",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.sql_query;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'sql_query'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'sql_query'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -960,7 +998,7 @@ pub struct FieldFolder {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FieldFolder {
@@ -993,7 +1031,7 @@ pub struct FilterOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionExpression")]
-    pub condition_expression: String,
+    pub condition_expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FilterOperation {
@@ -1008,20 +1046,21 @@ impl cfn_resources::CfnResource for FilterOperation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.condition_expression;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'condition_expression'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!("Max validation failed on field 'condition_expression'. {} is greater than 4096", s.len()));
+            }
         }
 
         let the_val = &self.condition_expression;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'condition_expression'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'condition_expression'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1071,7 +1110,7 @@ pub struct GeoSpatialColumnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1108,20 +1147,24 @@ impl cfn_resources::CfnResource for GeoSpatialColumnGroup {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1186,7 +1229,7 @@ pub struct InputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The data type of the column.
@@ -1251,20 +1294,24 @@ impl cfn_resources::CfnResource for InputColumn {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1295,7 +1342,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftOperand")]
-    pub left_operand: String,
+    pub left_operand: cfn_resources::StrVal,
 
     ///
     /// The join instructions provided in the ON clause of a join.
@@ -1310,7 +1357,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnClause")]
-    pub on_clause: String,
+    pub on_clause: cfn_resources::StrVal,
 
     ///
     /// Join key properties of the right operand.
@@ -1333,7 +1380,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightOperand")]
-    pub right_operand: String,
+    pub right_operand: cfn_resources::StrVal,
 
     ///
     /// The type of join that it is.
@@ -1390,20 +1437,24 @@ impl cfn_resources::CfnResource for JoinInstruction {
 
         let the_val = &self.on_clause;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'on_clause'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'on_clause'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.on_clause;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'on_clause'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'on_clause'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.right_join_key_properties
@@ -1460,7 +1511,7 @@ pub struct LogicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
-    pub alias: String,
+    pub alias: cfn_resources::StrVal,
 
     ///
     /// Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null.
@@ -1500,20 +1551,24 @@ impl cfn_resources::CfnResource for LogicalTable {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.alias;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'alias'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'alias'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.alias;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'alias'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'alias'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.data_transforms {
@@ -1544,7 +1599,7 @@ pub struct LogicalTableSource {
     /// Update requires: No interruption
     #[serde(rename = "DataSetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_set_arn: Option<String>,
+    pub data_set_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the result of a join of two logical tables.
@@ -1574,7 +1629,7 @@ pub struct LogicalTableSource {
     /// Update requires: No interruption
     #[serde(rename = "PhysicalTableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub physical_table_id: Option<String>,
+    pub physical_table_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LogicalTableSource {
@@ -1592,20 +1647,24 @@ impl cfn_resources::CfnResource for LogicalTableSource {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.physical_table_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'physical_table_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'physical_table_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.physical_table_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'physical_table_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'physical_table_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1630,7 +1689,7 @@ pub struct OutputColumn {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A display name for the dataset.
@@ -1646,7 +1705,7 @@ pub struct OutputColumn {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type.
@@ -1699,38 +1758,46 @@ impl cfn_resources::CfnResource for OutputColumn {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1856,7 +1923,7 @@ pub struct RelationalTable {
     /// Update requires: No interruption
     #[serde(rename = "Catalog")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog: Option<String>,
+    pub catalog: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) for the data source.
@@ -1867,7 +1934,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceArn")]
-    pub data_source_arn: String,
+    pub data_source_arn: cfn_resources::StrVal,
 
     ///
     /// The column schema of the table.
@@ -1895,7 +1962,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The schema name. This name applies to certain relational database engines.
@@ -1909,7 +1976,7 @@ pub struct RelationalTable {
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema: Option<String>,
+    pub schema: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RelationalTable {
@@ -1933,28 +2000,34 @@ impl cfn_resources::CfnResource for RelationalTable {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.schema {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'schema'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'schema'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1978,7 +2051,7 @@ pub struct RenameColumnOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    pub column_name: String,
+    pub column_name: cfn_resources::StrVal,
 
     ///
     /// The new name for the column.
@@ -1993,7 +2066,7 @@ pub struct RenameColumnOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewColumnName")]
-    pub new_column_name: String,
+    pub new_column_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RenameColumnOperation {
@@ -2008,38 +2081,46 @@ impl cfn_resources::CfnResource for RenameColumnOperation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.column_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'column_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'column_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.new_column_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'new_column_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'new_column_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.new_column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'new_column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'new_column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2071,7 +2152,7 @@ pub struct ResourcePermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourcePermission {
@@ -2102,7 +2183,7 @@ pub struct RowLevelPermissionDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 
     ///
     /// The user or group rules associated with the dataset that contains permissions for RLS.
@@ -2134,7 +2215,7 @@ pub struct RowLevelPermissionDataSet {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of permissions to use when interpreting the permissions for RLS. DENY_ACCESS     is included for backward compatibility only.
@@ -2195,11 +2276,13 @@ impl cfn_resources::CfnResource for RowLevelPermissionDataSet {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.namespace {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'namespace'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'namespace'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2219,7 +2302,7 @@ pub struct S3Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceArn")]
-    pub data_source_arn: String,
+    pub data_source_arn: cfn_resources::StrVal,
 
     ///
     /// A physical table type for an S3 data source.
@@ -2293,7 +2376,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2303,7 +2386,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2336,7 +2419,7 @@ pub struct TagColumnOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    pub column_name: String,
+    pub column_name: cfn_resources::StrVal,
 
     ///
     /// The dataset column tag, currently only used for geospatial type tagging.
@@ -2366,20 +2449,24 @@ impl cfn_resources::CfnResource for TagColumnOperation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.column_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'column_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'column_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.tags;
@@ -2538,7 +2625,7 @@ pub struct UploadSettings {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// File format.
@@ -2644,20 +2731,24 @@ impl cfn_resources::CfnResource for UploadSettings {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() > 1 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'delimiter'. {} is greater than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'delimiter'. {} is greater than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'delimiter'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'delimiter'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

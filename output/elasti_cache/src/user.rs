@@ -13,7 +13,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "AccessString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_string: Option<String>,
+    pub access_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the authentication mode to use. Below is an example of the possible JSON values:
@@ -40,7 +40,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    pub engine: String,
+    pub engine: cfn_resources::StrVal,
 
     ///
     /// Indicates a password is not required for this user.
@@ -90,7 +90,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserId")]
-    pub user_id: String,
+    pub user_id: cfn_resources::StrVal,
 
     ///
     /// The username of the user.
@@ -103,7 +103,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
-    pub user_name: String,
+    pub user_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUser {
@@ -122,20 +122,24 @@ impl cfn_resources::CfnResource for CfnUser {
 
         let the_val = &self.user_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -223,7 +227,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -233,7 +237,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

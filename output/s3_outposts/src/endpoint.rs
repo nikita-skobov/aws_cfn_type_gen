@@ -32,7 +32,7 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "CustomerOwnedIpv4Pool")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub customer_owned_ipv4_pool: Option<String>,
+    pub customer_owned_ipv4_pool: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Outpost.
@@ -43,7 +43,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostId")]
-    pub outpost_id: String,
+    pub outpost_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the security group to use with the endpoint.
@@ -54,7 +54,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupId")]
-    pub security_group_id: String,
+    pub security_group_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet.
@@ -65,7 +65,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -111,7 +111,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+    pub network_interface_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NetworkInterface {

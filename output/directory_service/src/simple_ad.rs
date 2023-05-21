@@ -31,7 +31,7 @@ pub struct CfnSimpleAD {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether to enable single sign-on for a directory. If you don't specify a value, AWS CloudFormation disables single sign-on by default.
@@ -56,7 +56,7 @@ pub struct CfnSimpleAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The password for the directory administrator. The directory creation process creates a    directory administrator account with the user name Administrator and this    password.
@@ -71,7 +71,7 @@ pub struct CfnSimpleAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The NetBIOS name of the directory, such as CORP.
@@ -85,7 +85,7 @@ pub struct CfnSimpleAD {
     /// Update requires: Replacement
     #[serde(rename = "ShortName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub short_name: Option<String>,
+    pub short_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the directory. For valid values, see CreateDirectory in    the AWS Directory Service API Reference.
@@ -140,20 +140,24 @@ impl cfn_resources::CfnResource for CfnSimpleAD {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -188,7 +192,7 @@ pub struct VpcSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VpcSettings {

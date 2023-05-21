@@ -16,7 +16,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallArn")]
-    pub firewall_arn: String,
+    pub firewall_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the firewall that the logging configuration is associated with.       You can't change the firewall specification after you create the logging configuration.
@@ -28,7 +28,7 @@ pub struct CfnLoggingConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "FirewallName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub firewall_name: Option<String>,
+    pub firewall_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.

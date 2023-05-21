@@ -22,7 +22,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The bundle ID for the bucket (for example, small_1_0).
@@ -37,7 +37,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BundleId")]
-    pub bundle_id: String,
+    pub bundle_id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether object versioning is enabled for the bucket.
@@ -208,7 +208,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -218,7 +218,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

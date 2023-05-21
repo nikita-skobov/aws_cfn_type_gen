@@ -10,7 +10,7 @@ pub struct CfnReplicationSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationSubnetGroupDescription")]
-    pub replication_subnet_group_description: String,
+    pub replication_subnet_group_description: cfn_resources::StrVal,
 
     ///
     /// The identifier for the replication subnet group. If you don't specify a name, AWS CloudFormation       generates a unique ID and uses that ID for the identifier.
@@ -22,7 +22,7 @@ pub struct CfnReplicationSubnetGroup {
     /// Update requires: Replacement
     #[serde(rename = "ReplicationSubnetGroupIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_subnet_group_identifier: Option<String>,
+    pub replication_subnet_group_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more subnet IDs to be assigned to the subnet group.
@@ -79,7 +79,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -89,7 +89,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

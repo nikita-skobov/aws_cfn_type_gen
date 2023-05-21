@@ -40,7 +40,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MonitorName")]
-    pub monitor_name: String,
+    pub monitor_name: cfn_resources::StrVal,
 
     ///
     /// The resources that have been added for the monitor, listed by their Amazon Resource Names (ARNs).
@@ -92,7 +92,7 @@ pub struct CfnMonitor {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for a monitor, listed as a set of key:value pairs.
@@ -184,7 +184,7 @@ pub struct S3Config {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional Amazon S3 bucket prefix for internet measurements publishing.
@@ -196,7 +196,7 @@ pub struct S3Config {
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of publishing Internet Monitor internet measurements to an Amazon S3 bucket. The delivery status is ENABLED 			if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
@@ -208,7 +208,7 @@ pub struct S3Config {
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_delivery_status: Option<String>,
+    pub log_delivery_status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Config {
@@ -242,7 +242,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -252,7 +252,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

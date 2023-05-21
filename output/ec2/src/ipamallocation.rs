@@ -15,7 +15,7 @@ pub struct CfnIPAMAllocation {
     /// Update requires: Replacement
     #[serde(rename = "Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
+    pub cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// A description for the allocation.
@@ -27,7 +27,7 @@ pub struct CfnIPAMAllocation {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the IPAM pool from which you would like to allocate a CIDR.
@@ -38,7 +38,7 @@ pub struct CfnIPAMAllocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpamPoolId")]
-    pub ipam_pool_id: String,
+    pub ipam_pool_id: cfn_resources::StrVal,
 
     ///
     /// The netmask length of the CIDR you would like to allocate from the IPAM pool. Note the following:

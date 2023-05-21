@@ -86,7 +86,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
-    pub service_name: String,
+    pub service_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -199,7 +199,7 @@ pub struct Container {
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_name: Option<String>,
+    pub container_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment variables of the container.
@@ -227,7 +227,7 @@ pub struct Container {
     /// Update requires: No interruption
     #[serde(rename = "Image")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image: Option<String>,
+    pub image: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that describes the open firewall ports and protocols of the container.
@@ -317,7 +317,7 @@ pub struct EnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment variable key.
@@ -329,7 +329,7 @@ pub struct EnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Variable")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub variable: Option<String>,
+    pub variable: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EnvironmentVariable {
@@ -383,7 +383,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP codes to use when checking for a successful response from a container. You can     specify values between 200 and 499. You can specify multiple     values (for example, 200,202) or a range of values (for example,       200-299).
@@ -395,7 +395,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "SuccessCodes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub success_codes: Option<String>,
+    pub success_codes: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time, in seconds, during which no response means a failed health check.     You can specify between 2 and 60 seconds. The default value is       2.
@@ -449,7 +449,7 @@ pub struct PortInfo {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol name for the open ports.
@@ -518,7 +518,7 @@ pub struct PublicDomainName {
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_name: Option<String>,
+    pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The public domain names to use with the container service.
@@ -560,7 +560,7 @@ pub struct PublicEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_name: Option<String>,
+    pub container_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port of the specified container to which traffic is forwarded to.
@@ -622,7 +622,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -632,7 +632,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

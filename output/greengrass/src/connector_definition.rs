@@ -26,7 +26,7 @@ pub struct CfnConnectorDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Application-specific metadata to attach to the connector definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -79,7 +79,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorArn")]
-    pub connector_arn: String,
+    pub connector_arn: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the connector. This value must be unique within       the connector definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -90,7 +90,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The parameters or configuration used by the connector.

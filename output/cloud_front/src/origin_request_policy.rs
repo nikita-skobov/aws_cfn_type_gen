@@ -194,7 +194,7 @@ pub struct OriginRequestPolicyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// The cookies from viewer requests to include in origin requests.
@@ -227,7 +227,7 @@ pub struct OriginRequestPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The URL query strings from viewer requests to include in origin requests.

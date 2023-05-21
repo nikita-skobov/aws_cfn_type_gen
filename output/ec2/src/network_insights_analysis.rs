@@ -34,7 +34,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInsightsPathId")]
-    pub network_insights_path_id: String,
+    pub network_insights_path_id: cfn_resources::StrVal,
 
     ///
     /// The tags to apply.
@@ -76,7 +76,7 @@ pub struct AdditionalDetail {
     /// Update requires: No interruption
     #[serde(rename = "AdditionalDetailType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_detail_type: Option<String>,
+    pub additional_detail_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The path component.
@@ -112,7 +112,7 @@ pub struct AdditionalDetail {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_name: Option<String>,
+    pub service_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AdditionalDetail {
@@ -146,7 +146,7 @@ pub struct AlternatePathHint {
     /// Update requires: No interruption
     #[serde(rename = "ComponentArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_arn: Option<String>,
+    pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the component.
@@ -158,7 +158,7 @@ pub struct AlternatePathHint {
     /// Update requires: No interruption
     #[serde(rename = "ComponentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_id: Option<String>,
+    pub component_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AlternatePathHint {
@@ -188,7 +188,7 @@ pub struct AnalysisAclRule {
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
+    pub cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the rule is an outbound rule.
@@ -224,7 +224,7 @@ pub struct AnalysisAclRule {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to allow or deny traffic that matches the rule.
@@ -236,7 +236,7 @@ pub struct AnalysisAclRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rule_action: Option<String>,
+    pub rule_action: Option<cfn_resources::StrVal>,
 
     ///
     /// The rule number.
@@ -282,7 +282,7 @@ pub struct AnalysisComponent {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the component.
@@ -294,7 +294,7 @@ pub struct AnalysisComponent {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AnalysisComponent {
@@ -416,7 +416,7 @@ pub struct AnalysisLoadBalancerTarget {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The Availability Zone.
@@ -428,7 +428,7 @@ pub struct AnalysisLoadBalancerTarget {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the instance.
@@ -470,20 +470,24 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.address {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'address'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'address'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -550,7 +554,7 @@ pub struct AnalysisPacketHeader {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The source addresses.
@@ -604,7 +608,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "NatGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nat_gateway_id: Option<String>,
+    pub nat_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a network interface.
@@ -616,7 +620,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes how the route was created. The following are the possible values:
@@ -630,7 +634,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "Origin")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin: Option<String>,
+    pub origin: Option<cfn_resources::StrVal>,
 
     ///
     /// The state. The following are the possible values:
@@ -644,7 +648,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a transit gateway.
@@ -656,7 +660,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transit_gateway_id: Option<String>,
+    pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of a VPC peering connection.
@@ -668,7 +672,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_peering_connection_id: Option<String>,
+    pub vpc_peering_connection_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination IPv4 address, in CIDR notation.
@@ -680,7 +684,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "destinationCidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_cidr: Option<String>,
+    pub destination_cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix of the AWS service.
@@ -692,7 +696,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "destinationPrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_prefix_list_id: Option<String>,
+    pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of an egress-only internet gateway.
@@ -704,7 +708,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "egressOnlyInternetGatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub egress_only_internet_gateway_id: Option<String>,
+    pub egress_only_internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the gateway, such as an internet gateway or virtual private gateway.
@@ -716,7 +720,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "gatewayId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gateway_id: Option<String>,
+    pub gateway_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the instance, such as a NAT instance.
@@ -728,7 +732,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "instanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
@@ -758,7 +762,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
+    pub cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// The direction. The following are the possible values:
@@ -772,7 +776,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub direction: Option<String>,
+    pub direction: Option<cfn_resources::StrVal>,
 
     ///
     /// The port range.
@@ -796,7 +800,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix_list_id: Option<String>,
+    pub prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol name.
@@ -808,7 +812,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The security group ID.
@@ -820,7 +824,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_group_id: Option<String>,
+    pub security_group_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
@@ -884,7 +888,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 addresses, in CIDR notation.
@@ -970,7 +974,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "ComponentAccount")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_account: Option<String>,
+    pub component_account: Option<cfn_resources::StrVal>,
 
     ///
     /// The Region for the component.
@@ -984,7 +988,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "ComponentRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_region: Option<String>,
+    pub component_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The customer gateway.
@@ -1034,7 +1038,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub direction: Option<String>,
+    pub direction: Option<cfn_resources::StrVal>,
 
     ///
     /// The load balancer listener.
@@ -1058,7 +1062,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "ExplanationCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub explanation_code: Option<String>,
+    pub explanation_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The route table.
@@ -1098,7 +1102,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub load_balancer_arn: Option<String>,
+    pub load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The listener port of the load balancer.
@@ -1178,7 +1182,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "MissingComponent")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub missing_component: Option<String>,
+    pub missing_component: Option<cfn_resources::StrVal>,
 
     ///
     /// The NAT gateway.
@@ -1214,7 +1218,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "PacketField")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub packet_field: Option<String>,
+    pub packet_field: Option<cfn_resources::StrVal>,
 
     ///
     /// The port.
@@ -1350,7 +1354,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 
     ///
     /// The subnet.
@@ -1502,20 +1506,24 @@ impl cfn_resources::CfnResource for Explanation {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.address {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'address'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'address'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1556,20 +1564,21 @@ impl cfn_resources::CfnResource for Explanation {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.load_balancer_arn {
-            if the_val.len() > 1283 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'load_balancer_arn'. {} is greater than 1283",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1283 as _ {
+                    return Err(format!("Max validation failed on field 'load_balancer_arn'. {} is greater than 1283", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.load_balancer_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'load_balancer_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'load_balancer_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1847,7 +1856,7 @@ pub struct PathComponent {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_name: Option<String>,
+    pub service_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The source VPC.
@@ -2031,7 +2040,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2041,7 +2050,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2071,7 +2080,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "AttachmentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attachment_id: Option<String>,
+    pub attachment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The CIDR block used for destination matches.
@@ -2083,7 +2092,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "DestinationCidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_cidr: Option<String>,
+    pub destination_cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the prefix list.
@@ -2095,7 +2104,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix_list_id: Option<String>,
+    pub prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the resource for the route attachment.
@@ -2107,7 +2116,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The resource type for the route attachment.
@@ -2119,7 +2128,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_type: Option<String>,
+    pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The route origin. The following are the possible values:
@@ -2133,7 +2142,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "RouteOrigin")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub route_origin: Option<String>,
+    pub route_origin: Option<cfn_resources::StrVal>,
 
     ///
     /// The state of the route.
@@ -2145,7 +2154,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TransitGatewayRouteTableRoute {

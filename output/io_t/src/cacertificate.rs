@@ -11,7 +11,7 @@ pub struct CfnCACertificate {
     /// Update requires: No interruption
     #[serde(rename = "AutoRegistrationStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auto_registration_status: Option<String>,
+    pub auto_registration_status: Option<cfn_resources::StrVal>,
 
     ///
     /// The certificate data in PEM format.
@@ -22,7 +22,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CACertificatePem")]
-    pub cacertificate_pem: String,
+    pub cacertificate_pem: cfn_resources::StrVal,
 
     ///
     /// The mode of the CA.
@@ -38,7 +38,7 @@ pub struct CfnCACertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_mode: Option<String>,
+    pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the registration configuration.
@@ -75,7 +75,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -101,7 +101,7 @@ pub struct CfnCACertificate {
     /// Update requires: Replacement
     #[serde(rename = "VerificationCertificatePem")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub verification_certificate_pem: Option<String>,
+    pub verification_certificate_pem: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnCACertificate {
@@ -135,7 +135,7 @@ pub struct RegistrationConfig {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The template body.
@@ -147,7 +147,7 @@ pub struct RegistrationConfig {
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_body: Option<String>,
+    pub template_body: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the provisioning template.
@@ -159,7 +159,7 @@ pub struct RegistrationConfig {
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_name: Option<String>,
+    pub template_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RegistrationConfig {
@@ -193,7 +193,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -203,7 +203,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

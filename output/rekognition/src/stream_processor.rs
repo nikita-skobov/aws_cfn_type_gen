@@ -90,7 +90,7 @@ pub struct CfnStreamProcessor {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Name attribute specifies the name of the stream processor and it must be within the     constraints described in the Name section of StreamProcessor.     If you don't specify a name, Amazon CloudFormation generates a unique ID and uses that ID for the stream processor name.
@@ -108,7 +108,7 @@ pub struct CfnStreamProcessor {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.     Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.      Amazon Rekognition also publishes an end-of-session notification with a summary when the stream processing session is complete.     For more information, see StreamProcessorNotificationChannel.
@@ -143,7 +143,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation.      For more information, see the S3Destination section of StreamProcessorOutput.
@@ -199,20 +199,24 @@ impl cfn_resources::CfnResource for CfnStreamProcessor {
         self.kinesis_video_stream.validate()?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -384,7 +388,7 @@ pub struct FaceSearchSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CollectionId")]
-    pub collection_id: String,
+    pub collection_id: cfn_resources::StrVal,
 
     ///
     /// Minimum face match confidence score that must be met to return a result for a recognized face. The default is 80.     0 is the lowest confidence. 100 is the highest confidence. Values between 0 and 100 are accepted, and values lower than 80 are set to 80.
@@ -411,20 +415,24 @@ impl cfn_resources::CfnResource for FaceSearchSettings {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.collection_id;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'collection_id'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'collection_id'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.collection_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'collection_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'collection_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -445,7 +453,7 @@ pub struct KinesisDataStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisDataStream {
@@ -476,7 +484,7 @@ pub struct KinesisVideoStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisVideoStream {
@@ -505,7 +513,7 @@ pub struct NotificationChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NotificationChannel {
@@ -534,7 +542,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// Describes the destination Amazon Simple Storage Service (Amazon S3) object keys of a stream processor's exports.
@@ -546,7 +554,7 @@ pub struct S3Destination {
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_key_prefix: Option<String>,
+    pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Destination {
@@ -580,7 +588,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -590,7 +598,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

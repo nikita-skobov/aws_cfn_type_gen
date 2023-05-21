@@ -50,7 +50,7 @@ pub struct CachePolicyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// The default amount of time, in seconds, that you want objects to stay in the CloudFront 			cache before CloudFront sends another request to the origin to see if the object has been 			updated. CloudFront uses this value as the object's time to live (TTL) only when the origin 			does not send Cache-Control or Expires 			headers with the object. For more information, see Managing How Long Content Stays in an Edge Cache (Expiration) in the 				Amazon CloudFront Developer Guide.
@@ -98,7 +98,7 @@ pub struct CachePolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The HTTP headers, cookies, and URL query strings to include in the cache key. The values 			included in the cache key are also included in requests that CloudFront sends to the 			origin.

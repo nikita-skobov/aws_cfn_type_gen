@@ -16,7 +16,7 @@ pub struct CfnLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocationName")]
-    pub location_name: String,
+    pub location_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -42,20 +42,24 @@ impl cfn_resources::CfnResource for CfnLocation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.location_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location_name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location_name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.location_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -79,7 +83,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -89,7 +93,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

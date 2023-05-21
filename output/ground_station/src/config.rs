@@ -23,7 +23,7 @@ pub struct CfnConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Tags assigned to a resource.
@@ -359,7 +359,7 @@ pub struct DataflowEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "DataflowEndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dataflow_endpoint_name: Option<String>,
+    pub dataflow_endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The region of the dataflow endpoint to use during contacts. When omitted, Ground Station will use the region of the contact.
@@ -371,7 +371,7 @@ pub struct DataflowEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "DataflowEndpointRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dataflow_endpoint_region: Option<String>,
+    pub dataflow_endpoint_region: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataflowEndpointConfig {
@@ -401,7 +401,7 @@ pub struct DecodeConfig {
     /// Update requires: No interruption
     #[serde(rename = "UnvalidatedJSON")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unvalidated_json: Option<String>,
+    pub unvalidated_json: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DecodeConfig {
@@ -431,7 +431,7 @@ pub struct DemodulationConfig {
     /// Update requires: No interruption
     #[serde(rename = "UnvalidatedJSON")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unvalidated_json: Option<String>,
+    pub unvalidated_json: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DemodulationConfig {
@@ -461,7 +461,7 @@ pub struct Eirp {
     /// Update requires: No interruption
     #[serde(rename = "Units")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub units: Option<String>,
+    pub units: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the EIRP. Valid values are between 20.0 to 50.0 dBW.
@@ -503,7 +503,7 @@ pub struct Frequency {
     /// Update requires: No interruption
     #[serde(rename = "Units")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub units: Option<String>,
+    pub units: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the frequency. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.
@@ -545,7 +545,7 @@ pub struct FrequencyBandwidth {
     /// Update requires: No interruption
     #[serde(rename = "Units")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub units: Option<String>,
+    pub units: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the bandwidth. AWS Ground Station currently has the following bandwidth limitations:
@@ -589,7 +589,7 @@ pub struct S3RecordingConfig {
     /// Update requires: No interruption
     #[serde(rename = "BucketArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_arn: Option<String>,
+    pub bucket_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix of the S3 data object.        If you choose to use any optional keys for substitution, these values will be replaced with the corresponding information from your contact details.        For example, a prefix of {satellite_id}/{year}/{month}/{day}/ will replaced with fake_satellite_id/2021/01/10/
@@ -603,7 +603,7 @@ pub struct S3RecordingConfig {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines the ARN of the role assumed for putting archives to S3.
@@ -615,7 +615,7 @@ pub struct S3RecordingConfig {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3RecordingConfig {
@@ -671,7 +671,7 @@ pub struct SpectrumConfig {
     /// Update requires: No interruption
     #[serde(rename = "Polarization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub polarization: Option<String>,
+    pub polarization: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SpectrumConfig {
@@ -713,7 +713,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -723,7 +723,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -753,7 +753,7 @@ pub struct TrackingConfig {
     /// Update requires: No interruption
     #[serde(rename = "Autotrack")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub autotrack: Option<String>,
+    pub autotrack: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TrackingConfig {
@@ -783,7 +783,7 @@ pub struct UplinkEchoConfig {
     /// Update requires: No interruption
     #[serde(rename = "AntennaUplinkConfigArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub antenna_uplink_config_arn: Option<String>,
+    pub antenna_uplink_config_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether or not uplink echo is enabled.
@@ -837,7 +837,7 @@ pub struct UplinkSpectrumConfig {
     /// Update requires: No interruption
     #[serde(rename = "Polarization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub polarization: Option<String>,
+    pub polarization: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for UplinkSpectrumConfig {

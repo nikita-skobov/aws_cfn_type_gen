@@ -18,7 +18,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionName")]
-    pub connection_name: String,
+    pub connection_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the host associated with the connection.
@@ -36,7 +36,7 @@ pub struct CfnConnection {
     /// Update requires: Replacement
     #[serde(rename = "HostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_arn: Option<String>,
+    pub host_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the external provider where your third-party code repository is    configured.
@@ -100,37 +100,45 @@ impl cfn_resources::CfnResource for CfnConnection {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.connection_name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'connection_name'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'connection_name'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.connection_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'connection_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.host_arn {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'host_arn'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'connection_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.host_arn {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'host_arn'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'host_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.host_arn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'host_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -164,7 +172,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -174,7 +182,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

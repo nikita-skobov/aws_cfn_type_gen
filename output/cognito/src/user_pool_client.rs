@@ -129,7 +129,7 @@ pub struct CfnUserPoolClient {
     /// Update requires: No interruption
     #[serde(rename = "ClientName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_name: Option<String>,
+    pub client_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The default redirect URI. Must be in the CallbackURLs list.
@@ -157,7 +157,7 @@ pub struct CfnUserPoolClient {
     /// Update requires: No interruption
     #[serde(rename = "DefaultRedirectURI")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_redirect_uri: Option<String>,
+    pub default_redirect_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// Activates the propagation of additional user context data. For more information about       propagation of user context data, see Adding advanced security to a user pool. If you don’t include this       parameter, you can't send device fingerprint information, including source IP address,       to Amazon Cognito advanced security. You can only activate         EnablePropagateAdditionalUserContextData in an app client that has a       client secret.
@@ -328,7 +328,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 
     ///
     /// The user pool attributes that the app client can write to.
@@ -422,35 +422,43 @@ impl cfn_resources::CfnResource for CfnUserPoolClient {
         }
 
         if let Some(the_val) = &self.client_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'client_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'client_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.client_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'client_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'client_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.default_redirect_uri {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'default_redirect_uri'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'default_redirect_uri'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.default_redirect_uri {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'default_redirect_uri'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'default_redirect_uri'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -469,20 +477,24 @@ impl cfn_resources::CfnResource for CfnUserPoolClient {
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -502,7 +514,7 @@ pub struct AnalyticsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_arn: Option<String>,
+    pub application_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The application ID for an Amazon Pinpoint application.
@@ -516,7 +528,7 @@ pub struct AnalyticsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ApplicationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_id: Option<String>,
+    pub application_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The external ID.
@@ -528,7 +540,7 @@ pub struct AnalyticsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ExternalId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub external_id: Option<String>,
+    pub external_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of an AWS Identity and Access Management role that authorizes Amazon Cognito to publish events to Amazon Pinpoint       analytics.
@@ -546,7 +558,7 @@ pub struct AnalyticsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If UserDataShared is true, Amazon Cognito includes user data in the       events that it publishes to Amazon Pinpoint analytics.
@@ -572,20 +584,24 @@ impl cfn_resources::CfnResource for AnalyticsConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'role_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'role_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 

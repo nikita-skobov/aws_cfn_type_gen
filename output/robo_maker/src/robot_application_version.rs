@@ -16,7 +16,7 @@ pub struct CfnRobotApplicationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Application")]
-    pub application: String,
+    pub application: cfn_resources::StrVal,
 
     ///
     /// The current revision id for the robot application. If you provide a value and it matches     the latest revision ID, a new version will be created.
@@ -34,7 +34,7 @@ pub struct CfnRobotApplicationVersion {
     /// Update requires: Replacement
     #[serde(rename = "CurrentRevisionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub current_revision_id: Option<String>,
+    pub current_revision_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnRobotApplicationVersion {
@@ -49,37 +49,42 @@ impl cfn_resources::CfnResource for CfnRobotApplicationVersion {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application'. {} is greater than 1224",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application'. {} is greater than 1224",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.current_revision_id {
-            if the_val.len() > 40 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'current_revision_id'. {} is greater than 40",
-                    the_val.len()
+                    "Min validation failed on field 'application'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.current_revision_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'current_revision_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 40 as _ {
+                    return Err(format!("Max validation failed on field 'current_revision_id'. {} is greater than 40", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.current_revision_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'current_revision_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -14,7 +14,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppId")]
-    pub app_id: String,
+    pub app_id: cfn_resources::StrVal,
 
     ///
     /// Sets the branch patterns for automatic subdomain creation.
@@ -42,7 +42,7 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "AutoSubDomainIAMRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auto_sub_domain_iamrole: Option<String>,
+    pub auto_sub_domain_iamrole: Option<cfn_resources::StrVal>,
 
     ///
     /// The domain name for the domain association.
@@ -57,7 +57,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// Enables the automated creation of subdomains for branches.
@@ -113,7 +113,7 @@ pub struct SubDomainSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BranchName")]
-    pub branch_name: String,
+    pub branch_name: cfn_resources::StrVal,
 
     ///
     /// The prefix setting for the subdomain.
@@ -128,7 +128,7 @@ pub struct SubDomainSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    pub prefix: String,
+    pub prefix: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SubDomainSetting {

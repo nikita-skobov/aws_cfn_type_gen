@@ -17,7 +17,7 @@ pub struct CfnArchive {
     /// Update requires: Replacement
     #[serde(rename = "ArchiveName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub archive_name: Option<String>,
+    pub archive_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A description for the archive.
@@ -33,7 +33,7 @@ pub struct CfnArchive {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An event pattern to use to filter events sent to the archive.
@@ -76,7 +76,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
-    pub source_arn: String,
+    pub source_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnArchive {
@@ -90,29 +90,35 @@ impl cfn_resources::CfnResource for CfnArchive {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.archive_name {
-            if the_val.len() > 48 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'archive_name'. {} is greater than 48",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 48 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'archive_name'. {} is greater than 48",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.archive_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'archive_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'archive_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -127,20 +133,24 @@ impl cfn_resources::CfnResource for CfnArchive {
 
         let the_val = &self.source_arn;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_arn'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_arn'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'source_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -11,7 +11,7 @@ pub struct CfnGroup {
     /// Update requires: No interruption
     #[serde(rename = "FilterExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_expression: Option<String>,
+    pub filter_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique case-sensitive name of the group.
@@ -22,7 +22,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    pub group_name: String,
+    pub group_name: cfn_resources::StrVal,
 
     ///
     /// The structure containing configurations related to insights.
@@ -128,7 +128,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -138,7 +138,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

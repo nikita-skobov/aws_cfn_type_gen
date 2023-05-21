@@ -52,7 +52,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The password for the default administrative user named Admin.
@@ -67,7 +67,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The NetBIOS name for your domain, such as CORP. If you don't specify a    NetBIOS name, it will default to the first part of your directory DNS. For example,     CORP for the directory DNS corp.example.com.
@@ -81,7 +81,7 @@ pub struct CfnMicrosoftAD {
     /// Update requires: Replacement
     #[serde(rename = "ShortName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub short_name: Option<String>,
+    pub short_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the VPC settings of the Microsoft AD directory server in AWS.
@@ -153,7 +153,7 @@ pub struct VpcSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VpcSettings {

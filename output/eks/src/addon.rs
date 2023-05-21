@@ -12,7 +12,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AddonName")]
-    pub addon_name: String,
+    pub addon_name: cfn_resources::StrVal,
 
     ///
     /// The version of the add-on.
@@ -24,7 +24,7 @@ pub struct CfnAddon {
     /// Update requires: No interruption
     #[serde(rename = "AddonVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub addon_version: Option<String>,
+    pub addon_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the cluster.
@@ -41,7 +41,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The configuration values that you provided.
@@ -53,7 +53,7 @@ pub struct CfnAddon {
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration_values: Option<String>,
+    pub configuration_values: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. If an IAM       account is associated with the add-on, it isn't removed.
@@ -101,7 +101,7 @@ pub struct CfnAddon {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_account_role_arn: Option<String>,
+    pub service_account_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
@@ -149,34 +149,39 @@ impl cfn_resources::CfnResource for CfnAddon {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cluster_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'cluster_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cluster_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.cluster_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'cluster_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.service_account_role_arn {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'service_account_role_arn'. {} is greater than 255", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'cluster_name'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.service_account_role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'service_account_role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'service_account_role_arn'. {} is greater than 255", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.service_account_role_arn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'service_account_role_arn'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -201,7 +206,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -211,7 +216,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

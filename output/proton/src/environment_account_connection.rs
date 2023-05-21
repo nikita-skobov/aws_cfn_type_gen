@@ -17,7 +17,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "CodebuildRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub codebuild_role_arn: Option<String>,
+    pub codebuild_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM service role that AWS Proton uses when provisioning directly defined components in the associated    environment account. It determines the scope of infrastructure that a component can provision in the account.
@@ -39,7 +39,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "ComponentRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_role_arn: Option<String>,
+    pub component_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment account that's connected to the environment account connection.
@@ -53,7 +53,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_account_id: Option<String>,
+    pub environment_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the environment that's associated with the environment account connection.
@@ -71,7 +71,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_name: Option<String>,
+    pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the management account that's connected to the environment account connection.
@@ -85,7 +85,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "ManagementAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub management_account_id: Option<String>,
+    pub management_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IAM service role that's associated with the environment account connection.
@@ -103,7 +103,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional list of metadata items that you can associate with the AWS Proton environment account connection. A tag is a key-value pair.
@@ -133,74 +133,84 @@ impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.codebuild_role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'codebuild_role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'codebuild_role_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.codebuild_role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'codebuild_role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'codebuild_role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.component_role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'component_role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'component_role_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.component_role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'component_role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'component_role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.environment_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'environment_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'environment_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.environment_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'environment_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'environment_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -234,7 +244,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -244,7 +254,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

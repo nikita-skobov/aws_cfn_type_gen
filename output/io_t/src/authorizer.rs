@@ -10,7 +10,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerFunctionArn")]
-    pub authorizer_function_arn: String,
+    pub authorizer_function_arn: cfn_resources::StrVal,
 
     ///
     /// The authorizer name.
@@ -22,7 +22,7 @@ pub struct CfnAuthorizer {
     /// Update requires: Replacement
     #[serde(rename = "AuthorizerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authorizer_name: Option<String>,
+    pub authorizer_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -59,7 +59,7 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata which can be used to manage the custom authorizer.
@@ -85,7 +85,7 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "TokenKeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token_key_name: Option<String>,
+    pub token_key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The public keys used to validate the token signature returned by your custom     authentication service.
@@ -131,7 +131,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -141,7 +141,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

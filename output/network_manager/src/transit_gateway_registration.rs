@@ -16,7 +16,7 @@ pub struct CfnTransitGatewayRegistration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    pub global_network_id: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the transit gateway.
@@ -33,7 +33,7 @@ pub struct CfnTransitGatewayRegistration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayArn")]
-    pub transit_gateway_arn: String,
+    pub transit_gateway_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRegistration {
@@ -48,38 +48,46 @@ impl cfn_resources::CfnResource for CfnTransitGatewayRegistration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.global_network_id;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'global_network_id'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'global_network_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.global_network_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'global_network_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'global_network_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.transit_gateway_arn;
 
-        if the_val.len() > 500 as _ {
-            return Err(format!(
-                "Max validation failed on field 'transit_gateway_arn'. {} is greater than 500",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 500 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'transit_gateway_arn'. {} is greater than 500",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.transit_gateway_arn;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'transit_gateway_arn'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'transit_gateway_arn'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

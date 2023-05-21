@@ -32,7 +32,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    pub function_name: cfn_resources::StrVal,
 
     ///
     /// The maximum age of a request that Lambda sends to a function for processing.
@@ -83,7 +83,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Qualifier")]
-    pub qualifier: String,
+    pub qualifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnEventInvokeConfig {
@@ -102,20 +102,24 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
 
         let the_val = &self.function_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'function_name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'function_name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.function_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'function_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'function_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.maximum_event_age_in_seconds {
@@ -150,20 +154,24 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
 
         let the_val = &self.qualifier;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'qualifier'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'qualifier'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.qualifier;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'qualifier'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'qualifier'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -238,7 +246,7 @@ pub struct OnFailure {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OnFailure {
@@ -253,20 +261,24 @@ impl cfn_resources::CfnResource for OnFailure {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.destination;
 
-        if the_val.len() > 350 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination'. {} is greater than 350",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 350 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination'. {} is greater than 350",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.destination;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'destination'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'destination'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -291,7 +303,7 @@ pub struct OnSuccess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OnSuccess {
@@ -306,20 +318,24 @@ impl cfn_resources::CfnResource for OnSuccess {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.destination;
 
-        if the_val.len() > 350 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination'. {} is greater than 350",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 350 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination'. {} is greater than 350",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.destination;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'destination'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'destination'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

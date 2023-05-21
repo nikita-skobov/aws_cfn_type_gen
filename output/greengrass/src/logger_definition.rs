@@ -26,7 +26,7 @@ pub struct CfnLoggerDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Application-specific metadata to attach to the logger definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -77,7 +77,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Component")]
-    pub component: String,
+    pub component: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -88,7 +88,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
@@ -99,7 +99,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Level")]
-    pub level: String,
+    pub level: cfn_resources::StrVal,
 
     ///
     /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
@@ -122,7 +122,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Logger {

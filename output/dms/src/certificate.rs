@@ -11,7 +11,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_identifier: Option<String>,
+    pub certificate_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The contents of a .pem file, which contains an X.509 certificate.
@@ -23,7 +23,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificatePem")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_pem: Option<String>,
+    pub certificate_pem: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of an imported Oracle Wallet certificate for use with SSL. An example       is: filebase64("${path.root}/rds-ca-2019-root.sso")
@@ -35,7 +35,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateWallet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_wallet: Option<String>,
+    pub certificate_wallet: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnCertificate {

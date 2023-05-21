@@ -15,7 +15,7 @@ pub struct CfnImage {
     /// Update requires: No interruption
     #[serde(rename = "ImageDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_description: Option<String>,
+    pub image_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The display name of the image.
@@ -31,7 +31,7 @@ pub struct CfnImage {
     /// Update requires: No interruption
     #[serde(rename = "ImageDisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_display_name: Option<String>,
+    pub image_display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Image. Must be unique by region in your account.
@@ -46,7 +46,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageName")]
-    pub image_name: String,
+    pub image_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform       tasks on your behalf.
@@ -61,7 +61,7 @@ pub struct CfnImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageRoleArn")]
-    pub image_role_arn: String,
+    pub image_role_arn: cfn_resources::StrVal,
 
     ///
     /// A list of key-value pairs to apply to this resource.
@@ -109,7 +109,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -119,7 +119,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

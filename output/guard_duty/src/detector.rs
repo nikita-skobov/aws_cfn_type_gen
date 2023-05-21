@@ -345,7 +345,7 @@ pub struct FeatureAdditionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Status of the additional configuration of a feature.
@@ -357,7 +357,7 @@ pub struct FeatureAdditionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
@@ -401,7 +401,7 @@ pub struct FeatureConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Status of the feature.
@@ -413,7 +413,7 @@ pub struct FeatureConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FeatureConfigurations {
@@ -447,7 +447,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -457,7 +457,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

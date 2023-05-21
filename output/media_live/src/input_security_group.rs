@@ -57,7 +57,7 @@ pub struct InputWhitelistRuleCidr {
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
+    pub cidr: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InputWhitelistRuleCidr {

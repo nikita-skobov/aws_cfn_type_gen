@@ -26,7 +26,7 @@ pub struct CfnRuleGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that defines the rule group rules.
@@ -55,7 +55,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuleGroupName")]
-    pub rule_group_name: String,
+    pub rule_group_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -115,11 +115,13 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -129,20 +131,24 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
 
         let the_val = &self.rule_group_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'rule_group_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rule_group_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'rule_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'rule_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -218,7 +224,7 @@ pub struct Address {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddressDefinition")]
-    pub address_definition: String,
+    pub address_definition: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Address {
@@ -233,20 +239,24 @@ impl cfn_resources::CfnResource for Address {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.address_definition;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'address_definition'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'address_definition'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.address_definition;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'address_definition'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'address_definition'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -286,7 +296,7 @@ pub struct CustomAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionName")]
-    pub action_name: String,
+    pub action_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomAction {
@@ -303,20 +313,24 @@ impl cfn_resources::CfnResource for CustomAction {
 
         let the_val = &self.action_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'action_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'action_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.action_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'action_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'action_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -345,7 +359,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Dimension {
@@ -360,20 +374,24 @@ impl cfn_resources::CfnResource for Dimension {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.value;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -406,7 +424,7 @@ pub struct Header {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 
     ///
     /// The destination port to inspect for. You can specify an individual port, for      example 1994 and you can specify     a port range, for example 1990:1994.      To match with any port, specify ANY.
@@ -423,7 +441,7 @@ pub struct Header {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPort")]
-    pub destination_port: String,
+    pub destination_port: cfn_resources::StrVal,
 
     ///
     /// The direction of traffic flow to inspect. If set to ANY, the inspection     matches bidirectional traffic, both from the source to the destination and from the     destination to the source. If set to FORWARD, the inspection only matches     traffic going from the source to the destination.
@@ -474,7 +492,7 @@ pub struct Header {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The source port to inspect for. You can specify an individual port, for      example 1994 and you can specify a port        range, for example 1990:1994.      To match with any port, specify ANY.
@@ -491,7 +509,7 @@ pub struct Header {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePort")]
-    pub source_port: String,
+    pub source_port: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -608,74 +626,90 @@ impl cfn_resources::CfnResource for Header {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.destination;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.destination;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'destination'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'destination'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.destination_port;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'destination_port'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination_port'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.destination_port;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'destination_port'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'destination_port'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'source'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source_port;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_port'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_port'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source_port;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'source_port'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source_port'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -731,7 +765,7 @@ pub struct IPSetReference {
     /// Update requires: No interruption
     #[serde(rename = "ReferenceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reference_arn: Option<String>,
+    pub reference_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IPSetReference {
@@ -745,20 +779,24 @@ impl cfn_resources::CfnResource for IPSetReference {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.reference_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'reference_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'reference_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.reference_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'reference_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'reference_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1197,7 +1235,7 @@ pub struct RuleOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Keyword")]
-    pub keyword: String,
+    pub keyword: cfn_resources::StrVal,
 
     ///
     /// The Suricata rule option settings. Settings have zero or more values, and the number of possible settings and required settings depends on the keyword. The format for Settings is number. For information about Suricata rule option settings, see Rule options.
@@ -1224,20 +1262,24 @@ impl cfn_resources::CfnResource for RuleOption {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.keyword;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'keyword'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'keyword'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.keyword;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'keyword'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'keyword'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1317,7 +1359,7 @@ pub struct RulesSource {
     /// Update requires: No interruption
     #[serde(rename = "RulesString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rules_string: Option<String>,
+    pub rules_string: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of individual stateful rules inspection criteria to be used together in a stateful rule group.    Use this option to specify simple Suricata rules with protocol, source and destination, ports, direction, and rule options.    For information about the Suricata Rules format, see                     Rules Format.
@@ -1359,20 +1401,24 @@ impl cfn_resources::CfnResource for RulesSource {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.rules_string {
-            if the_val.len() > 2000000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'rules_string'. {} is greater than 2000000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'rules_string'. {} is greater than 2000000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.rules_string {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'rules_string'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'rules_string'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1768,7 +1814,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1778,7 +1824,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

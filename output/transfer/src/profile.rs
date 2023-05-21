@@ -16,7 +16,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "As2Id")]
-    pub as2_id: String,
+    pub as2_id: cfn_resources::StrVal,
 
     ///
     /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
@@ -87,20 +87,24 @@ impl cfn_resources::CfnResource for CfnProfile {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.as2_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'as2_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'as2_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.as2_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'as2_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'as2_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -133,7 +137,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -143,7 +147,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -11,7 +11,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "AccessString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_string: Option<String>,
+    pub access_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Denotes whether the user requires a password to authenticate.
@@ -52,7 +52,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
-    pub user_name: String,
+    pub user_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUser {
@@ -96,7 +96,7 @@ pub struct AuthenticationMode {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AuthenticationMode {
@@ -130,7 +130,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -140,7 +140,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -25,7 +25,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate: Option<String>,
+    pub certificate: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the domain of the storage system that is used for file transfers.
@@ -115,7 +115,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logging_role: Option<String>,
+    pub logging_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a string to display when users connect to a server. This string is displayed after the user authenticates.
@@ -133,7 +133,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "PostAuthenticationLoginBanner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub post_authentication_login_banner: Option<String>,
+    pub post_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a string to display when users connect to a server. This string is displayed before the user authenticates.   For example, the following banner displays details about using the system:
@@ -151,7 +151,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "PreAuthenticationLoginBanner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pre_authentication_login_banner: Option<String>,
+    pub pre_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol settings that are configured for your server.
@@ -199,7 +199,7 @@ pub struct CfnServer {
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_policy_name: Option<String>,
+    pub security_policy_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Key-value pairs that can be used to group and search for servers.
@@ -304,11 +304,13 @@ impl cfn_resources::CfnResource for CfnServer {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.certificate {
-            if the_val.len() > 1600 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'certificate'. {} is greater than 1600",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1600 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'certificate'. {} is greater than 1600",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -321,32 +323,40 @@ impl cfn_resources::CfnResource for CfnServer {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.logging_role {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'logging_role'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'logging_role'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.logging_role {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'logging_role'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'logging_role'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.post_authentication_login_banner {
-            if the_val.len() > 512 as _ {
-                return Err(format!("Max validation failed on field 'post_authentication_login_banner'. {} is greater than 512", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'post_authentication_login_banner'. {} is greater than 512", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_authentication_login_banner {
-            if the_val.len() > 512 as _ {
-                return Err(format!("Max validation failed on field 'pre_authentication_login_banner'. {} is greater than 512", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!("Max validation failed on field 'pre_authentication_login_banner'. {} is greater than 512", s.len()));
+                }
             }
         }
 
@@ -364,11 +374,10 @@ impl cfn_resources::CfnResource for CfnServer {
         }
 
         if let Some(the_val) = &self.security_policy_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'security_policy_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'security_policy_name'. {} is greater than 100", s.len()));
+                }
             }
         }
 
@@ -470,7 +479,7 @@ pub struct EndpointDetails {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The VPC ID of the virtual private cloud in which the server's endpoint will be     hosted.
@@ -484,7 +493,7 @@ pub struct EndpointDetails {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EndpointDetails {
@@ -498,20 +507,24 @@ impl cfn_resources::CfnResource for EndpointDetails {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.vpc_endpoint_id {
-            if the_val.len() > 22 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'vpc_endpoint_id'. {} is greater than 22",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 22 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'vpc_endpoint_id'. {} is greater than 22",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.vpc_endpoint_id {
-            if the_val.len() < 22 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'vpc_endpoint_id'. {} is less than 22",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 22 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'vpc_endpoint_id'. {} is less than 22",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -538,7 +551,7 @@ pub struct IdentityProviderDetails {
     /// Update requires: No interruption
     #[serde(rename = "DirectoryId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub directory_id: Option<String>,
+    pub directory_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN for a Lambda function to use for the Identity provider.
@@ -556,7 +569,7 @@ pub struct IdentityProviderDetails {
     /// Update requires: No interruption
     #[serde(rename = "Function")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function: Option<String>,
+    pub function: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is only applicable if your IdentityProviderType is API_GATEWAY. Provides the type of InvocationRole used to authenticate the user    account.
@@ -574,7 +587,7 @@ pub struct IdentityProviderDetails {
     /// Update requires: No interruption
     #[serde(rename = "InvocationRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub invocation_role: Option<String>,
+    pub invocation_role: Option<cfn_resources::StrVal>,
 
     ///
     /// For SFTP-enabled servers, and for custom identity providers only, you    can specify whether to authenticate using a password, SSH key pair, or both.
@@ -604,7 +617,7 @@ pub struct IdentityProviderDetails {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -643,65 +656,79 @@ impl cfn_resources::CfnResource for IdentityProviderDetails {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.directory_id {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'directory_id'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'directory_id'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.directory_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'directory_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'directory_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.function {
-            if the_val.len() > 170 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'function'. {} is greater than 170",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 170 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'function'. {} is greater than 170",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.function {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'function'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'function'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.invocation_role {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'invocation_role'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'invocation_role'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.invocation_role {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'invocation_role'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'invocation_role'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.url {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'url'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'url'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -766,7 +793,7 @@ pub struct ProtocolDetails {
     /// Update requires: No interruption
     #[serde(rename = "PassiveIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub passive_ip: Option<String>,
+    pub passive_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// Use the SetStatOption to ignore the error that is generated when the client attempts to use SETSTAT on a file you are uploading to an S3 bucket.
@@ -863,11 +890,13 @@ impl cfn_resources::CfnResource for ProtocolDetails {
         }
 
         if let Some(the_val) = &self.passive_ip {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'passive_ip'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'passive_ip'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -892,7 +921,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -902,7 +931,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -939,7 +968,7 @@ pub struct WorkflowDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
-    pub execution_role: String,
+    pub execution_role: cfn_resources::StrVal,
 
     ///
     /// A unique identifier for the workflow.
@@ -956,7 +985,7 @@ pub struct WorkflowDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkflowId")]
-    pub workflow_id: String,
+    pub workflow_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for WorkflowDetail {
@@ -971,38 +1000,46 @@ impl cfn_resources::CfnResource for WorkflowDetail {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.execution_role;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'execution_role'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'execution_role'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.execution_role;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'execution_role'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'execution_role'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.workflow_id;
 
-        if the_val.len() > 19 as _ {
-            return Err(format!(
-                "Max validation failed on field 'workflow_id'. {} is greater than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'workflow_id'. {} is greater than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.workflow_id;
 
-        if the_val.len() < 19 as _ {
-            return Err(format!(
-                "Min validation failed on field 'workflow_id'. {} is less than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'workflow_id'. {} is less than 19",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

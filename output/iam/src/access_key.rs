@@ -46,7 +46,7 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
-    pub user_name: String,
+    pub user_name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -78,20 +78,24 @@ impl cfn_resources::CfnResource for CfnAccessKey {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.user_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

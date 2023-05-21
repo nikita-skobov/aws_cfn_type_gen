@@ -21,7 +21,7 @@ pub struct CfnListenerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
+    pub listener_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnListenerCertificate {
@@ -51,7 +51,7 @@ pub struct Certificate {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Certificate {

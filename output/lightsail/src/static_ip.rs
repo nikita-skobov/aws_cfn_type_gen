@@ -11,7 +11,7 @@ pub struct CfnStaticIp {
     /// Update requires: No interruption
     #[serde(rename = "AttachedTo")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attached_to: Option<String>,
+    pub attached_to: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the static IP.
@@ -22,7 +22,7 @@ pub struct CfnStaticIp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StaticIpName")]
-    pub static_ip_name: String,
+    pub static_ip_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnStaticIp {

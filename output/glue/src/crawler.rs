@@ -23,7 +23,7 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration: Option<String>,
+    pub configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the SecurityConfiguration structure to be used by this    crawler.
@@ -39,7 +39,7 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "CrawlerSecurityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub crawler_security_configuration: Option<String>,
+    pub crawler_security_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the database in which the crawler's output is stored.
@@ -51,7 +51,7 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A description of the crawler.
@@ -69,7 +69,7 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the crawler.
@@ -87,7 +87,7 @@ pub struct CfnCrawler {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.
@@ -110,7 +110,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// For scheduled crawlers, the schedule when the crawler runs.
@@ -152,7 +152,7 @@ pub struct CfnCrawler {
     /// Update requires: No interruption
     #[serde(rename = "TablePrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_prefix: Option<String>,
+    pub table_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to use with this crawler.
@@ -189,50 +189,62 @@ impl cfn_resources::CfnResource for CfnCrawler {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.crawler_security_configuration {
-            if the_val.len() > 128 as _ {
-                return Err(format!("Max validation failed on field 'crawler_security_configuration'. {} is greater than 128", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'crawler_security_configuration'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.crawler_security_configuration {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'crawler_security_configuration'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'crawler_security_configuration'. {} is less than 0", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -249,20 +261,24 @@ impl cfn_resources::CfnResource for CfnCrawler {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.table_prefix {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'table_prefix'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'table_prefix'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_prefix {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'table_prefix'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'table_prefix'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -291,7 +307,7 @@ pub struct CatalogTarget {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the tables to be synchronized.
@@ -317,20 +333,24 @@ impl cfn_resources::CfnResource for CatalogTarget {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.database_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'database_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'database_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'database_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'database_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -350,7 +370,7 @@ pub struct DeltaTarget {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -413,7 +433,7 @@ pub struct DynamoDBTarget {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DynamoDBTarget {
@@ -443,7 +463,7 @@ pub struct JdbcTarget {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of glob patterns used to exclude from the crawl. For more information, see         Catalog Tables         with a Crawler.
@@ -467,7 +487,7 @@ pub struct JdbcTarget {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for JdbcTarget {
@@ -497,7 +517,7 @@ pub struct MongoDBTarget {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The path of the Amazon DocumentDB or MongoDB target (database/collection).
@@ -509,7 +529,7 @@ pub struct MongoDBTarget {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MongoDBTarget {
@@ -598,7 +618,7 @@ pub struct S3Target {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A valid Amazon dead-letter SQS ARN. For example, arn:aws:sqs:region:account:deadLetterQueue.
@@ -610,7 +630,7 @@ pub struct S3Target {
     /// Update requires: No interruption
     #[serde(rename = "DlqEventQueueArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dlq_event_queue_arn: Option<String>,
+    pub dlq_event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A valid Amazon SQS ARN. For example, arn:aws:sqs:region:account:sqs.
@@ -622,7 +642,7 @@ pub struct S3Target {
     /// Update requires: No interruption
     #[serde(rename = "EventQueueArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_queue_arn: Option<String>,
+    pub event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of glob patterns used to exclude from the crawl. For more information, see         Catalog Tables         with a Crawler.
@@ -646,7 +666,7 @@ pub struct S3Target {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the number of files in each leaf folder to be crawled when crawling sample files in a dataset. If not set, all the files are crawled. A valid value is an integer between 1 and 249.
@@ -688,7 +708,7 @@ pub struct Schedule {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_expression: Option<String>,
+    pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Schedule {

@@ -51,7 +51,7 @@ pub struct CfnHostedZone {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Creates a configuration for DNS query logging. After you create a query logging 			configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs 			log group.
@@ -101,11 +101,13 @@ impl cfn_resources::CfnResource for CfnHostedZone {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -132,7 +134,7 @@ pub struct HostedZoneConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HostedZoneConfig {
@@ -146,11 +148,13 @@ impl cfn_resources::CfnResource for HostedZoneConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.comment {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'comment'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'comment'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -174,7 +178,7 @@ pub struct HostedZoneTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value of Value depends on the operation that you want to 			perform:
@@ -189,7 +193,7 @@ pub struct HostedZoneTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HostedZoneTag {
@@ -204,20 +208,24 @@ impl cfn_resources::CfnResource for HostedZoneTag {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -236,7 +244,7 @@ pub struct QueryLoggingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    pub cloud_watch_logs_log_group_arn: String,
+    pub cloud_watch_logs_log_group_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for QueryLoggingConfig {
@@ -267,7 +275,7 @@ pub struct VPC {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCId")]
-    pub vpcid: String,
+    pub vpcid: cfn_resources::StrVal,
 
     ///
     /// Private hosted zones only: The region that an Amazon VPC was created in.

@@ -11,7 +11,7 @@ pub struct CfnGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -21,7 +21,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    pub display_name: String,
+    pub display_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -31,7 +31,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityStoreId")]
-    pub identity_store_id: String,
+    pub identity_store_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnGroup {

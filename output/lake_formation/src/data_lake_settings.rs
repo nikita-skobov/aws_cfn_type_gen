@@ -225,7 +225,7 @@ pub struct DataLakePrincipal {
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_lake_principal_identifier: Option<String>,
+    pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataLakePrincipal {

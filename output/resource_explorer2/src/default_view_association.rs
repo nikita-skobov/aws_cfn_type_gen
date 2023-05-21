@@ -14,7 +14,7 @@ pub struct CfnDefaultViewAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewArn")]
-    pub view_arn: String,
+    pub view_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDefaultViewAssociation {
@@ -29,20 +29,24 @@ impl cfn_resources::CfnResource for CfnDefaultViewAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.view_arn;
 
-        if the_val.len() > 1011 as _ {
-            return Err(format!(
-                "Max validation failed on field 'view_arn'. {} is greater than 1011",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'view_arn'. {} is greater than 1011",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.view_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'view_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'view_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

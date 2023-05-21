@@ -25,7 +25,7 @@ pub struct CfnIPSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
-    pub detector_id: String,
+    pub detector_id: cfn_resources::StrVal,
 
     ///
     /// The format of the file that contains the IPSet.
@@ -53,7 +53,7 @@ pub struct CfnIPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    pub location: String,
+    pub location: cfn_resources::StrVal,
 
     ///
     /// The user-friendly name to identify the IPSet.
@@ -71,7 +71,7 @@ pub struct CfnIPSet {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
@@ -133,55 +133,67 @@ impl cfn_resources::CfnResource for CfnIPSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.detector_id;
 
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'detector_id'. {} is greater than 300",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'detector_id'. {} is greater than 300",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.detector_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'detector_id'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.location;
-
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location'. {} is greater than 300",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.location;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.name {
-            if the_val.len() > 300 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 300",
-                    the_val.len()
+                    "Min validation failed on field 'detector_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.location;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location'. {} is greater than 300",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.location;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 300 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 300",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -206,7 +218,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -216,7 +228,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

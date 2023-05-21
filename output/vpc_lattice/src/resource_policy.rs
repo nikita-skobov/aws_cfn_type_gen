@@ -21,7 +21,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {

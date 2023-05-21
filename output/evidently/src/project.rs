@@ -41,7 +41,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the project. It can include up to 127 characters.
@@ -52,7 +52,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Assigns one or more tags (key-value pairs) to the project.
@@ -109,7 +109,7 @@ pub struct AppConfigResourceObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    pub application_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the AWS AppConfig environment to use for client-side evaluation.
@@ -120,7 +120,7 @@ pub struct AppConfigResourceObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
+    pub environment_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AppConfigResourceObject {
@@ -150,7 +150,7 @@ pub struct DataDeliveryObject {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group: Option<String>,
+    pub log_group: Option<cfn_resources::StrVal>,
 
     ///
     /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
@@ -193,7 +193,7 @@ pub struct S3Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The bucket prefix in which Evidently stores evaluation events.
@@ -205,7 +205,7 @@ pub struct S3Destination {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Destination {
@@ -239,7 +239,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -249,7 +249,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

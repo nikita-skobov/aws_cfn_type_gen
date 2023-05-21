@@ -24,7 +24,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "CertificateDomainName")]
-    pub certificate_domain_name: String,
+    pub certificate_domain_name: cfn_resources::StrVal,
 
     ///
     /// The name of the SSL/TLS certificate.
@@ -35,7 +35,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateName")]
-    pub certificate_name: String,
+    pub certificate_name: cfn_resources::StrVal,
 
     ///
     /// A Boolean value indicating whether HTTPS redirection is enabled for the load    balancer that the TLS certificate is attached to.
@@ -72,7 +72,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
-    pub load_balancer_name: String,
+    pub load_balancer_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnLoadBalancerTlsCertificate {

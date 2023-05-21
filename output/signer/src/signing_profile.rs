@@ -10,7 +10,7 @@ pub struct CfnSigningProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformId")]
-    pub platform_id: String,
+    pub platform_id: cfn_resources::StrVal,
 
     ///
     /// The validity period override for any signature generated using this signing             profile. If unspecified, the default is 135 months.
@@ -68,7 +68,7 @@ pub struct SignatureValidityPeriod {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The numerical value of the time unit for signature validity.
@@ -114,7 +114,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -124,7 +124,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

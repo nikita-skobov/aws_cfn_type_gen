@@ -11,7 +11,7 @@ pub struct CfnFilter {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The action that is to be applied to the findings that match the filter.
@@ -22,7 +22,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterAction")]
-    pub filter_action: String,
+    pub filter_action: cfn_resources::StrVal,
 
     ///
     /// Details on the filter criteria associated with this filter.
@@ -44,7 +44,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnFilter {
@@ -506,7 +506,7 @@ pub struct MapFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
-    pub comparison: String,
+    pub comparison: cfn_resources::StrVal,
 
     ///
     /// The tag key used in the filter.
@@ -518,7 +518,7 @@ pub struct MapFilter {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The tag value used in the filter.
@@ -530,7 +530,7 @@ pub struct MapFilter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MapFilter {
@@ -748,7 +748,7 @@ pub struct StringFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
-    pub comparison: String,
+    pub comparison: cfn_resources::StrVal,
 
     ///
     /// The value to filter on.
@@ -759,7 +759,7 @@ pub struct StringFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StringFilter {

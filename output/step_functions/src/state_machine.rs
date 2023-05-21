@@ -35,7 +35,7 @@ pub struct CfnStateMachine {
     /// Update requires: No interruption
     #[serde(rename = "DefinitionString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub definition_string: Option<String>,
+    pub definition_string: Option<cfn_resources::StrVal>,
 
     ///
     /// A map (string to string) that specifies the mappings for placeholder variables in the     state machine definition. This enables the customer to inject values obtained at runtime,     for example from intrinsic functions, in the state machine definition. Variables can be     template parameter names, resource logical IDs, resource attributes, or a variable in a     key-value map.
@@ -72,7 +72,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the state machine.
@@ -90,7 +90,7 @@ pub struct CfnStateMachine {
     /// Update requires: Replacement
     #[serde(rename = "StateMachineName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state_machine_name: Option<String>,
+    pub state_machine_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether a STANDARD or EXPRESS state machine is     created. The default is STANDARD. You cannot update the type of a     state machine once it has been created. For more information on STANDARD and       EXPRESS workflows, see Standard Versus Express        Workflows in the AWS Step Functions Developer Guide.
@@ -102,7 +102,7 @@ pub struct CfnStateMachine {
     /// Update requires: Replacement
     #[serde(rename = "StateMachineType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state_machine_type: Option<String>,
+    pub state_machine_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of tags to add to a resource.
@@ -170,7 +170,7 @@ pub struct CloudWatchLogsLogGroup {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_arn: Option<String>,
+    pub log_group_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogsLogGroup {
@@ -258,7 +258,7 @@ pub struct LoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Level")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub level: Option<String>,
+    pub level: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingConfiguration {
@@ -287,7 +287,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The name of the state machine definition file (Amazon S3 object name).
@@ -298,7 +298,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// For versioning-enabled buckets, a specific version of the state machine     definition.
@@ -310,7 +310,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -339,7 +339,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for a key-value pair in a tag entry.
@@ -350,7 +350,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsEntry {

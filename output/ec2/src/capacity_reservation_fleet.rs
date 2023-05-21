@@ -13,7 +13,7 @@ pub struct CfnCapacityReservationFleet {
     /// Update requires: Replacement
     #[serde(rename = "AllocationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allocation_strategy: Option<String>,
+    pub allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The date and time at which the Capacity Reservation Fleet expires. When the Capacity 			Reservation Fleet expires, its state changes to expired and all of the Capacity 			Reservations in the Fleet expire.
@@ -27,7 +27,7 @@ pub struct CfnCapacityReservationFleet {
     /// Update requires: Replacement
     #[serde(rename = "EndDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<String>,
+    pub end_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the type of instance launches that the Capacity Reservation Fleet accepts. All 			Capacity Reservations in the Fleet inherit this instance matching criteria.
@@ -177,7 +177,7 @@ pub struct InstanceTypeSpecification {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A 			Capacity Reservation Fleet can't span Availability Zones. All instance type specifications that you 			specify for the Fleet must use the same Availability Zone.
@@ -189,7 +189,7 @@ pub struct InstanceTypeSpecification {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone_id: Option<String>,
+    pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the Capacity Reservation Fleet supports EBS-optimized instances types. This 			optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack 			to provide optimal I/O performance. This optimization isn't available with all instance types. Additional 			usage charges apply when using EBS-optimized instance types.
@@ -2926,7 +2926,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2936,7 +2936,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2968,7 +2968,7 @@ pub struct TagSpecification {
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_type: Option<String>,
+    pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply to the resource.

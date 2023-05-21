@@ -22,7 +22,7 @@ pub struct CfnApplicationOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
@@ -50,20 +50,24 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.output.validate()?;
@@ -139,7 +143,7 @@ pub struct KinesisFirehoseOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisFirehoseOutput {
@@ -154,20 +158,24 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -192,7 +200,7 @@ pub struct KinesisStreamsOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisStreamsOutput {
@@ -207,20 +215,24 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -247,7 +259,7 @@ pub struct LambdaOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaOutput {
@@ -262,20 +274,24 @@ impl cfn_resources::CfnResource for LambdaOutput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -349,7 +365,7 @@ pub struct Output {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Output {
@@ -377,20 +393,24 @@ impl cfn_resources::CfnResource for Output {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -9,7 +9,7 @@ pub struct CfnGroupMembership {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
-    pub group_id: String,
+    pub group_id: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -19,7 +19,7 @@ pub struct CfnGroupMembership {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityStoreId")]
-    pub identity_store_id: String,
+    pub identity_store_id: cfn_resources::StrVal,
 
     ///
     /// An object containing the identifier of a group member. Setting MemberId's UserId field     to a specific User's ID indicates we should consider that User as a group member.
@@ -60,7 +60,7 @@ pub struct MemberId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserId")]
-    pub user_id: String,
+    pub user_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MemberId {

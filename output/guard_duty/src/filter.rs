@@ -27,7 +27,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The ID of the detector belonging to the GuardDuty account that you want to create a filter    for.
@@ -42,7 +42,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
-    pub detector_id: String,
+    pub detector_id: cfn_resources::StrVal,
 
     ///
     /// Represents the criteria to be used in the filter for querying findings.
@@ -68,7 +68,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Specifies the position of the filter in the list of current filters. Also          specifies the order in which this filter is applied to the findings. The minimum          value for this property is 1 and the maximum is 100.
@@ -127,58 +127,70 @@ impl cfn_resources::CfnResource for CfnFilter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.description;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'description'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.description;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'description'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.detector_id;
 
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'detector_id'. {} is greater than 300",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'detector_id'. {} is greater than 300",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.detector_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'detector_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'detector_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.finding_criteria.validate()?;
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -414,7 +426,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -424,7 +436,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

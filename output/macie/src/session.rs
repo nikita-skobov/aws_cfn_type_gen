@@ -15,7 +15,7 @@ pub struct CfnSession {
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub finding_publishing_frequency: Option<String>,
+    pub finding_publishing_frequency: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of Amazon Macie for the account. Valid values are:         ENABLED, start or resume all Macie activities for the       account; and, PAUSED, suspend all Macie activities for the       account.
@@ -27,7 +27,7 @@ pub struct CfnSession {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnSession {

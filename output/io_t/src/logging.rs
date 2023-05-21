@@ -10,7 +10,7 @@ pub struct CfnLogging {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccountId")]
-    pub account_id: String,
+    pub account_id: cfn_resources::StrVal,
 
     ///
     /// The default log level. Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
@@ -32,7 +32,7 @@ pub struct CfnLogging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

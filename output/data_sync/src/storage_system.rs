@@ -28,7 +28,7 @@ pub struct CfnStorageSystem {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_log_group_arn: Option<String>,
+    pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a familiar name for your on-premises storage system.
@@ -46,7 +46,7 @@ pub struct CfnStorageSystem {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the server name and network port required to connect with the management    interface of your on-premises storage system.
@@ -134,26 +134,32 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
         }
 
         if let Some(the_val) = &self.cloud_watch_log_group_arn {
-            if the_val.len() > 562 as _ {
-                return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 562 as _ {
+                    return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -192,7 +198,7 @@ pub struct ServerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerHostname")]
-    pub server_hostname: String,
+    pub server_hostname: cfn_resources::StrVal,
 
     ///
     /// The network port for accessing the storage system's management interface.
@@ -223,11 +229,13 @@ impl cfn_resources::CfnResource for ServerConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.server_hostname;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'server_hostname'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.server_port {
@@ -270,7 +278,7 @@ pub struct ServerCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// Specifies the user name for your storage system's management interface.
@@ -285,7 +293,7 @@ pub struct ServerCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ServerCredentials {
@@ -300,20 +308,24 @@ impl cfn_resources::CfnResource for ServerCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -337,7 +349,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -347,7 +359,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

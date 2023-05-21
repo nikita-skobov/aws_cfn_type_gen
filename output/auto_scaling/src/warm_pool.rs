@@ -14,7 +14,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
-    pub auto_scaling_group_name: String,
+    pub auto_scaling_group_name: cfn_resources::StrVal,
 
     ///
     /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.

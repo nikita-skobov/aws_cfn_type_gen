@@ -30,7 +30,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactS3Location")]
-    pub artifact_s3_location: String,
+    pub artifact_s3_location: cfn_resources::StrVal,
 
     ///
     /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
@@ -60,7 +60,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: String,
+    pub execution_role_arn: cfn_resources::StrVal,
 
     ///
     /// The number of days to retain data about failed runs of this canary. If you omit      this field, the default of 31 days is used. The valid range is 1 to 455 days.
@@ -95,7 +95,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A structure that contains input information for a canary run. If you omit       this structure, the       frequency of the canary is used as canary's timeout value, up to a maximum of 900 seconds.
@@ -122,7 +122,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeVersion")]
-    pub runtime_version: String,
+    pub runtime_version: cfn_resources::StrVal,
 
     ///
     /// A structure that contains information about how often the canary is to run, and when     these runs are to stop.
@@ -218,40 +218,45 @@ impl cfn_resources::CfnResource for CfnCanary {
 
         let the_val = &self.artifact_s3_location;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'artifact_s3_location'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!("Max validation failed on field 'artifact_s3_location'. {} is greater than 1024", s.len()));
+            }
         }
 
         let the_val = &self.artifact_s3_location;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'artifact_s3_location'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'artifact_s3_location'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.code.validate()?;
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'execution_role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'execution_role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.failure_retention_period {
@@ -271,20 +276,24 @@ impl cfn_resources::CfnResource for CfnCanary {
 
         let the_val = &self.name;
 
-        if the_val.len() > 21 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 21",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 21 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 21",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.run_config
@@ -293,20 +302,24 @@ impl cfn_resources::CfnResource for CfnCanary {
 
         let the_val = &self.runtime_version;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'runtime_version'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'runtime_version'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.runtime_version;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'runtime_version'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'runtime_version'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.schedule.validate()?;
@@ -393,7 +406,7 @@ pub struct BaseScreenshot {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScreenshotName")]
-    pub screenshot_name: String,
+    pub screenshot_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BaseScreenshot {
@@ -428,7 +441,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Handler")]
-    pub handler: String,
+    pub handler: cfn_resources::StrVal,
 
     ///
     /// If your canary script is located in S3, specify the bucket name here. The bucket     must already exist.
@@ -444,7 +457,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket: Option<String>,
+    pub s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The S3 key of your script. For more information, see Working with Amazon S3 Objects.
@@ -460,7 +473,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key: Option<String>,
+    pub s3_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The S3 version ID of your script.
@@ -476,7 +489,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_object_version: Option<String>,
+    pub s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// If you input your canary script directly into the canary instead of referring to an S3     location, the value of this parameter is the script in plain text. It can be     up to 5 MB.
@@ -488,7 +501,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "Script")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub script: Option<String>,
+    pub script: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Lambda layer where Synthetics stores the canary script code.
@@ -504,7 +517,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "SourceLocationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_location_arn: Option<String>,
+    pub source_location_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Code {
@@ -519,91 +532,105 @@ impl cfn_resources::CfnResource for Code {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.handler;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'handler'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'handler'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.handler;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'handler'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.s3_bucket {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 's3_bucket'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 'handler'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.s3_bucket {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_bucket'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_bucket'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.s3_bucket {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_bucket'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_key'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_key'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_object_version'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_object_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_object_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_object_version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_location_arn {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_location_arn'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'source_location_arn'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_location_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_location_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_location_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -742,7 +769,7 @@ pub struct S3Encryption {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_mode: Option<String>,
+    pub encryption_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the customer-managed AWS KMS key to use, if you specify SSE-KMS     for EncryptionMode
@@ -754,7 +781,7 @@ pub struct S3Encryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Encryption {
@@ -784,7 +811,7 @@ pub struct Schedule {
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub duration_in_seconds: Option<String>,
+    pub duration_in_seconds: Option<cfn_resources::StrVal>,
 
     ///
     /// A rate expression or a cron expression that defines how often the canary is to run.
@@ -807,7 +834,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    pub expression: String,
+    pub expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Schedule {
@@ -822,20 +849,24 @@ impl cfn_resources::CfnResource for Schedule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.expression;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'expression'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'expression'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.expression;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'expression'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'expression'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -859,7 +890,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -869,7 +900,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -925,7 +956,7 @@ pub struct VPCConfig {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VPCConfig {
@@ -973,7 +1004,7 @@ pub struct VisualReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseCanaryRunId")]
-    pub base_canary_run_id: String,
+    pub base_canary_run_id: cfn_resources::StrVal,
 
     /// An array of screenshots that are used as the baseline for comparisons during visual monitoring.
     ///

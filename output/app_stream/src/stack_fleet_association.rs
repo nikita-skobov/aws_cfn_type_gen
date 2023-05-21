@@ -14,7 +14,7 @@ pub struct CfnStackFleetAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FleetName")]
-    pub fleet_name: String,
+    pub fleet_name: cfn_resources::StrVal,
 
     ///
     /// The name of the stack.
@@ -29,7 +29,7 @@ pub struct CfnStackFleetAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackName")]
-    pub stack_name: String,
+    pub stack_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnStackFleetAssociation {
@@ -44,20 +44,24 @@ impl cfn_resources::CfnResource for CfnStackFleetAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.fleet_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'fleet_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'fleet_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stack_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'stack_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'stack_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -10,7 +10,7 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpamId")]
-    pub ipam_id: String,
+    pub ipam_id: cfn_resources::StrVal,
 
     ///
     /// The resource discovery ID.
@@ -21,7 +21,7 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpamResourceDiscoveryId")]
-    pub ipam_resource_discovery_id: String,
+    pub ipam_resource_discovery_id: cfn_resources::StrVal,
 
     ///
     /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
@@ -67,7 +67,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -77,7 +77,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -10,7 +10,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    pub certificate: String,
+    pub certificate: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of your private CA.
@@ -21,7 +21,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateAuthorityArn")]
-    pub certificate_authority_arn: String,
+    pub certificate_authority_arn: cfn_resources::StrVal,
 
     ///
     /// The Base64 PEM-encoded certificate chain that chains up to the root CA certificate       that you used to sign your private CA certificate.
@@ -33,7 +33,7 @@ pub struct CfnCertificateAuthorityActivation {
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_chain: Option<String>,
+    pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
     /// Status of your private CA.
@@ -45,7 +45,7 @@ pub struct CfnCertificateAuthorityActivation {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnCertificateAuthorityActivation {

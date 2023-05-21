@@ -11,7 +11,7 @@ pub struct CfnEC2Fleet {
     /// Update requires: No interruption
     #[serde(rename = "Context")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub context: Option<String>,
+    pub context: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether running instances should be terminated if the total target capacity of     the EC2 Fleet is decreased below the current size of the EC2 Fleet.
@@ -145,7 +145,7 @@ pub struct CfnEC2Fleet {
     /// Update requires: Replacement
     #[serde(rename = "ValidFrom")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_from: Option<String>,
+    pub valid_from: Option<cfn_resources::StrVal>,
 
     ///
     /// The end date and time of the request, in UTC format (for example,       YYYY-MM-DDTHH:MM:SSZ).     At this point, no new EC2 Fleet requests are placed or able to fulfill the request. If no value is specified, the request remains until you cancel it.
@@ -157,7 +157,7 @@ pub struct CfnEC2Fleet {
     /// Update requires: Replacement
     #[serde(rename = "ValidUntil")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_until: Option<String>,
+    pub valid_until: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -544,7 +544,7 @@ pub struct FleetLaunchTemplateOverridesRequest {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The attributes for the instance types. When you specify instance attributes, Amazon EC2 will     identify instance types with those attributes.
@@ -590,7 +590,7 @@ pub struct FleetLaunchTemplateOverridesRequest {
     /// Update requires: Replacement
     #[serde(rename = "MaxPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_price: Option<String>,
+    pub max_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The location where the instance launched, if applicable.
@@ -632,7 +632,7 @@ pub struct FleetLaunchTemplateOverridesRequest {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of units provided by the specified instance type.
@@ -3241,7 +3241,7 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch template.
@@ -3261,7 +3261,7 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The launch template version number, $Latest, or $Default. You must specify a value, otherwise the request fails.
@@ -3276,7 +3276,7 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
@@ -3290,20 +3290,21 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -4079,7 +4080,7 @@ pub struct OnDemandOptionsRequest {
     /// Update requires: Replacement
     #[serde(rename = "MaxTotalPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_total_price: Option<String>,
+    pub max_total_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is     not reached, the fleet launches no instances.
@@ -4176,7 +4177,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "Affinity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub affinity: Option<String>,
+    pub affinity: Option<cfn_resources::StrVal>,
 
     ///
     /// The Availability Zone of the instance.
@@ -4192,7 +4193,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the placement group that the instance is in. If you specify         GroupName, you can't specify GroupId.
@@ -4204,7 +4205,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Dedicated Host on which the instance resides.
@@ -4218,7 +4219,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "HostId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_id: Option<String>,
+    pub host_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the host resource group in which to launch the instances.
@@ -4234,7 +4235,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "HostResourceGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_resource_group_arn: Option<String>,
+    pub host_resource_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of the partition that the instance is in. Valid only if the placement group       strategy is set to partition.
@@ -4260,7 +4261,7 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "SpreadDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spread_domain: Option<String>,
+    pub spread_domain: Option<cfn_resources::StrVal>,
 
     ///
     /// The tenancy of the instance. An instance with a       tenancy of dedicated runs on single-tenant hardware.
@@ -4393,7 +4394,7 @@ pub struct SpotOptionsRequest {
     /// Update requires: Replacement
     #[serde(rename = "MaxTotalPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_total_price: Option<String>,
+    pub max_total_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is     not reached, the fleet launches no instances.
@@ -4521,7 +4522,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -4531,7 +4532,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

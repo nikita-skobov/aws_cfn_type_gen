@@ -21,7 +21,7 @@ pub struct CfnModuleDefaultVersion {
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the module.
@@ -41,7 +41,7 @@ pub struct CfnModuleDefaultVersion {
     /// Update requires: Replacement
     #[serde(rename = "ModuleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub module_name: Option<String>,
+    pub module_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID for the specific version of the module.
@@ -61,7 +61,7 @@ pub struct CfnModuleDefaultVersion {
     /// Update requires: Replacement
     #[serde(rename = "VersionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_id: Option<String>,
+    pub version_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
@@ -75,47 +75,57 @@ impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.arn {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'arn'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'arn'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.module_name {
-            if the_val.len() > 204 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'module_name'. {} is greater than 204",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 204 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'module_name'. {} is greater than 204",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.module_name {
-            if the_val.len() < 10 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'module_name'. {} is less than 10",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 10 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'module_name'. {} is less than 10",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version_id {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'version_id'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'version_id'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

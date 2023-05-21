@@ -60,7 +60,7 @@ pub struct AutoAdjustData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoAdjustType")]
-    pub auto_adjust_type: String,
+    pub auto_adjust_type: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -134,7 +134,7 @@ pub struct BudgetData {
     /// Update requires: Replacement
     #[serde(rename = "BudgetName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub budget_name: Option<String>,
+    pub budget_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether this budget tracks costs, usage, RI utilization, RI coverage, Savings 			Plans utilization, or Savings Plans coverage.
@@ -733,7 +733,7 @@ pub struct Spend {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    pub unit: String,
+    pub unit: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Spend {
@@ -766,7 +766,7 @@ pub struct Subscriber {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    pub address: String,
+    pub address: cfn_resources::StrVal,
 
     ///
     /// The type of notification that AWS sends to a subscriber.
@@ -828,7 +828,7 @@ pub struct TimePeriod {
     /// Update requires: No interruption
     #[serde(rename = "End")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end: Option<String>,
+    pub end: Option<cfn_resources::StrVal>,
 
     ///
     /// The start date for a budget. If you created your budget and didn't specify a start 			date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or 			ANNUALLY). For example, if you create your budget on January 24, 2019, choose 			MONTHLY, and don't set a start date, the start date defaults to 			01/01/19 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
@@ -846,7 +846,7 @@ pub struct TimePeriod {
     /// Update requires: No interruption
     #[serde(rename = "Start")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start: Option<String>,
+    pub start: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TimePeriod {

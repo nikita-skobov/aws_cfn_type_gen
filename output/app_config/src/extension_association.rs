@@ -15,7 +15,7 @@ pub struct CfnExtensionAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ExtensionIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extension_identifier: Option<String>,
+    pub extension_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the extension. If not specified, AWS AppConfig uses the     maximum version of the extension.
@@ -55,7 +55,7 @@ pub struct CfnExtensionAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Adds one or more tags for the specified extension association. Tags are metadata that     help you categorize resources in different ways, for example, by purpose, owner, or     environment. Each tag consists of a key and an optional value, both of which you define.
@@ -81,35 +81,40 @@ impl cfn_resources::CfnResource for CfnExtensionAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.extension_identifier {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'extension_identifier'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'extension_identifier'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.extension_identifier {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'extension_identifier'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'extension_identifier'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_identifier {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_identifier'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'resource_identifier'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_identifier {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_identifier'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_identifier'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -134,7 +139,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -144,7 +149,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

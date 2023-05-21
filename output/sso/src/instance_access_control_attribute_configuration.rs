@@ -30,7 +30,7 @@ pub struct CfnInstanceAccessControlAttributeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceArn")]
-    pub instance_arn: String,
+    pub instance_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfiguration {
@@ -51,20 +51,24 @@ impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfigurati
 
         let the_val = &self.instance_arn;
 
-        if the_val.len() > 1224 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_arn'. {} is greater than 1224",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1224 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_arn'. {} is greater than 1224",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_arn;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_arn'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_arn'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -89,7 +93,7 @@ pub struct AccessControlAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value used for mapping a specified attribute to an identity source.
@@ -115,20 +119,24 @@ impl cfn_resources::CfnResource for AccessControlAttribute {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.value.validate()?;

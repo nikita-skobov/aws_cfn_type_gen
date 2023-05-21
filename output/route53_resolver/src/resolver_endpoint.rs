@@ -43,7 +43,7 @@ pub struct CfnResolverEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -54,7 +54,7 @@ pub struct CfnResolverEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outpost_arn: Option<String>,
+    pub outpost_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -65,7 +65,7 @@ pub struct CfnResolverEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "PreferredInstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_instance_type: Option<String>,
+    pub preferred_instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Resolver endpoint IP address type.
@@ -165,11 +165,13 @@ impl cfn_resources::CfnResource for CfnResolverEndpoint {
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -203,7 +205,7 @@ pub struct IpAddressRequest {
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip: Option<String>,
+    pub ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 address that you want to use for DNS queries.
@@ -219,7 +221,7 @@ pub struct IpAddressRequest {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6: Option<String>,
+    pub ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the subnet that contains the IP address.
@@ -234,7 +236,7 @@ pub struct IpAddressRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for IpAddressRequest {
@@ -248,57 +250,69 @@ impl cfn_resources::CfnResource for IpAddressRequest {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.ip {
-            if the_val.len() > 36 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ip'. {} is greater than 36",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 36 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ip'. {} is greater than 36",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ip {
-            if the_val.len() < 7 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ip'. {} is less than 7",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 7 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ip'. {} is less than 7",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ipv6 {
-            if the_val.len() > 39 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ipv6'. {} is greater than 39",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 39 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ipv6'. {} is greater than 39",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ipv6 {
-            if the_val.len() < 7 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 7 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ipv6'. {} is less than 7",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.subnet_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'ipv6'. {} is less than 7",
-                    the_val.len()
+                    "Max validation failed on field 'subnet_id'. {} is greater than 32",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.subnet_id;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'subnet_id'. {} is greater than 32",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.subnet_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'subnet_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'subnet_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -322,7 +336,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -332,7 +346,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

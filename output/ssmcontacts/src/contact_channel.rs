@@ -10,7 +10,7 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelAddress")]
-    pub channel_address: String,
+    pub channel_address: cfn_resources::StrVal,
 
     ///
     /// The name of the contact channel.
@@ -27,7 +27,7 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelName")]
-    pub channel_name: String,
+    pub channel_name: cfn_resources::StrVal,
 
     ///
     /// The type of the contact channel. Incident Manager supports three contact methods:
@@ -59,7 +59,7 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContactId")]
-    pub contact_id: String,
+    pub contact_id: cfn_resources::StrVal,
 
     ///
     /// If you want to activate the channel at a later time, you can choose to defer activation.     Incident Manager can't engage your contact channel until it has been activated.
@@ -107,38 +107,46 @@ impl cfn_resources::CfnResource for CfnContactChannel {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.channel_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'channel_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'channel_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.channel_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'channel_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'channel_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.contact_id;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'contact_id'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'contact_id'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.contact_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'contact_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'contact_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

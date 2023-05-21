@@ -17,7 +17,7 @@ pub struct CfnTrafficMirrorSession {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the source network interface.
@@ -28,7 +28,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+    pub network_interface_id: cfn_resources::StrVal,
 
     ///
     /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do     not specify this parameter when you want to mirror the entire packet. To mirror a subset of     the packet, set this to the length (in bytes) that you want to mirror. For example, if you     set this value to 100, then the first 100 bytes that meet the filter criteria are copied to     the target.
@@ -78,7 +78,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficMirrorFilterId")]
-    pub traffic_mirror_filter_id: String,
+    pub traffic_mirror_filter_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Traffic Mirror target.
@@ -89,7 +89,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficMirrorTargetId")]
-    pub traffic_mirror_target_id: String,
+    pub traffic_mirror_target_id: cfn_resources::StrVal,
 
     ///
     /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN     protocol, see RFC 7348. If you do     not specify a VirtualNetworkId, an account-wide unique id is chosen at     random.
@@ -135,7 +135,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -145,7 +145,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

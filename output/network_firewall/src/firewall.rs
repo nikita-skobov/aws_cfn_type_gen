@@ -29,7 +29,7 @@ pub struct CfnFirewall {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The descriptive name of the firewall. You can't change the name of a firewall after you create it.
@@ -46,7 +46,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallName")]
-    pub firewall_name: String,
+    pub firewall_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the firewall policy.
@@ -65,7 +65,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallPolicyArn")]
-    pub firewall_policy_arn: String,
+    pub firewall_policy_arn: cfn_resources::StrVal,
 
     ///
     /// A setting indicating whether the firewall is protected against a change to the firewall policy association.     Use this setting to protect against     accidentally modifying the firewall policy for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
@@ -131,7 +131,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnFirewall {
@@ -145,66 +145,80 @@ impl cfn_resources::CfnResource for CfnFirewall {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.firewall_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
+                    "Max validation failed on field 'firewall_name'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.firewall_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'firewall_name'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.firewall_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'firewall_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'firewall_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.firewall_policy_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'firewall_policy_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'firewall_policy_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.firewall_policy_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'firewall_policy_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'firewall_policy_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpc_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpc_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -237,7 +251,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -292,7 +306,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -302,7 +316,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

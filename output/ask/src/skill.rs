@@ -32,7 +32,7 @@ pub struct CfnSkill {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VendorId")]
-    pub vendor_id: String,
+    pub vendor_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSkill {
@@ -67,7 +67,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// Client secret from Login with Amazon (LWA).
@@ -78,7 +78,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 
     ///
     /// Refresh token from Login with Amazon (LWA). This token is secret.
@@ -89,7 +89,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    pub refresh_token: String,
+    pub refresh_token: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AuthenticationConfiguration {
@@ -164,7 +164,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     ///
     /// ARN of the IAM role that grants the Alexa service (alexa-appkit.amazon.com) permission to access the bucket and       retrieve the skill package. This property is optional. If you do not provide it, the bucket       must be publicly accessible or configured with a policy that allows this access.       Otherwise, AWS CloudFormation cannot create the skill.
@@ -176,7 +176,7 @@ pub struct SkillPackage {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_role: Option<String>,
+    pub s3_bucket_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The location and name of the skill package .zip file.
@@ -187,7 +187,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 
     ///
     /// If you have S3 versioning enabled, the version ID of the skill package.zip       file.
@@ -199,7 +199,7 @@ pub struct SkillPackage {
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_object_version: Option<String>,
+    pub s3_object_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SkillPackage {

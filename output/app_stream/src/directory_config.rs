@@ -22,7 +22,7 @@ pub struct CfnDirectoryConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DirectoryName")]
-    pub directory_name: String,
+    pub directory_name: cfn_resources::StrVal,
 
     ///
     /// The distinguished names of the organizational units for computer accounts.
@@ -82,7 +82,7 @@ pub struct CertificateBasedAuthProperties {
     /// Update requires: No interruption
     #[serde(rename = "CertificateAuthorityArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_authority_arn: Option<String>,
+    pub certificate_authority_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the certificate-based authentication properties. Fallback is turned on by default when certificate-based authentication is Enabled. Fallback allows users to log in using their AD     domain password if certificate-based authentication is unsuccessful, or to unlock a     desktop lock screen. Enabled_no_directory_login_fallback enables certificate-based     authentication, but does not allow users to log in using their AD domain password. Users     will be disconnected to re-authenticate using certificates.
@@ -148,7 +148,7 @@ pub struct ServiceAccountCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountName")]
-    pub account_name: String,
+    pub account_name: cfn_resources::StrVal,
 
     ///
     /// The password for the account.
@@ -163,7 +163,7 @@ pub struct ServiceAccountCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountPassword")]
-    pub account_password: String,
+    pub account_password: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ServiceAccountCredentials {
@@ -178,29 +178,35 @@ impl cfn_resources::CfnResource for ServiceAccountCredentials {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.account_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'account_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'account_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.account_password;
 
-        if the_val.len() > 127 as _ {
-            return Err(format!(
-                "Max validation failed on field 'account_password'. {} is greater than 127",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 127 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'account_password'. {} is greater than 127",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.account_password;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'account_password'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'account_password'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

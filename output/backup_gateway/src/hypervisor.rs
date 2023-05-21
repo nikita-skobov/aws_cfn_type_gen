@@ -19,7 +19,7 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "Host")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host: Option<String>,
+    pub host: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service used to encrypt the    hypervisor.
@@ -37,7 +37,7 @@ pub struct CfnHypervisor {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the group of gateways within    the requested log.
@@ -55,7 +55,7 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_arn: Option<String>,
+    pub log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the hypervisor.
@@ -73,7 +73,7 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The password for the hypervisor.
@@ -91,7 +91,7 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags of the hypervisor configuration to import.
@@ -121,7 +121,7 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnHypervisor {
@@ -135,110 +135,134 @@ impl cfn_resources::CfnResource for CfnHypervisor {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.host {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'host'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'host'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.host {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'host'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'host'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_arn {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_arn'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_arn'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_arn {
-            if the_val.len() < 50 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_arn'. {} is less than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 50 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_arn'. {} is less than 50",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_group_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'log_group_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'log_group_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_group_arn {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'log_group_arn'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'log_group_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'password'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'password'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.username {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'username'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'username'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.username {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'username'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'username'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -263,7 +287,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -273,7 +297,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

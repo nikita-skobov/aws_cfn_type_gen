@@ -12,7 +12,7 @@ pub struct CfnBackupSelection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupPlanId")]
-    pub backup_plan_id: String,
+    pub backup_plan_id: cfn_resources::StrVal,
 
     ///
     /// Specifies the body of a request to assign a set of resources to a backup plan.
@@ -72,7 +72,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: String,
+    pub iam_role_arn: cfn_resources::StrVal,
 
     ///
     /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
@@ -125,7 +125,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SelectionName")]
-    pub selection_name: String,
+    pub selection_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BackupSelectionResourceType {
@@ -159,7 +159,7 @@ pub struct ConditionParameter {
     /// Update requires: Replacement
     #[serde(rename = "ConditionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition_key: Option<String>,
+    pub condition_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value in a key-value pair. For example, in the tag Department:       Accounting, Accounting is the value.
@@ -171,7 +171,7 @@ pub struct ConditionParameter {
     /// Update requires: Replacement
     #[serde(rename = "ConditionValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition_value: Option<String>,
+    pub condition_value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConditionParameter {
@@ -200,7 +200,7 @@ pub struct ConditionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionKey")]
-    pub condition_key: String,
+    pub condition_key: cfn_resources::StrVal,
 
     ///
     /// An operation, such as STRINGEQUALS, that is applied to a key-value pair     used to filter resources in a selection.
@@ -211,7 +211,7 @@ pub struct ConditionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionType")]
-    pub condition_type: String,
+    pub condition_type: cfn_resources::StrVal,
 
     ///
     /// The value in a key-value pair. For example, in "Department": "accounting",       "accounting" is the value.
@@ -222,7 +222,7 @@ pub struct ConditionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionValue")]
-    pub condition_value: String,
+    pub condition_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ConditionResourceType {

@@ -11,7 +11,7 @@ pub struct CfnRuleset {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the ruleset.
@@ -22,7 +22,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Contains metadata about the ruleset.
@@ -58,7 +58,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetArn")]
-    pub target_arn: String,
+    pub target_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRuleset {
@@ -92,7 +92,7 @@ pub struct ColumnSelector {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A regular expression for selecting a column from a dataset.
@@ -108,7 +108,7 @@ pub struct ColumnSelector {
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regex: Option<String>,
+    pub regex: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ColumnSelector {
@@ -122,38 +122,46 @@ impl cfn_resources::CfnResource for ColumnSelector {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'regex'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'regex'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.regex {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'regex'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'regex'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -173,7 +181,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckExpression")]
-    pub check_expression: String,
+    pub check_expression: cfn_resources::StrVal,
 
     ///
     /// List of column selectors. Selectors can be used to select columns using a name or       regular expression from the dataset. Rule will be applied to selected columns.
@@ -208,7 +216,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The map of substitution variable names to their values used in a check expression.       Variable names should start with a ':' (colon). Variable values can either be actual       values or column names. To differentiate between the two, column names should be       enclosed in backticks, for example, ":col1": "`Column A`".
@@ -265,7 +273,7 @@ pub struct SubstitutionValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 
     ///
     /// Variable name.
@@ -276,7 +284,7 @@ pub struct SubstitutionValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueReference")]
-    pub value_reference: String,
+    pub value_reference: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SubstitutionValue {
@@ -310,7 +318,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -320,7 +328,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -350,7 +358,7 @@ pub struct Threshold {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Unit of threshold value. Can be either a COUNT or PERCENTAGE of the full sample size       used for validation.
@@ -362,7 +370,7 @@ pub struct Threshold {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit: Option<String>,
+    pub unit: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of a threshold.

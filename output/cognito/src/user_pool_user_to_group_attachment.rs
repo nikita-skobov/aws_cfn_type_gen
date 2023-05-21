@@ -18,7 +18,7 @@ pub struct CfnUserPoolUserToGroupAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    pub group_name: String,
+    pub group_name: cfn_resources::StrVal,
 
     ///
     /// The user pool ID for the user pool.
@@ -35,7 +35,7 @@ pub struct CfnUserPoolUserToGroupAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 
     ///
     /// The username for the user.
@@ -52,7 +52,7 @@ pub struct CfnUserPoolUserToGroupAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolUserToGroupAttachment {
@@ -67,56 +67,68 @@ impl cfn_resources::CfnResource for CfnUserPoolUserToGroupAttachment {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.group_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'group_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'group_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'username'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'username'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

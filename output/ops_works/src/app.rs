@@ -49,7 +49,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The app virtual host settings, with multiple domains separated by commas. For example:     'www.example.com, example.com'
@@ -100,7 +100,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The app's short name.
@@ -112,7 +112,7 @@ pub struct CfnApp {
     /// Update requires: Replacement
     #[serde(rename = "Shortname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub shortname: Option<String>,
+    pub shortname: Option<cfn_resources::StrVal>,
 
     ///
     /// An SslConfiguration object with the SSL configuration.
@@ -135,7 +135,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackId")]
-    pub stack_id: String,
+    pub stack_id: cfn_resources::StrVal,
 
     ///
     /// The app type. Each supported type is associated with a particular layer. For example, PHP      applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances    that are members of the corresponding layer. If your app isn't one of the standard types, or    you prefer to implement your own Deploy recipes, specify other.
@@ -223,7 +223,7 @@ pub struct DataSource {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The database name.
@@ -235,7 +235,7 @@ pub struct DataSource {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The data source's type, AutoSelectOpsworksMysqlInstance,     OpsworksMysqlInstance, RdsDbInstance, or None.
@@ -247,7 +247,7 @@ pub struct DataSource {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataSource {
@@ -276,7 +276,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// (Optional) Whether the variable's value is returned by the DescribeApps action.    To hide an environment variable's value, set Secure to true.     DescribeApps returns *****FILTERED***** instead of the actual    value. The default value for Secure is false.
@@ -299,7 +299,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EnvironmentVariable {
@@ -322,7 +322,7 @@ pub struct Source {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-stack-source.html#cfn-opsworks-custcookbooksource-pw
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application.      One of the simplest approaches is to have branches or revisions in your repository that represent different      versions that can potentially be deployed.
@@ -334,7 +334,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Revision")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub revision: Option<String>,
+    pub revision: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
@@ -348,7 +348,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "SshKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssh_key: Option<String>,
+    pub ssh_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository type.
@@ -374,7 +374,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter depends on the repository type.
@@ -388,7 +388,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -443,7 +443,7 @@ pub struct SslConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate: Option<String>,
+    pub certificate: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional. Can be used to specify an intermediate certificate authority key or client authentication.
@@ -455,7 +455,7 @@ pub struct SslConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Chain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub chain: Option<String>,
+    pub chain: Option<cfn_resources::StrVal>,
 
     ///
     /// The private key; the contents of the certificate's domain.kex file.
@@ -467,7 +467,7 @@ pub struct SslConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PrivateKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_key: Option<String>,
+    pub private_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SslConfiguration {

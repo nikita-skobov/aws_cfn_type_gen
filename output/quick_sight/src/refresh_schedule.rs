@@ -11,7 +11,7 @@ pub struct CfnRefreshSchedule {
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_account_id: Option<String>,
+    pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the dataset that you are creating a refresh schedule for.
@@ -23,7 +23,7 @@ pub struct CfnRefreshSchedule {
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_set_id: Option<String>,
+    pub data_set_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The refresh schedule of a dataset.
@@ -69,7 +69,7 @@ pub struct RefreshOnDay {
     /// Update requires: No interruption
     #[serde(rename = "DayOfMonth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub day_of_month: Option<String>,
+    pub day_of_month: Option<cfn_resources::StrVal>,
 
     ///
     /// The day of the week that you want to schedule the refresh on. This value is required for weekly and monthly  refresh intervals.
@@ -81,7 +81,7 @@ pub struct RefreshOnDay {
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub day_of_week: Option<String>,
+    pub day_of_week: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RefreshOnDay {
@@ -115,7 +115,7 @@ pub struct RefreshScheduleMap {
     /// Update requires: No interruption
     #[serde(rename = "RefreshType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub refresh_type: Option<String>,
+    pub refresh_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The frequency for the refresh schedule.
@@ -139,7 +139,7 @@ pub struct RefreshScheduleMap {
     /// Update requires: Replacement
     #[serde(rename = "ScheduleId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_id: Option<String>,
+    pub schedule_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Time after which the refresh schedule can be started, expressed in YYYY-MM-DDTHH:MM:SS  format.
@@ -151,7 +151,7 @@ pub struct RefreshScheduleMap {
     /// Update requires: No interruption
     #[serde(rename = "StartAfterDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_after_date_time: Option<String>,
+    pub start_after_date_time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RefreshScheduleMap {
@@ -187,7 +187,7 @@ pub struct ScheduleFrequency {
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub interval: Option<String>,
+    pub interval: Option<cfn_resources::StrVal>,
 
     ///
     /// The day of the week that you want to schedule the refresh on. This value is required for weekly and monthly  refresh intervals.
@@ -211,7 +211,7 @@ pub struct ScheduleFrequency {
     /// Update requires: No interruption
     #[serde(rename = "TimeOfTheDay")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_of_the_day: Option<String>,
+    pub time_of_the_day: Option<cfn_resources::StrVal>,
 
     ///
     /// The timezone that you want the refresh schedule to use. The timezone ID must match a corresponding ID found on  java.util.time.getAvailableIDs().
@@ -223,7 +223,7 @@ pub struct ScheduleFrequency {
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_zone: Option<String>,
+    pub time_zone: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ScheduleFrequency {

@@ -10,7 +10,7 @@ pub struct CfnClientVpnTargetNetworkAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientVpnEndpointId")]
-    pub client_vpn_endpoint_id: String,
+    pub client_vpn_endpoint_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet to associate with the Client VPN endpoint.
@@ -21,7 +21,7 @@ pub struct CfnClientVpnTargetNetworkAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnClientVpnTargetNetworkAssociation {

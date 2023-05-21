@@ -14,7 +14,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallRuleGroupId")]
-    pub firewall_rule_group_id: String,
+    pub firewall_rule_group_id: cfn_resources::StrVal,
 
     ///
     /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections.
@@ -44,7 +44,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC. DNS Firewall       filters VPC traffic starting from rule group with the lowest numeric priority setting.
@@ -88,7 +88,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -120,28 +120,31 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroupAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.firewall_rule_group_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'firewall_rule_group_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!("Max validation failed on field 'firewall_rule_group_id'. {} is greater than 64", s.len()));
+            }
         }
 
         let the_val = &self.firewall_rule_group_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'firewall_rule_group_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'firewall_rule_group_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -156,20 +159,24 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroupAssociation {
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpc_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpc_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -193,7 +200,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -203,7 +210,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

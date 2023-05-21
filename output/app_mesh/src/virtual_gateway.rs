@@ -18,7 +18,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
-    pub mesh_name: String,
+    pub mesh_name: cfn_resources::StrVal,
 
     ///
     /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's        the ID of the account that shared the mesh with your account. For more information about mesh sharing, see Working with shared meshes.
@@ -34,7 +34,7 @@ pub struct CfnVirtualGateway {
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mesh_owner: Option<String>,
+    pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The specifications of the virtual gateway.
@@ -75,7 +75,7 @@ pub struct CfnVirtualGateway {
     /// Update requires: Replacement
     #[serde(rename = "VirtualGatewayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_gateway_name: Option<String>,
+    pub virtual_gateway_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnVirtualGateway {
@@ -90,37 +90,45 @@ impl cfn_resources::CfnResource for CfnVirtualGateway {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.mesh_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'mesh_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'mesh_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.mesh_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'mesh_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() > 12 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'mesh_owner'. {} is greater than 12",
-                    the_val.len()
+                    "Min validation failed on field 'mesh_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.mesh_owner {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'mesh_owner'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'mesh_owner'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.mesh_owner {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'mesh_owner'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -136,20 +144,21 @@ impl cfn_resources::CfnResource for CfnVirtualGateway {
         }
 
         if let Some(the_val) = &self.virtual_gateway_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'virtual_gateway_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'virtual_gateway_name'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.virtual_gateway_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'virtual_gateway_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'virtual_gateway_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -173,7 +182,7 @@ pub struct JsonFormatRef {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The specified value for the JSON.
@@ -188,7 +197,7 @@ pub struct JsonFormatRef {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for JsonFormatRef {
@@ -203,38 +212,46 @@ impl cfn_resources::CfnResource for JsonFormatRef {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -270,7 +287,7 @@ pub struct LoggingFormat {
     /// Update requires: No interruption
     #[serde(rename = "Text")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingFormat {
@@ -284,20 +301,24 @@ impl cfn_resources::CfnResource for LoggingFormat {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.text {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'text'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'text'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.text {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'text'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'text'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -383,7 +404,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -393,7 +414,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -717,7 +738,7 @@ pub struct VirtualGatewayFileAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    pub path: String,
+    pub path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayFileAccessLog {
@@ -734,20 +755,24 @@ impl cfn_resources::CfnResource for VirtualGatewayFileAccessLog {
 
         let the_val = &self.path;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'path'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'path'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -833,7 +858,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination port for the health check request. This port must match the port defined     in the PortMapping for the listener.
@@ -1255,7 +1280,7 @@ pub struct VirtualGatewayListenerTlsAcmCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
+    pub certificate_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsAcmCertificate {
@@ -1348,7 +1373,7 @@ pub struct VirtualGatewayListenerTlsFileCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
-    pub certificate_chain: String,
+    pub certificate_chain: cfn_resources::StrVal,
 
     ///
     /// The private key for a certificate stored on the file system of the mesh endpoint that     the proxy is running on.
@@ -1363,7 +1388,7 @@ pub struct VirtualGatewayListenerTlsFileCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateKey")]
-    pub private_key: String,
+    pub private_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsFileCertificate {
@@ -1378,38 +1403,46 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsFileCertificate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.certificate_chain;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'certificate_chain'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'certificate_chain'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.certificate_chain;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'certificate_chain'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'certificate_chain'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.private_key;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'private_key'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'private_key'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.private_key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'private_key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'private_key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1428,7 +1461,7 @@ pub struct VirtualGatewayListenerTlsSdsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretName")]
-    pub secret_name: String,
+    pub secret_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsSdsCertificate {
@@ -1819,7 +1852,7 @@ pub struct VirtualGatewayTlsValidationContextFileTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
-    pub certificate_chain: String,
+    pub certificate_chain: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextFileTrust {
@@ -1834,20 +1867,24 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextFileTrust 
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.certificate_chain;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'certificate_chain'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'certificate_chain'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.certificate_chain;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'certificate_chain'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'certificate_chain'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1866,7 +1903,7 @@ pub struct VirtualGatewayTlsValidationContextSdsTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretName")]
-    pub secret_name: String,
+    pub secret_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextSdsTrust {

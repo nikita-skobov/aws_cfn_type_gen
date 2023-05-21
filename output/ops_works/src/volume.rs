@@ -10,7 +10,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ec2VolumeId")]
-    pub ec2_volume_id: String,
+    pub ec2_volume_id: cfn_resources::StrVal,
 
     ///
     /// The volume mount point. For example, "/mnt/disk1".
@@ -22,7 +22,7 @@ pub struct CfnVolume {
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mount_point: Option<String>,
+    pub mount_point: Option<cfn_resources::StrVal>,
 
     ///
     /// The volume name. Volume names are a maximum of 128 characters.
@@ -34,7 +34,7 @@ pub struct CfnVolume {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The stack ID.
@@ -45,7 +45,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackId")]
-    pub stack_id: String,
+    pub stack_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVolume {

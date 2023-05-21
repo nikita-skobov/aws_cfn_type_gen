@@ -181,7 +181,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
-    pub device_name: String,
+    pub device_name: cfn_resources::StrVal,
 
     ///
     /// Parameters used to automatically set up EBS volumes when the instance is       launched.
@@ -205,7 +205,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_device: Option<String>,
+    pub no_device: Option<cfn_resources::StrVal>,
 
     ///
     /// The virtual device name (ephemeralN). Instance store volumes are numbered       starting from 0. An instance type with 2 available instance store volumes can specify       mappings for ephemeral0 and ephemeral1. The number of       available instance store volumes depends on the instance type. After you connect to the       instance, you must mount the volume.
@@ -221,7 +221,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_name: Option<String>,
+    pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
@@ -252,7 +252,7 @@ pub struct ClassicLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ClassicLoadBalancer {
@@ -372,7 +372,7 @@ pub struct EbsBlockDevice {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the volume, in GiBs. You must specify either a snapshot ID or a volume       size. If you specify a snapshot, the default is the snapshot size. You can specify a       volume size that is equal to or larger than the snapshot size.
@@ -479,7 +479,7 @@ pub struct FleetLaunchTemplateSpecification {
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch template.
@@ -499,7 +499,7 @@ pub struct FleetLaunchTemplateSpecification {
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the launch template.
@@ -512,7 +512,7 @@ pub struct FleetLaunchTemplateSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateSpecification {
@@ -526,20 +526,21 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecification {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -559,7 +560,7 @@ pub struct GroupIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupId")]
-    pub group_id: String,
+    pub group_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GroupIdentifier {
@@ -589,7 +590,7 @@ pub struct IamInstanceProfileSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IamInstanceProfileSpecification {
@@ -618,7 +619,7 @@ pub struct InstanceIpv6Address {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: String,
+    pub ipv6_address: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InstanceIpv6Address {
@@ -672,7 +673,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The position of the network interface in the attachment order.      A primary network interface has a device index of 0.
@@ -736,7 +737,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be designated as primary. You cannot specify this option if you're     	launching more than one instance in a RunInstances request.
@@ -772,7 +773,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InstanceNetworkInterfaceSpecification {
@@ -1365,7 +1366,7 @@ pub struct LaunchTemplateOverrides {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance requirements. When you specify instance requirements, Amazon EC2 will identify     instance types with the provided requirements, and then use your On-Demand and Spot     allocation strategies to launch instances from these instance types, in the same way as     when you specify a list of instance types.
@@ -1425,7 +1426,7 @@ pub struct LaunchTemplateOverrides {
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_price: Option<String>,
+    pub spot_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the subnet in which to launch the instances.
@@ -1437,7 +1438,7 @@ pub struct LaunchTemplateOverrides {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of units provided by the specified instance type.
@@ -4263,7 +4264,7 @@ pub struct PrivateIpAddressSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: String,
+    pub private_ip_address: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
@@ -4401,7 +4402,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
-    pub image_id: String,
+    pub image_id: cfn_resources::StrVal,
 
     ///
     /// The attributes for the instance types. When you specify instance attributes, Amazon EC2 will     identify instance types with those attributes.
@@ -4441,7 +4442,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "KernelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kernel_id: Option<String>,
+    pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the key pair.
@@ -4453,7 +4454,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_name: Option<String>,
+    pub key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Enable or disable monitoring for the instances.
@@ -4503,7 +4504,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "RamdiskId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ramdisk_id: Option<String>,
+    pub ramdisk_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The security groups.
@@ -4529,7 +4530,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_price: Option<String>,
+    pub spot_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The IDs of the subnets in which to launch the instances. To specify multiple subnets, separate      them using commas; for example, "subnet-1234abcdeexample1, subnet-0987cdef6example2".
@@ -4541,7 +4542,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply during creation.
@@ -4565,7 +4566,7 @@ pub struct SpotFleetLaunchSpecification {
     /// Update requires: Replacement
     #[serde(rename = "UserData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_data: Option<String>,
+    pub user_data: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of units provided by the specified instance type. These are the same units that you chose to set the target capacity in terms of instances, or a performance characteristic such as vCPUs, memory, or I/O.
@@ -7226,7 +7227,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: No interruption
     #[serde(rename = "Context")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub context: Option<String>,
+    pub context: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether running Spot Instances should be terminated if you decrease the       target capacity of the Spot Fleet request below the current size of the Spot       Fleet.
@@ -7254,7 +7255,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IamFleetRole")]
-    pub iam_fleet_role: String,
+    pub iam_fleet_role: cfn_resources::StrVal,
 
     ///
     /// The behavior when a Spot Instance is interrupted. The default is         terminate.
@@ -7348,7 +7349,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: Replacement
     #[serde(rename = "OnDemandMaxTotalPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_demand_max_total_price: Option<String>,
+    pub on_demand_max_total_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of On-Demand units to request. You can choose to set the target capacity in       terms of instances or a performance characteristic that is important to your application       workload, such as vCPUs, memory, or I/O. If the request type is maintain,       you can specify a target capacity of 0 and add capacity later.
@@ -7396,7 +7397,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: Replacement
     #[serde(rename = "SpotMaxTotalPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_max_total_price: Option<String>,
+    pub spot_max_total_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum price per unit hour that you are willing to pay for a Spot Instance. We do not recommend       using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price.
@@ -7410,7 +7411,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_price: Option<String>,
+    pub spot_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value pair for tagging the Spot Fleet request on creation. The value for         ResourceType must be spot-fleet-request, otherwise the       Spot Fleet request fails. To tag instances at launch, specify the tags in the launch         template (valid only if you use LaunchTemplateConfigs) or in       the         SpotFleetTagSpecification       (valid only if you use         LaunchSpecifications). For information about tagging after launch, see         Tagging Your Resources.
@@ -7487,7 +7488,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: Replacement
     #[serde(rename = "ValidFrom")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_from: Option<String>,
+    pub valid_from: Option<cfn_resources::StrVal>,
 
     ///
     /// The end date and time of the request, in UTC format         (YYYY-MM-DDTHH:MM:SSZ).       After the end date and time, no new Spot Instance requests are placed or able to fulfill       the request. If no value is specified, the Spot Fleet request remains until you cancel       it.
@@ -7499,7 +7500,7 @@ pub struct SpotFleetRequestConfigData {
     /// Update requires: Replacement
     #[serde(rename = "ValidUntil")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_until: Option<String>,
+    pub valid_until: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -8092,7 +8093,7 @@ pub struct SpotPlacement {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the placement group.
@@ -8104,7 +8105,7 @@ pub struct SpotPlacement {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tenancy of the instance (if the instance is running in a VPC). An instance with a       tenancy of dedicated runs on single-tenant hardware. The host       tenancy is not supported for Spot Instances.
@@ -8173,7 +8174,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -8183,7 +8184,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -8212,7 +8213,7 @@ pub struct TargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TargetGroup {

@@ -10,7 +10,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
+    pub certificate_arn: cfn_resources::StrVal,
 
     ///
     /// The decription for your domain name.
@@ -22,7 +22,7 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The domain name.
@@ -33,7 +33,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDomainName {

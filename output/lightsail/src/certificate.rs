@@ -10,7 +10,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateName")]
-    pub certificate_name: String,
+    pub certificate_name: cfn_resources::StrVal,
 
     ///
     /// The domain name of the certificate.
@@ -21,7 +21,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// An array of strings that specify the alternate domains (such as example.org)     and subdomains (such as blog.example.com) of the certificate.
@@ -83,7 +83,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -93,7 +93,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

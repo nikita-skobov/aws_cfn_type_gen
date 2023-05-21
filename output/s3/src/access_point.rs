@@ -10,7 +10,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The AWS account ID associated with the S3 bucket associated with this access point.
@@ -22,7 +22,7 @@ pub struct CfnAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_account_id: Option<String>,
+    pub bucket_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of this access point. If you don't specify a name, AWS CloudFormation    generates a unique ID and uses that ID for the access point name.
@@ -34,7 +34,7 @@ pub struct CfnAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The access point policy associated with this access point.
@@ -184,7 +184,7 @@ pub struct VpcConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcConfiguration {

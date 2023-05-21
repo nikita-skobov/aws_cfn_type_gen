@@ -49,7 +49,7 @@ pub struct CfnTargetGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_path: Option<String>,
+    pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
@@ -61,7 +61,7 @@ pub struct CfnTargetGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPort")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_port: Option<String>,
+    pub health_check_port: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol the load balancer uses when performing health checks on targets. For    Application Load Balancers, the default is HTTP. For Network Load Balancers and Gateway Load    Balancers, the default is TCP. The TCP protocol is not supported for health checks if the    protocol of the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP protocols are    not supported for health checks.
@@ -147,7 +147,7 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port on which the targets receive traffic. This port is used unless you specify a port    override when registering the target. If the target is a Lambda function, this parameter does    not apply. If the protocol is GENEVE, the supported port is 6081.
@@ -189,7 +189,7 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "ProtocolVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol_version: Option<String>,
+    pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags.
@@ -269,7 +269,7 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -411,20 +411,21 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
         }
 
         if let Some(the_val) = &self.health_check_path {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'health_check_path'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'health_check_path'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.health_check_path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'health_check_path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'health_check_path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -507,7 +508,7 @@ pub struct Matcher {
     /// Update requires: No interruption
     #[serde(rename = "GrpcCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub grpc_code: Option<String>,
+    pub grpc_code: Option<cfn_resources::StrVal>,
 
     ///
     /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
@@ -525,7 +526,7 @@ pub struct Matcher {
     /// Update requires: No interruption
     #[serde(rename = "HttpCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_code: Option<String>,
+    pub http_code: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Matcher {
@@ -559,7 +560,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -569,7 +570,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -609,7 +610,7 @@ pub struct TargetDescription {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the target. If the target type of the target group is instance,    specify an instance ID. If the target type is ip, specify an IP address. If the    target type is lambda, specify the ARN of the Lambda function. If the target type    is alb, specify the ARN of the Application Load Balancer target.
@@ -620,7 +621,7 @@ pub struct TargetDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
@@ -712,7 +713,7 @@ pub struct TargetGroupAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the attribute.
@@ -724,7 +725,7 @@ pub struct TargetGroupAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TargetGroupAttribute {
@@ -738,11 +739,13 @@ impl cfn_resources::CfnResource for TargetGroupAttribute {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 

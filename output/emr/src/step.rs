@@ -10,7 +10,7 @@ pub struct CfnStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActionOnFailure")]
-    pub action_on_failure: String,
+    pub action_on_failure: cfn_resources::StrVal,
 
     ///
     /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
@@ -38,7 +38,7 @@ pub struct CfnStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobFlowId")]
-    pub job_flow_id: String,
+    pub job_flow_id: cfn_resources::StrVal,
 
     ///
     /// The name of the cluster step.
@@ -49,7 +49,7 @@ pub struct CfnStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnStep {
@@ -66,20 +66,24 @@ impl cfn_resources::CfnResource for CfnStep {
 
         let the_val = &self.job_flow_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'job_flow_id'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'job_flow_id'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.job_flow_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'job_flow_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'job_flow_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -116,7 +120,7 @@ pub struct HadoopJarStepConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Jar")]
-    pub jar: String,
+    pub jar: cfn_resources::StrVal,
 
     ///
     /// The name of the main class in the specified Java file. If not specified, the JAR file     should specify a Main-Class in its manifest file.
@@ -134,7 +138,7 @@ pub struct HadoopJarStepConfig {
     /// Update requires: Replacement
     #[serde(rename = "MainClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub main_class: Option<String>,
+    pub main_class: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
@@ -161,37 +165,45 @@ impl cfn_resources::CfnResource for HadoopJarStepConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.jar;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'jar'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'jar'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.jar;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'jar'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.main_class {
-            if the_val.len() > 10280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'main_class'. {} is greater than 10280",
-                    the_val.len()
+                    "Min validation failed on field 'jar'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.main_class {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'main_class'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'main_class'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.main_class {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'main_class'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -218,7 +230,7 @@ pub struct KeyValue {
     /// Update requires: Replacement
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value part of the identified key.
@@ -236,7 +248,7 @@ pub struct KeyValue {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for KeyValue {
@@ -250,38 +262,46 @@ impl cfn_resources::CfnResource for KeyValue {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'value'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'value'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

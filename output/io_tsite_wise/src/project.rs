@@ -22,7 +22,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortalId")]
-    pub portal_id: String,
+    pub portal_id: cfn_resources::StrVal,
 
     ///
     /// A description for the project.
@@ -34,7 +34,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "ProjectDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub project_description: Option<String>,
+    pub project_description: Option<cfn_resources::StrVal>,
 
     ///
     /// A friendly name for the project.
@@ -45,7 +45,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectName")]
-    pub project_name: String,
+    pub project_name: cfn_resources::StrVal,
 
     ///
     /// A list of key-value pairs that contain metadata for the project. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
@@ -91,7 +91,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -101,7 +101,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

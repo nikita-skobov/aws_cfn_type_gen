@@ -15,7 +15,7 @@ pub struct CfnFindingsFilter {
     /// Update requires: No interruption
     #[serde(rename = "Action")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub action: Option<String>,
+    pub action: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom description of the findings filter. The description can contain 1-512       characters.
@@ -29,7 +29,7 @@ pub struct CfnFindingsFilter {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The criteria to use to filter findings.
@@ -53,7 +53,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The position of the findings filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter       is applied to findings, relative to other filters that are also applied to       findings.

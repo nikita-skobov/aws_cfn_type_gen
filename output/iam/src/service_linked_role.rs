@@ -20,7 +20,7 @@ pub struct CfnServiceLinkedRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AWSServiceName")]
-    pub awsservice_name: String,
+    pub awsservice_name: cfn_resources::StrVal,
 
     ///
     ///
@@ -42,7 +42,7 @@ pub struct CfnServiceLinkedRole {
     /// Update requires: Replacement
     #[serde(rename = "CustomSuffix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_suffix: Option<String>,
+    pub custom_suffix: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the role.
@@ -58,7 +58,7 @@ pub struct CfnServiceLinkedRole {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnServiceLinkedRole {
@@ -73,46 +73,56 @@ impl cfn_resources::CfnResource for CfnServiceLinkedRole {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.awsservice_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'awsservice_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'awsservice_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.awsservice_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'awsservice_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.custom_suffix {
-            if the_val.len() > 64 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'custom_suffix'. {} is greater than 64",
-                    the_val.len()
+                    "Min validation failed on field 'awsservice_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.custom_suffix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_suffix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_suffix'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.custom_suffix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_suffix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 

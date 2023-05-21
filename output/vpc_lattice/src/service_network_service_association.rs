@@ -28,7 +28,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_identifier: Option<String>,
+    pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN if the  resources specified in the operation are in different accounts.
@@ -40,7 +40,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ServiceNetworkIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_network_identifier: Option<String>,
+    pub service_network_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the association.
@@ -86,7 +86,7 @@ pub struct DnsEntry {
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the hosted zone.
@@ -98,7 +98,7 @@ pub struct DnsEntry {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DnsEntry {
@@ -132,7 +132,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -142,7 +142,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

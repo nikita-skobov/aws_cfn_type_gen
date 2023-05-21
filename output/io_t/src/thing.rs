@@ -27,7 +27,7 @@ pub struct CfnThing {
     /// Update requires: Replacement
     #[serde(rename = "ThingName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub thing_name: Option<String>,
+    pub thing_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnThing {

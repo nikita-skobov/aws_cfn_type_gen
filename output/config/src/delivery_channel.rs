@@ -37,7 +37,7 @@ pub struct CfnDeliveryChannel {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
@@ -50,7 +50,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
+    pub s3_bucket_name: cfn_resources::StrVal,
 
     ///
     /// The prefix for the specified Amazon S3 bucket.
@@ -62,7 +62,7 @@ pub struct CfnDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
@@ -74,7 +74,7 @@ pub struct CfnDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_kms_key_arn: Option<String>,
+    pub s3_kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
@@ -88,7 +88,7 @@ pub struct CfnDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_topic_arn: Option<String>,
+    pub sns_topic_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDeliveryChannel {
@@ -106,20 +106,24 @@ impl cfn_resources::CfnResource for CfnDeliveryChannel {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -41,7 +41,7 @@ pub struct CloudFrontOriginAccessIdentityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    pub comment: String,
+    pub comment: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudFrontOriginAccessIdentityConfig {

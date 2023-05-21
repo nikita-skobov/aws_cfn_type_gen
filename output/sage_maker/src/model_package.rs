@@ -56,7 +56,7 @@ pub struct CfnModelPackage {
     /// Update requires: No interruption
     #[serde(rename = "ApprovalDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub approval_description: Option<String>,
+    pub approval_description: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether the model package is to be certified to be listed on AWS Marketplace. For       information about listing model packages on AWS Marketplace, see List Your         Algorithm or Model Package on AWS Marketplace.
@@ -80,7 +80,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_token: Option<String>,
+    pub client_token: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the user who created or modified an experiment, trial, trial component, lineage group, or project.
@@ -116,7 +116,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents the drift check baselines that can be used when the model monitor is set using the model package.
@@ -176,7 +176,7 @@ pub struct CfnModelPackage {
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_modified_time: Option<String>,
+    pub last_modified_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata properties of the tracking entity, trial, or trial component.
@@ -232,7 +232,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_description: Option<String>,
+    pub model_package_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The model group to which the model belongs.
@@ -250,7 +250,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_group_name: Option<String>,
+    pub model_package_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model.
@@ -268,7 +268,7 @@ pub struct CfnModelPackage {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_name: Option<String>,
+    pub model_package_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the validation and image scan statuses of the model package.
@@ -318,7 +318,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "SamplePayloadUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sample_payload_url: Option<String>,
+    pub sample_payload_url: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of algorithms that were used to create a model package.
@@ -356,7 +356,7 @@ pub struct CfnModelPackage {
     /// Update requires: Replacement
     #[serde(rename = "Task")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task: Option<String>,
+    pub task: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies batch transform jobs that SageMaker runs to validate your model package.
@@ -413,8 +413,10 @@ impl cfn_resources::CfnResource for CfnModelPackage {
         }
 
         if let Some(the_val) = &self.approval_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'approval_description'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'approval_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
@@ -443,41 +445,45 @@ impl cfn_resources::CfnResource for CfnModelPackage {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model_package_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'model_package_description'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'model_package_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_group_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!("Max validation failed on field 'model_package_group_name'. {} is greater than 63", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'model_package_group_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_group_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'model_package_group_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'model_package_group_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_package_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'model_package_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'model_package_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'model_package_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -549,7 +555,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique name to identify the additional inference specification. The name must       be unique within the list of your additional inference specifications for a       particular model package.
@@ -566,7 +572,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The supported MIME types for the input data.
@@ -637,30 +643,36 @@ impl cfn_resources::CfnResource for AdditionalInferenceSpecificationDefinition {
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1107,7 +1119,7 @@ pub struct FileSource {
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_digest: Option<String>,
+    pub content_digest: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of content stored in the file source.
@@ -1123,7 +1135,7 @@ pub struct FileSource {
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_type: Option<String>,
+    pub content_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 URI for the file source.
@@ -1138,7 +1150,7 @@ pub struct FileSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FileSource {
@@ -1152,30 +1164,36 @@ impl cfn_resources::CfnResource for FileSource {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.content_digest {
-            if the_val.len() > 72 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content_digest'. {} is greater than 72",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 72 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content_digest'. {} is greater than 72",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.content_type {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content_type'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content_type'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.s3_uri;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_uri'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_uri'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1289,7 +1307,7 @@ pub struct MetadataProperties {
     /// Update requires: Replacement
     #[serde(rename = "CommitId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub commit_id: Option<String>,
+    pub commit_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The entity this entity was generated by.
@@ -1305,7 +1323,7 @@ pub struct MetadataProperties {
     /// Update requires: Replacement
     #[serde(rename = "GeneratedBy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub generated_by: Option<String>,
+    pub generated_by: Option<cfn_resources::StrVal>,
 
     ///
     /// The project ID.
@@ -1321,7 +1339,7 @@ pub struct MetadataProperties {
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub project_id: Option<String>,
+    pub project_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository.
@@ -1337,7 +1355,7 @@ pub struct MetadataProperties {
     /// Update requires: Replacement
     #[serde(rename = "Repository")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository: Option<String>,
+    pub repository: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MetadataProperties {
@@ -1351,38 +1369,46 @@ impl cfn_resources::CfnResource for MetadataProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.commit_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'commit_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'commit_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.generated_by {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'generated_by'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'generated_by'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.project_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'project_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'project_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.repository {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'repository'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'repository'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1407,7 +1433,7 @@ pub struct MetricsSource {
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_digest: Option<String>,
+    pub content_digest: Option<cfn_resources::StrVal>,
 
     ///
     /// The metric source content type.
@@ -1422,7 +1448,7 @@ pub struct MetricsSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
-    pub content_type: String,
+    pub content_type: cfn_resources::StrVal,
 
     ///
     /// The S3 URI for the metrics source.
@@ -1437,7 +1463,7 @@ pub struct MetricsSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricsSource {
@@ -1451,30 +1477,36 @@ impl cfn_resources::CfnResource for MetricsSource {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.content_digest {
-            if the_val.len() > 72 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content_digest'. {} is greater than 72",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 72 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content_digest'. {} is greater than 72",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.content_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'content_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'content_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_uri;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_uri'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_uri'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1549,7 +1581,7 @@ pub struct ModelInput {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DataInputConfig")]
-    pub data_input_config: String,
+    pub data_input_config: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ModelInput {
@@ -1564,20 +1596,24 @@ impl cfn_resources::CfnResource for ModelInput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.data_input_config;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'data_input_config'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'data_input_config'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.data_input_config;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'data_input_config'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'data_input_config'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1681,7 +1717,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "ContainerHostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_hostname: Option<String>,
+    pub container_hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment variables to set in the Docker container. Each key and value in the       Environment string to string map can have length of up to 1024. We       support up to 16 entries in the map.
@@ -1705,7 +1741,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "Framework")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework: Option<String>,
+    pub framework: Option<cfn_resources::StrVal>,
 
     ///
     /// The framework version of the Model Package Container Image.
@@ -1723,7 +1759,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "FrameworkVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework_version: Option<String>,
+    pub framework_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon EC2 Container Registry (Amazon ECR) path where inference code is stored.
@@ -1740,7 +1776,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     ///
     /// An MD5 hash of the training algorithm that identifies the Docker image used for       training.
@@ -1756,7 +1792,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "ImageDigest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_digest: Option<String>,
+    pub image_digest: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 path where the model artifacts, which result from model training, are stored.       This path must point to a single gzip compressed tar archive       (.tar.gz suffix).
@@ -1774,7 +1810,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "ModelDataUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_data_url: Option<String>,
+    pub model_data_url: Option<cfn_resources::StrVal>,
 
     ///
     /// A structure with Model Input details.
@@ -1798,7 +1834,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "NearestModelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nearest_model_name: Option<String>,
+    pub nearest_model_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Marketplace product ID of the model package.
@@ -1814,7 +1850,7 @@ pub struct ModelPackageContainerDefinition {
     /// Update requires: Some interruptions
     #[serde(rename = "ProductId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub product_id: Option<String>,
+    pub product_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
@@ -1828,56 +1864,65 @@ impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.container_hostname {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'container_hostname'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'container_hostname'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.framework_version {
-            if the_val.len() > 10 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'framework_version'. {} is greater than 10",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'framework_version'. {} is greater than 10",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.framework_version {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'framework_version'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'framework_version'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.image;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image'. {} is greater than 255",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.image_digest {
-            if the_val.len() > 72 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'image_digest'. {} is greater than 72",
-                    the_val.len()
+                    "Max validation failed on field 'image'. {} is greater than 255",
+                    s.len()
                 ));
             }
         }
 
+        if let Some(the_val) = &self.image_digest {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 72 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'image_digest'. {} is greater than 72",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
         if let Some(the_val) = &self.model_data_url {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_data_url'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'model_data_url'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1886,11 +1931,13 @@ impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.product_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'product_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'product_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1952,7 +1999,7 @@ pub struct ModelPackageStatusItem {
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub failure_reason: Option<String>,
+    pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model package for which the overall status is being reported.
@@ -1969,7 +2016,7 @@ pub struct ModelPackageStatusItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The current status.
@@ -2022,20 +2069,24 @@ impl cfn_resources::CfnResource for ModelPackageStatusItem {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2131,7 +2182,7 @@ pub struct S3DataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2167,11 +2218,13 @@ impl cfn_resources::CfnResource for S3DataSource {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.s3_uri;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_uri'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_uri'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2196,7 +2249,7 @@ pub struct SourceAlgorithm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlgorithmName")]
-    pub algorithm_name: String,
+    pub algorithm_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon S3 path where the model artifacts, which result from model training, are stored.       This path must point to a single gzip compressed tar archive         (.tar.gz suffix).
@@ -2214,7 +2267,7 @@ pub struct SourceAlgorithm {
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_data_url: Option<String>,
+    pub model_data_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SourceAlgorithm {
@@ -2229,28 +2282,34 @@ impl cfn_resources::CfnResource for SourceAlgorithm {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.algorithm_name;
 
-        if the_val.len() > 170 as _ {
-            return Err(format!(
-                "Max validation failed on field 'algorithm_name'. {} is greater than 170",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 170 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'algorithm_name'. {} is greater than 170",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.algorithm_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'algorithm_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'algorithm_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.model_data_url {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_data_url'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'model_data_url'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2315,7 +2374,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2325,7 +2384,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2373,7 +2432,7 @@ pub struct TransformInput {
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_type: Option<String>,
+    pub content_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the location of       the       channel data, which is, the S3 location of the input data that the       model can consume.
@@ -2460,11 +2519,13 @@ impl cfn_resources::CfnResource for TransformInput {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.content_type {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content_type'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content_type'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2639,7 +2700,7 @@ pub struct TransformOutput {
     /// Update requires: Replacement
     #[serde(rename = "Accept")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accept: Option<String>,
+    pub accept: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines how to assemble the results of the transform job as a single S3 object. Choose       a format that is most convenient to you. To concatenate the results in binary format,       specify None. To add a newline character at the end of every transformed       record, specify       Line.
@@ -2675,7 +2736,7 @@ pub struct TransformOutput {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 path where you want Amazon SageMaker to store the results of the transform job. For       example, s3://bucket-name/key-name-prefix.
@@ -2692,7 +2753,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3OutputPath")]
-    pub s3_output_path: String,
+    pub s3_output_path: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2723,30 +2784,36 @@ impl cfn_resources::CfnResource for TransformOutput {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.accept {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'accept'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'accept'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.s3_output_path;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_output_path'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_output_path'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2802,7 +2869,7 @@ pub struct TransformResources {
     /// Update requires: Replacement
     #[serde(rename = "VolumeKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_kms_key_id: Option<String>,
+    pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2962,11 +3029,10 @@ impl cfn_resources::CfnResource for TransformResources {
         }
 
         if let Some(the_val) = &self.volume_kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
@@ -2987,7 +3053,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "DomainId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_id: Option<String>,
+    pub domain_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the user's profile.
@@ -2999,7 +3065,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "UserProfileArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_profile_arn: Option<String>,
+    pub user_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the user's profile.
@@ -3011,7 +3077,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_profile_name: Option<String>,
+    pub user_profile_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for UserContext {
@@ -3048,7 +3114,7 @@ pub struct ValidationProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProfileName")]
-    pub profile_name: String,
+    pub profile_name: cfn_resources::StrVal,
 
     ///
     /// The TransformJobDefinition object that describes the transform job used       for the validation of the model package.
@@ -3074,20 +3140,24 @@ impl cfn_resources::CfnResource for ValidationProfile {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.profile_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'profile_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'profile_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.profile_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'profile_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'profile_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.transform_job_definition.validate()?;
@@ -3127,7 +3197,7 @@ pub struct ValidationSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationRole")]
-    pub validation_role: String,
+    pub validation_role: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ValidationSpecification {
@@ -3151,20 +3221,24 @@ impl cfn_resources::CfnResource for ValidationSpecification {
 
         let the_val = &self.validation_role;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'validation_role'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'validation_role'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.validation_role;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'validation_role'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'validation_role'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

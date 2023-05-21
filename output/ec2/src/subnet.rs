@@ -31,7 +31,7 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The AZ ID of the subnet.
@@ -43,7 +43,7 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone_id: Option<String>,
+    pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 CIDR block assigned to the subnet.
@@ -57,7 +57,7 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_block: Option<String>,
+    pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet      should return synthetic IPv6 addresses for IPv4-only destinations. For more information, see DNS64 and NAT64 in the Amazon Virtual Private Cloud User Guide.
@@ -83,7 +83,7 @@ pub struct CfnSubnet {
     /// Update requires: Some interruptions
     #[serde(rename = "Ipv6CidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_cidr_block: Option<String>,
+    pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether this is an IPv6 only subnet. For more information, see Subnet basics in the Amazon Virtual Private Cloud User Guide.
@@ -119,7 +119,7 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outpost_arn: Option<String>,
+    pub outpost_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries to the instances should be handled. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
@@ -160,7 +160,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSubnet {
@@ -271,7 +271,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -281,7 +281,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

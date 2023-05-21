@@ -27,7 +27,7 @@ pub struct CfnFirewallRuleGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the tag keys and values that you want to associate with the rule group.
@@ -55,11 +55,13 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -122,7 +124,7 @@ pub struct FirewallRule {
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub block_override_domain: Option<String>,
+    pub block_override_domain: Option<cfn_resources::StrVal>,
 
     ///
     /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
@@ -165,7 +167,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallDomainListId")]
-    pub firewall_domain_list_id: String,
+    pub firewall_domain_list_id: cfn_resources::StrVal,
 
     ///
     /// The priority of the rule in the rule group. This value must be unique within the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
@@ -245,36 +247,41 @@ impl cfn_resources::CfnResource for FirewallRule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.block_override_domain {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'block_override_domain'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'block_override_domain'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.block_override_domain {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'block_override_domain'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'block_override_domain'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.firewall_domain_list_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'firewall_domain_list_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!("Max validation failed on field 'firewall_domain_list_id'. {} is greater than 64", s.len()));
+            }
         }
 
         let the_val = &self.firewall_domain_list_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'firewall_domain_list_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'firewall_domain_list_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -298,7 +305,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -308,7 +315,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

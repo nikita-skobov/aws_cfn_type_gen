@@ -54,7 +54,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
+    pub dbproxy_name: cfn_resources::StrVal,
 
     ///
     /// The identifier for the target group.
@@ -67,7 +67,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupName")]
-    pub target_group_name: String,
+    pub target_group_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {
@@ -119,7 +119,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     /// Update requires: No interruption
     #[serde(rename = "InitQuery")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub init_query: Option<String>,
+    pub init_query: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum size of the connection pool for each target in a target group. The value is expressed as a percentage of the     max_connections setting for the RDS DB instance or Aurora DB cluster used by the target group.

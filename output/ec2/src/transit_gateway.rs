@@ -31,7 +31,7 @@ pub struct CfnTransitGateway {
     /// Update requires: No interruption
     #[serde(rename = "AssociationDefaultRouteTableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub association_default_route_table_id: Option<String>,
+    pub association_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
@@ -85,7 +85,7 @@ pub struct CfnTransitGateway {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Enable or disable DNS support. Enabled by default.
@@ -125,7 +125,7 @@ pub struct CfnTransitGateway {
     /// Update requires: No interruption
     #[serde(rename = "PropagationDefaultRouteTableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub propagation_default_route_table_id: Option<String>,
+    pub propagation_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the transit gateway.
@@ -299,7 +299,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -309,7 +309,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

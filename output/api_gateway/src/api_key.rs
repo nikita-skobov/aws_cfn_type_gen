@@ -11,7 +11,7 @@ pub struct CfnApiKey {
     /// Update requires: No interruption
     #[serde(rename = "CustomerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub customer_id: Option<String>,
+    pub customer_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the ApiKey.
@@ -23,7 +23,7 @@ pub struct CfnApiKey {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the ApiKey can be used by callers.
@@ -61,7 +61,7 @@ pub struct CfnApiKey {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
@@ -97,7 +97,7 @@ pub struct CfnApiKey {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnApiKey {
@@ -127,7 +127,7 @@ pub struct StageKey {
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rest_api_id: Option<String>,
+    pub rest_api_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The stage name associated with the stage key.
@@ -139,7 +139,7 @@ pub struct StageKey {
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage_name: Option<String>,
+    pub stage_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StageKey {
@@ -173,7 +173,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -183,7 +183,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -44,7 +44,7 @@ pub struct CfnOrganizationConfigRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationConfigRuleName")]
-    pub organization_config_rule_name: String,
+    pub organization_config_rule_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -103,17 +103,18 @@ impl cfn_resources::CfnResource for CfnOrganizationConfigRule {
 
         let the_val = &self.organization_config_rule_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'organization_config_rule_name'. {} is greater than 64", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!("Max validation failed on field 'organization_config_rule_name'. {} is greater than 64", s.len()));
+            }
         }
 
         let the_val = &self.organization_config_rule_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'organization_config_rule_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'organization_config_rule_name'. {} is less than 1", s.len()));
+            }
         }
 
         self.organization_custom_policy_rule_metadata
@@ -155,7 +156,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -166,7 +167,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_parameters: Option<String>,
+    pub input_parameters: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -177,7 +178,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maximum_execution_frequency: Option<String>,
+    pub maximum_execution_frequency: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -198,7 +199,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyText")]
-    pub policy_text: String,
+    pub policy_text: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -209,7 +210,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id_scope: Option<String>,
+    pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -230,7 +231,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
-    pub runtime: String,
+    pub runtime: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -241,7 +242,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_key_scope: Option<String>,
+    pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -252,7 +253,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_value_scope: Option<String>,
+    pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OrganizationCustomPolicyRuleMetadata {
@@ -286,7 +287,7 @@ pub struct OrganizationCustomRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A string, in JSON format, that is passed to your organization AWS Config rule Lambda function.
@@ -302,7 +303,7 @@ pub struct OrganizationCustomRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_parameters: Option<String>,
+    pub input_parameters: Option<cfn_resources::StrVal>,
 
     ///
     /// The lambda function ARN.
@@ -317,7 +318,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
-    pub lambda_function_arn: String,
+    pub lambda_function_arn: cfn_resources::StrVal,
 
     ///
     /// The maximum frequency with which AWS Config runs evaluations for a rule. 			Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties.
@@ -363,7 +364,7 @@ pub struct OrganizationCustomRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id_scope: Option<String>,
+    pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the AWS resource that was evaluated.
@@ -393,7 +394,7 @@ pub struct OrganizationCustomRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_key_scope: Option<String>,
+    pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
@@ -409,7 +410,7 @@ pub struct OrganizationCustomRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_value_scope: Option<String>,
+    pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -452,74 +453,84 @@ impl cfn_resources::CfnResource for OrganizationCustomRuleMetadata {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_parameters {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'input_parameters'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'input_parameters'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_parameters {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'input_parameters'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.lambda_function_arn;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'input_parameters'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'lambda_function_arn'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.lambda_function_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'lambda_function_arn'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.lambda_function_arn;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'lambda_function_arn'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.resource_id_scope {
-            if the_val.len() > 768 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'resource_id_scope'. {} is greater than 768",
-                    the_val.len()
+                    "Min validation failed on field 'lambda_function_arn'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.resource_id_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_id_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 768 as _ {
+                    return Err(format!("Max validation failed on field 'resource_id_scope'. {} is greater than 768", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.resource_id_scope {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_id_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -533,38 +544,46 @@ impl cfn_resources::CfnResource for OrganizationCustomRuleMetadata {
         }
 
         if let Some(the_val) = &self.tag_key_scope {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'tag_key_scope'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'tag_key_scope'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.tag_key_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'tag_key_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'tag_key_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.tag_value_scope {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'tag_value_scope'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'tag_value_scope'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.tag_value_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'tag_value_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'tag_value_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -589,7 +608,7 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A string, in JSON format, that is passed to your organization AWS Config rule Lambda function.
@@ -605,7 +624,7 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_parameters: Option<String>,
+    pub input_parameters: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum frequency with which AWS Config runs evaluations for a rule. This is for an AWS Config managed rule that is triggered at a periodic frequency.
@@ -638,7 +657,7 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id_scope: Option<String>,
+    pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the AWS resource that was evaluated.
@@ -667,7 +686,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleIdentifier")]
-    pub rule_identifier: String,
+    pub rule_identifier: cfn_resources::StrVal,
 
     ///
     /// One part of a key-value pair that make up a tag. 			A key is a general label that acts like a category for more specific tag values.
@@ -683,7 +702,7 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_key_scope: Option<String>,
+    pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
@@ -699,7 +718,7 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_value_scope: Option<String>,
+    pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -742,56 +761,62 @@ impl cfn_resources::CfnResource for OrganizationManagedRuleMetadata {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_parameters {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'input_parameters'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'input_parameters'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.input_parameters {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'input_parameters'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'input_parameters'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_id_scope {
-            if the_val.len() > 768 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_id_scope'. {} is greater than 768",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 768 as _ {
+                    return Err(format!("Max validation failed on field 'resource_id_scope'. {} is greater than 768", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_id_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_id_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_id_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -806,55 +831,67 @@ impl cfn_resources::CfnResource for OrganizationManagedRuleMetadata {
 
         let the_val = &self.rule_identifier;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'rule_identifier'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rule_identifier'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.rule_identifier;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'rule_identifier'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.tag_key_scope {
-            if the_val.len() > 128 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'tag_key_scope'. {} is greater than 128",
-                    the_val.len()
+                    "Min validation failed on field 'rule_identifier'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.tag_key_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'tag_key_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'tag_key_scope'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.tag_key_scope {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'tag_key_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.tag_value_scope {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'tag_value_scope'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'tag_value_scope'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.tag_value_scope {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'tag_value_scope'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'tag_value_scope'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

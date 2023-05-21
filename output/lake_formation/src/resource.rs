@@ -10,7 +10,7 @@ pub struct CfnResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 
     ///
     /// The IAM role that registered a resource.
@@ -22,7 +22,7 @@ pub struct CfnResource {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Designates a trusted caller, an IAM principal, by registering this caller with the Data Catalog.

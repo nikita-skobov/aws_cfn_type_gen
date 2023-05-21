@@ -52,7 +52,7 @@ pub struct CfnUrl {
     /// Update requires: Replacement
     #[serde(rename = "Qualifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub qualifier: Option<String>,
+    pub qualifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Lambda function.
@@ -67,7 +67,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetFunctionArn")]
-    pub target_function_arn: String,
+    pub target_function_arn: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

@@ -19,7 +19,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationIdentifier")]
-    pub application_identifier: String,
+    pub application_identifier: cfn_resources::StrVal,
 
     ///
     /// Configuration for the default route type.
@@ -42,7 +42,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
+    pub environment_identifier: cfn_resources::StrVal,
 
     ///
     /// The route type of the route.
@@ -53,7 +53,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RouteType")]
-    pub route_type: String,
+    pub route_type: cfn_resources::StrVal,
 
     ///
     /// The unique identifier of the service.
@@ -64,7 +64,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
-    pub service_identifier: String,
+    pub service_identifier: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the route.
@@ -125,7 +125,7 @@ pub struct DefaultRouteInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivationState")]
-    pub activation_state: String,
+    pub activation_state: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DefaultRouteInput {
@@ -159,7 +159,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -169,7 +169,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -198,7 +198,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivationState")]
-    pub activation_state: String,
+    pub activation_state: cfn_resources::StrVal,
 
     ///
     /// Indicates whether to match all subpaths of the given source path. If this value is     false, requests must match the source path exactly before they are forwarded to    this route's service.
@@ -234,7 +234,7 @@ pub struct UriPathRouteInput {
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_path: Option<String>,
+    pub source_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for UriPathRouteInput {

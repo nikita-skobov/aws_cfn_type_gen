@@ -25,7 +25,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
+    pub dbproxy_name: cfn_resources::StrVal,
 
     ///
     /// Whether the proxy includes detailed information about SQL statements in its logs.     This information helps you to debug issues involving SQL behavior or the performance     and scalability of the proxy connections. The debug information includes the text of     SQL statements that you submit through the proxy. Thus, only enable this setting     when needed for debugging, and only when you have security measures in place to     safeguard any sensitive information that appears in the logs.
@@ -50,7 +50,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineFamily")]
-    pub engine_family: String,
+    pub engine_family: cfn_resources::StrVal,
 
     ///
     /// The number of seconds that a connection to the proxy can be inactive before the proxy disconnects it. You can set this     value higher or lower than the connection timeout limit for the associated database.
@@ -85,7 +85,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
@@ -166,7 +166,7 @@ pub struct AuthFormat {
     /// Update requires: No interruption
     #[serde(rename = "ClientPasswordAuthType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_password_auth_type: Option<String>,
+    pub client_password_auth_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A user-specified description about the authentication used by a proxy to log in as a specific database user.
@@ -178,7 +178,7 @@ pub struct AuthFormat {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether to require or disallow AWS Identity and Access Management (IAM) authentication       for connections to the proxy. The ENABLED value is valid only for proxies with RDS for Microsoft SQL Server.
@@ -204,7 +204,7 @@ pub struct AuthFormat {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -268,7 +268,7 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
@@ -280,7 +280,7 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TagFormat {

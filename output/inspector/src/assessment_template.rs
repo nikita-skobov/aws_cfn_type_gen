@@ -14,7 +14,7 @@ pub struct CfnAssessmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTargetArn")]
-    pub assessment_target_arn: String,
+    pub assessment_target_arn: cfn_resources::StrVal,
 
     ///
     /// The user-defined name that identifies the assessment template that you want to     create. You can create several assessment templates for the same assessment target. The     names of the assessment templates that correspond to a particular assessment target must be     unique.
@@ -30,7 +30,7 @@ pub struct CfnAssessmentTemplate {
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub assessment_template_name: Option<String>,
+    pub assessment_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The duration of the assessment run in seconds.
@@ -87,34 +87,36 @@ impl cfn_resources::CfnResource for CfnAssessmentTemplate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.assessment_target_arn;
 
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'assessment_target_arn'. {} is greater than 300",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!("Max validation failed on field 'assessment_target_arn'. {} is greater than 300", s.len()));
+            }
         }
 
         let the_val = &self.assessment_target_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'assessment_target_arn'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.assessment_template_name {
-            if the_val.len() > 140 as _ {
-                return Err(format!("Max validation failed on field 'assessment_template_name'. {} is greater than 140", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'assessment_target_arn'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.assessment_template_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'assessment_template_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!("Max validation failed on field 'assessment_template_name'. {} is greater than 140", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.assessment_template_name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'assessment_template_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -172,7 +174,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -182,7 +184,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

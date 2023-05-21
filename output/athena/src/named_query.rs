@@ -14,7 +14,7 @@ pub struct CfnNamedQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// The query description.
@@ -30,7 +30,7 @@ pub struct CfnNamedQuery {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The query name.
@@ -46,7 +46,7 @@ pub struct CfnNamedQuery {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The SQL statements that make up the query.
@@ -61,7 +61,7 @@ pub struct CfnNamedQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueryString")]
-    pub query_string: String,
+    pub query_string: cfn_resources::StrVal,
 
     ///
     /// The name of the workgroup that contains the named query.
@@ -75,7 +75,7 @@ pub struct CfnNamedQuery {
     /// Update requires: Replacement
     #[serde(rename = "WorkGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub work_group: Option<String>,
+    pub work_group: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnNamedQuery {
@@ -90,74 +90,90 @@ impl cfn_resources::CfnResource for CfnNamedQuery {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.database;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'database'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.database;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'database'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 'database'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.description {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.query_string;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 262144 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'query_string'. {} is greater than 262144",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.query_string;
 
-        if the_val.len() > 262144 as _ {
-            return Err(format!(
-                "Max validation failed on field 'query_string'. {} is greater than 262144",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.query_string;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'query_string'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'query_string'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

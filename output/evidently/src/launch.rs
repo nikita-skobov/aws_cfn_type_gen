@@ -13,7 +13,7 @@ pub struct CfnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// A structure that you can use to start and stop     the launch.
     ///
@@ -58,7 +58,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The name or ARN of the project that you want to create the launch in.
@@ -69,7 +69,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Project")]
-    pub project: String,
+    pub project: cfn_resources::StrVal,
 
     ///
     /// When Evidently assigns a particular user session to a launch, it must use a randomization ID       to determine which variation the user session is served. This randomization ID is a combination of the entity ID       and randomizationSalt. If you omit randomizationSalt, Evidently uses       the launch name as the randomizationsSalt.
@@ -81,7 +81,7 @@ pub struct CfnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub randomization_salt: Option<String>,
+    pub randomization_salt: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of structures that define the traffic allocation percentages among the feature       variations during each step of the launch.
@@ -146,7 +146,7 @@ pub struct ExecutionStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub desired_state: Option<String>,
+    pub desired_state: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
     ///
@@ -157,7 +157,7 @@ pub struct ExecutionStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reason: Option<String>,
+    pub reason: Option<cfn_resources::StrVal>,
 
     /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
     ///
@@ -167,7 +167,7 @@ pub struct ExecutionStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ExecutionStatusObject {
@@ -196,7 +196,7 @@ pub struct GroupToWeight {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    pub group_name: String,
+    pub group_name: cfn_resources::StrVal,
 
     ///
     /// The portion of launch traffic to allocate to this launch group.
@@ -239,7 +239,7 @@ pub struct LaunchGroupObject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The feature that this launch is using.
@@ -250,7 +250,7 @@ pub struct LaunchGroupObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Feature")]
-    pub feature: String,
+    pub feature: cfn_resources::StrVal,
 
     ///
     /// A name for this launch group. It can include up to 127 characters.
@@ -261,7 +261,7 @@ pub struct LaunchGroupObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    pub group_name: String,
+    pub group_name: cfn_resources::StrVal,
 
     ///
     /// The feature variation to use for this launch group.
@@ -272,7 +272,7 @@ pub struct LaunchGroupObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
-    pub variation: String,
+    pub variation: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LaunchGroupObject {
@@ -301,7 +301,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityIdKey")]
-    pub entity_id_key: String,
+    pub entity_id_key: cfn_resources::StrVal,
 
     ///
     /// The EventBridge event pattern that defines how the metric is recorded.
@@ -315,7 +315,7 @@ pub struct MetricDefinitionObject {
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_pattern: Option<String>,
+    pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the metric. It can include up to 255 characters.
@@ -326,7 +326,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// A label for the units that the metric is measuring.
@@ -338,7 +338,7 @@ pub struct MetricDefinitionObject {
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit_label: Option<String>,
+    pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The value that is tracked to produce the metric.
@@ -349,7 +349,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
-    pub value_key: String,
+    pub value_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricDefinitionObject {
@@ -393,7 +393,7 @@ pub struct SegmentOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Segment")]
-    pub segment: String,
+    pub segment: cfn_resources::StrVal,
 
     ///
     /// The traffic allocation percentages among the feature variations to assign to this segment.       This is a set of key-value pairs. The keys are variation names. The values       represent the amount of traffic to allocate to that variation for this segment.       This is expressed in thousandths of a percent, so a weight of 50000 represents 50% of traffic.
@@ -458,7 +458,7 @@ pub struct StepConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    pub start_time: String,
+    pub start_time: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StepConfig {
@@ -492,7 +492,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -502,7 +502,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

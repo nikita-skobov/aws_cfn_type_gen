@@ -109,7 +109,7 @@ pub struct DataLakePrincipal {
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_lake_principal_identifier: Option<String>,
+    pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataLakePrincipal {
@@ -139,7 +139,7 @@ pub struct DataLocationResource {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the data location resource.
@@ -151,7 +151,7 @@ pub struct DataLocationResource {
     /// Update requires: No interruption
     #[serde(rename = "S3Resource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_resource: Option<String>,
+    pub s3_resource: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataLocationResource {
@@ -181,7 +181,7 @@ pub struct DatabaseResource {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the database resource. Unique to the Data Catalog.
@@ -193,7 +193,7 @@ pub struct DatabaseResource {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DatabaseResource {
@@ -305,7 +305,7 @@ pub struct TableResource {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
@@ -317,7 +317,7 @@ pub struct TableResource {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the table.
@@ -329,7 +329,7 @@ pub struct TableResource {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An empty object representing all tables under a database. If this field is specified instead of the Name field, all tables under DatabaseName will have permission changes applied.
@@ -395,7 +395,7 @@ pub struct TableWithColumnsResource {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
@@ -431,7 +431,7 @@ pub struct TableWithColumnsResource {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
@@ -443,7 +443,7 @@ pub struct TableWithColumnsResource {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TableWithColumnsResource {

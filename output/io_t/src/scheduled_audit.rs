@@ -11,7 +11,7 @@ pub struct CfnScheduledAudit {
     /// Update requires: No interruption
     #[serde(rename = "DayOfMonth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub day_of_month: Option<String>,
+    pub day_of_month: Option<cfn_resources::StrVal>,
 
     ///
     /// The day of the week on which the scheduled audit is run (if the       frequency is "WEEKLY" or "BIWEEKLY").
@@ -23,7 +23,7 @@ pub struct CfnScheduledAudit {
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub day_of_week: Option<String>,
+    pub day_of_week: Option<cfn_resources::StrVal>,
 
     ///
     /// How often the scheduled audit occurs.
@@ -34,7 +34,7 @@ pub struct CfnScheduledAudit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Frequency")]
-    pub frequency: String,
+    pub frequency: cfn_resources::StrVal,
 
     ///
     /// The name of the scheduled audit.
@@ -46,7 +46,7 @@ pub struct CfnScheduledAudit {
     /// Update requires: Replacement
     #[serde(rename = "ScheduledAuditName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduled_audit_name: Option<String>,
+    pub scheduled_audit_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata that can be used to manage the scheduled audit.
@@ -107,7 +107,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -117,7 +117,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

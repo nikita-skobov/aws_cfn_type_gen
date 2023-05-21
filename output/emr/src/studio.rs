@@ -29,7 +29,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultS3Location")]
-    pub default_s3_location: String,
+    pub default_s3_location: cfn_resources::StrVal,
 
     ///
     /// A detailed description of the Amazon EMR Studio.
@@ -47,7 +47,7 @@ pub struct CfnStudio {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Amazon EMR Studio Engine security group. The Engine security group     allows inbound network traffic from the Workspace security group, and it must be in the     same VPC specified by VpcId.
@@ -64,7 +64,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineSecurityGroupId")]
-    pub engine_security_group_id: String,
+    pub engine_security_group_id: cfn_resources::StrVal,
 
     ///
     /// Your identity provider's authentication endpoint. Amazon EMR Studio redirects     federated users to this endpoint for authentication when logging in to a Studio with the     Studio URL.
@@ -82,7 +82,7 @@ pub struct CfnStudio {
     /// Update requires: No interruption
     #[serde(rename = "IdpAuthUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub idp_auth_url: Option<String>,
+    pub idp_auth_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of your identity provider's RelayState parameter.
@@ -100,7 +100,7 @@ pub struct CfnStudio {
     /// Update requires: No interruption
     #[serde(rename = "IdpRelayStateParameterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub idp_relay_state_parameter_name: Option<String>,
+    pub idp_relay_state_parameter_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A descriptive name for the Amazon EMR Studio.
@@ -117,7 +117,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that will be assumed by the Amazon EMR Studio. The service role provides a     way for Amazon EMR Studio to interoperate with other AWS services.
@@ -134,7 +134,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceRole")]
-    pub service_role: String,
+    pub service_role: cfn_resources::StrVal,
 
     ///
     /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have     a maximum of 5 subnets. The subnets must belong to the VPC specified by VpcId.     Studio users can create a Workspace in any of the specified subnets.
@@ -177,7 +177,7 @@ pub struct CfnStudio {
     /// Update requires: Replacement
     #[serde(rename = "UserRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_role: Option<String>,
+    pub user_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the     Studio.
@@ -194,7 +194,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Workspace security group associated with the Amazon EMR Studio.     The Workspace security group allows outbound network traffic to resources in the Engine     security group and to the internet.
@@ -211,7 +211,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkspaceSecurityGroupId")]
-    pub workspace_security_group_id: String,
+    pub workspace_security_group_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -243,173 +243,204 @@ impl cfn_resources::CfnResource for CfnStudio {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.default_s3_location;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'default_s3_location'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!("Max validation failed on field 'default_s3_location'. {} is greater than 10280", s.len()));
+            }
         }
 
         let the_val = &self.default_s3_location;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'default_s3_location'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'default_s3_location'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.description {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.engine_security_group_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'engine_security_group_id'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'engine_security_group_id'. {} is greater than 256", s.len()));
+            }
         }
 
         let the_val = &self.engine_security_group_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'engine_security_group_id'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.idp_auth_url {
-            if the_val.len() > 10280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'idp_auth_url'. {} is greater than 10280",
-                    the_val.len()
+                    "Min validation failed on field 'engine_security_group_id'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.idp_auth_url {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'idp_auth_url'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'idp_auth_url'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.idp_auth_url {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'idp_auth_url'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.idp_relay_state_parameter_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'idp_relay_state_parameter_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'idp_relay_state_parameter_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.idp_relay_state_parameter_name {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'idp_relay_state_parameter_name'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'idp_relay_state_parameter_name'. {} is less than 0", s.len()));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.service_role;
-
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_role'. {} is greater than 10280",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.service_role;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'service_role'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.user_role {
-            if the_val.len() > 10280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'user_role'. {} is greater than 10280",
-                    the_val.len()
+                    "Min validation failed on field 'name'. {} is less than 0",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.service_role;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_role'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.service_role;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'service_role'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.user_role {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_role'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.user_role {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_role'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.vpc_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'user_role'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'vpc_id'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.vpc_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'vpc_id'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.vpc_id;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpc_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.workspace_security_group_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'workspace_security_group_id'. {} is greater than 256", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'workspace_security_group_id'. {} is greater than 256", s.len()));
+            }
         }
 
         let the_val = &self.workspace_security_group_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'workspace_security_group_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!("Min validation failed on field 'workspace_security_group_id'. {} is less than 0", s.len()));
+            }
         }
 
         Ok(())
@@ -433,7 +464,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -443,7 +474,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

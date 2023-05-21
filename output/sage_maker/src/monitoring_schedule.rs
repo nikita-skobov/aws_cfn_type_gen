@@ -15,7 +15,7 @@ pub struct CfnMonitoringSchedule {
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_name: Option<String>,
+    pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the reason a monitoring job failed, if it failed.
@@ -27,7 +27,7 @@ pub struct CfnMonitoringSchedule {
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub failure_reason: Option<String>,
+    pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes metadata on the last execution to run, if there was one.
@@ -67,7 +67,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MonitoringScheduleName")]
-    pub monitoring_schedule_name: String,
+    pub monitoring_schedule_name: cfn_resources::StrVal,
 
     ///
     /// The status of the monitoring schedule.
@@ -134,11 +134,13 @@ impl cfn_resources::CfnResource for CfnMonitoringSchedule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.endpoint_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -150,20 +152,21 @@ impl cfn_resources::CfnResource for CfnMonitoringSchedule {
 
         let the_val = &self.monitoring_schedule_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'monitoring_schedule_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'monitoring_schedule_name'. {} is greater than 63", s.len()));
+            }
         }
 
         let the_val = &self.monitoring_schedule_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'monitoring_schedule_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'monitoring_schedule_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -231,7 +234,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCapturedDestinationS3Uri")]
-    pub data_captured_destination_s3_uri: String,
+    pub data_captured_destination_s3_uri: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -251,7 +254,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -262,7 +265,7 @@ pub struct BatchTransformInput {
     /// Update requires: No interruption
     #[serde(rename = "S3DataDistributionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_data_distribution_type: Option<String>,
+    pub s3_data_distribution_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -273,7 +276,7 @@ pub struct BatchTransformInput {
     /// Update requires: No interruption
     #[serde(rename = "S3InputMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_input_mode: Option<String>,
+    pub s3_input_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BatchTransformInput {
@@ -315,7 +318,7 @@ pub struct ClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute       instance(s) that run the model monitoring job.
@@ -327,7 +330,7 @@ pub struct ClusterConfig {
     /// Update requires: No interruption
     #[serde(rename = "VolumeKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_kms_key_id: Option<String>,
+    pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
@@ -368,7 +371,7 @@ pub struct ConstraintsResource {
     /// Update requires: No interruption
     #[serde(rename = "S3Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_uri: Option<String>,
+    pub s3_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConstraintsResource {
@@ -485,7 +488,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
+    pub endpoint_name: cfn_resources::StrVal,
 
     ///
     /// Path to the filesystem where the endpoint data is available to the container.
@@ -500,7 +503,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     ///
     /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
@@ -577,20 +580,24 @@ impl cfn_resources::CfnResource for EndpointInput {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.endpoint_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.local_path;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'local_path'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'local_path'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -670,7 +677,7 @@ pub struct MonitoringAppSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
-    pub image_uri: String,
+    pub image_uri: cfn_resources::StrVal,
 
     ///
     /// An Amazon S3 URI to a script that is called after analysis has been performed.     Applicable only for the built-in (first party) containers.
@@ -686,7 +693,7 @@ pub struct MonitoringAppSpecification {
     /// Update requires: No interruption
     #[serde(rename = "PostAnalyticsProcessorSourceUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub post_analytics_processor_source_uri: Option<String>,
+    pub post_analytics_processor_source_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can     base64 decode the payload and convert it into a flatted json so that the built-in container     can use the converted data. Applicable only for the built-in (first party)     containers.
@@ -702,7 +709,7 @@ pub struct MonitoringAppSpecification {
     /// Update requires: No interruption
     #[serde(rename = "RecordPreprocessorSourceUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub record_preprocessor_source_uri: Option<String>,
+    pub record_preprocessor_source_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MonitoringAppSpecification {
@@ -735,22 +742,28 @@ impl cfn_resources::CfnResource for MonitoringAppSpecification {
 
         let the_val = &self.image_uri;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image_uri'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'image_uri'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.post_analytics_processor_source_uri {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'post_analytics_processor_source_uri'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'post_analytics_processor_source_uri'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.record_preprocessor_source_uri {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'record_preprocessor_source_uri'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'record_preprocessor_source_uri'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
@@ -770,7 +783,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreationTime")]
-    pub creation_time: String,
+    pub creation_time: cfn_resources::StrVal,
 
     ///
     /// The name of the endpoint used to run the monitoring job.
@@ -786,7 +799,7 @@ pub struct MonitoringExecutionSummary {
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_name: Option<String>,
+    pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the reason a monitoring job failed, if it failed.
@@ -800,7 +813,7 @@ pub struct MonitoringExecutionSummary {
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub failure_reason: Option<String>,
+    pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
     /// A timestamp that indicates the last time the monitoring job was modified.
@@ -811,7 +824,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: cfn_resources::StrVal,
 
     ///
     /// The status of the monitoring job.
@@ -841,7 +854,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringScheduleName")]
-    pub monitoring_schedule_name: String,
+    pub monitoring_schedule_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the monitoring job.
@@ -857,7 +870,7 @@ pub struct MonitoringExecutionSummary {
     /// Update requires: No interruption
     #[serde(rename = "ProcessingJobArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub processing_job_arn: Option<String>,
+    pub processing_job_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The time the monitoring job was scheduled.
@@ -868,7 +881,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledTime")]
-    pub scheduled_time: String,
+    pub scheduled_time: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -919,47 +932,51 @@ impl cfn_resources::CfnResource for MonitoringExecutionSummary {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.endpoint_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.failure_reason {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'failure_reason'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'failure_reason'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.monitoring_schedule_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'monitoring_schedule_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'monitoring_schedule_name'. {} is greater than 63", s.len()));
+            }
         }
 
         let the_val = &self.monitoring_schedule_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'monitoring_schedule_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'monitoring_schedule_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.processing_job_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'processing_job_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'processing_job_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -1116,7 +1133,7 @@ pub struct MonitoringJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies a time limit for how long the monitoring job is allowed to run.
@@ -1166,20 +1183,24 @@ impl cfn_resources::CfnResource for MonitoringJobDefinition {
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.stopping_condition
@@ -1238,7 +1259,7 @@ pub struct MonitoringOutputConfig {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Monitoring outputs for monitoring jobs. This is where the output of the periodic     monitoring jobs is uploaded.
@@ -1265,11 +1286,13 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1348,7 +1371,7 @@ pub struct MonitoringScheduleConfig {
     /// Update requires: No interruption
     #[serde(rename = "MonitoringJobDefinitionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub monitoring_job_definition_name: Option<String>,
+    pub monitoring_job_definition_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the monitoring job definition to schedule.
@@ -1417,14 +1440,18 @@ impl cfn_resources::CfnResource for MonitoringScheduleConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.monitoring_job_definition_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!("Max validation failed on field 'monitoring_job_definition_name'. {} is greater than 63", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'monitoring_job_definition_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.monitoring_job_definition_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'monitoring_job_definition_name'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'monitoring_job_definition_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -1506,7 +1533,7 @@ pub struct S3Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    pub local_path: cfn_resources::StrVal,
 
     ///
     /// Whether to upload the results of the monitoring job continuously or after the job       completes.
@@ -1518,7 +1545,7 @@ pub struct S3Output {
     /// Update requires: No interruption
     #[serde(rename = "S3UploadMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_upload_mode: Option<String>,
+    pub s3_upload_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// A URI that identifies the S3 storage location where SageMaker saves the results of a       monitoring job.
@@ -1529,7 +1556,7 @@ pub struct S3Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
+    pub s3_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Output {
@@ -1580,7 +1607,7 @@ pub struct ScheduleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
+    pub schedule_expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ScheduleConfig {
@@ -1595,20 +1622,24 @@ impl cfn_resources::CfnResource for ScheduleConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.schedule_expression;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schedule_expression'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule_expression'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.schedule_expression;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'schedule_expression'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'schedule_expression'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1628,7 +1659,7 @@ pub struct StatisticsResource {
     /// Update requires: No interruption
     #[serde(rename = "S3Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_uri: Option<String>,
+    pub s3_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StatisticsResource {
@@ -1712,7 +1743,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1722,7 +1753,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

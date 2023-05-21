@@ -170,7 +170,7 @@ pub struct SnsChannelConfig {
     /// Update requires: Replacement
     #[serde(rename = "TopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub topic_arn: Option<String>,
+    pub topic_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SnsChannelConfig {
@@ -184,20 +184,24 @@ impl cfn_resources::CfnResource for SnsChannelConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.topic_arn {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'topic_arn'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'topic_arn'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.topic_arn {
-            if the_val.len() < 36 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'topic_arn'. {} is less than 36",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 36 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'topic_arn'. {} is less than 36",
+                        s.len()
+                    ));
+                }
             }
         }
 

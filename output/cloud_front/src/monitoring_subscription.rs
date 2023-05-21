@@ -10,7 +10,7 @@ pub struct CfnMonitoringSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DistributionId")]
-    pub distribution_id: String,
+    pub distribution_id: cfn_resources::StrVal,
 
     ///
     /// A subscription configuration for additional CloudWatch metrics.

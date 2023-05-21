@@ -26,7 +26,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelId")]
-    pub channel_id: String,
+    pub channel_id: cfn_resources::StrVal,
 
     ///
     /// Parameters for Common Media Application Format (CMAF) packaging.
@@ -62,7 +62,7 @@ pub struct CfnOriginEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters for Apple HLS packaging.
@@ -85,7 +85,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// A short string that's appended to the end of the endpoint URL to create a unique path to this endpoint.
@@ -97,7 +97,7 @@ pub struct CfnOriginEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_name: Option<String>,
+    pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters for Microsoft Smooth Streaming packaging.
@@ -125,7 +125,7 @@ pub struct CfnOriginEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Origination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origination: Option<String>,
+    pub origination: Option<cfn_resources::StrVal>,
 
     ///
     /// Maximum duration (seconds) of content to retain for startover playback. Omit this attribute or enter 0 to indicate that startover playback is disabled for this endpoint.
@@ -222,7 +222,7 @@ pub struct Authorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdnIdentifierSecret")]
-    pub cdn_identifier_secret: String,
+    pub cdn_identifier_secret: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) for the IAM role that allows AWS Elemental MediaPackage to communicate with AWS Secrets Manager.
@@ -233,7 +233,7 @@ pub struct Authorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsRoleArn")]
-    pub secrets_role_arn: String,
+    pub secrets_role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Authorization {
@@ -263,7 +263,7 @@ pub struct CmafEncryption {
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_initialization_vector: Option<String>,
+    pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
     /// The encryption method to use.
@@ -275,7 +275,7 @@ pub struct CmafEncryption {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_method: Option<String>,
+    pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Number of seconds before AWS Elemental MediaPackage rotates to a new key. By default, rotation is set to 60 seconds. Set to 0 to disable key rotation.
@@ -366,7 +366,7 @@ pub struct CmafPackage {
     /// Update requires: No interruption
     #[serde(rename = "SegmentPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_prefix: Option<String>,
+    pub segment_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Limitations for outputs from the endpoint, based on the video bitrate.
@@ -475,7 +475,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ads_on_delivery_restrictions: Option<String>,
+    pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters for encrypting content.
@@ -515,7 +515,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "ManifestLayout")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_layout: Option<String>,
+    pub manifest_layout: Option<cfn_resources::StrVal>,
 
     ///
     /// Time window (in seconds) contained in each manifest.
@@ -583,7 +583,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile: Option<String>,
+    pub profile: Option<cfn_resources::StrVal>,
 
     ///
     /// Duration (in seconds) of each fragment. Actual fragments are rounded to the nearest multiple of the source fragment duration.
@@ -611,7 +611,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "SegmentTemplateFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_template_format: Option<String>,
+    pub segment_template_format: Option<cfn_resources::StrVal>,
 
     ///
     /// Limitations for outputs from the endpoint, based on the video bitrate.
@@ -647,7 +647,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "UtcTiming")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub utc_timing: Option<String>,
+    pub utc_timing: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the value attribute of the UTC timing field when utcTiming is set to HTTP-ISO or HTTP-HEAD.
@@ -659,7 +659,7 @@ pub struct DashPackage {
     /// Update requires: No interruption
     #[serde(rename = "UtcTimingUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub utc_timing_uri: Option<String>,
+    pub utc_timing_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DashPackage {
@@ -717,7 +717,7 @@ pub struct HlsEncryption {
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_initialization_vector: Option<String>,
+    pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
     /// HLS encryption type.
@@ -729,7 +729,7 @@ pub struct HlsEncryption {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_method: Option<String>,
+    pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Number of seconds before AWS Elemental MediaPackage rotates to a new key. By default, rotation is set to 60 seconds. Set to 0 to disable key rotation.
@@ -800,7 +800,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ad_markers: Option<String>,
+    pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the SCTE-35 message types that AWS Elemental MediaPackage treats as ad markers in the output manifest.
@@ -828,7 +828,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ads_on_delivery_restrictions: Option<String>,
+    pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
     /// The manifest ID is required and must be unique within the OriginEndpoint. The ID can't be changed after the endpoint is created.
@@ -839,7 +839,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Applies to stream sets with a single video track only. When true, the stream set includes an additional I-frame only stream, along with the other tracks. If false, this extra stream is not included.
@@ -863,7 +863,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_name: Option<String>,
+    pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
     /// When specified as either event or vod, a     corresponding EXT-X-PLAYLIST-TYPE entry is included in the media playlist.     Indicates if the playlist is live-to-VOD content.
@@ -875,7 +875,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "PlaylistType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub playlist_type: Option<String>,
+    pub playlist_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Time window (in seconds) contained in each parent manifest.
@@ -915,7 +915,7 @@ pub struct HlsManifest {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsManifest {
@@ -949,7 +949,7 @@ pub struct HlsPackage {
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ad_markers: Option<String>,
+    pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the SCTE-35 message types that AWS Elemental MediaPackage treats as ad markers in the output manifest.
@@ -977,7 +977,7 @@ pub struct HlsPackage {
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ads_on_delivery_restrictions: Option<String>,
+    pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
     /// Parameters for encrypting content.
@@ -1025,7 +1025,7 @@ pub struct HlsPackage {
     /// Update requires: No interruption
     #[serde(rename = "PlaylistType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub playlist_type: Option<String>,
+    pub playlist_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Time window (in seconds) contained in each parent manifest.
@@ -1232,7 +1232,7 @@ pub struct SpekeKeyProvider {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Use encryptionContractConfiguration to configure one or more content encryption keys for your         endpoints that use SPEKE Version 2.0. The encryption contract defines which content keys are used to encrypt the         audio and video tracks in your stream. To configure the encryption contract, specify which audio and video encryption presets to use.
@@ -1255,7 +1255,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 
     ///
     /// The ARN for the IAM role that's granted by the key provider to provide      access to the key provider API. This role must have a trust policy that allows AWS Elemental MediaPackage to assume the role, and it must have a sufficient permissions policy     to allow access to the specific key retrieval URL. Valid format: arn:aws:iam::{accountID}:role/{name}
@@ -1266,7 +1266,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// List of unique identifiers for the DRM systems to use, as defined in the CPIX specification.
@@ -1288,7 +1288,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SpekeKeyProvider {
@@ -1348,7 +1348,7 @@ pub struct StreamSelection {
     /// Update requires: No interruption
     #[serde(rename = "StreamOrder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_order: Option<String>,
+    pub stream_order: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StreamSelection {
@@ -1382,7 +1382,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1392,7 +1392,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

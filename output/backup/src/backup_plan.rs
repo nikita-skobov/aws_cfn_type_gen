@@ -76,7 +76,7 @@ pub struct AdvancedBackupSettingResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AdvancedBackupSettingResourceType {
@@ -117,7 +117,7 @@ pub struct BackupPlanResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupPlanName")]
-    pub backup_plan_name: String,
+    pub backup_plan_name: cfn_resources::StrVal,
 
     ///
     /// An array of BackupRule objects, each of which specifies a scheduled task     that is used to back up a selection of resources.
@@ -217,7 +217,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    pub rule_name: String,
+    pub rule_name: cfn_resources::StrVal,
 
     ///
     /// A CRON expression specifying when AWS Backup initiates a backup job.
@@ -229,7 +229,7 @@ pub struct BackupRuleResourceType {
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule_expression: Option<String>,
+    pub schedule_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional value that specifies a period of time in minutes after a backup is scheduled     before a job is canceled if it doesn't start successfully.
@@ -254,7 +254,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetBackupVault")]
-    pub target_backup_vault: String,
+    pub target_backup_vault: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BackupRuleResourceType {
@@ -287,7 +287,7 @@ pub struct CopyActionResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationBackupVaultArn")]
-    pub destination_backup_vault_arn: String,
+    pub destination_backup_vault_arn: cfn_resources::StrVal,
 
     ///
     /// Defines when a protected resource is transitioned to cold storage and when it expires.       AWS Backup transitions and expires backups automatically according to the     lifecycle that you define. If you do not specify a lifecycle, AWS Backup applies     the lifecycle policy of the source backup to the destination backup.

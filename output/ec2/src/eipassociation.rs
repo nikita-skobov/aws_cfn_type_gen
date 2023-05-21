@@ -13,7 +13,7 @@ pub struct CfnEIPAssociation {
     /// Update requires: Some interruptions
     #[serde(rename = "AllocationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allocation_id: Option<String>,
+    pub allocation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Deprecated.
@@ -25,7 +25,7 @@ pub struct CfnEIPAssociation {
     /// Update requires: Some interruptions
     #[serde(rename = "EIP")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub eip: Option<String>,
+    pub eip: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the instance. The instance must have exactly one attached network interface.    You can specify either the instance ID or the network interface ID, but not both.
@@ -37,7 +37,7 @@ pub struct CfnEIPAssociation {
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the network interface. If the instance has more than one network interface, you must specify a network interface ID.
@@ -51,7 +51,7 @@ pub struct CfnEIPAssociation {
     /// Update requires: Some interruptions
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
@@ -63,7 +63,7 @@ pub struct CfnEIPAssociation {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnEIPAssociation {

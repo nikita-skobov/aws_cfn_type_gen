@@ -13,7 +13,7 @@ pub struct CfnScheduledQuery {
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_token: Option<String>,
+    pub client_token: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration for error reporting. Error reports will be generated when a problem is    encountered when writing the query results.
@@ -38,7 +38,7 @@ pub struct CfnScheduledQuery {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Notification configuration for the scheduled query. A notification is sent by Timestream    when a query run finishes, when the state is updated or when you delete it.
@@ -62,7 +62,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueryString")]
-    pub query_string: String,
+    pub query_string: cfn_resources::StrVal,
 
     ///
     /// Schedule configuration.
@@ -84,7 +84,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduledQueryExecutionRoleArn")]
-    pub scheduled_query_execution_role_arn: String,
+    pub scheduled_query_execution_role_arn: cfn_resources::StrVal,
 
     ///
     /// A name for the query. Scheduled query names must be unique within each Region.
@@ -96,7 +96,7 @@ pub struct CfnScheduledQuery {
     /// Update requires: Replacement
     #[serde(rename = "ScheduledQueryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduled_query_name: Option<String>,
+    pub scheduled_query_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key-value pairs to label the scheduled query.
@@ -159,7 +159,7 @@ pub struct DimensionMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DimensionValueType")]
-    pub dimension_value_type: String,
+    pub dimension_value_type: cfn_resources::StrVal,
 
     ///
     /// Column name from query result.
@@ -170,7 +170,7 @@ pub struct DimensionMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DimensionMapping {
@@ -231,7 +231,7 @@ pub struct MixedMeasureMapping {
     /// Update requires: Replacement
     #[serde(rename = "MeasureName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub measure_name: Option<String>,
+    pub measure_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Type of the value that is to be read from sourceColumn. If the mapping is for MULTI, use    MeasureValueType.MULTI.
@@ -242,7 +242,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureValueType")]
-    pub measure_value_type: String,
+    pub measure_value_type: cfn_resources::StrVal,
 
     ///
     /// Required when measureValueType is MULTI. Attribute mappings for MULTI value    measures.
@@ -266,7 +266,7 @@ pub struct MixedMeasureMapping {
     /// Update requires: Replacement
     #[serde(rename = "SourceColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_column: Option<String>,
+    pub source_column: Option<cfn_resources::StrVal>,
 
     ///
     /// Target measure name to be used. If not provided, the target measure name by default would    be measure-name if provided, or sourceColumn otherwise.
@@ -278,7 +278,7 @@ pub struct MixedMeasureMapping {
     /// Update requires: Replacement
     #[serde(rename = "TargetMeasureName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_measure_name: Option<String>,
+    pub target_measure_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MixedMeasureMapping {
@@ -307,7 +307,7 @@ pub struct MultiMeasureAttributeMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureValueType")]
-    pub measure_value_type: String,
+    pub measure_value_type: cfn_resources::StrVal,
 
     ///
     /// Source column from where the attribute value is to be read.
@@ -318,7 +318,7 @@ pub struct MultiMeasureAttributeMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceColumn")]
-    pub source_column: String,
+    pub source_column: cfn_resources::StrVal,
 
     ///
     /// Custom name to be used for attribute name in derived table. If not provided, source column    name would be used.
@@ -330,7 +330,7 @@ pub struct MultiMeasureAttributeMapping {
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureAttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_multi_measure_attribute_name: Option<String>,
+    pub target_multi_measure_attribute_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MultiMeasureAttributeMapping {
@@ -371,7 +371,7 @@ pub struct MultiMeasureMappings {
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_multi_measure_name: Option<String>,
+    pub target_multi_measure_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MultiMeasureMappings {
@@ -437,7 +437,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// Encryption at rest options for the error reports. If no encryption option is specified,    Timestream will choose SSE_S3 as default.
@@ -469,7 +469,7 @@ pub struct S3Configuration {
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_key_prefix: Option<String>,
+    pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -501,37 +501,42 @@ impl cfn_resources::CfnResource for S3Configuration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.object_key_prefix {
-            if the_val.len() > 928 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'object_key_prefix'. {} is greater than 928",
-                    the_val.len()
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.object_key_prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'object_key_prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 928 as _ {
+                    return Err(format!("Max validation failed on field 'object_key_prefix'. {} is greater than 928", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.object_key_prefix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'object_key_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -551,7 +556,7 @@ pub struct ScheduleConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: String,
+    pub schedule_expression: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ScheduleConfiguration {
@@ -580,7 +585,7 @@ pub struct SnsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicArn")]
-    pub topic_arn: String,
+    pub topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnsConfiguration {
@@ -614,7 +619,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -624,7 +629,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -684,7 +689,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// This is to allow mapping column(s) from the query result to the dimension in the    destination table.
@@ -707,7 +712,7 @@ pub struct TimestreamConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "MeasureNameColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub measure_name_column: Option<String>,
+    pub measure_name_column: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies how to map measures to multi-measure records.
@@ -742,7 +747,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 
     ///
     /// Column from query result that should be used as the time column in destination table.    Column type for this should be TIMESTAMP.
@@ -753,7 +758,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeColumn")]
-    pub time_column: String,
+    pub time_column: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TimestreamConfiguration {

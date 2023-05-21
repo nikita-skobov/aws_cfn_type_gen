@@ -24,7 +24,7 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "BuildId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_id: Option<String>,
+    pub build_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Prompts Amazon GameLift to generate a TLS/SSL certificate for the fleet. Amazon GameLift uses the       certificates to encrypt traffic between game clients and the game servers running on       Amazon GameLift. By default, the CertificateConfiguration is DISABLED.       You can't change this property after you create the fleet.
@@ -70,7 +70,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of EC2 instances that you want this fleet to host. When creating a new    fleet, GameLift automatically sets this value to "1" and initiates a single instance. Once the    fleet is active, update this value to trigger GameLift to add or remove instances from the    fleet.
@@ -140,7 +140,7 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "InstanceRoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_role_arn: Option<String>,
+    pub instance_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A set of remote locations to deploy additional instances to and manage as part of the       fleet. This parameter can only be used when creating fleets in AWS Regions that       support multiple locations. You can add any Amazon GameLift-supported AWS Region as a remote       location, in the form of an AWS Region code such as us-west-2. To create       a fleet with instances in the home Region only, don't use this parameter.
@@ -213,7 +213,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The status of termination protection for active game sessions on the fleet. By    default, this property is set to NoProtection.
@@ -245,7 +245,7 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcAwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_vpc_aws_account_id: Option<String>,
+    pub peer_vpc_aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The       VPC must be in the same Region as your fleet. To look up a VPC ID, use the       VPC Dashboard in the AWS Management Console.       Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets.
@@ -261,7 +261,7 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_vpc_id: Option<String>,
+    pub peer_vpc_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A policy that limits the number of game sessions that an individual player can create       on instances in this fleet within a specified span of time.
@@ -303,7 +303,7 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "ScriptId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub script_id: Option<String>,
+    pub script_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -841,20 +841,24 @@ impl cfn_resources::CfnResource for CfnFleet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -874,11 +878,13 @@ impl cfn_resources::CfnResource for CfnFleet {
         }
 
         if let Some(the_val) = &self.instance_role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'instance_role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'instance_role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -920,52 +926,61 @@ impl cfn_resources::CfnResource for CfnFleet {
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.peer_vpc_aws_account_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'peer_vpc_aws_account_id'. {} is greater than 1024", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.peer_vpc_aws_account_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'peer_vpc_aws_account_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'peer_vpc_aws_account_id'. {} is greater than 1024", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.peer_vpc_aws_account_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'peer_vpc_aws_account_id'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_vpc_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'peer_vpc_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'peer_vpc_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.peer_vpc_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'peer_vpc_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'peer_vpc_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -999,7 +1014,7 @@ pub struct AnywhereConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cost")]
-    pub cost: String,
+    pub cost: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AnywhereConfiguration {
@@ -1014,20 +1029,24 @@ impl cfn_resources::CfnResource for AnywhereConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cost;
 
-        if the_val.len() > 11 as _ {
-            return Err(format!(
-                "Max validation failed on field 'cost'. {} is greater than 11",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 11 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cost'. {} is greater than 11",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.cost;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'cost'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'cost'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1119,7 +1138,7 @@ pub struct IpPermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpRange")]
-    pub ip_range: String,
+    pub ip_range: cfn_resources::StrVal,
 
     ///
     /// The network communication protocol used by the fleet.
@@ -1327,7 +1346,7 @@ pub struct LocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    pub location: String,
+    pub location: cfn_resources::StrVal,
 
     ///
     /// Current resource capacity settings in a specified fleet or location. The location       value might refer to a fleet's remote location or its home Region.
@@ -1358,20 +1377,24 @@ impl cfn_resources::CfnResource for LocationConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.location;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.location;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.location_capacity
@@ -1579,7 +1602,7 @@ pub struct ServerProcess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchPath")]
-    pub launch_path: String,
+    pub launch_path: cfn_resources::StrVal,
 
     ///
     /// An optional list of parameters to pass to the server executable or Realtime script on       launch.
@@ -1597,7 +1620,7 @@ pub struct ServerProcess {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameters: Option<String>,
+    pub parameters: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ServerProcess {
@@ -1621,37 +1644,45 @@ impl cfn_resources::CfnResource for ServerProcess {
 
         let the_val = &self.launch_path;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'launch_path'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'launch_path'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.launch_path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'launch_path'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.parameters {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'parameters'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 'launch_path'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.parameters {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'parameters'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'parameters'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.parameters {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'parameters'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

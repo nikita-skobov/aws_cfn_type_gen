@@ -29,7 +29,7 @@ pub struct CfnGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a resource group. The name must be unique within the AWS       Region in which you create the resource. To create multiple resource groups based on the       same CloudFormation stack, you must generate unique names for each.
@@ -40,7 +40,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The resource query structure that is used to dynamically determine which AWS resources are members of the associated resource group. For more       information about queries and how to construct them, see Build queries and groups in           AWS Resource Groups in the AWS Resource Groups User         Guide
@@ -126,7 +126,7 @@ pub struct ConfigurationItem {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConfigurationItem {
@@ -156,7 +156,7 @@ pub struct ConfigurationParameter {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value or values to be used for the specified parameter. For the list of values you       can use with each parameter, see Supported resource         types and parameters.
@@ -212,7 +212,7 @@ pub struct Query {
     /// Update requires: No interruption
     #[serde(rename = "StackIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stack_identifier: Option<String>,
+    pub stack_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key-value pair objects that limit which resources can be members of the       resource group. This property is required when the ResourceQuery.Type       property is TAG_FILTERS_1_0.
@@ -274,7 +274,7 @@ pub struct ResourceQuery {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ResourceQuery {
@@ -310,7 +310,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -320,7 +320,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -356,7 +356,7 @@ pub struct TagFilter {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tag values that can be included in the tag-based resource group. This is       optional. If you don't specify a value or values for a key, then an AWS       resource with any value for that key is a member.

@@ -20,7 +20,7 @@ pub struct CfnLogStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    pub log_group_name: String,
+    pub log_group_name: cfn_resources::StrVal,
 
     ///
     /// The name of the log stream. The name must be unique within the log group.
@@ -38,7 +38,7 @@ pub struct CfnLogStream {
     /// Update requires: Replacement
     #[serde(rename = "LogStreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_stream_name: Option<String>,
+    pub log_stream_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLogStream {
@@ -53,37 +53,45 @@ impl cfn_resources::CfnResource for CfnLogStream {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.log_group_name;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'log_group_name'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'log_group_name'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.log_group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'log_group_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.log_stream_name {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'log_stream_name'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'log_group_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.log_stream_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'log_stream_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'log_stream_name'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.log_stream_name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'log_stream_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

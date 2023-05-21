@@ -16,7 +16,7 @@ pub struct CfnCustomResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceToken")]
-    pub service_token: String,
+    pub service_token: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnCustomResource {

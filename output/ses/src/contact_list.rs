@@ -11,7 +11,7 @@ pub struct CfnContactList {
     /// Update requires: Replacement
     #[serde(rename = "ContactListName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub contact_list_name: Option<String>,
+    pub contact_list_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A description of what the contact list is about.
@@ -23,7 +23,7 @@ pub struct CfnContactList {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags associated with a contact list.
@@ -81,7 +81,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -91,7 +91,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -120,7 +120,7 @@ pub struct Topic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSubscriptionStatus")]
-    pub default_subscription_status: String,
+    pub default_subscription_status: cfn_resources::StrVal,
 
     ///
     /// A description of what the topic is about, which the contact will see.
@@ -132,7 +132,7 @@ pub struct Topic {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the topic the contact will see.
@@ -143,7 +143,7 @@ pub struct Topic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    pub display_name: String,
+    pub display_name: cfn_resources::StrVal,
 
     ///
     /// The name of the topic.
@@ -154,7 +154,7 @@ pub struct Topic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicName")]
-    pub topic_name: String,
+    pub topic_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Topic {

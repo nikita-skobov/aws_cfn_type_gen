@@ -47,7 +47,7 @@ pub struct CfnSecurityProfile {
     /// Update requires: No interruption
     #[serde(rename = "SecurityProfileDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_profile_description: Option<String>,
+    pub security_profile_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name you gave to the security profile.
@@ -59,7 +59,7 @@ pub struct CfnSecurityProfile {
     /// Update requires: Replacement
     #[serde(rename = "SecurityProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_profile_name: Option<String>,
+    pub security_profile_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata that can be used to manage the security profile.
@@ -112,7 +112,7 @@ pub struct AlertTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlertTargetArn")]
-    pub alert_target_arn: String,
+    pub alert_target_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the role that grants permission to send alerts to the     notification target.
@@ -123,7 +123,7 @@ pub struct AlertTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AlertTarget {
@@ -165,7 +165,7 @@ pub struct Behavior {
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric: Option<String>,
+    pub metric: Option<cfn_resources::StrVal>,
 
     ///
     /// The dimension of the metric.
@@ -188,7 +188,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The alert status. If you set the value to true, alerts will be     suppressed.
@@ -240,7 +240,7 @@ pub struct BehaviorCriteria {
     /// Update requires: No interruption
     #[serde(rename = "ComparisonOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comparison_operator: Option<String>,
+    pub comparison_operator: Option<cfn_resources::StrVal>,
 
     ///
     /// If a device is in violation of the behavior for the specified number of consecutive      datapoints, an alarm occurs. If not specified, the default is 1.
@@ -356,7 +356,7 @@ pub struct MachineLearningDetectionConfig {
     /// Update requires: No interruption
     #[serde(rename = "ConfidenceLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub confidence_level: Option<String>,
+    pub confidence_level: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MachineLearningDetectionConfig {
@@ -385,7 +385,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionName")]
-    pub dimension_name: String,
+    pub dimension_name: cfn_resources::StrVal,
 
     ///
     /// Operators are constructs that perform logical operations. Valid values are IN and NOT_IN.
@@ -397,7 +397,7 @@ pub struct MetricDimension {
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operator: Option<String>,
+    pub operator: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MetricDimension {
@@ -426,7 +426,7 @@ pub struct MetricToRetain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
-    pub metric: String,
+    pub metric: cfn_resources::StrVal,
 
     ///
     /// The dimension of the metric.
@@ -484,7 +484,7 @@ pub struct MetricValue {
     /// Update requires: No interruption
     #[serde(rename = "Count")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub count: Option<String>,
+    pub count: Option<cfn_resources::StrVal>,
 
     ///
     /// The numeric values of a metric.
@@ -562,7 +562,7 @@ pub struct StatisticalThreshold {
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub statistic: Option<String>,
+    pub statistic: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StatisticalThreshold {
@@ -596,7 +596,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -606,7 +606,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

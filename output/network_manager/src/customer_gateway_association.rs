@@ -18,7 +18,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomerGatewayArn")]
-    pub customer_gateway_arn: String,
+    pub customer_gateway_arn: cfn_resources::StrVal,
 
     ///
     /// The ID of the device.
@@ -35,7 +35,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceId")]
-    pub device_id: String,
+    pub device_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the global network.
@@ -52,7 +52,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    pub global_network_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the link.
@@ -70,7 +70,7 @@ pub struct CfnCustomerGatewayAssociation {
     /// Update requires: Replacement
     #[serde(rename = "LinkId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub link_id: Option<String>,
+    pub link_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnCustomerGatewayAssociation {
@@ -85,73 +85,89 @@ impl cfn_resources::CfnResource for CfnCustomerGatewayAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.customer_gateway_arn;
 
-        if the_val.len() > 500 as _ {
-            return Err(format!(
-                "Max validation failed on field 'customer_gateway_arn'. {} is greater than 500",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 500 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'customer_gateway_arn'. {} is greater than 500",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.customer_gateway_arn;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'customer_gateway_arn'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.device_id;
-
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'device_id'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.device_id;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'device_id'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.global_network_id;
-
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'global_network_id'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.global_network_id;
-
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'global_network_id'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.link_id {
-            if the_val.len() > 50 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'link_id'. {} is greater than 50",
-                    the_val.len()
+                    "Min validation failed on field 'customer_gateway_arn'. {} is less than 0",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.device_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'device_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.device_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'device_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.global_network_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'global_network_id'. {} is greater than 50",
+                    s.len()
+                ));
+            }
+        }
+
+        let the_val = &self.global_network_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'global_network_id'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.link_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'link_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'link_id'. {} is greater than 50",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.link_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'link_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

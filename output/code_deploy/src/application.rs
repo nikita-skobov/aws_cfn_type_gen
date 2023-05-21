@@ -17,7 +17,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_name: Option<String>,
+    pub application_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The compute platform that CodeDeploy deploys the application to.
@@ -78,20 +78,24 @@ impl cfn_resources::CfnResource for CfnApplication {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.application_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'application_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'application_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.application_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'application_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'application_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -116,7 +120,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -126,7 +130,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

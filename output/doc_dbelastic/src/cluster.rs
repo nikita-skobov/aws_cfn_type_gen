@@ -14,7 +14,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AdminUserName")]
-    pub admin_user_name: String,
+    pub admin_user_name: cfn_resources::StrVal,
 
     ///
     /// The password for the Elastic DocumentDB cluster administrator and can    contain any printable ASCII characters.
@@ -30,7 +30,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "AdminUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub admin_user_password: Option<String>,
+    pub admin_user_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The authentication type used to determine where to fetch the password used for accessing the elastic cluster.    Valid types are PLAIN_TEXT or SECRET_ARN.
@@ -41,7 +41,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthType")]
-    pub auth_type: String,
+    pub auth_type: cfn_resources::StrVal,
 
     ///
     /// The name of the new elastic cluster. This parameter is stored as    a lowercase string.
@@ -58,7 +58,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The KMS key identifier to use to encrypt the new elastic cluster.
@@ -74,7 +74,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The weekly time range during which system maintenance can occur,    in Universal Coordinated Time (UTC).
@@ -94,7 +94,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64.
@@ -186,7 +186,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -196,7 +196,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -14,7 +14,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppName")]
-    pub app_name: String,
+    pub app_name: cfn_resources::StrVal,
 
     ///
     /// The type of app.
@@ -40,7 +40,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainId")]
-    pub domain_id: String,
+    pub domain_id: cfn_resources::StrVal,
 
     ///
     /// Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance       type that the version runs on.
@@ -81,7 +81,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserProfileName")]
-    pub user_profile_name: String,
+    pub user_profile_name: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -129,20 +129,24 @@ impl cfn_resources::CfnResource for CfnApp {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.app_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'app_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'app_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain_id;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_id'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_id'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.resource_spec
@@ -151,11 +155,13 @@ impl cfn_resources::CfnResource for CfnApp {
 
         let the_val = &self.user_profile_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_profile_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_profile_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -195,7 +201,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_arn: Option<String>,
+    pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the image version created on the instance.
@@ -211,7 +217,7 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sage_maker_image_version_arn: Option<String>,
+    pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -474,17 +480,18 @@ impl cfn_resources::CfnResource for ResourceSpec {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.sage_maker_image_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
@@ -509,7 +516,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -519,7 +526,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

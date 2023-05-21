@@ -21,7 +21,7 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "CdcStartPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cdc_start_position: Option<String>,
+    pub cdc_start_position: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the start time for a change data capture (CDC) operation.
@@ -49,7 +49,7 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "CdcStopPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cdc_stop_position: Option<String>,
+    pub cdc_stop_position: Option<cfn_resources::StrVal>,
 
     ///
     /// The migration type. Valid values: full-load | cdc | full-load-and-cdc
@@ -73,7 +73,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicationInstanceArn")]
-    pub replication_instance_arn: String,
+    pub replication_instance_arn: cfn_resources::StrVal,
 
     ///
     /// An identifier for the replication task.
@@ -89,7 +89,7 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTaskIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_task_identifier: Option<String>,
+    pub replication_task_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Overall settings for the task, in JSON format. For more information, see                Specifying Task Settings for AWS Database Migration Service Tasks       in the AWS Database Migration Service User Guide.
@@ -101,7 +101,7 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTaskSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_task_settings: Option<String>,
+    pub replication_task_settings: Option<cfn_resources::StrVal>,
 
     ///
     /// A display name for the resource identifier at the end of the EndpointArn       response parameter that is returned in the created Endpoint object. The       value for this parameter can have up to 31 characters. It can contain only ASCII       letters, digits, and hyphen ('-'). Also, it can't end with a hyphen or contain two       consecutive hyphens, and can only begin with a letter, such as         Example-App-ARN1.
@@ -115,7 +115,7 @@ pub struct CfnReplicationTask {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon Resource Name (ARN) that uniquely identifies the source endpoint.
@@ -126,7 +126,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceEndpointArn")]
-    pub source_endpoint_arn: String,
+    pub source_endpoint_arn: cfn_resources::StrVal,
 
     ///
     /// The table mappings for the task, in JSON format. For more information, see                Using Table Mapping to Specify Task Settings       in the AWS Database Migration Service User Guide.
@@ -137,7 +137,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableMappings")]
-    pub table_mappings: String,
+    pub table_mappings: cfn_resources::StrVal,
 
     ///
     /// One or more tags to be assigned to the replication task.
@@ -160,7 +160,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetEndpointArn")]
-    pub target_endpoint_arn: String,
+    pub target_endpoint_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -171,7 +171,7 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "TaskData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task_data: Option<String>,
+    pub task_data: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -226,7 +226,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -236,7 +236,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

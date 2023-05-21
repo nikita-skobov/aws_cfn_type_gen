@@ -22,7 +22,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Specifies the Amazon Resource Names (ARNs) of the AWS RAM permission to associate with the resource share. If you do       not specify an ARN for the permission, AWS RAM automatically attaches the default version       of the permission for each resource type. You can associate only one permission with       each resource type included in the resource share.
@@ -108,7 +108,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -118,7 +118,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

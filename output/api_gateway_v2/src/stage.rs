@@ -23,7 +23,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_policy_id: Option<String>,
+    pub access_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The API identifier.
@@ -34,7 +34,7 @@ pub struct CfnStage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
@@ -58,7 +58,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_certificate_id: Option<String>,
+    pub client_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The default route settings for the stage.
@@ -82,7 +82,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_id: Option<String>,
+    pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The description for the API stage.
@@ -94,7 +94,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Route settings for the stage.
@@ -117,7 +117,7 @@ pub struct CfnStage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
-    pub stage_name: String,
+    pub stage_name: cfn_resources::StrVal,
 
     ///
     /// A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
@@ -179,7 +179,7 @@ pub struct AccessLogSettings {
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_arn: Option<String>,
+    pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A single line format of the access logs of data, as specified by selected $context variables. The format must include at least $context.requestId. This parameter is required to enable access logging.
@@ -191,7 +191,7 @@ pub struct AccessLogSettings {
     /// Update requires: No interruption
     #[serde(rename = "Format")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub format: Option<String>,
+    pub format: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AccessLogSettings {
@@ -245,7 +245,7 @@ pub struct RouteSettings {
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logging_level: Option<String>,
+    pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the throttling burst limit.

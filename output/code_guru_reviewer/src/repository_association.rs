@@ -11,7 +11,7 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is      arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see      Connection in      the AWS CodeStar Connections API Reference.
@@ -31,7 +31,7 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_arn: Option<String>,
+    pub connection_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the repository.
@@ -48,7 +48,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The owner of the repository. For a GitHub Enterprise Server or Bitbucket repository, this is the username     for the account that owns the repository.
@@ -68,7 +68,7 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Owner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub owner: Option<String>,
+    pub owner: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
@@ -95,7 +95,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRepositoryAssociation {
@@ -109,56 +109,68 @@ impl cfn_resources::CfnResource for CfnRepositoryAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.connection_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'connection_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'connection_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.connection_arn {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'connection_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'connection_arn'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.owner {
-            if the_val.len() > 100 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'owner'. {} is greater than 100",
-                    the_val.len()
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.owner {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'owner'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'owner'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.owner {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'owner'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -183,7 +195,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -193,7 +205,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

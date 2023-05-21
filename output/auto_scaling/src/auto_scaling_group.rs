@@ -17,7 +17,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auto_scaling_group_name: Option<String>,
+    pub auto_scaling_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used       for launching into the default VPC subnet in each Availability Zone when not using the         VPCZoneIdentifier property, or for attaching a network interface when       an existing network interface ID is specified in a launch template.
@@ -53,7 +53,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "Context")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub context: Option<String>,
+    pub context: Option<cfn_resources::StrVal>,
 
     ///
     /// Only needed if you use simple scaling policies.
@@ -69,7 +69,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "Cooldown")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cooldown: Option<String>,
+    pub cooldown: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time, in seconds, until a new instance is considered to have finished       initializing and resource consumption to become stable after it enters the         InService state.
@@ -103,7 +103,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub desired_capacity: Option<String>,
+    pub desired_capacity: Option<cfn_resources::StrVal>,
 
     ///
     /// The unit of measurement for the value specified for desired capacity. Amazon EC2 Auto Scaling       supports DesiredCapacityType for attribute-based instance type selection       only. For more information, see Creating         an Auto Scaling group using attribute-based instance type selection in the         Amazon EC2 Auto Scaling User Guide.
@@ -119,7 +119,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacityType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub desired_capacity_type: Option<String>,
+    pub desired_capacity_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status       of an EC2 instance that has come into service and marking it unhealthy due to a failed       health check. This is useful if your instances do not immediately pass their health       checks after they enter the InService state. For more information, see         Set the health check         grace period for an Auto Scaling group in the       Amazon EC2 Auto Scaling User Guide.
@@ -149,7 +149,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_type: Option<String>,
+    pub health_check_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the instance used to base the launch configuration on. For more information, see     Create an Auto Scaling group using an EC2 instance in the Amazon EC2 Auto     Scaling User Guide.
@@ -163,7 +163,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch configuration to use to launch instances.
@@ -177,7 +177,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "LaunchConfigurationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_configuration_name: Option<String>,
+    pub launch_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Information used to specify the launch template and version to use to launch instances.    You can alternatively associate a launch template to the Auto Scaling group by specifying a     MixedInstancesPolicy. For more information about creating launch templates, see     Create a launch template for an Auto Scaling group in the Amazon EC2 Auto     Scaling User Guide.
@@ -240,7 +240,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    pub max_size: String,
+    pub max_size: cfn_resources::StrVal,
 
     ///
     /// Enables the monitoring of group metrics of an Auto Scaling group. By default, these    metrics are disabled.
@@ -263,7 +263,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
-    pub min_size: String,
+    pub min_size: cfn_resources::StrVal,
 
     ///
     /// An embedded object that specifies a mixed instances policy.
@@ -317,7 +317,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "PlacementGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placement_group: Option<String>,
+    pub placement_group: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to       call other AWS service on your behalf. By default, Amazon EC2 Auto Scaling uses a service-linked role       named AWSServiceRoleForAutoScaling, which it creates if it does not exist.       For more information, see Service-linked         roles in the Amazon EC2 Auto Scaling User Guide.
@@ -329,7 +329,7 @@ pub struct CfnAutoScalingGroup {
     /// Update requires: No interruption
     #[serde(rename = "ServiceLinkedRoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_linked_role_arn: Option<String>,
+    pub service_linked_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more tags. You can tag your Auto Scaling group and propagate the tags to the Amazon EC2       instances it launches. Tags are not propagated to Amazon EBS volumes. To add tags to Amazon EBS       volumes, specify the tags in a launch template but use caution. If the launch template       specifies an instance tag with a key that is also specified for the Auto Scaling group, Amazon EC2 Auto Scaling       overrides the value of that instance tag with the value specified by the Auto Scaling group. For       more information, see Tag Auto Scaling groups and         instances in the Amazon EC2 Auto Scaling User Guide.
@@ -1136,7 +1136,7 @@ pub struct InstancesDistribution {
     /// Update requires: No interruption
     #[serde(rename = "OnDemandAllocationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_demand_allocation_strategy: Option<String>,
+    pub on_demand_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand       Instances. This base portion is launched first as your group scales.
@@ -1186,7 +1186,7 @@ pub struct InstancesDistribution {
     /// Update requires: No interruption
     #[serde(rename = "SpotAllocationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_allocation_strategy: Option<String>,
+    pub spot_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of Spot Instance pools across which to allocate your Spot Instances. The       Spot pools are determined from the different instance types in the overrides. Valid only       when the SpotAllocationStrategy is lowest-price. Value must be       in the range of 1–20.
@@ -1216,7 +1216,7 @@ pub struct InstancesDistribution {
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_max_price: Option<String>,
+    pub spot_max_price: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InstancesDistribution {
@@ -1301,7 +1301,7 @@ pub struct LaunchTemplateOverrides {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<String>,
+    pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Provides a launch template for the specified instance type or set of instance       requirements. For example, some instance types might require a launch template with a       different AMI. If not provided, Amazon EC2 Auto Scaling uses the launch template that's specified in       the LaunchTemplate definition. For more information, see Specifying a different launch template for an instance type in the         Amazon EC2 Auto Scaling User Guide.
@@ -1331,7 +1331,7 @@ pub struct LaunchTemplateOverrides {
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weighted_capacity: Option<String>,
+    pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplateOverrides {
@@ -1379,7 +1379,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch template.
@@ -1393,7 +1393,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the launch template.
@@ -1408,7 +1408,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplateSpecification {
@@ -1442,7 +1442,7 @@ pub struct LifecycleHookSpecification {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_result: Option<String>,
+    pub default_result: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum time, in seconds, that can elapse before the lifecycle hook times out. The       range is from 30 to 7200 seconds. The default value is         3600 seconds (1 hour).
@@ -1471,7 +1471,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleHookName")]
-    pub lifecycle_hook_name: String,
+    pub lifecycle_hook_name: cfn_resources::StrVal,
 
     ///
     /// The lifecycle transition. For Auto Scaling groups, there are two major lifecycle       transitions.
@@ -1484,7 +1484,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleTransition")]
-    pub lifecycle_transition: String,
+    pub lifecycle_transition: cfn_resources::StrVal,
 
     ///
     /// Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to       the notification target.
@@ -1502,7 +1502,7 @@ pub struct LifecycleHookSpecification {
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_metadata: Option<String>,
+    pub notification_metadata: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the notification target that Amazon EC2 Auto Scaling sends       notifications to when an instance is in a wait state for the lifecycle hook. You can       specify an Amazon SNS topic or an Amazon SQS queue.
@@ -1514,7 +1514,7 @@ pub struct LifecycleHookSpecification {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_target_arn: Option<String>,
+    pub notification_target_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the IAM role that allows the Auto Scaling group to publish to the specified       notification target. For information about creating this role, see Configure a notification target for a lifecycle hook in the         Amazon EC2 Auto Scaling User Guide.
@@ -1528,7 +1528,7 @@ pub struct LifecycleHookSpecification {
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LifecycleHookSpecification {
@@ -1543,34 +1543,42 @@ impl cfn_resources::CfnResource for LifecycleHookSpecification {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.lifecycle_hook_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.lifecycle_hook_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'lifecycle_hook_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.notification_metadata {
-            if the_val.len() > 1023 as _ {
-                return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'lifecycle_hook_name'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.notification_metadata {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'notification_metadata'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1023 as _ {
+                    return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.notification_metadata {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'notification_metadata'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1698,7 +1706,7 @@ pub struct MetricsCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Granularity")]
-    pub granularity: String,
+    pub granularity: cfn_resources::StrVal,
 
     ///
     /// Identifies the metrics to enable.
@@ -1930,7 +1938,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicARN")]
-    pub topic_arn: String,
+    pub topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NotificationConfiguration {
@@ -1969,7 +1977,7 @@ pub struct TagProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// Set to true if you want CloudFormation to copy the tag to EC2 instances that    are launched as part of the Auto Scaling group. Set to false if you want the tag    attached only to the Auto Scaling group and not copied to any instances launched as part of    the Auto Scaling group.
@@ -1997,7 +2005,7 @@ pub struct TagProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagProperty {
@@ -2012,38 +2020,46 @@ impl cfn_resources::CfnResource for TagProperty {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

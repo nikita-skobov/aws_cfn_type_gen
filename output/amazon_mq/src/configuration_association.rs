@@ -10,7 +10,7 @@ pub struct CfnConfigurationAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Broker")]
-    pub broker: String,
+    pub broker: cfn_resources::StrVal,
 
     ///
     /// The configuration to associate with a broker.
@@ -52,7 +52,7 @@ pub struct ConfigurationId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The revision number of the configuration.

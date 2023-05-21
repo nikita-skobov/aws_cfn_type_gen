@@ -13,7 +13,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "AppAssessmentSchedule")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub app_assessment_schedule: Option<String>,
+    pub app_assessment_schedule: Option<cfn_resources::StrVal>,
 
     ///
     /// A JSON string that provides information about your application structure. To learn more    about the appTemplateBody template, see the sample template provided in the    Examples section.
@@ -28,7 +28,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppTemplateBody")]
-    pub app_template_body: String,
+    pub app_template_body: cfn_resources::StrVal,
 
     ///
     /// The optional description for an app.
@@ -40,7 +40,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the application.
@@ -51,7 +51,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the resiliency policy.
@@ -63,7 +63,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "ResiliencyPolicyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resiliency_policy_arn: Option<String>,
+    pub resiliency_policy_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of ResourceMapping objects.
@@ -116,7 +116,7 @@ pub struct PhysicalResourceId {
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_account_id: Option<String>,
+    pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region that the physical resource is located in.
@@ -128,7 +128,7 @@ pub struct PhysicalResourceId {
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aws_region: Option<String>,
+    pub aws_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the physical resource.
@@ -139,7 +139,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
-    pub identifier: String,
+    pub identifier: cfn_resources::StrVal,
 
     ///
     /// Specifies the type of physical resource identifier.
@@ -152,7 +152,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PhysicalResourceId {
@@ -182,7 +182,7 @@ pub struct ResourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "LogicalStackName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logical_stack_name: Option<String>,
+    pub logical_stack_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the type of resource mapping.
@@ -220,7 +220,7 @@ pub struct ResourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_name: Option<String>,
+    pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The short name of the Terraform source.
@@ -232,7 +232,7 @@ pub struct ResourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "TerraformSourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub terraform_source_name: Option<String>,
+    pub terraform_source_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

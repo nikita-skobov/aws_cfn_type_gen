@@ -12,7 +12,7 @@ pub struct CfnUserGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    pub engine: String,
+    pub engine: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -34,7 +34,7 @@ pub struct CfnUserGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserGroupId")]
-    pub user_group_id: String,
+    pub user_group_id: cfn_resources::StrVal,
 
     ///
     /// The list of user IDs that belong to the user group. A user named default must be included.
@@ -79,7 +79,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -89,7 +89,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

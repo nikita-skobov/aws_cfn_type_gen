@@ -19,7 +19,7 @@ pub struct CfnFirewallDomainList {
     /// Update requires: No interruption
     #[serde(rename = "DomainFileUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_file_url: Option<String>,
+    pub domain_file_url: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the domain lists that you have defined.
@@ -47,7 +47,7 @@ pub struct CfnFirewallDomainList {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the tag keys and values that you want to associate with the domain list.
@@ -75,29 +75,35 @@ impl cfn_resources::CfnResource for CfnFirewallDomainList {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.domain_file_url {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain_file_url'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain_file_url'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.domain_file_url {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'domain_file_url'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'domain_file_url'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -131,7 +137,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -141,7 +147,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

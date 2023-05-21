@@ -109,7 +109,7 @@ pub struct CfnUserPool {
     /// Update requires: No interruption
     #[serde(rename = "EmailVerificationMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_verification_message: Option<String>,
+    pub email_verification_message: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is no longer used. See VerificationMessageTemplateType.
@@ -127,7 +127,7 @@ pub struct CfnUserPool {
     /// Update requires: No interruption
     #[serde(rename = "EmailVerificationSubject")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_verification_subject: Option<String>,
+    pub email_verification_subject: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables MFA on a specified user pool. To disable all MFAs after it has been enabled, set    MfaConfiguration to “OFF” and remove EnabledMfas. MFAs can only be all disabled if    MfaConfiguration is OFF. Once SMS_MFA is enabled, SMS_MFA can only be disabled by setting    MfaConfiguration to “OFF”. Can be one of the following values:
@@ -219,7 +219,7 @@ pub struct CfnUserPool {
     /// Update requires: No interruption
     #[serde(rename = "SmsAuthenticationMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sms_authentication_message: Option<String>,
+    pub sms_authentication_message: Option<cfn_resources::StrVal>,
 
     ///
     /// The SMS configuration with the settings that your Amazon Cognito user pool must use to send an       SMS message from your AWS account through Amazon Simple Notification Service. To send SMS messages       with Amazon SNS in the AWS Region that you want, the Amazon Cognito user pool uses an AWS Identity and Access Management       (IAM) role in your AWS account.
@@ -249,7 +249,7 @@ pub struct CfnUserPool {
     /// Update requires: No interruption
     #[serde(rename = "SmsVerificationMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sms_verification_message: Option<String>,
+    pub sms_verification_message: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings for updates to user attributes. These settings include the property AttributesRequireVerificationBeforeUpdate, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see Verifying updates to email addresses and phone numbers.
@@ -291,7 +291,7 @@ pub struct CfnUserPool {
     /// Update requires: No interruption
     #[serde(rename = "UserPoolName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_pool_name: Option<String>,
+    pub user_pool_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tag keys and values to assign to the user pool. A tag is a label that you can use       to categorize and manage user pools in different ways, such as by purpose, owner,       environment, or other criteria.
@@ -409,26 +409,34 @@ impl cfn_resources::CfnResource for CfnUserPool {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.email_verification_message {
-            if the_val.len() > 20000 as _ {
-                return Err(format!("Max validation failed on field 'email_verification_message'. {} is greater than 20000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!("Max validation failed on field 'email_verification_message'. {} is greater than 20000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_verification_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!("Min validation failed on field 'email_verification_message'. {} is less than 6", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!("Min validation failed on field 'email_verification_message'. {} is less than 6", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_verification_subject {
-            if the_val.len() > 140 as _ {
-                return Err(format!("Max validation failed on field 'email_verification_subject'. {} is greater than 140", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!("Max validation failed on field 'email_verification_subject'. {} is greater than 140", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_verification_subject {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'email_verification_subject'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'email_verification_subject'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -450,14 +458,18 @@ impl cfn_resources::CfnResource for CfnUserPool {
         }
 
         if let Some(the_val) = &self.sms_authentication_message {
-            if the_val.len() > 140 as _ {
-                return Err(format!("Max validation failed on field 'sms_authentication_message'. {} is greater than 140", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!("Max validation failed on field 'sms_authentication_message'. {} is greater than 140", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sms_authentication_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!("Min validation failed on field 'sms_authentication_message'. {} is less than 6", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!("Min validation failed on field 'sms_authentication_message'. {} is less than 6", s.len()));
+                }
             }
         }
 
@@ -466,17 +478,18 @@ impl cfn_resources::CfnResource for CfnUserPool {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.sms_verification_message {
-            if the_val.len() > 140 as _ {
-                return Err(format!("Max validation failed on field 'sms_verification_message'. {} is greater than 140", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!("Max validation failed on field 'sms_verification_message'. {} is greater than 140", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.sms_verification_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sms_verification_message'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!("Min validation failed on field 'sms_verification_message'. {} is less than 6", s.len()));
+                }
             }
         }
 
@@ -489,20 +502,24 @@ impl cfn_resources::CfnResource for CfnUserPool {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.user_pool_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_pool_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_pool_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_pool_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_pool_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_pool_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -650,7 +667,7 @@ pub struct CustomEmailSender {
     /// Update requires: No interruption
     #[serde(rename = "LambdaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_arn: Option<String>,
+    pub lambda_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Lambda version represents the signature of the "request" attribute in the    "event" information that Amazon Cognito passes to your custom email sender AWS Lambda function. The only supported value is V1_0.
@@ -662,7 +679,7 @@ pub struct CustomEmailSender {
     /// Update requires: No interruption
     #[serde(rename = "LambdaVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_version: Option<String>,
+    pub lambda_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomEmailSender {
@@ -692,7 +709,7 @@ pub struct CustomSMSSender {
     /// Update requires: No interruption
     #[serde(rename = "LambdaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_arn: Option<String>,
+    pub lambda_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Lambda version represents the signature of the "request" attribute in the    "event" information Amazon Cognito passes to your custom SMS sender Lambda    function. The only supported value is V1_0.
@@ -704,7 +721,7 @@ pub struct CustomSMSSender {
     /// Update requires: No interruption
     #[serde(rename = "LambdaVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_version: Option<String>,
+    pub lambda_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomSMSSender {
@@ -790,7 +807,7 @@ pub struct EmailConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration_set: Option<String>,
+    pub configuration_set: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether Amazon Cognito uses its built-in functionality to send your users email       messages, or uses your Amazon Simple Email Service email configuration. Specify one of the following       values:
@@ -818,7 +835,7 @@ pub struct EmailConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "From")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub from: Option<String>,
+    pub from: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination to which the receiver of the email should reply.
@@ -832,7 +849,7 @@ pub struct EmailConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReplyToEmailAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reply_to_email_address: Option<String>,
+    pub reply_to_email_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of a verified email address in Amazon SES. Amazon Cognito uses this email address in one of       the following ways, depending on the value that you specify for the         EmailSendingAccount parameter:
@@ -854,7 +871,7 @@ pub struct EmailConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_arn: Option<String>,
+    pub source_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -885,38 +902,46 @@ impl cfn_resources::CfnResource for EmailConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.configuration_set {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'configuration_set'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'configuration_set'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.configuration_set {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'configuration_set'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'configuration_set'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -945,7 +970,7 @@ pub struct InviteMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_message: Option<String>,
+    pub email_message: Option<cfn_resources::StrVal>,
 
     ///
     /// The subject line for email messages. EmailSubject is allowed only if EmailSendingAccount is DEVELOPER.
@@ -963,7 +988,7 @@ pub struct InviteMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailSubject")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_subject: Option<String>,
+    pub email_subject: Option<cfn_resources::StrVal>,
 
     ///
     /// The message template for SMS messages.
@@ -981,7 +1006,7 @@ pub struct InviteMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "SMSMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub smsmessage: Option<String>,
+    pub smsmessage: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InviteMessageTemplate {
@@ -995,56 +1020,68 @@ impl cfn_resources::CfnResource for InviteMessageTemplate {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.email_message {
-            if the_val.len() > 20000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'email_message'. {} is greater than 20000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'email_message'. {} is greater than 20000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_message'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_message'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject {
-            if the_val.len() > 140 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'email_subject'. {} is greater than 140",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'email_subject'. {} is greater than 140",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_subject'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_subject'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.smsmessage {
-            if the_val.len() > 140 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'smsmessage'. {} is greater than 140",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'smsmessage'. {} is greater than 140",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.smsmessage {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'smsmessage'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'smsmessage'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1071,7 +1108,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "CreateAuthChallenge")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub create_auth_challenge: Option<String>,
+    pub create_auth_challenge: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom email sender AWS Lambda trigger.
@@ -1101,7 +1138,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "CustomMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_message: Option<String>,
+    pub custom_message: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom SMS sender AWS Lambda trigger.
@@ -1131,7 +1168,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefineAuthChallenge")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub define_auth_challenge: Option<String>,
+    pub define_auth_challenge: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name of a AWS Key Management Service (AWS KMS) key. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to     CustomEmailSender and CustomSMSSender.
@@ -1143,7 +1180,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "KMSKeyID")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmskey_id: Option<String>,
+    pub kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A post-authentication AWS Lambda trigger.
@@ -1161,7 +1198,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "PostAuthentication")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub post_authentication: Option<String>,
+    pub post_authentication: Option<cfn_resources::StrVal>,
 
     ///
     /// A post-confirmation AWS Lambda trigger.
@@ -1179,7 +1216,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "PostConfirmation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub post_confirmation: Option<String>,
+    pub post_confirmation: Option<cfn_resources::StrVal>,
 
     ///
     /// A pre-authentication AWS Lambda trigger.
@@ -1197,7 +1234,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "PreAuthentication")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pre_authentication: Option<String>,
+    pub pre_authentication: Option<cfn_resources::StrVal>,
 
     ///
     /// A pre-registration AWS Lambda trigger.
@@ -1215,7 +1252,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "PreSignUp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pre_sign_up: Option<String>,
+    pub pre_sign_up: Option<cfn_resources::StrVal>,
 
     ///
     /// A Lambda trigger that is invoked before token generation.
@@ -1233,7 +1270,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "PreTokenGeneration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pre_token_generation: Option<String>,
+    pub pre_token_generation: Option<cfn_resources::StrVal>,
 
     ///
     /// The user migration Lambda config type.
@@ -1251,7 +1288,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "UserMigration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_migration: Option<String>,
+    pub user_migration: Option<cfn_resources::StrVal>,
 
     ///
     /// Verifies the authentication challenge response.
@@ -1269,7 +1306,7 @@ pub struct LambdaConfig {
     /// Update requires: No interruption
     #[serde(rename = "VerifyAuthChallengeResponse")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub verify_auth_challenge_response: Option<String>,
+    pub verify_auth_challenge_response: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LambdaConfig {
@@ -1283,17 +1320,18 @@ impl cfn_resources::CfnResource for LambdaConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.create_auth_challenge {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'create_auth_challenge'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'create_auth_challenge'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.create_auth_challenge {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'create_auth_challenge'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'create_auth_challenge'. {} is less than 20", s.len()));
+                }
             }
         }
 
@@ -1302,20 +1340,24 @@ impl cfn_resources::CfnResource for LambdaConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.custom_message {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_message'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_message'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_message {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_message'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_message'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1324,134 +1366,154 @@ impl cfn_resources::CfnResource for LambdaConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.define_auth_challenge {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'define_auth_challenge'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'define_auth_challenge'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.define_auth_challenge {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'define_auth_challenge'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'define_auth_challenge'. {} is less than 20", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.post_authentication {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'post_authentication'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'post_authentication'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.post_authentication {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'post_authentication'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'post_authentication'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.post_confirmation {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'post_confirmation'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'post_confirmation'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.post_confirmation {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'post_confirmation'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'post_confirmation'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_authentication {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'pre_authentication'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'pre_authentication'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_authentication {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'pre_authentication'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pre_authentication'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_sign_up {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'pre_sign_up'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'pre_sign_up'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_sign_up {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'pre_sign_up'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pre_sign_up'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_token_generation {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'pre_token_generation'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'pre_token_generation'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.pre_token_generation {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'pre_token_generation'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pre_token_generation'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_migration {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_migration'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_migration'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_migration {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_migration'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_migration'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.verify_auth_challenge_response {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'verify_auth_challenge_response'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'verify_auth_challenge_response'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.verify_auth_challenge_response {
-            if the_val.len() < 20 as _ {
-                return Err(format!("Min validation failed on field 'verify_auth_challenge_response'. {} is less than 20", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'verify_auth_challenge_response'. {} is less than 20", s.len()));
+                }
             }
         }
 
@@ -1472,7 +1534,7 @@ pub struct NumberAttributeConstraints {
     /// Update requires: No interruption
     #[serde(rename = "MaxValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_value: Option<String>,
+    pub max_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum value of an attribute that is of the number data type.
@@ -1484,7 +1546,7 @@ pub struct NumberAttributeConstraints {
     /// Update requires: No interruption
     #[serde(rename = "MinValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub min_value: Option<String>,
+    pub min_value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NumberAttributeConstraints {
@@ -1813,7 +1875,7 @@ pub struct SchemaAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the constraints for an attribute of the number type.
@@ -1888,20 +1950,24 @@ impl cfn_resources::CfnResource for SchemaAttribute {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 20 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1930,7 +1996,7 @@ pub struct SmsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ExternalId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub external_id: Option<String>,
+    pub external_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon SNS caller. This is the ARN of the IAM role       in your AWS account that Amazon Cognito will use to send SMS messages. SMS       messages are subject to a spending limit.
@@ -1948,7 +2014,7 @@ pub struct SmsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SnsCallerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_caller_arn: Option<String>,
+    pub sns_caller_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region to use with Amazon SNS integration. You can choose the same Region as your       user pool, or a supported Legacy Amazon SNS alternate       Region.
@@ -1966,7 +2032,7 @@ pub struct SmsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SnsRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_region: Option<String>,
+    pub sns_region: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SmsConfiguration {
@@ -1980,38 +2046,46 @@ impl cfn_resources::CfnResource for SmsConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.sns_caller_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sns_caller_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'sns_caller_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sns_caller_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sns_caller_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sns_caller_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sns_region {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sns_region'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'sns_region'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sns_region {
-            if the_val.len() < 5 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sns_region'. {} is less than 5",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 5 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sns_region'. {} is less than 5",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2032,7 +2106,7 @@ pub struct StringAttributeConstraints {
     /// Update requires: No interruption
     #[serde(rename = "MaxLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_length: Option<String>,
+    pub max_length: Option<cfn_resources::StrVal>,
 
     ///
     /// The minimum length.
@@ -2044,7 +2118,7 @@ pub struct StringAttributeConstraints {
     /// Update requires: No interruption
     #[serde(rename = "MinLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub min_length: Option<String>,
+    pub min_length: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StringAttributeConstraints {
@@ -2214,7 +2288,7 @@ pub struct VerificationMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_message: Option<String>,
+    pub email_message: Option<cfn_resources::StrVal>,
 
     ///
     /// The email message template for sending a confirmation link to the user. You can set an         EmailMessageByLink template only if the value of EmailSendingAccount is DEVELOPER. When your EmailSendingAccount is DEVELOPER, your user pool sends email       messages with your own Amazon SES configuration.
@@ -2232,7 +2306,7 @@ pub struct VerificationMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailMessageByLink")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_message_by_link: Option<String>,
+    pub email_message_by_link: Option<cfn_resources::StrVal>,
 
     ///
     /// The subject line for the email message template. You can set an         EmailSubject template only if the value of EmailSendingAccount is DEVELOPER. When your EmailSendingAccount is DEVELOPER, your user pool sends email       messages with your own Amazon SES configuration.
@@ -2250,7 +2324,7 @@ pub struct VerificationMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailSubject")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_subject: Option<String>,
+    pub email_subject: Option<cfn_resources::StrVal>,
 
     ///
     /// The subject line for the email message template for sending a confirmation link to the       user. You can set an EmailSubjectByLink template only if the value of         EmailSendingAccount is DEVELOPER. When your EmailSendingAccount is DEVELOPER, your user pool sends email       messages with your own Amazon SES configuration.
@@ -2268,7 +2342,7 @@ pub struct VerificationMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "EmailSubjectByLink")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub email_subject_by_link: Option<String>,
+    pub email_subject_by_link: Option<cfn_resources::StrVal>,
 
     ///
     /// The template for SMS messages that Amazon Cognito sends to your users.
@@ -2286,7 +2360,7 @@ pub struct VerificationMessageTemplate {
     /// Update requires: No interruption
     #[serde(rename = "SmsMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sms_message: Option<String>,
+    pub sms_message: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2317,86 +2391,106 @@ impl cfn_resources::CfnResource for VerificationMessageTemplate {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.email_message {
-            if the_val.len() > 20000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'email_message'. {} is greater than 20000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'email_message'. {} is greater than 20000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_message'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_message'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_message_by_link {
-            if the_val.len() > 20000 as _ {
-                return Err(format!("Max validation failed on field 'email_message_by_link'. {} is greater than 20000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!("Max validation failed on field 'email_message_by_link'. {} is greater than 20000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_message_by_link {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_message_by_link'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_message_by_link'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject {
-            if the_val.len() > 140 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'email_subject'. {} is greater than 140",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'email_subject'. {} is greater than 140",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_subject'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_subject'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject_by_link {
-            if the_val.len() > 140 as _ {
-                return Err(format!("Max validation failed on field 'email_subject_by_link'. {} is greater than 140", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!("Max validation failed on field 'email_subject_by_link'. {} is greater than 140", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.email_subject_by_link {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'email_subject_by_link'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'email_subject_by_link'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sms_message {
-            if the_val.len() > 140 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sms_message'. {} is greater than 140",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 140 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'sms_message'. {} is greater than 140",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sms_message {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sms_message'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sms_message'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 

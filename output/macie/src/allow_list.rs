@@ -28,7 +28,7 @@ pub struct CfnAllowList {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom name for the allow list. The name can contain 1-128 characters.
@@ -39,7 +39,7 @@ pub struct CfnAllowList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to the allow list.
@@ -87,7 +87,7 @@ pub struct Criteria {
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regex: Option<String>,
+    pub regex: Option<cfn_resources::StrVal>,
 
     ///
     /// The location and name of an Amazon S3 object that lists specific text to       ignore.
@@ -134,7 +134,7 @@ pub struct S3WordsList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The full name of the S3 object. This value correlates to the Key field of       an object's properties in Amazon S3. If the name includes a path, include the       complete path. For example, AllowLists/Macie/MyList.txt.
@@ -147,7 +147,7 @@ pub struct S3WordsList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectKey")]
-    pub object_key: String,
+    pub object_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3WordsList {
@@ -181,7 +181,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -191,7 +191,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

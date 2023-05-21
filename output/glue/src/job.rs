@@ -72,7 +72,7 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources.
@@ -88,7 +88,7 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_class: Option<String>,
+    pub execution_class: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum number of concurrent runs that are allowed for this job.
@@ -122,7 +122,7 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub glue_version: Option<String>,
+    pub glue_version: Option<cfn_resources::StrVal>,
 
     ///
     /// This field is reserved for future use.
@@ -134,7 +134,7 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "LogUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_uri: Option<String>,
+    pub log_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure    of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
@@ -182,7 +182,7 @@ pub struct CfnJob {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Non-overridable arguments for this job, specified as name-value pairs.
@@ -230,7 +230,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// The name of the SecurityConfiguration structure to be used with this       job.
@@ -248,7 +248,7 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_configuration: Option<String>,
+    pub security_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to use with this job.
@@ -332,20 +332,24 @@ impl cfn_resources::CfnResource for CfnJob {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -354,38 +358,46 @@ impl cfn_resources::CfnResource for CfnJob {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.glue_version {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'glue_version'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'glue_version'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.glue_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'glue_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'glue_version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -394,17 +406,18 @@ impl cfn_resources::CfnResource for CfnJob {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'security_configuration'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -485,7 +498,7 @@ pub struct JobCommand {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Python version being used to execute a Python shell job. Allowed values are 3 or 3.9. Version 2 is deprecated.
@@ -499,7 +512,7 @@ pub struct JobCommand {
     /// Update requires: No interruption
     #[serde(rename = "PythonVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub python_version: Option<String>,
+    pub python_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes       a job (required).
@@ -513,7 +526,7 @@ pub struct JobCommand {
     /// Update requires: No interruption
     #[serde(rename = "ScriptLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub script_location: Option<String>,
+    pub script_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for JobCommand {
@@ -527,11 +540,10 @@ impl cfn_resources::CfnResource for JobCommand {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.script_location {
-            if the_val.len() > 400000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'script_location'. {} is greater than 400000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 400000 as _ {
+                    return Err(format!("Max validation failed on field 'script_location'. {} is greater than 400000", s.len()));
+                }
             }
         }
 

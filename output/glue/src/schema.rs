@@ -22,7 +22,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compatibility")]
-    pub compatibility: String,
+    pub compatibility: cfn_resources::StrVal,
 
     ///
     /// The data format of the schema definition. Currently only AVRO is supported.
@@ -33,7 +33,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataFormat")]
-    pub data_format: String,
+    pub data_format: cfn_resources::StrVal,
 
     ///
     /// A description of the schema if specified when created.
@@ -45,7 +45,7 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Name of the schema to be created of max length of 255, and may only contain letters, numbers, hyphen, underscore, dollar sign, or hash mark. No whitespace.
@@ -62,7 +62,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The registry where a schema is stored.
@@ -85,7 +85,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
+    pub schema_definition: cfn_resources::StrVal,
 
     ///
     /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
@@ -116,20 +116,24 @@ impl cfn_resources::CfnResource for CfnSchema {
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.registry
@@ -153,7 +157,7 @@ pub struct Registry {
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the registry.
@@ -165,7 +169,7 @@ pub struct Registry {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Registry {
@@ -241,7 +245,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -251,7 +255,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

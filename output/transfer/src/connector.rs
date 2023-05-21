@@ -16,7 +16,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRole")]
-    pub access_role: String,
+    pub access_role: cfn_resources::StrVal,
 
     ///
     /// A structure that contains the parameters for a connector object.
@@ -45,7 +45,7 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logging_role: Option<String>,
+    pub logging_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Key-value pairs that can be used to group and search for connectors.
@@ -72,7 +72,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnConnector {
@@ -87,39 +87,47 @@ impl cfn_resources::CfnResource for CfnConnector {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.access_role;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'access_role'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_role'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.access_role;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'access_role'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'access_role'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.as2_config.validate()?;
 
         if let Some(the_val) = &self.logging_role {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'logging_role'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'logging_role'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.logging_role {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'logging_role'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'logging_role'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -134,11 +142,13 @@ impl cfn_resources::CfnResource for CfnConnector {
 
         let the_val = &self.url;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'url'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'url'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -194,7 +204,7 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_profile_id: Option<String>,
+    pub local_profile_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
@@ -244,7 +254,7 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "MessageSubject")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message_subject: Option<String>,
+    pub message_subject: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique identifier for the partner profile for the connector.
@@ -262,7 +272,7 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "PartnerProfileId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub partner_profile_id: Option<String>,
+    pub partner_profile_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The algorithm that is used to sign the AS2 messages sent with the connector.
@@ -411,56 +421,65 @@ impl cfn_resources::CfnResource for As2Config {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.local_profile_id {
-            if the_val.len() > 19 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'local_profile_id'. {} is greater than 19",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 19 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'local_profile_id'. {} is greater than 19",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.local_profile_id {
-            if the_val.len() < 19 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'local_profile_id'. {} is less than 19",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 19 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'local_profile_id'. {} is less than 19",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.message_subject {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'message_subject'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'message_subject'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.message_subject {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'message_subject'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'message_subject'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.partner_profile_id {
-            if the_val.len() > 19 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'partner_profile_id'. {} is greater than 19",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 19 as _ {
+                    return Err(format!("Max validation failed on field 'partner_profile_id'. {} is greater than 19", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.partner_profile_id {
-            if the_val.len() < 19 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'partner_profile_id'. {} is less than 19",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 19 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'partner_profile_id'. {} is less than 19",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -485,7 +504,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -495,7 +514,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

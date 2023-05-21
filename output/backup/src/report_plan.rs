@@ -32,7 +32,7 @@ pub struct CfnReportPlan {
     /// Update requires: No interruption
     #[serde(rename = "ReportPlanDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub report_plan_description: Option<String>,
+    pub report_plan_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique name of the report plan. This name is between 1 and 256 characters starting     with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores     (_).
@@ -50,7 +50,7 @@ pub struct CfnReportPlan {
     /// Update requires: Replacement
     #[serde(rename = "ReportPlanName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub report_plan_name: Option<String>,
+    pub report_plan_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags to tag your report plan.
@@ -93,35 +93,40 @@ impl cfn_resources::CfnResource for CfnReportPlan {
         self.report_delivery_channel.validate()?;
 
         if let Some(the_val) = &self.report_plan_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'report_plan_description'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'report_plan_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.report_plan_description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'report_plan_description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'report_plan_description'. {} is less than 0", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.report_plan_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'report_plan_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'report_plan_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.report_plan_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'report_plan_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'report_plan_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -155,7 +160,7 @@ pub struct ReportDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
+    pub s3_bucket_name: cfn_resources::StrVal,
 
     ///
     /// The prefix for where AWS Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path:       s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.     If not specified, there is no prefix.
@@ -167,7 +172,7 @@ pub struct ReportDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ReportDeliveryChannel {
@@ -246,7 +251,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportTemplate")]
-    pub report_template: String,
+    pub report_template: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ReportSetting {
@@ -280,7 +285,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -290,7 +295,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

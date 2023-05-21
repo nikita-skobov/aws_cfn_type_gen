@@ -15,7 +15,7 @@ pub struct CfnEventType {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The event type entity types.
@@ -61,7 +61,7 @@ pub struct CfnEventType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -89,20 +89,24 @@ impl cfn_resources::CfnResource for CfnEventType {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -129,7 +133,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Timestamp of when the entity type was created.
@@ -145,7 +149,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_time: Option<String>,
+    pub created_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The entity type description.
@@ -161,7 +165,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
@@ -191,7 +195,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_updated_time: Option<String>,
+    pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The entity type name.
@@ -205,7 +209,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -233,74 +237,90 @@ impl cfn_resources::CfnResource for EntityType {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.created_time {
-            if the_val.len() > 30 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'created_time'. {} is greater than 30",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 30 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'created_time'. {} is greater than 30",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.created_time {
-            if the_val.len() < 11 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'created_time'. {} is less than 11",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 11 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'created_time'. {} is less than 11",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.last_updated_time {
-            if the_val.len() > 30 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'last_updated_time'. {} is greater than 30",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 30 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'last_updated_time'. {} is greater than 30",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.last_updated_time {
-            if the_val.len() < 11 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'last_updated_time'. {} is less than 11",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 11 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'last_updated_time'. {} is less than 11",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -321,7 +341,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Timestamp for when event variable was created.
@@ -333,7 +353,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_time: Option<String>,
+    pub created_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The source of the event variable.
@@ -349,7 +369,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_source: Option<String>,
+    pub data_source: Option<cfn_resources::StrVal>,
 
     ///
     /// The data type of the event variable. For more information, see Data types.
@@ -361,7 +381,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_type: Option<String>,
+    pub data_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The default value of the event variable
@@ -373,7 +393,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The event variable description.
@@ -385,7 +405,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
@@ -411,7 +431,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_updated_time: Option<String>,
+    pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the event variable.
@@ -423,7 +443,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -449,7 +469,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub variable_type: Option<String>,
+    pub variable_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EventVariable {
@@ -485,7 +505,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Timestamp of when the event type was created.
@@ -501,7 +521,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_time: Option<String>,
+    pub created_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The label description.
@@ -517,7 +537,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
@@ -547,7 +567,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_updated_time: Option<String>,
+    pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The label name.
@@ -559,7 +579,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -587,74 +607,90 @@ impl cfn_resources::CfnResource for Label {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.created_time {
-            if the_val.len() > 30 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'created_time'. {} is greater than 30",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 30 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'created_time'. {} is greater than 30",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.created_time {
-            if the_val.len() < 11 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'created_time'. {} is less than 11",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 11 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'created_time'. {} is less than 11",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.last_updated_time {
-            if the_val.len() > 30 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'last_updated_time'. {} is greater than 30",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 30 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'last_updated_time'. {} is greater than 30",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.last_updated_time {
-            if the_val.len() < 11 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'last_updated_time'. {} is less than 11",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 11 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'last_updated_time'. {} is less than 11",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -679,7 +715,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -689,7 +725,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

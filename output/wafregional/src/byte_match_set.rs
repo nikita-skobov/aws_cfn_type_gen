@@ -28,7 +28,7 @@ pub struct CfnByteMatchSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnByteMatchSet {
@@ -43,20 +43,24 @@ impl cfn_resources::CfnResource for CfnByteMatchSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -130,7 +134,7 @@ pub struct ByteMatchTuple {
     /// Update requires: No interruption
     #[serde(rename = "TargetString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_string: Option<String>,
+    pub target_string: Option<cfn_resources::StrVal>,
 
     ///
     /// The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it.
@@ -148,7 +152,7 @@ pub struct ByteMatchTuple {
     /// Update requires: No interruption
     #[serde(rename = "TargetStringBase64")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_string_base64: Option<String>,
+    pub target_string_base64: Option<cfn_resources::StrVal>,
 
     ///
     /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.          If you specify a transformation, AWS WAF performs the transformation on FieldToMatch before inspecting it for a match.
@@ -299,7 +303,7 @@ pub struct FieldToMatch {
     /// Update requires: No interruption
     #[serde(rename = "Data")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data: Option<String>,
+    pub data: Option<cfn_resources::StrVal>,
 
     ///
     /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
@@ -365,20 +369,24 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.data {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'data'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'data'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

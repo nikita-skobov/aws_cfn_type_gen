@@ -41,7 +41,7 @@ pub struct PublicKeyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallerReference")]
-    pub caller_reference: String,
+    pub caller_reference: cfn_resources::StrVal,
 
     ///
     /// A comment to describe the public key. The comment cannot be longer than 128 			characters.
@@ -53,7 +53,7 @@ pub struct PublicKeyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// The public key that you can use with signed URLs and signed cookies, or with field-level encryption.
@@ -64,7 +64,7 @@ pub struct PublicKeyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncodedKey")]
-    pub encoded_key: String,
+    pub encoded_key: cfn_resources::StrVal,
 
     ///
     /// A name to help identify the public key.
@@ -75,7 +75,7 @@ pub struct PublicKeyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PublicKeyConfig {

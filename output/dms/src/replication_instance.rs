@@ -53,7 +53,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The engine version number of the replication instance.
@@ -67,7 +67,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// An AWS KMS key identifier that is used to encrypt the data on the replication instance.
@@ -83,7 +83,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the replication instance is a Multi-AZ deployment. You can't set the       AvailabilityZone parameter if the Multi-AZ parameter is set to true.
@@ -115,7 +115,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the accessibility options for the replication instance. A value of       true represents an instance with a public IP address. A value of       false represents an instance with a private IP address.       The default value is true.
@@ -138,7 +138,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationInstanceClass")]
-    pub replication_instance_class: String,
+    pub replication_instance_class: cfn_resources::StrVal,
 
     ///
     /// The replication instance identifier. This parameter is stored as a lowercase string.
@@ -156,7 +156,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationInstanceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_instance_identifier: Option<String>,
+    pub replication_instance_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A subnet group to associate with the replication instance.
@@ -168,7 +168,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: Replacement
     #[serde(rename = "ReplicationSubnetGroupIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_subnet_group_identifier: Option<String>,
+    pub replication_subnet_group_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A display name for the resource identifier at the end of the EndpointArn     response parameter that is returned in the created Endpoint object. The value     for this parameter can have up to 31 characters. It can contain only ASCII letters, digits,     and hyphen ('-'). Also, it can't end with a hyphen or contain two consecutive hyphens,     and can only begin with a letter, such as Example-App-ARN1. For example, this     value might result in the EndpointArn value     arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1. If you don't     specify a ResourceIdentifier value, AWS DMS generates a default identifier     value for the end of EndpointArn.
@@ -180,7 +180,7 @@ pub struct CfnReplicationInstance {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more tags to be assigned to the replication instance.
@@ -238,7 +238,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -248,7 +248,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

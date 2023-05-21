@@ -36,7 +36,7 @@ pub struct CfnInstance {
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the service that you want to use for settings for the instance.
@@ -49,7 +49,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
-    pub service_id: String,
+    pub service_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnInstance {
@@ -63,21 +63,25 @@ impl cfn_resources::CfnResource for CfnInstance {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.instance_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'instance_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'instance_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.service_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'service_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -13,7 +13,7 @@ pub struct CfnBroker {
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authentication_strategy: Option<String>,
+    pub authentication_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables automatic upgrades to new minor versions for brokers, as new broker engine versions    are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window of the broker or after a    manual broker reboot.
@@ -37,7 +37,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BrokerName")]
-    pub broker_name: String,
+    pub broker_name: cfn_resources::StrVal,
 
     ///
     /// A list of information about the configuration. Does not apply to RabbitMQ brokers.
@@ -62,7 +62,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentMode")]
-    pub deployment_mode: String,
+    pub deployment_mode: cfn_resources::StrVal,
 
     ///
     /// Encryption options for the broker. Does not apply to RabbitMQ brokers.
@@ -85,7 +85,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineType")]
-    pub engine_type: String,
+    pub engine_type: cfn_resources::StrVal,
 
     ///
     /// The version of the broker engine. For a list of supported engine versions, see Engine in the Amazon MQ Developer Guide.
@@ -96,7 +96,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    pub engine_version: String,
+    pub engine_version: cfn_resources::StrVal,
 
     ///
     /// The broker's instance type.
@@ -107,7 +107,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "HostInstanceType")]
-    pub host_instance_type: String,
+    pub host_instance_type: cfn_resources::StrVal,
 
     ///
     /// Optional. The metadata of the LDAP server used to authenticate and authorize        connections to the broker. Does not apply to RabbitMQ brokers.
@@ -178,7 +178,7 @@ pub struct CfnBroker {
     /// Update requires: Replacement
     #[serde(rename = "StorageType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_type: Option<String>,
+    pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones.    If you specify more than one subnet, the subnets must be in different Availability Zones. Amazon MQ will not be able to create    VPC endpoints for your broker with multiple subnets in the same Availability Zone.    A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet).    An ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A CLUSTER_MULTI_AZ deployment (RABBITMQ)     has no subnet requirements when deployed with public accessibility, deployment without public accessibility requires at least one subnet.
@@ -262,7 +262,7 @@ pub struct ConfigurationId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The revision number of the configuration.
@@ -303,7 +303,7 @@ pub struct EncryptionOptions {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables the use of an AWS owned CMK using AWS KMS (KMS). Set to true by default, if no value is provided, for example,        for RabbitMQ brokers.
@@ -353,7 +353,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleBase")]
-    pub role_base: String,
+    pub role_base: cfn_resources::StrVal,
 
     ///
     /// The group name attribute in a role entry whose value is the name of that role. For example, you can specify cn for a group entry's common name.    If authentication succeeds, then the user is assigned the the value of the cn attribute for each role entry that they are a member of.
@@ -365,7 +365,7 @@ pub struct LdapServerMetadata {
     /// Update requires: No interruption
     #[serde(rename = "RoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_name: Option<String>,
+    pub role_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The LDAP search filter used to find roles within the roleBase. The distinguished name of the user matched by userSearchMatching    is substituted into the {0} placeholder in the search filter. The client's username is substituted into the    {1} placeholder. For example, if you set this option to (member=uid={1}) for the user janedoe, the search filter becomes (member=uid=janedoe)    after string substitution. It matches all role entries that have a member attribute equal to uid=janedoe under the subtree selected by the RoleBases.
@@ -376,7 +376,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleSearchMatching")]
-    pub role_search_matching: String,
+    pub role_search_matching: cfn_resources::StrVal,
 
     /// The directory search scope for the role. If set to true, scope is to search the entire subtree.
     ///
@@ -397,7 +397,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountPassword")]
-    pub service_account_password: String,
+    pub service_account_password: cfn_resources::StrVal,
 
     ///
     /// Service account username. A service account is an account in your LDAP server that has access to initiate a connection. For example,    cn=admin, ou=corp, dc=corp, dc=example, dc=com.
@@ -408,7 +408,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountUsername")]
-    pub service_account_username: String,
+    pub service_account_username: cfn_resources::StrVal,
 
     ///
     /// Select a particular subtree of the directory information tree (DIT) to search for user entries.    The subtree is specified by a DN, which specifies the base node of the subtree. For example, by setting this option to    ou=Users,ou=corp, dc=corp, dc=example, dc=com, the search for user entries is restricted to the subtree beneath    ou=Users,ou=corp, dc=corp, dc=example, dc=com.
@@ -419,7 +419,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserBase")]
-    pub user_base: String,
+    pub user_base: cfn_resources::StrVal,
 
     ///
     /// The name of the LDAP attribute in the user's directory entry for the user's group membership. In some cases, user roles may be    identified by the value of an attribute in the user's directory entry. The UserRoleName option allows you to provide the name of this attribute.
@@ -431,7 +431,7 @@ pub struct LdapServerMetadata {
     /// Update requires: No interruption
     #[serde(rename = "UserRoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_role_name: Option<String>,
+    pub user_role_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The LDAP search filter used to find users within the userBase. The client's username is substituted into the {0}    placeholder in the search filter. For example, if this option is set to (uid={0}) and the received username is janedoe,    the search filter becomes (uid=janedoe) after string substitution. It will result in matching an entry like uid=janedoe,    ou=Users, ou=corp, dc=corp, dc=example, dc=com.
@@ -442,7 +442,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSearchMatching")]
-    pub user_search_matching: String,
+    pub user_search_matching: cfn_resources::StrVal,
 
     ///
     /// The directory search scope for the user.    If set to true, scope is to search the entire subtree.
@@ -525,7 +525,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    pub day_of_week: String,
+    pub day_of_week: cfn_resources::StrVal,
 
     ///
     /// The time, in 24-hour format.
@@ -536,7 +536,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeOfDay")]
-    pub time_of_day: String,
+    pub time_of_day: cfn_resources::StrVal,
 
     ///
     /// The time zone, UTC by default, in either the Country/City format, or the UTC offset    format.
@@ -547,7 +547,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    pub time_zone: String,
+    pub time_zone: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MaintenanceWindow {
@@ -576,7 +576,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value in a key-value pair.
@@ -587,7 +587,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsEntry {
@@ -640,7 +640,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The username of the broker user. For Amazon MQ for ActiveMQ brokers, this value can contain only alphanumeric    characters, dashes, periods, underscores, and tildes (- . _ ~). For Amazon MQ for RabbitMQ brokers, this value can contain only    alphanumeric characters, dashes, periods, underscores (- . _). This value must not contain a tilde (~) character. Amazon MQ prohibts    using guest as a valid usename. This value must be 2-100 characters long.
@@ -653,7 +653,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for User {

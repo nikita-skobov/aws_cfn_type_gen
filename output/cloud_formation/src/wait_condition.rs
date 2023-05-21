@@ -31,7 +31,7 @@ pub struct CfnWaitCondition {
     /// Update requires: No interruption
     #[serde(rename = "Handle")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub handle: Option<String>,
+    pub handle: Option<cfn_resources::StrVal>,
 
     ///
     /// The length of time (in seconds) to wait for the number of signals that the Count property  specifies. Timeout is a minimum-bound property, meaning the timeout occurs no sooner than the time you  specify, but can occur shortly thereafter. The maximum time that can be specified for this property is 12 hours  (43200 seconds).
@@ -45,7 +45,7 @@ pub struct CfnWaitCondition {
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timeout: Option<String>,
+    pub timeout: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnWaitCondition {

@@ -19,7 +19,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "AgentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub agent_version: Option<String>,
+    pub agent_version: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more user-defined key-value pairs to be added to the stack attributes.
@@ -119,7 +119,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "DefaultAvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_availability_zone: Option<String>,
+    pub default_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances.      For more information about IAM ARNs, see Using    Identifiers.
@@ -130,7 +130,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultInstanceProfileArn")]
-    pub default_instance_profile_arn: String,
+    pub default_instance_profile_arn: cfn_resources::StrVal,
 
     ///
     /// The stack's default operating system, which is installed on every instance unless you specify a different operating      system when you create the instance. You can specify one of the following.
@@ -146,7 +146,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "DefaultOs")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_os: Option<String>,
+    pub default_os: Option<cfn_resources::StrVal>,
 
     ///
     /// The default root device type. This value is the default for all instances in the stack,    but you can override it when you create an instance. The default option is     instance-store. For more information, see Storage for the Root Device.
@@ -172,7 +172,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "DefaultSshKeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_ssh_key_name: Option<String>,
+    pub default_ssh_key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The stack's default subnet ID. All instances are launched into this subnet unless you specify another subnet ID when you create the instance.     This parameter is required if you specify a value for the     VpcId parameter. If you also specify a value for     DefaultAvailabilityZone, the subnet must be in that zone.
@@ -184,7 +184,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "DefaultSubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_subnet_id: Option<String>,
+    pub default_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon Elastic Container Service (Amazon ECS)     cluster to register with the AWS OpsWorks stack.
@@ -198,7 +198,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "EcsClusterArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ecs_cluster_arn: Option<String>,
+    pub ecs_cluster_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Elastic IP addresses to register with the AWS OpsWorks stack.
@@ -228,7 +228,7 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "HostnameTheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hostname_theme: Option<String>,
+    pub hostname_theme: Option<cfn_resources::StrVal>,
 
     ///
     /// The stack name. Stack names can be a maximum of 64 characters.
@@ -239,7 +239,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Relational Database Service (Amazon RDS) database instance to register with the     AWS OpsWorks stack.
@@ -264,7 +264,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceRoleArn")]
-    pub service_role_arn: String,
+    pub service_role_arn: cfn_resources::StrVal,
 
     ///
     /// If you're cloning an AWS OpsWorks stack, the stack ID of the source AWS OpsWorks     stack to clone.
@@ -276,7 +276,7 @@ pub struct CfnStack {
     /// Update requires: Replacement
     #[serde(rename = "SourceStackId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_stack_id: Option<String>,
+    pub source_stack_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A map that contains tag keys and tag values that are attached to a stack or layer.
@@ -342,7 +342,7 @@ pub struct CfnStack {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -401,7 +401,7 @@ pub struct ChefConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "BerkshelfVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub berkshelf_version: Option<String>,
+    pub berkshelf_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The Berkshelf version.
@@ -442,7 +442,7 @@ pub struct ElasticIp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
-    pub ip: String,
+    pub ip: cfn_resources::StrVal,
 
     ///
     /// The name, which can be a maximum of 32 characters.
@@ -454,7 +454,7 @@ pub struct ElasticIp {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ElasticIp {
@@ -483,7 +483,7 @@ pub struct RdsDbInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbPassword")]
-    pub db_password: String,
+    pub db_password: cfn_resources::StrVal,
 
     ///
     /// The master user name.
@@ -494,7 +494,7 @@ pub struct RdsDbInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbUser")]
-    pub db_user: String,
+    pub db_user: cfn_resources::StrVal,
 
     ///
     /// The instance's ARN.
@@ -505,7 +505,7 @@ pub struct RdsDbInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsDbInstanceArn")]
-    pub rds_db_instance_arn: String,
+    pub rds_db_instance_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RdsDbInstance {
@@ -541,7 +541,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application.      One of the simplest approaches is to have branches or revisions in your repository that represent different      versions that can potentially be deployed.
@@ -553,7 +553,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Revision")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub revision: Option<String>,
+    pub revision: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
@@ -567,7 +567,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "SshKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssh_key: Option<String>,
+    pub ssh_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository type.
@@ -593,7 +593,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter depends on the repository type.
@@ -607,7 +607,7 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -662,7 +662,7 @@ pub struct StackConfigurationManager {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Chef version. This parameter must be set to 12, 11.10, or 11.4 for Linux stacks, and to 12.2 for Windows stacks.      The default value for Linux stacks is 12.
@@ -674,7 +674,7 @@ pub struct StackConfigurationManager {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StackConfigurationManager {
@@ -708,7 +708,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -718,7 +718,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

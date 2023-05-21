@@ -65,7 +65,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the managed policy that is used to set the permissions boundary for the       user.
@@ -81,7 +81,7 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub permissions_boundary: Option<String>,
+    pub permissions_boundary: Option<cfn_resources::StrVal>,
 
     ///
     /// Adds or updates an inline policy document that is embedded in the specified IAM user. To view AWS::IAM::User snippets, see Declaring       an IAM User Resource.
@@ -133,7 +133,7 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_name: Option<String>,
+    pub user_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnUser {
@@ -151,20 +151,24 @@ impl cfn_resources::CfnResource for CfnUser {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -193,7 +197,7 @@ pub struct LoginProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// Specifies whether the user is required to set a new password on next sign-in.
@@ -255,7 +259,7 @@ pub struct Policy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Policy {
@@ -270,20 +274,24 @@ impl cfn_resources::CfnResource for Policy {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.policy_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.policy_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -307,7 +315,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -317,7 +325,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

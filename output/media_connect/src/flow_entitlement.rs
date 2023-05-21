@@ -22,7 +22,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The type of encryption that MediaConnect will use on the output that is associated        with the entitlement.
@@ -46,7 +46,7 @@ pub struct CfnFlowEntitlement {
     /// Update requires: No interruption
     #[serde(rename = "EntitlementStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entitlement_status: Option<String>,
+    pub entitlement_status: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the flow.
@@ -57,7 +57,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
+    pub flow_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the entitlement. This value must be unique within the current        flow.
@@ -68,7 +68,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
@@ -112,7 +112,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
-    pub algorithm: String,
+    pub algorithm: cfn_resources::StrVal,
 
     ///
     /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
@@ -124,7 +124,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_initialization_vector: Option<String>,
+    pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
@@ -136,7 +136,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_id: Option<String>,
+    pub device_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of key that is used for the encryption. If you don't specify a       keyType value, the service uses the default setting       (static-key). Valid key types are: static-key, speke, and srt-password.
@@ -148,7 +148,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_type: Option<String>,
+    pub key_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
@@ -160,7 +160,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Region")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region: Option<String>,
+    pub region: Option<cfn_resources::StrVal>,
 
     ///
     /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
@@ -172,7 +172,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
@@ -183,7 +183,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
@@ -195,7 +195,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
@@ -207,7 +207,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Encryption {

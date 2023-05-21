@@ -30,7 +30,7 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the version of the SMB protocol that DataSync uses to access your SMB    file server.
@@ -58,7 +58,7 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the Domain Name Service (DNS) name or IP address of the SMB file server that    your DataSync agent will mount.
@@ -76,7 +76,7 @@ pub struct CfnLocationSMB {
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_hostname: Option<String>,
+    pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The subdirectory in the SMB file system that is used to read data from the SMB source    location or write data to the SMB destination. The SMB path should be a path that's    exported by the SMB server, or a subdirectory of that path. The path should be such that it    can be mounted by other SMB clients in your network.
@@ -96,7 +96,7 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
@@ -127,7 +127,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "User")]
-    pub user: String,
+    pub user: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnLocationSMB {
@@ -150,11 +150,13 @@ impl cfn_resources::CfnResource for CfnLocationSMB {
         }
 
         if let Some(the_val) = &self.domain {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -163,29 +165,35 @@ impl cfn_resources::CfnResource for CfnLocationSMB {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.password {
-            if the_val.len() > 104 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 104",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 104 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 104",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.server_hostname {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'server_hostname'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -200,11 +208,13 @@ impl cfn_resources::CfnResource for CfnLocationSMB {
 
         let the_val = &self.user;
 
-        if the_val.len() > 104 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user'. {} is greater than 104",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 104 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user'. {} is greater than 104",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -293,7 +303,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -303,7 +313,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

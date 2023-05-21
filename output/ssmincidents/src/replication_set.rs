@@ -63,7 +63,7 @@ pub struct RegionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SseKmsKeyId")]
-    pub sse_kms_key_id: String,
+    pub sse_kms_key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RegionConfiguration {
@@ -105,7 +105,7 @@ pub struct ReplicationRegion {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region_name: Option<String>,
+    pub region_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ReplicationRegion {
@@ -143,7 +143,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -153,7 +153,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

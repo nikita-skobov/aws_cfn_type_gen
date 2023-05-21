@@ -10,7 +10,7 @@ pub struct CfnGraphQLSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The text representation of a GraphQL schema in SDL format.
@@ -24,7 +24,7 @@ pub struct CfnGraphQLSchema {
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub definition: Option<String>,
+    pub definition: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of a GraphQL schema file in an Amazon S3 bucket. Use this if you want to provision     with the schema living in Amazon S3 rather than embedding it in your CloudFormation     template.
@@ -36,7 +36,7 @@ pub struct CfnGraphQLSchema {
     /// Update requires: No interruption
     #[serde(rename = "DefinitionS3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub definition_s3_location: Option<String>,
+    pub definition_s3_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnGraphQLSchema {

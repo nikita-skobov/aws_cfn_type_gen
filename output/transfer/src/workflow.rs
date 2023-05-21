@@ -15,7 +15,7 @@ pub struct CfnWorkflow {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the steps (actions) to take if errors are encountered during execution of the workflow.
@@ -70,11 +70,13 @@ impl cfn_resources::CfnResource for CfnWorkflow {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -138,7 +140,7 @@ pub struct CopyStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A flag that indicates whether to overwrite an existing file of the same name.    The default is FALSE.
@@ -154,7 +156,7 @@ pub struct CopyStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "OverwriteExisting")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub overwrite_existing: Option<String>,
+    pub overwrite_existing: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
@@ -168,7 +170,7 @@ pub struct CopyStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_file_location: Option<String>,
+    pub source_file_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CopyStepDetails {
@@ -204,7 +206,7 @@ pub struct CustomStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
@@ -218,7 +220,7 @@ pub struct CustomStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_file_location: Option<String>,
+    pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN for the Lambda function that is being called.
@@ -230,7 +232,7 @@ pub struct CustomStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Target")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target: Option<String>,
+    pub target: Option<cfn_resources::StrVal>,
 
     ///
     /// Timeout, in seconds, for the step.
@@ -288,7 +290,7 @@ pub struct DecryptStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A flag that indicates whether to overwrite an existing file of the same name.    The default is FALSE.
@@ -304,7 +306,7 @@ pub struct DecryptStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "OverwriteExisting")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub overwrite_existing: Option<String>,
+    pub overwrite_existing: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
@@ -318,7 +320,7 @@ pub struct DecryptStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_file_location: Option<String>,
+    pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of encryption used. Currently, this value must be PGP.
@@ -330,7 +332,7 @@ pub struct DecryptStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DecryptStepDetails {
@@ -364,7 +366,7 @@ pub struct DeleteStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
@@ -378,7 +380,7 @@ pub struct DeleteStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_file_location: Option<String>,
+    pub source_file_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeleteStepDetails {
@@ -408,7 +410,7 @@ pub struct EfsInputFileLocation {
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_system_id: Option<String>,
+    pub file_system_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The pathname for the folder being used by a workflow.
@@ -420,7 +422,7 @@ pub struct EfsInputFileLocation {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EfsInputFileLocation {
@@ -534,7 +536,7 @@ pub struct S3InputFileLocation {
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The name assigned to the file when it was created in Amazon S3. You use the object key to retrieve the object.
@@ -546,7 +548,7 @@ pub struct S3InputFileLocation {
     /// Update requires: Replacement
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3InputFileLocation {
@@ -575,7 +577,7 @@ pub struct S3Tag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value that corresponds to the key.
@@ -586,7 +588,7 @@ pub struct S3Tag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Tag {
@@ -620,7 +622,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -630,7 +632,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -662,7 +664,7 @@ pub struct TagStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file   for the workflow.
@@ -676,7 +678,7 @@ pub struct TagStepDetails {
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_file_location: Option<String>,
+    pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
     /// Array that contains from 1 to 10 key/value pairs.
@@ -792,7 +794,7 @@ pub struct WorkflowStep {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for WorkflowStep {

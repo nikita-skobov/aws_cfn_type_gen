@@ -41,7 +41,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ClassicLinkVPCId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub classic_link_vpcid: Option<String>,
+    pub classic_link_vpcid: Option<cfn_resources::StrVal>,
 
     ///
     /// Available for backward compatibility.
@@ -79,7 +79,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "IamInstanceProfile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_instance_profile: Option<String>,
+    pub iam_instance_profile: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Amazon Machine Image (AMI) that was assigned during registration. For       more information, see Finding a Linux AMI in the         Amazon EC2 User Guide for Linux Instances.
@@ -92,7 +92,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
-    pub image_id: String,
+    pub image_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Amazon EC2 instance to use to create the launch configuration. When you use    an instance to create a launch configuration, all properties are derived from the instance    with the exception of BlockDeviceMapping and     AssociatePublicIpAddress. You can override any properties from the instance by    specifying them in the launch configuration.
@@ -104,7 +104,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_id: Option<String>,
+    pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Controls whether instances in this group are launched with detailed       (true) or basic (false) monitoring.
@@ -133,7 +133,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The ID of the kernel associated with the AMI.
@@ -147,7 +147,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "KernelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kernel_id: Option<String>,
+    pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the key pair. For more information, see Amazon EC2 key pairs and Linux         instances in the Amazon EC2 User Guide for Linux Instances.
@@ -159,7 +159,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_name: Option<String>,
+    pub key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch configuration. This name must be unique per Region per       account.
@@ -177,7 +177,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "LaunchConfigurationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_configuration_name: Option<String>,
+    pub launch_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The metadata options for the instances. For more information, see Configuring the Instance Metadata Options in the         Amazon EC2 Auto Scaling User Guide.
@@ -205,7 +205,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "PlacementTenancy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placement_tenancy: Option<String>,
+    pub placement_tenancy: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the RAM disk to select.
@@ -219,7 +219,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "RamDiskId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ram_disk_id: Option<String>,
+    pub ram_disk_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list that contains the security groups to assign to the instances in the Auto Scaling    group. The list can contain both the IDs of existing security groups and references to SecurityGroup resources created in the template.
@@ -249,7 +249,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_price: Option<String>,
+    pub spot_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The Base64-encoded user data to make available to the launched EC2 instances. For more    information, see Instance metadata and user     data in the Amazon EC2 User Guide for Linux Instances.
@@ -265,7 +265,7 @@ pub struct CfnLaunchConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "UserData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_data: Option<String>,
+    pub user_data: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLaunchConfiguration {
@@ -279,17 +279,18 @@ impl cfn_resources::CfnResource for CfnLaunchConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.launch_configuration_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'launch_configuration_name'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'launch_configuration_name'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_configuration_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_configuration_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'launch_configuration_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -298,11 +299,13 @@ impl cfn_resources::CfnResource for CfnLaunchConfiguration {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.user_data {
-            if the_val.len() > 21847 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_data'. {} is greater than 21847",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 21847 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_data'. {} is greater than 21847",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -371,7 +374,7 @@ pub struct BlockDevice {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The throughput (MiBps) to provision for a gp3 volume.
@@ -421,7 +424,7 @@ pub struct BlockDevice {
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_type: Option<String>,
+    pub volume_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlockDevice {
@@ -492,7 +495,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
-    pub device_name: String,
+    pub device_name: cfn_resources::StrVal,
 
     ///
     /// Information to attach an EBS volume to an instance at launch.
@@ -530,7 +533,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_name: Option<String>,
+    pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {

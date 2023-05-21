@@ -11,7 +11,7 @@ pub struct CfnAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A configuration used when creating an Object Lambda Access Point.
@@ -53,7 +53,7 @@ pub struct Alias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 
     ///
     /// The alias value of the Object Lambda Access Point.
@@ -64,7 +64,7 @@ pub struct Alias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Alias {
@@ -92,7 +92,7 @@ pub struct AwsLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionArn")]
-    pub function_arn: String,
+    pub function_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -103,7 +103,7 @@ pub struct AwsLambda {
     /// Update requires: No interruption
     #[serde(rename = "FunctionPayload")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function_payload: Option<String>,
+    pub function_payload: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AwsLambda {
@@ -186,7 +186,7 @@ pub struct ObjectLambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportingAccessPoint")]
-    pub supporting_access_point: String,
+    pub supporting_access_point: cfn_resources::StrVal,
 
     ///
     /// A container for transformation configurations for an Object Lambda Access Point.

@@ -19,7 +19,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_token: Option<String>,
+    pub access_token: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the configuration for your automatic branch creation.
@@ -59,7 +59,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_spec: Option<String>,
+    pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
     /// The custom HTTP headers for an Amplify app.
@@ -75,7 +75,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "CustomHeaders")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_headers: Option<String>,
+    pub custom_headers: Option<cfn_resources::StrVal>,
 
     ///
     /// The custom rewrite and redirect rules for an Amplify app.
@@ -103,7 +103,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Automatically disconnect a branch in Amplify Hosting when you delete a branch from    your Git repository.
@@ -143,7 +143,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "IAMServiceRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iamservice_role: Option<String>,
+    pub iamservice_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for an Amplify app.
@@ -158,7 +158,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The OAuth token for a third-party source control system for an Amplify app. The OAuth    token is used to create a webhook and a read-only deploy key using SSH cloning. The OAuth    token is not stored.
@@ -180,7 +180,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "OauthToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub oauth_token: Option<String>,
+    pub oauth_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The platform for the Amplify app. For a static app, set the platform type to WEB.       For a dynamic server-side rendered (SSR) app, set the platform type to       WEB_COMPUTE. For an app requiring Amplify Hosting's original SSR support only, set the platform type to       WEB_DYNAMIC.
@@ -192,7 +192,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Platform")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform: Option<String>,
+    pub platform: Option<cfn_resources::StrVal>,
 
     ///
     /// The repository for an Amplify app.
@@ -206,7 +206,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Repository")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository: Option<String>,
+    pub repository: Option<cfn_resources::StrVal>,
 
     ///
     /// The tag for an Amplify app.
@@ -282,7 +282,7 @@ pub struct AutoBranchCreationConfig {
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_spec: Option<String>,
+    pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables automated branch creation for the Amplify app.
@@ -360,7 +360,7 @@ pub struct AutoBranchCreationConfig {
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework: Option<String>,
+    pub framework: Option<cfn_resources::StrVal>,
 
     ///
     /// If pull request previews are enabled, you can use this property to specify a dedicated    backend environment for your previews. For example, you could specify an environment named     prod, test, or dev that you initialized with the    Amplify CLI.
@@ -382,7 +382,7 @@ pub struct AutoBranchCreationConfig {
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pull_request_environment_name: Option<String>,
+    pub pull_request_environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Stage for the auto created branch.
@@ -394,7 +394,7 @@ pub struct AutoBranchCreationConfig {
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage: Option<String>,
+    pub stage: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AutoBranchCreationConfig {
@@ -442,7 +442,7 @@ pub struct BasicAuthConfig {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name for basic authorization.
@@ -456,7 +456,7 @@ pub struct BasicAuthConfig {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BasicAuthConfig {
@@ -490,7 +490,7 @@ pub struct CustomRule {
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition: Option<String>,
+    pub condition: Option<cfn_resources::StrVal>,
 
     ///
     /// The source pattern for a URL rewrite or redirect rule.
@@ -505,7 +505,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The status code for a URL rewrite or redirect rule.
@@ -523,7 +523,7 @@ pub struct CustomRule {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// The target pattern for a URL rewrite or redirect rule.
@@ -538,7 +538,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomRule {
@@ -571,7 +571,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The environment variable value.
@@ -586,7 +586,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EnvironmentVariable {
@@ -620,7 +620,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -630,7 +630,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -12,7 +12,7 @@ pub struct CfnDBProxyEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBProxyEndpointName")]
-    pub dbproxy_endpoint_name: String,
+    pub dbproxy_endpoint_name: cfn_resources::StrVal,
 
     ///
     /// The name of the DB proxy associated with the DB proxy endpoint that you create.
@@ -23,7 +23,7 @@ pub struct CfnDBProxyEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
+    pub dbproxy_name: cfn_resources::StrVal,
 
     ///
     /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
@@ -119,7 +119,7 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata assigned to a DB instance consisting of a key-value pair.
@@ -131,7 +131,7 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TagFormat {

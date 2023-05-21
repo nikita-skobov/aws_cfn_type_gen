@@ -65,7 +65,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "AllocatedStorage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allocated_storage: Option<String>,
+    pub allocated_storage: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether major version upgrades are allowed. Changing this       parameter doesn't result in an outage and the change is asynchronously applied as soon       as possible.
@@ -129,7 +129,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days for which automated backups are retained. Setting this parameter to       a positive number enables backups. Setting this parameter to 0 disables automated       backups.
@@ -169,7 +169,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "CACertificateIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cacertificate_identifier: Option<String>,
+    pub cacertificate_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The details of the DB instance's server certificate.
@@ -219,7 +219,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "CharacterSetName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub character_set_name: Option<String>,
+    pub character_set_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether to copy tags from the DB instance to snapshots of the DB instance. By default, tags are not copied.
@@ -253,7 +253,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "CustomIAMInstanceProfile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_iaminstance_profile: Option<String>,
+    pub custom_iaminstance_profile: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the DB cluster that the instance will belong to.
@@ -265,7 +265,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_identifier: Option<String>,
+    pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for the RDS for MySQL Multi-AZ DB cluster snapshot to restore from.
@@ -283,7 +283,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "DBClusterSnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_snapshot_identifier: Option<String>,
+    pub dbcluster_snapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The compute and memory capacity of the DB instance, for example,         db.m4.large. Not all DB instance classes are available in all AWS       Regions, or for all database engines.
@@ -297,7 +297,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "DBInstanceClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_class: Option<String>,
+    pub dbinstance_class: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the DB instance. If you specify a name, AWS CloudFormation converts it to       lowercase. If you don't specify a name, AWS CloudFormation generates a unique physical       ID and uses that ID for the DB instance. For more information, see Name       Type.
@@ -313,7 +313,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_identifier: Option<String>,
+    pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The meaning of this parameter differs according to the database engine you use.
@@ -369,7 +369,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbname: Option<String>,
+    pub dbname: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of an existing DB parameter group or a reference to an AWS::RDS::DBParameterGroup resource created in the template.
@@ -389,7 +389,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "DBParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbparameter_group_name: Option<String>,
+    pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the DB security groups to assign to the DB instance. The list can include       both the name of existing DB security groups or references to AWS::RDS::DBSecurityGroup       resources created in the template.
@@ -431,7 +431,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "DBSnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsnapshot_identifier: Option<String>,
+    pub dbsnapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A DB subnet group to associate with the DB instance. If you update this value, the new       subnet group must be a subnet group in a new VPC.
@@ -451,7 +451,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsubnet_group_name: Option<String>,
+    pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether to remove automated backups immediately after the DB       instance is deleted. This parameter isn't case-sensitive. The default is to remove       automated backups immediately after the DB instance is deleted.
@@ -497,7 +497,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify the name of the IAM role to be used when making API calls to the Directory Service.
@@ -515,7 +515,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "DomainIAMRoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_iamrole_name: Option<String>,
+    pub domain_iamrole_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The list of log types that need to be enabled for exporting to CloudWatch Logs. The values       in the list depend on the DB engine being used. For more information, see       Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Relational Database           Service User Guide.
@@ -615,7 +615,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "Engine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine: Option<String>,
+    pub engine: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the database engine to use.
@@ -655,7 +655,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of I/O operations per second (IOPS) that the database provisions. The value       must be equal to or greater than 1000.
@@ -695,7 +695,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// License model information for this DB instance.
@@ -713,7 +713,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "LicenseModel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub license_model: Option<String>,
+    pub license_model: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether to manage the master user password with AWS Secrets Manager.
@@ -767,7 +767,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_password: Option<String>,
+    pub master_user_password: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
@@ -829,7 +829,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "MasterUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_username: Option<String>,
+    pub master_username: Option<cfn_resources::StrVal>,
 
     ///
     /// The upper limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the DB instance.
@@ -883,7 +883,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "MonitoringRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub monitoring_role_arn: Option<String>,
+    pub monitoring_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the database instance is a Multi-AZ DB instance deployment.       You can't set the AvailabilityZone parameter if the MultiAZ       parameter is set to true.
@@ -915,7 +915,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "NcharCharacterSetName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nchar_character_set_name: Option<String>,
+    pub nchar_character_set_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The network type of the DB instance.
@@ -935,7 +935,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "NetworkType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_type: Option<String>,
+    pub network_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates that the DB instance should be associated with the specified option       group.
@@ -949,7 +949,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "OptionGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub option_group_name: Option<String>,
+    pub option_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS KMS key identifier for encryption of Performance Insights data.
@@ -967,7 +967,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "PerformanceInsightsKMSKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub performance_insights_kmskey_id: Option<String>,
+    pub performance_insights_kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days to retain Performance Insights data. The default is 7 days. The following values are valid:
@@ -1005,7 +1005,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 
     ///
     /// The daily time range during which automated backups are created if automated backups are enabled,       using the BackupRetentionPeriod parameter. For more information, see         Backup Window in the Amazon RDS User Guide.
@@ -1025,7 +1025,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_backup_window: Option<String>,
+    pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The weekly time range during which system maintenance can occur, in Universal       Coordinated Time (UTC).
@@ -1045,7 +1045,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
@@ -1149,7 +1149,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbcluster_identifier: Option<String>,
+    pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the replicated automated backups from which to restore, for example,       arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE.
@@ -1163,7 +1163,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBInstanceAutomatedBackupsArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbinstance_automated_backups_arn: Option<String>,
+    pub source_dbinstance_automated_backups_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If you want to create a read replica DB instance, specify the ID of the source DB       instance. Each DB instance can have a limited number of read replicas. For more       information, see Working with Read         Replicas in the Amazon RDS User Guide.
@@ -1181,7 +1181,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBInstanceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbinstance_identifier: Option<String>,
+    pub source_dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The resource ID of the source DB instance from which to restore.
@@ -1193,7 +1193,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDbiResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbi_resource_id: Option<String>,
+    pub source_dbi_resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the region that contains the source DB instance for the read replica.
@@ -1205,7 +1205,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "SourceRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_region: Option<String>,
+    pub source_region: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
@@ -1269,7 +1269,7 @@ pub struct CfnDBInstance {
     /// Update requires: Some interruptions
     #[serde(rename = "StorageType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub storage_type: Option<String>,
+    pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional array of key-value pairs to apply to this DB instance.
@@ -1293,7 +1293,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "Timezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone: Option<String>,
+    pub timezone: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that indicates whether the DB instance class of the DB instance uses its default       processor features.
@@ -1415,7 +1415,7 @@ pub struct CertificateDetails {
     /// Update requires: No interruption
     #[serde(rename = "CAIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub caidentifier: Option<String>,
+    pub caidentifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The expiration date of the DB instance’s server certificate.
@@ -1427,7 +1427,7 @@ pub struct CertificateDetails {
     /// Update requires: No interruption
     #[serde(rename = "ValidTill")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub valid_till: Option<String>,
+    pub valid_till: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CertificateDetails {
@@ -1456,7 +1456,7 @@ pub struct DBInstanceRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeatureName")]
-    pub feature_name: String,
+    pub feature_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB       instance.
@@ -1467,7 +1467,7 @@ pub struct DBInstanceRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DBInstanceRole {
@@ -1499,7 +1499,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
@@ -1511,7 +1511,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the port that the database engine is listening on.
@@ -1523,7 +1523,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Endpoint {
@@ -1555,7 +1555,7 @@ pub struct MasterUserSecret {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the secret.
@@ -1567,7 +1567,7 @@ pub struct MasterUserSecret {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MasterUserSecret {
@@ -1597,7 +1597,7 @@ pub struct ProcessorFeature {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of a processor feature name.
@@ -1609,7 +1609,7 @@ pub struct ProcessorFeature {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ProcessorFeature {
@@ -1643,7 +1643,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1653,7 +1653,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

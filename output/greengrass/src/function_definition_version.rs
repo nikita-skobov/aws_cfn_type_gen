@@ -22,7 +22,7 @@ pub struct CfnFunctionDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionDefinitionId")]
-    pub function_definition_id: String,
+    pub function_definition_id: cfn_resources::StrVal,
 
     ///
     /// The functions in this version.
@@ -182,7 +182,7 @@ pub struct Execution {
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub isolation_mode: Option<String>,
+    pub isolation_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The user and group permissions used to run the Lambda function. Typically, this is the ggc_user and ggc_group. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -231,7 +231,7 @@ pub struct Function {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionArn")]
-    pub function_arn: String,
+    pub function_arn: cfn_resources::StrVal,
 
     ///
     /// The group-specific settings of the Lambda function. These settings configure the function's behavior in the Greengrass group.
@@ -253,7 +253,7 @@ pub struct Function {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Function {
@@ -287,7 +287,7 @@ pub struct FunctionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "EncodingType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encoding_type: Option<String>,
+    pub encoding_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment configuration of the function.
@@ -311,7 +311,7 @@ pub struct FunctionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exec_args: Option<String>,
+    pub exec_args: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the function executable.
@@ -323,7 +323,7 @@ pub struct FunctionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Executable")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub executable: Option<String>,
+    pub executable: Option<cfn_resources::StrVal>,
 
     ///
     /// The memory size (in KB) required by the function.
@@ -397,7 +397,7 @@ pub struct ResourceAccessPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub permission: Option<String>,
+    pub permission: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the resource. This ID is assigned to the resource when you create the resource definition.
@@ -408,7 +408,7 @@ pub struct ResourceAccessPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResourceAccessPolicy {

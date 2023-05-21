@@ -10,7 +10,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// Supported only for WebSocket APIs. Specifies how to handle response payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
@@ -28,7 +28,7 @@ pub struct CfnIntegrationResponse {
     /// Update requires: No interruption
     #[serde(rename = "ContentHandlingStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_handling_strategy: Option<String>,
+    pub content_handling_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The integration ID.
@@ -39,7 +39,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntegrationId")]
-    pub integration_id: String,
+    pub integration_id: cfn_resources::StrVal,
 
     ///
     /// The integration response key.
@@ -50,7 +50,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationResponseKey")]
-    pub integration_response_key: String,
+    pub integration_response_key: cfn_resources::StrVal,
 
     ///
     /// A key-value map specifying response parameters that are passed to the method          response from the backend. The key is a method response header parameter name and          the mapped value is an integration response header value, a static value enclosed          within a pair of single quotes, or a JSON expression from the integration response          body. The mapping key must match the pattern of                method.response.header.{name}          , where name is a valid and unique header name. The mapped non-static value          must match the pattern of                integration.response.header.{name}          or integration.response.body.{JSON-expression}          , where             {name}          is a valid and unique response header name and             {JSON-expression}          is a valid JSON expression without the $ prefix.
@@ -86,7 +86,7 @@ pub struct CfnIntegrationResponse {
     /// Update requires: No interruption
     #[serde(rename = "TemplateSelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_selection_expression: Option<String>,
+    pub template_selection_expression: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnIntegrationResponse {

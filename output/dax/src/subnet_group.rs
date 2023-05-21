@@ -11,7 +11,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the subnet group.
@@ -23,7 +23,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_group_name: Option<String>,
+    pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of VPC subnet IDs for the subnet group.

@@ -12,7 +12,7 @@ pub struct CfnAccountAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountAlias")]
-    pub account_alias: String,
+    pub account_alias: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAccountAlias {

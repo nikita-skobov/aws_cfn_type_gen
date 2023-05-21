@@ -11,7 +11,7 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "ActiveDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub active_date: Option<String>,
+    pub active_date: Option<cfn_resources::StrVal>,
 
     ///
     /// The file name for the certificate.
@@ -28,7 +28,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Certificate")]
-    pub certificate: String,
+    pub certificate: cfn_resources::StrVal,
 
     ///
     /// The list of certificates that make up the chain for the certificate.
@@ -46,7 +46,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateChain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_chain: Option<String>,
+    pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
     /// The name or description that's used to identity the certificate.
@@ -64,7 +64,7 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional date that specifies when the certificate becomes inactive.
@@ -76,7 +76,7 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "InactiveDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub inactive_date: Option<String>,
+    pub inactive_date: Option<cfn_resources::StrVal>,
 
     ///
     /// The file that contains the private key for the certificate that's being imported.
@@ -88,7 +88,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "PrivateKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_key: Option<String>,
+    pub private_key: Option<cfn_resources::StrVal>,
 
     ///
     /// Key-value pairs that can be used to group and search for certificates.
@@ -147,52 +147,64 @@ impl cfn_resources::CfnResource for CfnCertificate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.certificate;
 
-        if the_val.len() > 16384 as _ {
-            return Err(format!(
-                "Max validation failed on field 'certificate'. {} is greater than 16384",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 16384 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'certificate'. {} is greater than 16384",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.certificate;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'certificate'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.certificate_chain {
-            if the_val.len() > 2097152 as _ {
-                return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 2097152", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'certificate'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.certificate_chain {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'certificate_chain'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2097152 as _ {
+                    return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 2097152", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.certificate_chain {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'certificate_chain'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -226,7 +238,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -236,7 +248,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -10,7 +10,7 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub app_id: Option<String>,
+    pub app_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -21,7 +21,7 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_name: Option<String>,
+    pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the theme.
@@ -32,7 +32,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Describes the properties that can be overriden to customize a theme.
@@ -109,7 +109,7 @@ pub struct ThemeValue {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ThemeValue {
@@ -139,7 +139,7 @@ pub struct ThemeValues {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the property.

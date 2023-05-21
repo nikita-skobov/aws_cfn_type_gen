@@ -31,7 +31,7 @@ pub struct CfnDatasetGroup {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the dataset group.
@@ -48,7 +48,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The ARN of the IAM role that has permissions to create the dataset    group.
@@ -64,7 +64,7 @@ pub struct CfnDatasetGroup {
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -95,38 +95,46 @@ impl cfn_resources::CfnResource for CfnDatasetGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_arn {
-            if the_val.len() > 2048 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'kms_key_arn'. {} is greater than 2048",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 

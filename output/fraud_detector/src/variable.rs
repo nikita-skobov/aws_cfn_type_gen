@@ -14,7 +14,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
-    pub data_source: String,
+    pub data_source: cfn_resources::StrVal,
 
     ///
     /// The data type of the variable.
@@ -27,7 +27,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
-    pub data_type: String,
+    pub data_type: cfn_resources::StrVal,
 
     ///
     /// The default value of the variable.
@@ -38,7 +38,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    pub default_value: String,
+    pub default_value: cfn_resources::StrVal,
 
     ///
     /// The description of the variable.
@@ -50,7 +50,7 @@ pub struct CfnVariable {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the variable.
@@ -63,7 +63,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -266,7 +266,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -276,7 +276,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

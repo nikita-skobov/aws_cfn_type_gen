@@ -11,7 +11,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "AdminUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub admin_user_password: Option<String>,
+    pub admin_user_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The username of the administrator for the primary database created in the namespace.
@@ -23,7 +23,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub admin_username: Option<String>,
+    pub admin_username: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the primary database created in the namespace.
@@ -35,7 +35,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "DbName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub db_name: Option<String>,
+    pub db_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
@@ -47,7 +47,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "DefaultIamRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_iam_role_arn: Option<String>,
+    pub default_iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the snapshot to be created before the namespace is deleted.
@@ -59,7 +59,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "FinalSnapshotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub final_snapshot_name: Option<String>,
+    pub final_snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
     /// How long to retain the final snapshot.
@@ -95,7 +95,7 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The types of logs the namespace can export.   Available export types are userlog, connectionlog, and useractivitylog.
@@ -118,7 +118,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceName")]
-    pub namespace_name: String,
+    pub namespace_name: cfn_resources::StrVal,
 
     ///
     /// The map of the key-value pairs used to tag the namespace.
@@ -160,7 +160,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub admin_username: Option<String>,
+    pub admin_username: Option<cfn_resources::StrVal>,
 
     ///
     /// The date of when the namespace was created.
@@ -172,7 +172,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "CreationDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub creation_date: Option<String>,
+    pub creation_date: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the first database created in the namespace.
@@ -184,7 +184,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "DbName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub db_name: Option<String>,
+    pub db_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
@@ -196,7 +196,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "DefaultIamRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_iam_role_arn: Option<String>,
+    pub default_iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of IAM roles to associate with the namespace.
@@ -220,7 +220,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.
@@ -244,7 +244,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "NamespaceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_arn: Option<String>,
+    pub namespace_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique identifier of a namespace.
@@ -256,7 +256,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "NamespaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_id: Option<String>,
+    pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the namespace.    Must be between 3-64 alphanumeric characters in lowercase,    and it cannot be a reserved word. A list of reserved words can be found    in Reserved Words in the Amazon Redshift Database Developer Guide.
@@ -268,7 +268,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "NamespaceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_name: Option<String>,
+    pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the namespace.
@@ -280,7 +280,7 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Namespace {
@@ -314,7 +314,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -324,7 +324,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

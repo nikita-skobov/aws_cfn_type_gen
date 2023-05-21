@@ -19,7 +19,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateAuthorityArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_authority_arn: Option<String>,
+    pub certificate_authority_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// You can opt out of certificate transparency logging by specifying the       DISABLED option. Opt in by specifying ENABLED.
@@ -55,7 +55,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// Domain information that domain name registrars use to verify your identity.
@@ -163,33 +163,41 @@ impl cfn_resources::CfnResource for CfnCertificate {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.certificate_authority_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.certificate_authority_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 20", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 20", s.len()));
+                }
             }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() > 253 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_name'. {} is greater than 253",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 253 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_name'. {} is greater than 253",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.domain_validation_options {
@@ -235,7 +243,7 @@ pub struct DomainValidationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The HostedZoneId option, which is available if you are using Route 53 as     your domain registrar, causes ACM to add your CNAME to the domain record. Your list of       DomainValidationOptions must contain one and only one of the     domain-validation options, and the HostedZoneId can be used only when       DNS is specified as your validation method.
@@ -255,7 +263,7 @@ pub struct DomainValidationOption {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The domain name to which you want ACM to send validation emails. This domain name is the     suffix of the email addresses that you want ACM to use. This must be the same as the       DomainName value or a superdomain of the DomainName value. For     example, if you request a certificate for testing.example.com, you can specify       example.com as this value. In that case, ACM sends domain validation emails     to the following five addresses:
@@ -275,7 +283,7 @@ pub struct DomainValidationOption {
     /// Update requires: No interruption
     #[serde(rename = "ValidationDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub validation_domain: Option<String>,
+    pub validation_domain: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DomainValidationOption {
@@ -290,37 +298,42 @@ impl cfn_resources::CfnResource for DomainValidationOption {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain_name;
 
-        if the_val.len() > 253 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_name'. {} is greater than 253",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 253 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_name'. {} is greater than 253",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.validation_domain {
-            if the_val.len() > 253 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'validation_domain'. {} is greater than 253",
-                    the_val.len()
+                    "Min validation failed on field 'domain_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.validation_domain {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'validation_domain'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!("Max validation failed on field 'validation_domain'. {} is greater than 253", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.validation_domain {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'validation_domain'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -345,7 +358,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -355,7 +368,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

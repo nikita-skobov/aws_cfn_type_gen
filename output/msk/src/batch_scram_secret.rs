@@ -9,7 +9,7 @@ pub struct CfnBatchScramSecret {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterArn")]
-    pub cluster_arn: String,
+    pub cluster_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///

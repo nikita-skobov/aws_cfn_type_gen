@@ -14,7 +14,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "BundleId")]
-    pub bundle_id: String,
+    pub bundle_id: cfn_resources::StrVal,
 
     ///
     /// The identifier of the AWS Directory Service directory for the WorkSpace.
@@ -31,7 +31,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DirectoryId")]
-    pub directory_id: String,
+    pub directory_id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the data stored on the root volume is encrypted.
@@ -70,7 +70,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
-    pub user_name: String,
+    pub user_name: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the data stored on the user volume is encrypted.
@@ -94,7 +94,7 @@ pub struct CfnWorkspace {
     /// Update requires: Updates are not supported.
     #[serde(rename = "VolumeEncryptionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_encryption_key: Option<String>,
+    pub volume_encryption_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The WorkSpace properties.
@@ -121,38 +121,46 @@ impl cfn_resources::CfnResource for CfnWorkspace {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.directory_id;
 
-        if the_val.len() > 65 as _ {
-            return Err(format!(
-                "Max validation failed on field 'directory_id'. {} is greater than 65",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 65 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'directory_id'. {} is greater than 65",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.directory_id;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'directory_id'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'directory_id'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.workspace_properties
@@ -180,7 +188,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -190,7 +198,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

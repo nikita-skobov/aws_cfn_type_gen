@@ -19,7 +19,7 @@ pub struct CfnServerlessCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///

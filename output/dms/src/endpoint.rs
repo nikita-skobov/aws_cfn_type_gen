@@ -13,7 +13,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the endpoint database. For a MySQL source or target endpoint, don't specify DatabaseName.       To migrate to a specific database, use this setting and targetDbType.
@@ -25,7 +25,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings in JSON format for the source and target DocumentDB endpoint.       For more information about other available settings, see               Using extra connections attributes with Amazon DocumentDB as a source and               Using Amazon DocumentDB as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
@@ -73,7 +73,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "EndpointIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_identifier: Option<String>,
+    pub endpoint_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of endpoint. Valid values are source and target.
@@ -99,7 +99,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineName")]
-    pub engine_name: String,
+    pub engine_name: cfn_resources::StrVal,
 
     ///
     /// Additional attributes associated with the connection. Each attribute is specified as a       name-value pair associated by an equal sign (=). Multiple attributes are separated by a       semicolon (;) with no additional white space. For information on the attributes available       for connecting your source or target endpoint, see                Working with AWS DMS Endpoints       in the AWS Database Migration Service User Guide.
@@ -111,7 +111,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ExtraConnectionAttributes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extra_connection_attributes: Option<String>,
+    pub extra_connection_attributes: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings in JSON format for the source GCP MySQL endpoint. These settings are much the same as       the settings for any MySQL-compatible endpoint. For more information, see               Extra connection attributes when using MySQL as a source for AWS DMS       in the AWS Database Migration Service User Guide.
@@ -175,7 +175,7 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings in JSON format for the source and target Microsoft SQL Server endpoint.       For information about other available settings, see               Extra connection attributes when using SQL Server as a source for AWS DMS and                Extra connection attributes when using SQL Server as a target for AWS DMS       in the AWS Database Migration Service User Guide.
@@ -247,7 +247,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The port used by the endpoint database.
@@ -313,7 +313,7 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_identifier: Option<String>,
+    pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings in JSON format for the source and target Amazon S3 endpoint. For more information about other available settings, see               Extra connection attributes when using Amazon S3 as a source for AWS DMS and               Extra connection attributes when using Amazon S3 as a target for AWS DMS       in theAWS Database Migration Service User Guide.
@@ -337,7 +337,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_name: Option<String>,
+    pub server_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Secure Sockets Layer (SSL) mode to use for the SSL connection. The default is none.
@@ -389,7 +389,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -575,7 +575,7 @@ pub struct DocDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the DocumentDB endpoint connection details.
@@ -587,7 +587,7 @@ pub struct DocDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -634,7 +634,7 @@ pub struct DynamoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DynamoDbSettings {
@@ -664,7 +664,7 @@ pub struct ElasticsearchSettings {
     /// Update requires: No interruption
     #[serde(rename = "EndpointUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_uri: Option<String>,
+    pub endpoint_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum number of seconds for which DMS retries failed API requests to the     OpenSearch cluster.
@@ -702,7 +702,7 @@ pub struct ElasticsearchSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ElasticsearchSettings {
@@ -734,7 +734,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub after_connect_script: Option<String>,
+    pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
     /// Adjusts the behavior of AWS DMS when migrating from an SQL Server source database      that is hosted as part of an Always On availability group cluster. If you need AWS DMS     to poll all the nodes in the Always On cluster for transaction backups, set this attribute to false.
@@ -758,7 +758,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies how often to check the binary log for new changes/events when the database is idle. The default is five seconds.
@@ -814,7 +814,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The port used by the endpoint database.
@@ -840,7 +840,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret     that contains the MySQL endpoint connection details.
@@ -852,7 +852,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Endpoint TCP port.
@@ -864,7 +864,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_name: Option<String>,
+    pub server_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the time zone for the source MySQL database. Don't enclose time zones in single quotation marks.
@@ -878,7 +878,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_timezone: Option<String>,
+    pub server_timezone: Option<cfn_resources::StrVal>,
 
     ///
     /// Endpoint connection user name.
@@ -890,7 +890,7 @@ pub struct GcpMySQLSettings {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GcpMySQLSettings {
@@ -920,7 +920,7 @@ pub struct IbmDb2Settings {
     /// Update requires: No interruption
     #[serde(rename = "CurrentLsn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub current_lsn: Option<String>,
+    pub current_lsn: Option<cfn_resources::StrVal>,
 
     ///
     /// Maximum number of bytes per read, as a NUMBER value.     The default is 64 KB.
@@ -946,7 +946,7 @@ pub struct IbmDb2Settings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the IBMDB2 endpoint connection details.
@@ -958,7 +958,7 @@ pub struct IbmDb2Settings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables ongoing replication (CDC) as a BOOLEAN value. The     default is true.
@@ -1000,7 +1000,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "Broker")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub broker: Option<String>,
+    pub broker: Option<cfn_resources::StrVal>,
 
     ///
     /// Shows detailed control information for table definition, column definition, and table       and column changes in the Kafka message output. The default is false.
@@ -1122,7 +1122,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SaslPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sasl_password: Option<String>,
+    pub sasl_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The secure user name you created when you first set up your Amazon MSK cluster to validate a       client identity and make an encrypted connection between server and client using SASL-SSL       authentication.
@@ -1134,7 +1134,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SaslUserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sasl_user_name: Option<String>,
+    pub sasl_user_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Set secure connection to a Kafka target endpoint using Transport Layer Security (TLS). Options include       ssl-encryption, ssl-authentication, and sasl-ssl.       sasl-ssl requires SaslUsername and SaslPassword.
@@ -1160,7 +1160,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssl_ca_certificate_arn: Option<String>,
+    pub ssl_ca_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the client certificate used to securely connect to a Kafka target endpoint.
@@ -1172,7 +1172,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SslClientCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssl_client_certificate_arn: Option<String>,
+    pub ssl_client_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) for the client private key used to securely connect to a Kafka target endpoint.
@@ -1184,7 +1184,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssl_client_key_arn: Option<String>,
+    pub ssl_client_key_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The password for the client private key used to securely connect to a Kafka target endpoint.
@@ -1196,7 +1196,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssl_client_key_password: Option<String>,
+    pub ssl_client_key_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The topic to which you migrate the data. If you don't specify a topic, AWS DMS       specifies "kafka-default-topic" as the migration topic.
@@ -1208,7 +1208,7 @@ pub struct KafkaSettings {
     /// Update requires: No interruption
     #[serde(rename = "Topic")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub topic: Option<String>,
+    pub topic: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1378,7 +1378,7 @@ pub struct KinesisSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) for the Amazon Kinesis Data Streams endpoint.
@@ -1390,7 +1390,7 @@ pub struct KinesisSettings {
     /// Update requires: No interruption
     #[serde(rename = "StreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_arn: Option<String>,
+    pub stream_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1449,7 +1449,7 @@ pub struct MicrosoftSqlServerSettings {
     /// Update requires: No interruption
     #[serde(rename = "ControlTablesFileGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub control_tables_file_group: Option<String>,
+    pub control_tables_file_group: Option<cfn_resources::StrVal>,
 
     ///
     /// Cleans and recreates table metadata information on the replication instance when      a mismatch occurs. An example is a situation where running an alter DDL statement on      a table might result in different information about the table cached in the replication      instance.
@@ -1489,7 +1489,7 @@ pub struct MicrosoftSqlServerSettings {
     /// Update requires: No interruption
     #[serde(rename = "SafeguardPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub safeguard_policy: Option<String>,
+    pub safeguard_policy: Option<cfn_resources::StrVal>,
 
     ///
     /// The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the       trusted entity and grants the required permissions to access the value in       SecretsManagerSecret. The role must allow the iam:PassRole action.       SecretsManagerSecret has the value of the AWS Secrets Manager       secret that allows access to the SQL Server endpoint.
@@ -1503,7 +1503,7 @@ pub struct MicrosoftSqlServerSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the MicrosoftSQLServer endpoint connection details.
@@ -1515,7 +1515,7 @@ pub struct MicrosoftSqlServerSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Use this to attribute to transfer data for full-load operations     using BCP. When the target table contains an identity     column that does not exist in the source table, you must     disable the use BCP for loading table option.
@@ -1587,7 +1587,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "AuthSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_source: Option<String>,
+    pub auth_source: Option<cfn_resources::StrVal>,
 
     ///
     /// The authentication type you use to access the MongoDB source endpoint.
@@ -1615,7 +1615,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the number of documents to preview to determine the document organization.       Use this setting when NestingLevel is set to "one".
@@ -1629,7 +1629,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "DocsToInvestigate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub docs_to_investigate: Option<String>,
+    pub docs_to_investigate: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the document ID. Use this setting when NestingLevel is set to "none".
@@ -1643,7 +1643,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "ExtractDocId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extract_doc_id: Option<String>,
+    pub extract_doc_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies either document or table mode.
@@ -1671,7 +1671,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The port value for the MongoDB source endpoint.
@@ -1697,7 +1697,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the MongoDB endpoint connection details.
@@ -1709,7 +1709,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the server on the MongoDB source endpoint.
@@ -1721,7 +1721,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_name: Option<String>,
+    pub server_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name you use to access the MongoDB source endpoint.
@@ -1733,7 +1733,7 @@ pub struct MongoDbSettings {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1820,7 +1820,7 @@ pub struct MySqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub after_connect_script: Option<String>,
+    pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
     /// Cleans and recreates table metadata information on the replication instance      when a mismatch occurs. For example, in a situation where running an alter DDL      on the table could result in different information about the table cached in the      replication instance.
@@ -1890,7 +1890,7 @@ pub struct MySqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret       that contains the MySQL endpoint connection details.
@@ -1902,7 +1902,7 @@ pub struct MySqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the time zone for the source MySQL database.
@@ -1918,7 +1918,7 @@ pub struct MySqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_timezone: Option<String>,
+    pub server_timezone: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies where to migrate source tables on the target, either     to a single database or multiple databases. If you specify    SPECIFIC_DATABASE, specify the database name using the DatabaseName    parameter of the Endpoint object.
@@ -1932,7 +1932,7 @@ pub struct MySqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "TargetDbType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_db_type: Option<String>,
+    pub target_db_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MySqlSettings {
@@ -2010,7 +2010,7 @@ pub struct NeptuneSettings {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketFolder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_folder: Option<String>,
+    pub s3_bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon S3 bucket where AWS DMS can temporarily store migrated graph data     in .csv files before bulk-loading it to the Neptune target database. AWS DMS maps the SQL     source data to graph data before storing it in these .csv files.
@@ -2022,7 +2022,7 @@ pub struct NeptuneSettings {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_name: Option<String>,
+    pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the service role that you created for the Neptune     target endpoint. The role must allow the iam:PassRole action.
@@ -2036,7 +2036,7 @@ pub struct NeptuneSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NeptuneSettings {
@@ -2142,7 +2142,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "AsmPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub asm_password: Option<String>,
+    pub asm_password: Option<cfn_resources::StrVal>,
 
     ///
     /// For an Oracle source endpoint, your ASM server address. You can set this value from the       asm_server value. You set asm_server as part of the extra     connection attribute string to access an Oracle server with Binary Reader that uses ASM.     For more information, see Configuration for change data capture (CDC) on an Oracle source       database.
@@ -2154,7 +2154,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "AsmServer")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub asm_server: Option<String>,
+    pub asm_server: Option<cfn_resources::StrVal>,
 
     ///
     /// For an Oracle source endpoint, your ASM user name. You can set this value from the       asm_user value. You set asm_user as part of the extra     connection attribute string to access an Oracle server with Binary Reader that uses ASM.     For more information, see Configuration for change data capture (CDC) on an Oracle source       database.
@@ -2166,7 +2166,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "AsmUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub asm_user: Option<String>,
+    pub asm_user: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the length of a character column is in     bytes or in characters. To indicate that the character column     length is in characters, set this attribute to CHAR. Otherwise,     the character column length is in bytes.
@@ -2280,7 +2280,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "OraclePathPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub oracle_path_prefix: Option<String>,
+    pub oracle_path_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Set this attribute to change the number of threads that DMS configures to perform a     change data capture (CDC) load using Oracle Automatic Storage Management (ASM). You can     specify an integer value between 2 (the default) and 8 (the maximum). Use this attribute     together with the readAheadBlocks attribute.
@@ -2356,7 +2356,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Required only if your Oracle endpoint uses Advanced Storage Manager (ASM). The full ARN       of the IAM role that specifies AWS DMS as the trusted entity and grants the required       permissions to access the SecretsManagerOracleAsmSecret. This       SecretsManagerOracleAsmSecret has the secret value that allows access to       the Oracle ASM of the endpoint.
@@ -2370,7 +2370,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_oracle_asm_access_role_arn: Option<String>,
+    pub secrets_manager_oracle_asm_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Required only if your Oracle endpoint uses Advanced Storage Manager (ASM). The full ARN, partial ARN, or display name of the       SecretsManagerOracleAsmSecret that contains the Oracle ASM connection details for the Oracle endpoint.
@@ -2382,7 +2382,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_oracle_asm_secret_id: Option<String>,
+    pub secrets_manager_oracle_asm_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains       the Oracle endpoint connection details.
@@ -2394,7 +2394,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// For an Oracle source endpoint, the transparent data encryption (TDE) password required     by AWM DMS to access Oracle redo logs encrypted by TDE using Binary Reader. It is also the                TDE_Password       part of the comma-separated value you     set to the Password request parameter when you create the endpoint. The       SecurityDbEncryptian setting is related to this       SecurityDbEncryptionName setting. For more information, see Supported encryption methods for using Oracle as a source for AWS DMS in the         AWS Database Migration Service User Guide.
@@ -2406,7 +2406,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryption")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_db_encryption: Option<String>,
+    pub security_db_encryption: Option<cfn_resources::StrVal>,
 
     ///
     /// For an Oracle source endpoint, the name of a key used for the transparent data     encryption (TDE) of the columns and tablespaces in an Oracle source database that is     encrypted using TDE. The key value is the value of the SecurityDbEncryption     setting. For more information on setting the key name value of       SecurityDbEncryptionName, see the information and example for setting the       securityDbEncryptionName extra connection attribute in Supported encryption methods for using Oracle as a source for AWS DMS in the         AWS Database Migration Service User     Guide.
@@ -2418,7 +2418,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryptionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_db_encryption_name: Option<String>,
+    pub security_db_encryption_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Use this attribute to convert SDO_GEOMETRY to      GEOJSON format. By default, DMS calls the      SDO2GEOJSON custom function if present and accessible.      Or you can create your own custom function that mimics the operation of      SDOGEOJSON and set      SpatialDataOptionToGeoJsonFunctionName to call it instead.
@@ -2430,7 +2430,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "SpatialDataOptionToGeoJsonFunctionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spatial_data_option_to_geo_json_function_name: Option<String>,
+    pub spatial_data_option_to_geo_json_function_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Use this attribute to specify a time in minutes for the delay in standby sync. If the     source is an Oracle Active Data Guard standby database, use this attribute to specify the     time lag between primary and standby databases.
@@ -2504,7 +2504,7 @@ pub struct OracleSettings {
     /// Update requires: No interruption
     #[serde(rename = "UsePathPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub use_path_prefix: Option<String>,
+    pub use_path_prefix: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2557,7 +2557,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub after_connect_script: Option<String>,
+    pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
     /// To capture DDL events, AWS DMS creates various artifacts in     the PostgreSQL database when the task starts. You can later     remove these artifacts.
@@ -2585,7 +2585,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "DdlArtifactsSchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ddl_artifacts_schema: Option<String>,
+    pub ddl_artifacts_schema: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the client statement timeout for the PostgreSQL     instance, in seconds. The default value is 60 seconds.
@@ -2649,7 +2649,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatSchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub heartbeat_schema: Option<String>,
+    pub heartbeat_schema: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -2686,7 +2686,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "PluginName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub plugin_name: Option<String>,
+    pub plugin_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the       trusted entity and grants the required permissions to access the value in       SecretsManagerSecret. The role must allow the iam:PassRole action.       SecretsManagerSecret has the value of the AWS Secrets Manager secret       that allows access to the PostgreSQL endpoint.
@@ -2700,7 +2700,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the PostgreSQL endpoint connection details.
@@ -2712,7 +2712,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the name of a previously created logical replication slot     for a change data capture (CDC) load of the PostgreSQL source instance.
@@ -2728,7 +2728,7 @@ pub struct PostgreSqlSettings {
     /// Update requires: No interruption
     #[serde(rename = "SlotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub slot_name: Option<String>,
+    pub slot_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PostgreSqlSettings {
@@ -2758,7 +2758,7 @@ pub struct RedisSettings {
     /// Update requires: No interruption
     #[serde(rename = "AuthPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_password: Option<String>,
+    pub auth_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of authentication to perform when connecting to a Redis target. Options include       none, auth-token, and auth-role. The       auth-token option requires an AuthPassword value to be provided. The     auth-role option requires AuthUserName and AuthPassword values     to be provided.
@@ -2784,7 +2784,7 @@ pub struct RedisSettings {
     /// Update requires: No interruption
     #[serde(rename = "AuthUserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_user_name: Option<String>,
+    pub auth_user_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Transmission Control Protocol (TCP) port for the endpoint.
@@ -2808,7 +2808,7 @@ pub struct RedisSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_name: Option<String>,
+    pub server_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) for the certificate authority (CA) that DMS uses to     connect to your Redis target endpoint.
@@ -2820,7 +2820,7 @@ pub struct RedisSettings {
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssl_ca_certificate_arn: Option<String>,
+    pub ssl_ca_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The connection to a Redis target endpoint using Transport Layer Security (TLS). Valid     values include plaintext and ssl-encryption. The default is       ssl-encryption. The ssl-encryption option makes an encrypted     connection. Optionally, you can identify an Amazon Resource Name (ARN) for an SSL certificate authority (CA)      using the SslCaCertificateArn setting. If an ARN isn't given for a CA, DMS     uses the Amazon root CA.
@@ -2918,7 +2918,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub after_connect_script: Option<String>,
+    pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
     /// An S3 folder where the comma-separated-value (.csv) files are stored before being      uploaded to the target Redshift cluster.
@@ -2934,7 +2934,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_folder: Option<String>,
+    pub bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the intermediate S3 bucket used to store .csv files before uploading data to Redshift.
@@ -2946,7 +2946,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// If Amazon Redshift is configured to support case sensitive schema names, set       CaseSensitiveNames to true. The default is     false.
@@ -2996,7 +2996,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "DateFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub date_format: Option<String>,
+    pub date_format: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that specifies whether AWS DMS should migrate empty CHAR and VARCHAR fields as     NULL. A value of true sets empty CHAR and VARCHAR fields to null. The default     is false.
@@ -3113,7 +3113,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "ReplaceChars")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replace_chars: Option<String>,
+    pub replace_chars: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of characters that you want to replace. Use with     ReplaceChars.
@@ -3125,7 +3125,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "ReplaceInvalidChars")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replace_invalid_chars: Option<String>,
+    pub replace_invalid_chars: Option<cfn_resources::StrVal>,
 
     ///
     /// The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the       trusted entity and grants the required permissions to access the value in       SecretsManagerSecret. The role must allow the iam:PassRole action.       SecretsManagerSecret has the value of the AWS Secrets Manager secret       that allows access to the Amazon Redshift endpoint.
@@ -3139,7 +3139,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the Amazon Redshift endpoint connection details.
@@ -3151,7 +3151,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS KMS key ID. If you are using SSE_KMS for the EncryptionMode,     provide this key ID. The key that you use needs an attached policy that enables IAM user     permissions and allows use of the key.
@@ -3163,7 +3163,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_side_encryption_kms_key_id: Option<String>,
+    pub server_side_encryption_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that has access to the Amazon Redshift     service. The role must allow the iam:PassRole action.
@@ -3175,7 +3175,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The time format that you want to use. Valid values are auto     (case-sensitive), 'timeformat_string', 'epochsecs', or     'epochmillisecs'. It defaults to 10. Using auto recognizes     most strings, even some that aren't supported when you use a time format string.
@@ -3189,7 +3189,7 @@ pub struct RedshiftSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimeFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_format: Option<String>,
+    pub time_format: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that specifies to remove the trailing white space characters from a VARCHAR     string. This parameter applies only to columns with a VARCHAR data type. Choose       true to remove unneeded white space. The default is     false.
@@ -3286,7 +3286,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_folder: Option<String>,
+    pub bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the S3 bucket.
@@ -3298,7 +3298,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that enables AWS DMS to specify a predefined (canned) access control list (ACL) for       objects created in an Amazon S3 bucket as .csv or .parquet files. For more information       about Amazon S3 canned ACLs, see                Canned ACL       in the Amazon S3 Developer Guide.
@@ -3398,7 +3398,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CdcPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cdc_path: Option<String>,
+    pub cdc_path: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional parameter. When set to GZIP it enables the service to compress the target files.       To allow the service to write the target files uncompressed, either set this parameter to NONE (the default) or don't specify       the parameter at all. This parameter applies to both .csv and .parquet file formats.
@@ -3424,7 +3424,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CsvDelimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub csv_delimiter: Option<String>,
+    pub csv_delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// This setting only applies if your Amazon S3 output files during a change data capture       (CDC) load are written in .csv format. If       UseCsvNoSupValue       is set to true, specify a string value that you want AWS DMS to use for all columns not included       in the supplemental log. If you do not specify a string value, AWS DMS uses the null value for       these columns regardless of the UseCsvNoSupValue setting.
@@ -3438,7 +3438,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CsvNoSupValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub csv_no_sup_value: Option<String>,
+    pub csv_no_sup_value: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional parameter that specifies how AWS DMS treats null     values. While handling the null value, you can use this     parameter to pass a user-defined string as null when writing to     the target. For example, when target columns are not nullable,     you can use this option to differentiate between the empty     string value and the null value. So, if you set this parameter     value to the empty string ("" or ''), AWS DMS treats the empty     string as the null value instead of NULL.
@@ -3452,7 +3452,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CsvNullValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub csv_null_value: Option<String>,
+    pub csv_null_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The delimiter used to separate rows in the .csv file for both source and target.
@@ -3466,7 +3466,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CsvRowDelimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub csv_row_delimiter: Option<String>,
+    pub csv_row_delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// The format of the data that you want to use for output. You can choose one of the     following:
@@ -3548,7 +3548,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionTimezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub date_partition_timezone: Option<String>,
+    pub date_partition_timezone: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum size of an encoded dictionary page of a column. If the dictionary page     exceeds this, this column is stored using an encoding type of PLAIN. This     parameter defaults to 1024 * 1024 bytes (1 MiB), the maximum size of a dictionary page     before it reverts to PLAIN encoding. This size is used for      .parquet file format only.
@@ -3622,7 +3622,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "ExternalTableDefinition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub external_table_definition: Option<String>,
+    pub external_table_definition: Option<cfn_resources::StrVal>,
 
     ///
     /// When this value is set to 1, AWS DMS ignores the first row header in a .csv file. A value     of 1 turns on the feature; a value of 0 turns off the feature.
@@ -3760,7 +3760,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_side_encryption_kms_key_id: Option<String>,
+    pub server_side_encryption_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A required parameter that specifies the Amazon Resource Name (ARN) used by the service to access the IAM role.       The role must allow the iam:PassRole action. It enables AWS DMS to read and write objects from an S3 bucket.
@@ -3772,7 +3772,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_role_arn: Option<String>,
+    pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that when nonblank causes AWS DMS to add a column with timestamp information to     the endpoint data for an Amazon S3 target.
@@ -3796,7 +3796,7 @@ pub struct S3Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimestampColumnName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp_column_name: Option<String>,
+    pub timestamp_column_name: Option<cfn_resources::StrVal>,
 
     ///
     /// This setting applies if the S3 output files during a change data capture (CDC) load are       written in .csv format. If this setting is set to true for columns not included in the       supplemental log, AWS DMS uses the value specified by       CsvNoSupValue.       If this setting isn't set or is set to false, AWS DMS uses the null value for these columns.
@@ -4040,7 +4040,7 @@ pub struct SybaseSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_access_role_arn: Option<String>,
+    pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The full ARN, partial ARN, or display name of the SecretsManagerSecret that contains the SAP SAE endpoint connection details.
@@ -4052,7 +4052,7 @@ pub struct SybaseSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secrets_manager_secret_id: Option<String>,
+    pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SybaseSettings {
@@ -4086,7 +4086,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -4096,7 +4096,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

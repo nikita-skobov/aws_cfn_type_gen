@@ -11,7 +11,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "AggregationField")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aggregation_field: Option<String>,
+    pub aggregation_field: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the aggregation query.
@@ -35,7 +35,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the index to search.
@@ -47,7 +47,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_name: Option<String>,
+    pub index_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the fleet metric to create.
@@ -58,7 +58,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.
@@ -82,7 +82,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_string: Option<String>,
+    pub query_string: Option<cfn_resources::StrVal>,
 
     ///
     /// The query version.
@@ -94,7 +94,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "QueryVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_version: Option<String>,
+    pub query_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata which can be used to manage the fleet metric.
@@ -118,7 +118,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit: Option<String>,
+    pub unit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnFleetMetric {
@@ -151,7 +151,7 @@ pub struct AggregationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A list of the values of aggregation types.
@@ -196,7 +196,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -206,7 +206,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

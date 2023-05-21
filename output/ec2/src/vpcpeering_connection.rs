@@ -19,7 +19,7 @@ pub struct CfnVPCPeeringConnection {
     /// Update requires: Replacement
     #[serde(rename = "PeerOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_owner_id: Option<String>,
+    pub peer_owner_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Region code for the accepter VPC, if the accepter VPC is located in a Region       other than the Region in which you make the request.
@@ -33,7 +33,7 @@ pub struct CfnVPCPeeringConnection {
     /// Update requires: Replacement
     #[serde(rename = "PeerRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_region: Option<String>,
+    pub peer_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in     another AWS account.
@@ -47,7 +47,7 @@ pub struct CfnVPCPeeringConnection {
     /// Update requires: Replacement
     #[serde(rename = "PeerRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub peer_role_arn: Option<String>,
+    pub peer_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the VPC with which you are creating the VPC peering connection. You must 			specify this parameter in the request.
@@ -58,7 +58,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcId")]
-    pub peer_vpc_id: String,
+    pub peer_vpc_id: cfn_resources::StrVal,
 
     ///
     /// Any tags assigned to the resource.
@@ -81,7 +81,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPCPeeringConnection {
@@ -115,7 +115,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -125,7 +125,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

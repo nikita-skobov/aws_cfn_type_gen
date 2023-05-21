@@ -17,7 +17,7 @@ pub struct CfnLocationS3 {
     /// Update requires: Replacement
     #[serde(rename = "S3BucketArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_arn: Option<String>,
+    pub s3_bucket_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that is used     to access an Amazon S3 bucket.
@@ -62,7 +62,7 @@ pub struct CfnLocationS3 {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value pair that represents the tag that you want to add to the location. The    value can be an empty string. We recommend using tags to name your resources.
@@ -131,22 +131,26 @@ impl cfn_resources::CfnResource for CfnLocationS3 {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.s3_bucket_arn {
-            if the_val.len() > 156 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_bucket_arn'. {} is greater than 156",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 156 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_bucket_arn'. {} is greater than 156",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.s3_config.validate()?;
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -181,7 +185,7 @@ pub struct S3Config {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketAccessRoleArn")]
-    pub bucket_access_role_arn: String,
+    pub bucket_access_role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Config {
@@ -196,11 +200,10 @@ impl cfn_resources::CfnResource for S3Config {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_access_role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_access_role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'bucket_access_role_arn'. {} is greater than 2048", s.len()));
+            }
         }
 
         Ok(())
@@ -224,7 +227,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -234,7 +237,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

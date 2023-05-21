@@ -15,7 +15,7 @@ pub struct CfnThingGroup {
     /// Update requires: Replacement
     #[serde(rename = "ParentGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parent_group_name: Option<String>,
+    pub parent_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The dynamic thing group search query string.
@@ -29,7 +29,7 @@ pub struct CfnThingGroup {
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_string: Option<String>,
+    pub query_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Metadata which can be used to manage the thing group or dynamic thing group.
@@ -53,7 +53,7 @@ pub struct CfnThingGroup {
     /// Update requires: Replacement
     #[serde(rename = "ThingGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub thing_group_name: Option<String>,
+    pub thing_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Thing group properties.
@@ -135,7 +135,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -145,7 +145,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -187,7 +187,7 @@ pub struct ThingGroupProperties {
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub thing_group_description: Option<String>,
+    pub thing_group_description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ThingGroupProperties {

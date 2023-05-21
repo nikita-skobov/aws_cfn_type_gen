@@ -18,7 +18,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupDescription")]
-    pub group_description: String,
+    pub group_description: cfn_resources::StrVal,
 
     ///
     /// The name of the security group.
@@ -34,7 +34,7 @@ pub struct CfnSecurityGroup {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The outbound rules associated with the security group. There is a short     interruption during which you cannot connect to the security group.
@@ -82,7 +82,7 @@ pub struct CfnSecurityGroup {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnSecurityGroup {
@@ -132,7 +132,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ip: Option<String>,
+    pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 address range, in CIDR format.
@@ -148,7 +148,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ipv6: Option<String>,
+    pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// A description for the security group rule.
@@ -162,7 +162,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The prefix list IDs for the destination AWS service.     This is the AWS service that you want to access through a VPC endpoint     from instances associated with the security group.
@@ -176,7 +176,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "DestinationPrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_prefix_list_id: Option<String>,
+    pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the destination VPC security group.
@@ -190,7 +190,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "DestinationSecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_security_group_id: Option<String>,
+    pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If the protocol is TCP or UDP, this is the start of the port range.     If the protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all ICMP/ICMPv6 types.     If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
@@ -215,7 +215,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpProtocol")]
-    pub ip_protocol: String,
+    pub ip_protocol: cfn_resources::StrVal,
 
     ///
     /// If the protocol is TCP or UDP, this is the end of the port range.      If the protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all ICMP/ICMPv6 codes.      If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
@@ -277,7 +277,7 @@ pub struct Ingress {
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ip: Option<String>,
+    pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv6 address range, in CIDR format.
@@ -293,7 +293,7 @@ pub struct Ingress {
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr_ipv6: Option<String>,
+    pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
     /// A description for the security group rule.
@@ -307,7 +307,7 @@ pub struct Ingress {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// If the protocol is TCP or UDP, this is the start of the port range.     If the protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all ICMP/ICMPv6 types.     If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
@@ -332,7 +332,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpProtocol")]
-    pub ip_protocol: String,
+    pub ip_protocol: cfn_resources::StrVal,
 
     ///
     /// The ID of a prefix list.
@@ -344,22 +344,22 @@ pub struct Ingress {
     /// Update requires: No interruption
     #[serde(rename = "SourcePrefixListId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_prefix_list_id: Option<String>,
+    pub source_prefix_list_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupid
     #[serde(rename = "SourceSecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_id: Option<String>,
+    pub source_security_group_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupname
     #[serde(rename = "SourceSecurityGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_name: Option<String>,
+    pub source_security_group_name: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupownerid
     #[serde(rename = "SourceSecurityGroupOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_security_group_owner_id: Option<String>,
+    pub source_security_group_owner_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If the protocol is TCP or UDP, this is the end of the port range.      If the protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all ICMP/ICMPv6 codes.      If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
@@ -405,7 +405,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -415,7 +415,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

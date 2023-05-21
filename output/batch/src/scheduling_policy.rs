@@ -23,7 +23,7 @@ pub struct CfnSchedulingPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags that you apply to the scheduling policy to help you categorize and organize your resources. Each tag  consists of a key and an optional value. For more information, see Tagging AWS Resources in         AWS General   Reference.
@@ -135,7 +135,7 @@ pub struct ShareAttributes {
     /// Update requires: No interruption
     #[serde(rename = "ShareIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub share_identifier: Option<String>,
+    pub share_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The weight factor for the fair share identifier. The default value is 1.0. A lower value has  a higher priority for compute resources. For example, jobs that use a share identifier with a  weight factor of 0.125 (1/8) get 8 times the compute resources of jobs that use a share  identifier with a weight factor of 1.

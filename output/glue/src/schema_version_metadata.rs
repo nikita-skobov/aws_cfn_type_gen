@@ -10,7 +10,7 @@ pub struct CfnSchemaVersionMetadata {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The version number of the schema.
@@ -21,7 +21,7 @@ pub struct CfnSchemaVersionMetadata {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaVersionId")]
-    pub schema_version_id: String,
+    pub schema_version_id: cfn_resources::StrVal,
 
     ///
     /// A metadata key's corresponding value.
@@ -32,7 +32,7 @@ pub struct CfnSchemaVersionMetadata {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSchemaVersionMetadata {

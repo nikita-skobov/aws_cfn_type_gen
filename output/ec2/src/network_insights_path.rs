@@ -13,7 +13,7 @@ pub struct CfnNetworkInsightsPath {
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination: Option<String>,
+    pub destination: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP address of the destination.
@@ -31,7 +31,7 @@ pub struct CfnNetworkInsightsPath {
     /// Update requires: Replacement
     #[serde(rename = "DestinationIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_ip: Option<String>,
+    pub destination_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination port.
@@ -95,7 +95,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The IP address of the source.
@@ -113,7 +113,7 @@ pub struct CfnNetworkInsightsPath {
     /// Update requires: Replacement
     #[serde(rename = "SourceIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_ip: Option<String>,
+    pub source_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to add to the path.
@@ -156,20 +156,24 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.destination_ip {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'destination_ip'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'destination_ip'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.destination_ip {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'destination_ip'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'destination_ip'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -200,20 +204,24 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.source_ip {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_ip'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_ip'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_ip {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_ip'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_ip'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -326,7 +334,7 @@ pub struct PathFilter {
     /// Update requires: Replacement
     #[serde(rename = "DestinationAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_address: Option<String>,
+    pub destination_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination port range.
@@ -356,7 +364,7 @@ pub struct PathFilter {
     /// Update requires: Replacement
     #[serde(rename = "SourceAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_address: Option<String>,
+    pub source_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The source port range.
@@ -382,20 +390,21 @@ impl cfn_resources::CfnResource for PathFilter {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.destination_address {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'destination_address'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!("Max validation failed on field 'destination_address'. {} is greater than 15", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.destination_address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'destination_address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'destination_address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -404,20 +413,24 @@ impl cfn_resources::CfnResource for PathFilter {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.source_address {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_address'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_address'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -446,7 +459,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -456,7 +469,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

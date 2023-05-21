@@ -21,7 +21,7 @@ pub struct CfnResourceSpecificLogging {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetName")]
-    pub target_name: String,
+    pub target_name: cfn_resources::StrVal,
 
     ///
     /// The target type. Valid Values: DEFAULT | THING_GROUP

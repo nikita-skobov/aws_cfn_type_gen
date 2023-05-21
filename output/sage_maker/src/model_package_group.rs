@@ -15,7 +15,7 @@ pub struct CfnModelPackageGroup {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_group_description: Option<String>,
+    pub model_package_group_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model group.
@@ -32,7 +32,7 @@ pub struct CfnModelPackageGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupName")]
-    pub model_package_group_name: String,
+    pub model_package_group_name: cfn_resources::StrVal,
 
     ///
     /// A resouce policy to control access to a model group. For information about resoure       policies, see Identity-based         policies and resource-based policies in the AWS         Identity and Access Management User Guide..
@@ -74,27 +74,30 @@ impl cfn_resources::CfnResource for CfnModelPackageGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.model_package_group_description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'model_package_group_description'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'model_package_group_description'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         let the_val = &self.model_package_group_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'model_package_group_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'model_package_group_name'. {} is greater than 63", s.len()));
+            }
         }
 
         let the_val = &self.model_package_group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'model_package_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'model_package_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -127,7 +130,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -137,7 +140,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -17,7 +17,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub application_name: Option<String>,
+    pub application_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Your description of the application.
@@ -31,7 +31,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies an application resource lifecycle configuration to prevent your application    from accumulating too many versions.
@@ -57,29 +57,35 @@ impl cfn_resources::CfnResource for CfnApplication {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.application_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'application_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'application_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.application_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'application_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'application_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -108,7 +114,7 @@ pub struct ApplicationResourceLifecycleConfig {
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_role: Option<String>,
+    pub service_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines lifecycle settings for application versions.

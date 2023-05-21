@@ -14,7 +14,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppId")]
-    pub app_id: String,
+    pub app_id: cfn_resources::StrVal,
 
     ///
     /// The basic authorization credentials for a branch of an Amplify app. You must       base64-encode the authorization credentials and provide them in the format         user:password.
@@ -41,7 +41,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BranchName")]
-    pub branch_name: String,
+    pub branch_name: cfn_resources::StrVal,
 
     ///
     /// The build specification (build spec) for the branch.
@@ -57,7 +57,7 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub build_spec: Option<String>,
+    pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
     /// The description for the branch that is part of an Amplify app.
@@ -73,7 +73,7 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables auto building for the branch.
@@ -139,7 +139,7 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framework: Option<String>,
+    pub framework: Option<cfn_resources::StrVal>,
 
     ///
     /// If pull request previews are enabled for this branch, you can use this property to    specify a dedicated backend environment for your previews. For example, you could specify an    environment named prod, test, or dev that you    initialized with the Amplify CLI and mapped to this branch.
@@ -161,7 +161,7 @@ pub struct CfnBranch {
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pull_request_environment_name: Option<String>,
+    pub pull_request_environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the current stage for the branch.
@@ -263,7 +263,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The user name for basic authorization.
@@ -276,7 +276,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BasicAuthConfig {
@@ -309,7 +309,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The environment variable value.
@@ -324,7 +324,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EnvironmentVariable {
@@ -358,7 +358,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -368,7 +368,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

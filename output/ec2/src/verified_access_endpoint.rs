@@ -10,7 +10,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationDomain")]
-    pub application_domain: String,
+    pub application_domain: cfn_resources::StrVal,
 
     ///
     /// The type of attachment used to provide connectivity between the AWS Verified Access endpoint and the     application.
@@ -35,7 +35,7 @@ pub struct CfnVerifiedAccessEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of a public TLS/SSL certificate imported into or created with ACM.
@@ -46,7 +46,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainCertificateArn")]
-    pub domain_certificate_arn: String,
+    pub domain_certificate_arn: cfn_resources::StrVal,
 
     ///
     /// A custom identifier that is prepended to the DNS name that is generated for the     endpoint.
@@ -57,7 +57,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointDomainPrefix")]
-    pub endpoint_domain_prefix: String,
+    pub endpoint_domain_prefix: cfn_resources::StrVal,
 
     ///
     /// The type of AWS Verified Access endpoint. Incoming application requests will be sent to an IP     address, load balancer or a network interface depending on the endpoint type     specified.
@@ -106,7 +106,7 @@ pub struct CfnVerifiedAccessEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_document: Option<String>,
+    pub policy_document: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the Verified Access policy.
@@ -153,7 +153,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessGroupId")]
-    pub verified_access_group_id: String,
+    pub verified_access_group_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -221,7 +221,7 @@ pub struct LoadBalancerOptions {
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub load_balancer_arn: Option<String>,
+    pub load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP port number.
@@ -328,7 +328,7 @@ pub struct NetworkInterfaceOptions {
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP port number.
@@ -427,7 +427,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -437,7 +437,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -14,7 +14,7 @@ pub struct CfnFlowVpcInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
+    pub flow_arn: cfn_resources::StrVal,
 
     ///
     /// The name of the VPC Interface. This value must be unique within the current        flow.
@@ -25,7 +25,7 @@ pub struct CfnFlowVpcInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the role that you created when you set up        MediaConnect as a trusted service.
@@ -36,7 +36,7 @@ pub struct CfnFlowVpcInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The VPC security groups that you want MediaConnect to use for your VPC        configuration. You must include at least one security group in the request.
@@ -62,7 +62,7 @@ pub struct CfnFlowVpcInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnFlowVpcInterface {

@@ -25,7 +25,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_path: Option<String>,
+    pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that the load balancer uses to direct traffic to your Lightsail     instances. For HTTP traffic, specify port 80. For HTTPS traffic, specify port     443.
@@ -65,7 +65,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "LoadBalancerName")]
-    pub load_balancer_name: String,
+    pub load_balancer_name: cfn_resources::StrVal,
 
     ///
     /// A Boolean value indicating whether session stickiness is enabled.
@@ -91,7 +91,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessLBCookieDurationSeconds")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub session_stickiness_lbcookie_duration_seconds: Option<String>,
+    pub session_stickiness_lbcookie_duration_seconds: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -121,7 +121,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: No interruption
     #[serde(rename = "TlsPolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tls_policy_name: Option<String>,
+    pub tls_policy_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -172,7 +172,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -182,7 +182,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

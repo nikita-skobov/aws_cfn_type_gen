@@ -10,7 +10,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    pub availability_zone: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides 			dedicated throughput to Amazon EBS and an optimized configuration stack to provide 			optimal I/O performance. This optimization isn't available with all instance types. 			Additional usage charges apply when using an EBS- optimized instance.
@@ -38,7 +38,7 @@ pub struct CfnCapacityReservation {
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<String>,
+    pub end_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end 			types:
@@ -121,7 +121,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.
@@ -135,7 +135,7 @@ pub struct CfnCapacityReservation {
     /// Update requires: Replacement
     #[serde(rename = "OutPostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub out_post_arn: Option<String>,
+    pub out_post_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the cluster placement group in which 			to create the Capacity Reservation. For more information, see 			 				Capacity Reservations for cluster placement groups in the 			Amazon EC2 User Guide.
@@ -149,7 +149,7 @@ pub struct CfnCapacityReservation {
     /// Update requires: Replacement
     #[serde(rename = "PlacementGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placement_group_arn: Option<String>,
+    pub placement_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply to the Capacity Reservation during launch.
@@ -339,7 +339,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -349,7 +349,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

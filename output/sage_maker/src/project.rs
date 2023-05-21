@@ -15,7 +15,7 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "ProjectDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub project_description: Option<String>,
+    pub project_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the project.
@@ -32,7 +32,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
-    pub project_name: String,
+    pub project_name: cfn_resources::StrVal,
 
     ///
     /// The product ID and provisioning artifact ID to provision a service catalog. For       information, see What is AWS Service Catalog.
@@ -71,30 +71,33 @@ impl cfn_resources::CfnResource for CfnProject {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.project_description {
-            if the_val.len() > 1024 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'project_description'. {} is greater than 1024", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.project_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'project_description'. {} is greater than 1024",
-                    the_val.len()
+                    "Max validation failed on field 'project_name'. {} is greater than 32",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.project_name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'project_name'. {} is greater than 32",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.project_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'project_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'project_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.service_catalog_provisioning_details.validate()?;
@@ -121,7 +124,7 @@ pub struct ProvisioningParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value of the provisioning parameter.
@@ -136,7 +139,7 @@ pub struct ProvisioningParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ProvisioningParameter {
@@ -151,29 +154,35 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 1000 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 1000",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 1000",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 4096",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -199,7 +208,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_product_id: Option<String>,
+    pub provisioned_product_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The current status of the product.
@@ -215,7 +224,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductStatusMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_product_status_message: Option<String>,
+    pub provisioned_product_status_message: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
@@ -229,17 +238,18 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.provisioned_product_id {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'provisioned_product_id'. {} is greater than 100", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'provisioned_product_id'. {} is greater than 100", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.provisioned_product_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'provisioned_product_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'provisioned_product_id'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -266,7 +276,7 @@ pub struct ServiceCatalogProvisioningDetails {
     /// Update requires: Replacement
     #[serde(rename = "PathId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path_id: Option<String>,
+    pub path_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the product to provision.
@@ -283,7 +293,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProductId")]
-    pub product_id: String,
+    pub product_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the provisioning artifact.
@@ -301,7 +311,7 @@ pub struct ServiceCatalogProvisioningDetails {
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningArtifactId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioning_artifact_id: Option<String>,
+    pub provisioning_artifact_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key value pairs that you specify when you provision a product.
@@ -327,53 +337,62 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.path_id {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path_id'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path_id'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path_id {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.product_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'path_id'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'product_id'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.product_id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'product_id'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.product_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'product_id'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.provisioning_artifact_id {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'product_id'. {} is less than 1",
+                    s.len()
+                ));
             }
         }
 
         if let Some(the_val) = &self.provisioning_artifact_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'provisioning_artifact_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.provisioning_artifact_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -398,7 +417,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -408,7 +427,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

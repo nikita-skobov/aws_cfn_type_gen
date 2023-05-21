@@ -35,7 +35,7 @@ pub struct CfnPlacement {
     /// Update requires: Replacement
     #[serde(rename = "PlacementName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placement_name: Option<String>,
+    pub placement_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the project containing the placement.
@@ -46,7 +46,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
-    pub project_name: String,
+    pub project_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnPlacement {

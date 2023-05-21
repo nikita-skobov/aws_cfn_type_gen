@@ -47,7 +47,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
@@ -59,7 +59,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_identifier: Option<String>,
+    pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the name of the compute and memory capacity class of the DB instance.
@@ -72,7 +72,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
+    pub dbinstance_class: cfn_resources::StrVal,
 
     ///
     /// Contains a user-supplied database identifier. This identifier is the unique key that    identifies a DB instance.
@@ -84,7 +84,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_identifier: Option<String>,
+    pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of an existing DB parameter group or a reference to an        AWS::Neptune::DBParameterGroup resource created in the template.        If any of the data members of the referenced parameter          group are changed during an update, the DB instance might need to be restarted,          which causes some interruption. If the parameter group contains static parameters,          whether they were changed or not, an update triggers a reboot.
@@ -96,7 +96,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "DBParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbparameter_group_name: Option<String>,
+    pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is not supported.
@@ -112,7 +112,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBSnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsnapshot_identifier: Option<String>,
+    pub dbsnapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
@@ -124,7 +124,7 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsubnet_group_name: Option<String>,
+    pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the weekly time range during which system maintenance can occur, in Universal    Coordinated Time (UTC).
@@ -136,7 +136,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// An arbitrary set of tags (key-value pairs) for this DB instance.
@@ -182,7 +182,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -192,7 +192,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

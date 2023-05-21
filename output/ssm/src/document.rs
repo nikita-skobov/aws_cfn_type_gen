@@ -72,7 +72,7 @@ pub struct CfnDocument {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of SSM documents required by a document. This parameter is used exclusively by  AWS AppConfig. When a user creates an AWS AppConfig configuration in an SSM document, the user must also  specify a required document for validation purposes. In this case, an   ApplicationConfiguration document requires an   ApplicationConfigurationSchema document for validation purposes. For more  information, see What is AWS AppConfig? in the           AWS AppConfig User Guide.
@@ -114,7 +114,7 @@ pub struct CfnDocument {
     /// Update requires: No interruption
     #[serde(rename = "TargetType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_type: Option<String>,
+    pub target_type: Option<cfn_resources::StrVal>,
 
     ///
     /// If the document resource you specify in your template already exists, this parameter determines whether a new version of the existing document is created, or the existing document is replaced. Replace is the default method. If you specify NewVersion for the UpdateMethod parameter, and the Name of the document does not match an existing resource, a new document is created. When you specify NewVersion, the default version of the document is changed to the newly created version.
@@ -126,7 +126,7 @@ pub struct CfnDocument {
     /// Update requires: No interruption
     #[serde(rename = "UpdateMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub update_method: Option<String>,
+    pub update_method: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional field specifying the version of the artifact you are creating with the document.  For example, Release12.1. This value is unique across all versions of a document,  and can't be changed.
@@ -140,7 +140,7 @@ pub struct CfnDocument {
     /// Update requires: No interruption
     #[serde(rename = "VersionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_name: Option<String>,
+    pub version_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -234,11 +234,13 @@ impl cfn_resources::CfnResource for CfnDocument {
         }
 
         if let Some(the_val) = &self.target_type {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'target_type'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'target_type'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -275,7 +277,7 @@ pub struct AttachmentsSource {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of a key-value pair that identifies the location of an attachment to a document.  The format for Value depends on the type of key you  specify.
@@ -353,7 +355,7 @@ pub struct DocumentRequires {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The document version required by the current document.
@@ -367,7 +369,7 @@ pub struct DocumentRequires {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DocumentRequires {
@@ -401,7 +403,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -411,7 +413,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

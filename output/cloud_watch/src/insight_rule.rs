@@ -9,7 +9,7 @@ pub struct CfnInsightRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleBody")]
-    pub rule_body: String,
+    pub rule_body: cfn_resources::StrVal,
 
     ///
     /// The name of the rule.
@@ -20,7 +20,7 @@ pub struct CfnInsightRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuleName")]
-    pub rule_name: String,
+    pub rule_name: cfn_resources::StrVal,
 
     ///
     /// The current state of the rule. Valid values are ENABLED and DISABLED.
@@ -31,7 +31,7 @@ pub struct CfnInsightRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleState")]
-    pub rule_state: String,
+    pub rule_state: cfn_resources::StrVal,
 
     ///
     /// A list of key-value pairs to associate with the Contributor Insights rule. You can       associate as many as 50 tags with a rule.
@@ -83,7 +83,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -93,7 +93,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

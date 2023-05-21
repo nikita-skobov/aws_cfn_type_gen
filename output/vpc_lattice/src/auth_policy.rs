@@ -21,7 +21,7 @@ pub struct CfnAuthPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
-    pub resource_identifier: String,
+    pub resource_identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAuthPolicy {

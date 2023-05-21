@@ -22,7 +22,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetGroupArn")]
-    pub dataset_group_arn: String,
+    pub dataset_group_arn: cfn_resources::StrVal,
 
     ///
     /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
@@ -49,7 +49,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetType")]
-    pub dataset_type: String,
+    pub dataset_type: cfn_resources::StrVal,
 
     ///
     /// The name of the dataset.
@@ -66,7 +66,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The ARN of the associated schema.
@@ -81,7 +81,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
-    pub schema_arn: String,
+    pub schema_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDataset {
@@ -96,11 +96,13 @@ impl cfn_resources::CfnResource for CfnDataset {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.dataset_group_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dataset_group_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'dataset_group_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         self.dataset_import_job
@@ -109,38 +111,46 @@ impl cfn_resources::CfnResource for CfnDataset {
 
         let the_val = &self.dataset_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dataset_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'dataset_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.schema_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'schema_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schema_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -159,7 +169,7 @@ pub struct DataSource {
     /// Update requires: No interruption
     #[serde(rename = "DataLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_location: Option<String>,
+    pub data_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataSource {
@@ -207,7 +217,7 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "DatasetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dataset_arn: Option<String>,
+    pub dataset_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the dataset import job.
@@ -223,7 +233,7 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "DatasetImportJobArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dataset_import_job_arn: Option<String>,
+    pub dataset_import_job_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the import job.
@@ -241,7 +251,7 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_name: Option<String>,
+    pub job_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the IAM role that has permissions to read from the Amazon S3    data source.
@@ -257,7 +267,7 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DatasetImportJob {
@@ -275,44 +285,54 @@ impl cfn_resources::CfnResource for DatasetImportJob {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.dataset_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'dataset_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'dataset_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.dataset_import_job_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'dataset_import_job_arn'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'dataset_import_job_arn'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.job_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'job_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'job_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.job_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'job_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'job_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 

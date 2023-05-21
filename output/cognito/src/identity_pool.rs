@@ -76,7 +76,7 @@ pub struct CfnIdentityPool {
     /// Update requires: No interruption
     #[serde(rename = "DeveloperProviderName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub developer_provider_name: Option<String>,
+    pub developer_provider_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of your Amazon Cognito identity pool.
@@ -94,7 +94,7 @@ pub struct CfnIdentityPool {
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_pool_name: Option<String>,
+    pub identity_pool_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Names (ARNs) of the OpenID connect providers.
@@ -180,7 +180,7 @@ pub struct CognitoIdentityProvider {
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_id: Option<String>,
+    pub client_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The provider name for an Amazon Cognito user pool. For example:     cognito-idp.us-east-2.amazonaws.com/us-east-2_123456789.
@@ -192,7 +192,7 @@ pub struct CognitoIdentityProvider {
     /// Update requires: No interruption
     #[serde(rename = "ProviderName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provider_name: Option<String>,
+    pub provider_name: Option<cfn_resources::StrVal>,
 
     ///
     /// TRUE if server-side token validation is enabled for the identity provider’s token.
@@ -238,7 +238,7 @@ pub struct CognitoStreams {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon Cognito stream to receive updates. This stream must be in the    developer's account and in the same Region as the identity pool.
@@ -250,7 +250,7 @@ pub struct CognitoStreams {
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_name: Option<String>,
+    pub stream_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Status of the Amazon Cognito streams. Valid values are: ENABLED or     DISABLED.
@@ -262,7 +262,7 @@ pub struct CognitoStreams {
     /// Update requires: No interruption
     #[serde(rename = "StreamingStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub streaming_status: Option<String>,
+    pub streaming_status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CognitoStreams {
@@ -304,7 +304,7 @@ pub struct PushSync {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PushSync {

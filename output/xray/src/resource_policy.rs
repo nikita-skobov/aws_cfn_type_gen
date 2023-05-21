@@ -22,7 +22,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    pub policy_document: String,
+    pub policy_document: cfn_resources::StrVal,
 
     ///
     /// The name of the resource-based policy. Must be unique within a specific AWS account.
@@ -33,7 +33,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {

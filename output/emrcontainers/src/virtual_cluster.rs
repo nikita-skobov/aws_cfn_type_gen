@@ -27,7 +27,7 @@ pub struct CfnVirtualCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -58,20 +58,24 @@ impl cfn_resources::CfnResource for CfnVirtualCluster {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -127,7 +131,7 @@ pub struct ContainerProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The information about the container cluster.
@@ -179,20 +183,24 @@ impl cfn_resources::CfnResource for ContainerProvider {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'id'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'id'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.info.validate()?;
@@ -219,7 +227,7 @@ pub struct EksInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EksInfo {
@@ -234,20 +242,24 @@ impl cfn_resources::CfnResource for EksInfo {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.namespace;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'namespace'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'namespace'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.namespace;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'namespace'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'namespace'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -271,7 +283,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -281,7 +293,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -12,7 +12,7 @@ pub struct CfnSubnetRouteTableAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RouteTableId")]
-    pub route_table_id: String,
+    pub route_table_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet.
@@ -23,7 +23,7 @@ pub struct CfnSubnetRouteTableAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSubnetRouteTableAssociation {

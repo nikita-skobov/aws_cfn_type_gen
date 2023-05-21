@@ -19,7 +19,7 @@ pub struct CfnMesh {
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mesh_name: Option<String>,
+    pub mesh_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The service mesh specification to apply.
@@ -59,20 +59,24 @@ impl cfn_resources::CfnResource for CfnMesh {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.mesh_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'mesh_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'mesh_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.mesh_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'mesh_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'mesh_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -264,7 +268,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -274,7 +278,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

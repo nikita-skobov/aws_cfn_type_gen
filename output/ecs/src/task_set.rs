@@ -10,7 +10,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cluster")]
-    pub cluster: String,
+    pub cluster: cfn_resources::StrVal,
 
     ///
     /// An optional non-unique tag that identifies this task set in external systems. If the 			task set is associated with a service discovery registry, the tasks in this task set 			will have the ECS_TASK_SET_EXTERNAL_ID       AWS Cloud Map attribute set to the provided 			value.
@@ -22,7 +22,7 @@ pub struct CfnTaskSet {
     /// Update requires: Replacement
     #[serde(rename = "ExternalId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub external_id: Option<String>,
+    pub external_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The launch type that new tasks in the task set uses. For more information, see Amazon ECS 				launch types in the Amazon Elastic Container Service Developer Guide.
@@ -74,7 +74,7 @@ pub struct CfnTaskSet {
     /// Update requires: Replacement
     #[serde(rename = "PlatformVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_version: Option<String>,
+    pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A floating-point percentage of your desired number of tasks to place and keep running 			in the task set.
@@ -97,7 +97,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Service")]
-    pub service: String,
+    pub service: cfn_resources::StrVal,
 
     ///
     /// The details of the service discovery registries to assign to this task set. For more 			information, see Service 				discovery.
@@ -120,7 +120,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TaskDefinition")]
-    pub task_definition: String,
+    pub task_definition: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -259,7 +259,7 @@ pub struct LoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_name: Option<String>,
+    pub container_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port on the container to associate with the load balancer. This port must 			correspond to a containerPort in the task definition the tasks in the 			service are using. For tasks that use the EC2 launch type, the container 			instance they're launched on must allow ingress traffic on the hostPort of 			the port mapping.
@@ -285,7 +285,7 @@ pub struct LoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub load_balancer_name: Option<String>,
+    pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The full Amazon Resource Name (ARN) of the Elastic Load Balancing target group or groups associated with a service or 			task set.
@@ -305,7 +305,7 @@ pub struct LoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_group_arn: Option<String>,
+    pub target_group_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoadBalancer {
@@ -432,7 +432,7 @@ pub struct ServiceRegistry {
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_name: Option<String>,
+    pub container_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port value to be used for your service discovery service. It's already specified 			in the task definition. If the task definition your service task specifies uses the 				bridge or host network mode, you must specify a 				containerName and containerPort combination from the task 			definition. If the task definition your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
@@ -468,7 +468,7 @@ pub struct ServiceRegistry {
     /// Update requires: Replacement
     #[serde(rename = "RegistryArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub registry_arn: Option<String>,
+    pub registry_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ServiceRegistry {

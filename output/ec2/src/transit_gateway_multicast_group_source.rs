@@ -12,7 +12,7 @@ pub struct CfnTransitGatewayMulticastGroupSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupIpAddress")]
-    pub group_ip_address: String,
+    pub group_ip_address: cfn_resources::StrVal,
 
     ///
     /// The group sources' network interface IDs to register with the transit gateway multicast group.
@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayMulticastGroupSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+    pub network_interface_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the transit gateway multicast domain.
@@ -34,7 +34,7 @@ pub struct CfnTransitGatewayMulticastGroupSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayMulticastDomainId")]
-    pub transit_gateway_multicast_domain_id: String,
+    pub transit_gateway_multicast_domain_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastGroupSource {

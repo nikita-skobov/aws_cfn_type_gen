@@ -21,7 +21,7 @@ pub struct CfnRegistryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryName")]
-    pub registry_name: String,
+    pub registry_name: cfn_resources::StrVal,
 
     ///
     /// The revision ID of the policy.
@@ -33,7 +33,7 @@ pub struct CfnRegistryPolicy {
     /// Update requires: No interruption
     #[serde(rename = "RevisionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub revision_id: Option<String>,
+    pub revision_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnRegistryPolicy {

@@ -13,7 +13,7 @@ pub struct CfnService {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
@@ -69,7 +69,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the namespace that was used to create the service.
@@ -85,7 +85,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_id: Option<String>,
+    pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags for the service. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
@@ -140,11 +140,13 @@ impl cfn_resources::CfnResource for CfnService {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -161,11 +163,13 @@ impl cfn_resources::CfnResource for CfnService {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.namespace_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'namespace_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'namespace_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -210,7 +214,7 @@ pub struct DnsConfig {
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_id: Option<String>,
+    pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The routing policy that you want to apply to all Route 53 DNS records that AWS Cloud Map creates  when you register an instance and specify this service.
@@ -261,11 +265,13 @@ impl cfn_resources::CfnResource for DnsConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.namespace_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'namespace_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'namespace_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -389,7 +395,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_path: Option<String>,
+    pub resource_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of health check that you want to create, which indicates how Route 53 determines  whether an endpoint is healthy.
@@ -463,11 +469,13 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
         }
 
         if let Some(the_val) = &self.resource_path {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_path'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_path'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -552,7 +560,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -562,7 +570,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

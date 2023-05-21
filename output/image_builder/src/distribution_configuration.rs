@@ -15,7 +15,7 @@ pub struct CfnDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The distributions of this distribution configuration formatted as an array of 			Distribution objects.
@@ -39,7 +39,7 @@ pub struct CfnDistributionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The tags of this distribution configuration.
@@ -65,20 +65,24 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -115,7 +119,7 @@ pub struct AmiDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The KMS key identifier used to encrypt the distributed image.
@@ -131,7 +135,7 @@ pub struct AmiDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Launch permissions can be used to configure which AWS accounts can use the AMI to 			launch instances.
@@ -161,7 +165,7 @@ pub struct AmiDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of an account to which you want to distribute an image.
@@ -189,38 +193,46 @@ impl cfn_resources::CfnResource for AmiDistributionConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -229,20 +241,24 @@ impl cfn_resources::CfnResource for AmiDistributionConfiguration {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 127 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 127",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 127 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 127",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -288,7 +304,7 @@ pub struct ContainerDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination repository for the container distribution configuration.
@@ -314,20 +330,24 @@ impl cfn_resources::CfnResource for ContainerDistributionConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -418,7 +438,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    pub region: String,
+    pub region: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Distribution {
@@ -453,20 +473,24 @@ impl cfn_resources::CfnResource for Distribution {
 
         let the_val = &self.region;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'region'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'region'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.region;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'region'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'region'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -485,7 +509,7 @@ pub struct FastLaunchConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub account_id: Option<String>,
+    pub account_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -566,7 +590,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -577,7 +601,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -588,7 +612,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_version: Option<String>,
+    pub launch_template_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FastLaunchLaunchTemplateSpecification {
@@ -745,7 +769,7 @@ pub struct LaunchTemplateConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub account_id: Option<String>,
+    pub account_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Identifies the Amazon EC2 launch template to use.
@@ -759,7 +783,7 @@ pub struct LaunchTemplateConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Set the specified Amazon EC2 launch template as the default launch template for the 			specified account.
@@ -805,7 +829,7 @@ pub struct TargetContainerRepository {
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_name: Option<String>,
+    pub repository_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the service in which this image was registered.
@@ -846,20 +870,24 @@ impl cfn_resources::CfnResource for TargetContainerRepository {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.repository_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'repository_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'repository_name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.repository_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'repository_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'repository_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

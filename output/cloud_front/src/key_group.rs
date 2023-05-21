@@ -46,7 +46,7 @@ pub struct KeyGroupConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the identifiers of the public keys in the key group.
@@ -68,7 +68,7 @@ pub struct KeyGroupConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KeyGroupConfig {

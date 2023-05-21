@@ -41,7 +41,7 @@ pub struct CfnCluster {
     /// Update requires: Updates are not supported.
     #[serde(rename = "ClusterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_name: Option<String>,
+    pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the cluster.
@@ -53,7 +53,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX       will assume this role and use the role's permissions to access DynamoDB on your       behalf.
@@ -64,7 +64,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IAMRoleARN")]
-    pub iamrole_arn: String,
+    pub iamrole_arn: cfn_resources::StrVal,
 
     ///
     /// The node type for the nodes in the cluster. (All nodes in a DAX cluster are of       the same type.)
@@ -75,7 +75,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NodeType")]
-    pub node_type: String,
+    pub node_type: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which       notifications will be sent.
@@ -89,7 +89,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_topic_arn: Option<String>,
+    pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameter group to be associated with the DAX cluster.
@@ -101,7 +101,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_group_name: Option<String>,
+    pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A range of time when maintenance of DAX cluster software will be performed. For       example: sun:01:00-sun:09:00. Cluster maintenance normally takes less than       30 minutes, and is performed automatically within the maintenance window.
@@ -113,7 +113,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of nodes in the DAX cluster. A replication factor of 1       will create a single-node cluster, without any read replicas. For additional fault       tolerance, you can create a multiple node cluster with one or more read replicas. To do       this, set ReplicationFactor to a number between 3 (one primary and two read       replicas) and 10 (one primary and nine read replicas). If the         AvailabilityZones parameter is provided, its length must equal the         ReplicationFactor.
@@ -166,7 +166,7 @@ pub struct CfnCluster {
     /// Update requires: Updates are not supported.
     #[serde(rename = "SubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_group_name: Option<String>,
+    pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A set of tags to associate with the DAX cluster.

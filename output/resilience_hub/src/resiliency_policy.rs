@@ -11,7 +11,7 @@ pub struct CfnResiliencyPolicy {
     /// Update requires: No interruption
     #[serde(rename = "DataLocationConstraint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_location_constraint: Option<String>,
+    pub data_location_constraint: Option<cfn_resources::StrVal>,
 
     ///
     /// The resiliency policy.
@@ -34,7 +34,7 @@ pub struct CfnResiliencyPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_description: Option<String>,
+    pub policy_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the policy
@@ -45,7 +45,7 @@ pub struct CfnResiliencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
@@ -68,7 +68,7 @@ pub struct CfnResiliencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
-    pub tier: String,
+    pub tier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResiliencyPolicy {

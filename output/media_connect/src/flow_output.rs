@@ -23,7 +23,7 @@ pub struct CfnFlowOutput {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The IP address where you want to send the output.
@@ -35,7 +35,7 @@ pub struct CfnFlowOutput {
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination: Option<String>,
+    pub destination: Option<cfn_resources::StrVal>,
 
     ///
     /// The encryption credentials that you want to use for the output.
@@ -58,7 +58,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
+    pub flow_arn: cfn_resources::StrVal,
 
     ///
     /// The maximum latency in milliseconds. This parameter applies only to RIST-based, Zixi-based, and Fujitsu-based streams.
@@ -94,7 +94,7 @@ pub struct CfnFlowOutput {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port to use when MediaConnect distributes content to the output.
@@ -117,7 +117,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 
     ///
     /// The identifier that is assigned to the Zixi receiver. This parameter applies only        to outputs that use Zixi pull.
@@ -129,7 +129,7 @@ pub struct CfnFlowOutput {
     /// Update requires: No interruption
     #[serde(rename = "RemoteId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remote_id: Option<String>,
+    pub remote_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
@@ -153,7 +153,7 @@ pub struct CfnFlowOutput {
     /// Update requires: No interruption
     #[serde(rename = "StreamId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_id: Option<String>,
+    pub stream_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The VPC interface that you want to send your output to.
@@ -203,7 +203,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub algorithm: Option<String>,
+    pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of key that is used for the encryption. If you don't specify a       keyType value, the service uses the default setting       (static-key). Valid key types are: static-key, speke, and srt-password.
@@ -215,7 +215,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_type: Option<String>,
+    pub key_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
@@ -226,7 +226,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
@@ -237,7 +237,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    pub secret_arn: String,
+    pub secret_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Encryption {
@@ -267,7 +267,7 @@ pub struct VpcInterfaceAttachment {
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_interface_name: Option<String>,
+    pub vpc_interface_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcInterfaceAttachment {

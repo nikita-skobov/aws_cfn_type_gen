@@ -44,7 +44,7 @@ pub struct CfnBudgetsAction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BudgetName")]
-    pub budget_name: String,
+    pub budget_name: cfn_resources::StrVal,
 
     /// Specifies all of the type-specific parameters.
     ///
@@ -70,7 +70,7 @@ pub struct CfnBudgetsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: String,
+    pub execution_role_arn: cfn_resources::StrVal,
 
     /// The type of a notification.
     ///
@@ -166,20 +166,24 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() > 618 as _ {
-            return Err(format!(
-                "Max validation failed on field 'execution_role_arn'. {} is greater than 618",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 618 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'execution_role_arn'. {} is greater than 618",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() < 32 as _ {
-            return Err(format!(
-                "Min validation failed on field 'execution_role_arn'. {} is less than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 32 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'execution_role_arn'. {} is less than 32",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -336,7 +340,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyArn")]
-    pub policy_arn: String,
+    pub policy_arn: cfn_resources::StrVal,
 
     /// A list of roles to be attached. There must be at least one role.
     ///
@@ -386,20 +390,24 @@ impl cfn_resources::CfnResource for IamActionDefinition {
 
         let the_val = &self.policy_arn;
 
-        if the_val.len() > 684 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_arn'. {} is greater than 684",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 684 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy_arn'. {} is greater than 684",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.policy_arn;
 
-        if the_val.len() < 25 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_arn'. {} is less than 25",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 25 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_arn'. {} is less than 25",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.roles {
@@ -441,7 +449,7 @@ pub struct ScpActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyId")]
-    pub policy_id: String,
+    pub policy_id: cfn_resources::StrVal,
 
     /// A list of target IDs.
     ///
@@ -468,20 +476,24 @@ impl cfn_resources::CfnResource for ScpActionDefinition {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.policy_id;
 
-        if the_val.len() > 130 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_id'. {} is greater than 130",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 130 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy_id'. {} is greater than 130",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.policy_id;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_id'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_id'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_ids;
@@ -526,7 +538,7 @@ pub struct SsmActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    pub region: String,
+    pub region: cfn_resources::StrVal,
 
     /// The action subType.
     ///
@@ -579,20 +591,24 @@ impl cfn_resources::CfnResource for SsmActionDefinition {
 
         let the_val = &self.region;
 
-        if the_val.len() > 20 as _ {
-            return Err(format!(
-                "Max validation failed on field 'region'. {} is greater than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'region'. {} is greater than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.region;
 
-        if the_val.len() < 9 as _ {
-            return Err(format!(
-                "Min validation failed on field 'region'. {} is less than 9",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 9 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'region'. {} is less than 9",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -615,7 +631,7 @@ pub struct Subscriber {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    pub address: String,
+    pub address: cfn_resources::StrVal,
 
     /// The type of notification that AWS sends to a subscriber.
     ///
@@ -625,7 +641,7 @@ pub struct Subscriber {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Subscriber {

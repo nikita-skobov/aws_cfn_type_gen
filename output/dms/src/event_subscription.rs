@@ -34,7 +34,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
+    pub sns_topic_arn: cfn_resources::StrVal,
 
     ///
     /// A list of identifiers for which AWS DMS provides notification events.
@@ -64,7 +64,7 @@ pub struct CfnEventSubscription {
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_type: Option<String>,
+    pub source_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the AWS DMS event notification subscription. This name must be less than 255 characters.
@@ -76,7 +76,7 @@ pub struct CfnEventSubscription {
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subscription_name: Option<String>,
+    pub subscription_name: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more tags to be assigned to the event subscription.
@@ -122,7 +122,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -132,7 +132,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

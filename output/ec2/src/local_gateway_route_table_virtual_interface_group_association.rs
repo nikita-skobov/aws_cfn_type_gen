@@ -10,7 +10,7 @@ pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayRouteTableId")]
-    pub local_gateway_route_table_id: String,
+    pub local_gateway_route_table_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the virtual interface group.
@@ -21,7 +21,7 @@ pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
-    pub local_gateway_virtual_interface_group_id: String,
+    pub local_gateway_virtual_interface_group_id: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the association.
@@ -67,7 +67,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -77,7 +77,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

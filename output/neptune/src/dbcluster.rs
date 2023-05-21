@@ -65,7 +65,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_identifier: Option<String>,
+    pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Provides the name of the DB cluster parameter group.
@@ -79,7 +79,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBClusterParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbcluster_parameter_group_name: Option<String>,
+    pub dbcluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the DB parameter group to apply to all instances of the DB cluster.      Used only in case of a major engine version upgrade request
@@ -95,7 +95,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbinstance_parameter_group_name: Option<String>,
+    pub dbinstance_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies information on the subnet group associated with the DB cluster, including the    name, description, and subnets in the subnet group.
@@ -107,7 +107,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dbsubnet_group_name: Option<String>,
+    pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether or not the DB cluster has deletion protection         enabled. The database can't be deleted when deletion protection is enabled.
@@ -143,7 +143,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// True if mapping of Amazon Identity and Access Management (IAM) accounts to database accounts    is enabled, and otherwise false.
@@ -167,7 +167,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the daily time range during which automated backups are created if automated    backups are enabled, as determined by the BackupRetentionPeriod.
@@ -181,7 +181,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_backup_window: Option<String>,
+    pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the weekly time range during which system maintenance can occur, in Universal    Coordinated Time (UTC).
@@ -193,7 +193,7 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -209,7 +209,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "RestoreToTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub restore_to_time: Option<String>,
+    pub restore_to_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -225,7 +225,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "RestoreType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub restore_type: Option<String>,
+    pub restore_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -252,7 +252,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_identifier: Option<String>,
+    pub snapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -268,7 +268,7 @@ pub struct CfnDBCluster {
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_dbcluster_identifier: Option<String>,
+    pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the DB cluster is encrypted.
@@ -358,7 +358,7 @@ pub struct DBClusterRole {
     /// Update requires: No interruption
     #[serde(rename = "FeatureName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub feature_name: Option<String>,
+    pub feature_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB    cluster.
@@ -369,7 +369,7 @@ pub struct DBClusterRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DBClusterRole {
@@ -441,7 +441,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -451,7 +451,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

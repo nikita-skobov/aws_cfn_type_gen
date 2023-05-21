@@ -10,7 +10,7 @@ pub struct CfnRuleGroupsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    pub data: String,
+    pub data: cfn_resources::StrVal,
 
     ///
     /// The name of the rule groups namespace. This property is required.
@@ -21,7 +21,7 @@ pub struct CfnRuleGroupsNamespace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A list of key and value pairs for the workspace resources.
@@ -44,7 +44,7 @@ pub struct CfnRuleGroupsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Workspace")]
-    pub workspace: String,
+    pub workspace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
@@ -78,7 +78,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -88,7 +88,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

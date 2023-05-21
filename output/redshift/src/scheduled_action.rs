@@ -23,7 +23,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_time: Option<String>,
+    pub end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The IAM role to assume to run the scheduled action.       This IAM role must have permission to run the Amazon Redshift API operation in the scheduled action.       This IAM role must allow the Amazon Redshift scheduler (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf.         For more information about the IAM role to use with the Amazon Redshift scheduler, see Using Identity-Based Policies for Amazon Redshift in the Amazon Redshift Cluster Management Guide.
@@ -37,7 +37,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "IamRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_role: Option<String>,
+    pub iam_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The schedule for a one-time (at format) or recurring (cron format) scheduled action.       Schedule invocations must be separated by at least one hour.
@@ -55,7 +55,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule: Option<String>,
+    pub schedule: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the scheduled action.
@@ -69,7 +69,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduled_action_description: Option<String>,
+    pub scheduled_action_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the scheduled action.
@@ -82,7 +82,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduledActionName")]
-    pub scheduled_action_name: String,
+    pub scheduled_action_name: cfn_resources::StrVal,
 
     ///
     /// The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger.
@@ -94,7 +94,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// A JSON format string of the Amazon Redshift API operation with input parameters.
@@ -122,33 +122,41 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.iam_role {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'iam_role'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'iam_role'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.schedule {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'schedule'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'schedule'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.scheduled_action_description {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'scheduled_action_description'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'scheduled_action_description'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         let the_val = &self.scheduled_action_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'scheduled_action_name'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'scheduled_action_name'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         self.target_action
@@ -173,7 +181,7 @@ pub struct PauseClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PauseClusterMessage {
@@ -188,8 +196,10 @@ impl cfn_resources::CfnResource for PauseClusterMessage {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cluster_identifier;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         Ok(())
@@ -222,7 +232,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 
     ///
     /// The new cluster type for the specified cluster.
@@ -236,7 +246,7 @@ pub struct ResizeClusterMessage {
     /// Update requires: No interruption
     #[serde(rename = "ClusterType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_type: Option<String>,
+    pub cluster_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The new node type for the nodes you are adding. If not specified, the cluster's current node type is used.
@@ -250,7 +260,7 @@ pub struct ResizeClusterMessage {
     /// Update requires: No interruption
     #[serde(rename = "NodeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub node_type: Option<String>,
+    pub node_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The new number of nodes for the cluster. If not specified, the cluster's current number of nodes is used.
@@ -277,25 +287,28 @@ impl cfn_resources::CfnResource for ResizeClusterMessage {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cluster_identifier;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.cluster_type {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cluster_type'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'cluster_type'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.node_type {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'node_type'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'node_type'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -317,7 +330,7 @@ pub struct ResumeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ResumeClusterMessage {
@@ -332,8 +345,10 @@ impl cfn_resources::CfnResource for ResumeClusterMessage {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cluster_identifier;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         Ok(())

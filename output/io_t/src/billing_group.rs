@@ -13,7 +13,7 @@ pub struct CfnBillingGroup {
     /// Update requires: Replacement
     #[serde(rename = "BillingGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_group_name: Option<String>,
+    pub billing_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The properties of the billing group.
@@ -71,7 +71,7 @@ pub struct BillingGroupProperties {
     /// Update requires: No interruption
     #[serde(rename = "BillingGroupDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_group_description: Option<String>,
+    pub billing_group_description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BillingGroupProperties {
@@ -105,7 +105,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -115,7 +115,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

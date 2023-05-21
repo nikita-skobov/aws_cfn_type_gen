@@ -7,7 +7,7 @@ pub struct CfnProactiveEngagement {
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-proactiveengagement.html#cfn-shield-proactiveengagement-proactiveengagementstatus
     #[serde(rename = "ProactiveEngagementStatus")]
-    pub proactive_engagement_status: String,
+    pub proactive_engagement_status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnProactiveEngagement {
@@ -30,16 +30,16 @@ pub struct EmergencyContact {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-contactnotes
     #[serde(rename = "ContactNotes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub contact_notes: Option<String>,
+    pub contact_notes: Option<cfn_resources::StrVal>,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-emailaddress
     #[serde(rename = "EmailAddress")]
-    pub email_address: String,
+    pub email_address: cfn_resources::StrVal,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-phonenumber
     #[serde(rename = "PhoneNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub phone_number: Option<String>,
+    pub phone_number: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EmergencyContact {

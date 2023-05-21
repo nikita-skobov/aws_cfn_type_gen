@@ -12,7 +12,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// Must be neptune1 for engine versions prior to 1.2.0.0, or    neptune1.2 for engine version 1.2.0.0 and higher.
@@ -23,7 +23,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
-    pub family: String,
+    pub family: cfn_resources::StrVal,
 
     ///
     /// Provides the name of the DB parameter group.
@@ -35,7 +35,7 @@ pub struct CfnDBParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters to set for this DB parameter group.
@@ -96,7 +96,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -106,7 +106,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

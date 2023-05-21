@@ -11,7 +11,7 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDomain {

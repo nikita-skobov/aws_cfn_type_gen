@@ -10,7 +10,7 @@ pub struct CfnConfigurationSetEventDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationSetName")]
-    pub configuration_set_name: String,
+    pub configuration_set_name: cfn_resources::StrVal,
 
     ///
     /// The event destination object.
@@ -88,7 +88,7 @@ pub struct DimensionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultDimensionValue")]
-    pub default_dimension_value: String,
+    pub default_dimension_value: cfn_resources::StrVal,
 
     ///
     /// The name of an Amazon CloudWatch dimension associated with an email sending metric. The name       must meet the following requirements:
@@ -101,7 +101,7 @@ pub struct DimensionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionName")]
-    pub dimension_name: String,
+    pub dimension_name: cfn_resources::StrVal,
 
     ///
     /// The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. To use       the message tags that you specify using an X-SES-MESSAGE-TAGS header or a       parameter to the SendEmail/SendRawEmail API, specify         messageTag. To use your own email headers, specify         emailHeader. To put a custom tag on any link included in your email,       specify linkTag.
@@ -218,7 +218,7 @@ pub struct EventDestination {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event       destination.
@@ -273,7 +273,7 @@ pub struct KinesisFirehoseDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStreamARN")]
-    pub delivery_stream_arn: String,
+    pub delivery_stream_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose       stream.
@@ -284,7 +284,7 @@ pub struct KinesisFirehoseDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMRoleARN")]
-    pub iamrole_arn: String,
+    pub iamrole_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisFirehoseDestination {
@@ -317,7 +317,7 @@ pub struct SnsDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicARN")]
-    pub topic_arn: String,
+    pub topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SnsDestination {

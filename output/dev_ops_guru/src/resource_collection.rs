@@ -142,7 +142,7 @@ pub struct TagCollection {
     /// Update requires: No interruption
     #[serde(rename = "AppBoundaryKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub app_boundary_key: Option<String>,
+    pub app_boundary_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The values in an AWS tag collection.
@@ -170,20 +170,24 @@ impl cfn_resources::CfnResource for TagCollection {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.app_boundary_key {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'app_boundary_key'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'app_boundary_key'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.app_boundary_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'app_boundary_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'app_boundary_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -22,7 +22,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GraphArn")]
-    pub graph_arn: String,
+    pub graph_arn: cfn_resources::StrVal,
 
     ///
     /// The root user email address of the invited account. If the email address provided is       not the root user email address for the provided account, the invitation creation       fails.
@@ -33,7 +33,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberEmailAddress")]
-    pub member_email_address: String,
+    pub member_email_address: cfn_resources::StrVal,
 
     ///
     /// The AWS account identifier of the invited account
@@ -44,7 +44,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemberId")]
-    pub member_id: String,
+    pub member_id: cfn_resources::StrVal,
 
     ///
     /// Customized text to include in the invitation email message.
@@ -56,7 +56,7 @@ pub struct CfnMemberInvitation {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnMemberInvitation {

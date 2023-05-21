@@ -14,7 +14,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACLName")]
-    pub aclname: String,
+    pub aclname: cfn_resources::StrVal,
 
     ///
     /// When set to true, the cluster will automatically receive minor engine     version upgrades after launch.
@@ -49,7 +49,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes. For more information, see Data tiering.
     ///
@@ -60,7 +60,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "DataTiering")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_tiering: Option<String>,
+    pub data_tiering: Option<cfn_resources::StrVal>,
 
     ///
     /// A description of the cluster.
@@ -72,7 +72,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Redis engine version used by the cluster.
@@ -84,7 +84,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The user-supplied name of a final cluster snapshot. This is the unique     name that identifies the snapshot. MemoryDB creates the snapshot, and then     deletes the cluster immediately afterward.
@@ -96,7 +96,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "FinalSnapshotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub final_snapshot_name: Option<String>,
+    pub final_snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the KMS key used to encrypt the cluster.
@@ -108,7 +108,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the weekly time range during which maintenance on the cluster     is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi     (24H Clock UTC). The minimum maintenance window is a 60 minute period.
@@ -122,7 +122,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_window: Option<String>,
+    pub maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The cluster's node type.
@@ -133,7 +133,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeType")]
-    pub node_type: String,
+    pub node_type: cfn_resources::StrVal,
 
     ///
     /// The number of replicas to apply to each shard.
@@ -173,7 +173,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "ParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_group_name: Option<String>,
+    pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The port used by the cluster.
@@ -221,7 +221,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_name: Option<String>,
+    pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days for which MemoryDB retains automatic snapshots before     deleting them. For example, if you set SnapshotRetentionLimit to 5, a snapshot that was     taken today is retained for 5 days before being deleted.
@@ -245,7 +245,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_window: Option<String>,
+    pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
     /// When you pass the logical ID of this resource to the intrinsic Ref function, Ref returns the ARN of the SNS topic,      such as arn:aws:memorydb:us-east-1:123456789012:mySNSTopic
@@ -257,7 +257,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_topic_arn: Option<String>,
+    pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The SNS topic must be in Active status to receive notifications.
@@ -269,7 +269,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_topic_status: Option<String>,
+    pub sns_topic_status: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the subnet group used by the cluster.
@@ -281,7 +281,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_group_name: Option<String>,
+    pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A flag to indicate if In-transit encryption is enabled.
@@ -322,11 +322,13 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.aclname;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'aclname'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'aclname'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.cluster_endpoint
@@ -350,7 +352,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The port number that the engine is listening on.
@@ -396,7 +398,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -406,7 +408,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

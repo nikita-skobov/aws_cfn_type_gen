@@ -10,7 +10,7 @@ pub struct CfnAccessPointPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectLambdaAccessPoint")]
-    pub object_lambda_access_point: String,
+    pub object_lambda_access_point: cfn_resources::StrVal,
 
     ///
     /// Object Lambda Access Point resource policy document.

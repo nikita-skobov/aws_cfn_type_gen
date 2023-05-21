@@ -21,7 +21,7 @@ pub struct CfnClusterCapacityProviderAssociations {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cluster")]
-    pub cluster: String,
+    pub cluster: cfn_resources::StrVal,
 
     ///
     /// The default capacity provider strategy to associate with the cluster.
@@ -73,7 +73,7 @@ pub struct CapacityProviderStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
-    pub capacity_provider: String,
+    pub capacity_provider: cfn_resources::StrVal,
 
     ///
     /// The weight value designates the relative percentage of the total number of tasks launched  that should use the specified capacity provider. The weight value is taken into consideration after the   base value, if defined, is satisfied.

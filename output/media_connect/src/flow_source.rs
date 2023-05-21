@@ -22,7 +22,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The ARN of the entitlement that allows you to subscribe to the flow. The        entitlement is set by the content originator, and the ARN is generated as part of the        originator's flow.
@@ -34,7 +34,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "EntitlementArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entitlement_arn: Option<String>,
+    pub entitlement_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the flow this source is connected to. The flow must have Failover enabled to add an additional source.
@@ -46,7 +46,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "FlowArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub flow_arn: Option<String>,
+    pub flow_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that the flow listens on for incoming content. If the protocol of the        source is Zixi, the port must be set to 2088.
@@ -105,7 +105,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The protocol that the source uses to deliver the content to       MediaConnect. Adding additional sources to an existing flow requires Failover to be       enabled. When you enable Failover, the additional source must use the same protocol as       the existing source. Only the following protocols support failover: Zixi-push, RTP-FEC,       RTP, RIST and SRT protocols.
@@ -119,7 +119,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that the flow uses to send outbound requests to initiate connection with        the sender.
@@ -143,7 +143,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "SenderIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sender_ip_address: Option<String>,
+    pub sender_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Source IP or domain name for SRT-caller protocol.
@@ -155,7 +155,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "SourceListenerAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_listener_address: Option<String>,
+    pub source_listener_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Source port for SRT-caller protocol.
@@ -179,7 +179,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "StreamId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_id: Option<String>,
+    pub stream_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the VPC interface that you want to send your output to.
@@ -191,7 +191,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_interface_name: Option<String>,
+    pub vpc_interface_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The range of IP addresses that are allowed to contribute content to your source.        Format the IP addresses as a Classless Inter-Domain Routing (CIDR) block; for        example, 10.0.0.0/16.
@@ -203,7 +203,7 @@ pub struct CfnFlowSource {
     /// Update requires: No interruption
     #[serde(rename = "WhitelistCidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub whitelist_cidr: Option<String>,
+    pub whitelist_cidr: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnFlowSource {
@@ -237,7 +237,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub algorithm: Option<String>,
+    pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
     /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
@@ -249,7 +249,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_initialization_vector: Option<String>,
+    pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
@@ -261,7 +261,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_id: Option<String>,
+    pub device_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of key that is used for the encryption. If you don't specify a       keyType value, the service uses the default setting       (static-key). Valid key types are: static-key, speke, and srt-password.
@@ -273,7 +273,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_type: Option<String>,
+    pub key_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
@@ -285,7 +285,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Region")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region: Option<String>,
+    pub region: Option<cfn_resources::StrVal>,
 
     ///
     /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
@@ -297,7 +297,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
@@ -308,7 +308,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
@@ -320,7 +320,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_arn: Option<String>,
+    pub secret_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
@@ -332,7 +332,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Encryption {

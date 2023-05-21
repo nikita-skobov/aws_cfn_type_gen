@@ -13,7 +13,7 @@ pub struct CfnRecipe {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique name for the recipe.
@@ -28,7 +28,7 @@ pub struct CfnRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A list of steps that are defined by the recipe.
@@ -65,30 +65,36 @@ impl cfn_resources::CfnResource for CfnRecipe {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 255",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -107,7 +113,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operation")]
-    pub operation: String,
+    pub operation: cfn_resources::StrVal,
 
     ///
     /// Contextual parameters for the transformation.
@@ -162,7 +168,7 @@ pub struct ConditionExpression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    pub condition: String,
+    pub condition: cfn_resources::StrVal,
 
     ///
     /// A column to apply this condition to.
@@ -177,7 +183,7 @@ pub struct ConditionExpression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetColumn")]
-    pub target_column: String,
+    pub target_column: cfn_resources::StrVal,
 
     ///
     /// A value that the condition must evaluate to for the condition to succeed.
@@ -191,7 +197,7 @@ pub struct ConditionExpression {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConditionExpression {
@@ -206,46 +212,56 @@ impl cfn_resources::CfnResource for ConditionExpression {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.condition;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'condition'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'condition'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.condition;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'condition'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'condition'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_column;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_column'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_column'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_column;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_column'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_column'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -270,7 +286,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a database in the Data Catalog.
@@ -286,7 +302,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a database table in the Data Catalog. This table corresponds to a DataBrew       dataset.
@@ -302,7 +318,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: Option<String>,
+    pub table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents an Amazon location where DataBrew can store intermediate results.
@@ -328,56 +344,68 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.catalog_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'catalog_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'catalog_id'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.catalog_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'catalog_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'catalog_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'database_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'database_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'database_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'database_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'table_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'table_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'table_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'table_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -450,7 +478,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "AggregateFunction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub aggregate_function: Option<String>,
+    pub aggregate_function: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of digits used in a counting system.
@@ -462,7 +490,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Base")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base: Option<String>,
+    pub base: Option<cfn_resources::StrVal>,
 
     ///
     /// A case statement associated with a recipe.
@@ -474,7 +502,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CaseStatement")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub case_statement: Option<String>,
+    pub case_statement: Option<cfn_resources::StrVal>,
 
     ///
     /// A category map used for one-hot encoding.
@@ -486,7 +514,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CategoryMap")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub category_map: Option<String>,
+    pub category_map: Option<cfn_resources::StrVal>,
 
     ///
     /// Characters to remove from a step that applies one-hot encoding or tokenization.
@@ -498,7 +526,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CharsToRemove")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub chars_to_remove: Option<String>,
+    pub chars_to_remove: Option<cfn_resources::StrVal>,
 
     ///
     /// Remove any non-word non-punctuation character.
@@ -510,7 +538,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CollapseConsecutiveWhitespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub collapse_consecutive_whitespace: Option<String>,
+    pub collapse_consecutive_whitespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The data type of the column.
@@ -522,7 +550,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub column_data_type: Option<String>,
+    pub column_data_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A range of columns to which a step is applied.
@@ -534,7 +562,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ColumnRange")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub column_range: Option<String>,
+    pub column_range: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of times a string needs to be repeated.
@@ -546,7 +574,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Count")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub count: Option<String>,
+    pub count: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more characters that can be substituted or removed, depending on the       context.
@@ -558,7 +586,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CustomCharacters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_characters: Option<String>,
+    pub custom_characters: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of words to ignore in a step that applies word tokenization.
@@ -570,7 +598,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CustomStopWords")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_stop_words: Option<String>,
+    pub custom_stop_words: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of custom values to use in a step that requires that you provide a value to       finish the operation.
@@ -582,7 +610,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_value: Option<String>,
+    pub custom_value: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of the dataset columns included in a project.
@@ -594,7 +622,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "DatasetsColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub datasets_columns: Option<String>,
+    pub datasets_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that specifies how many units of time to add or subtract for a date math       operation.
@@ -606,7 +634,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "DateAddValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub date_add_value: Option<String>,
+    pub date_add_value: Option<cfn_resources::StrVal>,
 
     ///
     /// A date format to apply to a date.
@@ -618,7 +646,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub date_time_format: Option<String>,
+    pub date_time_format: Option<cfn_resources::StrVal>,
 
     ///
     /// A set of parameters associated with a datetime.
@@ -630,7 +658,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub date_time_parameters: Option<String>,
+    pub date_time_parameters: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether unmapped rows in a categorical mapping should be deleted
@@ -642,7 +670,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "DeleteOtherRows")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delete_other_rows: Option<String>,
+    pub delete_other_rows: Option<cfn_resources::StrVal>,
 
     ///
     /// The delimiter to use when parsing separated values in a text file.
@@ -654,7 +682,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// The end pattern to locate.
@@ -666,7 +694,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "EndPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_pattern: Option<String>,
+    pub end_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// The end position to locate.
@@ -678,7 +706,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "EndPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_position: Option<String>,
+    pub end_position: Option<cfn_resources::StrVal>,
 
     ///
     /// The end value to locate.
@@ -690,7 +718,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "EndValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_value: Option<String>,
+    pub end_value: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of word contractions and what they expand to. For eample:         can't; cannot; can         not.
@@ -702,7 +730,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ExpandContractions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expand_contractions: Option<String>,
+    pub expand_contractions: Option<cfn_resources::StrVal>,
 
     ///
     /// The exponent to apply in an exponential operation.
@@ -714,7 +742,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Exponent")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exponent: Option<String>,
+    pub exponent: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that represents FALSE.
@@ -726,7 +754,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "FalseString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub false_string: Option<String>,
+    pub false_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies options to apply to the GROUP BY used in an aggregation.
@@ -738,7 +766,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "GroupByAggFunctionOptions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_by_agg_function_options: Option<String>,
+    pub group_by_agg_function_options: Option<cfn_resources::StrVal>,
 
     ///
     /// The columns to use in the GROUP BY clause.
@@ -750,7 +778,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "GroupByColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_by_columns: Option<String>,
+    pub group_by_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of columns to hide.
@@ -762,7 +790,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "HiddenColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hidden_columns: Option<String>,
+    pub hidden_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates that lower and upper case letters are treated equally.
@@ -774,7 +802,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "IgnoreCase")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ignore_case: Option<String>,
+    pub ignore_case: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates if this column is participating in a split transform.
@@ -786,7 +814,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "IncludeInSplit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub include_in_split: Option<String>,
+    pub include_in_split: Option<cfn_resources::StrVal>,
 
     ///
     /// The input location to load the dataset from - Amazon S3 or AWS Glue Data Catalog.
@@ -810,7 +838,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub interval: Option<String>,
+    pub interval: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates if the content is text.
@@ -822,7 +850,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "IsText")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub is_text: Option<String>,
+    pub is_text: Option<cfn_resources::StrVal>,
 
     ///
     /// The keys or columns involved in a join.
@@ -834,7 +862,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "JoinKeys")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub join_keys: Option<String>,
+    pub join_keys: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of join to use, for example, INNER JOIN, OUTER       JOIN, and so on.
@@ -846,7 +874,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "JoinType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub join_type: Option<String>,
+    pub join_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The columns on the left side of the join.
@@ -858,7 +886,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "LeftColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub left_columns: Option<String>,
+    pub left_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of times to perform split or replaceBy in a       string
@@ -870,7 +898,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<String>,
+    pub limit: Option<cfn_resources::StrVal>,
 
     ///
     /// The lower boundary for a value.
@@ -882,7 +910,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "LowerBound")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lower_bound: Option<String>,
+    pub lower_bound: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of mappings to apply to construct a new dynamic frame.
@@ -894,7 +922,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "MapType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub map_type: Option<String>,
+    pub map_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines the manner in which mode value is calculated, in case there is more than       one mode value. Valid values: NONE | AVERAGE |         MINIMUM | MAXIMUM
@@ -906,7 +934,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ModeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mode_type: Option<String>,
+    pub mode_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether JSON input contains embedded new line characters.
@@ -930,7 +958,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "NumRows")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub num_rows: Option<String>,
+    pub num_rows: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of rows to consider after the current row in a window
@@ -942,7 +970,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "NumRowsAfter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub num_rows_after: Option<String>,
+    pub num_rows_after: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of rows to consider before the current row in a window
@@ -954,7 +982,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "NumRowsBefore")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub num_rows_before: Option<String>,
+    pub num_rows_before: Option<cfn_resources::StrVal>,
 
     ///
     /// A column to sort the results by.
@@ -966,7 +994,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub order_by_column: Option<String>,
+    pub order_by_column: Option<cfn_resources::StrVal>,
 
     ///
     /// The columns to sort the results by.
@@ -978,7 +1006,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub order_by_columns: Option<String>,
+    pub order_by_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// The value to assign to unmapped cells, in categorical mapping
@@ -990,7 +1018,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Other")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub other: Option<String>,
+    pub other: Option<cfn_resources::StrVal>,
 
     ///
     /// The pattern to locate.
@@ -1002,7 +1030,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern: Option<String>,
+    pub pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// The starting pattern to split between.
@@ -1014,7 +1042,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "PatternOption1")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern_option1: Option<String>,
+    pub pattern_option1: Option<cfn_resources::StrVal>,
 
     ///
     /// The ending pattern to split between.
@@ -1026,7 +1054,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "PatternOption2")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern_option2: Option<String>,
+    pub pattern_option2: Option<cfn_resources::StrVal>,
 
     ///
     /// For splitting by multiple delimiters: A JSON-encoded string that lists the patterns in       the format. For example:       [{\"pattern\":\"1\",\"includeInSplit\":true}]
@@ -1038,7 +1066,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "PatternOptions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern_options: Option<String>,
+    pub pattern_options: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the rolling window.
@@ -1050,7 +1078,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Period")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub period: Option<String>,
+    pub period: Option<cfn_resources::StrVal>,
 
     ///
     /// The character index within a string
@@ -1062,7 +1090,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Position")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub position: Option<String>,
+    pub position: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all of the following characters: .       .!       .,       .?
@@ -1074,7 +1102,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllPunctuation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_all_punctuation: Option<String>,
+    pub remove_all_punctuation: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all single quotes and double quotes.
@@ -1086,7 +1114,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllQuotes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_all_quotes: Option<String>,
+    pub remove_all_quotes: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all whitespaces from the value.
@@ -1098,7 +1126,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllWhitespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_all_whitespace: Option<String>,
+    pub remove_all_whitespace: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all chraracters specified by         CustomCharacters.
@@ -1110,7 +1138,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomCharacters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_custom_characters: Option<String>,
+    pub remove_custom_characters: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all chraracters specified by CustomValue.
@@ -1122,7 +1150,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_custom_value: Option<String>,
+    pub remove_custom_value: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes the following characters if they occur at the start or       end of the value: .       !       ,       ?
@@ -1134,7 +1162,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingPunctuation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_leading_and_trailing_punctuation: Option<String>,
+    pub remove_leading_and_trailing_punctuation: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes single quotes and double quotes from the beginning and       end of the value.
@@ -1146,7 +1174,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingQuotes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_leading_and_trailing_quotes: Option<String>,
+    pub remove_leading_and_trailing_quotes: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all whitespaces from the beginning and end of the       value.
@@ -1158,7 +1186,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingWhitespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_leading_and_trailing_whitespace: Option<String>,
+    pub remove_leading_and_trailing_whitespace: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all uppercase and lowercase alphabetic characters (A       through Z; a through z).
@@ -1170,7 +1198,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveLetters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_letters: Option<String>,
+    pub remove_letters: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all numeric characters (0 through 9).
@@ -1182,7 +1210,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveNumbers")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_numbers: Option<String>,
+    pub remove_numbers: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, the source column will be removed after un-nesting that column.       (Used with nested column types, such as Map, Struct, or Array.)
@@ -1194,7 +1222,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveSourceColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_source_column: Option<String>,
+    pub remove_source_column: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, removes all of the following characters: ! " # $ % & '         ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
@@ -1206,7 +1234,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RemoveSpecialCharacters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub remove_special_characters: Option<String>,
+    pub remove_special_characters: Option<cfn_resources::StrVal>,
 
     ///
     /// The columns on the right side of a join.
@@ -1218,7 +1246,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "RightColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub right_columns: Option<String>,
+    pub right_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of rows in the sample.
@@ -1230,7 +1258,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SampleSize")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sample_size: Option<String>,
+    pub sample_size: Option<cfn_resources::StrVal>,
 
     ///
     /// The sampling type to apply to the dataset. Valid values: FIRST_N |         LAST_N | RANDOM
@@ -1242,7 +1270,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SampleType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sample_type: Option<String>,
+    pub sample_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A object value to indicate the second dataset used in a join.
@@ -1254,7 +1282,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SecondInput")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub second_input: Option<String>,
+    pub second_input: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of secondary inputs in a UNION transform
@@ -1302,7 +1330,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_column: Option<String>,
+    pub source_column: Option<cfn_resources::StrVal>,
 
     ///
     /// A source column needed for an operation, step, or transform.
@@ -1314,7 +1342,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn1")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_column1: Option<String>,
+    pub source_column1: Option<cfn_resources::StrVal>,
 
     ///
     /// A source column needed for an operation, step, or transform.
@@ -1326,7 +1354,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn2")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_column2: Option<String>,
+    pub source_column2: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of source columns needed for an operation, step, or transform.
@@ -1338,7 +1366,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "SourceColumns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_columns: Option<String>,
+    pub source_columns: Option<cfn_resources::StrVal>,
 
     ///
     /// The index number of the first column used by an operation, step, or transform.
@@ -1350,7 +1378,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StartColumnIndex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_column_index: Option<String>,
+    pub start_column_index: Option<cfn_resources::StrVal>,
 
     ///
     /// The starting pattern to locate.
@@ -1362,7 +1390,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StartPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_pattern: Option<String>,
+    pub start_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// The starting position to locate.
@@ -1374,7 +1402,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StartPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_position: Option<String>,
+    pub start_position: Option<cfn_resources::StrVal>,
 
     ///
     /// The starting value to locate.
@@ -1386,7 +1414,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StartValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_value: Option<String>,
+    pub start_value: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates this operation uses stems and lemmas (base words) for word tokenization.
@@ -1398,7 +1426,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StemmingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stemming_mode: Option<String>,
+    pub stemming_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The total number of transforms in this recipe.
@@ -1410,7 +1438,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StepCount")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub step_count: Option<String>,
+    pub step_count: Option<cfn_resources::StrVal>,
 
     ///
     /// The index ID of a step.
@@ -1422,7 +1450,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StepIndex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub step_index: Option<String>,
+    pub step_index: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates this operation uses stop words as part of word tokenization.
@@ -1434,7 +1462,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "StopWordsMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stop_words_mode: Option<String>,
+    pub stop_words_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The resolution strategy to apply in resolving ambiguities.
@@ -1446,7 +1474,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Strategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub strategy: Option<String>,
+    pub strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The column targeted by this operation.
@@ -1458,7 +1486,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TargetColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_column: Option<String>,
+    pub target_column: Option<cfn_resources::StrVal>,
 
     ///
     /// The names to give columns altered by this operation.
@@ -1470,7 +1498,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TargetColumnNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_column_names: Option<String>,
+    pub target_column_names: Option<cfn_resources::StrVal>,
 
     ///
     /// The date format to convert to.
@@ -1482,7 +1510,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TargetDateFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_date_format: Option<String>,
+    pub target_date_format: Option<cfn_resources::StrVal>,
 
     ///
     /// The index number of an object that is targeted by this operation.
@@ -1494,7 +1522,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TargetIndex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_index: Option<String>,
+    pub target_index: Option<cfn_resources::StrVal>,
 
     ///
     /// The current timezone that you want to use for dates.
@@ -1506,7 +1534,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_zone: Option<String>,
+    pub time_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// A regex expression to use when splitting text into terms, also called words or       tokens.
@@ -1518,7 +1546,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TokenizerPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tokenizer_pattern: Option<String>,
+    pub tokenizer_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// A value to use to represent TRUE.
@@ -1530,7 +1558,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "TrueString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub true_string: Option<String>,
+    pub true_string: Option<cfn_resources::StrVal>,
 
     ///
     /// The language that's used in the user-defined function.
@@ -1542,7 +1570,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "UdfLang")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub udf_lang: Option<String>,
+    pub udf_lang: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies a unit of time. For example: MINUTES; SECONDS;         HOURS; etc.
@@ -1554,7 +1582,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Units")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub units: Option<String>,
+    pub units: Option<cfn_resources::StrVal>,
 
     ///
     /// Cast columns as rows, so that each value is a different row in a single column.
@@ -1566,7 +1594,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "UnpivotColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unpivot_column: Option<String>,
+    pub unpivot_column: Option<cfn_resources::StrVal>,
 
     ///
     /// The upper boundary for a value.
@@ -1578,7 +1606,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "UpperBound")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub upper_bound: Option<String>,
+    pub upper_bound: Option<cfn_resources::StrVal>,
 
     ///
     /// Create a new container to hold a dataset.
@@ -1590,7 +1618,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "UseNewDataFrame")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub use_new_data_frame: Option<String>,
+    pub use_new_data_frame: Option<cfn_resources::StrVal>,
 
     ///
     /// A static value that can be used in a comparison, a substitution, or in another       context-specific way. A Value can be a number, string, or other datatype,       depending on the recipe action in which it's used.
@@ -1602,7 +1630,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that's used by this operation.
@@ -1614,7 +1642,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Value1")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value1: Option<String>,
+    pub value1: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that's used by this operation.
@@ -1626,7 +1654,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "Value2")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value2: Option<String>,
+    pub value2: Option<cfn_resources::StrVal>,
 
     ///
     /// The column that is provided as a value that's used by this operation.
@@ -1638,7 +1666,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ValueColumn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value_column: Option<String>,
+    pub value_column: Option<cfn_resources::StrVal>,
 
     ///
     /// The subset of rows currently available for viewing.
@@ -1650,7 +1678,7 @@ pub struct RecipeParameters {
     /// Update requires: No interruption
     #[serde(rename = "ViewFrame")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub view_frame: Option<String>,
+    pub view_frame: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RecipeParameters {
@@ -1730,7 +1758,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The unique name of the object in the bucket.
@@ -1746,7 +1774,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -1761,37 +1789,45 @@ impl cfn_resources::CfnResource for S3Location {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.key {
-            if the_val.len() > 1280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 1280",
-                    the_val.len()
+                    "Min validation failed on field 'bucket'. {} is less than 3",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 1280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.key {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1866,7 +1902,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1876,7 +1912,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

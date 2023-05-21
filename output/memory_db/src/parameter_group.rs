@@ -11,7 +11,7 @@ pub struct CfnParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the parameter group family that this parameter group is compatible with.
@@ -22,7 +22,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
-    pub family: String,
+    pub family: cfn_resources::StrVal,
 
     ///
     /// The name of the parameter group.
@@ -33,7 +33,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: String,
+    pub parameter_group_name: cfn_resources::StrVal,
 
     ///
     /// Returns the detailed parameter list for the parameter group.
@@ -93,7 +93,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -103,7 +103,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

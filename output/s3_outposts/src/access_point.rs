@@ -11,7 +11,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The name of this access point.
@@ -22,7 +22,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The access point policy associated with this access point.
@@ -77,7 +77,7 @@ pub struct VpcConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcConfiguration {

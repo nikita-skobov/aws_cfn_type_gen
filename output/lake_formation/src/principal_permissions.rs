@@ -11,7 +11,7 @@ pub struct CfnPrincipalPermissions {
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog: Option<String>,
+    pub catalog: Option<cfn_resources::StrVal>,
 
     ///
     /// The permissions granted or revoked.
@@ -118,7 +118,7 @@ pub struct DataCellsFilterResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The name given by the user to the data filter cell.
@@ -129,7 +129,7 @@ pub struct DataCellsFilterResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The ID of the catalog to which the table belongs.
@@ -140,7 +140,7 @@ pub struct DataCellsFilterResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableCatalogId")]
-    pub table_catalog_id: String,
+    pub table_catalog_id: cfn_resources::StrVal,
 
     ///
     /// The name of the table.
@@ -151,7 +151,7 @@ pub struct DataCellsFilterResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DataCellsFilterResource {
@@ -181,7 +181,7 @@ pub struct DataLakePrincipal {
     /// Update requires: Replacement
     #[serde(rename = "DataLakePrincipalIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_lake_principal_identifier: Option<String>,
+    pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DataLakePrincipal {
@@ -210,7 +210,7 @@ pub struct DataLocationResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the data location resource.
@@ -221,7 +221,7 @@ pub struct DataLocationResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DataLocationResource {
@@ -250,7 +250,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The name of the database resource. Unique to the Data Catalog.
@@ -261,7 +261,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatabaseResource {
@@ -291,7 +291,7 @@ pub struct LFTag {
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_key: Option<String>,
+    pub tag_key: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
@@ -332,7 +332,7 @@ pub struct LFTagKeyResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The key-name for the LF-tag.
@@ -343,7 +343,7 @@ pub struct LFTagKeyResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
-    pub tag_key: String,
+    pub tag_key: cfn_resources::StrVal,
 
     ///
     /// A list of possible values for the corresponding TagKey of an LF-tag key-value pair.
@@ -385,7 +385,7 @@ pub struct LFTagPolicyResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// A list of LF-tag conditions that apply to the resource's LF-tag policy.
@@ -407,7 +407,7 @@ pub struct LFTagPolicyResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LFTagPolicyResource {
@@ -573,7 +573,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
@@ -584,7 +584,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The name of the table.
@@ -596,7 +596,7 @@ pub struct TableResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A wildcard object representing every table under a database.
@@ -641,7 +641,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
@@ -676,7 +676,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
@@ -687,7 +687,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TableWithColumnsResource {

@@ -11,7 +11,7 @@ pub struct CfnVerifiedAccessGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Verified Access policy document.
@@ -23,7 +23,7 @@ pub struct CfnVerifiedAccessGroup {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_document: Option<String>,
+    pub policy_document: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the Verified Access policy.
@@ -58,7 +58,7 @@ pub struct CfnVerifiedAccessGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessInstanceId")]
-    pub verified_access_instance_id: String,
+    pub verified_access_instance_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessGroup {
@@ -92,7 +92,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -102,7 +102,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

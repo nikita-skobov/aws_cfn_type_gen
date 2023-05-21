@@ -22,7 +22,7 @@ pub struct CfnTagOption {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The TagOption value.
@@ -33,7 +33,7 @@ pub struct CfnTagOption {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTagOption {

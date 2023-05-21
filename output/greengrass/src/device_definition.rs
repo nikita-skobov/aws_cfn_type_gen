@@ -26,7 +26,7 @@ pub struct CfnDeviceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Application-specific metadata to attach to the device definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -77,7 +77,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
+    pub certificate_arn: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -88,7 +88,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the device's local shadow is synced       with the cloud automatically.
@@ -111,7 +111,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
+    pub thing_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Device {

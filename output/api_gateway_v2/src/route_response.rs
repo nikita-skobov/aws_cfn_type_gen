@@ -10,7 +10,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The model selection expression for the route response. Supported only for WebSocket APIs.
@@ -22,7 +22,7 @@ pub struct CfnRouteResponse {
     /// Update requires: No interruption
     #[serde(rename = "ModelSelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_selection_expression: Option<String>,
+    pub model_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The response models for the route response.
@@ -57,7 +57,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RouteId")]
-    pub route_id: String,
+    pub route_id: cfn_resources::StrVal,
 
     ///
     /// The route response key.
@@ -68,7 +68,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteResponseKey")]
-    pub route_response_key: String,
+    pub route_response_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnRouteResponse {

@@ -41,7 +41,7 @@ pub struct CfnConnection {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name for the connection to create.
@@ -59,7 +59,7 @@ pub struct CfnConnection {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -96,29 +96,35 @@ impl cfn_resources::CfnResource for CfnConnection {
         self.auth_parameters.validate()?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -144,7 +150,7 @@ pub struct ApiKeyAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyName")]
-    pub api_key_name: String,
+    pub api_key_name: cfn_resources::StrVal,
 
     ///
     /// The value for the API key to use for authorization.
@@ -161,7 +167,7 @@ pub struct ApiKeyAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyValue")]
-    pub api_key_value: String,
+    pub api_key_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ApiKeyAuthParameters {
@@ -176,38 +182,46 @@ impl cfn_resources::CfnResource for ApiKeyAuthParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.api_key_name;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key_name'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key_name'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.api_key_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'api_key_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'api_key_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.api_key_value;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'api_key_value'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'api_key_value'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.api_key_value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'api_key_value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'api_key_value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -314,7 +328,7 @@ pub struct BasicAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: cfn_resources::StrVal,
 
     ///
     /// The user name to use for Basic authorization.
@@ -331,7 +345,7 @@ pub struct BasicAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BasicAuthParameters {
@@ -346,38 +360,46 @@ impl cfn_resources::CfnResource for BasicAuthParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.password;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'password'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'password'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.password;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'password'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'password'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'username'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'username'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.username;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'username'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'username'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -402,7 +424,7 @@ pub struct ClientParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientID")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The client secret assciated with the client ID to use for OAuth authorization.
@@ -419,7 +441,7 @@ pub struct ClientParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    pub client_secret: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ClientParameters {
@@ -434,38 +456,46 @@ impl cfn_resources::CfnResource for ClientParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.client_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'client_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'client_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_secret'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_secret'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_secret;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'client_secret'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'client_secret'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -574,7 +604,7 @@ pub struct OAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: String,
+    pub authorization_endpoint: cfn_resources::StrVal,
 
     ///
     /// A CreateConnectionOAuthClientRequestParameters object that contains the    client parameters for OAuth authorization.
@@ -646,20 +676,21 @@ impl cfn_resources::CfnResource for OAuthParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.authorization_endpoint;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'authorization_endpoint'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'authorization_endpoint'. {} is greater than 2048", s.len()));
+            }
         }
 
         let the_val = &self.authorization_endpoint;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'authorization_endpoint'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'authorization_endpoint'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.client_parameters.validate()?;
@@ -700,7 +731,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value associated with the key for the query string parameter.
@@ -715,7 +746,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Parameter {
@@ -730,20 +761,24 @@ impl cfn_resources::CfnResource for Parameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

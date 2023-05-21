@@ -39,7 +39,7 @@ pub struct CfnProfilingGroup {
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub compute_platform: Option<String>,
+    pub compute_platform: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the profiling group.
@@ -50,7 +50,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProfilingGroupName")]
-    pub profiling_group_name: String,
+    pub profiling_group_name: cfn_resources::StrVal,
 
     ///
     /// A list of tags to add to the created profiling group.
@@ -124,7 +124,7 @@ pub struct Channel {
     /// Update requires: No interruption
     #[serde(rename = "channelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub channel_id: Option<String>,
+    pub channel_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The channel URI.
@@ -135,7 +135,7 @@ pub struct Channel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "channelUri")]
-    pub channel_uri: String,
+    pub channel_uri: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Channel {
@@ -169,7 +169,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -179,7 +179,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

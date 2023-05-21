@@ -10,7 +10,7 @@ pub struct CfnDNSSEC {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: String,
+    pub hosted_zone_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDNSSEC {

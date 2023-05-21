@@ -11,7 +11,7 @@ pub struct CfnHookVersion {
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains logging configuration information for an extension.
@@ -38,7 +38,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaHandlerPackage")]
-    pub schema_handler_package: String,
+    pub schema_handler_package: cfn_resources::StrVal,
 
     ///
     /// The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of   Organization::Service::Hook.
@@ -55,7 +55,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
-    pub type_name: String,
+    pub type_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnHookVersion {
@@ -74,20 +74,24 @@ impl cfn_resources::CfnResource for CfnHookVersion {
 
         let the_val = &self.type_name;
 
-        if the_val.len() > 196 as _ {
-            return Err(format!(
-                "Max validation failed on field 'type_name'. {} is greater than 196",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 196 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'type_name'. {} is greater than 196",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.type_name;
 
-        if the_val.len() < 10 as _ {
-            return Err(format!(
-                "Min validation failed on field 'type_name'. {} is less than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'type_name'. {} is less than 10",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -113,7 +117,7 @@ pub struct LoggingConfig {
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the role that CloudFormation should assume when sending log entries  to CloudWatch Logs.
@@ -131,7 +135,7 @@ pub struct LoggingConfig {
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_role_arn: Option<String>,
+    pub log_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingConfig {
@@ -145,38 +149,46 @@ impl cfn_resources::CfnResource for LoggingConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.log_group_name {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'log_group_name'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'log_group_name'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_group_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'log_group_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'log_group_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_role_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'log_role_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'log_role_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.log_role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'log_role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'log_role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -11,7 +11,7 @@ pub struct CfnWorkspace {
     /// Update requires: No interruption
     #[serde(rename = "AlertManagerDefinition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alert_manager_definition: Option<String>,
+    pub alert_manager_definition: Option<cfn_resources::StrVal>,
 
     ///
     /// An alias that you assign to this workspace to help you identify it. It does not need       to be unique.
@@ -25,7 +25,7 @@ pub struct CfnWorkspace {
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alias: Option<String>,
+    pub alias: Option<cfn_resources::StrVal>,
 
     ///
     /// The LoggingConfiguration attribute is used to set the logging configuration for the workspace.
@@ -83,7 +83,7 @@ pub struct LoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_arn: Option<String>,
+    pub log_group_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingConfiguration {
@@ -117,7 +117,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -127,7 +127,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

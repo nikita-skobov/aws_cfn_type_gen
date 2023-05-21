@@ -34,7 +34,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
+    pub sns_topic_arn: cfn_resources::StrVal,
 
     ///
     /// The list of identifiers of the event sources for which events are returned. If not specified, then all sources are included in the response.      An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It can't end with a hyphen or contain two consecutive hyphens.
@@ -64,7 +64,7 @@ pub struct CfnEventSubscription {
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_type: Option<String>,
+    pub source_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the subscription.
@@ -78,7 +78,7 @@ pub struct CfnEventSubscription {
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subscription_name: Option<String>,
+    pub subscription_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional array of key-value pairs to apply to this subscription.
@@ -124,7 +124,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -134,7 +134,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

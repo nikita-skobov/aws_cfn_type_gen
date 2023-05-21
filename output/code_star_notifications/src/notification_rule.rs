@@ -10,7 +10,7 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_by: Option<String>,
+    pub created_by: Option<cfn_resources::StrVal>,
 
     ///
     /// The level of detail to include in the notifications for this resource. BASIC will include only the     contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information     provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
@@ -34,7 +34,7 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "EventTypeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_type_id: Option<String>,
+    pub event_type_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of event types associated with this notification rule. For a complete list of event types and IDs, see      Notification concepts     in the Developer Tools Console User Guide.
@@ -62,7 +62,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported resources include pipelines in AWS CodePipeline,    repositories in AWS CodeCommit, and build projects in AWS CodeBuild.
@@ -75,7 +75,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
-    pub resource: String,
+    pub resource: cfn_resources::StrVal,
 
     ///
     /// The status of the notification rule. The default value is ENABLED. If the status is       set to DISABLED, notifications aren't sent for the notification rule.
@@ -112,7 +112,7 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "TargetAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_address: Option<String>,
+    pub target_address: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and AWS Chatbot clients to associate with the    notification rule.
@@ -174,20 +174,24 @@ impl cfn_resources::CfnResource for CfnNotificationRule {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.targets;
@@ -219,7 +223,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAddress")]
-    pub target_address: String,
+    pub target_address: cfn_resources::StrVal,
 
     ///
     /// The target type. Can be an Amazon Simple Notification Service topic or AWS Chatbot client.
@@ -234,7 +238,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetType")]
-    pub target_type: String,
+    pub target_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Target {
@@ -249,20 +253,24 @@ impl cfn_resources::CfnResource for Target {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.target_address;
 
-        if the_val.len() > 320 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_address'. {} is greater than 320",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 320 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_address'. {} is greater than 320",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_address;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_address'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_address'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

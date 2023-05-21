@@ -39,7 +39,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretId")]
-    pub secret_id: String,
+    pub secret_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {

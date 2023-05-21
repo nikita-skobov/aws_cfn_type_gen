@@ -26,7 +26,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// Information about the automatic rollback configuration that is associated with the    deployment group. If you specify this property, don't specify the Deployment    property.
@@ -90,7 +90,7 @@ pub struct CfnDeploymentGroup {
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_config_name: Option<String>,
+    pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A name for the deployment group. If you don't specify a name, AWS CloudFormation    generates a unique physical ID and uses that ID for the deployment group name. For more    information, see Name Type.
@@ -108,7 +108,7 @@ pub struct CfnDeploymentGroup {
     /// Update requires: Replacement
     #[serde(rename = "DeploymentGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_group_name: Option<String>,
+    pub deployment_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Attributes that determine the type of deployment to run and whether to route deployment    traffic behind a load balancer.
@@ -213,7 +213,7 @@ pub struct CfnDeploymentGroup {
     /// Update requires: No interruption
     #[serde(rename = "OutdatedInstancesStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outdated_instances_strategy: Option<String>,
+    pub outdated_instances_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to    make calls to AWS services on your behalf. For more information, see Create a Service     Role for AWS CodeDeploy in the AWS CodeDeploy User     Guide.
@@ -226,7 +226,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
-    pub service_role_arn: String,
+    pub service_role_arn: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -268,20 +268,24 @@ impl cfn_resources::CfnResource for CfnDeploymentGroup {
 
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.auto_rollback_configuration
@@ -297,32 +301,37 @@ impl cfn_resources::CfnResource for CfnDeploymentGroup {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.deployment_config_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.deployment_config_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'deployment_config_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'deployment_config_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.deployment_group_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'deployment_group_name'. {} is greater than 100", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'deployment_group_name'. {} is greater than 100", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.deployment_group_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'deployment_group_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'deployment_group_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -359,7 +368,7 @@ pub struct Alarm {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Alarm {
@@ -622,7 +631,7 @@ pub struct Deployment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, then if an ApplicationStop, BeforeBlockTraffic, or     AfterBlockTraffic deployment lifecycle event to an instance fails, then the    deployment continues to the next deployment lifecycle event. For example, if     ApplicationStop fails, the deployment continues with DownloadBundle. If     BeforeBlockTraffic fails, the deployment continues with     BlockTraffic. If AfterBlockTraffic fails, the deployment continues    with ApplicationStop.
@@ -830,7 +839,7 @@ pub struct EC2TagFilter {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The tag filter type:
@@ -858,7 +867,7 @@ pub struct EC2TagFilter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -976,7 +985,7 @@ pub struct ECSService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The name of the target Amazon ECS service.
@@ -987,7 +996,7 @@ pub struct ECSService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    pub service_name: String,
+    pub service_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ECSService {
@@ -1023,7 +1032,7 @@ pub struct ELBInfo {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ELBInfo {
@@ -1052,7 +1061,7 @@ pub struct GitHubLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CommitId")]
-    pub commit_id: String,
+    pub commit_id: cfn_resources::StrVal,
 
     ///
     /// The GitHub account and repository pair that stores a reference to the commit that    represents the bundled artifacts for the application revision.
@@ -1065,7 +1074,7 @@ pub struct GitHubLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Repository")]
-    pub repository: String,
+    pub repository: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GitHubLocation {
@@ -1365,7 +1374,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The file type of the application revision. Must be one of the following:
@@ -1395,7 +1404,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etag: Option<String>,
+    pub etag: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Amazon S3 object that represents the bundled artifacts for the       application revision.
@@ -1406,7 +1415,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// A specific version of the Amazon S3 object that represents the bundled       artifacts for the application revision.
@@ -1420,7 +1429,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1483,7 +1492,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1493,7 +1502,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -1525,7 +1534,7 @@ pub struct TagFilter {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The on-premises instance tag filter type:
@@ -1553,7 +1562,7 @@ pub struct TagFilter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1612,7 +1621,7 @@ pub struct TargetGroupInfo {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TargetGroupInfo {
@@ -1742,7 +1751,7 @@ pub struct TriggerConfig {
     /// Update requires: No interruption
     #[serde(rename = "TriggerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger_name: Option<String>,
+    pub trigger_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service topic through       which notifications about deployment or instance events are sent.
@@ -1754,7 +1763,7 @@ pub struct TriggerConfig {
     /// Update requires: No interruption
     #[serde(rename = "TriggerTargetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger_target_arn: Option<String>,
+    pub trigger_target_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TriggerConfig {

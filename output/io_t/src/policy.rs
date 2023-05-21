@@ -22,7 +22,7 @@ pub struct CfnPolicy {
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_name: Option<String>,
+    pub policy_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnPolicy {

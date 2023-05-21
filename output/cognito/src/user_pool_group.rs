@@ -15,7 +15,7 @@ pub struct CfnUserPoolGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the group. Must be unique.
@@ -33,7 +33,7 @@ pub struct CfnUserPoolGroup {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A non-negative integer value that specifies the precedence of this group relative to       the other groups that a user can belong to in the user pool. Zero is the highest       precedence value. Groups with lower Precedence values take precedence over       groups with higher or null Precedence values. If a user belongs to two or       more groups, it is the group with the lowest precedence value whose role ARN is given in       the user's tokens for the cognito:roles and         cognito:preferred_role claims.
@@ -69,7 +69,7 @@ pub struct CfnUserPoolGroup {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The user pool ID for the user pool.
@@ -86,7 +86,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolGroup {
@@ -100,29 +100,35 @@ impl cfn_resources::CfnResource for CfnUserPoolGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.group_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'group_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'group_name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.group_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'group_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'group_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -136,39 +142,47 @@ impl cfn_resources::CfnResource for CfnUserPoolGroup {
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() < 20 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'role_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.user_pool_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'role_arn'. {} is less than 20",
-                    the_val.len()
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.user_pool_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

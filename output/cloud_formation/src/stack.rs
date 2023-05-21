@@ -66,7 +66,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateURL")]
-    pub template_url: String,
+    pub template_url: cfn_resources::StrVal,
 
     ///
     /// The length of time, in minutes, that CloudFormation waits for the nested stack to reach the   CREATE_COMPLETE state. The default is no timeout. When CloudFormation detects that the nested  stack has reached the CREATE_COMPLETE state, it marks the nested stack resource as   CREATE_COMPLETE in the parent stack and resumes creating the parent stack. If the timeout period  expires before the nested stack reaches CREATE_COMPLETE, CloudFormation marks the nested stack  as failed and rolls back both the nested stack and parent stack.
@@ -115,20 +115,24 @@ impl cfn_resources::CfnResource for CfnStack {
 
         let the_val = &self.template_url;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'template_url'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'template_url'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.template_url;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'template_url'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'template_url'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.timeout_in_minutes {
@@ -161,7 +165,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -171,7 +175,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

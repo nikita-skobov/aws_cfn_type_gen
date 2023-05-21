@@ -63,7 +63,7 @@ pub struct DashboardAttributes {
     /// Update requires: No interruption
     #[serde(rename = "EngagementMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engagement_metrics: Option<String>,
+    pub engagement_metrics: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DashboardAttributes {
@@ -95,7 +95,7 @@ pub struct GuardianAttributes {
     /// Update requires: No interruption
     #[serde(rename = "OptimizedSharedDelivery")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub optimized_shared_delivery: Option<String>,
+    pub optimized_shared_delivery: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GuardianAttributes {

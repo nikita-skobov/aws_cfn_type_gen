@@ -43,7 +43,7 @@ pub struct CfnTopic {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to true to create a FIFO topic.
@@ -69,7 +69,7 @@ pub struct CfnTopic {
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_master_key_id: Option<String>,
+    pub kms_master_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
@@ -81,7 +81,7 @@ pub struct CfnTopic {
     /// Update requires: No interruption
     #[serde(rename = "SignatureVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub signature_version: Option<String>,
+    pub signature_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon SNS subscriptions (endpoints) for this topic.
@@ -125,7 +125,7 @@ pub struct CfnTopic {
     /// Update requires: Replacement
     #[serde(rename = "TopicName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub topic_name: Option<String>,
+    pub topic_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Tracing mode of an Amazon SNS topic. By default TracingConfig is set to       PassThrough, and the topic passes through the tracing header it receives     from an SNS publisher to its subscriptions. If set to Active, SNS will vend     X-Ray segment data to topic owner account if the sampled flag in the tracing header is     true. Only supported on standard topics.
@@ -137,7 +137,7 @@ pub struct CfnTopic {
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tracing_config: Option<String>,
+    pub tracing_config: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnTopic {
@@ -166,7 +166,7 @@ pub struct Subscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    pub endpoint: cfn_resources::StrVal,
 
     ///
     /// The subscription's protocol. For more information, see the Protocol     parameter of the       Subscribe      action in the Amazon SNS API Reference.
@@ -177,7 +177,7 @@ pub struct Subscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Subscription {
@@ -211,7 +211,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -221,7 +221,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

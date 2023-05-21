@@ -23,7 +23,7 @@ pub struct CfnFlywheel {
     /// Update requires: No interruption
     #[serde(rename = "ActiveModelArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub active_model_arn: Option<String>,
+    pub active_model_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that    grants Amazon Comprehend permission to access the flywheel data.
@@ -40,7 +40,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataAccessRoleArn")]
-    pub data_access_role_arn: String,
+    pub data_access_role_arn: cfn_resources::StrVal,
 
     ///
     /// Amazon S3 URI of the data lake location.
@@ -55,7 +55,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataLakeS3Uri")]
-    pub data_lake_s3_uri: String,
+    pub data_lake_s3_uri: cfn_resources::StrVal,
 
     ///
     /// Data security configuration.
@@ -82,7 +82,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FlywheelName")]
-    pub flywheel_name: String,
+    pub flywheel_name: cfn_resources::StrVal,
 
     ///
     /// Model type of the flywheel's model.
@@ -151,39 +151,44 @@ impl cfn_resources::CfnResource for CfnFlywheel {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.active_model_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'active_model_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'active_model_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.data_access_role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'data_access_role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'data_access_role_arn'. {} is greater than 2048", s.len()));
+            }
         }
 
         let the_val = &self.data_access_role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'data_access_role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'data_access_role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.data_lake_s3_uri;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'data_lake_s3_uri'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'data_lake_s3_uri'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         self.data_security_config
@@ -192,11 +197,13 @@ impl cfn_resources::CfnResource for CfnFlywheel {
 
         let the_val = &self.flywheel_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'flywheel_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'flywheel_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.task_config
@@ -224,7 +231,7 @@ pub struct DataSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "DataLakeKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub data_lake_kms_key_id: Option<String>,
+    pub data_lake_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt    trained custom models. The ModelKmsKeyId can be either of the following formats:
@@ -242,7 +249,7 @@ pub struct DataSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "ModelKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_kms_key_id: Option<String>,
+    pub model_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt the volume.
@@ -258,7 +265,7 @@ pub struct DataSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "VolumeKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_kms_key_id: Option<String>,
+    pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
@@ -284,26 +291,26 @@ impl cfn_resources::CfnResource for DataSecurityConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.data_lake_kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'data_lake_kms_key_id'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'data_lake_kms_key_id'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'model_kms_key_id'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.volume_kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
@@ -434,7 +441,7 @@ pub struct EntityTypesListItem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EntityTypesListItem {
@@ -449,11 +456,13 @@ impl cfn_resources::CfnResource for EntityTypesListItem {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cfn_type;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'cfn_type'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cfn_type'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -477,7 +486,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -487,7 +496,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

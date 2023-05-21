@@ -12,7 +12,7 @@ pub struct CfnMultiRegionAccessPointPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MrapName")]
-    pub mrap_name: String,
+    pub mrap_name: cfn_resources::StrVal,
 
     ///
     /// The access policy associated with the Multi-Region Access Point.
@@ -52,7 +52,7 @@ pub struct PolicyStatus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsPublic")]
-    pub is_public: String,
+    pub is_public: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PolicyStatus {

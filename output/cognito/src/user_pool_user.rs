@@ -96,7 +96,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 
     ///
     /// The username for the user. Must be unique within the user pool. Must be a UTF-8 string       between 1 and 128 characters. After the user is created, the username can't be       changed.
@@ -114,7 +114,7 @@ pub struct CfnUserPoolUser {
     /// Update requires: Replacement
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 
     ///
     /// The user's validation data. This is an array of name-value pairs that contain user       attributes and attribute values that you can use for custom validation, such as       restricting the types of user accounts that can be registered. For example, you might       choose to allow or disallow user sign-up based on the user's domain.
@@ -162,37 +162,45 @@ impl cfn_resources::CfnResource for CfnUserPoolUser {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.username {
-            if the_val.len() > 128 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'username'. {} is greater than 128",
-                    the_val.len()
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.username {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'username'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'username'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.username {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'username'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -219,7 +227,7 @@ pub struct AttributeType {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the attribute.
@@ -233,7 +241,7 @@ pub struct AttributeType {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AttributeType {
@@ -247,29 +255,35 @@ impl cfn_resources::CfnResource for AttributeType {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -51,7 +51,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A set of options that defines how DataBrew interprets an Amazon S3 path of the dataset.
@@ -125,20 +125,24 @@ impl cfn_resources::CfnResource for CfnDataset {
 
         let the_val = &self.name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.path_options
@@ -166,7 +170,7 @@ pub struct CsvOptions {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// A variable that specifies whether the first row in the file is parsed as the       header. If this value is false, column names are auto-generated.
@@ -192,20 +196,24 @@ impl cfn_resources::CfnResource for CsvOptions {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() > 1 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'delimiter'. {} is greater than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'delimiter'. {} is greater than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'delimiter'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'delimiter'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -230,7 +238,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a database in the Data Catalog.
@@ -246,7 +254,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a database table in the Data Catalog. This table corresponds to a DataBrew       dataset.
@@ -262,7 +270,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: Option<String>,
+    pub table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon location that AWS Glue Data Catalog can use as a temporary       directory.
@@ -288,56 +296,68 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.catalog_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'catalog_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'catalog_id'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.catalog_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'catalog_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'catalog_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'database_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'database_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.database_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'database_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'database_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'table_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'table_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'table_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'table_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -362,7 +382,7 @@ pub struct DatabaseInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "DatabaseTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_table_name: Option<String>,
+    pub database_table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Glue Connection that stores the connection information for       the target database.
@@ -373,7 +393,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueConnectionName")]
-    pub glue_connection_name: String,
+    pub glue_connection_name: cfn_resources::StrVal,
 
     ///
     /// Custom SQL to run against the provided AWS Glue connection. This SQL will be used as       the input for DataBrew projects and jobs.
@@ -385,7 +405,7 @@ pub struct DatabaseInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_string: Option<String>,
+    pub query_string: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon location that AWS Glue Data Catalog can use as a temporary       directory.
@@ -466,7 +486,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The type of the dataset parameter, can be one of a 'String', 'Number' or       'Datetime'.
@@ -477,7 +497,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatasetParameter {
@@ -512,7 +532,7 @@ pub struct DatetimeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    pub format: String,
+    pub format: cfn_resources::StrVal,
 
     ///
     /// Optional value for a non-US locale code, needed for correct interpretation of some       date formats.
@@ -524,7 +544,7 @@ pub struct DatetimeOptions {
     /// Update requires: No interruption
     #[serde(rename = "LocaleCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub locale_code: Option<String>,
+    pub locale_code: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional value for a timezone offset of the datetime parameter value in the Amazon S3 path. Shouldn't be used if Format for this parameter includes timezone       fields. If no offset specified, UTC is assumed.
@@ -536,7 +556,7 @@ pub struct DatetimeOptions {
     /// Update requires: No interruption
     #[serde(rename = "TimezoneOffset")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone_offset: Option<String>,
+    pub timezone_offset: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DatetimeOptions {
@@ -653,7 +673,7 @@ pub struct FilesLimit {
     /// Update requires: No interruption
     #[serde(rename = "Order")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub order: Option<String>,
+    pub order: Option<cfn_resources::StrVal>,
 
     ///
     /// A criteria to use for Amazon S3 files sorting before their selection. By       default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only allowed       value.
@@ -665,7 +685,7 @@ pub struct FilesLimit {
     /// Update requires: No interruption
     #[serde(rename = "OrderedBy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ordered_by: Option<String>,
+    pub ordered_by: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FilesLimit {
@@ -694,7 +714,7 @@ pub struct FilterExpression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    pub expression: String,
+    pub expression: cfn_resources::StrVal,
 
     ///
     /// The map of substitution variable names to their values used in this filter       expression.
@@ -734,7 +754,7 @@ pub struct FilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 
     ///
     /// The substitution variable reference.
@@ -745,7 +765,7 @@ pub struct FilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueReference")]
-    pub value_reference: String,
+    pub value_reference: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FilterValue {
@@ -951,7 +971,7 @@ pub struct Metadata {
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_arn: Option<String>,
+    pub source_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Metadata {
@@ -965,20 +985,24 @@ impl cfn_resources::CfnResource for Metadata {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.source_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'source_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'source_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1071,7 +1095,7 @@ pub struct PathParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathParameterName")]
-    pub path_parameter_name: String,
+    pub path_parameter_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PathParameter {
@@ -1106,7 +1130,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// The unique name of the object in the bucket.
@@ -1122,7 +1146,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -1137,37 +1161,45 @@ impl cfn_resources::CfnResource for S3Location {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.key {
-            if the_val.len() > 1280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 1280",
-                    the_val.len()
+                    "Min validation failed on field 'bucket'. {} is less than 3",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 1280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.key {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1192,7 +1224,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1202,7 +1234,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -20,7 +20,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 
     ///
     /// The scaling policy type.
@@ -59,7 +59,7 @@ pub struct CfnScalingPolicy {
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String>,
+    pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
@@ -89,7 +89,7 @@ pub struct CfnScalingPolicy {
     /// Update requires: Replacement
     #[serde(rename = "ScalingTargetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scaling_target_id: Option<String>,
+    pub scaling_target_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The namespace of the AWS service that provides the resource, or a       custom-resource.
@@ -318,37 +318,45 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.policy_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.policy_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.resource_id {
-            if the_val.len() > 1600 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'resource_id'. {} is greater than 1600",
-                    the_val.len()
+                    "Min validation failed on field 'policy_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.resource_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1600 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_id'. {} is greater than 1600",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.resource_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -400,7 +408,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The namespace of the metric.
@@ -411,7 +419,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 
     ///
     /// The statistic of the metric.
@@ -436,7 +444,7 @@ pub struct CustomizedMetricSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit: Option<String>,
+    pub unit: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -494,7 +502,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value of the dimension.
@@ -505,7 +513,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricDimension {
@@ -564,7 +572,7 @@ pub struct PredefinedMetricSpecification {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_label: Option<String>,
+    pub resource_label: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -675,20 +683,24 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.resource_label {
-            if the_val.len() > 1023 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_label'. {} is greater than 1023",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1023 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_label'. {} is greater than 1023",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_label {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_label'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_label'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

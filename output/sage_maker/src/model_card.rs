@@ -54,7 +54,7 @@ pub struct CfnModelCard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelCardName")]
-    pub model_card_name: String,
+    pub model_card_name: cfn_resources::StrVal,
 
     ///
     /// The approval status of the model card within your organization. Different organizations might have different criteria for model card review and approval.
@@ -145,20 +145,24 @@ impl cfn_resources::CfnResource for CfnModelCard {
 
         let the_val = &self.model_card_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'model_card_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_card_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.model_card_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'model_card_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'model_card_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.security_config
@@ -191,7 +195,7 @@ pub struct AdditionalInformation {
     /// Update requires: No interruption
     #[serde(rename = "CaveatsAndRecommendations")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub caveats_and_recommendations: Option<String>,
+    pub caveats_and_recommendations: Option<cfn_resources::StrVal>,
 
     ///
     /// Any additional information to document about the model.
@@ -215,7 +219,7 @@ pub struct AdditionalInformation {
     /// Update requires: No interruption
     #[serde(rename = "EthicalConsiderations")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ethical_considerations: Option<String>,
+    pub ethical_considerations: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AdditionalInformation {
@@ -245,7 +249,7 @@ pub struct BusinessDetails {
     /// Update requires: No interruption
     #[serde(rename = "BusinessProblem")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub business_problem: Option<String>,
+    pub business_problem: Option<cfn_resources::StrVal>,
 
     ///
     /// The relevant stakeholders for the model.
@@ -257,7 +261,7 @@ pub struct BusinessDetails {
     /// Update requires: No interruption
     #[serde(rename = "BusinessStakeholders")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub business_stakeholders: Option<String>,
+    pub business_stakeholders: Option<cfn_resources::StrVal>,
 
     ///
     /// The broader business need that the model is serving.
@@ -269,7 +273,7 @@ pub struct BusinessDetails {
     /// Update requires: No interruption
     #[serde(rename = "LineOfBusiness")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub line_of_business: Option<String>,
+    pub line_of_business: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BusinessDetails {
@@ -297,7 +301,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -308,7 +312,7 @@ pub struct Container {
     /// Update requires: No interruption
     #[serde(rename = "ModelDataUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_data_url: Option<String>,
+    pub model_data_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -319,7 +323,7 @@ pub struct Container {
     /// Update requires: No interruption
     #[serde(rename = "NearestModelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nearest_model_name: Option<String>,
+    pub nearest_model_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Container {
@@ -486,7 +490,7 @@ pub struct EvaluationDetail {
     /// Update requires: No interruption
     #[serde(rename = "EvaluationJobArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub evaluation_job_arn: Option<String>,
+    pub evaluation_job_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Any observations made during the model evaluation.
@@ -498,7 +502,7 @@ pub struct EvaluationDetail {
     /// Update requires: No interruption
     #[serde(rename = "EvaluationObservation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub evaluation_observation: Option<String>,
+    pub evaluation_observation: Option<cfn_resources::StrVal>,
 
     ///
     /// Additional attributes associated with the evaluation results.
@@ -533,7 +537,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EvaluationDetail {
@@ -563,7 +567,7 @@ pub struct Function {
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition: Option<String>,
+    pub condition: Option<cfn_resources::StrVal>,
 
     ///
     /// The metric of the model's objective function. For example, loss       or rmse. The following list shows examples of the values that you can specify for the metric:
@@ -577,7 +581,7 @@ pub struct Function {
     /// Update requires: No interruption
     #[serde(rename = "Facet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub facet: Option<String>,
+    pub facet: Option<cfn_resources::StrVal>,
 
     ///
     /// The optimization direction of the model's objective function. You must specify one of       the following values:
@@ -591,7 +595,7 @@ pub struct Function {
     /// Update requires: No interruption
     #[serde(rename = "Function")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function: Option<String>,
+    pub function: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Function {
@@ -679,7 +683,7 @@ pub struct IntendedUses {
     /// Update requires: No interruption
     #[serde(rename = "ExplanationsForRiskRating")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub explanations_for_risk_rating: Option<String>,
+    pub explanations_for_risk_rating: Option<cfn_resources::StrVal>,
 
     ///
     /// Factors affecting model efficacy.
@@ -691,7 +695,7 @@ pub struct IntendedUses {
     /// Update requires: No interruption
     #[serde(rename = "FactorsAffectingModelEfficiency")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub factors_affecting_model_efficiency: Option<String>,
+    pub factors_affecting_model_efficiency: Option<cfn_resources::StrVal>,
 
     ///
     /// The intended use cases for the model.
@@ -703,7 +707,7 @@ pub struct IntendedUses {
     /// Update requires: No interruption
     #[serde(rename = "IntendedUses")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub intended_uses: Option<String>,
+    pub intended_uses: Option<cfn_resources::StrVal>,
 
     ///
     /// The general purpose of the model.
@@ -715,7 +719,7 @@ pub struct IntendedUses {
     /// Update requires: No interruption
     #[serde(rename = "PurposeOfModel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub purpose_of_model: Option<String>,
+    pub purpose_of_model: Option<cfn_resources::StrVal>,
 
     ///
     /// Your organization's risk rating. You can specify one the following values as the risk rating:
@@ -729,7 +733,7 @@ pub struct IntendedUses {
     /// Update requires: No interruption
     #[serde(rename = "RiskRating")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub risk_rating: Option<String>,
+    pub risk_rating: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IntendedUses {
@@ -758,7 +762,7 @@ pub struct MetricDataItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Any notes to add to the metric.
@@ -770,7 +774,7 @@ pub struct MetricDataItems {
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notes: Option<String>,
+    pub notes: Option<cfn_resources::StrVal>,
 
     ///
     /// You must specify one of the following data types:
@@ -783,7 +787,7 @@ pub struct MetricDataItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The datatype of the metric. The metric's value must be compatible       with the metric's type.
@@ -862,7 +866,7 @@ pub struct MetricGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricGroup {
@@ -892,7 +896,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "AlgorithmType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub algorithm_type: Option<String>,
+    pub algorithm_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An overview about model inference.
@@ -928,7 +932,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ModelCreator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_creator: Option<String>,
+    pub model_creator: Option<cfn_resources::StrVal>,
 
     ///
     /// A description of the model.
@@ -940,7 +944,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ModelDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_description: Option<String>,
+    pub model_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The SageMaker Model ARN or non-SageMaker Model ID.
@@ -952,7 +956,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ModelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_id: Option<String>,
+    pub model_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model.
@@ -964,7 +968,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ModelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_name: Option<String>,
+    pub model_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The owner of the model.
@@ -976,7 +980,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ModelOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_owner: Option<String>,
+    pub model_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the model.
@@ -1000,7 +1004,7 @@ pub struct ModelOverview {
     /// Update requires: No interruption
     #[serde(rename = "ProblemType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub problem_type: Option<String>,
+    pub problem_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ModelOverview {
@@ -1033,7 +1037,7 @@ pub struct ModelPackageCreator {
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_profile_name: Option<String>,
+    pub user_profile_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ModelPackageCreator {
@@ -1062,7 +1066,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ApprovalDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub approval_description: Option<String>,
+    pub approval_description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1084,7 +1088,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<String>,
+    pub domain: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1106,7 +1110,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelApprovalStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_approval_status: Option<String>,
+    pub model_approval_status: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1117,7 +1121,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_arn: Option<String>,
+    pub model_package_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1128,7 +1132,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_description: Option<String>,
+    pub model_package_description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1139,7 +1143,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_group_name: Option<String>,
+    pub model_package_group_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1150,7 +1154,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_name: Option<String>,
+    pub model_package_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1161,7 +1165,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_status: Option<String>,
+    pub model_package_status: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1194,7 +1198,7 @@ pub struct ModelPackageDetails {
     /// Update requires: No interruption
     #[serde(rename = "Task")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task: Option<String>,
+    pub task: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ModelPackageDetails {
@@ -1244,7 +1248,7 @@ pub struct ObjectiveFunction {
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notes: Option<String>,
+    pub notes: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ObjectiveFunction {
@@ -1278,7 +1282,7 @@ pub struct SecurityConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SecurityConfig {
@@ -1306,7 +1310,7 @@ pub struct SourceAlgorithm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlgorithmName")]
-    pub algorithm_name: String,
+    pub algorithm_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1317,7 +1321,7 @@ pub struct SourceAlgorithm {
     /// Update requires: No interruption
     #[serde(rename = "ModelDataUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_data_url: Option<String>,
+    pub model_data_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SourceAlgorithm {
@@ -1351,7 +1355,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1361,7 +1365,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -1415,7 +1419,7 @@ pub struct TrainingDetails {
     /// Update requires: No interruption
     #[serde(rename = "TrainingObservations")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub training_observations: Option<String>,
+    pub training_observations: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TrainingDetails {
@@ -1482,7 +1486,7 @@ pub struct TrainingHyperParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value specified for the hyper parameter.
@@ -1493,7 +1497,7 @@ pub struct TrainingHyperParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TrainingHyperParameter {
@@ -1535,7 +1539,7 @@ pub struct TrainingJobDetails {
     /// Update requires: No interruption
     #[serde(rename = "TrainingArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub training_arn: Option<String>,
+    pub training_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of the datasets used to train the model.
@@ -1628,7 +1632,7 @@ pub struct TrainingMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Any additional notes describing the result of the training job.
@@ -1640,7 +1644,7 @@ pub struct TrainingMetric {
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notes: Option<String>,
+    pub notes: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of a result from the SageMaker training job.
@@ -1681,7 +1685,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "DomainId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_id: Option<String>,
+    pub domain_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the user's profile.
@@ -1693,7 +1697,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "UserProfileArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_profile_arn: Option<String>,
+    pub user_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the user's profile.
@@ -1705,7 +1709,7 @@ pub struct UserContext {
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_profile_name: Option<String>,
+    pub user_profile_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for UserContext {

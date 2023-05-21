@@ -24,7 +24,7 @@ pub struct CfnJobQueue {
     /// Update requires: Replacement
     #[serde(rename = "JobQueueName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_queue_name: Option<String>,
+    pub job_queue_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The priority of the job queue. Job queues with a higher priority (or a higher integer value for the   priority parameter) are evaluated first when associated with the same compute environment. Priority is  determined in descending order. For example, a job queue with a priority value of 10 is given scheduling  preference over a job queue with a priority value of 1. All of the compute environments must be either  EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and  Fargate compute environments can't be mixed.
@@ -47,7 +47,7 @@ pub struct CfnJobQueue {
     /// Update requires: No interruption
     #[serde(rename = "SchedulingPolicyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduling_policy_arn: Option<String>,
+    pub scheduling_policy_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The state of the job queue. If the job queue state is ENABLED, it is able to accept jobs. If the  job queue state is DISABLED, new jobs can't be added to the queue, but jobs already in the queue can  finish.
@@ -119,7 +119,7 @@ pub struct ComputeEnvironmentOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeEnvironment")]
-    pub compute_environment: String,
+    pub compute_environment: cfn_resources::StrVal,
 
     ///
     /// The order of the compute environment. Compute environments are tried in ascending order. For  example, if two compute environments are associated with a job queue, the compute environment  with a lower order integer value is tried for job placement first.

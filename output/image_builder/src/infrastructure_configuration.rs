@@ -15,7 +15,7 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance metadata option settings for the infrastructure configuration.
@@ -44,7 +44,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceProfileName")]
-    pub instance_profile_name: String,
+    pub instance_profile_name: cfn_resources::StrVal,
 
     ///
     /// The instance types of the infrastructure configuration.
@@ -72,7 +72,7 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "KeyPair")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_pair: Option<String>,
+    pub key_pair: Option<cfn_resources::StrVal>,
 
     ///
     /// The logging configuration defines where Image Builder uploads your logs.
@@ -97,7 +97,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The tags attached to the resource created by Image Builder.
@@ -137,7 +137,7 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_topic_arn: Option<String>,
+    pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The subnet ID of the infrastructure configuration.
@@ -153,7 +153,7 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags of the infrastructure configuration.
@@ -191,20 +191,24 @@ impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -214,75 +218,88 @@ impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
 
         let the_val = &self.instance_profile_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_profile_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'instance_profile_name'. {} is greater than 256", s.len()));
+            }
         }
 
         let the_val = &self.instance_profile_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_profile_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.key_pair {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'key_pair'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 'instance_profile_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.key_pair {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key_pair'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key_pair'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.key_pair {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key_pair'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.sns_topic_arn {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sns_topic_arn'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'sns_topic_arn'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sns_topic_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sns_topic_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sns_topic_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subnet_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subnet_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'subnet_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'subnet_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -325,7 +342,7 @@ pub struct InstanceMetadataOptions {
     /// Update requires: No interruption
     #[serde(rename = "HttpTokens")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_tokens: Option<String>,
+    pub http_tokens: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InstanceMetadataOptions {
@@ -403,7 +420,7 @@ pub struct S3Logs {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_name: Option<String>,
+    pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 path to the bucket where the logs are stored.
@@ -419,7 +436,7 @@ pub struct S3Logs {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Logs {
@@ -433,38 +450,46 @@ impl cfn_resources::CfnResource for S3Logs {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.s3_bucket_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_bucket_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_bucket_name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_bucket_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_bucket_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_bucket_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key_prefix {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_key_prefix'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_key_prefix'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_key_prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_key_prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_key_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

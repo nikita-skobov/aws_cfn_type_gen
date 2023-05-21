@@ -11,7 +11,7 @@ pub struct CfnCustomMetric {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the custom metric. This will be used in the metric report submitted from     the device/thing. The name can't begin with aws:. You can’t change the name after you define it.
@@ -23,7 +23,7 @@ pub struct CfnCustomMetric {
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_name: Option<String>,
+    pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the custom metric. Types include string-list,     ip-address-list, number-list, and number.
@@ -36,7 +36,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricType")]
-    pub metric_type: String,
+    pub metric_type: cfn_resources::StrVal,
 
     ///
     /// Metadata that can be used to manage the custom metric.
@@ -82,7 +82,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -92,7 +92,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

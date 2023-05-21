@@ -11,7 +11,7 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// True to enable the fleet provisioning template, otherwise false.
@@ -46,7 +46,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningRoleArn")]
-    pub provisioning_role_arn: String,
+    pub provisioning_role_arn: cfn_resources::StrVal,
 
     ///
     /// Metadata that can be used to manage the fleet provisioning template.
@@ -69,7 +69,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
-    pub template_body: String,
+    pub template_body: cfn_resources::StrVal,
 
     ///
     /// The name of the fleet provisioning template.
@@ -81,7 +81,7 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_name: Option<String>,
+    pub template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the provisioning template.
@@ -93,7 +93,7 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: Replacement
     #[serde(rename = "TemplateType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_type: Option<String>,
+    pub template_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnProvisioningTemplate {
@@ -127,7 +127,7 @@ pub struct ProvisioningHook {
     /// Update requires: No interruption
     #[serde(rename = "PayloadVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub payload_version: Option<String>,
+    pub payload_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the target function.
@@ -139,7 +139,7 @@ pub struct ProvisioningHook {
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_arn: Option<String>,
+    pub target_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ProvisioningHook {
@@ -173,7 +173,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -183,7 +183,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

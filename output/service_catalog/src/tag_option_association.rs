@@ -10,7 +10,7 @@ pub struct CfnTagOptionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 
     ///
     /// The TagOption identifier.
@@ -21,7 +21,7 @@ pub struct CfnTagOptionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagOptionId")]
-    pub tag_option_id: String,
+    pub tag_option_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTagOptionAssociation {

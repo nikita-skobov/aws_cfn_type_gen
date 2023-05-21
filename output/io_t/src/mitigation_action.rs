@@ -11,7 +11,7 @@ pub struct CfnMitigationAction {
     /// Update requires: Replacement
     #[serde(rename = "ActionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub action_name: Option<String>,
+    pub action_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The set of parameters for this mitigation action. The parameters vary, depending on the kind of action you apply.
@@ -33,7 +33,7 @@ pub struct CfnMitigationAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// Metadata that can be used to manage the mitigation action.
@@ -231,7 +231,7 @@ pub struct EnableIoTLoggingParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    pub log_level: String,
+    pub log_level: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role used for logging.
@@ -242,7 +242,7 @@ pub struct EnableIoTLoggingParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArnForLogging")]
-    pub role_arn_for_logging: String,
+    pub role_arn_for_logging: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EnableIoTLoggingParams {
@@ -271,7 +271,7 @@ pub struct PublishFindingToSnsParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicArn")]
-    pub topic_arn: String,
+    pub topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PublishFindingToSnsParams {
@@ -300,7 +300,7 @@ pub struct ReplaceDefaultPolicyVersionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
-    pub template_name: String,
+    pub template_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
@@ -334,7 +334,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -344,7 +344,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -373,7 +373,7 @@ pub struct UpdateCACertificateParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for UpdateCACertificateParams {
@@ -402,7 +402,7 @@ pub struct UpdateDeviceCertificateParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for UpdateDeviceCertificateParams {

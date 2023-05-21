@@ -83,7 +83,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyspaceName")]
-    pub keyspace_name: String,
+    pub keyspace_name: cfn_resources::StrVal,
 
     ///
     /// One or more columns that uniquely identify every row in the table. Every table must       have a partition key.
@@ -138,7 +138,7 @@ pub struct CfnTable {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: Option<String>,
+    pub table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key-value pair tags to be       attached to the resource.
@@ -191,7 +191,7 @@ pub struct BillingMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    pub mode: String,
+    pub mode: cfn_resources::StrVal,
 
     ///
     /// The provisioned read capacity and write capacity for the table. For more information,       see Provisioned throughput capacity mode       in the Amazon Keyspaces Developer Guide.
@@ -250,7 +250,7 @@ pub struct ClusteringKeyColumn {
     /// Update requires: Replacement
     #[serde(rename = "OrderBy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub order_by: Option<String>,
+    pub order_by: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ClusteringKeyColumn {
@@ -281,7 +281,7 @@ pub struct Column {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ColumnName")]
-    pub column_name: String,
+    pub column_name: cfn_resources::StrVal,
 
     ///
     /// The data type of the column. For more information, see Data types       in the Amazon Keyspaces Developer Guide.
@@ -292,7 +292,7 @@ pub struct Column {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ColumnType")]
-    pub column_type: String,
+    pub column_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Column {
@@ -325,7 +325,7 @@ pub struct EncryptionSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
+    pub encryption_type: cfn_resources::StrVal,
 
     /// Requires a kms_key_identifier in the format of a   key ARN.
     ///
@@ -336,7 +336,7 @@ pub struct EncryptionSpecification {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_identifier: Option<String>,
+    pub kms_key_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EncryptionSpecification {
@@ -410,7 +410,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -420,7 +420,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

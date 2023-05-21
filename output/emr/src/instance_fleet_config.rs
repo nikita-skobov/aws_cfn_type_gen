@@ -10,7 +10,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterId")]
-    pub cluster_id: String,
+    pub cluster_id: cfn_resources::StrVal,
 
     ///
     /// The node type that the instance fleet hosts.
@@ -67,7 +67,7 @@ pub struct CfnInstanceFleetConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When an On-Demand instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
@@ -130,20 +130,24 @@ impl cfn_resources::CfnResource for CfnInstanceFleetConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -182,7 +186,7 @@ pub struct Configuration {
     /// Update requires: Replacement
     #[serde(rename = "Classification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub classification: Option<String>,
+    pub classification: Option<cfn_resources::StrVal>,
 
     ///
     /// Within a configuration classification, a set of properties that represent the settings that you want to change in the configuration file. Duplicates not allowed.
@@ -379,7 +383,7 @@ pub struct InstanceTypeConfig {
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bid_price: Option<String>,
+    pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The bid price, as a percentage of On-Demand price, for each EC2 Spot Instance as defined     by InstanceType. Expressed as a number (for example, 20 specifies 20%). If     neither BidPrice nor BidPriceAsPercentageOfOnDemandPrice is     provided, BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
@@ -423,7 +427,7 @@ pub struct InstanceTypeConfig {
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_ami_id: Option<String>,
+    pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration of Amazon Elastic Block Store (Amazon EBS) attached to each     instance as defined by InstanceType.
@@ -452,7 +456,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in InstanceFleetConfig. This value is 1 for a master instance fleet, and must be 1 or greater for core and task instance fleets. Defaults to 1 if not specified.
@@ -480,38 +484,46 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bid_price'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bid_price'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bid_price'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bid_price'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_ami_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_ami_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -521,20 +533,24 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.weighted_capacity {
@@ -751,7 +767,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
-    pub volume_type: String,
+    pub volume_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VolumeSpecification {

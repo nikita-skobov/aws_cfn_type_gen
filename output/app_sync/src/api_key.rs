@@ -10,7 +10,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The API key ID.
@@ -22,7 +22,7 @@ pub struct CfnApiKey {
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_key_id: Option<String>,
+    pub api_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Unique description of your API key.
@@ -34,7 +34,7 @@ pub struct CfnApiKey {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The time after which the API key expires. The date is represented as seconds since the     epoch, rounded down to the nearest hour.

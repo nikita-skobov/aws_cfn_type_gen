@@ -30,7 +30,7 @@ pub struct CfnUserPoolDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    pub domain: String,
+    pub domain: cfn_resources::StrVal,
 
     ///
     /// The user pool ID for the user pool where you want to associate a user pool domain.
@@ -47,7 +47,7 @@ pub struct CfnUserPoolDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolDomain {
@@ -66,38 +66,46 @@ impl cfn_resources::CfnResource for CfnUserPoolDomain {
 
         let the_val = &self.domain;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -123,7 +131,7 @@ pub struct CustomDomainConfigType {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomDomainConfigType {
@@ -137,20 +145,24 @@ impl cfn_resources::CfnResource for CustomDomainConfigType {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.certificate_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'certificate_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'certificate_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.certificate_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'certificate_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'certificate_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 

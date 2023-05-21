@@ -10,7 +10,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationIdentifier")]
-    pub application_identifier: String,
+    pub application_identifier: cfn_resources::StrVal,
 
     ///
     /// A description of the service.
@@ -22,7 +22,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The endpoint type of the service.
@@ -33,7 +33,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointType")]
-    pub endpoint_type: String,
+    pub endpoint_type: cfn_resources::StrVal,
 
     ///
     /// The unique identifier of the environment.
@@ -44,7 +44,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
+    pub environment_identifier: cfn_resources::StrVal,
 
     ///
     /// A summary of the configuration for the AWS Lambda endpoint type.
@@ -67,7 +67,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the service.
@@ -103,7 +103,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnService {
@@ -140,7 +140,7 @@ pub struct LambdaEndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaEndpointInput {
@@ -174,7 +174,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -184,7 +184,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -214,7 +214,7 @@ pub struct UrlEndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "HealthUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_url: Option<String>,
+    pub health_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL to route traffic to. The URL must be an rfc3986-formatted URL. If the    host is a domain name, the name must be resolvable over the public internet. If the scheme is     https, the top level domain of the host must be listed in the IANA root zone database.
@@ -225,7 +225,7 @@ pub struct UrlEndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Url")]
-    pub url: String,
+    pub url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for UrlEndpointInput {

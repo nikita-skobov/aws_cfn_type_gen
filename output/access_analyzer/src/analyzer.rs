@@ -11,7 +11,7 @@ pub struct CfnAnalyzer {
     /// Update requires: Replacement
     #[serde(rename = "AnalyzerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub analyzer_name: Option<String>,
+    pub analyzer_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the archive rules to add for the analyzer.
@@ -103,7 +103,7 @@ pub struct ArchiveRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    pub rule_name: String,
+    pub rule_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ArchiveRule {
@@ -177,7 +177,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    pub property: String,
+    pub property: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Filter {
@@ -211,7 +211,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -221,7 +221,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

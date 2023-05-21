@@ -12,7 +12,7 @@ pub struct CfnTransitGatewayPeeringAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerAccountId")]
-    pub peer_account_id: String,
+    pub peer_account_id: cfn_resources::StrVal,
 
     ///
     /// The Region of the transit gateway.
@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayPeeringAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerRegion")]
-    pub peer_region: String,
+    pub peer_region: cfn_resources::StrVal,
 
     ///
     /// The ID of the transit gateway.
@@ -34,7 +34,7 @@ pub struct CfnTransitGatewayPeeringAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerTransitGatewayId")]
-    pub peer_transit_gateway_id: String,
+    pub peer_transit_gateway_id: cfn_resources::StrVal,
 
     ///
     /// The tags for the transit gateway peering attachment.
@@ -57,7 +57,7 @@ pub struct CfnTransitGatewayPeeringAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
-    pub transit_gateway_id: String,
+    pub transit_gateway_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {
@@ -87,7 +87,7 @@ pub struct PeeringAttachmentStatus {
     /// Update requires: No interruption
     #[serde(rename = "Code")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    pub code: Option<cfn_resources::StrVal>,
 
     ///
     /// The status message, if applicable.
@@ -99,7 +99,7 @@ pub struct PeeringAttachmentStatus {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PeeringAttachmentStatus {
@@ -133,7 +133,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -143,7 +143,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

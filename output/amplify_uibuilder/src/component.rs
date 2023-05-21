@@ -10,7 +10,7 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub app_id: Option<String>,
+    pub app_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The information to connect a component's properties to data at runtime. You can't specify     tags as a valid property for bindingProperties.
@@ -59,7 +59,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentType")]
-    pub component_type: String,
+    pub component_type: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -70,7 +70,7 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_name: Option<String>,
+    pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the events that can be raised on the component. Use for the workflow feature in     Amplify Studio that allows you to bind events and actions to    components.
@@ -93,7 +93,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Describes the component's properties that can be overriden in a customized instance of the    component. You can't specify tags as a valid property for    overrides.
@@ -127,7 +127,7 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schema_version: Option<String>,
+    pub schema_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique ID of the component in its original source system, such as Figma.
@@ -139,7 +139,7 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "SourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_id: Option<String>,
+    pub source_id: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more key-value pairs to use when tagging the component.
@@ -240,7 +240,7 @@ pub struct ActionParameters {
     /// Update requires: No interruption
     #[serde(rename = "Model")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model: Option<String>,
+    pub model: Option<cfn_resources::StrVal>,
 
     ///
     /// A key-value pair that specifies the state property name and its initial value.
@@ -346,7 +346,7 @@ pub struct ComponentBindingPropertiesValue {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The property type.
@@ -358,7 +358,7 @@ pub struct ComponentBindingPropertiesValue {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
@@ -392,7 +392,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The default value to assign to the property.
@@ -404,7 +404,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The field to bind the data to.
@@ -416,7 +416,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// The storage key for an Amazon S3 bucket.
@@ -428,7 +428,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amplify DataStore model.
@@ -440,7 +440,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "Model")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model: Option<String>,
+    pub model: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of predicates for binding a component's properties to data.
@@ -464,7 +464,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_attribute: Option<String>,
+    pub user_attribute: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
@@ -505,7 +505,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentType")]
-    pub component_type: String,
+    pub component_type: cfn_resources::StrVal,
 
     ///
     /// Describes the events that can be raised on the child component. Use for the workflow    feature in Amplify Studio that allows you to bind events and actions to    components.
@@ -528,7 +528,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Describes the properties of the child component. You can't specify tags as a    valid property for properties.
@@ -581,7 +581,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the property to evaluate.
@@ -593,7 +593,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operand: Option<String>,
+    pub operand: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the property to evaluate.
@@ -605,7 +605,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "OperandType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operand_type: Option<String>,
+    pub operand_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The operator to use to perform the evaluation, such as eq to represent    equals.
@@ -617,7 +617,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operator: Option<String>,
+    pub operator: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the conditional property.
@@ -629,7 +629,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub property: Option<String>,
+    pub property: Option<cfn_resources::StrVal>,
 
     ///
     /// The value to assign to the property if the condition is met.
@@ -688,7 +688,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
-    pub model: String,
+    pub model: cfn_resources::StrVal,
 
     ///
     /// Represents the conditional logic to use when binding data to a component. Use this    property to retrieve only a subset of the data in a collection.
@@ -746,7 +746,7 @@ pub struct ComponentEvent {
     /// Update requires: No interruption
     #[serde(rename = "Action")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub action: Option<String>,
+    pub action: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes information about the action.
@@ -828,7 +828,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_name: Option<String>,
+    pub component_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of component properties to concatenate to create the value to assign to this    component property.
@@ -876,7 +876,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String>,
+    pub default_value: Option<cfn_resources::StrVal>,
 
     ///
     /// An event that occurs in your app. Use this for workflow data binding.
@@ -888,7 +888,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Event")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event: Option<String>,
+    pub event: Option<cfn_resources::StrVal>,
 
     ///
     /// The default value assigned to the property when the component is imported into an    app.
@@ -900,7 +900,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "ImportedValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub imported_value: Option<String>,
+    pub imported_value: Option<cfn_resources::StrVal>,
 
     ///
     /// The data model to use to assign a value to the component property.
@@ -912,7 +912,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Model")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model: Option<String>,
+    pub model: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the component's property that is affected by an event.
@@ -924,7 +924,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub property: Option<String>,
+    pub property: Option<cfn_resources::StrVal>,
 
     ///
     /// The component type.
@@ -936,7 +936,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An authenticated user attribute to use to assign a value to the component property.
@@ -948,7 +948,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_attribute: Option<String>,
+    pub user_attribute: Option<cfn_resources::StrVal>,
 
     ///
     /// The value to assign to the component property.
@@ -960,7 +960,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ComponentProperty {
@@ -1002,7 +1002,7 @@ pub struct ComponentPropertyBindingProperties {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// The component property to bind to the data field.
@@ -1013,7 +1013,7 @@ pub struct ComponentPropertyBindingProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    pub property: String,
+    pub property: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
@@ -1083,7 +1083,7 @@ pub struct FormBindingElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Element")]
-    pub element: String,
+    pub element: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1093,7 +1093,7 @@ pub struct FormBindingElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    pub property: String,
+    pub property: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FormBindingElement {
@@ -1122,7 +1122,7 @@ pub struct MutationActionSetStateParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
-    pub component_name: String,
+    pub component_name: cfn_resources::StrVal,
 
     ///
     /// The name of the component property to apply the state configuration to.
@@ -1133,7 +1133,7 @@ pub struct MutationActionSetStateParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    pub property: String,
+    pub property: cfn_resources::StrVal,
 
     ///
     /// The state configuration to assign to the property.
@@ -1188,7 +1188,7 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// The value to use when performing the evaluation.
@@ -1200,7 +1200,7 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operand: Option<String>,
+    pub operand: Option<cfn_resources::StrVal>,
 
     ///
     /// The operator to use to perform the evaluation.
@@ -1212,7 +1212,7 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operator: Option<String>,
+    pub operator: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of predicates to combine logically.
@@ -1253,7 +1253,7 @@ pub struct SortProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
-    pub direction: String,
+    pub direction: cfn_resources::StrVal,
 
     ///
     /// The field to perform the sort on.
@@ -1264,7 +1264,7 @@ pub struct SortProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    pub field: String,
+    pub field: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SortProperty {

@@ -32,7 +32,7 @@ pub struct CfnAccount {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AccountName")]
-    pub account_name: String,
+    pub account_name: cfn_resources::StrVal,
 
     ///
     /// The email address associated with the AWS account.
@@ -51,7 +51,7 @@ pub struct CfnAccount {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Email")]
-    pub email: String,
+    pub email: cfn_resources::StrVal,
 
     ///
     /// The unique identifier (ID) of the root or organizational unit (OU) that you want to       create the new account in. If you don't specify this parameter, the         ParentId defaults to the root ID.
@@ -97,7 +97,7 @@ pub struct CfnAccount {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_name: Option<String>,
+    pub role_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags that you want to attach to the newly created account. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
@@ -126,38 +126,46 @@ impl cfn_resources::CfnResource for CfnAccount {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.account_name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'account_name'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'account_name'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.account_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'account_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'account_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.email;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'email'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'email'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.email;
 
-        if the_val.len() < 6 as _ {
-            return Err(format!(
-                "Min validation failed on field 'email'. {} is less than 6",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 6 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'email'. {} is less than 6",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.parent_ids {
@@ -170,11 +178,13 @@ impl cfn_resources::CfnResource for CfnAccount {
         }
 
         if let Some(the_val) = &self.role_name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -199,7 +209,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -209,7 +219,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

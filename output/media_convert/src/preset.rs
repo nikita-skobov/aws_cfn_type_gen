@@ -15,7 +15,7 @@ pub struct CfnPreset {
     /// Update requires: No interruption
     #[serde(rename = "Category")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub category: Option<String>,
+    pub category: Option<cfn_resources::StrVal>,
 
     ///
     /// The new description for the preset, if you are changing it.
@@ -27,7 +27,7 @@ pub struct CfnPreset {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the preset that you are       modifying.
@@ -39,7 +39,7 @@ pub struct CfnPreset {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specify, in JSON format, the transcoding job settings for this output preset. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.

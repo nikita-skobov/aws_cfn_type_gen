@@ -31,7 +31,7 @@ pub struct CfnConfigurationAggregator {
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAggregatorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration_aggregator_name: Option<String>,
+    pub configuration_aggregator_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Provides an organization and list of regions to be 			aggregated.
@@ -77,14 +77,18 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
         }
 
         if let Some(the_val) = &self.configuration_aggregator_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'configuration_aggregator_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'configuration_aggregator_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.configuration_aggregator_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'configuration_aggregator_name'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'configuration_aggregator_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -194,7 +198,7 @@ pub struct OrganizationAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OrganizationAggregationSource {
@@ -228,7 +232,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -238,7 +242,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

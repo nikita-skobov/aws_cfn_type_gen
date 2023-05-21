@@ -67,7 +67,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Provider")]
-    pub provider: String,
+    pub provider: cfn_resources::StrVal,
 
     ///
     /// URLs that provide users information about this custom action.
@@ -108,7 +108,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -166,20 +166,24 @@ impl cfn_resources::CfnResource for CfnCustomActionType {
 
         let the_val = &self.provider;
 
-        if the_val.len() > 35 as _ {
-            return Err(format!(
-                "Max validation failed on field 'provider'. {} is greater than 35",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 35 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'provider'. {} is greater than 35",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.provider;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'provider'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provider'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.settings
@@ -188,20 +192,24 @@ impl cfn_resources::CfnResource for CfnCustomActionType {
 
         let the_val = &self.version;
 
-        if the_val.len() > 9 as _ {
-            return Err(format!(
-                "Max validation failed on field 'version'. {} is greater than 9",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 9 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'version'. {} is greater than 9",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.version;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'version'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'version'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -309,7 +317,7 @@ pub struct ConfigurationProperties {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether the configuration property is a key.
@@ -335,7 +343,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Indicates that the property is used with PollForJobs. When creating a       custom action, an action can have up to one queryable property. If it has one, that       property must be both required and not secret.
@@ -422,39 +430,47 @@ impl cfn_resources::CfnResource for ConfigurationProperties {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 160 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 160",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 160 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 160",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 50",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 50",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -478,7 +494,7 @@ pub struct Settings {
     /// Update requires: Replacement
     #[serde(rename = "EntityUrlTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entity_url_template: Option<String>,
+    pub entity_url_template: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL returned to the CodePipeline console that contains a link to the       top-level landing page for the external system, such as the console page for CodeDeploy. This link is shown on the pipeline view page in the CodePipeline console       and provides a link to the execution entity of the external action.
@@ -494,7 +510,7 @@ pub struct Settings {
     /// Update requires: Replacement
     #[serde(rename = "ExecutionUrlTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_url_template: Option<String>,
+    pub execution_url_template: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL returned to the CodePipeline console that contains a link to the page       where customers can update or change the configuration of the external action.
@@ -510,7 +526,7 @@ pub struct Settings {
     /// Update requires: Replacement
     #[serde(rename = "RevisionUrlTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub revision_url_template: Option<String>,
+    pub revision_url_template: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL of a sign-up page where users can sign up for an external service and       perform initial configuration of the action provided by that service.
@@ -526,7 +542,7 @@ pub struct Settings {
     /// Update requires: Replacement
     #[serde(rename = "ThirdPartyConfigurationUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub third_party_configuration_url: Option<String>,
+    pub third_party_configuration_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Settings {
@@ -540,62 +556,72 @@ impl cfn_resources::CfnResource for Settings {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.entity_url_template {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'entity_url_template'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'entity_url_template'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.entity_url_template {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'entity_url_template'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'entity_url_template'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_url_template {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'execution_url_template'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'execution_url_template'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_url_template {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'execution_url_template'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'execution_url_template'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.revision_url_template {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'revision_url_template'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'revision_url_template'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.revision_url_template {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'revision_url_template'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'revision_url_template'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.third_party_configuration_url {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'third_party_configuration_url'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'third_party_configuration_url'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.third_party_configuration_url {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'third_party_configuration_url'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'third_party_configuration_url'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -620,7 +646,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -630,7 +656,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

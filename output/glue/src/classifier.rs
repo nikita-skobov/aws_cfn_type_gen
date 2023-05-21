@@ -131,7 +131,7 @@ pub struct CsvClassifier {
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub delimiter: Option<String>,
+    pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies not to trim values before identifying the type of column values. The default    value is true.
@@ -173,7 +173,7 @@ pub struct CsvClassifier {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom symbol to denote what combines content into a single column value. It must be    different from the column delimiter.
@@ -191,7 +191,7 @@ pub struct CsvClassifier {
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub quote_symbol: Option<String>,
+    pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -226,56 +226,68 @@ impl cfn_resources::CfnResource for CsvClassifier {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() > 1 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'delimiter'. {} is greater than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'delimiter'. {} is greater than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.delimiter {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'delimiter'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'delimiter'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.quote_symbol {
-            if the_val.len() > 1 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'quote_symbol'. {} is greater than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'quote_symbol'. {} is greater than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.quote_symbol {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'quote_symbol'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'quote_symbol'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -295,7 +307,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classification")]
-    pub classification: String,
+    pub classification: cfn_resources::StrVal,
 
     ///
     /// Optional custom grok patterns defined by this classifier. For more information, see       custom patterns in Writing Custom       Classifiers.
@@ -313,7 +325,7 @@ pub struct GrokClassifier {
     /// Update requires: No interruption
     #[serde(rename = "CustomPatterns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_patterns: Option<String>,
+    pub custom_patterns: Option<cfn_resources::StrVal>,
 
     ///
     /// The grok pattern applied to a data store by this classifier. For more information, see       built-in patterns in Writing Custom       Classifiers.
@@ -330,7 +342,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrokPattern")]
-    pub grok_pattern: String,
+    pub grok_pattern: cfn_resources::StrVal,
 
     ///
     /// The name of the classifier.
@@ -348,7 +360,7 @@ pub struct GrokClassifier {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GrokClassifier {
@@ -362,56 +374,65 @@ impl cfn_resources::CfnResource for GrokClassifier {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_patterns {
-            if the_val.len() > 16000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_patterns'. {} is greater than 16000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 16000 as _ {
+                    return Err(format!("Max validation failed on field 'custom_patterns'. {} is greater than 16000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_patterns {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_patterns'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.grok_pattern;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'custom_patterns'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'grok_pattern'. {} is greater than 2048",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.grok_pattern;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'grok_pattern'. {} is greater than 2048",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.grok_pattern;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'grok_pattern'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
+                    "Min validation failed on field 'grok_pattern'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -431,7 +452,7 @@ pub struct JsonClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonPath")]
-    pub json_path: String,
+    pub json_path: cfn_resources::StrVal,
 
     ///
     /// The name of the classifier.
@@ -449,7 +470,7 @@ pub struct JsonClassifier {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for JsonClassifier {
@@ -463,20 +484,24 @@ impl cfn_resources::CfnResource for JsonClassifier {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -496,7 +521,7 @@ pub struct XMLClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classification")]
-    pub classification: String,
+    pub classification: cfn_resources::StrVal,
 
     ///
     /// The name of the classifier.
@@ -514,7 +539,7 @@ pub struct XMLClassifier {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The XML tag designating the element that contains each record in an XML document being    parsed. This can't identify a self-closing element (closed by />). An empty    row element that contains only attributes can be parsed as long as it ends with a closing tag    (for example, <row item_a="A" item_b="B"></row> is okay, but     <row item_a="A" item_b="B" /> is not).
@@ -525,7 +550,7 @@ pub struct XMLClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowTag")]
-    pub row_tag: String,
+    pub row_tag: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for XMLClassifier {
@@ -539,20 +564,24 @@ impl cfn_resources::CfnResource for XMLClassifier {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

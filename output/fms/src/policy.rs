@@ -90,7 +90,7 @@ pub struct CfnPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_description: Option<String>,
+    pub policy_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the AWS Firewall Manager policy.
@@ -107,7 +107,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 
     ///
     /// Indicates if the policy should be automatically applied to new resources.
@@ -164,7 +164,7 @@ pub struct CfnPolicy {
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_type: Option<String>,
+    pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of ResourceType objects. Use this only to specify multiple resource types. To specify a single resource type, use ResourceType.
@@ -241,30 +241,33 @@ impl cfn_resources::CfnResource for CfnPolicy {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.policy_description {
-            if the_val.len() > 256 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'policy_description'. {} is greater than 256", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.policy_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'policy_description'. {} is greater than 256",
-                    the_val.len()
+                    "Max validation failed on field 'policy_name'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.policy_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'policy_name'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.policy_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'policy_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.resource_tags {
@@ -277,20 +280,24 @@ impl cfn_resources::CfnResource for CfnPolicy {
         }
 
         if let Some(the_val) = &self.resource_type {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_type'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_type'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_type {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_type'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_type'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -462,7 +469,7 @@ pub struct PolicyTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// Part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.
@@ -479,7 +486,7 @@ pub struct PolicyTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PolicyTag {
@@ -494,38 +501,46 @@ impl cfn_resources::CfnResource for PolicyTag {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -550,7 +565,7 @@ pub struct ResourceTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The resource tag value.
@@ -566,7 +581,7 @@ pub struct ResourceTag {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ResourceTag {
@@ -581,28 +596,34 @@ impl cfn_resources::CfnResource for ResourceTag {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -631,7 +652,7 @@ pub struct SecurityServicePolicyData {
     /// Update requires: No interruption
     #[serde(rename = "ManagedServiceData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub managed_service_data: Option<String>,
+    pub managed_service_data: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains the Network Firewall firewall policy options to configure a centralized deployment     model.
@@ -719,17 +740,21 @@ impl cfn_resources::CfnResource for SecurityServicePolicyData {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.managed_service_data {
-            if the_val.len() > 10000 as _ {
-                return Err(format!("Max validation failed on field 'managed_service_data'. {} is greater than 10000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10000 as _ {
+                    return Err(format!("Max validation failed on field 'managed_service_data'. {} is greater than 10000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.managed_service_data {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'managed_service_data'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'managed_service_data'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

@@ -61,7 +61,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_certificate_id: Option<String>,
+    pub client_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the Deployment that the stage points to.
@@ -73,7 +73,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_id: Option<String>,
+    pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The stage's description.
@@ -85,7 +85,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the associated API documentation.
@@ -97,7 +97,7 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "DocumentationVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub documentation_version: Option<String>,
+    pub documentation_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A map that defines the method settings for a Stage resource. Keys (designated as /{method_setting_key below) are method paths defined as {resource_path}/{http_method} for an individual method override, or /\*/\* for overriding all methods in the stage.
@@ -120,7 +120,7 @@ pub struct CfnStage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 
     ///
     /// The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
@@ -132,7 +132,7 @@ pub struct CfnStage {
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage_name: Option<String>,
+    pub stage_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The collection of tags. Each tag element is associated with a given resource.
@@ -249,7 +249,7 @@ pub struct AccessLogSetting {
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_arn: Option<String>,
+    pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A single line format of the access logs of data, as specified by selected $context variables. The format must include at least $context.requestId. This parameter is required to enable access logging.
@@ -261,7 +261,7 @@ pub struct AccessLogSetting {
     /// Update requires: No interruption
     #[serde(rename = "Format")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub format: Option<String>,
+    pub format: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AccessLogSetting {
@@ -291,7 +291,7 @@ pub struct CanarySetting {
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deployment_id: Option<String>,
+    pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The percent (0-100) of traffic diverted to a canary deployment.
@@ -407,7 +407,7 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "HttpMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_method: Option<String>,
+    pub http_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. Valid values are OFF, ERROR, and INFO. Choose ERROR to write only error-level entries to CloudWatch Logs, or choose INFO to include all ERROR events as well as extra informational events.
@@ -419,7 +419,7 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logging_level: Option<String>,
+    pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether Amazon CloudWatch metrics are enabled for this method.
@@ -443,7 +443,7 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_path: Option<String>,
+    pub resource_path: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the throttling burst limit.
@@ -501,7 +501,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -511,7 +511,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

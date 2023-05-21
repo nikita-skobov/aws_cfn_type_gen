@@ -17,7 +17,7 @@ pub struct CfnStackSet {
     /// Update requires: No interruption
     #[serde(rename = "AdministrationRoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub administration_role_arn: Option<String>,
+    pub administration_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// [Service-managed permissions] Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organization or organizational unit (OU).
@@ -77,7 +77,7 @@ pub struct CfnStackSet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the IAM execution role to use to create the stack set. If you don't specify an  execution role, AWS CloudFormation uses the AWSCloudFormationStackSetExecutionRole role for the  stack set operation.
@@ -95,7 +95,7 @@ pub struct CfnStackSet {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_name: Option<String>,
+    pub execution_role_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting  operations.
@@ -181,7 +181,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackSetName")]
-    pub stack_set_name: String,
+    pub stack_set_name: cfn_resources::StrVal,
 
     ///
     /// The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation  also propagates these tags to supported resources that are created in the stacks. A maximum number of 50 tags can be  specified.
@@ -211,7 +211,7 @@ pub struct CfnStackSet {
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_body: Option<String>,
+    pub template_body: Option<cfn_resources::StrVal>,
 
     ///
     /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that's  located in an Amazon S3 bucket.
@@ -229,7 +229,7 @@ pub struct CfnStackSet {
     /// Update requires: No interruption
     #[serde(rename = "TemplateURL")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_url: Option<String>,
+    pub template_url: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -277,17 +277,18 @@ impl cfn_resources::CfnResource for CfnStackSet {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.administration_role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!("Max validation failed on field 'administration_role_arn'. {} is greater than 2048", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'administration_role_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.administration_role_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'administration_role_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'administration_role_arn'. {} is less than 20", s.len()));
+                }
             }
         }
 
@@ -296,38 +297,43 @@ impl cfn_resources::CfnResource for CfnStackSet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_role_name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'execution_role_name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!("Max validation failed on field 'execution_role_name'. {} is greater than 64", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_role_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'execution_role_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'execution_role_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -341,46 +347,56 @@ impl cfn_resources::CfnResource for CfnStackSet {
 
         let the_val = &self.stack_set_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'stack_set_name'. {} is greater than 128",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.template_body {
-            if the_val.len() > 51200 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'template_body'. {} is greater than 51200",
-                    the_val.len()
+                    "Max validation failed on field 'stack_set_name'. {} is greater than 128",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.template_body {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'template_body'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 51200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'template_body'. {} is greater than 51200",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.template_body {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'template_body'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.template_url {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'template_url'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'template_url'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.template_url {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'template_url'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'template_url'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -749,7 +765,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterKey")]
-    pub parameter_key: String,
+    pub parameter_key: cfn_resources::StrVal,
 
     ///
     /// The input value associated with the parameter.
@@ -760,7 +776,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
+    pub parameter_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Parameter {
@@ -848,7 +864,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -858,7 +874,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

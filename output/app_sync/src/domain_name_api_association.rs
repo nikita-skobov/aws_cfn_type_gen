@@ -10,7 +10,7 @@ pub struct CfnDomainNameApiAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The domain name.
@@ -21,7 +21,7 @@ pub struct CfnDomainNameApiAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDomainNameApiAssociation {

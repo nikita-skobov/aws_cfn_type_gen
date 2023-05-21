@@ -19,7 +19,7 @@ pub struct CfnMetricFilter {
     /// Update requires: Replacement
     #[serde(rename = "FilterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_name: Option<String>,
+    pub filter_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A filter pattern for extracting metric data out of ingested log events. For more information, see       Filter and Pattern Syntax.
@@ -30,7 +30,7 @@ pub struct CfnMetricFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterPattern")]
-    pub filter_pattern: String,
+    pub filter_pattern: cfn_resources::StrVal,
 
     ///
     /// The name of an existing log group that you want to associate with this metric filter.
@@ -47,7 +47,7 @@ pub struct CfnMetricFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    pub log_group_name: String,
+    pub log_group_name: cfn_resources::StrVal,
 
     ///
     /// The metric transformations.
@@ -74,39 +74,47 @@ impl cfn_resources::CfnResource for CfnMetricFilter {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.filter_name {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'filter_name'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'filter_name'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.filter_name {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'filter_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.log_group_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'filter_name'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'log_group_name'. {} is greater than 512",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.log_group_name;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'log_group_name'. {} is greater than 512",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.log_group_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'log_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'log_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metric_transformations;
@@ -140,7 +148,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The log event field that will contain the value for this dimension. This dimension will only be      published for a metric if the value is found in the log event. For example, $.eventType for      JSON log events, or $server for space-delimited log events.
@@ -151,7 +159,7 @@ pub struct Dimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Dimension {
@@ -206,7 +214,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics       that are similar. For more information, see Namespaces.
@@ -221,7 +229,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricNamespace")]
-    pub metric_namespace: String,
+    pub metric_namespace: cfn_resources::StrVal,
 
     ///
     /// The value that is published to the CloudWatch metric. For example, if you're counting the      occurrences of a particular term like Error, specify 1 for the metric value. If you're counting the      number of bytes transferred, reference the value that is in the log event by using $. followed by the name of the      field that you specified in the filter pattern, such as $.size.
@@ -232,7 +240,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricValue")]
-    pub metric_value: String,
+    pub metric_value: cfn_resources::StrVal,
 
     ///
     /// The unit to assign to the metric. If you omit this, the unit is set as None.
@@ -378,11 +386,13 @@ impl cfn_resources::CfnResource for MetricTransformation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.metric_namespace;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'metric_namespace'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metric_namespace'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

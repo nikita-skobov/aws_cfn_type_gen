@@ -22,7 +22,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
+    pub authentication_type: cfn_resources::StrVal,
 
     ///
     /// The size of data blocks to write into the HDFS cluster. The block size must be a multiple    of 512 bytes. The default block size is 128 mebibytes (MiB).
@@ -50,7 +50,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "KerberosKeytab")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kerberos_keytab: Option<String>,
+    pub kerberos_keytab: Option<cfn_resources::StrVal>,
 
     ///
     /// The krb5.conf file that contains the Kerberos configuration information.     You can load the krb5.conf by providing a string of the file's contents or an       Amazon S3 presigned URL of the file. IfKERBEROS is specified for       AuthType, this value is required.
@@ -62,7 +62,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "KerberosKrb5Conf")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kerberos_krb5_conf: Option<String>,
+    pub kerberos_krb5_conf: Option<cfn_resources::StrVal>,
 
     ///
     /// The Kerberos principal with access to the files and folders on the HDFS cluster.
@@ -82,7 +82,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "KerberosPrincipal")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kerberos_principal: Option<String>,
+    pub kerberos_principal: Option<cfn_resources::StrVal>,
 
     ///
     /// The URI of the HDFS cluster's Key Management Server (KMS).
@@ -100,7 +100,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyProviderUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_provider_uri: Option<String>,
+    pub kms_key_provider_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as    opening, closing, and renaming files and directories. The NameNode contains the information to    map blocks of data to the DataNodes. You can use only one NameNode.
@@ -159,7 +159,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "SimpleUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub simple_user: Option<String>,
+    pub simple_user: Option<cfn_resources::StrVal>,
 
     ///
     /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write    data to the HDFS cluster. If the subdirectory isn't specified, it will default to     /.
@@ -175,7 +175,7 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value pair that represents the tag that you want to add to the location. The value    can be an empty string. We recommend using tags to name your resources.
@@ -230,38 +230,40 @@ impl cfn_resources::CfnResource for CfnLocationHDFS {
         }
 
         if let Some(the_val) = &self.kerberos_principal {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kerberos_principal'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'kerberos_principal'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.kerberos_principal {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kerberos_principal'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kerberos_principal'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_provider_uri {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_provider_uri'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'kms_key_provider_uri'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_provider_uri {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_provider_uri'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_provider_uri'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -288,29 +290,35 @@ impl cfn_resources::CfnResource for CfnLocationHDFS {
         }
 
         if let Some(the_val) = &self.simple_user {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'simple_user'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'simple_user'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.simple_user {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'simple_user'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'simple_user'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -345,7 +353,7 @@ pub struct NameNode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    pub hostname: String,
+    pub hostname: cfn_resources::StrVal,
 
     ///
     /// The port that the NameNode uses to listen to client requests.
@@ -375,20 +383,24 @@ impl cfn_resources::CfnResource for NameNode {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.hostname;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'hostname'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'hostname'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.hostname;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'hostname'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'hostname'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port;
@@ -527,7 +539,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -537,7 +549,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

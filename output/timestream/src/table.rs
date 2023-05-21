@@ -12,7 +12,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// Contains properties to set on the table when enabling magnetic store writes.
@@ -80,7 +80,7 @@ pub struct CfnTable {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: Option<String>,
+    pub table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to add to the table
@@ -209,7 +209,7 @@ pub struct RetentionProperties {
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreRetentionPeriodInDays")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub magnetic_store_retention_period_in_days: Option<String>,
+    pub magnetic_store_retention_period_in_days: Option<cfn_resources::StrVal>,
 
     ///
     /// The duration for which data must be stored in the memory store.
@@ -221,7 +221,7 @@ pub struct RetentionProperties {
     /// Update requires: No interruption
     #[serde(rename = "MemoryStoreRetentionPeriodInHours")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub memory_store_retention_period_in_hours: Option<String>,
+    pub memory_store_retention_period_in_hours: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RetentionProperties {
@@ -256,7 +256,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// The encryption option for the customer S3 location. Options are S3 server-side     encryption with an S3 managed key or AWS managed key.
@@ -285,7 +285,7 @@ pub struct S3Configuration {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The object key preview for the customer S3 location.
@@ -303,7 +303,7 @@ pub struct S3Configuration {
     /// Update requires: No interruption
     #[serde(rename = "ObjectKeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub object_key_prefix: Option<String>,
+    pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -335,55 +335,64 @@ impl cfn_resources::CfnResource for S3Configuration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 3",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.kms_key_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.object_key_prefix {
-            if the_val.len() > 928 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'object_key_prefix'. {} is greater than 928",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 928 as _ {
+                    return Err(format!("Max validation failed on field 'object_key_prefix'. {} is greater than 928", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.object_key_prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'object_key_prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'object_key_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -408,7 +417,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -418,7 +427,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

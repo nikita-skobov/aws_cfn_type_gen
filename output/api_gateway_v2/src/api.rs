@@ -11,7 +11,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "ApiKeySelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_key_selection_expression: Option<String>,
+    pub api_key_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies how to interpret the base path of the API during import. Valid values are ignore, prepend, and          split. The default value is ignore. To learn more, see Set the OpenAPI basePath          Property. Supported only for HTTP APIs.
@@ -23,7 +23,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "BasePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_path: Option<String>,
+    pub base_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The OpenAPI definition. Supported only for HTTP APIs. To import an HTTP API, you must specify a Body or BodyS3Location. If you specify        a Body or BodyS3Location, don't specify CloudFormation resources such as AWS::ApiGatewayV2::Authorizer or AWS::ApiGatewayV2::Route.        API Gateway doesn't support the combination of OpenAPI and CloudFormation resources.
@@ -71,7 +71,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub credentials_arn: Option<String>,
+    pub credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the API.
@@ -83,7 +83,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether clients can invoke your API by using the default             execute-api endpoint. By default, clients can invoke your API           with the default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.           To require that clients use a custom domain name to invoke your API, disable the           default endpoint.
@@ -131,7 +131,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The API protocol. Valid values are WEBSOCKET or HTTP. Required unless you specify an OpenAPI definition for Body or S3BodyLocation.
@@ -143,7 +143,7 @@ pub struct CfnApi {
     /// Update requires: Replacement
     #[serde(rename = "ProtocolType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol_type: Option<String>,
+    pub protocol_type: Option<cfn_resources::StrVal>,
 
     ///
     /// This property is part of quick create. If you don't specify a          routeKey, a default route of $default is created. The          $default route acts as a catch-all for any request made to your API,        for a particular stage. The $default route key can't be modified. You        can add routes after creating the API, and you can update the route keys of        additional routes. Supported only for HTTP APIs.
@@ -155,7 +155,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "RouteKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub route_key: Option<String>,
+    pub route_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The route selection expression for the API. For HTTP APIs, the routeSelectionExpression must be ${request.method} ${request.path}. If not provided, this will be the default for HTTP APIs. This property is required for WebSocket APIs.
@@ -167,7 +167,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "RouteSelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub route_selection_expression: Option<String>,
+    pub route_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The collection of tags. Each tag element is associated with a given resource.
@@ -191,7 +191,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target: Option<String>,
+    pub target: Option<cfn_resources::StrVal>,
 
     ///
     /// A version identifier for the API.
@@ -203,7 +203,7 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnApi {
@@ -241,7 +241,7 @@ pub struct BodyS3Location {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket: Option<String>,
+    pub bucket: Option<cfn_resources::StrVal>,
 
     ///
     /// The Etag of the S3 object.
@@ -253,7 +253,7 @@ pub struct BodyS3Location {
     /// Update requires: No interruption
     #[serde(rename = "Etag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etag: Option<String>,
+    pub etag: Option<cfn_resources::StrVal>,
 
     ///
     /// The key of the S3 object. Required if you specify a BodyS3Location for an API.
@@ -265,7 +265,7 @@ pub struct BodyS3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the S3 object.
@@ -277,7 +277,7 @@ pub struct BodyS3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BodyS3Location {

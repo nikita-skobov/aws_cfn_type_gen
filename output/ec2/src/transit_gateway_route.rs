@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayRoute {
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_cidr_block: Option<String>,
+    pub destination_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the attachment.
@@ -35,7 +35,7 @@ pub struct CfnTransitGatewayRoute {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayAttachmentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transit_gateway_attachment_id: Option<String>,
+    pub transit_gateway_attachment_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the transit gateway route table.
@@ -46,7 +46,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableId")]
-    pub transit_gateway_route_table_id: String,
+    pub transit_gateway_route_table_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRoute {

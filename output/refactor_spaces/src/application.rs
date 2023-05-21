@@ -24,7 +24,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
+    pub environment_identifier: cfn_resources::StrVal,
 
     ///
     /// The name of the application.
@@ -35,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The proxy type of the proxy created within the application.
@@ -46,7 +46,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProxyType")]
-    pub proxy_type: String,
+    pub proxy_type: cfn_resources::StrVal,
 
     ///
     /// The tags assigned to the application.
@@ -69,7 +69,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnApplication {
@@ -105,7 +105,7 @@ pub struct ApiGatewayProxyInput {
     /// Update requires: Replacement
     #[serde(rename = "EndpointType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_type: Option<String>,
+    pub endpoint_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the API Gateway stage. The name defaults to prod.
@@ -117,7 +117,7 @@ pub struct ApiGatewayProxyInput {
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage_name: Option<String>,
+    pub stage_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ApiGatewayProxyInput {
@@ -151,7 +151,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -161,7 +161,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

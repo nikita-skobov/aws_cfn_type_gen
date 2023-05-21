@@ -49,7 +49,7 @@ pub struct CfnLayer {
     /// Update requires: No interruption
     #[serde(rename = "CustomInstanceProfileArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_instance_profile_arn: Option<String>,
+    pub custom_instance_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A JSON-formatted string containing custom stack configuration and deployment attributes   to be installed on the layer's instances. For more information, see         Using Custom JSON. This feature is supported as of version 1.7.42 of the AWS CLI.
@@ -145,7 +145,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of Package objects that describes the layer packages.
@@ -170,7 +170,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Shortname")]
-    pub shortname: String,
+    pub shortname: cfn_resources::StrVal,
 
     ///
     /// The layer stack ID.
@@ -181,7 +181,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackId")]
-    pub stack_id: String,
+    pub stack_id: cfn_resources::StrVal,
 
     ///
     /// Specifies one or more sets of tags (key–value pairs) to associate with this AWS OpsWorks layer.      Use tags to manage your resources.
@@ -685,7 +685,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -695,7 +695,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -751,7 +751,7 @@ pub struct VolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mount_point: Option<String>,
+    pub mount_point: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of disks in the volume.
@@ -801,7 +801,7 @@ pub struct VolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_type: Option<String>,
+    pub volume_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VolumeConfiguration {

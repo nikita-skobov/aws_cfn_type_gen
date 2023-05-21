@@ -14,7 +14,7 @@ pub struct CfnApplicationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// A description of this application version.
@@ -28,7 +28,7 @@ pub struct CfnApplicationVersion {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon S3 bucket and key that identify the location of the source bundle for this    version.
@@ -56,28 +56,34 @@ impl cfn_resources::CfnResource for CfnApplicationVersion {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -101,7 +107,7 @@ pub struct SourceBundle {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     ///
     /// The Amazon S3 key where the data is located.
@@ -114,7 +120,7 @@ pub struct SourceBundle {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SourceBundle {
@@ -129,20 +135,24 @@ impl cfn_resources::CfnResource for SourceBundle {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.s3_bucket;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_bucket'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_bucket'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_key;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_key'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_key'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

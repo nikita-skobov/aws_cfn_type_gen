@@ -14,7 +14,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineName")]
-    pub engine_name: String,
+    pub engine_name: cfn_resources::StrVal,
 
     ///
     /// Specifies the major version of the engine that this option group should be associated with.
@@ -25,7 +25,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MajorEngineVersion")]
-    pub major_engine_version: String,
+    pub major_engine_version: cfn_resources::StrVal,
 
     ///
     /// A list of options and the settings for each option.
@@ -48,7 +48,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OptionGroupDescription")]
-    pub option_group_description: String,
+    pub option_group_description: cfn_resources::StrVal,
 
     ///
     /// The name of the option group to be created.
@@ -70,7 +70,7 @@ pub struct CfnOptionGroup {
     /// Update requires: Replacement
     #[serde(rename = "OptionGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub option_group_name: Option<String>,
+    pub option_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional array of key-value pairs to apply to this option group.
@@ -123,7 +123,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionName")]
-    pub option_name: String,
+    pub option_name: cfn_resources::StrVal,
 
     ///
     /// The option settings to include in an option group.
@@ -147,7 +147,7 @@ pub struct OptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OptionVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub option_version: Option<String>,
+    pub option_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The optional port for the option.
@@ -201,7 +201,7 @@ pub struct OptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The current value of the option setting.
@@ -213,7 +213,7 @@ pub struct OptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OptionSetting {
@@ -247,7 +247,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -257,7 +257,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

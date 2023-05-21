@@ -17,7 +17,7 @@ pub struct CfnMLTransform {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// This value determines which version of AWS Glue this machine learning transform is compatible with. Glue 1.0 is recommended for most customers. If the value is not set, the Glue compatibility defaults to Glue 0.9. For more information, see AWS Glue Versions in the developer guide.
@@ -29,7 +29,7 @@ pub struct CfnMLTransform {
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub glue_version: Option<String>,
+    pub glue_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of AWS Glue table definitions used by the transform.
@@ -92,7 +92,7 @@ pub struct CfnMLTransform {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of workers of a defined workerType that are allocated when a task of the transform runs.
@@ -119,7 +119,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    pub role: String,
+    pub role: cfn_resources::StrVal,
 
     ///
     /// The tags to use with this machine learning transform. You may use tags to limit access to the machine learning transform. For more information about tags in AWS Glue, see AWS Tags in AWS Glue in the developer guide.
@@ -229,40 +229,48 @@ impl cfn_resources::CfnResource for CfnMLTransform {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.input_record_tables.validate()?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -349,7 +357,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrimaryKeyColumnName")]
-    pub primary_key_column_name: String,
+    pub primary_key_column_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FindMatchesParameters {
@@ -364,20 +372,21 @@ impl cfn_resources::CfnResource for FindMatchesParameters {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.primary_key_column_name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'primary_key_column_name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!("Max validation failed on field 'primary_key_column_name'. {} is greater than 1024", s.len()));
+            }
         }
 
         let the_val = &self.primary_key_column_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'primary_key_column_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'primary_key_column_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -396,7 +405,7 @@ pub struct GlueTables {
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub catalog_id: Option<String>,
+    pub catalog_id: Option<cfn_resources::StrVal>,
 
     /// The name of the connection to the AWS Glue Data Catalog.
     ///
@@ -407,7 +416,7 @@ pub struct GlueTables {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_name: Option<String>,
+    pub connection_name: Option<cfn_resources::StrVal>,
 
     /// A database name in the AWS Glue Data Catalog.
     ///
@@ -417,7 +426,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     /// A table name in the AWS Glue Data Catalog.
     ///
@@ -427,7 +436,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    pub table_name: String,
+    pub table_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GlueTables {
@@ -486,7 +495,7 @@ pub struct MLUserDataEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The encryption mode applied to user data. Valid values are:
@@ -499,7 +508,7 @@ pub struct MLUserDataEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MLUserDataEncryptionMode")]
-    pub mluser_data_encryption_mode: String,
+    pub mluser_data_encryption_mode: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MLUserDataEncryption {
@@ -543,7 +552,7 @@ pub struct TransformEncryption {
     /// Update requires: No interruption
     #[serde(rename = "TaskRunSecurityConfigurationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task_run_security_configuration_name: Option<String>,
+    pub task_run_security_configuration_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TransformEncryption {

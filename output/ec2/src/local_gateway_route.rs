@@ -10,7 +10,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
+    pub destination_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The ID of the local gateway route table.
@@ -21,7 +21,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayRouteTableId")]
-    pub local_gateway_route_table_id: String,
+    pub local_gateway_route_table_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the virtual interface group.
@@ -33,7 +33,7 @@ pub struct CfnLocalGatewayRoute {
     /// Update requires: No interruption
     #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_gateway_virtual_interface_group_id: Option<String>,
+    pub local_gateway_virtual_interface_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the network interface.
@@ -45,7 +45,7 @@ pub struct CfnLocalGatewayRoute {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRoute {

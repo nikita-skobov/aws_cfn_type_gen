@@ -45,7 +45,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: No interruption
     #[serde(rename = "DefaultCodeRepository")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_code_repository: Option<String>,
+    pub default_code_repository: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets whether SageMaker provides internet access to the notebook instance. If you set this       to Disabled this notebook instance is able to access resources only in your       VPC, and is not be able to connect to SageMaker training and endpoint services unless you       configure a NAT Gateway in your VPC.
@@ -104,7 +104,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a lifecycle configuration to associate with the notebook instance. For       information about lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
@@ -120,7 +120,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfigName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lifecycle_config_name: Option<String>,
+    pub lifecycle_config_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the new notebook instance.
@@ -136,7 +136,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "NotebookInstanceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notebook_instance_name: Option<String>,
+    pub notebook_instance_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The platform identifier of the notebook instance runtime environment.
@@ -152,7 +152,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "PlatformIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_identifier: Option<String>,
+    pub platform_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// When you send any requests to AWS resources from the notebook       instance, SageMaker assumes this role to perform tasks on your behalf. You must grant this       role necessary permissions so SageMaker can perform these tasks. The policy must allow the       SageMaker service principal (sagemaker.amazonaws.com) permissions to assume this role. For       more information, see SageMaker Roles.
@@ -171,7 +171,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// Whether root access is enabled or disabled for users of the notebook instance. The       default value is Enabled.
@@ -217,7 +217,7 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key-value pairs to apply to this resource.
@@ -592,17 +592,18 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
         }
 
         if let Some(the_val) = &self.default_code_repository {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'default_code_repository'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'default_code_repository'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.default_code_repository {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'default_code_repository'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'default_code_repository'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -611,54 +612,60 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.lifecycle_config_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'lifecycle_config_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'lifecycle_config_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.notebook_instance_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!("Max validation failed on field 'notebook_instance_name'. {} is greater than 63", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'notebook_instance_name'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.platform_identifier {
-            if the_val.len() > 15 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!("Max validation failed on field 'platform_identifier'. {} is greater than 15", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.role_arn;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'platform_identifier'. {} is greater than 15",
-                    the_val.len()
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.role_arn;
-
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.security_group_ids {
@@ -671,11 +678,13 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subnet_id'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subnet_id'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -726,7 +735,7 @@ pub struct InstanceMetadataServiceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumInstanceMetadataServiceVersion")]
-    pub minimum_instance_metadata_service_version: String,
+    pub minimum_instance_metadata_service_version: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
@@ -741,8 +750,10 @@ impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.minimum_instance_metadata_service_version;
 
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'minimum_instance_metadata_service_version'. {} is greater than 1", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1 as _ {
+                return Err(format!("Max validation failed on field 'minimum_instance_metadata_service_version'. {} is greater than 1", s.len()));
+            }
         }
 
         Ok(())
@@ -766,7 +777,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -776,7 +787,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

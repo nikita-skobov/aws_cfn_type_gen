@@ -12,7 +12,7 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the transit gateway attachment.
@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayAttachmentId")]
-    pub transit_gateway_attachment_id: String,
+    pub transit_gateway_attachment_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the transit gateway multicast domain.
@@ -34,7 +34,7 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayMulticastDomainId")]
-    pub transit_gateway_multicast_domain_id: String,
+    pub transit_gateway_multicast_domain_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomainAssociation {

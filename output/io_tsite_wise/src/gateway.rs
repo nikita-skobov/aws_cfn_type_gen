@@ -24,7 +24,7 @@ pub struct CfnGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GatewayName")]
-    pub gateway_name: String,
+    pub gateway_name: cfn_resources::StrVal,
 
     ///
     /// The gateway's platform. You can only specify one platform in a gateway.
@@ -79,7 +79,7 @@ pub struct GatewayCapabilitySummary {
     /// Update requires: No interruption
     #[serde(rename = "CapabilityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub capability_configuration: Option<String>,
+    pub capability_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The namespace of the capability configuration.    For example, if you configure OPC-UA    sources from the AWS IoT SiteWise console, your OPC-UA capability configuration has the namespace     iotsitewise:opcuacollector:version, where version is a number such as     1.
@@ -92,7 +92,7 @@ pub struct GatewayCapabilitySummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapabilityNamespace")]
-    pub capability_namespace: String,
+    pub capability_namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GatewayCapabilitySummary {
@@ -171,7 +171,7 @@ pub struct Greengrass {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupArn")]
-    pub group_arn: String,
+    pub group_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Greengrass {
@@ -200,7 +200,7 @@ pub struct GreengrassV2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDeviceThingName")]
-    pub core_device_thing_name: String,
+    pub core_device_thing_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GreengrassV2 {
@@ -234,7 +234,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -244,7 +244,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

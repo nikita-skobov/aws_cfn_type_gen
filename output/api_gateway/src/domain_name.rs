@@ -13,7 +13,7 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The custom domain name as an API host name, for example, my-api.example.com.
@@ -25,7 +25,7 @@ pub struct CfnDomainName {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The endpoint configuration of this DomainName showing the endpoint types of the domain name.
@@ -60,7 +60,7 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ownership_verification_certificate_arn: Option<String>,
+    pub ownership_verification_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The reference to an AWS-managed certificate that will be used for validating the regional domain name. AWS Certificate Manager is the only supported source.
@@ -72,7 +72,7 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "RegionalCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub regional_certificate_arn: Option<String>,
+    pub regional_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Transport Layer Security (TLS) version + cipher suite for this DomainName. The valid values are TLS_1_0 and TLS_1_2.
@@ -185,7 +185,7 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub truststore_uri: Option<String>,
+    pub truststore_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the S3 object that contains your truststore. To specify a version, you must have versioning enabled for the S3 bucket.
@@ -197,7 +197,7 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub truststore_version: Option<String>,
+    pub truststore_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MutualTlsAuthentication {
@@ -231,7 +231,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -241,7 +241,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

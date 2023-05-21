@@ -12,7 +12,7 @@ pub struct CfnVPCDHCPOptionsAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DhcpOptionsId")]
-    pub dhcp_options_id: String,
+    pub dhcp_options_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the VPC.
@@ -23,7 +23,7 @@ pub struct CfnVPCDHCPOptionsAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVPCDHCPOptionsAssociation {

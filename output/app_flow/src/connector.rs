@@ -15,7 +15,7 @@ pub struct CfnConnector {
     /// Update requires: Replacement
     #[serde(rename = "ConnectorLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connector_label: Option<String>,
+    pub connector_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration required for registering the connector.
@@ -55,7 +55,7 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -82,22 +82,26 @@ impl cfn_resources::CfnResource for CfnConnector {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.connector_label {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'connector_label'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'connector_label'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.connector_provisioning_config.validate()?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -153,7 +157,7 @@ pub struct LambdaConnectorProvisioningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaArn")]
-    pub lambda_arn: String,
+    pub lambda_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LambdaConnectorProvisioningConfig {
@@ -168,11 +172,13 @@ impl cfn_resources::CfnResource for LambdaConnectorProvisioningConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.lambda_arn;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'lambda_arn'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'lambda_arn'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -12,7 +12,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The domain name configurations.
@@ -84,7 +84,7 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_arn: Option<String>,
+    pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The user-friendly name of the certificate that will be used by the edge-optimized endpoint for this domain name.
@@ -96,7 +96,7 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_name: Option<String>,
+    pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The endpoint type.
@@ -108,7 +108,7 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_type: Option<String>,
+    pub endpoint_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon resource name (ARN) for the public certificate issued by AWS Certificate Manager. This ARN is used to validate custom domain ownership. It's required only if you configure mutual TLS and use either an ACM-imported or a private CA certificate ARN as the regionalCertificateArn.
@@ -120,7 +120,7 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ownership_verification_certificate_arn: Option<String>,
+    pub ownership_verification_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
@@ -132,7 +132,7 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_policy: Option<String>,
+    pub security_policy: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DomainNameConfiguration {
@@ -162,7 +162,7 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub truststore_uri: Option<String>,
+    pub truststore_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the S3 object that contains your truststore. To           specify a version, you must have versioning enabled for the S3 bucket.
@@ -174,7 +174,7 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub truststore_version: Option<String>,
+    pub truststore_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MutualTlsAuthentication {

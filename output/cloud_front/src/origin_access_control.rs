@@ -50,7 +50,7 @@ pub struct OriginAccessControlConfig {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A name to identify the origin access control.
@@ -61,7 +61,7 @@ pub struct OriginAccessControlConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The type of origin that this origin access control is for.

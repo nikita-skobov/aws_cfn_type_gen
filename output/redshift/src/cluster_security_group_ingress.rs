@@ -19,7 +19,7 @@ pub struct CfnClusterSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "CIDRIP")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidrip: Option<String>,
+    pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the security group to which the ingress rule is added.
@@ -32,7 +32,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterSecurityGroupName")]
-    pub cluster_security_group_name: String,
+    pub cluster_security_group_name: cfn_resources::StrVal,
 
     ///
     /// The EC2 security group to be added the Amazon Redshift security group.
@@ -46,7 +46,7 @@ pub struct CfnClusterSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_name: Option<String>,
+    pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS account number of the owner of the security group specified by       the EC2SecurityGroupName parameter. The AWS Access       Key ID is not an acceptable value.
@@ -64,7 +64,7 @@ pub struct CfnClusterSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_security_group_owner_id: Option<String>,
+    pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnClusterSecurityGroupIngress {
@@ -78,29 +78,37 @@ impl cfn_resources::CfnResource for CfnClusterSecurityGroupIngress {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cidrip {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cidrip'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cidrip'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.cluster_security_group_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_security_group_name'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_security_group_name'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.ec2_security_group_name {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'ec2_security_group_name'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'ec2_security_group_name'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.ec2_security_group_owner_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'ec2_security_group_owner_id'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'ec2_security_group_owner_id'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 

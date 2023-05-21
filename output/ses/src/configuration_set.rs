@@ -25,7 +25,7 @@ pub struct CfnConfigurationSet {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An object that represents the reputation settings for the configuration set.
@@ -140,7 +140,7 @@ pub struct DashboardOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngagementMetrics")]
-    pub engagement_metrics: String,
+    pub engagement_metrics: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DashboardOptions {
@@ -170,7 +170,7 @@ pub struct DeliveryOptions {
     /// Update requires: No interruption
     #[serde(rename = "SendingPoolName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sending_pool_name: Option<String>,
+    pub sending_pool_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS). If the value is REQUIRE, messages are only       delivered if a TLS connection can be established. If the value is OPTIONAL,       messages can be delivered in plain text if a TLS connection can't be established.
@@ -232,7 +232,7 @@ pub struct GuardianOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizedSharedDelivery")]
-    pub optimized_shared_delivery: String,
+    pub optimized_shared_delivery: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for GuardianOptions {
@@ -358,7 +358,7 @@ pub struct TrackingOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomRedirectDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_redirect_domain: Option<String>,
+    pub custom_redirect_domain: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TrackingOptions {

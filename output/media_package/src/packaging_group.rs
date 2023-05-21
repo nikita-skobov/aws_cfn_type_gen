@@ -36,7 +36,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The tags to assign to the packaging group.
@@ -85,7 +85,7 @@ pub struct Authorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdnIdentifierSecret")]
-    pub cdn_identifier_secret: String,
+    pub cdn_identifier_secret: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) for the IAM role that allows AWS Elemental MediaPackage to communicate with AWS Secrets Manager.
@@ -96,7 +96,7 @@ pub struct Authorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsRoleArn")]
-    pub secrets_role_arn: String,
+    pub secrets_role_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Authorization {
@@ -126,7 +126,7 @@ pub struct LogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LogConfiguration {
@@ -160,7 +160,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -170,7 +170,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -37,7 +37,7 @@ pub struct CfnMethod {
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authorization_type: Option<String>,
+    pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of an authorizer to use on this method. The method's authorization type must be CUSTOM or COGNITO_USER_POOLS.
@@ -49,7 +49,7 @@ pub struct CfnMethod {
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authorizer_id: Option<String>,
+    pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The method's HTTP verb.
@@ -60,7 +60,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpMethod")]
-    pub http_method: String,
+    pub http_method: cfn_resources::StrVal,
 
     ///
     /// Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.
@@ -96,7 +96,7 @@ pub struct CfnMethod {
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operation_name: Option<String>,
+    pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A key-value map specifying data schemas, represented by Model resources, (as the mapped value) of the request payloads of given content types (as the mapping key).
@@ -132,7 +132,7 @@ pub struct CfnMethod {
     /// Update requires: No interruption
     #[serde(rename = "RequestValidatorId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_validator_id: Option<String>,
+    pub request_validator_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Resource identifier for the MethodResponse resource.
@@ -143,7 +143,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -154,7 +154,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnMethod {
@@ -200,7 +200,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "CacheNamespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_namespace: Option<String>,
+    pub cache_namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the VpcLink used for the integration when connectionType=VPC_LINK and undefined, otherwise.
@@ -212,7 +212,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub connection_id: Option<String>,
+    pub connection_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the network connection to the integration endpoint. The valid value is INTERNET for connections through the public routable internet or VPC_LINK for private connections between API Gateway and a network load balancer in a VPC. The default value is INTERNET.
@@ -254,7 +254,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub credentials: Option<String>,
+    pub credentials: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the integration's HTTP method type. For the Type property, if you specify MOCK, this property is optional. For Lambda integrations, you must set the integration method to POST. For all other types, you must specify this property.
@@ -266,7 +266,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "IntegrationHttpMethod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub integration_http_method: Option<String>,
+    pub integration_http_method: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the integration's responses.
@@ -290,7 +290,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub passthrough_behavior: Option<String>,
+    pub passthrough_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of method.request.{location}.{name}, where location is querystring, path, or header and name must be a valid and unique method request parameter name.
@@ -356,7 +356,7 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uri: Option<String>,
+    pub uri: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -489,7 +489,7 @@ pub struct IntegrationResponse {
     /// Update requires: No interruption
     #[serde(rename = "SelectionPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub selection_pattern: Option<String>,
+    pub selection_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the status code that is used to map the integration response to an existing MethodResponse.
@@ -500,7 +500,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
-    pub status_code: String,
+    pub status_code: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -570,7 +570,7 @@ pub struct MethodResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
-    pub status_code: String,
+    pub status_code: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MethodResponse {

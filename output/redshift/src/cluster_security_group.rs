@@ -14,7 +14,7 @@ pub struct CfnClusterSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// Specifies an arbitrary set of tags (key–value pairs) to associate with this security       group. Use tags to manage your resources.
@@ -41,11 +41,13 @@ impl cfn_resources::CfnResource for CfnClusterSecurityGroup {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.description;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'description'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -69,7 +71,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -79,7 +81,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

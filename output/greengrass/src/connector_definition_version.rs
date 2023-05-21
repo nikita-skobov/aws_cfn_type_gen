@@ -10,7 +10,7 @@ pub struct CfnConnectorDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDefinitionId")]
-    pub connector_definition_id: String,
+    pub connector_definition_id: cfn_resources::StrVal,
 
     ///
     /// The connectors in this version. Only one instance of a given connector can be added to          the connector definition version at a time.
@@ -54,7 +54,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorArn")]
-    pub connector_arn: String,
+    pub connector_arn: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the connector. This value must be unique within       the connector definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -65,7 +65,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The parameters or configuration that the connector uses.

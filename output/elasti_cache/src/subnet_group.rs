@@ -15,7 +15,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_subnet_group_name: Option<String>,
+    pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The description for the cache subnet group.
@@ -26,7 +26,7 @@ pub struct CfnSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The EC2 subnet IDs for the cache subnet group.
@@ -82,7 +82,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -92,7 +92,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -38,7 +38,7 @@ pub struct CfnListenerRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
+    pub listener_arn: cfn_resources::StrVal,
 
     ///
     /// The rule priority. A listener can't have multiple rules with the same priority.
@@ -179,7 +179,7 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_group_arn: Option<String>,
+    pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of action.
@@ -319,7 +319,7 @@ pub struct AuthenticateCognitoConfig {
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scope: Option<String>,
+    pub scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
@@ -331,7 +331,7 @@ pub struct AuthenticateCognitoConfig {
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub session_cookie_name: Option<String>,
+    pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
@@ -354,7 +354,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolArn")]
-    pub user_pool_arn: String,
+    pub user_pool_arn: cfn_resources::StrVal,
 
     ///
     /// The ID of the Amazon Cognito user pool client.
@@ -365,7 +365,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolClientId")]
-    pub user_pool_client_id: String,
+    pub user_pool_client_id: cfn_resources::StrVal,
 
     ///
     /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
@@ -376,7 +376,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolDomain")]
-    pub user_pool_domain: String,
+    pub user_pool_domain: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -438,7 +438,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: String,
+    pub authorization_endpoint: cfn_resources::StrVal,
 
     ///
     /// The OAuth 2.0 client identifier.
@@ -449,7 +449,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
@@ -461,7 +461,7 @@ pub struct AuthenticateOidcConfig {
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_secret: Option<String>,
+    pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
     /// The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
@@ -472,7 +472,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
-    pub issuer: String,
+    pub issuer: cfn_resources::StrVal,
 
     ///
     /// The behavior if the user is not authenticated. The following are possible values:
@@ -502,7 +502,7 @@ pub struct AuthenticateOidcConfig {
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scope: Option<String>,
+    pub scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
@@ -514,7 +514,7 @@ pub struct AuthenticateOidcConfig {
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub session_cookie_name: Option<String>,
+    pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
@@ -537,7 +537,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenEndpoint")]
-    pub token_endpoint: String,
+    pub token_endpoint: cfn_resources::StrVal,
 
     ///
     /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
@@ -560,7 +560,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserInfoEndpoint")]
-    pub user_info_endpoint: String,
+    pub user_info_endpoint: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -633,7 +633,7 @@ pub struct FixedResponseConfig {
     /// Update requires: No interruption
     #[serde(rename = "MessageBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message_body: Option<String>,
+    pub message_body: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP response code (2XX, 4XX, or 5XX).
@@ -646,7 +646,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
-    pub status_code: String,
+    pub status_code: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -689,20 +689,24 @@ impl cfn_resources::CfnResource for FixedResponseConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.message_body {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'message_body'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'message_body'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.message_body {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'message_body'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'message_body'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -803,7 +807,7 @@ pub struct HttpHeaderConfig {
     /// Update requires: No interruption
     #[serde(rename = "HttpHeaderName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_header_name: Option<String>,
+    pub http_header_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The strings to compare against the value of the HTTP header. The maximum size of    each string is 128 characters. The comparison strings are case insensitive. The following    wildcard characters are supported: * (matches 0 or more characters) and ? (matches exactly 1    character).
@@ -949,7 +953,7 @@ pub struct QueryStringKeyValue {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value.
@@ -961,7 +965,7 @@ pub struct QueryStringKeyValue {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for QueryStringKeyValue {
@@ -1001,7 +1005,7 @@ pub struct RedirectConfig {
     /// Update requires: No interruption
     #[serde(rename = "Host")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host: Option<String>,
+    pub host: Option<cfn_resources::StrVal>,
 
     ///
     /// The absolute path, starting with the leading "/". This component is not percent-encoded.    The path can contain #{host}, #{path}, and #{port}.
@@ -1017,7 +1021,7 @@ pub struct RedirectConfig {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The port. You can specify a value from 1 to 65535 or #{port}.
@@ -1029,7 +1033,7 @@ pub struct RedirectConfig {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub port: Option<String>,
+    pub port: Option<cfn_resources::StrVal>,
 
     ///
     /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
@@ -1043,7 +1047,7 @@ pub struct RedirectConfig {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<String>,
+    pub protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
@@ -1059,7 +1063,7 @@ pub struct RedirectConfig {
     /// Update requires: No interruption
     #[serde(rename = "Query")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query: Option<String>,
+    pub query: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP    302).
@@ -1103,56 +1107,68 @@ impl cfn_resources::CfnResource for RedirectConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.host {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'host'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'host'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.host {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'host'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'host'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'path'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'path'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.path {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'path'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'path'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.query {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'query'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'query'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.query {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'query'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'query'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1177,7 +1193,7 @@ pub struct RuleCondition {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// Information for a host header condition. Specify only when Field is     host-header.
@@ -1283,11 +1299,13 @@ impl cfn_resources::CfnResource for RuleCondition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.field {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'field'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'field'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1408,7 +1426,7 @@ pub struct TargetGroupTuple {
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_group_arn: Option<String>,
+    pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The weight. The range is 0 to 999.

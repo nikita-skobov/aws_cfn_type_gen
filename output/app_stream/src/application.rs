@@ -11,7 +11,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppBlockArn")]
-    pub app_block_arn: String,
+    pub app_block_arn: cfn_resources::StrVal,
 
     /// A list of attributes to delete from an application.
     ///
@@ -35,7 +35,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// The display name of the application. This name is visible to users in the application catalog.
     ///
@@ -48,7 +48,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     /// The icon S3 location of the application.
     ///
@@ -83,7 +83,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "LaunchParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_parameters: Option<String>,
+    pub launch_parameters: Option<cfn_resources::StrVal>,
 
     /// The launch path of the application.
     ///
@@ -95,7 +95,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchPath")]
-    pub launch_path: String,
+    pub launch_path: cfn_resources::StrVal,
 
     /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
     ///
@@ -109,7 +109,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// The platforms the application supports.
     ///
@@ -147,7 +147,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub working_directory: Option<String>,
+    pub working_directory: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnApplication {
@@ -161,58 +161,70 @@ impl cfn_resources::CfnResource for CfnApplication {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.display_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'display_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'display_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.icon_s3_location.validate()?;
 
         if let Some(the_val) = &self.launch_parameters {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_parameters'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_parameters'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.launch_path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'launch_path'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'launch_path'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.working_directory {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'working_directory'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'working_directory'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -232,7 +244,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     ///
     /// The S3 key of the S3 object.
@@ -243,7 +255,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -277,7 +289,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -287,7 +299,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

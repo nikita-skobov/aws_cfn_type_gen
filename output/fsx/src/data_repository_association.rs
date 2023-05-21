@@ -30,7 +30,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataRepositoryPath")]
-    pub data_repository_path: String,
+    pub data_repository_path: cfn_resources::StrVal,
 
     ///
     /// The ID of the file system on which the data repository association is configured.
@@ -41,7 +41,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// A path on the Amazon FSx for Lustre file system that points to a high-level directory (such       as /ns1/) or subdirectory (such as /ns1/subdir/)       that will be mapped 1-1 with DataRepositoryPath.       The leading forward slash in the name is required. Two data repository       associations cannot have overlapping file system paths. For example, if       a data repository is associated with file system path /ns1/,       then you cannot link another data repository with file system       path /ns1/ns2.
@@ -62,7 +62,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemPath")]
-    pub file_system_path: String,
+    pub file_system_path: cfn_resources::StrVal,
 
     ///
     /// For files imported from a data repository, this value determines the stripe count and       maximum amount of data per file (in MiB) stored on a single physical disk. The maximum       number of disks that a single file can be striped across is limited by the total number       of disks that make up the file system or cache.
@@ -121,38 +121,43 @@ impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.data_repository_path;
 
-        if the_val.len() > 4357 as _ {
-            return Err(format!(
-                "Max validation failed on field 'data_repository_path'. {} is greater than 4357",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4357 as _ {
+                return Err(format!("Max validation failed on field 'data_repository_path'. {} is greater than 4357", s.len()));
+            }
         }
 
         let the_val = &self.data_repository_path;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'data_repository_path'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'data_repository_path'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.file_system_path;
 
-        if the_val.len() > 4096 as _ {
-            return Err(format!(
-                "Max validation failed on field 'file_system_path'. {} is greater than 4096",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'file_system_path'. {} is greater than 4096",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.file_system_path;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'file_system_path'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'file_system_path'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.imported_file_chunk_size {
@@ -339,7 +344,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -349,7 +354,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

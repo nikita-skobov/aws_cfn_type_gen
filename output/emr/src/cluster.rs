@@ -49,7 +49,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auto_scaling_role: Option<String>,
+    pub auto_scaling_role: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -102,7 +102,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_ami_id: Option<String>,
+    pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The size, in GiB, of the Amazon EBS root device volume of the Linux AMI that is     used for each EC2 instance. Available in Amazon EMR version 4.x and later.
@@ -142,7 +142,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobFlowRole")]
-    pub job_flow_role: String,
+    pub job_flow_role: cfn_resources::StrVal,
 
     ///
     /// Attributes for Kerberos configuration when Kerberos authentication is enabled using a     security configuration. For more information see Use Kerberos Authentication     in the Amazon EMR Management Guide.
@@ -166,7 +166,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "LogEncryptionKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_encryption_kms_key_id: Option<String>,
+    pub log_encryption_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The path to the Amazon S3 location where logs for this cluster are     stored.
@@ -178,7 +178,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "LogUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_uri: Option<String>,
+    pub log_uri: Option<cfn_resources::StrVal>,
 
     ///
     /// Creates or updates a managed scaling policy for an Amazon EMR cluster. The     managed scaling policy defines the limits for resources, such as EC2 instances that can be     added or terminated from a cluster. The policy only applies to the core and task nodes. The     master node cannot be scaled after initial configuration.
@@ -201,7 +201,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -212,7 +212,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "OSReleaseLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub osrelease_label: Option<String>,
+    pub osrelease_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon EMR release label, which determines the version of open-source     application packages installed on the cluster. Release labels are in the form       emr-x.x.x, where x.x.x is an Amazon EMR release version such as       emr-5.14.0. For more information about Amazon EMR release versions     and included application versions and features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/. The release label applies only to Amazon EMR     releases version 4.0 and later. Earlier versions use AmiVersion.
@@ -224,7 +224,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ReleaseLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub release_label: Option<String>,
+    pub release_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The way that individual Amazon EC2 instances terminate when an automatic     scale-in activity occurs or an instance group is resized.       TERMINATE_AT_INSTANCE_HOUR indicates that Amazon EMR terminates     nodes at the instance-hour boundary, regardless of when the request to terminate the     instance was submitted. This option is only available with Amazon EMR 5.1.0 and     later and is the default for clusters created using that version.       TERMINATE_AT_TASK_COMPLETION indicates that Amazon EMR adds nodes     to a deny list and drains tasks from nodes before terminating the Amazon EC2     instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to     HDFS corruption. TERMINATE_AT_TASK_COMPLETION is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.
@@ -256,7 +256,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SecurityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_configuration: Option<String>,
+    pub security_configuration: Option<cfn_resources::StrVal>,
 
     ///
     /// The IAM role that Amazon EMR assumes in order to access AWS     resources on your behalf.
@@ -267,7 +267,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceRole")]
-    pub service_role: String,
+    pub service_role: cfn_resources::StrVal,
 
     ///
     /// Specifies the number of steps that can be executed concurrently. The default value is       1. The maximum value is 256.
@@ -348,20 +348,21 @@ impl cfn_resources::CfnResource for CfnCluster {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.auto_scaling_role {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'auto_scaling_role'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!("Max validation failed on field 'auto_scaling_role'. {} is greater than 10280", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.auto_scaling_role {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'auto_scaling_role'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'auto_scaling_role'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -370,20 +371,24 @@ impl cfn_resources::CfnResource for CfnCluster {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_ami_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_ami_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -391,20 +396,24 @@ impl cfn_resources::CfnResource for CfnCluster {
 
         let the_val = &self.job_flow_role;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'job_flow_role'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'job_flow_role'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.job_flow_role;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'job_flow_role'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'job_flow_role'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         self.kerberos_attributes
@@ -416,17 +425,18 @@ impl cfn_resources::CfnResource for CfnCluster {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() > 10280 as _ {
-                return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 10280", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 10280", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'security_configuration'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 0", s.len()));
+                }
             }
         }
 
@@ -475,7 +485,7 @@ pub struct Application {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the application.
@@ -487,7 +497,7 @@ pub struct Application {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Application {
@@ -593,7 +603,7 @@ pub struct BootstrapActionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The script run by the bootstrap action.
@@ -619,20 +629,24 @@ impl cfn_resources::CfnResource for BootstrapActionConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         self.script_bootstrap_action.validate()?;
@@ -690,7 +704,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    pub metric_name: cfn_resources::StrVal,
 
     ///
     /// The namespace for the CloudWatch metric. The default is       AWS/ElasticMapReduce.
@@ -702,7 +716,7 @@ pub struct CloudWatchAlarmDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
@@ -1051,7 +1065,7 @@ pub struct Configuration {
     /// Update requires: No interruption
     #[serde(rename = "Classification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub classification: Option<String>,
+    pub classification: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of additional configurations to apply within a configuration object.
@@ -1207,7 +1221,7 @@ pub struct HadoopJarStepConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Jar")]
-    pub jar: String,
+    pub jar: cfn_resources::StrVal,
 
     ///
     /// The name of the main class in the specified Java file. If not specified, the JAR file     should specify a Main-Class in its manifest file.
@@ -1225,7 +1239,7 @@ pub struct HadoopJarStepConfig {
     /// Update requires: No interruption
     #[serde(rename = "MainClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub main_class: Option<String>,
+    pub main_class: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Java properties that are set when the step runs. You can use these properties     to pass key-value pairs to your main function.
@@ -1252,37 +1266,45 @@ impl cfn_resources::CfnResource for HadoopJarStepConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.jar;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'jar'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'jar'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.jar;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'jar'. {} is less than 0",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.main_class {
-            if the_val.len() > 10280 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'main_class'. {} is greater than 10280",
-                    the_val.len()
+                    "Min validation failed on field 'jar'. {} is less than 0",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.main_class {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'main_class'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'main_class'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.main_class {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'main_class'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1333,7 +1355,7 @@ pub struct InstanceFleetConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When an On-Demand instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
@@ -1383,20 +1405,24 @@ impl cfn_resources::CfnResource for InstanceFleetConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1505,7 +1531,7 @@ pub struct InstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bid_price: Option<String>,
+    pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
     /// NoteAmazon EMR releases 4.x or later.
@@ -1537,7 +1563,7 @@ pub struct InstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_ami_id: Option<String>,
+    pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// EBS configurations that will be attached to each EC2 instance in the instance     group.
@@ -1577,7 +1603,7 @@ pub struct InstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// Market type of the EC2 instances used to create a cluster node.
@@ -1609,7 +1635,7 @@ pub struct InstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1644,38 +1670,46 @@ impl cfn_resources::CfnResource for InstanceGroupConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bid_price'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bid_price'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bid_price'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bid_price'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_ami_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_ami_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1685,37 +1719,45 @@ impl cfn_resources::CfnResource for InstanceGroupConfig {
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.name {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.name {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1742,7 +1784,7 @@ pub struct InstanceTypeConfig {
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bid_price: Option<String>,
+    pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
     /// The bid price, as a percentage of On-Demand price, for each EC2 Spot Instance as defined     by InstanceType. Expressed as a number (for example, 20 specifies 20%). If     neither BidPrice nor BidPriceAsPercentageOfOnDemandPrice is     provided, BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
@@ -1784,7 +1826,7 @@ pub struct InstanceTypeConfig {
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_ami_id: Option<String>,
+    pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration of Amazon Elastic Block Store (Amazon EBS) attached to each     instance as defined by InstanceType.
@@ -1813,7 +1855,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in InstanceFleetConfig. This value is 1 for a master instance fleet, and must be 1 or greater for core and task instance fleets. Defaults to 1 if not specified.
@@ -1841,38 +1883,46 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bid_price'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bid_price'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bid_price {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bid_price'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bid_price'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_ami_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_ami_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_ami_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_ami_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1882,20 +1932,24 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 
         let the_val = &self.instance_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_type'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_type'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.weighted_capacity {
@@ -1980,7 +2034,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "Ec2KeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_key_name: Option<String>,
+    pub ec2_key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies to clusters that use the uniform instance group configuration. To launch the     cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the     identifier of the Amazon VPC subnet where you want the cluster to launch. If you do     not specify this value and your account supports EC2-Classic, the cluster launches in     EC2-Classic.
@@ -1998,7 +2052,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "Ec2SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_subnet_id: Option<String>,
+    pub ec2_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet     IDs are specified, Amazon EMR evaluates them and launches instances in the optimal     subnet.
@@ -2030,7 +2084,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "EmrManagedMasterSecurityGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub emr_managed_master_security_group: Option<String>,
+    pub emr_managed_master_security_group: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the Amazon EC2 security group for the core and task nodes. If     you specify EmrManagedSlaveSecurityGroup, you must also specify       EmrManagedMasterSecurityGroup.
@@ -2048,7 +2102,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "EmrManagedSlaveSecurityGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub emr_managed_slave_security_group: Option<String>,
+    pub emr_managed_slave_security_group: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version     for the cluster. Valid inputs are "0.18" (no longer maintained), "0.20" (no longer     maintained), "0.20.205" (no longer maintained), "1.0.3", "2.2.0", or "2.4.0". If you do not     set this value, the default of 0.18 is used, unless the AmiVersion parameter     is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI     version is used.
@@ -2066,7 +2120,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "HadoopVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hadoop_version: Option<String>,
+    pub hadoop_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the cluster should remain available after completing all steps.     Defaults to true. For more information about configuring cluster termination,     see Control Cluster Termination in the EMR Management     Guide.
@@ -2132,7 +2186,7 @@ pub struct JobFlowInstancesConfig {
     /// Update requires: Replacement
     #[serde(rename = "ServiceAccessSecurityGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_access_security_group: Option<String>,
+    pub service_access_security_group: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the EC2 instances and instance configurations for the task instance fleets when using clusters with the instance fleet configuration. These task instance fleets are added to the cluster as part of the cluster launch. Each task instance fleet must have a unique name specified so that CloudFormation can differentiate between the task instance fleets.
@@ -2196,80 +2250,100 @@ impl cfn_resources::CfnResource for JobFlowInstancesConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.ec2_key_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ec2_key_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ec2_key_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ec2_key_name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ec2_key_name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ec2_key_name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ec2_subnet_id {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ec2_subnet_id'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ec2_subnet_id'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ec2_subnet_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ec2_subnet_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ec2_subnet_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.emr_managed_master_security_group {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'emr_managed_master_security_group'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'emr_managed_master_security_group'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.emr_managed_master_security_group {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'emr_managed_master_security_group'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'emr_managed_master_security_group'. {} is less than 0", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.emr_managed_slave_security_group {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'emr_managed_slave_security_group'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'emr_managed_slave_security_group'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.emr_managed_slave_security_group {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'emr_managed_slave_security_group'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'emr_managed_slave_security_group'. {} is less than 0", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.hadoop_version {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'hadoop_version'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'hadoop_version'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.hadoop_version {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'hadoop_version'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'hadoop_version'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2286,14 +2360,18 @@ impl cfn_resources::CfnResource for JobFlowInstancesConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.service_access_security_group {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'service_access_security_group'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'service_access_security_group'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.service_access_security_group {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'service_access_security_group'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'service_access_security_group'. {} is less than 0", s.len()));
+                }
             }
         }
 
@@ -2320,7 +2398,7 @@ pub struct KerberosAttributes {
     /// Update requires: No interruption
     #[serde(rename = "ADDomainJoinPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub addomain_join_password: Option<String>,
+    pub addomain_join_password: Option<cfn_resources::StrVal>,
 
     ///
     /// Required only when establishing a cross-realm trust with an Active Directory domain. A     user with sufficient privileges to join resources to the domain.
@@ -2338,7 +2416,7 @@ pub struct KerberosAttributes {
     /// Update requires: No interruption
     #[serde(rename = "ADDomainJoinUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub addomain_join_user: Option<String>,
+    pub addomain_join_user: Option<cfn_resources::StrVal>,
 
     ///
     /// Required only when establishing a cross-realm trust with a KDC in a different realm. The     cross-realm principal password, which must be identical across realms.
@@ -2356,7 +2434,7 @@ pub struct KerberosAttributes {
     /// Update requires: No interruption
     #[serde(rename = "CrossRealmTrustPrincipalPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cross_realm_trust_principal_password: Option<String>,
+    pub cross_realm_trust_principal_password: Option<cfn_resources::StrVal>,
 
     ///
     /// The password used within the cluster for the kadmin service on the cluster-dedicated     KDC, which maintains Kerberos principals, password policies, and keytabs for the     cluster.
@@ -2373,7 +2451,7 @@ pub struct KerberosAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KdcAdminPassword")]
-    pub kdc_admin_password: String,
+    pub kdc_admin_password: cfn_resources::StrVal,
 
     ///
     /// The name of the Kerberos realm to which all nodes in a cluster belong. For example,       EC2.INTERNAL.
@@ -2390,7 +2468,7 @@ pub struct KerberosAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Realm")]
-    pub realm: String,
+    pub realm: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KerberosAttributes {
@@ -2404,84 +2482,98 @@ impl cfn_resources::CfnResource for KerberosAttributes {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.addomain_join_password {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'addomain_join_password'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'addomain_join_password'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.addomain_join_password {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'addomain_join_password'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'addomain_join_password'. {} is less than 0", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.addomain_join_user {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'addomain_join_user'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'addomain_join_user'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.addomain_join_user {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'addomain_join_user'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'addomain_join_user'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cross_realm_trust_principal_password {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'cross_realm_trust_principal_password'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'cross_realm_trust_principal_password'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.cross_realm_trust_principal_password {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'cross_realm_trust_principal_password'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'cross_realm_trust_principal_password'. {} is less than 0", s.len()));
+                }
             }
         }
 
         let the_val = &self.kdc_admin_password;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'kdc_admin_password'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kdc_admin_password'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.kdc_admin_password;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'kdc_admin_password'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'kdc_admin_password'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.realm;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'realm'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'realm'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.realm;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'realm'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'realm'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2507,7 +2599,7 @@ pub struct KeyValue {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value part of the identified key.
@@ -2525,7 +2617,7 @@ pub struct KeyValue {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for KeyValue {
@@ -2539,38 +2631,46 @@ impl cfn_resources::CfnResource for KeyValue {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'value'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'value'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2624,7 +2724,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The dimension value.
@@ -2635,7 +2735,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MetricDimension {
@@ -2714,7 +2814,7 @@ pub struct PlacementType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    pub availability_zone: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PlacementType {
@@ -2729,20 +2829,24 @@ impl cfn_resources::CfnResource for PlacementType {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.availability_zone;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'availability_zone'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'availability_zone'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.availability_zone;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'availability_zone'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'availability_zone'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -2875,7 +2979,7 @@ pub struct ScalingRule {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
@@ -2886,7 +2990,7 @@ pub struct ScalingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
@@ -2979,7 +3083,7 @@ pub struct ScriptBootstrapActionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    pub path: String,
+    pub path: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ScriptBootstrapActionConfig {
@@ -2994,20 +3098,24 @@ impl cfn_resources::CfnResource for ScriptBootstrapActionConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.path;
 
-        if the_val.len() > 10280 as _ {
-            return Err(format!(
-                "Max validation failed on field 'path'. {} is greater than 10280",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path'. {} is greater than 10280",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.path;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'path'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3225,7 +3333,7 @@ pub struct StepConfig {
     /// Update requires: No interruption
     #[serde(rename = "ActionOnFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub action_on_failure: Option<String>,
+    pub action_on_failure: Option<cfn_resources::StrVal>,
 
     ///
     /// The JAR file used for the step.
@@ -3253,7 +3361,7 @@ pub struct StepConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StepConfig {
@@ -3270,20 +3378,24 @@ impl cfn_resources::CfnResource for StepConfig {
 
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -3307,7 +3419,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -3317,7 +3429,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -3369,7 +3481,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    pub volume_type: String,
+    pub volume_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for VolumeSpecification {

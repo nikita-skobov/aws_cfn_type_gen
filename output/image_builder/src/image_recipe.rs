@@ -50,7 +50,7 @@ pub struct CfnImageRecipe {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the image recipe.
@@ -63,7 +63,7 @@ pub struct CfnImageRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The parent image of the image recipe. The string must be either an Image ARN or an AMI ID.
@@ -78,7 +78,7 @@ pub struct CfnImageRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentImage")]
-    pub parent_image: String,
+    pub parent_image: cfn_resources::StrVal,
 
     ///
     /// The tags of the image recipe.
@@ -103,7 +103,7 @@ pub struct CfnImageRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    pub version: String,
+    pub version: cfn_resources::StrVal,
 
     ///
     /// The working directory to be used during build and test workflows.
@@ -119,7 +119,7 @@ pub struct CfnImageRecipe {
     /// Update requires: Replacement
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub working_directory: Option<String>,
+    pub working_directory: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnImageRecipe {
@@ -137,56 +137,65 @@ impl cfn_resources::CfnResource for CfnImageRecipe {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.parent_image;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'parent_image'. {} is greater than 1024",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.parent_image;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'parent_image'. {} is greater than 1024",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.parent_image;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'parent_image'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.working_directory {
-            if the_val.len() > 1024 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'working_directory'. {} is greater than 1024",
-                    the_val.len()
+                    "Min validation failed on field 'parent_image'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.working_directory {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'working_directory'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'working_directory'. {} is greater than 1024", s.len()));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.working_directory {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'working_directory'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -231,7 +240,7 @@ pub struct AdditionalInstanceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UserDataOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_data_override: Option<String>,
+    pub user_data_override: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AdditionalInstanceConfiguration {
@@ -249,20 +258,21 @@ impl cfn_resources::CfnResource for AdditionalInstanceConfiguration {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.user_data_override {
-            if the_val.len() > 21847 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_data_override'. {} is greater than 21847",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 21847 as _ {
+                    return Err(format!("Max validation failed on field 'user_data_override'. {} is greater than 21847", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_data_override {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_data_override'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_data_override'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -285,7 +295,7 @@ pub struct ComponentConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ComponentArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_arn: Option<String>,
+    pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A group of parameter settings that Image Builder uses to configure the component for a specific 			recipe.
@@ -332,7 +342,7 @@ pub struct ComponentParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Sets the value for the named component parameter.
@@ -358,20 +368,24 @@ impl cfn_resources::CfnResource for ComponentParameter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -435,7 +449,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The snapshot that defines the device contents.
@@ -451,7 +465,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
     /// For GP3 volumes only – The throughput in MiB/s 			that the volume supports.
@@ -566,38 +580,46 @@ impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.snapshot_id {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'snapshot_id'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'snapshot_id'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.snapshot_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'snapshot_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'snapshot_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -658,7 +680,7 @@ pub struct InstanceBlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Use to manage Amazon EBS-specific configuration for this mapping.
@@ -686,7 +708,7 @@ pub struct InstanceBlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_device: Option<String>,
+    pub no_device: Option<cfn_resources::StrVal>,
 
     ///
     /// Manages the instance ephemeral devices.
@@ -702,7 +724,7 @@ pub struct InstanceBlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_name: Option<String>,
+    pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
@@ -716,40 +738,48 @@ impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.device_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'device_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'device_name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.device_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'device_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'device_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.virtual_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'virtual_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'virtual_name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.virtual_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'virtual_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'virtual_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

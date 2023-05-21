@@ -71,7 +71,7 @@ pub struct AlarmIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// For the CloudWatch alarm that you want Route 53 health checkers to use to determine 			whether this health check is healthy, the region that the alarm was created in.
@@ -226,20 +226,24 @@ impl cfn_resources::CfnResource for AlarmIdentifier {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -343,7 +347,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "FullyQualifiedDomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fully_qualified_domain_name: Option<String>,
+    pub fully_qualified_domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of child health checks that are associated with a CALCULATED 			health check that Amazon Route 53 must consider healthy for the CALCULATED 			health check to be considered healthy. To specify the child health checks that you want 			to associate with a CALCULATED health check, use the ChildHealthChecks element.
@@ -393,7 +397,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "IPAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipaddress: Option<String>,
+    pub ipaddress: Option<cfn_resources::StrVal>,
 
     ///
     /// When CloudWatch has insufficient data about the metric to determine the alarm state, 			the status that you want Amazon Route 53 to assign to the health check:
@@ -505,7 +509,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_path: Option<String>,
+    pub resource_path: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -516,7 +520,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "RoutingControlArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub routing_control_arn: Option<String>,
+    pub routing_control_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If the value of Type is HTTP_STR_MATCH or HTTPS_STR_MATCH, 			the string that you want Amazon Route 53 to search for in the response body from the 			specified resource. If the string appears in the response body, Route 53 considers the 			resource healthy.
@@ -532,7 +536,7 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "SearchString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub search_string: Option<String>,
+    pub search_string: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of health check that you want to create, which indicates how Amazon Route 53 			determines whether an endpoint is healthy.
@@ -660,8 +664,10 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
         }
 
         if let Some(the_val) = &self.fully_qualified_domain_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'fully_qualified_domain_name'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'fully_qualified_domain_name'. {} is greater than 255", s.len()));
+                }
             }
         }
 
@@ -684,11 +690,13 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
         }
 
         if let Some(the_val) = &self.ipaddress {
-            if the_val.len() > 45 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ipaddress'. {} is greater than 45",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 45 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ipaddress'. {} is greater than 45",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -738,20 +746,24 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
         }
 
         if let Some(the_val) = &self.resource_path {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_path'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_path'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.search_string {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'search_string'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'search_string'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -775,7 +787,7 @@ pub struct HealthCheckTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value of Value depends on the operation that you want to 			perform:
@@ -790,7 +802,7 @@ pub struct HealthCheckTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HealthCheckTag {
@@ -805,20 +817,24 @@ impl cfn_resources::CfnResource for HealthCheckTag {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

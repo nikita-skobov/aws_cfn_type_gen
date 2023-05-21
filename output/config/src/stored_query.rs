@@ -11,7 +11,7 @@ pub struct CfnStoredQuery {
     /// Update requires: No interruption
     #[serde(rename = "QueryDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_description: Option<String>,
+    pub query_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The expression of the query.       For example, SELECT resourceId, resourceType, supplementaryConfiguration.BucketVersioningConfiguration.status WHERE resourceType = 'AWS::S3::Bucket' AND supplementaryConfiguration.BucketVersioningConfiguration.status = 'Off'.
@@ -22,7 +22,7 @@ pub struct CfnStoredQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryExpression")]
-    pub query_expression: String,
+    pub query_expression: cfn_resources::StrVal,
 
     ///
     /// The name of the query.
@@ -39,7 +39,7 @@ pub struct CfnStoredQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueryName")]
-    pub query_name: String,
+    pub query_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -66,20 +66,24 @@ impl cfn_resources::CfnResource for CfnStoredQuery {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.query_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'query_name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'query_name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.query_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'query_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'query_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -103,7 +107,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -113,7 +117,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

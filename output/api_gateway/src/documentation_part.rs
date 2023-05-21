@@ -21,7 +21,7 @@ pub struct CfnDocumentationPart {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Properties")]
-    pub properties: String,
+    pub properties: cfn_resources::StrVal,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -32,7 +32,7 @@ pub struct CfnDocumentationPart {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnDocumentationPart {
@@ -64,7 +64,7 @@ pub struct Location {
     /// Update requires: Replacement
     #[serde(rename = "Method")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub method: Option<String>,
+    pub method: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the targeted API entity. It is a valid and required field for the API entity types of AUTHORIZER, MODEL, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY and RESPONSE_HEADER. It is an invalid field for any other entity type.
@@ -76,7 +76,7 @@ pub struct Location {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL path of the target. It is a valid field for the API entity types of RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is / for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other location attributes, the child entity's path attribute must match that of the parent entity as a prefix.
@@ -88,7 +88,7 @@ pub struct Location {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 
     ///
     /// The HTTP status code of a response. It is a valid field for the API entity types of RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is * for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other location attributes, the child entity's statusCode attribute must match that of the parent entity exactly.
@@ -102,7 +102,7 @@ pub struct Location {
     /// Update requires: Replacement
     #[serde(rename = "StatusCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status_code: Option<String>,
+    pub status_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of API entity to which the documentation content applies. Valid values are API, AUTHORIZER, MODEL, RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. Content inheritance does not apply to any entity of the API, AUTHORIZER, METHOD, MODEL, REQUEST_BODY, or RESOURCE type.

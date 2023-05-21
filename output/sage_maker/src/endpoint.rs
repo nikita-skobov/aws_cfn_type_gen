@@ -26,7 +26,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigName")]
-    pub endpoint_config_name: String,
+    pub endpoint_config_name: cfn_resources::StrVal,
 
     ///
     /// The name of the endpoint.The name must be unique within an AWS       Region in your AWS account. The name is case-insensitive in         CreateEndpoint, but the case is preserved and must be matched in https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html.
@@ -42,7 +42,7 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_name: Option<String>,
+    pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
     /// When you are updating endpoint resources with RetainAllVariantProperties whose value is set to true,         ExcludeRetainedVariantProperties specifies the list of type VariantProperty to override with the values provided by         EndpointConfig. If you don't specify a value for         ExcludeAllVariantProperties, no variant properties are overridden.       Don't use this property when creating new endpoint resources or when         RetainAllVariantProperties is set to false.
@@ -115,19 +115,23 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
         let the_val = &self.endpoint_config_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.endpoint_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'endpoint_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -168,7 +172,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmName")]
-    pub alarm_name: String,
+    pub alarm_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Alarm {
@@ -183,20 +187,24 @@ impl cfn_resources::CfnResource for Alarm {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.alarm_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'alarm_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'alarm_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.alarm_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'alarm_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'alarm_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -466,7 +474,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -476,7 +484,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -627,7 +635,7 @@ pub struct VariantProperty {
     /// Update requires: No interruption
     #[serde(rename = "VariantPropertyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub variant_property_type: Option<String>,
+    pub variant_property_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VariantProperty {

@@ -39,7 +39,7 @@ pub struct CfnPipeline {
     /// Update requires: No interruption
     #[serde(rename = "PipelineDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pipeline_description: Option<String>,
+    pub pipeline_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The display name of the pipeline.
@@ -57,7 +57,7 @@ pub struct CfnPipeline {
     /// Update requires: No interruption
     #[serde(rename = "PipelineDisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pipeline_display_name: Option<String>,
+    pub pipeline_display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the pipeline.
@@ -74,7 +74,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PipelineName")]
-    pub pipeline_name: String,
+    pub pipeline_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role used to execute the pipeline.
@@ -91,7 +91,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The tags of the pipeline.
@@ -125,69 +125,85 @@ impl cfn_resources::CfnResource for CfnPipeline {
         self.pipeline_definition.validate()?;
 
         if let Some(the_val) = &self.pipeline_description {
-            if the_val.len() > 3072 as _ {
-                return Err(format!("Max validation failed on field 'pipeline_description'. {} is greater than 3072", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 3072 as _ {
+                    return Err(format!("Max validation failed on field 'pipeline_description'. {} is greater than 3072", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.pipeline_description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'pipeline_description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pipeline_description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.pipeline_display_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'pipeline_display_name'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'pipeline_display_name'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.pipeline_display_name {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'pipeline_display_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.pipeline_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'pipeline_display_name'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'pipeline_name'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.pipeline_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'pipeline_name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.pipeline_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'pipeline_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pipeline_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -255,7 +271,7 @@ pub struct PipelineDefinition {
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pipeline_definition_body: Option<String>,
+    pub pipeline_definition_body: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -298,7 +314,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -309,7 +325,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etag: Option<String>,
+    pub etag: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -319,7 +335,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -330,7 +346,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -364,7 +380,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -374,7 +390,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

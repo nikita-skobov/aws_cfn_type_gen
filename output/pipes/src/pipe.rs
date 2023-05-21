@@ -10,7 +10,7 @@ pub struct CfnPipe {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// The state the pipe should be in.
     ///
@@ -21,7 +21,7 @@ pub struct CfnPipe {
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub desired_state: Option<String>,
+    pub desired_state: Option<cfn_resources::StrVal>,
 
     /// The ARN of the enrichment resource.
     ///
@@ -32,7 +32,7 @@ pub struct CfnPipe {
     /// Update requires: No interruption
     #[serde(rename = "Enrichment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enrichment: Option<String>,
+    pub enrichment: Option<cfn_resources::StrVal>,
 
     /// The parameters required to set up enrichment on your pipe.
     ///
@@ -54,7 +54,7 @@ pub struct CfnPipe {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     /// The ARN of the role that allows the pipe to send data to the target.
     ///
@@ -64,7 +64,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     /// The ARN of the source resource.
     ///
@@ -74,7 +74,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     /// The parameters required to set up a source for your pipe.
     ///
@@ -106,7 +106,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 
     /// The parameters required to set up a target for your pipe.
     ///
@@ -161,7 +161,7 @@ pub struct AwsVpcConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub assign_public_ip: Option<String>,
+    pub assign_public_ip: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many      as five security groups. If you do not specify a security group, the default security group for the VPC is used.
@@ -272,7 +272,7 @@ pub struct BatchContainerOverrides {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<String>,
+    pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The type and amount of resources to assign to a container. This overrides the settings in the job definition. The supported resources include GPU, MEMORY,      and VCPU.
@@ -314,7 +314,7 @@ pub struct BatchEnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
@@ -326,7 +326,7 @@ pub struct BatchEnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BatchEnvironmentVariable {
@@ -356,7 +356,7 @@ pub struct BatchJobDependency {
     /// Update requires: No interruption
     #[serde(rename = "JobId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_id: Option<String>,
+    pub job_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the job dependency.
@@ -368,7 +368,7 @@ pub struct BatchJobDependency {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BatchJobDependency {
@@ -397,7 +397,7 @@ pub struct BatchResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The quantity of the specified resource to reserve for the container. The values vary based on the     type specified.
@@ -410,7 +410,7 @@ pub struct BatchResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for BatchResourceRequirement {
@@ -481,7 +481,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
-    pub capacity_provider: String,
+    pub capacity_provider: cfn_resources::StrVal,
 
     ///
     /// The weight value designates the relative percentage of the total number of tasks launched     that should use the specified capacity provider. The weight value is taken into consideration     after the base value, if defined, is satisfied.
@@ -523,7 +523,7 @@ pub struct DeadLetterConfig {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeadLetterConfig {
@@ -625,7 +625,7 @@ pub struct EcsContainerOverride {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU.
@@ -670,7 +670,7 @@ pub struct EcsEnvironmentFile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
@@ -681,7 +681,7 @@ pub struct EcsEnvironmentFile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EcsEnvironmentFile {
@@ -711,7 +711,7 @@ pub struct EcsEnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
@@ -723,7 +723,7 @@ pub struct EcsEnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EcsEnvironmentVariable {
@@ -782,7 +782,7 @@ pub struct EcsInferenceAcceleratorOverride {
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elastic Inference accelerator type to use.
@@ -794,7 +794,7 @@ pub struct EcsInferenceAcceleratorOverride {
     /// Update requires: No interruption
     #[serde(rename = "DeviceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_type: Option<String>,
+    pub device_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EcsInferenceAcceleratorOverride {
@@ -823,7 +823,7 @@ pub struct EcsResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// The value for the specified resource type.
@@ -838,7 +838,7 @@ pub struct EcsResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EcsResourceRequirement {
@@ -880,7 +880,7 @@ pub struct EcsTaskOverride {
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<String>,
+    pub cpu: Option<cfn_resources::StrVal>,
 
     ///
     /// The ephemeral storage setting override for the task.
@@ -906,7 +906,7 @@ pub struct EcsTaskOverride {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Elastic Inference accelerator override for the task.
@@ -930,7 +930,7 @@ pub struct EcsTaskOverride {
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub memory: Option<String>,
+    pub memory: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers     in this task are granted the permissions that are specified in this role. For more     information, see IAM Role for Tasks     in the Amazon Elastic Container Service Developer Guide.
@@ -942,7 +942,7 @@ pub struct EcsTaskOverride {
     /// Update requires: No interruption
     #[serde(rename = "TaskRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub task_role_arn: Option<String>,
+    pub task_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EcsTaskOverride {
@@ -976,7 +976,7 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern: Option<String>,
+    pub pattern: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Filter {
@@ -1039,7 +1039,7 @@ pub struct MQBrokerAccessCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuth")]
-    pub basic_auth: String,
+    pub basic_auth: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for MQBrokerAccessCredentials {
@@ -1069,7 +1069,7 @@ pub struct MSKAccessCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateTlsAuth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_certificate_tls_auth: Option<String>,
+    pub client_certificate_tls_auth: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Secrets Manager secret.
@@ -1081,7 +1081,7 @@ pub struct MSKAccessCredentials {
     /// Update requires: No interruption
     #[serde(rename = "SaslScram512Auth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sasl_scram512_auth: Option<String>,
+    pub sasl_scram512_auth: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MSKAccessCredentials {
@@ -1215,7 +1215,7 @@ pub struct PipeEnrichmentParameters {
     /// Update requires: No interruption
     #[serde(rename = "InputTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_template: Option<String>,
+    pub input_template: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeEnrichmentParameters {
@@ -1279,7 +1279,7 @@ pub struct PipeSourceActiveMQBrokerParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueueName")]
-    pub queue_name: String,
+    pub queue_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PipeSourceActiveMQBrokerParameters {
@@ -1365,7 +1365,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     /// Update requires: No interruption
     #[serde(rename = "OnPartialBatchItemFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_partial_batch_item_failure: Option<String>,
+    pub on_partial_batch_item_failure: Option<cfn_resources::StrVal>,
 
     /// (Streams only) The number of batches to process concurrently from each shard. The default value is 1.
     ///
@@ -1388,7 +1388,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
-    pub starting_position: String,
+    pub starting_position: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PipeSourceDynamoDBStreamParameters {
@@ -1476,7 +1476,7 @@ pub struct PipeSourceKinesisStreamParameters {
     /// Update requires: No interruption
     #[serde(rename = "OnPartialBatchItemFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_partial_batch_item_failure: Option<String>,
+    pub on_partial_batch_item_failure: Option<cfn_resources::StrVal>,
 
     /// (Streams only) The number of batches to process concurrently from each shard. The default value is 1.
     ///
@@ -1497,7 +1497,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
-    pub starting_position: String,
+    pub starting_position: cfn_resources::StrVal,
 
     ///
     /// With StartingPosition set to AT_TIMESTAMP, the time from which to start reading, in Unix time seconds.
@@ -1509,7 +1509,7 @@ pub struct PipeSourceKinesisStreamParameters {
     /// Update requires: Replacement
     #[serde(rename = "StartingPositionTimestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub starting_position_timestamp: Option<String>,
+    pub starting_position_timestamp: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeSourceKinesisStreamParameters {
@@ -1553,7 +1553,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupID")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consumer_group_id: Option<String>,
+    pub consumer_group_id: Option<cfn_resources::StrVal>,
 
     /// The credentials needed to access the resource.
     ///
@@ -1586,7 +1586,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub starting_position: Option<String>,
+    pub starting_position: Option<cfn_resources::StrVal>,
 
     /// The name of the topic that the pipe will read from.
     ///
@@ -1596,7 +1596,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicName")]
-    pub topic_name: String,
+    pub topic_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PipeSourceManagedStreamingKafkaParameters {
@@ -1802,7 +1802,7 @@ pub struct PipeSourceRabbitMQBrokerParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueueName")]
-    pub queue_name: String,
+    pub queue_name: cfn_resources::StrVal,
 
     ///
     /// The name of the virtual host associated with the source broker.
@@ -1814,7 +1814,7 @@ pub struct PipeSourceRabbitMQBrokerParameters {
     /// Update requires: Replacement
     #[serde(rename = "VirtualHost")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_host: Option<String>,
+    pub virtual_host: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeSourceRabbitMQBrokerParameters {
@@ -1868,7 +1868,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     /// Update requires: No interruption
     #[serde(rename = "ConsumerGroupID")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consumer_group_id: Option<String>,
+    pub consumer_group_id: Option<cfn_resources::StrVal>,
 
     /// The credentials needed to access the resource.
     ///
@@ -1901,7 +1901,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     /// Update requires: No interruption
     #[serde(rename = "ServerRootCaCertificate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_root_ca_certificate: Option<String>,
+    pub server_root_ca_certificate: Option<cfn_resources::StrVal>,
 
     /// (Streams only) The position in a stream from which to start reading.
     ///
@@ -1912,7 +1912,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     /// Update requires: No interruption
     #[serde(rename = "StartingPosition")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub starting_position: Option<String>,
+    pub starting_position: Option<cfn_resources::StrVal>,
 
     /// The name of the topic that the pipe will read from.
     ///
@@ -1922,7 +1922,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicName")]
-    pub topic_name: String,
+    pub topic_name: cfn_resources::StrVal,
 
     /// This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used.
     ///
@@ -2042,7 +2042,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobDefinition")]
-    pub job_definition: String,
+    pub job_definition: cfn_resources::StrVal,
 
     ///
     /// The name of the job. It can be up to 128 letters long. The first character must be alphanumeric, can contain uppercase and lowercase letters, numbers, hyphens (-),      and underscores (_).
@@ -2053,7 +2053,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
-    pub job_name: String,
+    pub job_name: cfn_resources::StrVal,
 
     ///
     /// Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and      value pair mapping. Parameters included here override any corresponding parameter defaults from the job definition.
@@ -2119,7 +2119,7 @@ pub struct PipeTargetCloudWatchLogsParameters {
     /// Update requires: No interruption
     #[serde(rename = "LogStreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_stream_name: Option<String>,
+    pub log_stream_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
@@ -2131,7 +2131,7 @@ pub struct PipeTargetCloudWatchLogsParameters {
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp: Option<String>,
+    pub timestamp: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeTargetCloudWatchLogsParameters {
@@ -2199,7 +2199,7 @@ pub struct PipeTargetEcsTaskParameters {
     /// Update requires: No interruption
     #[serde(rename = "Group")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group: Option<String>,
+    pub group: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the launch type on which your task is running. The launch type that you specify     here must match one of the launch type (compatibilities) of the target task. The     FARGATE value is supported only in the Regions where AWS Fargate with Amazon ECS     is supported. For more information, see AWS Fargate on Amazon ECS in     the Amazon Elastic Container Service Developer Guide.
@@ -2211,7 +2211,7 @@ pub struct PipeTargetEcsTaskParameters {
     /// Update requires: No interruption
     #[serde(rename = "LaunchType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_type: Option<String>,
+    pub launch_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Use this structure if the Amazon ECS task uses the awsvpc network mode. This     structure specifies the VPC subnets and security groups associated with the task, and whether     a public IP address is to be used. This structure is required if LaunchType is     FARGATE because the awsvpc mode is required for Fargate     tasks.
@@ -2274,7 +2274,7 @@ pub struct PipeTargetEcsTaskParameters {
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_version: Option<String>,
+    pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to propagate the tags from the task definition to the task. If no value     is specified, the tags are not propagated. Tags can only be propagated to the task during task     creation. To add tags to a task after task creation, use the TagResource API action.
@@ -2286,7 +2286,7 @@ pub struct PipeTargetEcsTaskParameters {
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub propagate_tags: Option<String>,
+    pub propagate_tags: Option<cfn_resources::StrVal>,
 
     ///
     /// The reference ID to use for the task.
@@ -2298,7 +2298,7 @@ pub struct PipeTargetEcsTaskParameters {
     /// Update requires: No interruption
     #[serde(rename = "ReferenceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reference_id: Option<String>,
+    pub reference_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The metadata that you apply to the task to help you categorize and organize them. Each tag     consists of a key and an optional value, both of which you define. To learn more, see RunTask in the Amazon ECS API Reference.
@@ -2333,7 +2333,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskDefinitionArn")]
-    pub task_definition_arn: String,
+    pub task_definition_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PipeTargetEcsTaskParameters {
@@ -2371,7 +2371,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     /// Update requires: No interruption
     #[serde(rename = "DetailType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub detail_type: Option<String>,
+    pub detail_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL subdomain of the endpoint. For example, if the URL for Endpoint is https://abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is abcde.veo.
@@ -2383,7 +2383,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     /// Update requires: No interruption
     #[serde(rename = "EndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_id: Option<String>,
+    pub endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// AWS resources, identified by Amazon Resource Name (ARN), which the event primarily     concerns. Any number, including zero, may be present.
@@ -2407,7 +2407,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     /// Update requires: No interruption
     #[serde(rename = "Source")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source: Option<String>,
+    pub source: Option<cfn_resources::StrVal>,
 
     ///
     /// The time stamp of the event, per RFC3339. If no time stamp is provided, the time stamp of the PutEvents call is used.
@@ -2419,7 +2419,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     /// Update requires: No interruption
     #[serde(rename = "Time")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time: Option<String>,
+    pub time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeTargetEventBridgeEventBusParameters {
@@ -2502,7 +2502,7 @@ pub struct PipeTargetKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionKey")]
-    pub partition_key: String,
+    pub partition_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for PipeTargetKinesisStreamParameters {
@@ -2536,7 +2536,7 @@ pub struct PipeTargetLambdaFunctionParameters {
     /// Update requires: No interruption
     #[serde(rename = "InvocationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub invocation_type: Option<String>,
+    pub invocation_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeTargetLambdaFunctionParameters {
@@ -2625,7 +2625,7 @@ pub struct PipeTargetParameters {
     /// Update requires: No interruption
     #[serde(rename = "InputTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_template: Option<String>,
+    pub input_template: Option<cfn_resources::StrVal>,
 
     /// The parameters for using a Kinesis stream as a source.
     ///
@@ -2764,7 +2764,7 @@ pub struct PipeTargetRedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Database")]
-    pub database: String,
+    pub database: cfn_resources::StrVal,
 
     ///
     /// The database user name. Required when authenticating using temporary credentials.
@@ -2776,7 +2776,7 @@ pub struct PipeTargetRedshiftDataParameters {
     /// Update requires: No interruption
     #[serde(rename = "DbUser")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub db_user: Option<String>,
+    pub db_user: Option<cfn_resources::StrVal>,
 
     ///
     /// The name or ARN of the secret that enables access to the database. Required when     authenticating using Secrets Manager.
@@ -2788,7 +2788,7 @@ pub struct PipeTargetRedshiftDataParameters {
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_manager_arn: Option<String>,
+    pub secret_manager_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The SQL statement text to run.
@@ -2811,7 +2811,7 @@ pub struct PipeTargetRedshiftDataParameters {
     /// Update requires: No interruption
     #[serde(rename = "StatementName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub statement_name: Option<String>,
+    pub statement_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to send an event back to EventBridge after the SQL statement     runs.
@@ -2885,7 +2885,7 @@ pub struct PipeTargetSqsQueueParameters {
     /// Update requires: No interruption
     #[serde(rename = "MessageDeduplicationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message_deduplication_id: Option<String>,
+    pub message_deduplication_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The FIFO message group ID to use as the target.
@@ -2897,7 +2897,7 @@ pub struct PipeTargetSqsQueueParameters {
     /// Update requires: No interruption
     #[serde(rename = "MessageGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message_group_id: Option<String>,
+    pub message_group_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeTargetSqsQueueParameters {
@@ -2931,7 +2931,7 @@ pub struct PipeTargetStateMachineParameters {
     /// Update requires: No interruption
     #[serde(rename = "InvocationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub invocation_type: Option<String>,
+    pub invocation_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PipeTargetStateMachineParameters {
@@ -2961,7 +2961,7 @@ pub struct PlacementConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression: Option<String>,
+    pub expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of constraint. Use distinctInstance to ensure that each task in a particular     group is running on a different container instance. Use memberOf to restrict the selection to     a group of valid candidates.
@@ -2973,7 +2973,7 @@ pub struct PlacementConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PlacementConstraint {
@@ -3003,7 +3003,7 @@ pub struct PlacementStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field: Option<String>,
+    pub field: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of placement strategy. The random placement strategy randomly places tasks on     available candidates. The spread placement strategy spreads placement across available     candidates evenly based on the field parameter. The binpack strategy places tasks on available     candidates that have the least available amount of the resource that is specified with the     field parameter. For example, if you binpack on memory, a task is placed on the instance with     the least amount of remaining memory (but still enough to run the task).
@@ -3015,7 +3015,7 @@ pub struct PlacementStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for PlacementStrategy {
@@ -3044,7 +3044,7 @@ pub struct SageMakerPipelineParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Value of parameter to start execution of a SageMaker Model Building Pipeline.
@@ -3055,7 +3055,7 @@ pub struct SageMakerPipelineParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SageMakerPipelineParameter {
@@ -3085,7 +3085,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     /// Update requires: No interruption
     #[serde(rename = "BasicAuth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub basic_auth: Option<String>,
+    pub basic_auth: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Secrets Manager secret.
@@ -3097,7 +3097,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateTlsAuth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_certificate_tls_auth: Option<String>,
+    pub client_certificate_tls_auth: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Secrets Manager secret.
@@ -3109,7 +3109,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     /// Update requires: No interruption
     #[serde(rename = "SaslScram256Auth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sasl_scram256_auth: Option<String>,
+    pub sasl_scram256_auth: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Secrets Manager secret.
@@ -3121,7 +3121,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     /// Update requires: No interruption
     #[serde(rename = "SaslScram512Auth")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sasl_scram512_auth: Option<String>,
+    pub sasl_scram512_auth: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationCredentials {
@@ -3197,7 +3197,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -3207,7 +3207,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

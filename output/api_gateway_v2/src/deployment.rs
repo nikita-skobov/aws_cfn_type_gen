@@ -10,7 +10,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The description for the deployment resource.
@@ -22,7 +22,7 @@ pub struct CfnDeployment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of an existing stage to associate with the deployment.
@@ -34,7 +34,7 @@ pub struct CfnDeployment {
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage_name: Option<String>,
+    pub stage_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDeployment {

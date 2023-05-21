@@ -14,7 +14,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetGroupArn")]
-    pub dataset_group_arn: String,
+    pub dataset_group_arn: cfn_resources::StrVal,
 
     ///
     /// The event type (for example, 'click' or 'like') that is used for training the model.    If no eventType is provided, Amazon Personalize uses all interactions for training with    equal weight regardless of type.
@@ -28,7 +28,7 @@ pub struct CfnSolution {
     /// Update requires: Replacement
     #[serde(rename = "EventType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_type: Option<String>,
+    pub event_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the solution.
@@ -45,7 +45,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// ImportantWe don't recommend enabling automated machine learning. Instead, match your use case to the available Amazon Personalize     recipes. For more information, see Determining your use case.
@@ -87,7 +87,7 @@ pub struct CfnSolution {
     /// Update requires: Replacement
     #[serde(rename = "RecipeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub recipe_arn: Option<String>,
+    pub recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Describes the configuration properties for the solution.
@@ -114,46 +114,56 @@ impl cfn_resources::CfnResource for CfnSolution {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.dataset_group_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dataset_group_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'dataset_group_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.event_type {
-            if the_val.len() > 256 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'event_type'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'event_type'. {} is greater than 256",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 63",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 63",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.recipe_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'recipe_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'recipe_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -228,7 +238,7 @@ pub struct AutoMLConfig {
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_name: Option<String>,
+    pub metric_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -268,7 +278,7 @@ pub struct CategoricalHyperParameterRange {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -330,7 +340,7 @@ pub struct ContinuousHyperParameterRange {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ContinuousHyperParameterRange {
@@ -422,7 +432,7 @@ pub struct HpoObjective {
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_name: Option<String>,
+    pub metric_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -433,7 +443,7 @@ pub struct HpoObjective {
     /// Update requires: Replacement
     #[serde(rename = "MetricRegex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metric_regex: Option<String>,
+    pub metric_regex: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -444,7 +454,7 @@ pub struct HpoObjective {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HpoObjective {
@@ -473,7 +483,7 @@ pub struct HpoResourceConfig {
     /// Update requires: Replacement
     #[serde(rename = "MaxNumberOfTrainingJobs")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_number_of_training_jobs: Option<String>,
+    pub max_number_of_training_jobs: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -484,7 +494,7 @@ pub struct HpoResourceConfig {
     /// Update requires: Replacement
     #[serde(rename = "MaxParallelTrainingJobs")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_parallel_training_jobs: Option<String>,
+    pub max_parallel_training_jobs: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HpoResourceConfig {
@@ -535,7 +545,7 @@ pub struct IntegerHyperParameterRange {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IntegerHyperParameterRange {
@@ -591,7 +601,7 @@ pub struct SolutionConfig {
     /// Update requires: Replacement
     #[serde(rename = "EventValueThreshold")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_value_threshold: Option<String>,
+    pub event_value_threshold: Option<cfn_resources::StrVal>,
 
     ///
     /// Lists the feature transformation parameters.
@@ -633,8 +643,10 @@ impl cfn_resources::CfnResource for SolutionConfig {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.event_value_threshold {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'event_value_threshold'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'event_value_threshold'. {} is greater than 256", s.len()));
+                }
             }
         }
 

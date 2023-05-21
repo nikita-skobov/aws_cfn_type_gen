@@ -14,7 +14,7 @@ pub struct CfnMaster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
-    pub detector_id: String,
+    pub detector_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the invitation that is sent to the account designated as a member          account. You can find the invitation ID by using the ListInvitation action of the             API.
@@ -26,7 +26,7 @@ pub struct CfnMaster {
     /// Update requires: Replacement
     #[serde(rename = "InvitationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub invitation_id: Option<String>,
+    pub invitation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS account ID of the account designated as the administrator account.
@@ -37,7 +37,7 @@ pub struct CfnMaster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MasterId")]
-    pub master_id: String,
+    pub master_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnMaster {
@@ -52,20 +52,24 @@ impl cfn_resources::CfnResource for CfnMaster {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.detector_id;
 
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'detector_id'. {} is greater than 300",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'detector_id'. {} is greater than 300",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.detector_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'detector_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'detector_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

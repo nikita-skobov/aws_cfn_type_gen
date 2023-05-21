@@ -10,7 +10,7 @@ pub struct CfnVpcEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The unique identifiers of the security groups that define the ports, protocols, and       sources for inbound traffic that you are authorizing into your endpoint.
@@ -44,7 +44,7 @@ pub struct CfnVpcEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnVpcEndpoint {

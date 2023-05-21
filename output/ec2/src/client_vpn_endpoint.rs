@@ -21,7 +21,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientCidrBlock")]
-    pub client_cidr_block: String,
+    pub client_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The options for managing connection authorization for new client connections.
@@ -72,7 +72,7 @@ pub struct CfnClientVpnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can 			have up to two DNS servers. If no DNS server is specified, the DNS address configured on the device is used for the DNS server.
@@ -123,7 +123,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateArn")]
-    pub server_certificate_arn: String,
+    pub server_certificate_arn: cfn_resources::StrVal,
 
     ///
     /// The maximum VPN session duration time in hours.
@@ -195,7 +195,7 @@ pub struct CfnClientVpnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The port number to assign to the Client VPN endpoint for TCP and UDP traffic.
@@ -284,7 +284,7 @@ pub struct CertificateAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientRootCertificateChainArn")]
-    pub client_root_certificate_chain_arn: String,
+    pub client_root_certificate_chain_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
@@ -425,7 +425,7 @@ pub struct ClientConnectOptions {
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_function_arn: Option<String>,
+    pub lambda_function_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ClientConnectOptions {
@@ -455,7 +455,7 @@ pub struct ClientLoginBannerOptions {
     /// Update requires: No interruption
     #[serde(rename = "BannerText")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub banner_text: Option<String>,
+    pub banner_text: Option<cfn_resources::StrVal>,
 
     ///
     /// Enable or disable a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
@@ -500,7 +500,7 @@ pub struct ConnectionLogOptions {
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloudwatch_log_group: Option<String>,
+    pub cloudwatch_log_group: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the CloudWatch Logs log stream to which the connection data is published.
@@ -512,7 +512,7 @@ pub struct ConnectionLogOptions {
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogStream")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloudwatch_log_stream: Option<String>,
+    pub cloudwatch_log_stream: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether connection logging is enabled.
@@ -552,7 +552,7 @@ pub struct DirectoryServiceAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryId")]
-    pub directory_id: String,
+    pub directory_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
@@ -581,7 +581,7 @@ pub struct FederatedAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAMLProviderArn")]
-    pub samlprovider_arn: String,
+    pub samlprovider_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM SAML identity provider for the self-service portal.
@@ -593,7 +593,7 @@ pub struct FederatedAuthenticationRequest {
     /// Update requires: No interruption
     #[serde(rename = "SelfServiceSAMLProviderArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub self_service_samlprovider_arn: Option<String>,
+    pub self_service_samlprovider_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
@@ -627,7 +627,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -637,7 +637,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

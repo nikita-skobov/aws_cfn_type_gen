@@ -34,7 +34,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    pub availability_zone: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the volume should be encrypted.    The effect of setting the encryption state to true depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled.    For more information, see Encryption by default    in the Amazon Elastic Compute Cloud User Guide.
@@ -86,7 +86,7 @@ pub struct CfnVolume {
     /// Update requires: Updates are not supported.
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether Amazon EBS Multi-Attach is enabled.
@@ -112,7 +112,7 @@ pub struct CfnVolume {
     /// Update requires: No interruption
     #[serde(rename = "OutpostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outpost_arn: Option<String>,
+    pub outpost_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.    If you specify a snapshot, the default is the snapshot size. You can specify a volume    size that is equal to or larger than the snapshot size.
@@ -140,7 +140,7 @@ pub struct CfnVolume {
     /// Update requires: Updates are not supported.
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags to apply to the volume during creation.
@@ -259,7 +259,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -269,7 +269,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

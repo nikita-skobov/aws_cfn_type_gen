@@ -11,7 +11,7 @@ pub struct CfnAccount {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_role_arn: Option<String>,
+    pub cloud_watch_role_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnAccount {

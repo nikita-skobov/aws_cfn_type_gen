@@ -12,7 +12,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CacheParameterGroupFamily")]
-    pub cache_parameter_group_family: String,
+    pub cache_parameter_group_family: cfn_resources::StrVal,
 
     ///
     /// The description for this cache parameter group.
@@ -23,7 +23,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// A comma-delimited list of parameter name/value pairs.
@@ -84,7 +84,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -94,7 +94,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

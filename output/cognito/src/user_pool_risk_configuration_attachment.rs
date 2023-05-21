@@ -30,7 +30,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The compromised credentials risk configuration object, including the         EventFilter and the EventAction.
@@ -72,7 +72,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
@@ -91,20 +91,24 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
 
         let the_val = &self.client_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'client_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'client_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.compromised_credentials_risk_configuration
@@ -117,20 +121,24 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -435,7 +443,7 @@ pub struct NotifyConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "From")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub from: Option<String>,
+    pub from: Option<cfn_resources::StrVal>,
 
     ///
     /// The multi-factor authentication (MFA) email template used when MFA is challenged as       part of a detected risk.
@@ -471,7 +479,7 @@ pub struct NotifyConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "ReplyTo")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub reply_to: Option<String>,
+    pub reply_to: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the identity that is associated with the sending       authorization policy. This identity permits Amazon Cognito to send for the email address       specified in the From parameter.
@@ -488,7 +496,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
-    pub source_arn: String,
+    pub source_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NotifyConfigurationType {
@@ -515,20 +523,24 @@ impl cfn_resources::CfnResource for NotifyConfigurationType {
 
         let the_val = &self.source_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'source_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -554,7 +566,7 @@ pub struct NotifyEmailType {
     /// Update requires: No interruption
     #[serde(rename = "HtmlBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub html_body: Option<String>,
+    pub html_body: Option<cfn_resources::StrVal>,
 
     ///
     /// The email subject.
@@ -571,7 +583,7 @@ pub struct NotifyEmailType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subject")]
-    pub subject: String,
+    pub subject: cfn_resources::StrVal,
 
     ///
     /// The email text body.
@@ -589,7 +601,7 @@ pub struct NotifyEmailType {
     /// Update requires: No interruption
     #[serde(rename = "TextBody")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_body: Option<String>,
+    pub text_body: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NotifyEmailType {
@@ -603,56 +615,68 @@ impl cfn_resources::CfnResource for NotifyEmailType {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.html_body {
-            if the_val.len() > 20000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'html_body'. {} is greater than 20000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'html_body'. {} is greater than 20000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.html_body {
-            if the_val.len() < 6 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'html_body'. {} is less than 6",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.subject;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 140 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'html_body'. {} is less than 6",
-                    the_val.len()
+                    "Max validation failed on field 'subject'. {} is greater than 140",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.subject;
 
-        if the_val.len() > 140 as _ {
-            return Err(format!(
-                "Max validation failed on field 'subject'. {} is greater than 140",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.subject;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'subject'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.text_body {
-            if the_val.len() > 20000 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'text_body'. {} is greater than 20000",
-                    the_val.len()
+                    "Min validation failed on field 'subject'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.text_body {
-            if the_val.len() < 6 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'text_body'. {} is less than 6",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'text_body'. {} is greater than 20000",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.text_body {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 6 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'text_body'. {} is less than 6",
+                        s.len()
+                    ));
+                }
             }
         }
 

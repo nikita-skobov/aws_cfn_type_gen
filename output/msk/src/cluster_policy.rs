@@ -10,7 +10,7 @@ pub struct CfnClusterPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterArn")]
-    pub cluster_arn: String,
+    pub cluster_arn: cfn_resources::StrVal,
 
     ///
     /// Resource policy for the cluster.

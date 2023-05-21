@@ -87,7 +87,7 @@ pub struct CfnDomain {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
@@ -131,7 +131,7 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// An object with one or more of the following keys: SEARCH_SLOW_LOGS,     ES_APPLICATION_LOGS, INDEX_SLOW_LOGS, AUDIT_LOGS,    depending on the types of logs you want to publish. Each key needs a valid     LogPublishingOption value. For the full syntax, see the examples.
@@ -255,20 +255,24 @@ impl cfn_resources::CfnResource for CfnDomain {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.engine_version {
-            if the_val.len() > 18 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'engine_version'. {} is greater than 18",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 18 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'engine_version'. {} is greater than 18",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.engine_version {
-            if the_val.len() < 14 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'engine_version'. {} is less than 14",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 14 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'engine_version'. {} is less than 14",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -311,7 +315,7 @@ pub struct AdvancedSecurityOptionsInput {
     /// Update requires: No interruption
     #[serde(rename = "AnonymousAuthDisableDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub anonymous_auth_disable_date: Option<String>,
+    pub anonymous_auth_disable_date: Option<cfn_resources::StrVal>,
 
     ///
     /// True to enable a 30-day migration period during which administrators can create role  mappings. Only necessary when enabling   fine-grained access control on an existing domain.
@@ -1373,7 +1377,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_pool_id: Option<String>,
+    pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The AmazonOpenSearchServiceCognitoAccess role that allows OpenSearch Service    to configure your user pool and identity pool.
@@ -1393,7 +1397,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch    Dashboards authentication.
@@ -1413,7 +1417,7 @@ pub struct CognitoOptions {
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_pool_id: Option<String>,
+    pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CognitoOptions {
@@ -1427,56 +1431,68 @@ impl cfn_resources::CfnResource for CognitoOptions {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.identity_pool_id {
-            if the_val.len() > 55 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'identity_pool_id'. {} is greater than 55",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 55 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'identity_pool_id'. {} is greater than 55",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.identity_pool_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'identity_pool_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'identity_pool_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'role_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'role_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_pool_id {
-            if the_val.len() > 55 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 55 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_pool_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1502,7 +1518,7 @@ pub struct DomainEndpointOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_endpoint: Option<String>,
+    pub custom_endpoint: Option<cfn_resources::StrVal>,
 
     /// The AWS Certificate Manager ARN for your domain's SSL/TLS certificate. Required if you    enabled a custom endpoint for the domain.
     ///
@@ -1513,7 +1529,7 @@ pub struct DomainEndpointOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_endpoint_certificate_arn: Option<String>,
+    pub custom_endpoint_certificate_arn: Option<cfn_resources::StrVal>,
 
     /// True to enable a custom endpoint for the domain. If enabled, you must also provide values for CustomEndpoint and CustomEndpointCertificateArn.
     ///
@@ -1581,20 +1597,24 @@ impl cfn_resources::CfnResource for DomainEndpointOptions {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_endpoint {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_endpoint'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_endpoint'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_endpoint {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_endpoint'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_endpoint'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1740,7 +1760,7 @@ pub struct EncryptionAtRestOptions {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EncryptionAtRestOptions {
@@ -1754,20 +1774,24 @@ impl cfn_resources::CfnResource for EncryptionAtRestOptions {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1791,7 +1815,7 @@ pub struct Idp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityId")]
-    pub entity_id: String,
+    pub entity_id: cfn_resources::StrVal,
 
     ///
     /// The metadata of the SAML application, in XML format.
@@ -1806,7 +1830,7 @@ pub struct Idp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataContent")]
-    pub metadata_content: String,
+    pub metadata_content: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Idp {
@@ -1821,38 +1845,46 @@ impl cfn_resources::CfnResource for Idp {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.entity_id;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'entity_id'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'entity_id'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.entity_id;
 
-        if the_val.len() < 8 as _ {
-            return Err(format!(
-                "Min validation failed on field 'entity_id'. {} is less than 8",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 8 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'entity_id'. {} is less than 8",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metadata_content;
 
-        if the_val.len() > 1048576 as _ {
-            return Err(format!(
-                "Max validation failed on field 'metadata_content'. {} is greater than 1048576",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1048576 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metadata_content'. {} is greater than 1048576",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.metadata_content;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'metadata_content'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'metadata_content'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1874,7 +1906,7 @@ pub struct LogPublishingOption {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_logs_log_group_arn: Option<String>,
+    pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If true, enables the publishing of logs to CloudWatch.
@@ -1919,7 +1951,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_arn: Option<String>,
+    pub master_user_arn: Option<cfn_resources::StrVal>,
 
     /// Username for the master user. Only specify if InternalUserDatabaseEnabled is true    in AdvancedSecurityOptionsInput.
     ///
@@ -1938,7 +1970,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_name: Option<String>,
+    pub master_user_name: Option<cfn_resources::StrVal>,
 
     /// Password for the master user. Only specify if InternalUserDatabaseEnabled is true    in AdvancedSecurityOptionsInput.
     ///
@@ -1957,7 +1989,7 @@ pub struct MasterUserOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_password: Option<String>,
+    pub master_user_password: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MasterUserOptions {
@@ -1971,38 +2003,43 @@ impl cfn_resources::CfnResource for MasterUserOptions {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.master_user_name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'master_user_name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'master_user_name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_user_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'master_user_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'master_user_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_user_password {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'master_user_password'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'master_user_password'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_user_password {
-            if the_val.len() < 8 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'master_user_password'. {} is less than 8",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 8 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'master_user_password'. {} is less than 8",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2161,7 +2198,7 @@ pub struct SAMLOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterBackendRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_backend_role: Option<String>,
+    pub master_backend_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The SAML master user name, which is stored in the domain's internal user database.
@@ -2179,7 +2216,7 @@ pub struct SAMLOptions {
     /// Update requires: No interruption
     #[serde(rename = "MasterUserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub master_user_name: Option<String>,
+    pub master_user_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Element of the SAML assertion to use for backend roles. Default is  roles.
@@ -2191,7 +2228,7 @@ pub struct SAMLOptions {
     /// Update requires: No interruption
     #[serde(rename = "RolesKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub roles_key: Option<String>,
+    pub roles_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The duration, in minutes, after which a user session becomes inactive. Acceptable values are between 1 and 1440,  and the default value is 60.
@@ -2215,7 +2252,7 @@ pub struct SAMLOptions {
     /// Update requires: No interruption
     #[serde(rename = "SubjectKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subject_key: Option<String>,
+    pub subject_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SAMLOptions {
@@ -2231,38 +2268,43 @@ impl cfn_resources::CfnResource for SAMLOptions {
         self.idp.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.master_backend_role {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'master_backend_role'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'master_backend_role'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_backend_role {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'master_backend_role'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'master_backend_role'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_user_name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'master_user_name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'master_user_name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.master_user_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'master_user_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'master_user_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2283,7 +2325,7 @@ pub struct ServiceSoftwareOptions {
     /// Update requires: No interruption
     #[serde(rename = "AutomatedUpdateDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub automated_update_date: Option<String>,
+    pub automated_update_date: Option<cfn_resources::StrVal>,
 
     ///
     /// True if you're able to cancel your service software version update. False if you can't  cancel your service software update.
@@ -2307,7 +2349,7 @@ pub struct ServiceSoftwareOptions {
     /// Update requires: No interruption
     #[serde(rename = "CurrentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub current_version: Option<String>,
+    pub current_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A description of the service software update status.
@@ -2319,7 +2361,7 @@ pub struct ServiceSoftwareOptions {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The new service software version, if one is available.
@@ -2331,7 +2373,7 @@ pub struct ServiceSoftwareOptions {
     /// Update requires: No interruption
     #[serde(rename = "NewVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub new_version: Option<String>,
+    pub new_version: Option<cfn_resources::StrVal>,
 
     ///
     /// True if a service software is never automatically updated. False if a service software is  automatically updated after the automated update date.
@@ -2494,7 +2536,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2504,7 +2546,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

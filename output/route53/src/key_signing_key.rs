@@ -10,7 +10,7 @@ pub struct CfnKeySigningKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: String,
+    pub hosted_zone_id: cfn_resources::StrVal,
 
     ///
     /// The Amazon resource name (ARN) for a customer managed customer master key (CMK) in AWS Key Management Service (AWS KMS ). The KeyManagementServiceArn must be unique for each key-signing key (KSK) in a single hosted zone. For example: arn:aws:kms:us-east-1:111122223333:key/111a2222-a11b-1ab1-2ab2-1ab21a2b3a111.
@@ -21,7 +21,7 @@ pub struct CfnKeySigningKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyManagementServiceArn")]
-    pub key_management_service_arn: String,
+    pub key_management_service_arn: cfn_resources::StrVal,
 
     ///
     /// A string used to identify a key-signing key (KSK). Name can include 			numbers, letters, and underscores (_). Name must be unique for each 			key-signing key in the same hosted zone.
@@ -36,7 +36,7 @@ pub struct CfnKeySigningKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A string that represents the current key-signing key (KSK) status.
@@ -55,7 +55,7 @@ pub struct CfnKeySigningKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnKeySigningKey {
@@ -70,38 +70,46 @@ impl cfn_resources::CfnResource for CfnKeySigningKey {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.status;
 
-        if the_val.len() > 150 as _ {
-            return Err(format!(
-                "Max validation failed on field 'status'. {} is greater than 150",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 150 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'status'. {} is greater than 150",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.status;
 
-        if the_val.len() < 5 as _ {
-            return Err(format!(
-                "Min validation failed on field 'status'. {} is less than 5",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 5 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'status'. {} is less than 5",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

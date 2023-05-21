@@ -336,7 +336,7 @@ pub struct AccessMethod {
     /// Update requires: Replacement
     #[serde(rename = "CustomObjectIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_object_identifier: Option<String>,
+    pub custom_object_identifier: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -371,17 +371,18 @@ impl cfn_resources::CfnResource for AccessMethod {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_object_identifier {
-            if the_val.len() > 64 as _ {
-                return Err(format!("Max validation failed on field 'custom_object_identifier'. {} is greater than 64", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!("Max validation failed on field 'custom_object_identifier'. {} is greater than 64", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_object_identifier {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_object_identifier'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'custom_object_identifier'. {} is less than 0", s.len()));
+                }
             }
         }
 
@@ -424,7 +425,7 @@ pub struct CrlConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CustomCname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub custom_cname: Option<String>,
+    pub custom_cname: Option<cfn_resources::StrVal>,
 
     ///
     /// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled.       You can use this value to enable certificate revocation for a new CA when you call the         CreateCertificateAuthority operation or for an existing CA when you       call the UpdateCertificateAuthority operation.
@@ -472,7 +473,7 @@ pub struct CrlConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_name: Option<String>,
+    pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether the CRL will be publicly readable or privately held in the CRL       Amazon S3 bucket. If you choose PUBLIC_READ, the CRL will be accessible over the public       internet. If you choose BUCKET_OWNER_FULL_CONTROL, only the owner of the CRL S3 bucket       can access the CRL, and your PKI clients may need an alternative method of       access.
@@ -490,7 +491,7 @@ pub struct CrlConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectAcl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_object_acl: Option<String>,
+    pub s3_object_acl: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CrlConfiguration {
@@ -504,20 +505,24 @@ impl cfn_resources::CfnResource for CrlConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.custom_cname {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'custom_cname'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'custom_cname'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.custom_cname {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'custom_cname'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'custom_cname'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -540,20 +545,24 @@ impl cfn_resources::CfnResource for CrlConfiguration {
         }
 
         if let Some(the_val) = &self.s3_bucket_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 's3_bucket_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 's3_bucket_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.s3_bucket_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 's3_bucket_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 's3_bucket_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -625,7 +634,7 @@ pub struct CustomAttribute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectIdentifier")]
-    pub object_identifier: String,
+    pub object_identifier: cfn_resources::StrVal,
 
     ///
     ///
@@ -642,7 +651,7 @@ pub struct CustomAttribute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomAttribute {
@@ -657,38 +666,46 @@ impl cfn_resources::CfnResource for CustomAttribute {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.object_identifier;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'object_identifier'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'object_identifier'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.object_identifier;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'object_identifier'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'object_identifier'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -711,7 +728,7 @@ pub struct EdiPartyName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NameAssigner")]
-    pub name_assigner: String,
+    pub name_assigner: cfn_resources::StrVal,
 
     ///
     /// Specifies the party name.
@@ -726,7 +743,7 @@ pub struct EdiPartyName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PartyName")]
-    pub party_name: String,
+    pub party_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EdiPartyName {
@@ -741,38 +758,46 @@ impl cfn_resources::CfnResource for EdiPartyName {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name_assigner;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name_assigner'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name_assigner'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name_assigner;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name_assigner'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name_assigner'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.party_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'party_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'party_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.party_name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'party_name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'party_name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -808,7 +833,7 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "DnsName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dns_name: Option<String>,
+    pub dns_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents GeneralName as an EdiPartyName object.
@@ -836,7 +861,7 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ip_address: Option<String>,
+    pub ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents GeneralName using an OtherName object.
@@ -866,7 +891,7 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "RegisteredId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub registered_id: Option<String>,
+    pub registered_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents GeneralName as an RFC 822 email 			address.
@@ -882,7 +907,7 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "Rfc822Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rfc822_name: Option<String>,
+    pub rfc822_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Represents GeneralName as a URI.
@@ -898,7 +923,7 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "UniformResourceIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uniform_resource_identifier: Option<String>,
+    pub uniform_resource_identifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GeneralName {
@@ -916,20 +941,24 @@ impl cfn_resources::CfnResource for GeneralName {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.dns_name {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'dns_name'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'dns_name'. {} is greater than 253",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.dns_name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'dns_name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'dns_name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -938,20 +967,24 @@ impl cfn_resources::CfnResource for GeneralName {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.ip_address {
-            if the_val.len() > 39 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ip_address'. {} is greater than 39",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 39 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'ip_address'. {} is greater than 39",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.ip_address {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ip_address'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ip_address'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -960,50 +993,62 @@ impl cfn_resources::CfnResource for GeneralName {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.registered_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'registered_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'registered_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.registered_id {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'registered_id'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'registered_id'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.rfc822_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'rfc822_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'rfc822_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.rfc822_name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'rfc822_name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'rfc822_name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.uniform_resource_identifier {
-            if the_val.len() > 253 as _ {
-                return Err(format!("Max validation failed on field 'uniform_resource_identifier'. {} is greater than 253", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!("Max validation failed on field 'uniform_resource_identifier'. {} is greater than 253", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.uniform_resource_identifier {
-            if the_val.len() < 0 as _ {
-                return Err(format!("Min validation failed on field 'uniform_resource_identifier'. {} is less than 0", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!("Min validation failed on field 'uniform_resource_identifier'. {} is less than 0", s.len()));
+                }
             }
         }
 
@@ -1170,7 +1215,7 @@ pub struct OcspConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OcspCustomCname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ocsp_custom_cname: Option<String>,
+    pub ocsp_custom_cname: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OcspConfiguration {
@@ -1184,20 +1229,21 @@ impl cfn_resources::CfnResource for OcspConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.ocsp_custom_cname {
-            if the_val.len() > 253 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'ocsp_custom_cname'. {} is greater than 253",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 253 as _ {
+                    return Err(format!("Max validation failed on field 'ocsp_custom_cname'. {} is greater than 253", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.ocsp_custom_cname {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'ocsp_custom_cname'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'ocsp_custom_cname'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1223,7 +1269,7 @@ pub struct OtherName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeId")]
-    pub type_id: String,
+    pub type_id: cfn_resources::StrVal,
 
     ///
     /// Specifies an OID value.
@@ -1238,7 +1284,7 @@ pub struct OtherName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OtherName {
@@ -1253,38 +1299,46 @@ impl cfn_resources::CfnResource for OtherName {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.type_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'type_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'type_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.type_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'type_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'type_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'value'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'value'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1354,7 +1408,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "CommonName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub common_name: Option<String>,
+    pub common_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Two-digit code that specifies the country in which the certificate subject       located.
@@ -1366,7 +1420,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Country")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub country: Option<String>,
+    pub country: Option<cfn_resources::StrVal>,
 
     ///
     ///
@@ -1396,7 +1450,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "DistinguishedNameQualifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub distinguished_name_qualifier: Option<String>,
+    pub distinguished_name_qualifier: Option<cfn_resources::StrVal>,
 
     ///
     /// Typically a qualifier appended to the name of an individual. Examples include Jr. for       junior, Sr. for senior, and III for third.
@@ -1408,7 +1462,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "GenerationQualifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub generation_qualifier: Option<String>,
+    pub generation_qualifier: Option<cfn_resources::StrVal>,
 
     ///
     /// First name.
@@ -1420,7 +1474,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "GivenName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub given_name: Option<String>,
+    pub given_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Concatenation that typically contains the first letter of the GivenName, the first       letter of the middle name if one exists, and the first letter of the SurName.
@@ -1432,7 +1486,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Initials")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub initials: Option<String>,
+    pub initials: Option<cfn_resources::StrVal>,
 
     ///
     /// The locality (such as a city or town) in which the certificate subject is       located.
@@ -1444,7 +1498,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Locality")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub locality: Option<String>,
+    pub locality: Option<cfn_resources::StrVal>,
 
     ///
     /// Legal name of the organization with which the certificate subject is       affiliated.
@@ -1456,7 +1510,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Organization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organization: Option<String>,
+    pub organization: Option<cfn_resources::StrVal>,
 
     ///
     /// A subdivision or unit of the organization (such as sales or finance) with which the       certificate subject is affiliated.
@@ -1468,7 +1522,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organizational_unit: Option<String>,
+    pub organizational_unit: Option<cfn_resources::StrVal>,
 
     ///
     /// Typically a shortened version of a longer GivenName. For example, Jonathan is often       shortened to John. Elizabeth is often shortened to Beth, Liz, or Eliza.
@@ -1480,7 +1534,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Pseudonym")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pseudonym: Option<String>,
+    pub pseudonym: Option<cfn_resources::StrVal>,
 
     ///
     /// The certificate serial number.
@@ -1492,7 +1546,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "SerialNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub serial_number: Option<String>,
+    pub serial_number: Option<cfn_resources::StrVal>,
 
     ///
     /// State in which the subject of the certificate is located.
@@ -1504,7 +1558,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 
     ///
     /// Family name.
@@ -1516,7 +1570,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Surname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub surname: Option<String>,
+    pub surname: Option<cfn_resources::StrVal>,
 
     ///
     /// A personal title such as Mr.
@@ -1528,7 +1582,7 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "Title")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    pub title: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Subject {
@@ -1571,7 +1625,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1581,7 +1635,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

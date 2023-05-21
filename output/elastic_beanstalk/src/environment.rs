@@ -14,7 +14,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// If specified, the environment attempts to use this value as the prefix for the CNAME in    your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by    appending a random alphanumeric string to the environment name.
@@ -30,7 +30,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "CNAMEPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cnameprefix: Option<String>,
+    pub cnameprefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Your description for this environment.
@@ -44,7 +44,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique name for the environment.
@@ -68,7 +68,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_name: Option<String>,
+    pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// ImportantThe operations role feature of AWS Elastic Beanstalk is in beta release and is subject to change.
@@ -86,7 +86,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "OperationsRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub operations_role: Option<String>,
+    pub operations_role: Option<cfn_resources::StrVal>,
 
     ///
     /// Key-value pairs defining configuration options for this environment, such as the instance    type. These options override the values that are defined in the solution stack or the configuration template.    If you remove any options during a stack update, the removed options retain their current values.
@@ -112,7 +112,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "PlatformArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_arn: Option<String>,
+    pub platform_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment. If    specified, Elastic Beanstalk sets the configuration values to the default values associated with the    specified solution stack. For a list of current solution stacks, see Elastic Beanstalk Supported Platforms in the         AWS Elastic Beanstalk     Platforms guide.
@@ -126,7 +126,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "SolutionStackName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub solution_stack_name: Option<String>,
+    pub solution_stack_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the tags applied to resources in the environment.
@@ -156,7 +156,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub template_name: Option<String>,
+    pub template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the tier to use in creating this environment. The environment tier that you    choose determines whether Elastic Beanstalk provisions resources to support a web application that handles    HTTP(S) requests or a web application that handles background-processing tasks.
@@ -186,7 +186,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "VersionLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_label: Option<String>,
+    pub version_label: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnEnvironment {
@@ -201,120 +201,146 @@ impl cfn_resources::CfnResource for CfnEnvironment {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.cnameprefix {
-            if the_val.len() > 63 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'cnameprefix'. {} is greater than 63",
-                    the_val.len()
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.cnameprefix {
-            if the_val.len() < 4 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'cnameprefix'. {} is less than 4",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cnameprefix'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.cnameprefix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 4 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cnameprefix'. {} is less than 4",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.environment_name {
-            if the_val.len() > 40 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'environment_name'. {} is greater than 40",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 40 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'environment_name'. {} is greater than 40",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.environment_name {
-            if the_val.len() < 4 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'environment_name'. {} is less than 4",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 4 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'environment_name'. {} is less than 4",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.operations_role {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'operations_role'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'operations_role'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.operations_role {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'operations_role'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'operations_role'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.template_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'template_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'template_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.template_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'template_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'template_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         self.tier.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.version_label {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'version_label'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'version_label'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version_label {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version_label'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version_label'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -338,7 +364,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    pub namespace: String,
+    pub namespace: cfn_resources::StrVal,
 
     ///
     /// The name of the configuration option.
@@ -349,7 +375,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionName")]
-    pub option_name: String,
+    pub option_name: cfn_resources::StrVal,
 
     ///
     /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
@@ -365,7 +391,7 @@ pub struct OptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_name: Option<String>,
+    pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The current value for the configuration option.
@@ -377,7 +403,7 @@ pub struct OptionSetting {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OptionSetting {
@@ -391,20 +417,24 @@ impl cfn_resources::CfnResource for OptionSetting {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.resource_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'resource_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'resource_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.resource_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'resource_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'resource_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -429,7 +459,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -439,7 +469,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -473,7 +503,7 @@ pub struct Tier {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of this environment tier.
@@ -489,7 +519,7 @@ pub struct Tier {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the    latest compatible worker tier version.
@@ -503,7 +533,7 @@ pub struct Tier {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Tier {

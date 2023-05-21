@@ -20,7 +20,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
-    pub auto_scaling_group_name: String,
+    pub auto_scaling_group_name: cfn_resources::StrVal,
 
     ///
     /// The desired capacity is the initial capacity of the Auto Scaling group after the scheduled       action runs and the capacity it attempts to maintain. It can scale beyond this capacity       if you add more scaling conditions.
@@ -46,7 +46,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_time: Option<String>,
+    pub end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum size of the Auto Scaling group.
@@ -86,7 +86,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "Recurrence")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub recurrence: Option<String>,
+    pub recurrence: Option<cfn_resources::StrVal>,
 
     ///
     /// The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in UTC/GMT       only and in quotes (for example, "2021-06-01T00:00:00Z").
@@ -100,7 +100,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the time zone for a cron expression. If a time zone is not provided, UTC is       used by default.
@@ -114,7 +114,7 @@ pub struct CfnScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_zone: Option<String>,
+    pub time_zone: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnScheduledAction {
@@ -129,20 +129,21 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.auto_scaling_group_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'auto_scaling_group_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!("Max validation failed on field 'auto_scaling_group_name'. {} is greater than 255", s.len()));
+            }
         }
 
         let the_val = &self.auto_scaling_group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'auto_scaling_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'auto_scaling_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

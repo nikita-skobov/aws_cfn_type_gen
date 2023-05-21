@@ -126,7 +126,7 @@ pub struct CfnGlobalTable {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: Option<String>,
+    pub table_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the time to live (TTL) settings for the table. This setting will be applied       to all replicas.
@@ -189,20 +189,24 @@ impl cfn_resources::CfnResource for CfnGlobalTable {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'table_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'table_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.table_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'table_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'table_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -223,11 +227,11 @@ impl cfn_resources::CfnResource for CfnGlobalTable {
 pub struct AttributeDefinition {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-attributedefinition.html#cfn-dynamodb-globaltable-attributedefinition-attributename
     #[serde(rename = "AttributeName")]
-    pub attribute_name: String,
+    pub attribute_name: cfn_resources::StrVal,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-attributedefinition.html#cfn-dynamodb-globaltable-attributedefinition-attributetype
     #[serde(rename = "AttributeType")]
-    pub attribute_type: String,
+    pub attribute_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AttributeDefinition {
@@ -363,7 +367,7 @@ pub struct GlobalSecondaryIndex {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IndexName")]
-    pub index_name: String,
+    pub index_name: cfn_resources::StrVal,
 
     ///
     /// The complete key schema for a global secondary index, which consists of one or more       pairs of attribute names and key types:
@@ -418,20 +422,24 @@ impl cfn_resources::CfnResource for GlobalSecondaryIndex {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.index_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'index_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'index_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.index_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'index_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'index_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key_schema;
@@ -473,7 +481,7 @@ pub struct KeySchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AttributeName")]
-    pub attribute_name: String,
+    pub attribute_name: cfn_resources::StrVal,
 
     ///
     /// The role that this key attribute will assume:
@@ -522,20 +530,24 @@ impl cfn_resources::CfnResource for KeySchema {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.attribute_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'attribute_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'attribute_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.attribute_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'attribute_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'attribute_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -558,7 +570,7 @@ pub struct KinesisStreamSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamArn")]
-    pub stream_arn: String,
+    pub stream_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisStreamSpecification {
@@ -573,20 +585,24 @@ impl cfn_resources::CfnResource for KinesisStreamSpecification {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.stream_arn;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'stream_arn'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'stream_arn'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stream_arn;
 
-        if the_val.len() < 37 as _ {
-            return Err(format!(
-                "Min validation failed on field 'stream_arn'. {} is less than 37",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 37 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'stream_arn'. {} is less than 37",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -611,7 +627,7 @@ pub struct LocalSecondaryIndex {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IndexName")]
-    pub index_name: String,
+    pub index_name: cfn_resources::StrVal,
 
     ///
     /// The complete key schema for the local secondary index, consisting of one or more pairs       of attribute names and key types:
@@ -654,20 +670,24 @@ impl cfn_resources::CfnResource for LocalSecondaryIndex {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.index_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'index_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'index_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.index_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'index_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'index_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key_schema;
@@ -871,7 +891,7 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IndexName")]
-    pub index_name: String,
+    pub index_name: cfn_resources::StrVal,
 
     ///
     /// Allows you to specify the read capacity settings for a replica global secondary index       when the BillingMode is set to PROVISIONED.
@@ -902,20 +922,24 @@ impl cfn_resources::CfnResource for ReplicaGlobalSecondaryIndexSpecification {
 
         let the_val = &self.index_name;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'index_name'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'index_name'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.index_name;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 'index_name'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'index_name'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         self.read_provisioned_throughput_settings
@@ -938,7 +962,7 @@ pub struct ReplicaSSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSMasterKeyId")]
-    pub kmsmaster_key_id: String,
+    pub kmsmaster_key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ReplicaSSESpecification {
@@ -1039,7 +1063,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    pub region: String,
+    pub region: cfn_resources::StrVal,
 
     ///
     /// Allows you to specify a customer-managed key for the replica. When using       customer-managed keys for server-side encryption, this property must have a value in all       replicas.
@@ -1272,7 +1296,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1282,7 +1306,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -1383,7 +1407,7 @@ pub struct TimeToLiveSpecification {
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_name: Option<String>,
+    pub attribute_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether TTL is to be enabled (true) or disabled (false) on the table.
@@ -1408,20 +1432,24 @@ impl cfn_resources::CfnResource for TimeToLiveSpecification {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.attribute_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'attribute_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'attribute_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.attribute_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'attribute_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'attribute_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

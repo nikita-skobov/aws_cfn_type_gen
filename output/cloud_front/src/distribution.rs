@@ -84,7 +84,7 @@ pub struct CacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "CachePolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_policy_id: Option<String>,
+    pub cache_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A complex type that controls whether CloudFront caches the response to requests using the 			specified HTTP methods. There are two choices:
@@ -138,7 +138,7 @@ pub struct CacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelEncryptionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field_level_encryption_id: Option<String>,
+    pub field_level_encryption_id: Option<cfn_resources::StrVal>,
 
     ///
     /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field. For more information, see Working with policies in the 				Amazon CloudFront Developer Guide.
@@ -224,7 +224,7 @@ pub struct CacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "OriginRequestPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_request_policy_id: Option<String>,
+    pub origin_request_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The pattern (for example, images/*.jpg) that specifies which requests to 			apply the behavior to. When CloudFront receives a viewer request, the requested path is 			compared with path patterns in the order in which cache behaviors are listed in the 			distribution.
@@ -241,7 +241,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathPattern")]
-    pub path_pattern: String,
+    pub path_pattern: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the real-time log configuration that is attached to 			this cache behavior. For more information, see Real-time logs in the 				Amazon CloudFront Developer Guide.
@@ -253,7 +253,7 @@ pub struct CacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "RealtimeLogConfigArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub realtime_log_config_arn: Option<String>,
+    pub realtime_log_config_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for a response headers policy.
@@ -265,7 +265,7 @@ pub struct CacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeadersPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub response_headers_policy_id: Option<String>,
+    pub response_headers_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether you want to distribute media files in the Microsoft Smooth Streaming 			format using the origin that is associated with this cache behavior. If so, specify 				true; if not, specify false. If you specify 				true for SmoothStreaming, you can still distribute other 			content using this cache behavior if the content matches the value of 				PathPattern.
@@ -288,7 +288,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetOriginId")]
-    pub target_origin_id: String,
+    pub target_origin_id: cfn_resources::StrVal,
 
     ///
     /// A list of key groups that CloudFront can use to validate signed URLs or signed 			cookies.
@@ -529,7 +529,7 @@ pub struct CustomErrorResponse {
     /// Update requires: No interruption
     #[serde(rename = "ResponsePagePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub response_page_path: Option<String>,
+    pub response_page_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomErrorResponse {
@@ -697,7 +697,7 @@ pub struct DefaultCacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "CachePolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_policy_id: Option<String>,
+    pub cache_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A complex type that controls whether CloudFront caches the response to requests using the 			specified HTTP methods. There are two choices:
@@ -751,7 +751,7 @@ pub struct DefaultCacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelEncryptionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub field_level_encryption_id: Option<String>,
+    pub field_level_encryption_id: Option<cfn_resources::StrVal>,
 
     ///
     /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field. For more information, see Working with policies in the 				Amazon CloudFront Developer Guide.
@@ -837,7 +837,7 @@ pub struct DefaultCacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "OriginRequestPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_request_policy_id: Option<String>,
+    pub origin_request_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the real-time log configuration that is attached to 			this cache behavior. For more information, see Real-time logs in the 				Amazon CloudFront Developer Guide.
@@ -849,7 +849,7 @@ pub struct DefaultCacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "RealtimeLogConfigArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub realtime_log_config_arn: Option<String>,
+    pub realtime_log_config_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier for a response headers policy.
@@ -861,7 +861,7 @@ pub struct DefaultCacheBehavior {
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeadersPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub response_headers_policy_id: Option<String>,
+    pub response_headers_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether you want to distribute media files in the Microsoft Smooth Streaming 			format using the origin that is associated with this cache behavior. If so, specify 				true; if not, specify false. If you specify 				true for SmoothStreaming, you can still distribute other 			content using this cache behavior if the content matches the value of 				PathPattern.
@@ -884,7 +884,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetOriginId")]
-    pub target_origin_id: String,
+    pub target_origin_id: cfn_resources::StrVal,
 
     ///
     /// A list of key groups that CloudFront can use to validate signed URLs or signed 			cookies.
@@ -1023,7 +1023,7 @@ pub struct DistributionConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of a continuous deployment policy. For more information, see 				CreateContinuousDeploymentPolicy.
@@ -1035,7 +1035,7 @@ pub struct DistributionConfig {
     /// Update requires: No interruption
     #[serde(rename = "ContinuousDeploymentPolicyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub continuous_deployment_policy_id: Option<String>,
+    pub continuous_deployment_policy_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A complex type that controls the following:
@@ -1095,7 +1095,7 @@ pub struct DistributionConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefaultRootObject")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default_root_object: Option<String>,
+    pub default_root_object: Option<cfn_resources::StrVal>,
 
     ///
     /// From this field, you can enable or disable the selected distribution.
@@ -1263,7 +1263,7 @@ pub struct DistributionConfig {
     /// Update requires: No interruption
     #[serde(rename = "WebACLId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub web_aclid: Option<String>,
+    pub web_aclid: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1488,7 +1488,7 @@ pub struct FunctionAssociation {
     /// Update requires: No interruption
     #[serde(rename = "FunctionARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function_arn: Option<String>,
+    pub function_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1527,11 +1527,13 @@ impl cfn_resources::CfnResource for FunctionAssociation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.function_arn {
-            if the_val.len() > 108 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'function_arn'. {} is greater than 108",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 108 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'function_arn'. {} is greater than 108",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1650,7 +1652,7 @@ pub struct LambdaFunctionAssociation {
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lambda_function_arn: Option<String>,
+    pub lambda_function_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1703,7 +1705,7 @@ pub struct LegacyCustomOrigin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DNSName")]
-    pub dnsname: String,
+    pub dnsname: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1735,7 +1737,7 @@ pub struct LegacyCustomOrigin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginProtocolPolicy")]
-    pub origin_protocol_policy: String,
+    pub origin_protocol_policy: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1773,7 +1775,7 @@ pub struct LegacyS3Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DNSName")]
-    pub dnsname: String,
+    pub dnsname: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -1784,7 +1786,7 @@ pub struct LegacyS3Origin {
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessIdentity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_access_identity: Option<String>,
+    pub origin_access_identity: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LegacyS3Origin {
@@ -1813,7 +1815,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    pub bucket: String,
+    pub bucket: cfn_resources::StrVal,
 
     ///
     /// Specifies whether you want CloudFront to include cookies in access logs, specify 				true for IncludeCookies. If you choose to include cookies 			in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for 			this distribution. If you don't want to include cookies when you create a distribution 			or if you want to disable include cookies for an existing distribution, specify 				false for IncludeCookies.
@@ -1837,7 +1839,7 @@ pub struct Logging {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Logging {
@@ -1914,7 +1916,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// A unique identifier for the origin. This value must be unique within the 			distribution.
@@ -1927,7 +1929,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The unique identifier of an origin access control for this origin.
@@ -1941,7 +1943,7 @@ pub struct Origin {
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessControlId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_access_control_id: Option<String>,
+    pub origin_access_control_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of HTTP header names and values that CloudFront adds to the requests that it sends to 			the origin.
@@ -1969,7 +1971,7 @@ pub struct Origin {
     /// Update requires: No interruption
     #[serde(rename = "OriginPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_path: Option<String>,
+    pub origin_path: Option<cfn_resources::StrVal>,
 
     ///
     /// CloudFront Origin Shield. Using Origin Shield can help reduce the load on your 			origin.
@@ -2036,7 +2038,7 @@ pub struct OriginCustomHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderName")]
-    pub header_name: String,
+    pub header_name: cfn_resources::StrVal,
 
     ///
     /// The value for the header that you specified in the HeaderName 			field.
@@ -2047,7 +2049,7 @@ pub struct OriginCustomHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderValue")]
-    pub header_value: String,
+    pub header_value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OriginCustomHeader {
@@ -2087,7 +2089,7 @@ pub struct OriginGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// A complex type that contains information about the origins in an origin group.
@@ -2162,7 +2164,7 @@ pub struct OriginGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginId")]
-    pub origin_id: String,
+    pub origin_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for OriginGroupMember {
@@ -2310,7 +2312,7 @@ pub struct OriginShield {
     /// Update requires: No interruption
     #[serde(rename = "OriginShieldRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_shield_region: Option<String>,
+    pub origin_shield_region: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OriginShield {
@@ -2324,20 +2326,21 @@ impl cfn_resources::CfnResource for OriginShield {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.origin_shield_region {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'origin_shield_region'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!("Max validation failed on field 'origin_shield_region'. {} is greater than 32", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.origin_shield_region {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'origin_shield_region'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'origin_shield_region'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2401,7 +2404,7 @@ pub struct S3OriginConfig {
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessIdentity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_access_identity: Option<String>,
+    pub origin_access_identity: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3OriginConfig {
@@ -2475,7 +2478,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2485,7 +2488,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -2527,7 +2530,7 @@ pub struct ViewerCertificate {
     /// Update requires: No interruption
     #[serde(rename = "AcmCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub acm_certificate_arn: Option<String>,
+    pub acm_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// If the distribution uses the CloudFront domain name such as 				d111111abcdef8.cloudfront.net, set this field to 			true.
@@ -2559,7 +2562,7 @@ pub struct ViewerCertificate {
     /// Update requires: No interruption
     #[serde(rename = "IamCertificateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_certificate_id: Option<String>,
+    pub iam_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If the distribution uses Aliases (alternate domain names or CNAMEs), 			specify the security policy that you want CloudFront to use for HTTPS connections with 			viewers. The security policy determines two settings:

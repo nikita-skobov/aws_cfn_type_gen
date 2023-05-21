@@ -31,7 +31,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "AppstreamAgentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub appstream_agent_version: Option<String>,
+    pub appstream_agent_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The description to display.
@@ -45,7 +45,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The image builder name to display.
@@ -59,7 +59,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
@@ -99,7 +99,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_role_arn: Option<String>,
+    pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the public, private, or shared image to use.
@@ -113,7 +113,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_arn: Option<String>,
+    pub image_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the image used to create the image builder.
@@ -127,7 +127,7 @@ pub struct CfnImageBuilder {
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_name: Option<String>,
+    pub image_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance type to use when launching the image builder. The following instance types are available:
@@ -142,7 +142,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// A unique name for the image builder.
@@ -155,7 +155,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs.
@@ -202,35 +202,40 @@ impl cfn_resources::CfnResource for CfnImageBuilder {
         }
 
         if let Some(the_val) = &self.appstream_agent_version {
-            if the_val.len() > 100 as _ {
-                return Err(format!("Max validation failed on field 'appstream_agent_version'. {} is greater than 100", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!("Max validation failed on field 'appstream_agent_version'. {} is greater than 100", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.appstream_agent_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'appstream_agent_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'appstream_agent_version'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.display_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'display_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'display_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -239,21 +244,25 @@ impl cfn_resources::CfnResource for CfnImageBuilder {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.image_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'image_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'image_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.vpc_config
@@ -291,7 +300,7 @@ pub struct AccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpceId")]
-    pub vpce_id: String,
+    pub vpce_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -319,11 +328,13 @@ impl cfn_resources::CfnResource for AccessEndpoint {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.vpce_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'vpce_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpce_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -343,7 +354,7 @@ pub struct DomainJoinInfo {
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub directory_name: Option<String>,
+    pub directory_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The distinguished name of the organizational unit for computer accounts.
@@ -357,7 +368,7 @@ pub struct DomainJoinInfo {
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organizational_unit_distinguished_name: Option<String>,
+    pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DomainJoinInfo {
@@ -371,8 +382,10 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() > 2000 as _ {
-                return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000 as _ {
+                    return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", s.len()));
+                }
             }
         }
 
@@ -397,7 +410,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -407,7 +420,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

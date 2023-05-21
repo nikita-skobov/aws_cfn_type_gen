@@ -44,7 +44,7 @@ pub struct CfnLocationNFS {
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_hostname: Option<String>,
+    pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The subdirectory in the NFS file system that is used to read data from the NFS source    location or write data to the NFS destination. The NFS path should be a path that's    exported by the NFS server, or a subdirectory of that path. The path should be such that it    can be mounted by other NFS clients in your network.
@@ -68,7 +68,7 @@ pub struct CfnLocationNFS {
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdirectory: Option<String>,
+    pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value pair that represents the tag that you want to add to the location. The    value can be an empty string. We recommend using tags to name your resources.
@@ -102,20 +102,24 @@ impl cfn_resources::CfnResource for CfnLocationNFS {
         self.on_prem_config.validate()?;
 
         if let Some(the_val) = &self.server_hostname {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'server_hostname'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdirectory {
-            if the_val.len() > 4096 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4096 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -252,7 +256,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -262,7 +266,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -18,7 +18,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
-    pub action: String,
+    pub action: cfn_resources::StrVal,
 
     ///
     /// For Alexa Smart Home functions, a token that the invoker must supply.
@@ -36,7 +36,7 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "EventSourceToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_source_token: Option<String>,
+    pub event_source_token: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Lambda function, version, or alias.
@@ -57,7 +57,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    pub function_name: cfn_resources::StrVal,
 
     ///
     /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
@@ -84,7 +84,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
-    pub principal: String,
+    pub principal: cfn_resources::StrVal,
 
     ///
     /// The identifier for your organization in AWS Organizations. Use this to grant permissions to all the     AWS accounts under this organization.
@@ -102,7 +102,7 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "PrincipalOrgID")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub principal_org_id: Option<String>,
+    pub principal_org_id: Option<cfn_resources::StrVal>,
 
     ///
     /// For AWS service, the ID of the AWS account that owns the resource. Use this    together with SourceArn to ensure that the specified account owns the resource. It is possible for an     Amazon S3 bucket to be deleted by its owner and recreated by another account.
@@ -118,7 +118,7 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "SourceAccount")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_account: Option<String>,
+    pub source_account: Option<cfn_resources::StrVal>,
 
     ///
     /// For AWS services, the ARN of the AWS resource that invokes the function. For    example, an Amazon S3 bucket or Amazon SNS topic.
@@ -134,7 +134,7 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_arn: Option<String>,
+    pub source_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -165,65 +165,76 @@ impl cfn_resources::CfnResource for CfnPermission {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.event_source_token {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'event_source_token'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'event_source_token'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.event_source_token {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'event_source_token'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.function_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 140 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'event_source_token'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'function_name'. {} is greater than 140",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.function_name;
 
-        if the_val.len() > 140 as _ {
-            return Err(format!(
-                "Max validation failed on field 'function_name'. {} is greater than 140",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.function_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'function_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.principal_org_id {
-            if the_val.len() > 34 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'principal_org_id'. {} is greater than 34",
-                    the_val.len()
+                    "Min validation failed on field 'function_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.principal_org_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'principal_org_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 34 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'principal_org_id'. {} is greater than 34",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.principal_org_id {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'principal_org_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.source_account {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'source_account'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'source_account'. {} is greater than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 

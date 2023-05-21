@@ -17,7 +17,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "AgentVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub agent_version: Option<String>,
+    pub agent_version: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom AMI ID to be used to create the instance. The AMI should be based on one of the    supported operating systems.    For more information, see    Using Custom AMIs.
@@ -31,7 +31,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "AmiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ami_id: Option<String>,
+    pub ami_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance architecture. The default option is x86_64. Instance types do not    necessarily support both architectures. For a list of the architectures that are supported by    the different instance types, see Instance Families and     Types.
@@ -71,7 +71,7 @@ pub struct CfnInstance {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of BlockDeviceMapping objects that specify the instance's block    devices. For more information, see Block     Device Mapping. Note that block device mappings are not supported for custom AMIs.
@@ -121,7 +121,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hostname: Option<String>,
+    pub hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether to install operating system and package updates when the instance boots. The default    value is true. To control when updates are installed, set this value to     false. You must then update your instances manually by using     CreateDeployment to run the update_dependencies stack command or    by manually running yum (Amazon Linux) or apt-get (Ubuntu) on the    instances.
@@ -146,7 +146,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// An array that contains the instance's layer IDs.
@@ -175,7 +175,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "Os")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub os: Option<String>,
+    pub os: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance root device type. For more information, see Storage for the Root Device.
@@ -201,7 +201,7 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "SshKeyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssh_key_name: Option<String>,
+    pub ssh_key_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The stack ID.
@@ -212,7 +212,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StackId")]
-    pub stack_id: String,
+    pub stack_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's      default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
@@ -224,7 +224,7 @@ pub struct CfnInstance {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance's tenancy option. The default option is no tenancy, or if the instance is running in a VPC,      inherit tenancy settings from the VPC. The following are valid values for this parameter:       dedicated, default, or host. Because there are costs associated with changes      in tenancy options, we recommend that you research tenancy options before choosing them for your instances.      For more information about dedicated hosts, see      Dedicated Hosts Overview and      Amazon EC2 Dedicated Hosts.      For more information about dedicated instances, see      Dedicated Instances and      Amazon EC2 Dedicated Instances.
@@ -236,7 +236,7 @@ pub struct CfnInstance {
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tenancy: Option<String>,
+    pub tenancy: Option<cfn_resources::StrVal>,
 
     ///
     /// The time-based scaling configuration for the instance.
@@ -262,7 +262,7 @@ pub struct CfnInstance {
     /// Update requires: Replacement
     #[serde(rename = "VirtualizationType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtualization_type: Option<String>,
+    pub virtualization_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of AWS OpsWorks volume IDs to associate with the instance. For more     information, see AWS::OpsWorks::Volume.
@@ -355,7 +355,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_name: Option<String>,
+    pub device_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An EBSBlockDevice that defines how to configure an Amazon EBS volume when the       instance is launched. You can specify either the VirtualName or Ebs, but not both.
@@ -379,7 +379,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_device: Option<String>,
+    pub no_device: Option<cfn_resources::StrVal>,
 
     ///
     /// The virtual device name. For more information, see BlockDeviceMapping.       You can specify either the VirtualName or Ebs, but not both.
@@ -391,7 +391,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub virtual_name: Option<String>,
+    pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
@@ -426,7 +426,7 @@ pub struct EbsBlockDevice {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-snapshotid
     #[serde(rename = "SnapshotId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumesize
     #[serde(rename = "VolumeSize")]
@@ -436,7 +436,7 @@ pub struct EbsBlockDevice {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumetype
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub volume_type: Option<String>,
+    pub volume_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EbsBlockDevice {

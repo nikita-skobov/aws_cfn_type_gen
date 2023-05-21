@@ -26,7 +26,7 @@ pub struct CfnSubscriptionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Application-specific metadata to attach to the subscription definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -77,7 +77,7 @@ pub struct Subscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// The originator of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
@@ -88,7 +88,7 @@ pub struct Subscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The MQTT topic used to route the message.
@@ -99,7 +99,7 @@ pub struct Subscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subject")]
-    pub subject: String,
+    pub subject: cfn_resources::StrVal,
 
     ///
     /// The destination of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
@@ -110,7 +110,7 @@ pub struct Subscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Subscription {

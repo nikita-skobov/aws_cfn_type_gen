@@ -17,7 +17,7 @@ pub struct CfnSecurityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The security configuration details in JSON format.
@@ -42,20 +42,24 @@ impl cfn_resources::CfnResource for CfnSecurityConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 10280 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 10280",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 10280 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 10280",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

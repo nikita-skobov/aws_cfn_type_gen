@@ -12,7 +12,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    pub configuration: String,
+    pub configuration: cfn_resources::StrVal,
 
     ///
     /// Specifies the activated hook type configuration, in this AWS account and AWS Region.
@@ -26,7 +26,7 @@ pub struct CfnHookTypeConfig {
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAlias")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration_alias: Option<String>,
+    pub configuration_alias: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Number (ARN) for the hook to set Configuration for.
@@ -40,7 +40,7 @@ pub struct CfnHookTypeConfig {
     /// Update requires: No interruption
     #[serde(rename = "TypeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub type_arn: Option<String>,
+    pub type_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of   Organization::Service::Hook.
@@ -58,7 +58,7 @@ pub struct CfnHookTypeConfig {
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub type_name: Option<String>,
+    pub type_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnHookTypeConfig {
@@ -72,20 +72,24 @@ impl cfn_resources::CfnResource for CfnHookTypeConfig {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.type_name {
-            if the_val.len() > 196 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'type_name'. {} is greater than 196",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 196 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'type_name'. {} is greater than 196",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.type_name {
-            if the_val.len() < 10 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'type_name'. {} is less than 10",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 10 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'type_name'. {} is less than 10",
+                        s.len()
+                    ));
+                }
             }
         }
 

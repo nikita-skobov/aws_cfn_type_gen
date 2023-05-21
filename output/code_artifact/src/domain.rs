@@ -16,7 +16,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    pub domain_name: String,
+    pub domain_name: cfn_resources::StrVal,
 
     ///
     /// The key used to encrypt the domain.
@@ -34,7 +34,7 @@ pub struct CfnDomain {
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_key: Option<String>,
+    pub encryption_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The document that defines the resource policy that is set on a domain.
@@ -73,37 +73,45 @@ impl cfn_resources::CfnResource for CfnDomain {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.domain_name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'domain_name'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_name'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.domain_name;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'domain_name'. {} is less than 2",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.encryption_key {
-            if the_val.len() > 1011 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'encryption_key'. {} is greater than 1011",
-                    the_val.len()
+                    "Min validation failed on field 'domain_name'. {} is less than 2",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.encryption_key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'encryption_key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1011 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'encryption_key'. {} is greater than 1011",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.encryption_key {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'encryption_key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -128,7 +136,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -138,7 +146,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

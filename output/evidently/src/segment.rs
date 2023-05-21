@@ -16,7 +16,7 @@ pub struct CfnSegment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// A name for the segment.
     ///
@@ -26,7 +26,7 @@ pub struct CfnSegment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
@@ -38,7 +38,7 @@ pub struct CfnSegment {
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern: Option<String>,
+    pub pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// Assigns one or more tags (key-value pairs) to the feature.
@@ -92,7 +92,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -102,7 +102,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

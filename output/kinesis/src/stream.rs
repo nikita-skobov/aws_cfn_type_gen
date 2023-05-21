@@ -19,7 +19,7 @@ pub struct CfnStream {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
@@ -95,20 +95,24 @@ impl cfn_resources::CfnResource for CfnStream {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -151,7 +155,7 @@ pub struct StreamEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
+    pub encryption_type: cfn_resources::StrVal,
 
     ///
     /// The GUID for the customer-managed AWS KMS key to use for encryption.       This value can be a globally unique identifier, a fully specified Amazon Resource Name       (ARN) to either an alias or a key, or an alias name prefixed by "alias/".You can also       use a master key owned by Kinesis Data Streams by specifying the alias         aws/kinesis.
@@ -168,7 +172,7 @@ pub struct StreamEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyId")]
-    pub key_id: String,
+    pub key_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for StreamEncryption {
@@ -183,20 +187,24 @@ impl cfn_resources::CfnResource for StreamEncryption {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key_id;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key_id'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key_id'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -268,7 +276,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -278,7 +286,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

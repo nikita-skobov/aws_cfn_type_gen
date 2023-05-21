@@ -13,7 +13,7 @@ pub struct CfnLicense {
     /// Update requires: No interruption
     #[serde(rename = "Beneficiary")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub beneficiary: Option<String>,
+    pub beneficiary: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration for consumption of the license.
@@ -46,7 +46,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
-    pub home_region: String,
+    pub home_region: cfn_resources::StrVal,
 
     ///
     /// License issuer.
@@ -80,7 +80,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseName")]
-    pub license_name: String,
+    pub license_name: cfn_resources::StrVal,
 
     ///
     /// Product name.
@@ -91,7 +91,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductName")]
-    pub product_name: String,
+    pub product_name: cfn_resources::StrVal,
 
     ///
     /// Product SKU.
@@ -103,7 +103,7 @@ pub struct CfnLicense {
     /// Update requires: No interruption
     #[serde(rename = "ProductSKU")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub product_sku: Option<String>,
+    pub product_sku: Option<cfn_resources::StrVal>,
 
     ///
     /// License status.
@@ -115,7 +115,7 @@ pub struct CfnLicense {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// Date and time range during which the license is valid, in ISO8601-UTC format.
@@ -226,7 +226,7 @@ pub struct ConsumptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RenewType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub renew_type: Option<String>,
+    pub renew_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConsumptionConfiguration {
@@ -287,7 +287,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Indicates whether overages are allowed.
@@ -310,7 +310,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    pub unit: String,
+    pub unit: cfn_resources::StrVal,
 
     ///
     /// Entitlement resource. Use only if the unit is None.
@@ -322,7 +322,7 @@ pub struct Entitlement {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Entitlement {
@@ -351,7 +351,7 @@ pub struct IssuerData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Asymmetric KMS key from AWS Key Management Service. The KMS key must have a key usage of sign and verify,      and support the RSASSA-PSS SHA-256 signing algorithm.
@@ -363,7 +363,7 @@ pub struct IssuerData {
     /// Update requires: No interruption
     #[serde(rename = "SignKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sign_key: Option<String>,
+    pub sign_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IssuerData {
@@ -392,7 +392,7 @@ pub struct Metadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value.
@@ -403,7 +403,7 @@ pub struct Metadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Metadata {
@@ -461,7 +461,7 @@ pub struct ValidityDateFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Begin")]
-    pub begin: String,
+    pub begin: cfn_resources::StrVal,
 
     ///
     /// End of the time range.
@@ -472,7 +472,7 @@ pub struct ValidityDateFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "End")]
-    pub end: String,
+    pub end: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ValidityDateFormat {

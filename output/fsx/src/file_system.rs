@@ -11,7 +11,7 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_id: Option<String>,
+    pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of Amazon FSx file system, which can be LUSTRE,         WINDOWS, ONTAP, or OPENZFS.
@@ -22,7 +22,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemType")]
-    pub file_system_type: String,
+    pub file_system_type: cfn_resources::StrVal,
 
     ///
     /// (Optional) For FSx for Lustre file systems, sets the Lustre version for the       file system that you're creating. Valid values are 2.10 and         2.12:
@@ -46,7 +46,7 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "FileSystemTypeVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_system_type_version: Option<String>,
+    pub file_system_type_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt Amazon FSx file       system data. Used as follows with Amazon FSx file system types:
@@ -60,7 +60,7 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Lustre configuration for the file system being created.
@@ -232,17 +232,18 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.file_system_type_version {
-            if the_val.len() > 20 as _ {
-                return Err(format!("Max validation failed on field 'file_system_type_version'. {} is greater than 20", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 20 as _ {
+                    return Err(format!("Max validation failed on field 'file_system_type_version'. {} is greater than 20", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_type_version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'file_system_type_version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'file_system_type_version'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -331,7 +332,7 @@ pub struct AuditLogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AuditLogDestination")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audit_log_destination: Option<String>,
+    pub audit_log_destination: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets which attempt type is logged by Amazon FSx for file and folder accesses.
@@ -425,17 +426,21 @@ impl cfn_resources::CfnResource for AuditLogConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.audit_log_destination {
-            if the_val.len() > 1024 as _ {
-                return Err(format!("Max validation failed on field 'audit_log_destination'. {} is greater than 1024", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'audit_log_destination'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.audit_log_destination {
-            if the_val.len() < 8 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'audit_log_destination'. {} is less than 8",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 8 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'audit_log_destination'. {} is less than 8",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -462,7 +467,7 @@ pub struct ClientConfigurations {
     /// Update requires: Replacement
     #[serde(rename = "Clients")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub clients: Option<String>,
+    pub clients: Option<cfn_resources::StrVal>,
 
     ///
     /// The options to use when mounting the file system. For a list of options that you can       use with Network File System (NFS), see the exports(5) - Linux man page. When       choosing your options, consider the following:
@@ -492,20 +497,24 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.clients {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'clients'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'clients'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.clients {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'clients'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'clients'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -640,7 +649,7 @@ pub struct LustreConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub daily_automatic_backup_start_time: Option<String>,
+    pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the data compression configuration for the file system. DataCompressionType       can have the following values:
@@ -720,7 +729,7 @@ pub struct LustreConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ExportPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub export_path: Option<String>,
+    pub export_path: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) The path to the Amazon S3 bucket (including the optional prefix) that       you're using as the data repository for your Amazon FSx for Lustre file system. The root       of your FSx for Lustre file system will be mapped to the root of the Amazon S3 bucket       you select. An example is s3://import-bucket/optional-prefix. If you       specify a prefix after the Amazon S3 bucket name, only object keys with that prefix are       loaded into the file system.
@@ -740,7 +749,7 @@ pub struct LustreConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ImportPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub import_path: Option<String>,
+    pub import_path: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) For files imported from a data repository, this value determines the stripe       count and maximum amount of data per file (in MiB) stored on a single physical disk. The       maximum number of disks that a single file can be striped across is limited by the total       number of disks that make up the file system.
@@ -798,7 +807,7 @@ pub struct LustreConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weekly_maintenance_start_time: Option<String>,
+    pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -896,38 +905,46 @@ impl cfn_resources::CfnResource for LustreConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.export_path {
-            if the_val.len() > 4357 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'export_path'. {} is greater than 4357",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4357 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'export_path'. {} is greater than 4357",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.export_path {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'export_path'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'export_path'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.import_path {
-            if the_val.len() > 4357 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'import_path'. {} is greater than 4357",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4357 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'import_path'. {} is greater than 4357",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.import_path {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'import_path'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'import_path'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1028,7 +1045,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub daily_automatic_backup_start_time: Option<String>,
+    pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the FSx for ONTAP file system deployment type to use in creating       the file system.
@@ -1075,7 +1092,7 @@ pub struct OntapConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "EndpointIpAddressRange")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint_ip_address_range: Option<String>,
+    pub endpoint_ip_address_range: Option<cfn_resources::StrVal>,
 
     ///
     /// The ONTAP administrative password for the fsxadmin user with which you       administer your file system using the NetApp ONTAP CLI and REST API.
@@ -1093,7 +1110,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "FsxAdminPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fsx_admin_password: Option<String>,
+    pub fsx_admin_password: Option<cfn_resources::StrVal>,
 
     ///
     /// Required when DeploymentType is set to MULTI_AZ_1. This       specifies the subnet in which you want the preferred file server to be located.
@@ -1105,7 +1122,7 @@ pub struct OntapConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_subnet_id: Option<String>,
+    pub preferred_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// (Multi-AZ only) Specifies the virtual private cloud (VPC) route tables in which your       file system's endpoints will be created. You should specify all VPC route tables       associated with the subnets in which your clients are located. By default, Amazon FSx       selects your VPC's default route table.
@@ -1153,7 +1170,7 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weekly_maintenance_start_time: Option<String>,
+    pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1188,35 +1205,37 @@ impl cfn_resources::CfnResource for OntapConfiguration {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.endpoint_ip_address_range {
-            if the_val.len() > 17 as _ {
-                return Err(format!("Max validation failed on field 'endpoint_ip_address_range'. {} is greater than 17", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 17 as _ {
+                    return Err(format!("Max validation failed on field 'endpoint_ip_address_range'. {} is greater than 17", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.endpoint_ip_address_range {
-            if the_val.len() < 9 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'endpoint_ip_address_range'. {} is less than 9",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 9 as _ {
+                    return Err(format!("Min validation failed on field 'endpoint_ip_address_range'. {} is less than 9", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.fsx_admin_password {
-            if the_val.len() > 50 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'fsx_admin_password'. {} is greater than 50",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 50 as _ {
+                    return Err(format!("Max validation failed on field 'fsx_admin_password'. {} is greater than 50", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.fsx_admin_password {
-            if the_val.len() < 8 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'fsx_admin_password'. {} is less than 8",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 8 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'fsx_admin_password'. {} is less than 8",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1297,7 +1316,7 @@ pub struct OpenZFSConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub daily_automatic_backup_start_time: Option<String>,
+    pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the file system deployment type. Single AZ deployment types are configured       for redundancy within a single Availability Zone in an AWS Region .       Valid values are the following:
@@ -1390,7 +1409,7 @@ pub struct OpenZFSConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weekly_maintenance_start_time: Option<String>,
+    pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1645,7 +1664,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) The name of the domain group whose members are granted administrative       privileges for the file system. Administrative privileges include taking ownership of       files and folders, setting audit controls (audit ACLs) on files and folders, and               administering the file system remotely by using the FSx Remote PowerShell.       The group that you specify must already exist in your domain. If you don't provide one,       your AD domain's Domain Admins group is used.
@@ -1663,7 +1682,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_system_administrators_group: Option<String>,
+    pub file_system_administrators_group: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) The fully qualified distinguished name of the organizational unit within       your self-managed AD directory. Amazon       FSx only accepts OU as the direct parent of the file system. An example is         OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the       FSx file system is created in the default location of your self-managed AD directory.
@@ -1683,7 +1702,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organizational_unit_distinguished_name: Option<String>,
+    pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The password for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain.
@@ -1701,7 +1720,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain. This account must have the permission to join       computers to the domain in the organizational unit provided in         OrganizationalUnitDistinguishedName, or in the default location of your       AD domain.
@@ -1719,7 +1738,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_name: Option<String>,
+    pub user_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
@@ -1742,80 +1761,100 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
         }
 
         if let Some(the_val) = &self.domain_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.domain_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'domain_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'domain_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_administrators_group {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'file_system_administrators_group'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'file_system_administrators_group'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_administrators_group {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'file_system_administrators_group'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'file_system_administrators_group'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() > 2000 as _ {
-                return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000 as _ {
+                    return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'organizational_unit_distinguished_name'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'organizational_unit_distinguished_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'password'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'password'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1840,7 +1879,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1850,7 +1889,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -1997,7 +2036,7 @@ pub struct WindowsConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ActiveDirectoryId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub active_directory_id: Option<String>,
+    pub active_directory_id: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of one or more DNS alias names that you want to associate with the Amazon FSx       file system. Aliases allow you to use existing DNS names to access the data in your       Amazon FSx file system. You can associate up to 50 aliases with a file system at any       time.
@@ -2067,7 +2106,7 @@ pub struct WindowsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub daily_automatic_backup_start_time: Option<String>,
+    pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the file system deployment type, valid values are the following:
@@ -2097,7 +2136,7 @@ pub struct WindowsConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_subnet_id: Option<String>,
+    pub preferred_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
@@ -2143,7 +2182,7 @@ pub struct WindowsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weekly_maintenance_start_time: Option<String>,
+    pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2178,20 +2217,21 @@ impl cfn_resources::CfnResource for WindowsConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.active_directory_id {
-            if the_val.len() > 12 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'active_directory_id'. {} is greater than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 12 as _ {
+                    return Err(format!("Max validation failed on field 'active_directory_id'. {} is greater than 12", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.active_directory_id {
-            if the_val.len() < 12 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'active_directory_id'. {} is less than 12",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 12 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'active_directory_id'. {} is less than 12",
+                        s.len()
+                    ));
+                }
             }
         }
 

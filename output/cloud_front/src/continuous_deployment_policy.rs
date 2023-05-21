@@ -141,7 +141,7 @@ pub struct SingleHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    pub header: String,
+    pub header: cfn_resources::StrVal,
 
     ///
     /// The request header value.
@@ -152,7 +152,7 @@ pub struct SingleHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SingleHeaderConfig {

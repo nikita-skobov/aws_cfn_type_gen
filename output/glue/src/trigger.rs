@@ -28,7 +28,7 @@ pub struct CfnTrigger {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.
@@ -58,7 +58,7 @@ pub struct CfnTrigger {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The predicate of this trigger, which defines when it will fire.
@@ -82,7 +82,7 @@ pub struct CfnTrigger {
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub schedule: Option<String>,
+    pub schedule: Option<cfn_resources::StrVal>,
 
     /// Set to true to start SCHEDULED and CONDITIONAL triggers when created. True is not supported for ON_DEMAND triggers.
     ///
@@ -129,7 +129,7 @@ pub struct CfnTrigger {
     /// Update requires: Replacement
     #[serde(rename = "WorkflowName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workflow_name: Option<String>,
+    pub workflow_name: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -168,20 +168,24 @@ impl cfn_resources::CfnResource for CfnTrigger {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -190,20 +194,24 @@ impl cfn_resources::CfnResource for CfnTrigger {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -245,7 +253,7 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "CrawlerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub crawler_name: Option<String>,
+    pub crawler_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of a job to be executed.
@@ -263,7 +271,7 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_name: Option<String>,
+    pub job_name: Option<cfn_resources::StrVal>,
 
     /// Specifies configuration properties of a job run notification.
     ///
@@ -292,7 +300,7 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_configuration: Option<String>,
+    pub security_configuration: Option<cfn_resources::StrVal>,
 
     /// The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours). This overrides the timeout value set in the parent job.
     ///
@@ -317,20 +325,24 @@ impl cfn_resources::CfnResource for Action {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.job_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'job_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'job_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.job_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'job_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'job_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -339,17 +351,18 @@ impl cfn_resources::CfnResource for Action {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() > 255 as _ {
-                return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.security_configuration {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'security_configuration'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -369,7 +382,7 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "CrawlState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub crawl_state: Option<String>,
+    pub crawl_state: Option<cfn_resources::StrVal>,
 
     /// The name of the crawler to which this condition applies.
     ///
@@ -380,7 +393,7 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "CrawlerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub crawler_name: Option<String>,
+    pub crawler_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the job whose JobRuns this condition applies to, and on which       this trigger waits.
@@ -398,7 +411,7 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_name: Option<String>,
+    pub job_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A logical operator.
@@ -498,20 +511,24 @@ impl cfn_resources::CfnResource for Condition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.job_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'job_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'job_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.job_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'job_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'job_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

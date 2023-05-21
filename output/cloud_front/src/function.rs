@@ -30,7 +30,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionCode")]
-    pub function_code: String,
+    pub function_code: cfn_resources::StrVal,
 
     ///
     /// Contains configuration information about a CloudFront function.
@@ -70,7 +70,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnFunction {
@@ -91,20 +91,24 @@ impl cfn_resources::CfnResource for CfnFunction {
 
         let the_val = &self.name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -123,7 +127,7 @@ pub struct FunctionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    pub comment: String,
+    pub comment: cfn_resources::StrVal,
 
     ///
     /// The function's runtime environment. The only valid value is 				cloudfront-js-1.0.
@@ -179,7 +183,7 @@ pub struct FunctionMetadata {
     /// Update requires: No interruption
     #[serde(rename = "FunctionARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub function_arn: Option<String>,
+    pub function_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FunctionMetadata {

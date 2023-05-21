@@ -11,7 +11,7 @@ pub struct CfnDedicatedIpPool {
     /// Update requires: Replacement
     #[serde(rename = "PoolName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pool_name: Option<String>,
+    pub pool_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of scaling mode.
@@ -29,7 +29,7 @@ pub struct CfnDedicatedIpPool {
     /// Update requires: Replacement
     #[serde(rename = "ScalingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scaling_mode: Option<String>,
+    pub scaling_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDedicatedIpPool {

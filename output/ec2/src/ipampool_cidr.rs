@@ -11,7 +11,7 @@ pub struct CfnIPAMPoolCidr {
     /// Update requires: Replacement
     #[serde(rename = "Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
+    pub cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the IPAM pool.
@@ -22,7 +22,7 @@ pub struct CfnIPAMPoolCidr {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpamPoolId")]
-    pub ipam_pool_id: String,
+    pub ipam_pool_id: cfn_resources::StrVal,
 
     ///
     /// The netmask length of the CIDR you'd like to provision to a pool. Can be used for provisioning Amazon-provided IPv6 CIDRs to top-level pools and for provisioning CIDRs to pools with source pools. Cannot be used to provision BYOIP CIDRs to top-level pools. "NetmaskLength" or "Cidr" is required.

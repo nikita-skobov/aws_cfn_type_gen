@@ -14,7 +14,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardBody")]
-    pub dashboard_body: String,
+    pub dashboard_body: cfn_resources::StrVal,
 
     ///
     /// The name of the dashboard. The name must be between 1 and 255 characters. If you do not specify a name, one will be generated automatically.
@@ -26,7 +26,7 @@ pub struct CfnDashboard {
     /// Update requires: Replacement
     #[serde(rename = "DashboardName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dashboard_name: Option<String>,
+    pub dashboard_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnDashboard {

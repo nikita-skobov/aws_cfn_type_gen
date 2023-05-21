@@ -177,7 +177,7 @@ pub struct ContentSecurityPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentSecurityPolicy")]
-    pub content_security_policy: String,
+    pub content_security_policy: cfn_resources::StrVal,
 
     ///
     /// A Boolean that determines whether CloudFront overrides the 				Content-Security-Policy HTTP response header received from the origin 			with the one specified in this response headers policy.
@@ -369,7 +369,7 @@ pub struct CustomHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    pub header: String,
+    pub header: cfn_resources::StrVal,
 
     ///
     /// A Boolean that determines whether CloudFront overrides a response header with the same name 			received from the origin with the header specified here.
@@ -391,7 +391,7 @@ pub struct CustomHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CustomHeader {
@@ -601,7 +601,7 @@ pub struct RemoveHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    pub header: String,
+    pub header: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RemoveHeader {
@@ -664,7 +664,7 @@ pub struct ResponseHeadersPolicyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// A configuration for a set of HTTP response headers that are used for cross-origin 			resource sharing (CORS).
@@ -701,7 +701,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// A configuration for a set of HTTP headers to remove from the HTTP response.
@@ -1064,7 +1064,7 @@ pub struct XSSProtection {
     /// Update requires: No interruption
     #[serde(rename = "ReportUri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub report_uri: Option<String>,
+    pub report_uri: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for XSSProtection {

@@ -11,7 +11,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the queue that you are creating.
@@ -23,7 +23,7 @@ pub struct CfnQueue {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// When you use AWS CloudFormation, you can create only on-demand queues. Therefore,       always set PricingPlan to the value "ON_DEMAND" when declaring an       AWS::MediaConvert::Queue in your AWS CloudFormation template.
@@ -37,7 +37,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "PricingPlan")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pricing_plan: Option<String>,
+    pub pricing_plan: Option<cfn_resources::StrVal>,
 
     ///
     /// Initial state of the queue. Queues can be either ACTIVE or PAUSED. If you create a       paused queue, then jobs that you send to that queue won't begin.
@@ -49,7 +49,7 @@ pub struct CfnQueue {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.

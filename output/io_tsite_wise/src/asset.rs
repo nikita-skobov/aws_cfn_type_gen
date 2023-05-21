@@ -11,7 +11,7 @@ pub struct CfnAsset {
     /// Update requires: No interruption
     #[serde(rename = "AssetDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub asset_description: Option<String>,
+    pub asset_description: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of asset hierarchies that each contain a hierarchyLogicalId. A hierarchy specifies allowed parent/child asset relationships.
@@ -34,7 +34,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelId")]
-    pub asset_model_id: String,
+    pub asset_model_id: cfn_resources::StrVal,
 
     ///
     /// A unique, friendly name for the asset.
@@ -47,7 +47,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetName")]
-    pub asset_name: String,
+    pub asset_name: cfn_resources::StrVal,
 
     ///
     /// The list of asset properties for the asset.
@@ -102,7 +102,7 @@ pub struct AssetHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChildAssetId")]
-    pub child_asset_id: String,
+    pub child_asset_id: cfn_resources::StrVal,
 
     ///
     /// The LogicalID of the hierarchy. This ID is a hierarchyLogicalId.
@@ -115,7 +115,7 @@ pub struct AssetHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
-    pub logical_id: String,
+    pub logical_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AssetHierarchy {
@@ -147,7 +147,7 @@ pub struct AssetProperty {
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alias: Option<String>,
+    pub alias: Option<cfn_resources::StrVal>,
 
     ///
     /// The LogicalID of the asset property.
@@ -160,7 +160,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
-    pub logical_id: String,
+    pub logical_id: cfn_resources::StrVal,
 
     ///
     /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
@@ -176,7 +176,7 @@ pub struct AssetProperty {
     /// Update requires: No interruption
     #[serde(rename = "NotificationState")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_state: Option<String>,
+    pub notification_state: Option<cfn_resources::StrVal>,
 
     ///
     /// The unit (such as Newtons or RPM) of the asset property.
@@ -188,7 +188,7 @@ pub struct AssetProperty {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit: Option<String>,
+    pub unit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AssetProperty {
@@ -222,7 +222,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -232,7 +232,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

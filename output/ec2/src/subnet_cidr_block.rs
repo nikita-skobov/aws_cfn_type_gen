@@ -12,7 +12,7 @@ pub struct CfnSubnetCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6CidrBlock")]
-    pub ipv6_cidr_block: String,
+    pub ipv6_cidr_block: cfn_resources::StrVal,
 
     ///
     /// The ID of the subnet.
@@ -23,7 +23,7 @@ pub struct CfnSubnetCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSubnetCidrBlock {

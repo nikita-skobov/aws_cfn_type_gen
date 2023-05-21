@@ -15,7 +15,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The target platform for the runtime environment.
@@ -42,7 +42,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// Defines the details of a high availability configuration.
@@ -67,7 +67,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     ///
     /// The identifier of a customer managed key.
@@ -79,7 +79,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the runtime environment.
@@ -92,7 +92,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Configures the maintenance window you want for the runtime environment. If you do not     provide a value, a random system-generated value will be assigned.
@@ -106,7 +106,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the runtime environment is publicly accessible.
@@ -199,20 +199,24 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -238,7 +242,7 @@ pub struct EfsStorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// The mount point for the file system.
@@ -251,7 +255,7 @@ pub struct EfsStorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountPoint")]
-    pub mount_point: String,
+    pub mount_point: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EfsStorageConfiguration {
@@ -282,7 +286,7 @@ pub struct FsxStorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// The mount point for the file system.
@@ -295,7 +299,7 @@ pub struct FsxStorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountPoint")]
-    pub mount_point: String,
+    pub mount_point: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FsxStorageConfiguration {

@@ -12,7 +12,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationName")]
-    pub configuration_name: String,
+    pub configuration_name: cfn_resources::StrVal,
 
     ///
     /// The list of IAM policy ARNs that are applied as channel guardrails. The AWS managed 'AdministratorAccess' policy is applied as a default if this is not set.
@@ -37,7 +37,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: String,
+    pub iam_role_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies the logging level for this configuration. This property affects the log entries pushed to Amazon CloudWatch Logs.
@@ -51,7 +51,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub logging_level: Option<String>,
+    pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARNs of the SNS topics that deliver notifications to AWS Chatbot.
@@ -76,7 +76,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TeamId")]
-    pub team_id: String,
+    pub team_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Microsoft Teams channel.
@@ -89,7 +89,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeamsChannelId")]
-    pub teams_channel_id: String,
+    pub teams_channel_id: cfn_resources::StrVal,
 
     ///
     /// The ID of the Microsoft Teams tenant.
@@ -102,7 +102,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TeamsTenantId")]
-    pub teams_tenant_id: String,
+    pub teams_tenant_id: cfn_resources::StrVal,
 
     ///
     /// Enables use of a user role requirement in your chat configuration.

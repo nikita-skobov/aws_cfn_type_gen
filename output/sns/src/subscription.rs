@@ -23,7 +23,7 @@ pub struct CfnSubscription {
     /// Update requires: Replacement
     #[serde(rename = "Endpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endpoint: Option<String>,
+    pub endpoint: Option<cfn_resources::StrVal>,
 
     ///
     /// The filter policy JSON assigned to the subscription. Enables the subscriber to filter     out unwanted messages. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       filtering in the Amazon SNS Developer Guide.
@@ -49,7 +49,7 @@ pub struct CfnSubscription {
     /// Update requires: No interruption
     #[serde(rename = "FilterPolicyScope")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_policy_scope: Option<String>,
+    pub filter_policy_scope: Option<cfn_resources::StrVal>,
 
     ///
     /// The subscription's protocol. For more information, see the Protocol     parameter of the       Subscribe      action in the Amazon SNS API Reference.
@@ -60,7 +60,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 
     ///
     /// When set to true, enables raw message delivery. Raw messages don't contain     any JSON formatting and can be sent to Amazon SQS and HTTP/S endpoints. For more     information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference.
@@ -104,7 +104,7 @@ pub struct CfnSubscription {
     /// Update requires: No interruption
     #[serde(rename = "Region")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region: Option<String>,
+    pub region: Option<cfn_resources::StrVal>,
 
     ///
     /// This property applies only to Amazon Kinesis Data Firehose delivery stream subscriptions.     Specify the ARN of the IAM role that has the following:
@@ -120,7 +120,7 @@ pub struct CfnSubscription {
     /// Update requires: No interruption
     #[serde(rename = "SubscriptionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subscription_role_arn: Option<String>,
+    pub subscription_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the topic to subscribe to.
@@ -131,7 +131,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicArn")]
-    pub topic_arn: String,
+    pub topic_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSubscription {

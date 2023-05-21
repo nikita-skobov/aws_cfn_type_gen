@@ -11,7 +11,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// An object describing the project's placement specifications.
@@ -34,7 +34,7 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub project_name: Option<String>,
+    pub project_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnProject {
@@ -80,7 +80,7 @@ pub struct DeviceTemplate {
     /// Update requires: No interruption
     #[serde(rename = "DeviceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub device_type: Option<String>,
+    pub device_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeviceTemplate {

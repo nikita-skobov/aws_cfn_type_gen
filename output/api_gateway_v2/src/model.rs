@@ -10,7 +10,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiId")]
-    pub api_id: String,
+    pub api_id: cfn_resources::StrVal,
 
     ///
     /// The content-type for the model, for example, "application/json".
@@ -22,7 +22,7 @@ pub struct CfnModel {
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_type: Option<String>,
+    pub content_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the model.
@@ -34,7 +34,7 @@ pub struct CfnModel {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the model.
@@ -45,7 +45,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.

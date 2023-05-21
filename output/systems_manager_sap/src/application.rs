@@ -12,7 +12,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    pub application_id: cfn_resources::StrVal,
 
     ///
     /// The type of the application.
@@ -67,7 +67,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "SapInstanceNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sap_instance_number: Option<String>,
+    pub sap_instance_number: Option<cfn_resources::StrVal>,
 
     ///
     /// The System ID of the application.
@@ -81,7 +81,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "Sid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sid: Option<String>,
+    pub sid: Option<cfn_resources::StrVal>,
 
     ///
     /// The tags on the application.
@@ -154,7 +154,7 @@ pub struct Credential {
     /// Update requires: Replacement
     #[serde(rename = "CredentialType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub credential_type: Option<String>,
+    pub credential_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the SAP HANA database.
@@ -166,7 +166,7 @@ pub struct Credential {
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub database_name: Option<String>,
+    pub database_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The secret ID created in AWS Secrets Manager to store the credentials 			of the SAP application.
@@ -178,7 +178,7 @@ pub struct Credential {
     /// Update requires: Replacement
     #[serde(rename = "SecretId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secret_id: Option<String>,
+    pub secret_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Credential {
@@ -212,7 +212,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -222,7 +222,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

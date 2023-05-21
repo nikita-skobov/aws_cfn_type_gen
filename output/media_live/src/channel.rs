@@ -25,7 +25,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "ChannelClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub channel_class: Option<String>,
+    pub channel_class: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings that identify the destination for the outputs in this       MediaLive output package.
@@ -85,7 +85,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_level: Option<String>,
+    pub log_level: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -108,7 +108,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The IAM role for MediaLive to assume when running this channel.       The role is identified by its ARN.
@@ -120,7 +120,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A collection of tags for this channel. Each tag is a key-value       pair.
@@ -206,7 +206,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to broadcasterMixedAd when the input contains pre-mixed main       audio + AD (narration) as a stereo pair. The Audio Type field       (audioType) will be set to 3, which signals to downstream systems       that this stream contains broadcaster mixed AD. Note that the input       received by the encoder must contain pre-mixed audio; MediaLive does       not perform the mixing. The values in audioTypeControl and audioType       (in AudioDescription) are ignored when set to broadcasterMixedAd.       Leave this set to normal when the input does not contain pre-mixed       audio + AD.
@@ -218,7 +218,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_type: Option<String>,
+    pub input_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The AAC profile.
@@ -230,7 +230,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile: Option<String>,
+    pub profile: Option<cfn_resources::StrVal>,
 
     ///
     /// The rate control mode.
@@ -242,7 +242,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rate_control_mode: Option<String>,
+    pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the LATM/LOAS AAC output for raw containers.
@@ -254,7 +254,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "RawFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub raw_format: Option<String>,
+    pub raw_format: Option<cfn_resources::StrVal>,
 
     ///
     /// The sample rate in Hz. Valid values depend on the rate control       mode and profile.
@@ -278,7 +278,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "Spec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spec: Option<String>,
+    pub spec: Option<cfn_resources::StrVal>,
 
     ///
     /// The VBR quality level. This is used only if rateControlMode is       VBR.
@@ -290,7 +290,7 @@ pub struct AacSettings {
     /// Update requires: No interruption
     #[serde(rename = "VbrQuality")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vbr_quality: Option<String>,
+    pub vbr_quality: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AacSettings {
@@ -334,7 +334,7 @@ pub struct Ac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "BitstreamMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bitstream_mode: Option<String>,
+    pub bitstream_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The Dolby Digital coding mode. This determines the number of       channels.
@@ -346,7 +346,7 @@ pub struct Ac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the dialnorm for the output. If excluded and the input audio       is Dolby Digital, dialnorm is passed through.
@@ -370,7 +370,7 @@ pub struct Ac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "DrcProfile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub drc_profile: Option<String>,
+    pub drc_profile: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, applies a 120Hz lowpass filter to the LFE       channel prior to encoding. This is valid only in codingMode32Lfe       mode.
@@ -382,7 +382,7 @@ pub struct Ac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "LfeFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lfe_filter: Option<String>,
+    pub lfe_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to followInput, encoder metadata is sourced from the DD,       DD+, or DolbyE decoder that supplies this audio data. If the audio       is supplied from one of these streams, the static metadata settings       are used.
@@ -394,7 +394,7 @@ pub struct Ac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "MetadataControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metadata_control: Option<String>,
+    pub metadata_control: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Ac3Settings {
@@ -622,7 +622,7 @@ pub struct ArchiveOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "Extension")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extension: Option<String>,
+    pub extension: Option<cfn_resources::StrVal>,
 
     ///
     /// A string that is concatenated to the end of the destination file       name. The string is required for multiple outputs of the same       type.
@@ -634,7 +634,7 @@ pub struct ArchiveOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name_modifier: Option<String>,
+    pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ArchiveOutputSettings {
@@ -670,7 +670,7 @@ pub struct ArchiveS3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub canned_acl: Option<String>,
+    pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ArchiveS3Settings {
@@ -929,7 +929,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "AudioSelectorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_selector_name: Option<String>,
+    pub audio_selector_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies only if audioTypeControl is useConfigured. The values for       audioType are defined in ISO-IEC 13818-1.
@@ -941,7 +941,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "AudioType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_type: Option<String>,
+    pub audio_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines how audio type is determined. followInput: If the input       contains an ISO 639 audioType, then that value is passed through to       the output. If the input contains no ISO 639 audioType, the value in       Audio Type is included in the output. useConfigured: The value in       Audio Type is included in the output. Note that this field and       audioType are both ignored if inputType is       broadcasterMixedAd.
@@ -953,7 +953,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "AudioTypeControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_type_control: Option<String>,
+    pub audio_type_control: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings to configure one or more solutions that insert audio watermarks in the audio encode
@@ -989,7 +989,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code: Option<String>,
+    pub language_code: Option<cfn_resources::StrVal>,
 
     ///
     /// Choosing followInput causes the ISO 639 language code of the       output to follow the ISO 639 language code of the input. The       languageCode setting is used when useConfigured is set, or when       followInput is selected but there is no ISO 639 language code       specified by the input.
@@ -1001,7 +1001,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCodeControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code_control: Option<String>,
+    pub language_code_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of this AudioDescription. Outputs use this name to       uniquely identify this AudioDescription. Description names should be       unique within this channel.
@@ -1013,7 +1013,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings that control how input audio channels are remixed       into the output audio channels.
@@ -1037,7 +1037,7 @@ pub struct AudioDescription {
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_name: Option<String>,
+    pub stream_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AudioDescription {
@@ -1082,7 +1082,7 @@ pub struct AudioDolbyEDecode {
     /// Update requires: No interruption
     #[serde(rename = "ProgramSelection")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub program_selection: Option<String>,
+    pub program_selection: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AudioDolbyEDecode {
@@ -1114,7 +1114,7 @@ pub struct AudioHlsRenditionSelection {
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the NAME in the #EXT-X-MEDIA tag of the target HLS audio rendition.
@@ -1126,7 +1126,7 @@ pub struct AudioHlsRenditionSelection {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AudioHlsRenditionSelection {
@@ -1158,7 +1158,7 @@ pub struct AudioLanguageSelection {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code: Option<String>,
+    pub language_code: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to "strict," the transport stream demux strictly       identifies audio streams by their language descriptor. If a PMT       update occurs such that an audio stream matching the initially       selected language is no longer present, then mute is encoded until       the language returns. If set to "loose," then on a PMT update the       demux chooses another audio stream in the program with the same       stream type if it can't find one with the same language.
@@ -1170,7 +1170,7 @@ pub struct AudioLanguageSelection {
     /// Update requires: No interruption
     #[serde(rename = "LanguageSelectionPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_selection_policy: Option<String>,
+    pub language_selection_policy: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AudioLanguageSelection {
@@ -1202,7 +1202,7 @@ pub struct AudioNormalizationSettings {
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub algorithm: Option<String>,
+    pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to correctAudio, the output audio is corrected using the       chosen algorithm. If set to measureOnly, the audio is measured but       not adjusted.
@@ -1214,7 +1214,7 @@ pub struct AudioNormalizationSettings {
     /// Update requires: No interruption
     #[serde(rename = "AlgorithmControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub algorithm_control: Option<String>,
+    pub algorithm_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The Target LKFS(loudness) to adjust volume to. If no value is       entered, a default value is used according to the chosen algorithm.       The CALM Act (1770-1) recommends a target of -24 LKFS. The EBU R-128       specification (1770-2) recommends a target of -23 LKFS.
@@ -1258,7 +1258,7 @@ pub struct AudioOnlyHlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_group_id: Option<String>,
+    pub audio_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Used with an audio-only stream. It must be a .jpg or .png file. If       given, this image is used as the cover art for the audio-only       output. Ideally, it should be formatted for an iPhone screen for two       reasons. The iPhone does not resize the image; instead, it crops a       centered image on the top/bottom and left/right. Additionally, this       image file gets saved bit-for-bit into every 10-second segment file,       so it increases bandwidth by {image file size} * {segment count} *       {user count.}.
@@ -1282,7 +1282,7 @@ pub struct AudioOnlyHlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioTrackType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_track_type: Option<String>,
+    pub audio_track_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the segment type.
@@ -1294,7 +1294,7 @@ pub struct AudioOnlyHlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_type: Option<String>,
+    pub segment_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AudioOnlyHlsSettings {
@@ -1362,7 +1362,7 @@ pub struct AudioSelector {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the specific audio to extract from the       input.
@@ -1492,7 +1492,7 @@ pub struct AudioSilenceFailoverSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioSelectorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_selector_name: Option<String>,
+    pub audio_selector_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time (in milliseconds) that the active input must be silent before automatic input failover occurs. Silence is defined as audio loss or audio quieter than -50 dBFS.
@@ -1675,7 +1675,7 @@ pub struct AutomaticInputFailoverSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputPreference")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_preference: Option<String>,
+    pub input_preference: Option<cfn_resources::StrVal>,
 
     ///
     /// The input ID of the secondary input in the automatic input failover pair.
@@ -1687,7 +1687,7 @@ pub struct AutomaticInputFailoverSettings {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryInputId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub secondary_input_id: Option<String>,
+    pub secondary_input_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AutomaticInputFailoverSettings {
@@ -1731,7 +1731,7 @@ pub struct AvailBlanking {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AvailBlanking {
@@ -1880,7 +1880,7 @@ pub struct BlackoutSlate {
     /// Update requires: No interruption
     #[serde(rename = "NetworkEndBlackout")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_end_blackout: Option<String>,
+    pub network_end_blackout: Option<cfn_resources::StrVal>,
 
     ///
     /// The path to the local file to use as the Network End Blackout       image. The image is scaled to fill the entire output raster.
@@ -1904,7 +1904,7 @@ pub struct BlackoutSlate {
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_id: Option<String>,
+    pub network_id: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, this causes video, audio, and captions to be       blanked when indicated by program metadata.
@@ -1916,7 +1916,7 @@ pub struct BlackoutSlate {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    pub state: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for BlackoutSlate {
@@ -1956,7 +1956,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alignment: Option<String>,
+    pub alignment: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the color of the rectangle behind the captions. All       burn-in and DVB-Sub font settings must match.
@@ -1968,7 +1968,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub background_color: Option<String>,
+    pub background_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the background rectangle. 255 is opaque;       0 is transparent. Keeping this parameter blank is equivalent to       setting it to 0 (transparent). All burn-in and DVB-Sub font settings       must match.
@@ -2004,7 +2004,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_color: Option<String>,
+    pub font_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the burned-in captions. 255 is opaque; 0       is transparent. All burn-in and DVB-Sub font settings must       match.
@@ -2040,7 +2040,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_size: Option<String>,
+    pub font_size: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the font outline color. This option is not valid for       source captions that are either 608/embedded or Teletext. These       source settings are already pre-defined by the captions stream. All       burn-in and DVB-Sub font settings must match.
@@ -2052,7 +2052,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "OutlineColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outline_color: Option<String>,
+    pub outline_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies font outline size in pixels. This option is not valid       for source captions that are either 608/embedded or Teletext. These       source settings are already pre-defined by the captions stream. All       burn-in and DVB-Sub font settings must match.
@@ -2076,7 +2076,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "ShadowColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub shadow_color: Option<String>,
+    pub shadow_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the shadow. 255 is opaque; 0 is       transparent. Keeping this parameter blank is equivalent to setting       it to 0 (transparent). All burn-in and DVB-Sub font settings must       match.
@@ -2124,7 +2124,7 @@ pub struct BurnInDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "TeletextGridControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub teletext_grid_control: Option<String>,
+    pub teletext_grid_control: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the horizontal position of the captions relative to the       left side of the output in pixels. A value of 10 would result in the       captions starting 10 pixels from the left of the output. If no       explicit xPosition is provided, the horizontal captions position is       determined by the alignment parameter. All burn-in and DVB-Sub font       settings must match.
@@ -2181,7 +2181,7 @@ pub struct CaptionDescription {
     /// Update requires: No interruption
     #[serde(rename = "Accessibility")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accessibility: Option<String>,
+    pub accessibility: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which input captions selector to use as a captions       source when generating output captions. This field should match a       captionSelector name.
@@ -2193,7 +2193,7 @@ pub struct CaptionDescription {
     /// Update requires: No interruption
     #[serde(rename = "CaptionSelectorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub caption_selector_name: Option<String>,
+    pub caption_selector_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Additional settings for a captions destination that depend on the       destination type.
@@ -2217,7 +2217,7 @@ pub struct CaptionDescription {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code: Option<String>,
+    pub language_code: Option<cfn_resources::StrVal>,
 
     ///
     /// Human-readable information to indicate the captions that are       available for players (for example, English or Spanish).
@@ -2229,7 +2229,7 @@ pub struct CaptionDescription {
     /// Update requires: No interruption
     #[serde(rename = "LanguageDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_description: Option<String>,
+    pub language_description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the captions description. The name is used to       associate a captions description with an output. Names must be       unique within a channel.
@@ -2241,7 +2241,7 @@ pub struct CaptionDescription {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CaptionDescription {
@@ -2516,7 +2516,7 @@ pub struct CaptionLanguageMapping {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code: Option<String>,
+    pub language_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The textual description of language.
@@ -2528,7 +2528,7 @@ pub struct CaptionLanguageMapping {
     /// Update requires: No interruption
     #[serde(rename = "LanguageDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_description: Option<String>,
+    pub language_description: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CaptionLanguageMapping {
@@ -2636,7 +2636,7 @@ pub struct CaptionSelector {
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub language_code: Option<String>,
+    pub language_code: Option<cfn_resources::StrVal>,
 
     ///
     /// The name identifier for a captions selector. This name is used to       associate this captions selector with one or more captions       descriptions. Names must be unique within a channel.
@@ -2648,7 +2648,7 @@ pub struct CaptionSelector {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the specific audio to extract from the       input.
@@ -2828,7 +2828,7 @@ pub struct CdiInputSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Resolution")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resolution: Option<String>,
+    pub resolution: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CdiInputSpecification {
@@ -2910,7 +2910,7 @@ pub struct DvbNitSettings {
     /// Update requires: No interruption
     #[serde(rename = "NetworkName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_name: Option<String>,
+    pub network_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream.
@@ -2954,7 +2954,7 @@ pub struct DvbSdtSettings {
     /// Update requires: No interruption
     #[serde(rename = "OutputSdt")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_sdt: Option<String>,
+    pub output_sdt: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream.
@@ -2978,7 +2978,7 @@ pub struct DvbSdtSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_name: Option<String>,
+    pub service_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The service provider name placed in the serviceDescriptor in the       Service Description Table (SDT). The maximum length is 256       characters.
@@ -2990,7 +2990,7 @@ pub struct DvbSdtSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServiceProviderName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_provider_name: Option<String>,
+    pub service_provider_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DvbSdtSettings {
@@ -3022,7 +3022,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alignment: Option<String>,
+    pub alignment: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the color of the rectangle behind the captions. All       burn-in and DVB-Sub font settings must match.
@@ -3034,7 +3034,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub background_color: Option<String>,
+    pub background_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the background rectangle. 255 is opaque;       0 is transparent. Keeping this parameter blank is equivalent to       setting it to 0 (transparent). All burn-in and DVB-Sub font settings       must match.
@@ -3070,7 +3070,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_color: Option<String>,
+    pub font_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the burned-in captions. 255 is opaque; 0       is transparent. All burn-in and DVB-Sub font settings must       match.
@@ -3106,7 +3106,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_size: Option<String>,
+    pub font_size: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the font outline color. This option is not valid for       source captions that are either 608/embedded or Teletext. These       source settings are already pre-defined by the captions stream. All       burn-in and DVB-Sub font settings must match.
@@ -3118,7 +3118,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "OutlineColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outline_color: Option<String>,
+    pub outline_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the font outline size in pixels. This option is not       valid for source captions that are either 608/embedded or Teletext.       These source settings are already pre-defined by the captions       stream. All burn-in and DVB-Sub font settings must match.
@@ -3142,7 +3142,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "ShadowColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub shadow_color: Option<String>,
+    pub shadow_color: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the opacity of the shadow. 255 is opaque; 0 is       transparent. Keeping this parameter blank is equivalent to setting       it to 0 (transparent). All burn-in and DVB-Sub font settings must       match.
@@ -3190,7 +3190,7 @@ pub struct DvbSubDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "TeletextGridControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub teletext_grid_control: Option<String>,
+    pub teletext_grid_control: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the horizontal position of the captions relative to the       left side of the output in pixels. A value of 10 would result in the       captions starting 10 pixels from the left of the output. If no       explicit xPosition is provided, the horizontal captions position is       determined by the alignment parameter. This option is not valid for       source captions that are STL, 608/embedded, or Teletext. These       source settings are already pre-defined by the captions stream. All       burn-in and DVB-Sub font settings must match.
@@ -3248,7 +3248,7 @@ pub struct DvbSubSourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "OcrLanguage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ocr_language: Option<String>,
+    pub ocr_language: Option<cfn_resources::StrVal>,
 
     ///
     /// When using DVB-Sub with burn-in or SMPTE-TT, use this PID for the       source content. It is unused for DVB-Sub passthrough. All DVB-Sub       content is passed through, regardless of selectors.
@@ -3332,7 +3332,7 @@ pub struct Eac3AtmosSettings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -3354,7 +3354,7 @@ pub struct Eac3AtmosSettings {
     /// Update requires: No interruption
     #[serde(rename = "DrcLine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub drc_line: Option<String>,
+    pub drc_line: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -3365,7 +3365,7 @@ pub struct Eac3AtmosSettings {
     /// Update requires: No interruption
     #[serde(rename = "DrcRf")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub drc_rf: Option<String>,
+    pub drc_rf: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -3419,7 +3419,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "AttenuationControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attenuation_control: Option<String>,
+    pub attenuation_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The average bitrate in bits/second. Valid bitrates depend on the       coding mode.
@@ -3443,7 +3443,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "BitstreamMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bitstream_mode: Option<String>,
+    pub bitstream_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The Dolby Digital Plus coding mode. This mode determines the       number of channels.
@@ -3455,7 +3455,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, activates a DC highpass filter for all input       channels.
@@ -3467,7 +3467,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "DcFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dc_filter: Option<String>,
+    pub dc_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the dialnorm for the output. If blank and the input audio is       Dolby Digital Plus, dialnorm will be passed through.
@@ -3491,7 +3491,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "DrcLine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub drc_line: Option<String>,
+    pub drc_line: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the profile for heavy Dolby dynamic range compression,       ensuring that the instantaneous signal peaks do not exceed specified       levels.
@@ -3503,7 +3503,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "DrcRf")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub drc_rf: Option<String>,
+    pub drc_rf: Option<cfn_resources::StrVal>,
 
     ///
     /// When encoding 3/2 audio, setting to lfe enables the LFE       channel.
@@ -3515,7 +3515,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "LfeControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lfe_control: Option<String>,
+    pub lfe_control: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, applies a 120Hz lowpass filter to the LFE       channel prior to encoding. Valid only with a codingMode32 coding       mode.
@@ -3527,7 +3527,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "LfeFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lfe_filter: Option<String>,
+    pub lfe_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// The Left only/Right only center mix level. Used only for the 3/2       coding mode.
@@ -3587,7 +3587,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "MetadataControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub metadata_control: Option<String>,
+    pub metadata_control: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to whenPossible, input DD+ audio will be passed through       if it is present on the input. This detection is dynamic over the       life of the transcode. Inputs that alternate between DD+ and non-DD+       content will have a consistent DD+ output as the system alternates       between passthrough and encoding.
@@ -3599,7 +3599,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "PassthroughControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub passthrough_control: Option<String>,
+    pub passthrough_control: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to shift90Degrees, applies a 90-degree phase shift to the       surround channels. Used only for a 3/2 coding mode.
@@ -3611,7 +3611,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "PhaseControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub phase_control: Option<String>,
+    pub phase_control: Option<cfn_resources::StrVal>,
 
     ///
     /// A stereo downmix preference. Used only for the 3/2 coding       mode.
@@ -3623,7 +3623,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "StereoDownmix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stereo_downmix: Option<String>,
+    pub stereo_downmix: Option<cfn_resources::StrVal>,
 
     ///
     /// When encoding 3/2 audio, sets whether an extra center back       surround channel is matrix encoded into the left and right surround       channels.
@@ -3635,7 +3635,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "SurroundExMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub surround_ex_mode: Option<String>,
+    pub surround_ex_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// When encoding 2/0 audio, sets whether Dolby Surround is       matrix-encoded into the two channels.
@@ -3647,7 +3647,7 @@ pub struct Eac3Settings {
     /// Update requires: No interruption
     #[serde(rename = "SurroundMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub surround_mode: Option<String>,
+    pub surround_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Eac3Settings {
@@ -3679,7 +3679,7 @@ pub struct EbuTtDDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "CopyrightHolder")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub copyright_holder: Option<String>,
+    pub copyright_holder: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies how to handle the gap between the lines (in multi-line captions). - enabled: Fill with the captions background color (as specified in the input captions). - disabled: Leave the gap unfilled.
@@ -3691,7 +3691,7 @@ pub struct EbuTtDDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FillLineGap")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fill_line_gap: Option<String>,
+    pub fill_line_gap: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the font family to include in the font data attached to the EBU-TT captions. Valid only if styleControl is set to include. If you leave this field empty, the font family is set to "monospaced". (If styleControl is set to exclude, the font family is always set to "monospaced".) You specify only the font family. All other style information (color, bold, position and so on) is copied from the input captions. The size is always set to 100% to allow the downstream player to choose the size. - Enter a list of font families, as a comma-separated list of font names, in order of preference. The name can be a font family (such as “Arial”), or a generic font family (such as “serif”), or “default” (to let the downstream player choose the font). - Leave blank to set the family to “monospace”.
@@ -3703,7 +3703,7 @@ pub struct EbuTtDDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontFamily")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_family: Option<String>,
+    pub font_family: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the style information (font color, font position, and so on) to include in the font data that is attached to the EBU-TT captions. - include: Take the style information (font color, font position, and so on) from the source captions and include that information in the font data attached to the EBU-TT captions. This option is valid only if the source captions are Embedded or Teletext. - exclude: In the font data attached to the EBU-TT captions, set the font family to "monospaced". Do not include any other style information.
@@ -3715,7 +3715,7 @@ pub struct EbuTtDDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub style_control: Option<String>,
+    pub style_control: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EbuTtDDestinationSettings {
@@ -3787,7 +3787,7 @@ pub struct EmbeddedSourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "Convert608To708")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub convert608_to708: Option<String>,
+    pub convert608_to708: Option<cfn_resources::StrVal>,
 
     ///
     /// Set to "auto" to handle streams with intermittent or non-aligned       SCTE-20 and embedded captions.
@@ -3799,7 +3799,7 @@ pub struct EmbeddedSourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "Scte20Detection")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte20_detection: Option<String>,
+    pub scte20_detection: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the 608/708 channel number within the video track from       which to extract captions. This is unused for passthrough.
@@ -4048,7 +4048,7 @@ pub struct Esam {
     /// Update requires: No interruption
     #[serde(rename = "AcquisitionPointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub acquisition_point_id: Option<String>,
+    pub acquisition_point_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -4070,7 +4070,7 @@ pub struct Esam {
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password_param: Option<String>,
+    pub password_param: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -4081,7 +4081,7 @@ pub struct Esam {
     /// Update requires: No interruption
     #[serde(rename = "PoisEndpoint")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pois_endpoint: Option<String>,
+    pub pois_endpoint: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -4092,7 +4092,7 @@ pub struct Esam {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -4103,7 +4103,7 @@ pub struct Esam {
     /// Update requires: No interruption
     #[serde(rename = "ZoneIdentity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub zone_identity: Option<String>,
+    pub zone_identity: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Esam {
@@ -4239,7 +4239,7 @@ pub struct FeatureActivations {
     /// Update requires: No interruption
     #[serde(rename = "InputPrepareScheduleActions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_prepare_schedule_actions: Option<String>,
+    pub input_prepare_schedule_actions: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FeatureActivations {
@@ -4283,7 +4283,7 @@ pub struct FecOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "IncludeFec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub include_fec: Option<String>,
+    pub include_fec: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameter L from SMPTE 2022-1. The width of the FEC protection       matrix. Must be between 1 and 20, inclusive. If only Column FEC is       used, then larger values increase robustness. If Row FEC is used,       then this is the number of transport stream packets per row error       correction packet, and the value must be between 4 and 20,       inclusive, if includeFec is columnAndRow. If includeFec is column,       this value must be 1 to 20, inclusive.
@@ -4327,7 +4327,7 @@ pub struct Fmp4HlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioRenditionSets")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_rendition_sets: Option<String>,
+    pub audio_rendition_sets: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
@@ -4339,7 +4339,7 @@ pub struct Fmp4HlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nielsen_id3_behavior: Option<String>,
+    pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to passthrough, timed metadata is passed through from input to output.
@@ -4351,7 +4351,7 @@ pub struct Fmp4HlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_behavior: Option<String>,
+    pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Fmp4HlsSettings {
@@ -4491,7 +4491,7 @@ pub struct FrameCaptureOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name_modifier: Option<String>,
+    pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FrameCaptureOutputSettings {
@@ -4523,7 +4523,7 @@ pub struct FrameCaptureS3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub canned_acl: Option<String>,
+    pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FrameCaptureS3Settings {
@@ -4567,7 +4567,7 @@ pub struct FrameCaptureSettings {
     /// Update requires: No interruption
     #[serde(rename = "CaptureIntervalUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub capture_interval_units: Option<String>,
+    pub capture_interval_units: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -4626,7 +4626,7 @@ pub struct GlobalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "InputEndAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_end_action: Option<String>,
+    pub input_end_action: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings for system actions when the input is lost.
@@ -4650,7 +4650,7 @@ pub struct GlobalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OutputLockingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_locking_mode: Option<String>,
+    pub output_locking_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the rate of frames emitted by the Live encoder       should be paced by its system clock (which optionally might be       locked to another source through NTP) or should be locked to the       clock of the source that is providing the input stream.
@@ -4662,7 +4662,7 @@ pub struct GlobalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OutputTimingSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_timing_source: Option<String>,
+    pub output_timing_source: Option<cfn_resources::StrVal>,
 
     ///
     /// Adjusts the video input buffer for streams with very low video       frame rates. This is commonly set to enabled for music channels with       less than one video frame per second.
@@ -4674,7 +4674,7 @@ pub struct GlobalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SupportLowFramerateInputs")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub support_low_framerate_inputs: Option<String>,
+    pub support_low_framerate_inputs: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GlobalConfiguration {
@@ -4813,7 +4813,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub adaptive_quantization: Option<String>,
+    pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates that AFD values will be written into the output stream.       If afdSignaling is auto, the system tries to preserve the input AFD       value (in cases where multiple AFD values are valid). If set to       fixed, the AFD value is the value configured in the fixedAfd       parameter.
@@ -4825,7 +4825,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub afd_signaling: Option<String>,
+    pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
     /// The average bitrate in bits/second. This is required when the rate       control mode is VBR or CBR. It isn't used for QVBR. In a Microsoft       Smooth output group, each output must have a unique value when its       bitrate is rounded down to the nearest multiple of 1000.
@@ -4873,7 +4873,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_metadata: Option<String>,
+    pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings to configure the color space handling for the       video.
@@ -4897,7 +4897,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "EntropyEncoding")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entropy_encoding: Option<String>,
+    pub entropy_encoding: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional filters that you can apply to an encode.
@@ -4921,7 +4921,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fixed_afd: Option<String>,
+    pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to enabled, adjusts the quantization within each frame to       reduce flicker or pop on I-frames.
@@ -4933,7 +4933,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "FlickerAq")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub flicker_aq: Option<String>,
+    pub flicker_aq: Option<cfn_resources::StrVal>,
 
     ///
     /// This setting applies only when scan type is "interlaced." It controls whether coding is performed on a field basis or on a frame basis. (When the video is progressive, the coding is always performed on a frame basis.) enabled: Force MediaLive to code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields separately (on a field basis) or together (on a frame basis using PAFF), depending on what is most appropriate for the content.
@@ -4945,7 +4945,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "ForceFieldPictures")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub force_field_pictures: Option<String>,
+    pub force_field_pictures: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates how the output video frame rate is specified. If you       select "specified," the output video frame rate is determined by       framerateNumerator and framerateDenominator. If you select       "initializeFromSource," the output video frame rate is set equal to       the input video frame rate of the first input.
@@ -4957,7 +4957,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "FramerateControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub framerate_control: Option<String>,
+    pub framerate_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The frame rate denominator.
@@ -4993,7 +4993,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "GopBReference")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gop_breference: Option<String>,
+    pub gop_breference: Option<cfn_resources::StrVal>,
 
     ///
     /// The frequency of closed GOPs. In streaming applications, we       recommend that you set this to 1 so that a decoder joining       mid-stream will receive an IDR frame as quickly as possible. Setting       this value to 0 will break output segmenting.
@@ -5041,7 +5041,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gop_size_units: Option<String>,
+    pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
     /// The H.264 level.
@@ -5053,7 +5053,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "Level")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub level: Option<String>,
+    pub level: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of lookahead. A value of low can decrease latency and       memory usage, while high can produce better quality for certain       content.
@@ -5065,7 +5065,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "LookAheadRateControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub look_ahead_rate_control: Option<String>,
+    pub look_ahead_rate_control: Option<cfn_resources::StrVal>,
 
     ///
     /// For QVBR: See the tooltip for Quality level. For VBR: Set the       maximum bitrate in order to accommodate expected spikes in the       complexity of the video.
@@ -5113,7 +5113,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "ParControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub par_control: Option<String>,
+    pub par_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The Pixel Aspect Ratio denominator.
@@ -5149,7 +5149,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile: Option<String>,
+    pub profile: Option<cfn_resources::StrVal>,
 
     ///
     /// Leave as STANDARD_QUALITY or choose a different value (which might result in additional costs to run the channel). - ENHANCED_QUALITY: Produces a slightly better video quality without an increase in the bitrate. Has an effect only when the Rate control mode is QVBR or CBR. If this channel is in a MediaLive multiplex, the value must be ENHANCED_QUALITY. - STANDARD_QUALITY: Valid for any Rate control mode.
@@ -5161,7 +5161,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "QualityLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub quality_level: Option<String>,
+    pub quality_level: Option<cfn_resources::StrVal>,
 
     ///
     /// Controls the target quality for the video encode. This applies       only when the rate control mode is QVBR. Set values for the QVBR       quality level field and Max bitrate field that suit your most       important viewing devices. Recommended values are: - Primary screen:       Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality       level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6.       Max bitrate: 1M to 1.5M.
@@ -5185,7 +5185,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rate_control_mode: Option<String>,
+    pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the scan type of the output to progressive or top-field-first       interlaced.
@@ -5197,7 +5197,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scan_type: Option<String>,
+    pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The scene change detection. On: inserts I-frames when the scene       change is detected. Off: does not force an I-frame when the scene       change is detected.
@@ -5209,7 +5209,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "SceneChangeDetect")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scene_change_detect: Option<String>,
+    pub scene_change_detect: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of slices per picture. The number must be less than or       equal to the number of macroblock rows for progressive pictures, and       less than or equal to half the number of macroblock rows for       interlaced pictures. This field is optional. If you don't specify a       value, MediaLive chooses the number of slices based on the encode       resolution.
@@ -5245,7 +5245,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "SpatialAq")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spatial_aq: Option<String>,
+    pub spatial_aq: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to fixed, uses gopNumBFrames B-frames per sub-GOP. If set       to dynamic, optimizes the number of B-frames used for each sub-GOP       to improve visual quality.
@@ -5257,7 +5257,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "SubgopLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subgop_length: Option<String>,
+    pub subgop_length: Option<cfn_resources::StrVal>,
 
     ///
     /// Produces a bitstream that is compliant with SMPTE RP-2027.
@@ -5269,7 +5269,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "Syntax")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub syntax: Option<String>,
+    pub syntax: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to enabled, adjusts quantization within each frame based on       the temporal variation of content complexity.
@@ -5281,7 +5281,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "TemporalAq")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub temporal_aq: Option<String>,
+    pub temporal_aq: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -5304,7 +5304,7 @@ pub struct H264Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timecode_insertion: Option<String>,
+    pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for H264Settings {
@@ -5482,7 +5482,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub adaptive_quantization: Option<String>,
+    pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates that AFD values will be written into the output stream. If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
@@ -5494,7 +5494,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub afd_signaling: Option<String>,
+    pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether or not EML should insert an Alternative Transfer Function SEI message to support backwards compatibility with non-HDR decoders and displays.
@@ -5506,7 +5506,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "AlternativeTransferFunction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alternative_transfer_function: Option<String>,
+    pub alternative_transfer_function: Option<cfn_resources::StrVal>,
 
     ///
     /// Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
@@ -5542,7 +5542,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_metadata: Option<String>,
+    pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
     /// Color Space settings
@@ -5578,7 +5578,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fixed_afd: Option<String>,
+    pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
@@ -5590,7 +5590,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "FlickerAq")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub flicker_aq: Option<String>,
+    pub flicker_aq: Option<cfn_resources::StrVal>,
 
     ///
     /// Framerate denominator.
@@ -5650,7 +5650,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gop_size_units: Option<String>,
+    pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
     /// H.265 Level.
@@ -5662,7 +5662,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "Level")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub level: Option<String>,
+    pub level: Option<cfn_resources::StrVal>,
 
     ///
     /// Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
@@ -5674,7 +5674,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "LookAheadRateControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub look_ahead_rate_control: Option<String>,
+    pub look_ahead_rate_control: Option<cfn_resources::StrVal>,
 
     ///
     /// For QVBR: See the tooltip for Quality level
@@ -5734,7 +5734,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub profile: Option<String>,
+    pub profile: Option<cfn_resources::StrVal>,
 
     ///
     /// Controls the target quality for the video encode. Applies only when the rate control mode is QVBR. Set values for the QVBR quality level field and Max bitrate field that suit your most important viewing devices. Recommended values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
@@ -5758,7 +5758,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rate_control_mode: Option<String>,
+    pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the scan type of the output to progressive or top-field-first interlaced.
@@ -5770,7 +5770,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scan_type: Option<String>,
+    pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Scene change detection.
@@ -5782,7 +5782,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "SceneChangeDetect")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scene_change_detect: Option<String>,
+    pub scene_change_detect: Option<cfn_resources::StrVal>,
 
     ///
     /// Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
@@ -5806,7 +5806,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tier: Option<String>,
+    pub tier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -5829,7 +5829,7 @@ pub struct H265Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timecode_insertion: Option<String>,
+    pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for H265Settings {
@@ -5941,7 +5941,7 @@ pub struct HlsAkamaiSettings {
     /// Update requires: No interruption
     #[serde(rename = "HttpTransferMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_transfer_mode: Option<String>,
+    pub http_transfer_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of retry attempts that will be made before the channel       is put into an error state.
@@ -5977,7 +5977,7 @@ pub struct HlsAkamaiSettings {
     /// Update requires: No interruption
     #[serde(rename = "Salt")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub salt: Option<String>,
+    pub salt: Option<cfn_resources::StrVal>,
 
     ///
     /// The token parameter for authenticated Akamai. If this is not       specified, _gda_ is used.
@@ -5989,7 +5989,7 @@ pub struct HlsAkamaiSettings {
     /// Update requires: No interruption
     #[serde(rename = "Token")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub token: Option<String>,
+    pub token: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsAkamaiSettings {
@@ -6203,7 +6203,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlContent")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_url_content: Option<String>,
+    pub base_url_content: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional. One value per output group. This field is required only if you are completing Base URL content A, and the downstream system has notified you that the media files for pipeline 1 of all outputs are in a location different from the media files for pipeline 0.
@@ -6215,7 +6215,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlContent1")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_url_content1: Option<String>,
+    pub base_url_content1: Option<cfn_resources::StrVal>,
 
     ///
     /// A partial URI prefix that will be prepended to each output in the       media .m3u8 file. The partial URI prefix can be used if the base       manifest is delivered from a different URL than the main .m3u8       file.
@@ -6227,7 +6227,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlManifest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_url_manifest: Option<String>,
+    pub base_url_manifest: Option<cfn_resources::StrVal>,
 
     ///
     /// Optional. One value per output group. Complete this field only if you are completing Base URL manifest A, and the downstream system has notified you that the child manifest files for pipeline 1 of all outputs are in a location different from the child manifest files for pipeline 0.
@@ -6239,7 +6239,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlManifest1")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub base_url_manifest1: Option<String>,
+    pub base_url_manifest1: Option<cfn_resources::StrVal>,
 
     ///
     /// A mapping of up to 4 captions channels to captions languages. This       is meaningful only if captionLanguageSetting is set to       "insert."
@@ -6263,7 +6263,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "CaptionLanguageSetting")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub caption_language_setting: Option<String>,
+    pub caption_language_setting: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to "disabled," sets the #EXT-X-ALLOW-CACHE:no tag in the       manifest, which prevents clients from saving media segments for       later replay.
@@ -6275,7 +6275,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ClientCache")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_cache: Option<String>,
+    pub client_cache: Option<cfn_resources::StrVal>,
 
     ///
     /// The specification to use (RFC-6381 or the default RFC-4281) during       m3u8 playlist generation.
@@ -6287,7 +6287,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "CodecSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub codec_specification: Option<String>,
+    pub codec_specification: Option<cfn_resources::StrVal>,
 
     ///
     /// Used with encryptionType. This is a 128-bit, 16-byte hex value       that is represented by a 32-character text string. If ivSource is       set to "explicit," this parameter is required and is used as the IV       for encryption.
@@ -6299,7 +6299,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ConstantIv")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub constant_iv: Option<String>,
+    pub constant_iv: Option<cfn_resources::StrVal>,
 
     ///
     /// A directory or HTTP destination for the HLS segments, manifest       files, and encryption keys (if enabled).
@@ -6323,7 +6323,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "DirectoryStructure")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub directory_structure: Option<String>,
+    pub directory_structure: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to insert EXT-X-DISCONTINUITY tags in the HLS child manifests for this output group. Typically, choose Insert because these tags are required in the manifest (according to the HLS specification) and serve an important purpose. Choose Never Insert only if the downstream system is doing real-time failover (without using the MediaLive automatic failover feature) and only if that downstream system has advised you to exclude the tags.
@@ -6335,7 +6335,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "DiscontinuityTags")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub discontinuity_tags: Option<String>,
+    pub discontinuity_tags: Option<cfn_resources::StrVal>,
 
     ///
     /// Encrypts the segments with the specified encryption scheme.       Exclude this parameter if you don't want encryption.
@@ -6347,7 +6347,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encryption_type: Option<String>,
+    pub encryption_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters that control interactions with the CDN.
@@ -6371,7 +6371,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "HlsId3SegmentTagging")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hls_id3_segment_tagging: Option<String>,
+    pub hls_id3_segment_tagging: Option<cfn_resources::StrVal>,
 
     ///
     /// DISABLED: Don't create an I-frame-only manifest, but do create the       master and media manifests (according to the Output Selection       field). STANDARD: Create an I-frame-only manifest for each output       that contains video, as well as the other manifests (according to       the Output Selection field). The I-frame manifest contains a       #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only, and one or       more #EXT-X-BYTERANGE entries identifying the I-frame position. For       example, #EXT-X-BYTERANGE:160364@1461888".
@@ -6383,7 +6383,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "IFrameOnlyPlaylists")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iframe_only_playlists: Option<String>,
+    pub iframe_only_playlists: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to include the final (incomplete) segment in the media output when the pipeline stops producing output because of a channel stop, a channel pause or a loss of input to the pipeline. Auto means that MediaLive decides whether to include the final segment, depending on the channel class and the types of output groups. Suppress means to never include the incomplete segment. We recommend you choose Auto and let MediaLive control the behavior.
@@ -6395,7 +6395,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "IncompleteSegmentBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub incomplete_segment_behavior: Option<String>,
+    pub incomplete_segment_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies only if the Mode field is LIVE. Specifies the maximum       number of segments in the media manifest file. After this maximum,       older segments are removed from the media manifest. This number must       be less than or equal to the Keep Segments field.
@@ -6419,7 +6419,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_action: Option<String>,
+    pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
     /// Used with encryptionType. The IV (initialization vector) is a       128-bit number used in conjunction with the key for encrypting       blocks. If set to "include," the IV is listed in the manifest.       Otherwise, the IV is not in the manifest.
@@ -6431,7 +6431,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "IvInManifest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iv_in_manifest: Option<String>,
+    pub iv_in_manifest: Option<cfn_resources::StrVal>,
 
     ///
     /// Used with encryptionType. The IV (initialization vector) is a       128-bit number used in conjunction with the key for encrypting       blocks. If this setting is "followsSegmentNumber," it causes the IV       to change every segment (to match the segment number). If this is       set to "explicit," you must enter a constantIv value.
@@ -6443,7 +6443,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "IvSource")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iv_source: Option<String>,
+    pub iv_source: Option<cfn_resources::StrVal>,
 
     ///
     /// Applies only if the Mode field is LIVE. Specifies the number of       media segments (.ts files) to retain in the destination       directory.
@@ -6467,7 +6467,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "KeyFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_format: Option<String>,
+    pub key_format: Option<cfn_resources::StrVal>,
 
     ///
     /// Either a single positive integer version value or a       slash-delimited list of version values (1/2/3).
@@ -6479,7 +6479,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "KeyFormatVersions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_format_versions: Option<String>,
+    pub key_format_versions: Option<cfn_resources::StrVal>,
 
     ///
     /// The key provider settings.
@@ -6503,7 +6503,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ManifestCompression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_compression: Option<String>,
+    pub manifest_compression: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether the output manifest should use a floating point       or integer values for segment duration.
@@ -6515,7 +6515,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ManifestDurationFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_duration_format: Option<String>,
+    pub manifest_duration_format: Option<cfn_resources::StrVal>,
 
     ///
     /// When set, minimumSegmentLength is enforced by looking ahead and       back within the specified range for a nearby avail and extending the       segment size if needed.
@@ -6539,7 +6539,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mode: Option<String>,
+    pub mode: Option<cfn_resources::StrVal>,
 
     ///
     /// MANIFESTSANDSEGMENTS: Generates manifests (the master manifest, if       applicable, and media manifests) for this output group.       SEGMENTSONLY: Doesn't generate any manifests for this output       group.
@@ -6551,7 +6551,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "OutputSelection")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_selection: Option<String>,
+    pub output_selection: Option<cfn_resources::StrVal>,
 
     ///
     /// Includes or excludes the EXT-X-PROGRAM-DATE-TIME tag in .m3u8       manifest files. The value is calculated as follows: Either the       program date and time are initialized using the input timecode       source, or the time is initialized using the input timecode source       and the date is initialized using the timestampOffset.
@@ -6563,7 +6563,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub program_date_time: Option<String>,
+    pub program_date_time: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -6574,7 +6574,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimeClock")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub program_date_time_clock: Option<String>,
+    pub program_date_time_clock: Option<cfn_resources::StrVal>,
 
     ///
     /// The period of insertion of the EXT-X-PROGRAM-DATE-TIME entry, in       seconds.
@@ -6598,7 +6598,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "RedundantManifest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub redundant_manifest: Option<String>,
+    pub redundant_manifest: Option<cfn_resources::StrVal>,
 
     ///
     /// The length of the MPEG-2 Transport Stream segments to create, in       seconds. Note that segments will end on the next keyframe after this       number of seconds, so the actual segment length might be       longer.
@@ -6622,7 +6622,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segmentation_mode: Option<String>,
+    pub segmentation_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of segments to write to a subdirectory before starting       a new one. For this setting to have an effect, directoryStructure       must be subdirectoryPerStream.
@@ -6646,7 +6646,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "StreamInfResolution")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_inf_resolution: Option<String>,
+    pub stream_inf_resolution: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the ID3 frame that has the timecode.
@@ -6658,7 +6658,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Frame")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_id3_frame: Option<String>,
+    pub timed_metadata_id3_frame: Option<cfn_resources::StrVal>,
 
     ///
     /// The timed metadata interval, in seconds.
@@ -6694,7 +6694,7 @@ pub struct HlsGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "TsFileMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ts_file_mode: Option<String>,
+    pub ts_file_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsGroupSettings {
@@ -6786,7 +6786,7 @@ pub struct HlsInputSettings {
     /// Update requires: No interruption
     #[serde(rename = "Scte35Source")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte35_source: Option<String>,
+    pub scte35_source: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsInputSettings {
@@ -6842,7 +6842,7 @@ pub struct HlsMediaStoreSettings {
     /// Update requires: No interruption
     #[serde(rename = "MediaStoreStorageClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub media_store_storage_class: Option<String>,
+    pub media_store_storage_class: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of retry attempts that are made before the channel is       put into an error state.
@@ -6898,7 +6898,7 @@ pub struct HlsOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "H265PackagingType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h265_packaging_type: Option<String>,
+    pub h265_packaging_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings regarding the underlying stream. These settings are       different for audio-only outputs.
@@ -6922,7 +6922,7 @@ pub struct HlsOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name_modifier: Option<String>,
+    pub name_modifier: Option<cfn_resources::StrVal>,
 
     ///
     /// A string that is concatenated to the end of segment file       names.
@@ -6934,7 +6934,7 @@ pub struct HlsOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentModifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment_modifier: Option<String>,
+    pub segment_modifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsOutputSettings {
@@ -6970,7 +6970,7 @@ pub struct HlsS3Settings {
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub canned_acl: Option<String>,
+    pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsS3Settings {
@@ -7110,7 +7110,7 @@ pub struct HlsWebdavSettings {
     /// Update requires: No interruption
     #[serde(rename = "HttpTransferMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub http_transfer_mode: Option<String>,
+    pub http_transfer_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of retry attempts that are made before the channel is       put into an error state.
@@ -7198,7 +7198,7 @@ pub struct InputAttachment {
     /// Update requires: No interruption
     #[serde(rename = "InputAttachmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_attachment_name: Option<String>,
+    pub input_attachment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the input to attach.
@@ -7210,7 +7210,7 @@ pub struct InputAttachment {
     /// Update requires: Replacement
     #[serde(rename = "InputId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_id: Option<String>,
+    pub input_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the content to extract from the input and about       the general handling of the content.
@@ -7306,7 +7306,7 @@ pub struct InputLocation {
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password_param: Option<String>,
+    pub password_param: Option<cfn_resources::StrVal>,
 
     ///
     /// The URI should be a path to a file that is accessible to the Live       system (for example, an http:// URI) depending on the output type.       For example, an RTMP destination should have a URI similar to       rtmp://fmsserver/live.
@@ -7318,7 +7318,7 @@ pub struct InputLocation {
     /// Update requires: No interruption
     #[serde(rename = "Uri")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uri: Option<String>,
+    pub uri: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name to connect to the downstream system. This applies       only if the downstream system requires credentials.
@@ -7330,7 +7330,7 @@ pub struct InputLocation {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InputLocation {
@@ -7374,7 +7374,7 @@ pub struct InputLossBehavior {
     /// Update requires: No interruption
     #[serde(rename = "InputLossImageColor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_image_color: Option<String>,
+    pub input_loss_image_color: Option<cfn_resources::StrVal>,
 
     ///
     /// When the input loss image type is "slate," these fields specify       the parameters for accessing the slate.
@@ -7398,7 +7398,7 @@ pub struct InputLossBehavior {
     /// Update requires: No interruption
     #[serde(rename = "InputLossImageType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_image_type: Option<String>,
+    pub input_loss_image_type: Option<cfn_resources::StrVal>,
 
     ///
     /// On input loss, the number of milliseconds to repeat the previous       picture before substituting black into the output. A value x, where       0 <= x <= 1,000,000 and a value of 1,000,000, is interpreted       as infinite.
@@ -7504,7 +7504,7 @@ pub struct InputSettings {
     /// Update requires: No interruption
     #[serde(rename = "DeblockFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub deblock_filter: Option<String>,
+    pub deblock_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables or disables the denoise filter when filtering.
@@ -7516,7 +7516,7 @@ pub struct InputSettings {
     /// Update requires: No interruption
     #[serde(rename = "DenoiseFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub denoise_filter: Option<String>,
+    pub denoise_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// Adjusts the magnitude of filtering from 1 (minimal) to 5       (strongest).
@@ -7540,7 +7540,7 @@ pub struct InputSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_filter: Option<String>,
+    pub input_filter: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about how to connect to the upstream system.
@@ -7575,7 +7575,7 @@ pub struct InputSettings {
     /// Update requires: No interruption
     #[serde(rename = "Smpte2038DataPreference")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub smpte2038_data_preference: Option<String>,
+    pub smpte2038_data_preference: Option<cfn_resources::StrVal>,
 
     ///
     /// The loop input if it is a file.
@@ -7587,7 +7587,7 @@ pub struct InputSettings {
     /// Update requires: No interruption
     #[serde(rename = "SourceEndBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_end_behavior: Option<String>,
+    pub source_end_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about one video to extract from the input.
@@ -7639,7 +7639,7 @@ pub struct InputSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Codec")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub codec: Option<String>,
+    pub codec: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum input bitrate for any input attached to this       channel.
@@ -7651,7 +7651,7 @@ pub struct InputSpecification {
     /// Update requires: No interruption
     #[serde(rename = "MaximumBitrate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maximum_bitrate: Option<String>,
+    pub maximum_bitrate: Option<cfn_resources::StrVal>,
 
     ///
     /// The resolution for any input attached to this channel.
@@ -7663,7 +7663,7 @@ pub struct InputSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Resolution")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resolution: Option<String>,
+    pub resolution: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for InputSpecification {
@@ -7731,7 +7731,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AbsentInputAudioBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub absent_input_audio_behavior: Option<String>,
+    pub absent_input_audio_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, uses ARIB-compliant field muxing and removes       video descriptor.
@@ -7743,7 +7743,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Arib")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arib: Option<String>,
+    pub arib: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID for ARIB Captions in the transport stream. You can enter       the value as a decimal or hexadecimal value. Valid values are 32 (or       0x20)..8182 (or 0x1ff6).
@@ -7755,7 +7755,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AribCaptionsPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arib_captions_pid: Option<String>,
+    pub arib_captions_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to auto, The PID number used for ARIB Captions will be       auto-selected from unused PIDs. If set to useConfigured, ARIB       captions will be on the configured PID number.
@@ -7767,7 +7767,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AribCaptionsPidControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arib_captions_pid_control: Option<String>,
+    pub arib_captions_pid_control: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to dvb, uses the DVB buffer model for Dolby Digital       audio. When set to atsc, the ATSC model is used.
@@ -7779,7 +7779,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioBufferModel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_buffer_model: Option<String>,
+    pub audio_buffer_model: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of audio frames to insert for each PES packet.
@@ -7803,7 +7803,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioPids")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_pids: Option<String>,
+    pub audio_pids: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to atsc, uses stream type = 0x81 for AC3 and stream type       = 0x87 for EAC3. When set to dvb, uses stream type = 0x06.
@@ -7815,7 +7815,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioStreamType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_stream_type: Option<String>,
+    pub audio_stream_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The output bitrate of the transport stream in bits per second.       Setting to 0 lets the muxer automatically determine the appropriate       bitrate.
@@ -7839,7 +7839,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "BufferModel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub buffer_model: Option<String>,
+    pub buffer_model: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to enabled, generates captionServiceDescriptor in       PMT.
@@ -7851,7 +7851,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "CcDescriptor")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cc_descriptor: Option<String>,
+    pub cc_descriptor: Option<cfn_resources::StrVal>,
 
     ///
     /// Inserts a DVB Network Information Table (NIT) at the specified       table repetition interval.
@@ -7887,7 +7887,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "DvbSubPids")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dvb_sub_pids: Option<String>,
+    pub dvb_sub_pids: Option<cfn_resources::StrVal>,
 
     ///
     /// Inserts DVB Time and Date Table (TDT) at the specified table       repetition interval.
@@ -7911,7 +7911,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "DvbTeletextPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dvb_teletext_pid: Option<String>,
+    pub dvb_teletext_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to passthrough, passes any EBIF data from the input source       to this output.
@@ -7923,7 +7923,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Ebif")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ebif: Option<String>,
+    pub ebif: Option<cfn_resources::StrVal>,
 
     ///
     /// When videoAndFixedIntervals is selected, audio EBP markers are       added to partitions 3 and 4. The interval between these additional       markers is fixed, and is slightly shorter than the video EBP marker       interval. This is only available when EBP Cablelabs segmentation       markers are selected. Partitions 1 and 2 always follow the video       interval.
@@ -7935,7 +7935,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EbpAudioInterval")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ebp_audio_interval: Option<String>,
+    pub ebp_audio_interval: Option<cfn_resources::StrVal>,
 
     ///
     /// When set, enforces that Encoder Boundary Points do not come within       the specified time interval of each other by looking ahead at input       video. If another EBP is going to come in within the specified time       interval, the current EBP is not emitted, and the segment is       "stretched" to the next marker. The lookahead value does not add       latency to the system. The channel must be configured elsewhere to       create sufficient latency to make the lookahead accurate.
@@ -7959,7 +7959,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EbpPlacement")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ebp_placement: Option<String>,
+    pub ebp_placement: Option<cfn_resources::StrVal>,
 
     ///
     /// This field is unused and deprecated.
@@ -7971,7 +7971,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EcmPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ecm_pid: Option<String>,
+    pub ecm_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// Includes or excludes the ES Rate field in the PES header.
@@ -7983,7 +7983,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EsRateInPes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub es_rate_in_pes: Option<String>,
+    pub es_rate_in_pes: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID for the input source ETV Platform data to this output. You       can enter it as a decimal or hexadecimal value. Valid values are 32       (or 0x20) to 8182 (or 0x1ff6).
@@ -7995,7 +7995,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EtvPlatformPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etv_platform_pid: Option<String>,
+    pub etv_platform_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID for input source ETV Signal data to this output. You can       enter the value as a decimal or hexadecimal value. Valid values are       32 (or 0x20)..8182 (or 0x1ff6).
@@ -8007,7 +8007,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "EtvSignalPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub etv_signal_pid: Option<String>,
+    pub etv_signal_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The length in seconds of each fragment. This is used only with EBP       markers.
@@ -8031,7 +8031,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Klv")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub klv: Option<String>,
+    pub klv: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID for the input source KLV data to this output. Multiple       values are accepted, and can be entered in ranges or by comma       separation. You can enter the value as a decimal or hexadecimal       value. Each PID specified must be in the range of 32 (or 0x20)..8182       (or 0x1ff6).
@@ -8043,7 +8043,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "KlvDataPids")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub klv_data_pids: Option<String>,
+    pub klv_data_pids: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to passthrough, Nielsen inaudible tones for media tracking       will be detected in the input audio and an equivalent ID3 tag will       be inserted in the output.
@@ -8055,7 +8055,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nielsen_id3_behavior: Option<String>,
+    pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The value, in bits per second, of extra null packets to insert       into the transport stream. This can be used if a downstream       encryption system requires periodic null packets.
@@ -8091,7 +8091,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "PcrControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pcr_control: Option<String>,
+    pub pcr_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum time, in milliseconds, between Program Clock       References (PCRs) inserted into the transport stream.
@@ -8115,7 +8115,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "PcrPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pcr_pid: Option<String>,
+    pub pcr_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream. Valid values are 0, 10..1000.
@@ -8139,7 +8139,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "PmtPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pmt_pid: Option<String>,
+    pub pmt_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the program number field in the Program Map Table       (PMT).
@@ -8163,7 +8163,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "RateMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rate_mode: Option<String>,
+    pub rate_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID for the input source SCTE-27 data to this output. Multiple       values are accepted, and can be entered in ranges or by comma       separation. You can enter the value as a decimal or hexadecimal       value. Each PID specified must be in the range of 32 (or 0x20)..8182       (or 0x1ff6).
@@ -8175,7 +8175,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Scte27Pids")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte27_pids: Option<String>,
+    pub scte27_pids: Option<cfn_resources::StrVal>,
 
     ///
     /// Optionally passes SCTE-35 signals from the input source to this       output.
@@ -8187,7 +8187,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Scte35Control")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte35_control: Option<String>,
+    pub scte35_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID of the SCTE-35 stream in the transport stream. You can       enter the value as a decimal or hexadecimal value. Valid values are       32 (or 0x20)..8182 (or 0x1ff6).
@@ -8199,7 +8199,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "Scte35Pid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte35_pid: Option<String>,
+    pub scte35_pid: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -8222,7 +8222,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMarkers")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segmentation_markers: Option<String>,
+    pub segmentation_markers: Option<cfn_resources::StrVal>,
 
     ///
     /// The segmentation style parameter controls how segmentation markers       are inserted into the transport stream. With avails, it is possible       that segments might be truncated, which can influence where future       segmentation markers are inserted. When a segmentation style of       resetCadence is selected and a segment is truncated due to an avail,       we will reset the segmentation cadence. This means the subsequent       segment will have a duration of $segmentationTime seconds. When a       segmentation style of maintainCadence is selected and a segment is       truncated due to an avail, we will not reset the segmentation       cadence. This means the subsequent segment will likely be truncated       as well. However, all segments after that will have a duration of       $segmentationTime seconds. Note that EBP lookahead is a slight       exception to this rule.
@@ -8234,7 +8234,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentationStyle")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segmentation_style: Option<String>,
+    pub segmentation_style: Option<cfn_resources::StrVal>,
 
     ///
     /// The length, in seconds, of each segment. This is required unless       markers is set to None_.
@@ -8258,7 +8258,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_behavior: Option<String>,
+    pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID of the timed metadata stream in the transport stream. You       can enter the value as a decimal or hexadecimal value. Valid values       are 32 (or 0x20)..8182 (or 0x1ff6).
@@ -8270,7 +8270,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_pid: Option<String>,
+    pub timed_metadata_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the transport stream ID field in the Program Map       Table (PMT).
@@ -8294,7 +8294,7 @@ pub struct M2tsSettings {
     /// Update requires: No interruption
     #[serde(rename = "VideoPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub video_pid: Option<String>,
+    pub video_pid: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for M2tsSettings {
@@ -8350,7 +8350,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "AudioPids")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_pids: Option<String>,
+    pub audio_pids: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is unused and deprecated.
@@ -8362,7 +8362,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "EcmPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ecm_pid: Option<String>,
+    pub ecm_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
@@ -8374,7 +8374,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nielsen_id3_behavior: Option<String>,
+    pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream. A value of \"0\" writes out the PMT once       per segment file.
@@ -8398,7 +8398,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "PcrControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pcr_control: Option<String>,
+    pub pcr_control: Option<cfn_resources::StrVal>,
 
     ///
     /// The maximum time, in milliseconds, between Program Clock       References (PCRs) inserted into the transport stream.
@@ -8422,7 +8422,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "PcrPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pcr_pid: Option<String>,
+    pub pcr_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream. A value of \"0\" writes out the PMT once       per segment file.
@@ -8446,7 +8446,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "PmtPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pmt_pid: Option<String>,
+    pub pmt_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the program number field in the Program Map Table       (PMT).
@@ -8470,7 +8470,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "Scte35Behavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte35_behavior: Option<String>,
+    pub scte35_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID of the SCTE-35 stream in the transport stream. You can       enter the value as a decimal or hexadecimal value.
@@ -8482,7 +8482,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "Scte35Pid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scte35_pid: Option<String>,
+    pub scte35_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to passthrough, timed metadata is passed through from       input to output.
@@ -8494,7 +8494,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_behavior: Option<String>,
+    pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID of the timed metadata stream in the transport stream. You       can enter the value as a decimal or hexadecimal value. Valid values       are 32 (or 0x20)..8182 (or 0x1ff6).
@@ -8506,7 +8506,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_pid: Option<String>,
+    pub timed_metadata_pid: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the transport stream ID field in the Program Map       Table (PMT).
@@ -8530,7 +8530,7 @@ pub struct M3u8Settings {
     /// Update requires: No interruption
     #[serde(rename = "VideoPid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub video_pid: Option<String>,
+    pub video_pid: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for M3u8Settings {
@@ -8559,7 +8559,7 @@ pub struct MaintenanceCreateSettings {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceDay")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_day: Option<String>,
+    pub maintenance_day: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -8570,7 +8570,7 @@ pub struct MaintenanceCreateSettings {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_start_time: Option<String>,
+    pub maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MaintenanceCreateSettings {
@@ -8599,7 +8599,7 @@ pub struct MaintenanceUpdateSettings {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceDay")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_day: Option<String>,
+    pub maintenance_day: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -8610,7 +8610,7 @@ pub struct MaintenanceUpdateSettings {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceScheduledDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_scheduled_date: Option<String>,
+    pub maintenance_scheduled_date: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -8621,7 +8621,7 @@ pub struct MaintenanceUpdateSettings {
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceStartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maintenance_start_time: Option<String>,
+    pub maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MaintenanceUpdateSettings {
@@ -8689,7 +8689,7 @@ pub struct MediaPackageOutputDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "ChannelId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub channel_id: Option<String>,
+    pub channel_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MediaPackageOutputDestinationSettings {
@@ -8741,7 +8741,7 @@ pub struct MotionGraphicsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MotionGraphicsInsertion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub motion_graphics_insertion: Option<String>,
+    pub motion_graphics_insertion: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings to enable and configure the motion graphics overlay       feature in the channel.
@@ -8837,7 +8837,7 @@ pub struct Mp2Settings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The sample rate in Hz.
@@ -8916,7 +8916,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub adaptive_quantization: Option<String>,
+    pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the AFD values that MediaLive will write into the video encode. If you do not know what AFD signaling is, or if your downstream system has not given you guidance, choose AUTO. AUTO: MediaLive will try to preserve the input AFD value (in cases where multiple AFD values are valid). FIXED: MediaLive will use the value you specify in fixedAFD.
@@ -8928,7 +8928,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub afd_signaling: Option<String>,
+    pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to include the color space metadata. The metadata describes the color space that applies to the video (the colorSpace field). We recommend that you insert the metadata.
@@ -8940,7 +8940,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_metadata: Option<String>,
+    pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
     /// Choose the type of color space conversion to apply to the output. For detailed information on setting up both the input and the output to obtain the desired color space in the output, see the section on \"MediaLive Features - Video - color space\" in the MediaLive User Guide. PASSTHROUGH: Keep the color space of the input content - do not convert it. AUTO:Convert all content that is SD to rec 601, and convert all content that is HD to rec 709.
@@ -8952,7 +8952,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "ColorSpace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_space: Option<String>,
+    pub color_space: Option<cfn_resources::StrVal>,
 
     ///
     /// Sets the pixel aspect ratio for the encode.
@@ -8964,7 +8964,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "DisplayAspectRatio")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_aspect_ratio: Option<String>,
+    pub display_aspect_ratio: Option<cfn_resources::StrVal>,
 
     ///
     /// Optionally specify a noise reduction filter, which can improve quality of compressed content. If you do not choose a filter, no filter will be applied. TEMPORAL: This filter is useful for both source content that is noisy (when it has excessive digital artifacts) and source content that is clean. When the content is noisy, the filter cleans up the source content before the encoding phase, with these two effects: First, it improves the output video quality because the content has been cleaned up. Secondly, it decreases the bandwidth because MediaLive does not waste bits on encoding noise. When the content is reasonably clean, the filter tends to decrease the bitrate.
@@ -8988,7 +8988,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub fixed_afd: Option<String>,
+    pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
     /// description": "The framerate denominator. For example, 1001. The framerate is the numerator divided by the denominator. For example, 24000 / 1001 = 23.976 FPS.
@@ -9060,7 +9060,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub gop_size_units: Option<String>,
+    pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
     /// Set the scan type of the output to PROGRESSIVE or INTERLACED (top field first).
@@ -9072,7 +9072,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scan_type: Option<String>,
+    pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Relates to the GOP structure. If you do not know what GOP is, use the default. FIXED: Set the number of B-frames in each sub-GOP to the value in gopNumBFrames. DYNAMIC: Let MediaLive optimize the number of B-frames in each sub-GOP, to improve visual quality.
@@ -9084,7 +9084,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "SubgopLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subgop_length: Option<String>,
+    pub subgop_length: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -9107,7 +9107,7 @@ pub struct Mpeg2Settings {
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timecode_insertion: Option<String>,
+    pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Mpeg2Settings {
@@ -9147,7 +9147,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "AcquisitionPointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub acquisition_point_id: Option<String>,
+    pub acquisition_point_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to passthrough for an audio-only Microsoft Smooth output,       the fragment absolute time is set to the current timecode. This       option does not write timecodes to the audio elementary       stream.
@@ -9159,7 +9159,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioOnlyTimecodeControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_only_timecode_control: Option<String>,
+    pub audio_only_timecode_control: Option<cfn_resources::StrVal>,
 
     ///
     /// If set to verifyAuthenticity, verifies the HTTPS certificate chain       to a trusted certificate authority (CA). This causes HTTPS outputs       to self-signed certificates to fail.
@@ -9171,7 +9171,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "CertificateMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_mode: Option<String>,
+    pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of seconds to wait before retrying the connection to       the IIS server if the connection is lost. Content is cached during       this time, and the cache is delivered to the IIS server after the       connection is re-established.
@@ -9207,7 +9207,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "EventId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_id: Option<String>,
+    pub event_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether to send a channel ID to the IIS server. If no       channel ID is sent and the same channel is used without changing the       publishing point, clients might see cached video from the previous       run. Options: - "useConfigured" - use the value provided in eventId       - "useTimestamp" - generate and send a channel ID based on the       current timestamp - "noEventId" - do not send a channel ID to the       IIS server.
@@ -9219,7 +9219,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "EventIdMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_id_mode: Option<String>,
+    pub event_id_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to sendEos, sends an EOS signal to an IIS server when       stopping the channel.
@@ -9231,7 +9231,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "EventStopBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_stop_behavior: Option<String>,
+    pub event_stop_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The size, in seconds, of the file cache for streaming       outputs.
@@ -9267,7 +9267,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_action: Option<String>,
+    pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of retry attempts.
@@ -9303,7 +9303,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segmentation_mode: Option<String>,
+    pub segmentation_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of milliseconds to delay the output from the second       pipeline.
@@ -9327,7 +9327,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "SparseTrackType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sparse_track_type: Option<String>,
+    pub sparse_track_type: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to send, sends a stream manifest so that the publishing       point doesn't start until all streams start.
@@ -9339,7 +9339,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "StreamManifestBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_manifest_behavior: Option<String>,
+    pub stream_manifest_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The timestamp offset for the channel. Used only if       timestampOffsetMode is set to useConfiguredOffset.
@@ -9351,7 +9351,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimestampOffset")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp_offset: Option<String>,
+    pub timestamp_offset: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of timestamp date offset to use. - useEventStartDate: Use       the date the channel was started as the offset -       useConfiguredOffset: Use an explicitly configured date as the       offset.
@@ -9363,7 +9363,7 @@ pub struct MsSmoothGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimestampOffsetMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp_offset_mode: Option<String>,
+    pub timestamp_offset_mode: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MsSmoothGroupSettings {
@@ -9399,7 +9399,7 @@ pub struct MsSmoothOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "H265PackagingType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h265_packaging_type: Option<String>,
+    pub h265_packaging_type: Option<cfn_resources::StrVal>,
 
     ///
     /// A string that is concatenated to the end of the destination file       name. This is required for multiple outputs of the same type.
@@ -9411,7 +9411,7 @@ pub struct MsSmoothOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name_modifier: Option<String>,
+    pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MsSmoothOutputSettings {
@@ -9499,7 +9499,7 @@ pub struct MultiplexProgramChannelDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "MultiplexId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub multiplex_id: Option<String>,
+    pub multiplex_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The program name of the Multiplex program that the encoder is providing output to.
@@ -9511,7 +9511,7 @@ pub struct MultiplexProgramChannelDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "ProgramName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub program_name: Option<String>,
+    pub program_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MultiplexProgramChannelDestinationSettings {
@@ -9555,7 +9555,7 @@ pub struct NetworkInputSettings {
     /// Update requires: No interruption
     #[serde(rename = "ServerValidation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub server_validation: Option<String>,
+    pub server_validation: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NetworkInputSettings {
@@ -9591,7 +9591,7 @@ pub struct NielsenCBET {
     /// Update requires: No interruption
     #[serde(rename = "CbetCheckDigitString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cbet_check_digit_string: Option<String>,
+    pub cbet_check_digit_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines the method of CBET insertion mode when prior encoding is detected on the same layer.
@@ -9603,7 +9603,7 @@ pub struct NielsenCBET {
     /// Update requires: No interruption
     #[serde(rename = "CbetStepaside")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cbet_stepaside: Option<String>,
+    pub cbet_stepaside: Option<cfn_resources::StrVal>,
 
     ///
     /// Enter the CBET Source ID (CSID) to use in the watermark
@@ -9615,7 +9615,7 @@ pub struct NielsenCBET {
     /// Update requires: No interruption
     #[serde(rename = "Csid")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub csid: Option<String>,
+    pub csid: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NielsenCBET {
@@ -9647,7 +9647,7 @@ pub struct NielsenConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DistributorId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub distributor_id: Option<String>,
+    pub distributor_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables Nielsen PCM to ID3 tagging
@@ -9659,7 +9659,7 @@ pub struct NielsenConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "NielsenPcmToId3Tagging")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nielsen_pcm_to_id3_tagging: Option<String>,
+    pub nielsen_pcm_to_id3_tagging: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NielsenConfiguration {
@@ -9691,7 +9691,7 @@ pub struct NielsenNaesIiNw {
     /// Update requires: No interruption
     #[serde(rename = "CheckDigitString")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub check_digit_string: Option<String>,
+    pub check_digit_string: Option<cfn_resources::StrVal>,
 
     ///
     /// Enter the Nielsen Source ID (SID) to include in the watermark
@@ -9714,7 +9714,7 @@ pub struct NielsenNaesIiNw {
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone: Option<String>,
+    pub timezone: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NielsenNaesIiNw {
@@ -9758,7 +9758,7 @@ pub struct NielsenWatermarksSettings {
     /// Update requires: No interruption
     #[serde(rename = "NielsenDistributionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nielsen_distribution_type: Option<String>,
+    pub nielsen_distribution_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Complete these fields only if you want to insert watermarks of type Nielsen NAES II (N2) and Nielsen NAES VI (NW).
@@ -9834,7 +9834,7 @@ pub struct Output {
     /// Update requires: No interruption
     #[serde(rename = "OutputName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub output_name: Option<String>,
+    pub output_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The output type-specific settings.
@@ -9858,7 +9858,7 @@ pub struct Output {
     /// Update requires: No interruption
     #[serde(rename = "VideoDescriptionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub video_description_name: Option<String>,
+    pub video_description_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Output {
@@ -9894,7 +9894,7 @@ pub struct OutputDestination {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// The destination settings for a MediaPackage output.
@@ -9966,7 +9966,7 @@ pub struct OutputDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password_param: Option<String>,
+    pub password_param: Option<cfn_resources::StrVal>,
 
     ///
     /// The stream name for the content. This applies only to RTMP       outputs.
@@ -9978,7 +9978,7 @@ pub struct OutputDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_name: Option<String>,
+    pub stream_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The URL for the destination.
@@ -9990,7 +9990,7 @@ pub struct OutputDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    pub url: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name to connect to the downstream system. This applies       only if the downstream system requires credentials.
@@ -10002,7 +10002,7 @@ pub struct OutputDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OutputDestinationSettings {
@@ -10034,7 +10034,7 @@ pub struct OutputGroup {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The settings associated with the output group.
@@ -10243,7 +10243,7 @@ pub struct OutputLocationRef {
     /// Update requires: No interruption
     #[serde(rename = "DestinationRefId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_ref_id: Option<String>,
+    pub destination_ref_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for OutputLocationRef {
@@ -10600,7 +10600,7 @@ pub struct RtmpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationScheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authentication_scheme: Option<String>,
+    pub authentication_scheme: Option<cfn_resources::StrVal>,
 
     ///
     /// Controls behavior when the content cache fills up. If a remote       origin server stalls the RTMP connection and doesn't accept content       fast enough, the media cache fills up. When the cache reaches the       duration specified by cacheLength, the cache stops accepting new       content. If set to disconnectImmediately, the RTMP output forces a       disconnect. Clear the media cache, and reconnect after restartDelay       seconds. If set to waitForServer, the RTMP output waits up to 5       minutes to allow the origin server to begin accepting data       again.
@@ -10612,7 +10612,7 @@ pub struct RtmpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "CacheFullBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_full_behavior: Option<String>,
+    pub cache_full_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// The cache length, in seconds, that is used to calculate buffer       size.
@@ -10636,7 +10636,7 @@ pub struct RtmpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "CaptionData")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub caption_data: Option<String>,
+    pub caption_data: Option<cfn_resources::StrVal>,
 
     ///
     /// Controls the behavior of this RTMP group if the input becomes       unavailable. emitOutput: Emit a slate until the input returns.       pauseOutput: Stop transmitting data until the input returns. This       does not close the underlying RTMP connection.
@@ -10648,7 +10648,7 @@ pub struct RtmpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_action: Option<String>,
+    pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
     /// If a streaming output fails, the number of seconds to wait until a       restart is initiated. A value of 0 means never restart.
@@ -10692,7 +10692,7 @@ pub struct RtmpOutputSettings {
     /// Update requires: No interruption
     #[serde(rename = "CertificateMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_mode: Option<String>,
+    pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of seconds to wait before retrying a connection to the       Flash Media server if the connection is lost.
@@ -10784,7 +10784,7 @@ pub struct Scte20SourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "Convert608To708")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub convert608_to708: Option<String>,
+    pub convert608_to708: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the 608/708 channel number within the video track from       which to extract captions.
@@ -10848,7 +10848,7 @@ pub struct Scte27SourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "OcrLanguage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ocr_language: Option<String>,
+    pub ocr_language: Option<cfn_resources::StrVal>,
 
     ///
     /// The PID field is used in conjunction with the captions selector       languageCode field as follows: Specify PID and Language: Extracts       captions from that PID; the language is "informational." Specify PID       and omit Language: Extracts the specified PID. Omit PID and specify       Language: Extracts the specified language, whichever PID that       happens to be. Omit PID and omit Language: Valid only if source is       DVB-Sub that is being passed through; all languages are passed       through.
@@ -10904,7 +10904,7 @@ pub struct Scte35SpliceInsert {
     /// Update requires: No interruption
     #[serde(rename = "NoRegionalBlackoutFlag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_regional_blackout_flag: Option<String>,
+    pub no_regional_blackout_flag: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to ignore, segment descriptors with       webDeliveryAllowedFlag set to 0 no longer trigger blackouts or ad       avail slates.
@@ -10916,7 +10916,7 @@ pub struct Scte35SpliceInsert {
     /// Update requires: No interruption
     #[serde(rename = "WebDeliveryAllowedFlag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub web_delivery_allowed_flag: Option<String>,
+    pub web_delivery_allowed_flag: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Scte35SpliceInsert {
@@ -10960,7 +10960,7 @@ pub struct Scte35TimeSignalApos {
     /// Update requires: No interruption
     #[serde(rename = "NoRegionalBlackoutFlag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub no_regional_blackout_flag: Option<String>,
+    pub no_regional_blackout_flag: Option<cfn_resources::StrVal>,
 
     ///
     /// When set to ignore, segment descriptors with       webDeliveryAllowedFlag set to 0 no longer trigger blackouts or ad       avail slates.
@@ -10972,7 +10972,7 @@ pub struct Scte35TimeSignalApos {
     /// Update requires: No interruption
     #[serde(rename = "WebDeliveryAllowedFlag")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub web_delivery_allowed_flag: Option<String>,
+    pub web_delivery_allowed_flag: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Scte35TimeSignalApos {
@@ -11024,7 +11024,7 @@ pub struct StandardHlsSettings {
     /// Update requires: No interruption
     #[serde(rename = "AudioRenditionSets")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub audio_rendition_sets: Option<String>,
+    pub audio_rendition_sets: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings for the M3U8 container.
@@ -11084,7 +11084,7 @@ pub struct StaticKeySettings {
     /// Update requires: No interruption
     #[serde(rename = "StaticKeyValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub static_key_value: Option<String>,
+    pub static_key_value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for StaticKeySettings {
@@ -11152,7 +11152,7 @@ pub struct TeletextSourceSettings {
     /// Update requires: No interruption
     #[serde(rename = "PageNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub page_number: Option<String>,
+    pub page_number: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TeletextSourceSettings {
@@ -11188,7 +11188,7 @@ pub struct TemporalFilterSettings {
     /// Update requires: No interruption
     #[serde(rename = "PostFilterSharpening")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub post_filter_sharpening: Option<String>,
+    pub post_filter_sharpening: Option<cfn_resources::StrVal>,
 
     ///
     /// Choose a filter strength. We recommend a strength of 1 or 2. A higher strength might take out good information, resulting in an image that is overly soft.
@@ -11200,7 +11200,7 @@ pub struct TemporalFilterSettings {
     /// Update requires: No interruption
     #[serde(rename = "Strength")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub strength: Option<String>,
+    pub strength: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TemporalFilterSettings {
@@ -11229,7 +11229,7 @@ pub struct TimecodeBurninSettings {
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub font_size: Option<String>,
+    pub font_size: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -11240,7 +11240,7 @@ pub struct TimecodeBurninSettings {
     /// Update requires: No interruption
     #[serde(rename = "Position")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub position: Option<String>,
+    pub position: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -11251,7 +11251,7 @@ pub struct TimecodeBurninSettings {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TimecodeBurninSettings {
@@ -11283,7 +11283,7 @@ pub struct TimecodeConfig {
     /// Update requires: No interruption
     #[serde(rename = "Source")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source: Option<String>,
+    pub source: Option<cfn_resources::StrVal>,
 
     ///
     /// The threshold in frames beyond which output timecode is       resynchronized to the input timecode. Discrepancies below this       threshold are permitted to avoid unnecessary discontinuities in the       output timecode. There is no timecode sync when this is not       specified.
@@ -11327,7 +11327,7 @@ pub struct TtmlDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub style_control: Option<String>,
+    pub style_control: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for TtmlDestinationSettings {
@@ -11395,7 +11395,7 @@ pub struct UdpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub input_loss_action: Option<String>,
+    pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates the ID3 frame that has the timecode.
@@ -11407,7 +11407,7 @@ pub struct UdpGroupSettings {
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Frame")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timed_metadata_id3_frame: Option<String>,
+    pub timed_metadata_id3_frame: Option<cfn_resources::StrVal>,
 
     ///
     /// The timed metadata interval in seconds.
@@ -11683,7 +11683,7 @@ pub struct VideoDescription {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates how to respond to the AFD values in the input stream.       RESPOND causes input video to be clipped, depending on the AFD       value, input display aspect ratio, and output display aspect ratio,       and (except for the FRAMECAPTURE codec) includes the values in the       output. PASSTHROUGH (does not apply to FRAMECAPTURE codec) ignores       the AFD values and includes the values in the output, so input video       is not clipped. NONE ignores the AFD values and does not include the       values through to the output, so input video is not clipped.
@@ -11695,7 +11695,7 @@ pub struct VideoDescription {
     /// Update requires: No interruption
     #[serde(rename = "RespondToAfd")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub respond_to_afd: Option<String>,
+    pub respond_to_afd: Option<cfn_resources::StrVal>,
 
     ///
     /// STRETCHTOOUTPUT configures the output position to stretch the       video to the specified output resolution (height and width). This       option overrides any position value. DEFAULT might insert black       boxes (pillar boxes or letter boxes) around the video to provide the       specified output resolution.
@@ -11707,7 +11707,7 @@ pub struct VideoDescription {
     /// Update requires: No interruption
     #[serde(rename = "ScalingBehavior")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scaling_behavior: Option<String>,
+    pub scaling_behavior: Option<cfn_resources::StrVal>,
 
     ///
     /// Changes the strength of the anti-alias filter used for scaling. 0       is the softest setting, and 100 is the sharpest. We recommend a       setting of 50 for most content.
@@ -11767,7 +11767,7 @@ pub struct VideoSelector {
     /// Update requires: No interruption
     #[serde(rename = "ColorSpace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_space: Option<String>,
+    pub color_space: Option<cfn_resources::StrVal>,
 
     ///
     /// Settings to configure color space settings in the incoming       video.
@@ -11791,7 +11791,7 @@ pub struct VideoSelector {
     /// Update requires: No interruption
     #[serde(rename = "ColorSpaceUsage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color_space_usage: Option<String>,
+    pub color_space_usage: Option<cfn_resources::StrVal>,
 
     ///
     /// Information about the video to select from the content.
@@ -12063,7 +12063,7 @@ pub struct WavSettings {
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub coding_mode: Option<String>,
+    pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Sample rate in Hz.
@@ -12107,7 +12107,7 @@ pub struct WebvttDestinationSettings {
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub style_control: Option<String>,
+    pub style_control: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for WebvttDestinationSettings {

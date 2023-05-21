@@ -11,7 +11,7 @@ pub struct CfnRequestValidator {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The string identifier of the associated RestApi.
@@ -22,7 +22,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
+    pub rest_api_id: cfn_resources::StrVal,
 
     ///
     /// A Boolean flag to indicate whether to validate a request body according to the configured Model schema.

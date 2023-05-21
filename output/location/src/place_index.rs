@@ -18,7 +18,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSource")]
-    pub data_source: String,
+    pub data_source: cfn_resources::StrVal,
 
     ///
     /// Specifies the data storage option requesting Places.
@@ -46,7 +46,7 @@ pub struct CfnPlaceIndex {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the place index resource.
@@ -67,7 +67,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IndexName")]
-    pub index_name: String,
+    pub index_name: cfn_resources::StrVal,
 
     ///
     /// No longer used. If included, the only allowed value is       RequestBasedUsage.
@@ -112,39 +112,47 @@ impl cfn_resources::CfnResource for CfnPlaceIndex {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 1000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.index_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'index_name'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.index_name;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'index_name'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.index_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'index_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'index_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

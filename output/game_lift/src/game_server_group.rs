@@ -72,7 +72,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameServerGroupName")]
-    pub game_server_group_name: String,
+    pub game_server_group_name: cfn_resources::StrVal,
 
     ///
     /// A flag that indicates whether instances in the game server group are protected       from early termination. Unprotected instances that have active game servers running might       be terminated during a scale-down event, causing players to be dropped from the game.       Protected instances cannot be terminated while there are active game servers running except       in the event of a forced game server group deletion (see ). An exception to this is with Spot       Instances, which can be terminated by AWS regardless of protection status.
@@ -158,7 +158,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A list of labels to assign to the new game server group resource. Tags are    developer-defined key-value pairs. Tagging AWS resources is useful for resource    management, access management, and cost allocation. For more information, see Tagging AWS     Resources in the      AWS General Reference. Once the    resource is created, you can use TagResource, UntagResource, and ListTagsForResource to add, remove,    and view tags, respectively. The maximum tag limit may be lower than stated. See the    AWS General Reference for actual tagging limits.
@@ -264,20 +264,21 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
 
         let the_val = &self.game_server_group_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'game_server_group_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!("Max validation failed on field 'game_server_group_name'. {} is greater than 128", s.len()));
+            }
         }
 
         let the_val = &self.game_server_group_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'game_server_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'game_server_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_definitions;
@@ -313,20 +314,24 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -441,7 +446,7 @@ pub struct InstanceDefinition {
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weighted_capacity: Option<String>,
+    pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -816,20 +821,24 @@ impl cfn_resources::CfnResource for InstanceDefinition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.weighted_capacity {
-            if the_val.len() > 3 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'weighted_capacity'. {} is greater than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 3 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'weighted_capacity'. {} is greater than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.weighted_capacity {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'weighted_capacity'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'weighted_capacity'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -858,7 +867,7 @@ pub struct LaunchTemplate {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A readable identifier for an existing Amazon EC2 launch template.
@@ -876,7 +885,7 @@ pub struct LaunchTemplate {
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the Amazon EC2 launch template to use. If no version is specified, the       default version will be used. With Amazon EC2, you can specify a default version for a launch       template. If none is set, the default is the first version created.
@@ -894,7 +903,7 @@ pub struct LaunchTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplate {
@@ -908,56 +917,62 @@ impl cfn_resources::CfnResource for LaunchTemplate {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.launch_template_id {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'launch_template_id'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'launch_template_id'. {} is greater than 255", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_template_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_template_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.launch_template_name {
-            if the_val.len() < 3 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 3 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version {
-            if the_val.len() > 128 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'version'. {} is greater than 128",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'version'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.version {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'version'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'version'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -982,7 +997,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -992,7 +1007,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

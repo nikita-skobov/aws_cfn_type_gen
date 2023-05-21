@@ -148,7 +148,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub load_balancer_name: Option<String>,
+    pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The policies defined for your Classic Load Balancer. Specify only back-end server policies.
@@ -176,7 +176,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "Scheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheme: Option<String>,
+    pub scheme: Option<cfn_resources::StrVal>,
 
     ///
     /// The security groups for the load balancer. Valid only for load balancers in a VPC.
@@ -284,7 +284,7 @@ pub struct AccessLoggingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
+    pub s3_bucket_name: cfn_resources::StrVal,
 
     ///
     /// The logical hierarchy you created for your Amazon S3 bucket, for example my-bucket-prefix/prod.        If the prefix is not provided, the log is placed at the root level of the bucket.
@@ -296,7 +296,7 @@ pub struct AccessLoggingPolicy {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_prefix: Option<String>,
+    pub s3_bucket_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AccessLoggingPolicy {
@@ -327,7 +327,7 @@ pub struct AppCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CookieName")]
-    pub cookie_name: String,
+    pub cookie_name: cfn_resources::StrVal,
 
     ///
     /// The mnemonic name for the policy being created. The name must be unique within a set of policies for this load balancer.
@@ -338,7 +338,7 @@ pub struct AppCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AppCookieStickinessPolicy {
@@ -463,7 +463,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThreshold")]
-    pub healthy_threshold: String,
+    pub healthy_threshold: cfn_resources::StrVal,
 
     ///
     /// The approximate interval, in seconds, between health checks of an individual instance.
@@ -478,7 +478,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    pub interval: String,
+    pub interval: cfn_resources::StrVal,
 
     ///
     /// The instance being checked. The protocol is either TCP, HTTP, HTTPS, or SSL. The range of valid ports is one (1) through 65535.
@@ -497,7 +497,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 
     ///
     /// The amount of time, in seconds, during which no response means a failed health check.
@@ -514,7 +514,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    pub timeout: String,
+    pub timeout: cfn_resources::StrVal,
 
     ///
     /// The number of consecutive health check failures required before moving the instance to the Unhealthy state.
@@ -529,7 +529,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
-    pub unhealthy_threshold: String,
+    pub unhealthy_threshold: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for HealthCheck {
@@ -544,74 +544,90 @@ impl cfn_resources::CfnResource for HealthCheck {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.healthy_threshold;
 
-        if the_val.len() > 10 as _ {
-            return Err(format!(
-                "Max validation failed on field 'healthy_threshold'. {} is greater than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'healthy_threshold'. {} is greater than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.healthy_threshold;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'healthy_threshold'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'healthy_threshold'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.interval;
 
-        if the_val.len() > 300 as _ {
-            return Err(format!(
-                "Max validation failed on field 'interval'. {} is greater than 300",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 300 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'interval'. {} is greater than 300",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.interval;
 
-        if the_val.len() < 5 as _ {
-            return Err(format!(
-                "Min validation failed on field 'interval'. {} is less than 5",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 5 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'interval'. {} is less than 5",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.timeout;
 
-        if the_val.len() > 60 as _ {
-            return Err(format!(
-                "Max validation failed on field 'timeout'. {} is greater than 60",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 60 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'timeout'. {} is greater than 60",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.timeout;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'timeout'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'timeout'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.unhealthy_threshold;
 
-        if the_val.len() > 10 as _ {
-            return Err(format!(
-                "Max validation failed on field 'unhealthy_threshold'. {} is greater than 10",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'unhealthy_threshold'. {} is greater than 10",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.unhealthy_threshold;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'unhealthy_threshold'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'unhealthy_threshold'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -633,7 +649,7 @@ pub struct LBCookieStickinessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "CookieExpirationPeriod")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cookie_expiration_period: Option<String>,
+    pub cookie_expiration_period: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the policy. This name must be unique within the set of policies for this load balancer.
@@ -645,7 +661,7 @@ pub struct LBCookieStickinessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub policy_name: Option<String>,
+    pub policy_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LBCookieStickinessPolicy {
@@ -680,7 +696,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstancePort")]
-    pub instance_port: String,
+    pub instance_port: cfn_resources::StrVal,
 
     ///
     /// The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP, or SSL.
@@ -698,7 +714,7 @@ pub struct Listeners {
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceProtocol")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_protocol: Option<String>,
+    pub instance_protocol: Option<cfn_resources::StrVal>,
 
     ///
     /// The port on which the load balancer is listening. On EC2-VPC, you can specify any port from the range 1-65535. On EC2-Classic, you can specify any port from the following list: 25, 80, 443, 465, 587, 1024-65535.
@@ -709,7 +725,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LoadBalancerPort")]
-    pub load_balancer_port: String,
+    pub load_balancer_port: cfn_resources::StrVal,
 
     ///
     /// The names of the policies to associate with the listener.
@@ -732,7 +748,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Protocol")]
-    pub protocol: String,
+    pub protocol: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the server certificate.
@@ -744,7 +760,7 @@ pub struct Listeners {
     /// Update requires: Some interruptions
     #[serde(rename = "SSLCertificateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sslcertificate_id: Option<String>,
+    pub sslcertificate_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Listeners {
@@ -759,20 +775,24 @@ impl cfn_resources::CfnResource for Listeners {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.instance_port;
 
-        if the_val.len() > 65535 as _ {
-            return Err(format!(
-                "Max validation failed on field 'instance_port'. {} is greater than 65535",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_port'. {} is greater than 65535",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.instance_port;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_port'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_port'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -828,7 +848,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+    pub policy_name: cfn_resources::StrVal,
 
     ///
     /// The name of the policy type.
@@ -839,7 +859,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    pub policy_type: String,
+    pub policy_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Policies {
@@ -873,7 +893,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -883,7 +903,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

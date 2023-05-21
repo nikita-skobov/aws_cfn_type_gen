@@ -52,7 +52,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
-    pub domain: String,
+    pub domain: cfn_resources::StrVal,
 
     ///
     /// A name for the app monitor. This parameter is required.
@@ -63,7 +63,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Assigns one or more tags (key-value pairs) to the app monitor.
@@ -171,7 +171,7 @@ pub struct AppMonitorConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "GuestRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub guest_role_arn: Option<String>,
+    pub guest_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the Amazon Cognito identity pool       that is used to authorize the sending of data to CloudWatch RUM.
@@ -183,7 +183,7 @@ pub struct AppMonitorConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub identity_pool_id: Option<String>,
+    pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
     /// If this app monitor is to collect data from only certain pages in your application, this structure lists those pages.
@@ -271,7 +271,7 @@ pub struct CustomEvents {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CustomEvents {
@@ -327,7 +327,7 @@ pub struct MetricDefinition {
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub event_pattern: Option<String>,
+    pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the metric that is defined in this structure.
@@ -338,7 +338,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// If you are creating a custom metric instead of an extended metrics, use this parameter to define       the metric namespace for that custom metric. Do not specify this parameter if you are creating an extended metric.
@@ -352,7 +352,7 @@ pub struct MetricDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace: Option<String>,
+    pub namespace: Option<cfn_resources::StrVal>,
 
     ///
     /// Use this field only if you are sending this metric to CloudWatch. It defines       the CloudWatch metric unit that this metric is measured in.
@@ -364,7 +364,7 @@ pub struct MetricDefinition {
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub unit_label: Option<String>,
+    pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
     /// The field within the event object that the metric value is sourced from.
@@ -376,7 +376,7 @@ pub struct MetricDefinition {
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value_key: Option<String>,
+    pub value_key: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MetricDefinition {
@@ -407,7 +407,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    pub destination: String,
+    pub destination: cfn_resources::StrVal,
 
     ///
     /// Use this parameter only if Destination is Evidently. This parameter specifies       the ARN of the Evidently experiment that will receive the extended metrics.
@@ -419,7 +419,7 @@ pub struct MetricDestination {
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub destination_arn: Option<String>,
+    pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is required if Destination is Evidently. If Destination is     CloudWatch, do not use this parameter.
@@ -433,7 +433,7 @@ pub struct MetricDestination {
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_role_arn: Option<String>,
+    pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of structures which define the metrics that you want to send.
@@ -479,7 +479,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -489,7 +489,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

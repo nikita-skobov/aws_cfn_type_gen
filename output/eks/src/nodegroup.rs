@@ -40,7 +40,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    pub cluster_name: cfn_resources::StrVal,
 
     ///
     /// The root device disk size (in GiB) for your node group instances. The default disk       size is 20 GiB for Linux and Bottlerocket. The default disk size is 50 GiB for Windows.       If you specify launchTemplate, then don't specify diskSize, or the node group       deployment will fail. For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
@@ -113,7 +113,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NodeRole")]
-    pub node_role: String,
+    pub node_role: cfn_resources::StrVal,
 
     ///
     /// The unique name to give your node group.
@@ -125,7 +125,7 @@ pub struct CfnNodegroup {
     /// Update requires: Replacement
     #[serde(rename = "NodegroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nodegroup_name: Option<String>,
+    pub nodegroup_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The AMI version of the Amazon EKS optimized AMI to use with your node group       (for example, 1.14.7-YYYYMMDD). By default, the latest       available AMI version for the node group's current Kubernetes version is used. For more       information, see Amazon EKS optimized         Linux AMI Versions in the Amazon EKS User       Guide.
@@ -139,7 +139,7 @@ pub struct CfnNodegroup {
     /// Update requires: No interruption
     #[serde(rename = "ReleaseVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub release_version: Option<String>,
+    pub release_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The remote access configuration to use with your node group.       For Linux, the protocol is SSH. For Windows, the protocol is RDP.       If you specify launchTemplate, then don't specify         remoteAccess, or the node group deployment will fail.       For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
@@ -224,7 +224,7 @@ pub struct CfnNodegroup {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -348,7 +348,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch template.
@@ -362,7 +362,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the launch template to use. If no version is specified, then the       template's default version is used.
@@ -374,7 +374,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplateSpecification {
@@ -403,7 +403,7 @@ pub struct RemoteAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ec2SshKey")]
-    pub ec2_ssh_key: String,
+    pub ec2_ssh_key: cfn_resources::StrVal,
 
     ///
     /// The security group IDs that are allowed SSH access (port 22) to the nodes. For       Windows, the port is 3389. If you specify an Amazon EC2 SSH key but don't       specify a source security group when you create a managed node group, then the port on       the nodes is opened to the internet (0.0.0.0/0). For more information, see         Security Groups for Your VPC in the Amazon Virtual Private Cloud User Guide.
@@ -556,7 +556,7 @@ pub struct Taint {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the taint.
@@ -572,7 +572,7 @@ pub struct Taint {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -607,38 +607,46 @@ impl cfn_resources::CfnResource for Taint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.key {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'key'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'key'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'value'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'value'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 

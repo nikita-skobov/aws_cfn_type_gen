@@ -13,7 +13,7 @@ pub struct CfnTrail {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_logs_log_group_arn: Option<String>,
+    pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's     log group. You must use a role that exists in your account.
@@ -25,7 +25,7 @@ pub struct CfnTrail {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_logs_role_arn: Option<String>,
+    pub cloud_watch_logs_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether log file validation is enabled. The default is false.
@@ -136,7 +136,7 @@ pub struct CfnTrail {
     /// Update requires: No interruption
     #[serde(rename = "KMSKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmskey_id: Option<String>,
+    pub kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the name of the Amazon S3 bucket designated for publishing log files.     See Amazon S3       Bucket Naming Requirements.
@@ -147,7 +147,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
+    pub s3_bucket_name: cfn_resources::StrVal,
 
     ///
     /// Specifies the Amazon S3 key prefix that comes after the name of the bucket you     have designated for log file delivery. For more information, see Finding Your CloudTrail Log Files. The maximum length is 200     characters.
@@ -159,7 +159,7 @@ pub struct CfnTrail {
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_key_prefix: Option<String>,
+    pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the name of the Amazon SNS topic defined for notification of log file     delivery. The maximum length is 256 characters.
@@ -171,7 +171,7 @@ pub struct CfnTrail {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sns_topic_name: Option<String>,
+    pub sns_topic_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A custom set of tags (key-value pairs) for this trail.
@@ -197,7 +197,7 @@ pub struct CfnTrail {
     /// Update requires: Replacement
     #[serde(rename = "TrailName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trail_name: Option<String>,
+    pub trail_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnTrail {
@@ -232,7 +232,7 @@ pub struct DataResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: String,
+    pub cfn_type: cfn_resources::StrVal,
 
     ///
     /// An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.
@@ -436,7 +436,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -446,7 +446,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

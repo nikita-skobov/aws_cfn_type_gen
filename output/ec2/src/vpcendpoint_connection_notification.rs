@@ -23,7 +23,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionNotificationArn")]
-    pub connection_notification_arn: String,
+    pub connection_notification_arn: cfn_resources::StrVal,
 
     ///
     /// The ID of the endpoint service.
@@ -35,7 +35,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_id: Option<String>,
+    pub service_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the endpoint.
@@ -47,7 +47,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     /// Update requires: Replacement
     #[serde(rename = "VPCEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpcendpoint_id: Option<String>,
+    pub vpcendpoint_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnVPCEndpointConnectionNotification {

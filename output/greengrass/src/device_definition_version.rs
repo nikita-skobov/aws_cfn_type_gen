@@ -10,7 +10,7 @@ pub struct CfnDeviceDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionId")]
-    pub device_definition_id: String,
+    pub device_definition_id: cfn_resources::StrVal,
 
     ///
     /// The devices in this version.
@@ -52,7 +52,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
+    pub certificate_arn: cfn_resources::StrVal,
 
     ///
     /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -63,7 +63,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    pub id: String,
+    pub id: cfn_resources::StrVal,
 
     ///
     /// Indicates whether the device's local shadow is synced       with the cloud automatically.
@@ -86,7 +86,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
+    pub thing_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Device {

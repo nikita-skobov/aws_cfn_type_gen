@@ -11,7 +11,7 @@ pub struct CfnMacro {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the underlying AWS Lambda function that you want AWS CloudFormation to invoke when the macro is run.
@@ -22,7 +22,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    pub function_name: cfn_resources::StrVal,
 
     ///
     /// The CloudWatch Logs group to which AWS CloudFormation sends error logging information when invoking the  macro's underlying AWS Lambda function.
@@ -34,7 +34,7 @@ pub struct CfnMacro {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the role AWS CloudFormation should assume when sending log entries to CloudWatch Logs.
@@ -46,7 +46,7 @@ pub struct CfnMacro {
     /// Update requires: No interruption
     #[serde(rename = "LogRoleARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_role_arn: Option<String>,
+    pub log_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the macro. The name of the macro must be unique across all macros in the account.
@@ -57,7 +57,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnMacro {

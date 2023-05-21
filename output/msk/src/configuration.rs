@@ -13,7 +13,7 @@ pub struct CfnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -35,7 +35,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Contents of the server.properties file. When using the API, you must ensure that the contents of the file are base64 encoded.         When using the console, the SDK, or the CLI, the contents of server.properties can be in plaintext.
@@ -46,7 +46,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerProperties")]
-    pub server_properties: String,
+    pub server_properties: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnConfiguration {

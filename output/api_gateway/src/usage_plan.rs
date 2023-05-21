@@ -25,7 +25,7 @@ pub struct CfnUsagePlan {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The target maximum number of permitted requests per a given unit time interval.
@@ -73,7 +73,7 @@ pub struct CfnUsagePlan {
     /// Update requires: No interruption
     #[serde(rename = "UsagePlanName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub usage_plan_name: Option<String>,
+    pub usage_plan_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnUsagePlan {
@@ -109,7 +109,7 @@ pub struct ApiStage {
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api_id: Option<String>,
+    pub api_id: Option<cfn_resources::StrVal>,
 
     ///
     /// API stage name of the associated API stage in a usage plan.
@@ -121,7 +121,7 @@ pub struct ApiStage {
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stage: Option<String>,
+    pub stage: Option<cfn_resources::StrVal>,
 
     ///
     /// Map containing method level throttling information for API stage in a usage plan.
@@ -246,7 +246,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -256,7 +256,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

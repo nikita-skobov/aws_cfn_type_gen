@@ -12,7 +12,7 @@ pub struct CfnSlackWorkspaceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TeamId")]
-    pub team_id: String,
+    pub team_id: cfn_resources::StrVal,
 
     ///
     /// An identifier used to update an existing Slack workspace configuration in AWS CloudFormation, such as 100.
@@ -24,7 +24,7 @@ pub struct CfnSlackWorkspaceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version_id: Option<String>,
+    pub version_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnSlackWorkspaceConfiguration {

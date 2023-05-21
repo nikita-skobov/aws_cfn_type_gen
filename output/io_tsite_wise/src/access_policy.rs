@@ -21,7 +21,7 @@ pub struct CfnAccessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyPermission")]
-    pub access_policy_permission: String,
+    pub access_policy_permission: cfn_resources::StrVal,
 
     ///
     /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
@@ -176,7 +176,7 @@ pub struct IamRole {
     /// Update requires: No interruption
     #[serde(rename = "arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IamRole {
@@ -208,7 +208,7 @@ pub struct IamUser {
     /// Update requires: No interruption
     #[serde(rename = "arn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<String>,
+    pub arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for IamUser {
@@ -238,7 +238,7 @@ pub struct Portal {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Portal {
@@ -268,7 +268,7 @@ pub struct Project {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Project {
@@ -298,7 +298,7 @@ pub struct User {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for User {

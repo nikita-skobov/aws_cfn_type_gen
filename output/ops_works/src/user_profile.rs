@@ -22,7 +22,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IamUserArn")]
-    pub iam_user_arn: String,
+    pub iam_user_arn: cfn_resources::StrVal,
 
     ///
     /// The user's SSH public key.
@@ -34,7 +34,7 @@ pub struct CfnUserProfile {
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssh_public_key: Option<String>,
+    pub ssh_public_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The user's SSH user name.
@@ -46,7 +46,7 @@ pub struct CfnUserProfile {
     /// Update requires: No interruption
     #[serde(rename = "SshUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ssh_username: Option<String>,
+    pub ssh_username: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnUserProfile {

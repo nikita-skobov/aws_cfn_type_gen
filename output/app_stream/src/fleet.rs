@@ -25,7 +25,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to the streaming session after a disconnection or network interruption within this time interval, they are connected to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
@@ -53,7 +53,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. This is not allowed for Elastic fleets.
@@ -109,7 +109,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub iam_role_arn: Option<String>,
+    pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The amount of time that users can be idle (inactive) before they are disconnected       from their streaming session and the DisconnectTimeoutInSeconds time       interval begins. Users are notified before they are disconnected due to inactivity. If       they try to reconnect to the streaming session before the time interval specified in       DisconnectTimeoutInSeconds elapses, they are connected to their       previous session. Users are considered idle when they stop providing keyboard or mouse       input during their streaming session. File uploads and downloads, audio in, audio out,       and pixels changing do not qualify as user activity. If users continue to be idle after       the time interval in IdleDisconnectTimeoutInSeconds elapses, they are       disconnected.
@@ -139,7 +139,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_arn: Option<String>,
+    pub image_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the image used to create the fleet.
@@ -153,7 +153,7 @@ pub struct CfnFleet {
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_name: Option<String>,
+    pub image_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The instance type to use when launching fleet instances. The following instance types are available for non-Elastic fleets:
@@ -172,7 +172,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: cfn_resources::StrVal,
 
     /// The maximum number of concurrent sessions that can be run on an Elastic fleet. This setting is     required for Elastic fleets, but is not used for other fleet types.
     ///
@@ -210,7 +210,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// The platform of the fleet. Platform is a required setting for Elastic fleets, and is not used     for other fleet types.
     ///
@@ -368,20 +368,24 @@ impl cfn_resources::CfnResource for CfnFleet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.display_name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'display_name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'display_name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -390,21 +394,25 @@ impl cfn_resources::CfnResource for CfnFleet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.image_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'image_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'image_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.instance_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'instance_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.session_script_s3_location
@@ -461,7 +469,7 @@ pub struct DomainJoinInfo {
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub directory_name: Option<String>,
+    pub directory_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The distinguished name of the organizational unit for computer accounts.
@@ -475,7 +483,7 @@ pub struct DomainJoinInfo {
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organizational_unit_distinguished_name: Option<String>,
+    pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DomainJoinInfo {
@@ -489,8 +497,10 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() > 2000 as _ {
-                return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000 as _ {
+                    return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", s.len()));
+                }
             }
         }
 
@@ -515,7 +525,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
+    pub s3_bucket: cfn_resources::StrVal,
 
     /// The S3 key of the S3 object.
     ///
@@ -529,7 +539,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    pub s3_key: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for S3Location {
@@ -544,38 +554,46 @@ impl cfn_resources::CfnResource for S3Location {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.s3_bucket;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_bucket'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_bucket;
 
-        if the_val.len() < 3 as _ {
-            return Err(format!(
-                "Min validation failed on field 's3_bucket'. {} is less than 3",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 's3_bucket'. {} is less than 3",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_key;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 's3_key'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_key'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.s3_key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 's3_key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 's3_key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -599,7 +617,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -609,7 +627,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

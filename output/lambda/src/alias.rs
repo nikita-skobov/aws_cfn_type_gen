@@ -17,7 +17,7 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Lambda function.
@@ -38,7 +38,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
-    pub function_name: String,
+    pub function_name: cfn_resources::StrVal,
 
     ///
     /// The function version that the alias invokes.
@@ -55,7 +55,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionVersion")]
-    pub function_version: String,
+    pub function_version: cfn_resources::StrVal,
 
     ///
     /// The name of the alias.
@@ -72,7 +72,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Specifies a provisioned concurrency configuration for a function's alias.
@@ -110,75 +110,91 @@ impl cfn_resources::CfnResource for CfnAlias {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.function_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 140 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
+                    "Max validation failed on field 'function_name'. {} is greater than 140",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.function_name;
 
-        if the_val.len() > 140 as _ {
-            return Err(format!(
-                "Max validation failed on field 'function_name'. {} is greater than 140",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.function_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'function_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'function_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.function_version;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'function_version'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'function_version'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.function_version;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'function_version'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'function_version'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.provisioned_concurrency_config
@@ -263,7 +279,7 @@ pub struct VersionWeight {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionVersion")]
-    pub function_version: String,
+    pub function_version: cfn_resources::StrVal,
 
     ///
     /// The percentage of traffic that the alias routes to the second version.

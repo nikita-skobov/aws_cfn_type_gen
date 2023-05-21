@@ -14,7 +14,7 @@ pub struct CfnAppImageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppImageConfigName")]
-    pub app_image_config_name: String,
+    pub app_image_config_name: cfn_resources::StrVal,
 
     ///
     /// The configuration for the file system and kernels in the SageMaker image.
@@ -55,11 +55,13 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.app_image_config_name;
 
-        if the_val.len() > 63 as _ {
-            return Err(format!(
-                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                    s.len()
+                ));
+            }
         }
 
         self.kernel_gateway_image_config
@@ -119,7 +121,7 @@ pub struct FileSystemConfig {
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<String>,
+    pub mount_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FileSystemConfig {
@@ -169,11 +171,13 @@ impl cfn_resources::CfnResource for FileSystemConfig {
         }
 
         if let Some(the_val) = &self.mount_path {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'mount_path'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'mount_path'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -252,7 +256,7 @@ pub struct KernelSpec {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Jupyter kernel in the image. This value is case sensitive.
@@ -265,7 +269,7 @@ pub struct KernelSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KernelSpec {
@@ -279,21 +283,25 @@ impl cfn_resources::CfnResource for KernelSpec {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.display_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'display_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'display_name'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -317,7 +325,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -327,7 +335,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -35,7 +35,7 @@ pub struct CfnJobDefinition {
     /// Update requires: Replacement
     #[serde(rename = "JobDefinitionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_definition_name: Option<String>,
+    pub job_definition_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An object with various properties that are specific to multi-node parallel jobs. Valid  values are containerProperties, eksProperties, and   nodeProperties. Only one can be specified.
@@ -213,7 +213,7 @@ pub struct AuthorizationConfig {
     /// Update requires: No interruption
     #[serde(rename = "AccessPointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub access_point_id: Option<String>,
+    pub access_point_id: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether or not to use the AWS Batch job IAM role defined in a job definition when mounting the  Amazon EFS file system. If enabled, transit encryption must be enabled in the   EFSVolumeConfiguration. If this parameter is omitted, the default value of   DISABLED is used. For more information, see Using Amazon EFS access points in  the         AWS Batch User Guide. EFS IAM authorization requires that   TransitEncryption be ENABLED and that a JobRoleArn is  specified.
@@ -313,7 +313,7 @@ pub struct ContainerProperties {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The platform configuration for jobs that are running on Fargate resources. Jobs that are  running on EC2 resources must not specify this parameter.
@@ -340,7 +340,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     ///
     /// The instance type to use for a multi-node parallel job. All node groups in a multi-node  parallel job must use the same instance type.
@@ -354,7 +354,7 @@ pub struct ContainerProperties {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<String>,
+    pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions. For more  information, see IAM roles for tasks in the   Amazon Elastic Container Service Developer Guide.
@@ -366,7 +366,7 @@ pub struct ContainerProperties {
     /// Update requires: No interruption
     #[serde(rename = "JobRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub job_role_arn: Option<String>,
+    pub job_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Linux-specific modifications that are applied to the container, such as details for device  mappings.
@@ -510,7 +510,7 @@ pub struct ContainerProperties {
     /// Update requires: No interruption
     #[serde(rename = "User")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user: Option<String>,
+    pub user: Option<cfn_resources::StrVal>,
 
     ///
     /// This parameter is deprecated, use resourceRequirements to specify the vCPU  requirements for the job definition. It's not supported for jobs running on Fargate resources.  For jobs running on EC2 resources, it specifies the number of vCPUs reserved for the job.
@@ -586,7 +586,7 @@ pub struct Device {
     /// Update requires: No interruption
     #[serde(rename = "ContainerPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_path: Option<String>,
+    pub container_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The path for the device on the host container instance.
@@ -598,7 +598,7 @@ pub struct Device {
     /// Update requires: No interruption
     #[serde(rename = "HostPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_path: Option<String>,
+    pub host_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The explicit permissions to provide to the container for the device. By default, the  container has permissions for read, write, and mknod for  the device.
@@ -651,7 +651,7 @@ pub struct EfsVolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// The directory within the Amazon EFS file system to mount as the root directory inside the host.  If this parameter is omitted, the root of the Amazon EFS volume is used instead. Specifying   / has the same effect as omitting this parameter. The maximum length is 4,096  characters.
@@ -665,7 +665,7 @@ pub struct EfsVolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RootDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub root_directory: Option<String>,
+    pub root_directory: Option<cfn_resources::StrVal>,
 
     ///
     /// Determines whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and  the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. If  this parameter is omitted, the default value of DISABLED is used. For more  information, see Encrypting data in transit in the Amazon Elastic File System User Guide.
@@ -677,7 +677,7 @@ pub struct EfsVolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryption")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transit_encryption: Option<String>,
+    pub transit_encryption: Option<cfn_resources::StrVal>,
 
     ///
     /// The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server. If  you don't specify a transit encryption port, it uses the port selection strategy that the Amazon EFS  mount helper uses. The value must be between 0 and 65,535. For more information, see EFS mount helper in the   Amazon Elastic File System User Guide.
@@ -764,7 +764,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    pub image: String,
+    pub image: cfn_resources::StrVal,
 
     ///
     /// The image pull policy for the container. Supported values are Always,   IfNotPresent, and Never. This parameter defaults to   IfNotPresent. However, if the :latest tag is specified, it defaults to   Always. For more information, see Updating   images in the Kubernetes documentation.
@@ -776,7 +776,7 @@ pub struct EksContainer {
     /// Update requires: No interruption
     #[serde(rename = "ImagePullPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_pull_policy: Option<String>,
+    pub image_pull_policy: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the container. If the name isn't specified, the default name   "Default" is used. Each container in a pod must have a unique name.
@@ -788,7 +788,7 @@ pub struct EksContainer {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The type and amount of resources to assign to a container. The supported resources include   memory, cpu, and nvidia.com/gpu. For more information,  see Resource management for pods and containers in the Kubernetes   documentation.
@@ -861,7 +861,7 @@ pub struct EksContainerEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The value of the environment variable.
@@ -873,7 +873,7 @@ pub struct EksContainerEnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EksContainerEnvironmentVariable {
@@ -1016,7 +1016,7 @@ pub struct EksContainerVolumeMount {
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<String>,
+    pub mount_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The name the volume mount. This must match the name of one of the volumes in the  pod.
@@ -1028,7 +1028,7 @@ pub struct EksContainerVolumeMount {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// If this value is true, the container has read-only access to the volume.  Otherwise, the container can write to the volume. The default value is false.
@@ -1069,7 +1069,7 @@ pub struct EksEmptyDir {
     /// Update requires: No interruption
     #[serde(rename = "Medium")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub medium: Option<String>,
+    pub medium: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -1080,7 +1080,7 @@ pub struct EksEmptyDir {
     /// Update requires: No interruption
     #[serde(rename = "SizeLimit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub size_limit: Option<String>,
+    pub size_limit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EksEmptyDir {
@@ -1109,7 +1109,7 @@ pub struct EksHostPath {
     /// Update requires: No interruption
     #[serde(rename = "Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub path: Option<String>,
+    pub path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EksHostPath {
@@ -1182,7 +1182,7 @@ pub struct EksSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretName")]
-    pub secret_name: String,
+    pub secret_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EksSecret {
@@ -1235,7 +1235,7 @@ pub struct EksVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Specifies the configuration of a Kubernetes secret volume. For more information, see   secret in the   Kubernetes documentation.
@@ -1287,7 +1287,7 @@ pub struct Environment {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the environment variable.
@@ -1299,7 +1299,7 @@ pub struct Environment {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Environment {
@@ -1372,7 +1372,7 @@ pub struct EvaluateOnExit {
     /// Update requires: No interruption
     #[serde(rename = "OnExitCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_exit_code: Option<String>,
+    pub on_exit_code: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains a glob pattern to match against the Reason returned for a job. The  pattern can contain up to 512 characters. It can contain letters, numbers, periods (.), colons  (:), and white space (including spaces and tabs). It can optionally end with an asterisk (*) so  that only the start of the string needs to be an exact match.
@@ -1384,7 +1384,7 @@ pub struct EvaluateOnExit {
     /// Update requires: No interruption
     #[serde(rename = "OnReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_reason: Option<String>,
+    pub on_reason: Option<cfn_resources::StrVal>,
 
     ///
     /// Contains a glob pattern to match against the StatusReason returned for a job.  The pattern can contain up to 512 characters. It can contain letters, numbers, periods (.),  colons (:), and white spaces (including spaces or tabs).  It can  optionally end with an asterisk (*) so that only the start of the string needs to be an exact  match.
@@ -1396,7 +1396,7 @@ pub struct EvaluateOnExit {
     /// Update requires: No interruption
     #[serde(rename = "OnStatusReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub on_status_reason: Option<String>,
+    pub on_status_reason: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1443,7 +1443,7 @@ pub struct FargatePlatformConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub platform_version: Option<String>,
+    pub platform_version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for FargatePlatformConfiguration {
@@ -1710,7 +1710,7 @@ pub struct MountPoints {
     /// Update requires: No interruption
     #[serde(rename = "ContainerPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_path: Option<String>,
+    pub container_path: Option<cfn_resources::StrVal>,
 
     ///
     /// If this value is true, the container has read-only access to the volume.  Otherwise, the container can write to the volume. The default value is false.
@@ -1734,7 +1734,7 @@ pub struct MountPoints {
     /// Update requires: No interruption
     #[serde(rename = "SourceVolume")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_volume: Option<String>,
+    pub source_volume: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MountPoints {
@@ -1875,7 +1875,7 @@ pub struct NodeRangeProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetNodes")]
-    pub target_nodes: String,
+    pub target_nodes: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for NodeRangeProperty {
@@ -1923,7 +1923,7 @@ pub struct PodProperties {
     /// Update requires: No interruption
     #[serde(rename = "DnsPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dns_policy: Option<String>,
+    pub dns_policy: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates if the pod uses the hosts' network IP address. The default value is   true. Setting this to false enables the Kubernetes pod networking model.  Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each  pod for incoming connections. For more information, see Host   namespaces and Pod networking  in the Kubernetes documentation.
@@ -1958,7 +1958,7 @@ pub struct PodProperties {
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_account_name: Option<String>,
+    pub service_account_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the volumes for a job definition that uses Amazon EKS resources.
@@ -2020,7 +2020,7 @@ pub struct ResourceRequirement {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -2114,7 +2114,7 @@ pub struct Secret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The secret to expose to the container. The supported values are either the full Amazon Resource Name (ARN) of  the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.
@@ -2127,7 +2127,7 @@ pub struct Secret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueFrom")]
-    pub value_from: String,
+    pub value_from: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Secret {
@@ -2190,7 +2190,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPath")]
-    pub container_path: String,
+    pub container_path: cfn_resources::StrVal,
 
     ///
     /// The list of tmpfs volume mount options.
@@ -2255,7 +2255,7 @@ pub struct Ulimit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The soft limit for the ulimit type.
@@ -2322,7 +2322,7 @@ pub struct Volumes {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Volumes {
@@ -2360,7 +2360,7 @@ pub struct VolumesHost {
     /// Update requires: No interruption
     #[serde(rename = "SourcePath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_path: Option<String>,
+    pub source_path: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VolumesHost {

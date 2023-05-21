@@ -22,7 +22,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
+    pub file_system_id: cfn_resources::StrVal,
 
     ///
     /// The name of the SVM.
@@ -39,7 +39,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The security style of the root volume of the SVM. Specify one of the following values:
@@ -67,7 +67,7 @@ pub struct CfnStorageVirtualMachine {
     /// Update requires: No interruption
     #[serde(rename = "SvmAdminPassword")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub svm_admin_password: Option<String>,
+    pub svm_admin_password: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -121,20 +121,24 @@ impl cfn_resources::CfnResource for CfnStorageVirtualMachine {
 
         let the_val = &self.name;
 
-        if the_val.len() > 47 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 47",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 47 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 47",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -160,7 +164,7 @@ pub struct ActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "NetBiosName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub net_bios_name: Option<String>,
+    pub net_bios_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration that Amazon FSx uses to join the ONTAP storage virtual machine       (SVM) to your self-managed (including on-premises) Microsoft Active Directory (AD) directory.
@@ -187,20 +191,24 @@ impl cfn_resources::CfnResource for ActiveDirectoryConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.net_bios_name {
-            if the_val.len() > 15 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'net_bios_name'. {} is greater than 15",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 15 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'net_bios_name'. {} is greater than 15",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.net_bios_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'net_bios_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'net_bios_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -245,7 +253,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_name: Option<String>,
+    pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) The name of the domain group whose members are granted administrative       privileges for the file system. Administrative privileges include taking ownership of       files and folders, setting audit controls (audit ACLs) on files and folders, and               administering the file system remotely by using the FSx Remote PowerShell.       The group that you specify must already exist in your domain. If you don't provide one,       your AD domain's Domain Admins group is used.
@@ -263,7 +271,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub file_system_administrators_group: Option<String>,
+    pub file_system_administrators_group: Option<cfn_resources::StrVal>,
 
     ///
     /// (Optional) The fully qualified distinguished name of the organizational unit within       your self-managed AD directory. Amazon       FSx only accepts OU as the direct parent of the file system. An example is         OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the       FSx file system is created in the default location of your self-managed AD directory.
@@ -283,7 +291,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub organizational_unit_distinguished_name: Option<String>,
+    pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The password for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain.
@@ -301,7 +309,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
+    pub password: Option<cfn_resources::StrVal>,
 
     ///
     /// The user name for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain. This account must have the permission to join       computers to the domain in the organizational unit provided in         OrganizationalUnitDistinguishedName, or in the default location of your       AD domain.
@@ -319,7 +327,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub user_name: Option<String>,
+    pub user_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
@@ -342,80 +350,100 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
         }
 
         if let Some(the_val) = &self.domain_name {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'domain_name'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'domain_name'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.domain_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'domain_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'domain_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_administrators_group {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'file_system_administrators_group'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'file_system_administrators_group'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.file_system_administrators_group {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'file_system_administrators_group'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'file_system_administrators_group'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() > 2000 as _ {
-                return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000 as _ {
+                    return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.organizational_unit_distinguished_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!("Min validation failed on field 'organizational_unit_distinguished_name'. {} is less than 1", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'organizational_unit_distinguished_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'password'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'password'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.password {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'password'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'password'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_name {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'user_name'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'user_name'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.user_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'user_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'user_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -440,7 +468,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -450,7 +478,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

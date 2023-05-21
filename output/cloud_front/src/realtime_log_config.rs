@@ -34,7 +34,7 @@ pub struct CfnRealtimeLogConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The sampling rate for this real-time log configuration. The sampling rate determines 			the percentage of viewer requests that are represented in the real-time log data. The 			sampling rate is an integer between 1 and 100, inclusive.
@@ -85,7 +85,7 @@ pub struct EndPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamType")]
-    pub stream_type: String,
+    pub stream_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EndPoint {
@@ -118,7 +118,7 @@ pub struct KinesisStreamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the Kinesis data stream where you are sending 			real-time log data.
@@ -129,7 +129,7 @@ pub struct KinesisStreamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamArn")]
-    pub stream_arn: String,
+    pub stream_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisStreamConfig {

@@ -10,7 +10,7 @@ pub struct CfnResolverConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutodefinedReverseFlag")]
-    pub autodefined_reverse_flag: String,
+    pub autodefined_reverse_flag: cfn_resources::StrVal,
 
     ///
     /// The ID of the Amazon Virtual Private Cloud VPC that you're configuring Resolver for.
@@ -25,7 +25,7 @@ pub struct CfnResolverConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResolverConfig {
@@ -40,20 +40,24 @@ impl cfn_resources::CfnResource for CfnResolverConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.resource_id;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_id'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_id'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.resource_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

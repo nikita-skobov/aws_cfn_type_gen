@@ -11,7 +11,7 @@ pub struct CfnImage {
     /// Update requires: Replacement
     #[serde(rename = "ContainerRecipeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_recipe_arn: Option<String>,
+    pub container_recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the distribution configuration.
@@ -25,7 +25,7 @@ pub struct CfnImage {
     /// Update requires: Replacement
     #[serde(rename = "DistributionConfigurationArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub distribution_configuration_arn: Option<String>,
+    pub distribution_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether Image Builder collects additional information about the image, such as the 			operating system (OS) version and package list.
@@ -51,7 +51,7 @@ pub struct CfnImage {
     /// Update requires: Replacement
     #[serde(rename = "ImageRecipeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_recipe_arn: Option<String>,
+    pub image_recipe_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -85,7 +85,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InfrastructureConfigurationArn")]
-    pub infrastructure_configuration_arn: String,
+    pub infrastructure_configuration_arn: cfn_resources::StrVal,
 
     ///
     /// The tags of the image.
@@ -145,7 +145,7 @@ pub struct EcrConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub repository_name: Option<String>,
+    pub repository_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for EcrConfiguration {

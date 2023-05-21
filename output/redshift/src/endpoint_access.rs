@@ -12,7 +12,7 @@ pub struct CfnEndpointAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    pub cluster_identifier: cfn_resources::StrVal,
 
     ///
     /// The name of the endpoint.
@@ -25,7 +25,7 @@ pub struct CfnEndpointAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
+    pub endpoint_name: cfn_resources::StrVal,
 
     ///
     /// The AWS account ID of the owner of the cluster.
@@ -39,7 +39,7 @@ pub struct CfnEndpointAccess {
     /// Update requires: Replacement
     #[serde(rename = "ResourceOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_owner: Option<String>,
+    pub resource_owner: Option<cfn_resources::StrVal>,
 
     ///
     /// The subnet group name where Amazon Redshift chooses to deploy the endpoint.
@@ -52,7 +52,7 @@ pub struct CfnEndpointAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: String,
+    pub subnet_group_name: cfn_resources::StrVal,
 
     ///
     /// The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
@@ -78,32 +78,37 @@ impl cfn_resources::CfnResource for CfnEndpointAccess {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.cluster_identifier;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         let the_val = &self.endpoint_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_name'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_name'. {} is greater than 2147483647",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.resource_owner {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'resource_owner'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'resource_owner'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         let the_val = &self.subnet_group_name;
 
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!(
-                "Max validation failed on field 'subnet_group_name'. {} is greater than 2147483647",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'subnet_group_name'. {} is greater than 2147483647", s.len()));
+            }
         }
 
         Ok(())
@@ -125,7 +130,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The network interface identifier.
@@ -139,7 +144,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 address of the network interface within the subnet.
@@ -153,7 +158,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The subnet identifier.
@@ -167,7 +172,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NetworkInterface {
@@ -181,29 +186,37 @@ impl cfn_resources::CfnResource for NetworkInterface {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.availability_zone {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.network_interface_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'network_interface_id'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'network_interface_id'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.private_ip_address {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'private_ip_address'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'private_ip_address'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.subnet_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subnet_id'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subnet_id'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -238,7 +251,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The VPC identifier that the endpoint is associated.
@@ -252,7 +265,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcEndpoint {
@@ -266,17 +279,21 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.vpc_endpoint_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.vpc_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'vpc_id'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'vpc_id'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -299,7 +316,7 @@ pub struct VpcSecurityGroup {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the VPC security group.
@@ -313,7 +330,7 @@ pub struct VpcSecurityGroup {
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_security_group_id: Option<String>,
+    pub vpc_security_group_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcSecurityGroup {
@@ -327,17 +344,21 @@ impl cfn_resources::CfnResource for VpcSecurityGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.status {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'status'. {} is greater than 2147483647",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'status'. {} is greater than 2147483647",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.vpc_security_group_id {
-            if the_val.len() > 2147483647 as _ {
-                return Err(format!("Max validation failed on field 'vpc_security_group_id'. {} is greater than 2147483647", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2147483647 as _ {
+                    return Err(format!("Max validation failed on field 'vpc_security_group_id'. {} is greater than 2147483647", s.len()));
+                }
             }
         }
 

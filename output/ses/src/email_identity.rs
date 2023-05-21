@@ -52,7 +52,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EmailIdentity")]
-    pub email_identity: String,
+    pub email_identity: cfn_resources::StrVal,
 
     ///
     /// Used to enable or disable feedback forwarding for an identity.
@@ -126,7 +126,7 @@ pub struct ConfigurationSetAttributes {
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSetName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub configuration_set_name: Option<String>,
+    pub configuration_set_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConfigurationSetAttributes {
@@ -192,7 +192,7 @@ pub struct DkimSigningAttributes {
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningPrivateKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_signing_private_key: Option<String>,
+    pub domain_signing_private_key: Option<cfn_resources::StrVal>,
 
     ///
     /// [Bring Your Own DKIM] A string that's used to identify a public key in the DNS       configuration for a domain.
@@ -204,7 +204,7 @@ pub struct DkimSigningAttributes {
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningSelector")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain_signing_selector: Option<String>,
+    pub domain_signing_selector: Option<cfn_resources::StrVal>,
 
     ///
     /// [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be       changed at most once per day.
@@ -317,7 +317,7 @@ pub struct MailFromAttributes {
     /// Update requires: No interruption
     #[serde(rename = "MailFromDomain")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mail_from_domain: Option<String>,
+    pub mail_from_domain: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

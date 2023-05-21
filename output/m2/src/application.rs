@@ -30,7 +30,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of the target platform for this application.
@@ -55,7 +55,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the application.
@@ -68,7 +68,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -115,20 +115,24 @@ impl cfn_resources::CfnResource for CfnApplication {
         self.definition.validate()?;
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -153,7 +157,7 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "Content")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content: Option<String>,
+    pub content: Option<cfn_resources::StrVal>,
 
     ///
     /// The S3 bucket that contains the application definition.
@@ -167,7 +171,7 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_location: Option<String>,
+    pub s3_location: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Definition {
@@ -181,20 +185,24 @@ impl cfn_resources::CfnResource for Definition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.content {
-            if the_val.len() > 65000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'content'. {} is greater than 65000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 65000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'content'. {} is greater than 65000",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.content {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'content'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'content'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

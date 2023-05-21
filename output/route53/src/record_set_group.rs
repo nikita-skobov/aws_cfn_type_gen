@@ -13,7 +13,7 @@ pub struct CfnRecordSetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    pub comment: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the hosted zone that you want to create records in.
@@ -29,7 +29,7 @@ pub struct CfnRecordSetGroup {
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part       of the HostedZoneName.
@@ -47,7 +47,7 @@ pub struct CfnRecordSetGroup {
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_name: Option<String>,
+    pub hosted_zone_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A complex type that contains one RecordSet element for each record that you want to create.
@@ -73,29 +73,32 @@ impl cfn_resources::CfnResource for CfnRecordSetGroup {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.comment {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'comment'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'comment'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.hosted_zone_id {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.hosted_zone_name {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'hosted_zone_name'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!("Max validation failed on field 'hosted_zone_name'. {} is greater than 1024", s.len()));
+                }
             }
         }
 
@@ -121,7 +124,7 @@ pub struct AliasTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DNSName")]
-    pub dnsname: String,
+    pub dnsname: cfn_resources::StrVal,
 
     ///
     /// Applies only to alias, failover alias, geolocation alias, latency alias, and 				weighted alias resource record sets: When 				EvaluateTargetHealth is true, an alias resource record set 			inherits the health of the referenced AWS resource, such as an ELB load 			balancer or another resource record set in the hosted zone.
@@ -154,7 +157,7 @@ pub struct AliasTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: String,
+    pub hosted_zone_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AliasTarget {
@@ -169,20 +172,24 @@ impl cfn_resources::CfnResource for AliasTarget {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.dnsname;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'dnsname'. {} is greater than 1024",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'dnsname'. {} is greater than 1024",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.hosted_zone_id;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -205,7 +212,7 @@ pub struct CidrRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionId")]
-    pub collection_id: String,
+    pub collection_id: cfn_resources::StrVal,
 
     ///
     /// The CIDR collection location name.
@@ -222,7 +229,7 @@ pub struct CidrRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationName")]
-    pub location_name: String,
+    pub location_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CidrRoutingConfig {
@@ -237,20 +244,24 @@ impl cfn_resources::CfnResource for CidrRoutingConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.location_name;
 
-        if the_val.len() > 16 as _ {
-            return Err(format!(
-                "Max validation failed on field 'location_name'. {} is greater than 16",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 16 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location_name'. {} is greater than 16",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.location_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'location_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'location_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -278,7 +289,7 @@ pub struct GeoLocation {
     /// Update requires: No interruption
     #[serde(rename = "ContinentCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub continent_code: Option<String>,
+    pub continent_code: Option<cfn_resources::StrVal>,
 
     ///
     /// For geolocation resource record sets, the two-letter code for a country.
@@ -296,7 +307,7 @@ pub struct GeoLocation {
     /// Update requires: No interruption
     #[serde(rename = "CountryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub country_code: Option<String>,
+    pub country_code: Option<cfn_resources::StrVal>,
 
     ///
     /// For geolocation resource record sets, the two-letter code for a state of the United States. 			Route 53 doesn't support any other values for SubdivisionCode. For a list of state abbreviations, see 			Appendix B: Two–Letter State and Possession Abbreviations 			on the United States Postal Service website.
@@ -314,7 +325,7 @@ pub struct GeoLocation {
     /// Update requires: No interruption
     #[serde(rename = "SubdivisionCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subdivision_code: Option<String>,
+    pub subdivision_code: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for GeoLocation {
@@ -328,56 +339,68 @@ impl cfn_resources::CfnResource for GeoLocation {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.continent_code {
-            if the_val.len() > 2 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'continent_code'. {} is greater than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'continent_code'. {} is greater than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.continent_code {
-            if the_val.len() < 2 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'continent_code'. {} is less than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 2 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'continent_code'. {} is less than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.country_code {
-            if the_val.len() > 2 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'country_code'. {} is greater than 2",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'country_code'. {} is greater than 2",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.country_code {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'country_code'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'country_code'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdivision_code {
-            if the_val.len() > 3 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'subdivision_code'. {} is greater than 3",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 3 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'subdivision_code'. {} is greater than 3",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.subdivision_code {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'subdivision_code'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'subdivision_code'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -512,7 +535,7 @@ pub struct RecordSet {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_id: Option<String>,
+    pub health_check_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the hosted zone that you want to create records in.
@@ -528,7 +551,7 @@ pub struct RecordSet {
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_id: Option<String>,
+    pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
@@ -546,7 +569,7 @@ pub struct RecordSet {
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hosted_zone_name: Option<String>,
+    pub hosted_zone_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Multivalue answer resource record sets only: To route traffic 			approximately randomly to multiple resources, such as web servers, create one multivalue 			answer record for each resource and specify true for 				MultiValueAnswer. Note the following:
@@ -587,7 +610,7 @@ pub struct RecordSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Latency-based resource record sets only: The Amazon EC2 Region 			where you created the resource that this resource record set refers to. The resource 			typically is an AWS resource, such as an EC2 instance or an ELB load 			balancer, and is referred to by an IP address or a DNS domain name, depending on the 			record type.
@@ -641,7 +664,7 @@ pub struct RecordSet {
     /// Update requires: No interruption
     #[serde(rename = "SetIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub set_identifier: Option<String>,
+    pub set_identifier: Option<cfn_resources::StrVal>,
 
     ///
     /// The resource record cache time to live (TTL), in seconds. Note the following:
@@ -655,7 +678,7 @@ pub struct RecordSet {
     /// Update requires: No interruption
     #[serde(rename = "TTL")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ttl: Option<String>,
+    pub ttl: Option<cfn_resources::StrVal>,
 
     ///
     /// The DNS record type. For information about different record types and how data is 			encoded for them, see Supported DNS Resource 				Record Types in the Amazon Route 53 Developer 			Guide.
@@ -903,56 +926,68 @@ impl cfn_resources::CfnResource for RecordSet {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.health_check_id {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'health_check_id'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'health_check_id'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.hosted_zone_id {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'hosted_zone_id'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.hosted_zone_name {
-            if the_val.len() > 32 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'hosted_zone_name'. {} is greater than 32",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'hosted_zone_name'. {} is greater than 32",
+                        s.len()
+                    ));
+                }
             }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1024",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.set_identifier {
-            if the_val.len() > 128 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'set_identifier'. {} is greater than 128",
-                    the_val.len()
+                    "Max validation failed on field 'name'. {} is greater than 1024",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.set_identifier {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'set_identifier'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 128 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'set_identifier'. {} is greater than 128",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.set_identifier {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'set_identifier'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 

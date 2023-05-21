@@ -27,7 +27,7 @@ pub struct CfnObservabilityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ObservabilityConfigurationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub observability_configuration_name: Option<String>,
+    pub observability_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.
@@ -65,14 +65,18 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.observability_configuration_name {
-            if the_val.len() > 32 as _ {
-                return Err(format!("Max validation failed on field 'observability_configuration_name'. {} is greater than 32", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 32 as _ {
+                    return Err(format!("Max validation failed on field 'observability_configuration_name'. {} is greater than 32", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.observability_configuration_name {
-            if the_val.len() < 4 as _ {
-                return Err(format!("Min validation failed on field 'observability_configuration_name'. {} is less than 4", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 4 as _ {
+                    return Err(format!("Min validation failed on field 'observability_configuration_name'. {} is less than 4", s.len()));
+                }
             }
         }
 
@@ -101,7 +105,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -111,7 +115,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

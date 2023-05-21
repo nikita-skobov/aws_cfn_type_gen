@@ -25,7 +25,7 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "GrantName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub grant_name: Option<String>,
+    pub grant_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Home Region of the grant.
@@ -37,7 +37,7 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub home_region: Option<String>,
+    pub home_region: Option<cfn_resources::StrVal>,
 
     ///
     /// License ARN.
@@ -49,7 +49,7 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "LicenseArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub license_arn: Option<String>,
+    pub license_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The grant principals. You can specify one of the following as an Amazon Resource Name     (ARN):
@@ -79,7 +79,7 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnGrant {

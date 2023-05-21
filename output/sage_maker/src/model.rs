@@ -44,7 +44,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: String,
+    pub execution_role_arn: cfn_resources::StrVal,
 
     ///
     /// Specifies details of how containers in a multi-container endpoint are called.
@@ -72,7 +72,7 @@ pub struct CfnModel {
     /// Update requires: Replacement
     #[serde(rename = "ModelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_name: Option<String>,
+    pub model_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The location of the primary docker image containing inference code, associated       artifacts, and custom environment map that the inference code uses when the model is       deployed for predictions.
@@ -136,20 +136,24 @@ impl cfn_resources::CfnResource for CfnModel {
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.execution_role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'execution_role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'execution_role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         self.inference_execution_config
@@ -157,11 +161,13 @@ impl cfn_resources::CfnResource for CfnModel {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model_name {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_name'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'model_name'. {} is greater than 63",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -205,7 +211,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "ContainerHostname")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub container_hostname: Option<String>,
+    pub container_hostname: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment variables to set in the Docker container. Each key and value in the         Environment string to string map can have length of up to 1024. We       support up to 16 entries in the map.
@@ -235,7 +241,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Image")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image: Option<String>,
+    pub image: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a       private Docker registry, see Use a         Private Docker Registry for Real-Time Inference Containers.
@@ -261,7 +267,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "InferenceSpecificationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub inference_specification_name: Option<String>,
+    pub inference_specification_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether the container hosts a single model or multiple models.
@@ -297,7 +303,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_data_url: Option<String>,
+    pub model_data_url: Option<cfn_resources::StrVal>,
 
     ///
     /// The name or Amazon Resource Name (ARN) of the model package to use to create the       model.
@@ -315,7 +321,7 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_package_name: Option<String>,
+    pub model_package_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies additional configuration for multi-model endpoints.
@@ -358,20 +364,21 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.container_hostname {
-            if the_val.len() > 63 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'container_hostname'. {} is greater than 63",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 63 as _ {
+                    return Err(format!("Max validation failed on field 'container_hostname'. {} is greater than 63", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.image {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'image'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'image'. {} is greater than 255",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -380,29 +387,32 @@ impl cfn_resources::CfnResource for ContainerDefinition {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model_data_url {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_data_url'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'model_data_url'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_name {
-            if the_val.len() > 176 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'model_package_name'. {} is greater than 176",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 176 as _ {
+                    return Err(format!("Max validation failed on field 'model_package_name'. {} is greater than 176", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.model_package_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'model_package_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'model_package_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -494,7 +504,7 @@ pub struct InferenceExecutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
-    pub mode: String,
+    pub mode: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for InferenceExecutionConfig {
@@ -524,7 +534,7 @@ pub struct MultiModelConfig {
     /// Update requires: Replacement
     #[serde(rename = "ModelCacheSetting")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub model_cache_setting: Option<String>,
+    pub model_cache_setting: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for MultiModelConfig {
@@ -559,7 +569,7 @@ pub struct RepositoryAuthConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryCredentialsProviderArn")]
-    pub repository_credentials_provider_arn: String,
+    pub repository_credentials_provider_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for RepositoryAuthConfig {
@@ -574,14 +584,18 @@ impl cfn_resources::CfnResource for RepositoryAuthConfig {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.repository_credentials_provider_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'repository_credentials_provider_arn'. {} is greater than 2048", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'repository_credentials_provider_arn'. {} is greater than 2048", s.len()));
+            }
         }
 
         let the_val = &self.repository_credentials_provider_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'repository_credentials_provider_arn'. {} is less than 1", the_val.len()));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'repository_credentials_provider_arn'. {} is less than 1", s.len()));
+            }
         }
 
         Ok(())
@@ -605,7 +619,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -615,7 +629,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

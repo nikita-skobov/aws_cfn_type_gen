@@ -11,7 +11,7 @@ pub struct CfnConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationStrategy")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub authentication_strategy: Option<String>,
+    pub authentication_strategy: Option<cfn_resources::StrVal>,
 
     ///
     /// The base64-encoded XML configuration.
@@ -22,7 +22,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    pub data: String,
+    pub data: cfn_resources::StrVal,
 
     ///
     /// The description of the configuration.
@@ -34,7 +34,7 @@ pub struct CfnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of broker engine. Note: Currently, Amazon MQ only supports ACTIVEMQ for creating and editing broker configurations.
@@ -45,7 +45,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineType")]
-    pub engine_type: String,
+    pub engine_type: cfn_resources::StrVal,
 
     ///
     /// The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
@@ -56,7 +56,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
-    pub engine_version: String,
+    pub engine_version: cfn_resources::StrVal,
 
     ///
     /// The name of the configuration. This value can contain only alphanumeric characters,    dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters    long.
@@ -67,7 +67,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// Create tags when creating the configuration.
@@ -108,7 +108,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value in a key-value pair.
@@ -119,7 +119,7 @@ pub struct TagsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TagsEntry {

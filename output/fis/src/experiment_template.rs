@@ -30,7 +30,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    pub description: String,
+    pub description: cfn_resources::StrVal,
 
     ///
     /// The configuration for experiment logging.
@@ -59,7 +59,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The stop conditions.
@@ -107,11 +107,13 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.description;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'description'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         self.log_configuration
@@ -120,20 +122,24 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -151,7 +157,7 @@ pub struct CloudWatchLogsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    pub log_group_arn: String,
+    pub log_group_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogsConfiguration {
@@ -186,7 +192,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionId")]
-    pub action_id: String,
+    pub action_id: cfn_resources::StrVal,
 
     ///
     /// A description for the action.
@@ -202,7 +208,7 @@ pub struct ExperimentTemplateAction {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The parameters for the action, if applicable.
@@ -253,19 +259,23 @@ impl cfn_resources::CfnResource for ExperimentTemplateAction {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.action_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'action_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'action_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -362,7 +372,7 @@ pub struct ExperimentTemplateStopCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    pub source: String,
+    pub source: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch alarm. This is required if the source is     a CloudWatch alarm.
@@ -380,7 +390,7 @@ pub struct ExperimentTemplateStopCondition {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
@@ -395,28 +405,34 @@ impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.source;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source'. {} is greater than 64",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.value {
-            if the_val.len() > 2048 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 2048",
-                    the_val.len()
+                    "Max validation failed on field 'source'. {} is greater than 64",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'value'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.value {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'value'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -492,7 +508,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: cfn_resources::StrVal,
 
     ///
     /// Scopes the identified resources to a specific count of the resources at random, or a percentage of the resources. All identified resources are included in the target.
@@ -509,7 +525,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectionMode")]
-    pub selection_mode: String,
+    pub selection_mode: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ExperimentTemplateTarget {
@@ -533,20 +549,24 @@ impl cfn_resources::CfnResource for ExperimentTemplateTarget {
 
         let the_val = &self.resource_type;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_type'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_type'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.selection_mode;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'selection_mode'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'selection_mode'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -571,7 +591,7 @@ pub struct ExperimentTemplateTargetFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    pub path: String,
+    pub path: cfn_resources::StrVal,
 
     ///
     /// The attribute values for the filter.
@@ -597,11 +617,13 @@ impl cfn_resources::CfnResource for ExperimentTemplateTargetFilter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.path;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'path'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -619,7 +641,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -630,7 +652,7 @@ pub struct S3Configuration {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for S3Configuration {

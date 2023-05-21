@@ -11,7 +11,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CACertificatePem")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cacertificate_pem: Option<String>,
+    pub cacertificate_pem: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies which mode of certificate registration to use with this resource. Valid options are DEFAULT with CaCertificatePem and CertificatePem, SNI_ONLY with CertificatePem, and Default with CertificateSigningRequest.
@@ -27,7 +27,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_mode: Option<String>,
+    pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
@@ -39,7 +39,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificatePem")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_pem: Option<String>,
+    pub certificate_pem: Option<cfn_resources::StrVal>,
 
     ///
     /// The certificate signing request (CSR).
@@ -51,7 +51,7 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "CertificateSigningRequest")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub certificate_signing_request: Option<String>,
+    pub certificate_signing_request: Option<cfn_resources::StrVal>,
 
     ///
     /// The status of the certificate.
@@ -66,7 +66,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnCertificate {

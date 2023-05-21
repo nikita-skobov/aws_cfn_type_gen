@@ -87,7 +87,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    pub region: String,
+    pub region: cfn_resources::StrVal,
 
     ///
     /// The AWS account ID of the Amazon ECR private registry to replicate to. When configuring       cross-Region replication within your own registry, specify your own account ID.
@@ -100,7 +100,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
-    pub registry_id: String,
+    pub registry_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ReplicationDestination {
@@ -115,20 +115,24 @@ impl cfn_resources::CfnResource for ReplicationDestination {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.region;
 
-        if the_val.len() > 25 as _ {
-            return Err(format!(
-                "Max validation failed on field 'region'. {} is greater than 25",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 25 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'region'. {} is greater than 25",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.region;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'region'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'region'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -216,7 +220,7 @@ pub struct RepositoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    pub filter: String,
+    pub filter: cfn_resources::StrVal,
 
     ///
     /// The repository filter type. The only supported value is PREFIX_MATCH,       which is a repository name prefix specified with the filter       parameter.
@@ -257,20 +261,24 @@ impl cfn_resources::CfnResource for RepositoryFilter {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.filter;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'filter'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'filter'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.filter;
 
-        if the_val.len() < 2 as _ {
-            return Err(format!(
-                "Min validation failed on field 'filter'. {} is less than 2",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'filter'. {} is less than 2",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

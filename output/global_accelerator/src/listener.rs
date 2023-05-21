@@ -12,7 +12,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorArn")]
-    pub accelerator_arn: String,
+    pub accelerator_arn: cfn_resources::StrVal,
 
     ///
     /// Client affinity lets you direct all requests from a user to the same endpoint, if you have stateful applications, 			regardless of the port and protocol of the client request. Client affinity gives you control over whether to always 			route each client to the same specific endpoint.
@@ -107,11 +107,13 @@ impl cfn_resources::CfnResource for CfnListener {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.accelerator_arn;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'accelerator_arn'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'accelerator_arn'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.port_ranges;

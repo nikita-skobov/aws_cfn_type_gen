@@ -52,7 +52,7 @@ pub struct CfnView {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ViewName")]
-    pub view_name: String,
+    pub view_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnView {
@@ -82,7 +82,7 @@ pub struct Filters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterString")]
-    pub filter_string: String,
+    pub filter_string: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Filters {
@@ -115,7 +115,7 @@ pub struct IncludedProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for IncludedProperty {
@@ -130,20 +130,24 @@ impl cfn_resources::CfnResource for IncludedProperty {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.name;
 
-        if the_val.len() > 1011 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 1011",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 1011",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

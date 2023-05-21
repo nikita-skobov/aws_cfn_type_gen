@@ -12,7 +12,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ChannelId")]
-    pub channel_id: String,
+    pub channel_id: cfn_resources::StrVal,
 
     ///
     /// The channel name in Slack. This is the channel where you invite the AWS Support App.
@@ -24,7 +24,7 @@ pub struct CfnSlackChannelConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ChannelName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub channel_name: Option<String>,
+    pub channel_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role for this Slack channel       configuration. The AWS Support App uses this role to perform AWS Support and Service Quotas actions on your behalf.
@@ -35,7 +35,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelRoleArn")]
-    pub channel_role_arn: String,
+    pub channel_role_arn: cfn_resources::StrVal,
 
     ///
     /// Whether to get notified when a correspondence is added to your support cases.
@@ -58,7 +58,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnCaseSeverity")]
-    pub notify_on_case_severity: String,
+    pub notify_on_case_severity: cfn_resources::StrVal,
 
     ///
     /// Whether to get notified when your support cases are created or reopened
@@ -93,7 +93,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TeamId")]
-    pub team_id: String,
+    pub team_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnSlackChannelConfiguration {

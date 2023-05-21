@@ -10,7 +10,7 @@ pub struct CfnAttributeGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Application")]
-    pub application: String,
+    pub application: cfn_resources::StrVal,
 
     ///
     /// The name or ID      of the attribute group      that holds the attributes      to describe the application.
@@ -21,7 +21,7 @@ pub struct CfnAttributeGroupAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AttributeGroup")]
-    pub attribute_group: String,
+    pub attribute_group: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnAttributeGroupAssociation {

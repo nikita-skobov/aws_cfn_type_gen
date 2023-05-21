@@ -47,7 +47,7 @@ pub struct CfnWorkgroup {
     /// Update requires: Replacement
     #[serde(rename = "NamespaceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_name: Option<String>,
+    pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The custom port to use when connecting to a workgroup. Valid port ranges are 5431-5455 and 8191-8215.    The default is 5439.
@@ -118,7 +118,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkgroupName")]
-    pub workgroup_name: String,
+    pub workgroup_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnWorkgroup {
@@ -148,7 +148,7 @@ pub struct ConfigParameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_key: Option<String>,
+    pub parameter_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the parameter to set.
@@ -160,7 +160,7 @@ pub struct ConfigParameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameter_value: Option<String>,
+    pub parameter_value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ConfigParameter {
@@ -190,7 +190,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    pub address: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that Amazon Redshift Serverless listens on.
@@ -244,7 +244,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique identifier of the network interface.
@@ -256,7 +256,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub network_interface_id: Option<String>,
+    pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The IPv4 address of the network interface within the subnet.
@@ -268,7 +268,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ip_address: Option<String>,
+    pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique identifier of the subnet.
@@ -280,7 +280,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub subnet_id: Option<String>,
+    pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NetworkInterface {
@@ -314,7 +314,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -324,7 +324,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -366,7 +366,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_endpoint_id: Option<String>,
+    pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The VPC identifier that the endpoint is associated with.
@@ -378,7 +378,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub vpc_id: Option<String>,
+    pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for VpcEndpoint {
@@ -432,7 +432,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "CreationDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub creation_date: Option<String>,
+    pub creation_date: Option<cfn_resources::StrVal>,
 
     ///
     /// The endpoint that is created from the workgroup.
@@ -468,7 +468,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "NamespaceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub namespace_name: Option<String>,
+    pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A value that specifies whether the workgroup    can be accessible from a public network
@@ -504,7 +504,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of subnet IDs the workgroup is associated with.
@@ -528,7 +528,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workgroup_arn: Option<String>,
+    pub workgroup_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The unique identifier of the workgroup.
@@ -540,7 +540,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workgroup_id: Option<String>,
+    pub workgroup_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the workgroup.
@@ -552,7 +552,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub workgroup_name: Option<String>,
+    pub workgroup_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Workgroup {

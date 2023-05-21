@@ -26,7 +26,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointGroupRegion")]
-    pub endpoint_group_region: String,
+    pub endpoint_group_region: cfn_resources::StrVal,
 
     ///
     /// The time—10 seconds or 30 seconds—between health checks for each endpoint. The default value is 30.
@@ -58,7 +58,7 @@ pub struct CfnEndpointGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub health_check_path: Option<String>,
+    pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The port that Global Accelerator uses to perform health checks on endpoints that are part of this endpoint group.
@@ -103,7 +103,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
+    pub listener_arn: cfn_resources::StrVal,
 
     ///
     /// Allows you to override the destination ports used to route traffic to an endpoint. 			Using a port override lets you map a list of external destination ports (that your 			users send traffic to) to a list of internal destination ports that you want an application 			endpoint to receive traffic on.
@@ -191,11 +191,10 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 
         let the_val = &self.endpoint_group_region;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_group_region'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!("Max validation failed on field 'endpoint_group_region'. {} is greater than 255", s.len()));
+            }
         }
 
         if let Some(the_val) = &self.health_check_interval_seconds {
@@ -211,11 +210,10 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
         }
 
         if let Some(the_val) = &self.health_check_path {
-            if the_val.len() > 255 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'health_check_path'. {} is greater than 255",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 255 as _ {
+                    return Err(format!("Max validation failed on field 'health_check_path'. {} is greater than 255", s.len()));
+                }
             }
         }
 
@@ -239,11 +237,13 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 
         let the_val = &self.listener_arn;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'listener_arn'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'listener_arn'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.port_overrides {
@@ -309,7 +309,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointId")]
-    pub endpoint_id: String,
+    pub endpoint_id: cfn_resources::StrVal,
 
     ///
     /// The weight associated with the endpoint. When you add weights to endpoints, you configure Global Accelerator to route traffic 			based on proportions that you specify. For example, you might specify endpoint weights of 4, 5, 5, and 6 (sum=20). The 			result is that 4/20 of your traffic, on average, is routed to the first endpoint, 5/20 is routed both to the second 			and third endpoints, and 6/20 is routed to the last endpoint. For more information, see Endpoint Weights in the 		    	AWS Global Accelerator Developer Guide.
@@ -340,11 +340,13 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.endpoint_id;
 
-        if the_val.len() > 255 as _ {
-            return Err(format!(
-                "Max validation failed on field 'endpoint_id'. {} is greater than 255",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_id'. {} is greater than 255",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.weight {

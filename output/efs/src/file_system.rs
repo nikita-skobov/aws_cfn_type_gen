@@ -19,7 +19,7 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone_name: Option<String>,
+    pub availability_zone_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Use the BackupPolicy to turn automatic backups on or off for the file system.
@@ -105,7 +105,7 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
     /// An array of LifecyclePolicy objects that define the file system's     LifecycleConfiguration object. A LifecycleConfiguration object    informs EFS lifecycle management and intelligent tiering of the following:
@@ -219,17 +219,18 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.availability_zone_name {
-            if the_val.len() > 64 as _ {
-                return Err(format!("Max validation failed on field 'availability_zone_name'. {} is greater than 64", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!("Max validation failed on field 'availability_zone_name'. {} is greater than 64", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.availability_zone_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'availability_zone_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'availability_zone_name'. {} is less than 1", s.len()));
+                }
             }
         }
 
@@ -238,11 +239,13 @@ impl cfn_resources::CfnResource for CfnFileSystem {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.kms_key_id {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -335,7 +338,7 @@ pub struct ElasticFileSystemTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value of the tag key.
@@ -350,7 +353,7 @@ pub struct ElasticFileSystemTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ElasticFileSystemTag {
@@ -365,29 +368,35 @@ impl cfn_resources::CfnResource for ElasticFileSystemTag {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.key;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'key'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.key;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'key'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.value;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'value'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'value'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

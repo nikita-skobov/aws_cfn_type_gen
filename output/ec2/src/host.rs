@@ -26,7 +26,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    pub availability_zone: cfn_resources::StrVal,
 
     ///
     /// Indicates whether host maintenance is enabled or disabled for the Dedicated       Host.
@@ -68,7 +68,7 @@ pub struct CfnHost {
     /// Update requires: Replacement
     #[serde(rename = "InstanceFamily")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_family: Option<String>,
+    pub instance_family: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an     instance type, the Dedicated Hosts support instances of the specified instance type     only.
@@ -80,7 +80,7 @@ pub struct CfnHost {
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<String>,
+    pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the AWS Outpost on which the       Dedicated Host is allocated.
@@ -92,7 +92,7 @@ pub struct CfnHost {
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub outpost_arn: Option<String>,
+    pub outpost_arn: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]

@@ -15,7 +15,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The event buses being used by the endpoint.
@@ -46,7 +46,7 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// Whether event replication was enabled or disabled for this endpoint. The default state is ENABLED which means you must supply a RoleArn.     If you don't have a RoleArn or you don't want event replication enabled, set the state to DISABLED.
@@ -76,7 +76,7 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub role_arn: Option<String>,
+    pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The routing configuration of the endpoint.
@@ -101,29 +101,35 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -132,20 +138,24 @@ impl cfn_resources::CfnResource for CfnEndpoint {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'role_arn'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'role_arn'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.role_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'role_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'role_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -173,7 +183,7 @@ pub struct EndpointEventBus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBusArn")]
-    pub event_bus_arn: String,
+    pub event_bus_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EndpointEventBus {
@@ -188,20 +198,24 @@ impl cfn_resources::CfnResource for EndpointEventBus {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.event_bus_arn;
 
-        if the_val.len() > 512 as _ {
-            return Err(format!(
-                "Max validation failed on field 'event_bus_arn'. {} is greater than 512",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'event_bus_arn'. {} is greater than 512",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.event_bus_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'event_bus_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'event_bus_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -270,7 +284,7 @@ pub struct Primary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
-    pub health_check: String,
+    pub health_check: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Primary {
@@ -285,20 +299,24 @@ impl cfn_resources::CfnResource for Primary {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.health_check;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'health_check'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'health_check'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.health_check;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'health_check'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'health_check'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -402,7 +420,7 @@ pub struct Secondary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Route")]
-    pub route: String,
+    pub route: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Secondary {
@@ -417,20 +435,24 @@ impl cfn_resources::CfnResource for Secondary {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.route;
 
-        if the_val.len() > 20 as _ {
-            return Err(format!(
-                "Max validation failed on field 'route'. {} is greater than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'route'. {} is greater than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.route;
 
-        if the_val.len() < 9 as _ {
-            return Err(format!(
-                "Min validation failed on field 'route'. {} is less than 9",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 9 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'route'. {} is less than 9",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

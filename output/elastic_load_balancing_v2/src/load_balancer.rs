@@ -41,7 +41,7 @@ pub struct CfnLoadBalancer {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an    Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes.    Therefore, Internet-facing load balancers can route requests from clients over the    internet.
@@ -250,7 +250,7 @@ pub struct LoadBalancerAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: Option<String>,
+    pub key: Option<cfn_resources::StrVal>,
 
     ///
     /// The value of the attribute.
@@ -264,7 +264,7 @@ pub struct LoadBalancerAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoadBalancerAttribute {
@@ -278,20 +278,24 @@ impl cfn_resources::CfnResource for LoadBalancerAttribute {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.key {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'key'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'key'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.value {
-            if the_val.len() > 1024 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'value'. {} is greater than 1024",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1024 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'value'. {} is greater than 1024",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -312,7 +316,7 @@ pub struct SubnetMapping {
     /// Update requires: No interruption
     #[serde(rename = "AllocationId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub allocation_id: Option<String>,
+    pub allocation_id: Option<cfn_resources::StrVal>,
 
     ///
     /// [Network Load Balancers] The IPv6 address.
@@ -324,7 +328,7 @@ pub struct SubnetMapping {
     /// Update requires: No interruption
     #[serde(rename = "IPv6Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_address: Option<String>,
+    pub ipv6_address: Option<cfn_resources::StrVal>,
 
     ///
     /// [Network Load Balancers] The private IPv4 address for an internal load balancer.
@@ -336,7 +340,7 @@ pub struct SubnetMapping {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIPv4Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_ipv4_address: Option<String>,
+    pub private_ipv4_address: Option<cfn_resources::StrVal>,
 
     ///
     /// The ID of the subnet.
@@ -347,7 +351,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    pub subnet_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SubnetMapping {
@@ -381,7 +385,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -391,7 +395,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -15,7 +15,7 @@ pub struct CfnStream {
     /// Update requires: Replacement
     #[serde(rename = "ExclusiveEndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_end_time: Option<String>,
+    pub exclusive_end_time: Option<cfn_resources::StrVal>,
 
     ///
     /// The inclusive start date and time from which to start streaming journal data. This     parameter must be in ISO 8601 date and time format and in Universal     Coordinated Time (UTC). For example: 2019-06-13T21:36:34Z.
@@ -30,7 +30,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InclusiveStartTime")]
-    pub inclusive_start_time: String,
+    pub inclusive_start_time: cfn_resources::StrVal,
 
     ///
     /// The configuration settings of the Kinesis Data Streams destination for your stream request.
@@ -58,7 +58,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LedgerName")]
-    pub ledger_name: String,
+    pub ledger_name: cfn_resources::StrVal,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a     journal stream to write data records to a Kinesis Data Streams resource.
@@ -75,7 +75,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The name that you want to assign to the QLDB journal stream. User-defined names can     help identify and indicate the purpose of a stream.
@@ -94,7 +94,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StreamName")]
-    pub stream_name: String,
+    pub stream_name: cfn_resources::StrVal,
 
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -125,56 +125,68 @@ impl cfn_resources::CfnResource for CfnStream {
 
         let the_val = &self.ledger_name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'ledger_name'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'ledger_name'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.ledger_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'ledger_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'ledger_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() > 1600 as _ {
-            return Err(format!(
-                "Max validation failed on field 'role_arn'. {} is greater than 1600",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 1600",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.role_arn;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'role_arn'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stream_name;
 
-        if the_val.len() > 32 as _ {
-            return Err(format!(
-                "Max validation failed on field 'stream_name'. {} is greater than 32",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'stream_name'. {} is greater than 32",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.stream_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'stream_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'stream_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -214,7 +226,7 @@ pub struct KinesisConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "StreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_arn: Option<String>,
+    pub stream_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for KinesisConfiguration {
@@ -228,20 +240,24 @@ impl cfn_resources::CfnResource for KinesisConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.stream_arn {
-            if the_val.len() > 1600 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'stream_arn'. {} is greater than 1600",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1600 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'stream_arn'. {} is greater than 1600",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.stream_arn {
-            if the_val.len() < 20 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'stream_arn'. {} is less than 20",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'stream_arn'. {} is less than 20",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -266,7 +282,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -276,7 +292,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -16,7 +16,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// Creates a new lifecycle configuration for the S3 on Outposts bucket or replaces an existing    lifecycle configuration. Outposts buckets only support lifecycle configurations that delete/expire objects    after a certain period of time and abort incomplete multipart uploads.
@@ -39,7 +39,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostId")]
-    pub outpost_id: String,
+    pub outpost_id: cfn_resources::StrVal,
 
     ///
     /// Sets the tags for an S3 on Outposts bucket. For more information, see Using Amazon S3 on Outposts.
@@ -130,7 +130,7 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -176,7 +176,7 @@ pub struct FilterAndOperator {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prefix: Option<String>,
+    pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -214,7 +214,7 @@ pub struct FilterTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -224,7 +224,7 @@ pub struct FilterTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for FilterTag {
@@ -295,7 +295,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "ExpirationDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expiration_date: Option<String>,
+    pub expiration_date: Option<cfn_resources::StrVal>,
 
     ///
     /// Specifies the expiration for the lifecycle of the object in the form of days that the object has been in the S3 on Outposts bucket.
@@ -331,7 +331,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<cfn_resources::StrVal>,
 
     ///
     /// If Enabled, the rule is currently being applied. If Disabled,    the rule is not currently being applied.
@@ -342,7 +342,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    pub status: String,
+    pub status: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Rule {
@@ -382,7 +382,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -392,7 +392,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

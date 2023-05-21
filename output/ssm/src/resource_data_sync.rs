@@ -27,7 +27,7 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_name: Option<String>,
+    pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
     /// An Amazon S3 prefix for the bucket.
@@ -43,7 +43,7 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region with the S3 bucket targeted by the resource data sync.
@@ -59,7 +59,7 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "BucketRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_region: Option<String>,
+    pub bucket_region: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of an encryption key for a destination in Amazon S3. You can use a KMS key to    encrypt inventory data in Amazon S3. You must specify a key that exist in the same region as    the destination Amazon S3 bucket.
@@ -77,7 +77,7 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmskey_arn: Option<String>,
+    pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Configuration information for the target S3 bucket.
@@ -118,7 +118,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncName")]
-    pub sync_name: String,
+    pub sync_name: cfn_resources::StrVal,
 
     ///
     /// Information about the source where the data was synchronized.
@@ -146,7 +146,7 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "SyncType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sync_type: Option<String>,
+    pub sync_type: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -173,74 +173,90 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_name'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_name'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_prefix'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_region {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'bucket_region'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_region'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.bucket_region {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'bucket_region'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_region'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kmskey_arn {
-            if the_val.len() > 512 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.kmskey_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kmskey_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kmskey_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -250,20 +266,24 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
 
         let the_val = &self.sync_name;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'sync_name'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sync_name'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.sync_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'sync_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'sync_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.sync_source
@@ -271,20 +291,24 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.sync_type {
-            if the_val.len() > 64 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'sync_type'. {} is greater than 64",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 64 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'sync_type'. {} is greater than 64",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.sync_type {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'sync_type'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'sync_type'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -308,7 +332,7 @@ pub struct AwsOrganizationsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationSourceType")]
-    pub organization_source_type: String,
+    pub organization_source_type: cfn_resources::StrVal,
 
     ///
     /// The AWS Organizations organization units included in the sync.
@@ -337,20 +361,21 @@ impl cfn_resources::CfnResource for AwsOrganizationsSource {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.organization_source_type;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'organization_source_type'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!("Max validation failed on field 'organization_source_type'. {} is greater than 64", s.len()));
+            }
         }
 
         let the_val = &self.organization_source_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'organization_source_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'organization_source_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.organizational_units {
@@ -379,7 +404,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    pub bucket_name: cfn_resources::StrVal,
 
     ///
     /// An Amazon S3 prefix for the bucket.
@@ -395,7 +420,7 @@ pub struct S3Destination {
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bucket_prefix: Option<String>,
+    pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Region with the S3 bucket targeted by the resource data sync.
@@ -410,7 +435,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketRegion")]
-    pub bucket_region: String,
+    pub bucket_region: cfn_resources::StrVal,
 
     ///
     /// The ARN of an encryption key for a destination in Amazon S3. Must belong to the same  Region as the destination S3 bucket.
@@ -428,7 +453,7 @@ pub struct S3Destination {
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kmskey_arn: Option<String>,
+    pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// A supported sync format. The following format is currently supported: JsonSerDe
@@ -469,73 +494,89 @@ impl cfn_resources::CfnResource for S3Destination {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.bucket_name;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_name'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.bucket_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_name'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() > 256 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
-                    the_val.len()
+                    "Min validation failed on field 'bucket_name'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.bucket_prefix {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.bucket_prefix {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'bucket_prefix'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.bucket_region;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'bucket_prefix'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'bucket_region'. {} is greater than 64",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.bucket_region;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'bucket_region'. {} is greater than 64",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.bucket_region;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'bucket_region'. {} is less than 1",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.kmskey_arn {
-            if the_val.len() > 512 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
-                    the_val.len()
+                    "Min validation failed on field 'bucket_region'. {} is less than 1",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.kmskey_arn {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'kmskey_arn'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 512 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.kmskey_arn {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'kmskey_arn'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -594,7 +635,7 @@ pub struct SyncSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
-    pub source_type: String,
+    pub source_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SyncSource {
@@ -613,20 +654,24 @@ impl cfn_resources::CfnResource for SyncSource {
 
         let the_val = &self.source_type;
 
-        if the_val.len() > 64 as _ {
-            return Err(format!(
-                "Max validation failed on field 'source_type'. {} is greater than 64",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_type'. {} is greater than 64",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.source_type;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'source_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

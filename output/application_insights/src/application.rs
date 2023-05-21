@@ -103,7 +103,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "OpsItemSNSTopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ops_item_snstopic_arn: Option<String>,
+    pub ops_item_snstopic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the resource group used for the application.
@@ -120,7 +120,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceGroupName")]
-    pub resource_group_name: String,
+    pub resource_group_name: cfn_resources::StrVal,
 
     ///
     /// An array of Tags.
@@ -159,36 +159,41 @@ impl cfn_resources::CfnResource for CfnApplication {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.ops_item_snstopic_arn {
-            if the_val.len() > 300 as _ {
-                return Err(format!("Max validation failed on field 'ops_item_snstopic_arn'. {} is greater than 300", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 300 as _ {
+                    return Err(format!("Max validation failed on field 'ops_item_snstopic_arn'. {} is greater than 300", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.ops_item_snstopic_arn {
-            if the_val.len() < 20 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 20 as _ {
+                    return Err(format!("Min validation failed on field 'ops_item_snstopic_arn'. {} is less than 20", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.resource_group_name;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'ops_item_snstopic_arn'. {} is less than 20",
-                    the_val.len()
+                    "Max validation failed on field 'resource_group_name'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.resource_group_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'resource_group_name'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.resource_group_name;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'resource_group_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_group_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -207,7 +212,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmName")]
-    pub alarm_name: String,
+    pub alarm_name: cfn_resources::StrVal,
 
     ///
     /// Indicates the degree of outage when the alarm goes off.
@@ -219,7 +224,7 @@ pub struct Alarm {
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub severity: Option<String>,
+    pub severity: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Alarm {
@@ -248,7 +253,7 @@ pub struct AlarmMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetricName")]
-    pub alarm_metric_name: String,
+    pub alarm_metric_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for AlarmMetric {
@@ -324,7 +329,7 @@ pub struct ComponentMonitoringSetting {
     /// Update requires: No interruption
     #[serde(rename = "ComponentARN")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_arn: Option<String>,
+    pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Component monitoring can be configured in one of the following three modes:
@@ -337,7 +342,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentConfigurationMode")]
-    pub component_configuration_mode: String,
+    pub component_configuration_mode: cfn_resources::StrVal,
 
     ///
     /// The name of the component.
@@ -349,7 +354,7 @@ pub struct ComponentMonitoringSetting {
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub component_name: Option<String>,
+    pub component_name: Option<cfn_resources::StrVal>,
 
     ///
     /// Customized monitoring settings. Required if CUSTOM mode is configured in ComponentConfigurationMode.
@@ -384,7 +389,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
-    pub tier: String,
+    pub tier: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for ComponentMonitoringSetting {
@@ -541,7 +546,7 @@ pub struct CustomComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
-    pub component_name: String,
+    pub component_name: cfn_resources::StrVal,
 
     ///
     /// The list of resource ARNs that belong to the component.
@@ -567,20 +572,24 @@ impl cfn_resources::CfnResource for CustomComponent {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.component_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'component_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'component_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.component_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'component_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'component_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -600,7 +609,7 @@ pub struct HAClusterPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prometheus_port: Option<String>,
+    pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
@@ -640,7 +649,7 @@ pub struct HANAPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HANAPort")]
-    pub hanaport: String,
+    pub hanaport: cfn_resources::StrVal,
 
     ///
     /// The three-character SAP system ID (SID) of the SAP HANA system.
@@ -651,7 +660,7 @@ pub struct HANAPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HANASID")]
-    pub hanasid: String,
+    pub hanasid: cfn_resources::StrVal,
 
     ///
     /// The AWS Secrets Manager secret that stores HANA monitoring user credentials. The HANA Prometheus exporter uses these credentials to connect to the database and query HANA metrics.
@@ -662,7 +671,7 @@ pub struct HANAPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HANASecretName")]
-    pub hanasecret_name: String,
+    pub hanasecret_name: cfn_resources::StrVal,
 
     ///
     /// The target port to which Prometheus sends metrics. If not specified, the default port 9668 is used.
@@ -674,7 +683,7 @@ pub struct HANAPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prometheus_port: Option<String>,
+    pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HANAPrometheusExporter {
@@ -704,7 +713,7 @@ pub struct JMXPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "HostPort")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub host_port: Option<String>,
+    pub host_port: Option<cfn_resources::StrVal>,
 
     ///
     /// The complete JMX URL to connect to.
@@ -716,7 +725,7 @@ pub struct JMXPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "JMXURL")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub jmxurl: Option<String>,
+    pub jmxurl: Option<cfn_resources::StrVal>,
 
     ///
     /// The target port to send Prometheus metrics to. If not specified, the default port 9404 is used.
@@ -728,7 +737,7 @@ pub struct JMXPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prometheus_port: Option<String>,
+    pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for JMXPrometheusExporter {
@@ -760,7 +769,7 @@ pub struct Log {
     /// Update requires: No interruption
     #[serde(rename = "Encoding")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub encoding: Option<String>,
+    pub encoding: Option<cfn_resources::StrVal>,
 
     ///
     /// The CloudWatch log group name to be associated with the monitored log.
@@ -772,7 +781,7 @@ pub struct Log {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_group_name: Option<String>,
+    pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The path of the logs to be monitored. The log path must be an absolute Windows or Linux system file path. For more information, see CloudWatch Agent Configuration File: Logs Section.
@@ -784,7 +793,7 @@ pub struct Log {
     /// Update requires: No interruption
     #[serde(rename = "LogPath")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_path: Option<String>,
+    pub log_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The log type decides the log patterns against which Application Insights analyzes the       log. The log type is selected from the following: SQL_SERVER,         MYSQL, MYSQL_SLOW_QUERY, POSTGRESQL,         ORACLE_ALERT, ORACLE_LISTENER, IIS,         APPLICATION, WINDOWS_EVENTS,         WINDOWS_EVENTS_ACTIVE_DIRECTORY, WINDOWS_EVENTS_DNS ,         WINDOWS_EVENTS_IIS , WINDOWS_EVENTS_SHAREPOINT,         SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP,         SQL_SERVER_FAILOVER_CLUSTER_INSTANCE, STEP_FUNCTION,         API_GATEWAY_ACCESS, API_GATEWAY_EXECUTION,         SAP_HANA_LOGS, SAP_HANA_TRACE,         SAP_HANA_HIGH_AVAILABILITY, and DEFAULT.
@@ -795,7 +804,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogType")]
-    pub log_type: String,
+    pub log_type: cfn_resources::StrVal,
 
     ///
     /// The log pattern set.
@@ -807,7 +816,7 @@ pub struct Log {
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern_set: Option<String>,
+    pub pattern_set: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Log {
@@ -842,7 +851,7 @@ pub struct LogPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
-    pub pattern: String,
+    pub pattern: cfn_resources::StrVal,
 
     ///
     /// The name of the log pattern. A log pattern name can contain up to 50 characters, and       it cannot be empty. The characters can be Unicode letters, digits, or one of the       following symbols: period, dash, underscore.
@@ -859,7 +868,7 @@ pub struct LogPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternName")]
-    pub pattern_name: String,
+    pub pattern_name: cfn_resources::StrVal,
 
     ///
     /// The rank of the log pattern.
@@ -885,38 +894,46 @@ impl cfn_resources::CfnResource for LogPattern {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.pattern;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'pattern'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'pattern'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.pattern;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'pattern'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pattern'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.pattern_name;
 
-        if the_val.len() > 50 as _ {
-            return Err(format!(
-                "Max validation failed on field 'pattern_name'. {} is greater than 50",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'pattern_name'. {} is greater than 50",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.pattern_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'pattern_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pattern_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -952,7 +969,7 @@ pub struct LogPatternSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternSetName")]
-    pub pattern_set_name: String,
+    pub pattern_set_name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LogPatternSet {
@@ -967,20 +984,24 @@ impl cfn_resources::CfnResource for LogPatternSet {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.pattern_set_name;
 
-        if the_val.len() > 30 as _ {
-            return Err(format!(
-                "Max validation failed on field 'pattern_set_name'. {} is greater than 30",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'pattern_set_name'. {} is greater than 30",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.pattern_set_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'pattern_set_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pattern_set_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -1064,7 +1085,7 @@ pub struct SubComponentTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubComponentType")]
-    pub sub_component_type: String,
+    pub sub_component_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
@@ -1100,7 +1121,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -1110,7 +1131,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
@@ -1150,7 +1171,7 @@ pub struct WindowsEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventName")]
-    pub event_name: String,
+    pub event_name: cfn_resources::StrVal,
 
     ///
     /// The CloudWatch log group name to be associated with the monitored log.
@@ -1161,7 +1182,7 @@ pub struct WindowsEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    pub log_group_name: String,
+    pub log_group_name: cfn_resources::StrVal,
 
     ///
     /// The log pattern set.
@@ -1173,7 +1194,7 @@ pub struct WindowsEvent {
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub pattern_set: Option<String>,
+    pub pattern_set: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for WindowsEvent {

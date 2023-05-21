@@ -54,7 +54,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The name of the database resource. Unique to the Data Catalog.
@@ -65,7 +65,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for DatabaseResource {
@@ -94,7 +94,7 @@ pub struct LFTagPair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The key-name for the LF-tag.
@@ -105,7 +105,7 @@ pub struct LFTagPair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
-    pub tag_key: String,
+    pub tag_key: cfn_resources::StrVal,
 
     ///
     /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
@@ -221,7 +221,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
@@ -232,7 +232,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The name of the table.
@@ -244,7 +244,7 @@ pub struct TableResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// A wildcard object representing every table under a database.This is an object with no properties that effectively behaves as a true or false depending on whether not it is passed as a parameter.     The valid inputs for a property with this type in either yaml or json is null or {}.
@@ -291,7 +291,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
+    pub catalog_id: cfn_resources::StrVal,
 
     ///
     /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
@@ -313,7 +313,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    pub database_name: String,
+    pub database_name: cfn_resources::StrVal,
 
     ///
     /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
@@ -324,7 +324,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for TableWithColumnsResource {

@@ -63,7 +63,7 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// An object representing the configuration of your local Amazon EKS cluster on       an AWS Outpost. This object isn't available for clusters on the AWS cloud.
@@ -99,7 +99,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// The metadata that you apply to the cluster to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Cluster tags don't propagate to any other resources associated with the       cluster.
@@ -127,7 +127,7 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CfnCluster {
@@ -156,20 +156,24 @@ impl cfn_resources::CfnResource for CfnCluster {
         self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -228,7 +232,7 @@ pub struct ControlPlanePlacement {
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    pub group_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ControlPlanePlacement {
@@ -324,7 +328,7 @@ pub struct KubernetesNetworkConfig {
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv4Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_ipv4_cidr: Option<String>,
+    pub service_ipv4_cidr: Option<cfn_resources::StrVal>,
 
     ///
     /// The CIDR block that Kubernetes pod and service IP addresses are assigned from if you       created a 1.21 or later cluster with version 1.10.1 or later of the Amazon VPC CNI add-on and       specified ipv6 for ipFamily when you       created the cluster. Kubernetes assigns service addresses from the unique local address       range (fc00::/7) because you can't specify a custom IPv6 CIDR block when       you create the cluster.
@@ -336,7 +340,7 @@ pub struct KubernetesNetworkConfig {
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv6Cidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_ipv6_cidr: Option<String>,
+    pub service_ipv6_cidr: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -417,7 +421,7 @@ pub struct LoggingTypeConfig {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cfn_type: Option<String>,
+    pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LoggingTypeConfig {
@@ -450,7 +454,7 @@ pub struct OutpostConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ControlPlaneInstanceType")]
-    pub control_plane_instance_type: String,
+    pub control_plane_instance_type: cfn_resources::StrVal,
 
     ///
     /// An object representing the placement configuration for all the control plane instances       of your local Amazon EKS cluster on an AWS Outpost. For more       information, see Capacity considerations in the Amazon EKS User Guide.
@@ -507,7 +511,7 @@ pub struct Provider {
     /// Update requires: Replacement
     #[serde(rename = "KeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_arn: Option<String>,
+    pub key_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Provider {
@@ -618,7 +622,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -628,7 +632,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

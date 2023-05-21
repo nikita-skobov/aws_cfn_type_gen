@@ -15,7 +15,7 @@ pub struct CfnResourceUpdateConstraint {
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accept_language: Option<String>,
+    pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
     /// The description of the constraint.
@@ -29,7 +29,7 @@ pub struct CfnResourceUpdateConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The portfolio identifier.
@@ -46,7 +46,7 @@ pub struct CfnResourceUpdateConstraint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
-    pub portfolio_id: String,
+    pub portfolio_id: cfn_resources::StrVal,
 
     ///
     /// The product identifier.
@@ -63,7 +63,7 @@ pub struct CfnResourceUpdateConstraint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProductId")]
-    pub product_id: String,
+    pub product_id: cfn_resources::StrVal,
 
     ///
     /// If set to ALLOWED, lets users change tags in a CloudFormationProvisionedProduct resource.
@@ -76,7 +76,7 @@ pub struct CfnResourceUpdateConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagUpdateOnProvisionedProduct")]
-    pub tag_update_on_provisioned_product: String,
+    pub tag_update_on_provisioned_product: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnResourceUpdateConstraint {
@@ -90,57 +90,69 @@ impl cfn_resources::CfnResource for CfnResourceUpdateConstraint {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.accept_language {
-            if the_val.len() > 100 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'accept_language'. {} is greater than 100",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 100 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'accept_language'. {} is greater than 100",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() > 2000 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2000 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 2000",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.portfolio_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 2000",
-                    the_val.len()
+                    "Max validation failed on field 'portfolio_id'. {} is greater than 100",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.portfolio_id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'portfolio_id'. {} is greater than 100",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.portfolio_id;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'portfolio_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'portfolio_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.product_id;
 
-        if the_val.len() > 100 as _ {
-            return Err(format!(
-                "Max validation failed on field 'product_id'. {} is greater than 100",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'product_id'. {} is greater than 100",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.product_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'product_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'product_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

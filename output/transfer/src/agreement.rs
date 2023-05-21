@@ -18,7 +18,7 @@ pub struct CfnAgreement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRole")]
-    pub access_role: String,
+    pub access_role: cfn_resources::StrVal,
 
     ///
     /// The landing directory (folder) for files that are transferred by using the AS2    protocol.
@@ -33,7 +33,7 @@ pub struct CfnAgreement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseDirectory")]
-    pub base_directory: String,
+    pub base_directory: cfn_resources::StrVal,
 
     ///
     /// The name or short description that's used to identify the agreement.
@@ -51,7 +51,7 @@ pub struct CfnAgreement {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// A unique identifier for the AS2 local profile.
@@ -68,7 +68,7 @@ pub struct CfnAgreement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
-    pub local_profile_id: String,
+    pub local_profile_id: cfn_resources::StrVal,
 
     ///
     /// A unique identifier for the partner profile used in the agreement.
@@ -85,7 +85,7 @@ pub struct CfnAgreement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartnerProfileId")]
-    pub partner_profile_id: String,
+    pub partner_profile_id: cfn_resources::StrVal,
 
     ///
     /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
@@ -102,7 +102,7 @@ pub struct CfnAgreement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerId")]
-    pub server_id: String,
+    pub server_id: cfn_resources::StrVal,
 
     ///
     /// The current status of the agreement, either ACTIVE or    INACTIVE.
@@ -162,101 +162,123 @@ impl cfn_resources::CfnResource for CfnAgreement {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.access_role;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'access_role'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_role'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.access_role;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!(
-                "Min validation failed on field 'access_role'. {} is less than 20",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'access_role'. {} is less than 20",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.base_directory;
 
-        if the_val.len() > 1024 as _ {
-            return Err(format!(
-                "Max validation failed on field 'base_directory'. {} is greater than 1024",
-                the_val.len()
-            ));
-        }
-
-        if let Some(the_val) = &self.description {
-            if the_val.len() > 200 as _ {
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 1024 as _ {
                 return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 200",
-                    the_val.len()
+                    "Max validation failed on field 'base_directory'. {} is greater than 1024",
+                    s.len()
                 ));
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 200 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 200",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        if let Some(the_val) = &self.description {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 1",
+                        s.len()
+                    ));
+                }
+            }
+        }
+
+        let the_val = &self.local_profile_id;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 19 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'local_profile_id'. {} is greater than 19",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.local_profile_id;
 
-        if the_val.len() > 19 as _ {
-            return Err(format!(
-                "Max validation failed on field 'local_profile_id'. {} is greater than 19",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.local_profile_id;
-
-        if the_val.len() < 19 as _ {
-            return Err(format!(
-                "Min validation failed on field 'local_profile_id'. {} is less than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'local_profile_id'. {} is less than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.partner_profile_id;
 
-        if the_val.len() > 19 as _ {
-            return Err(format!(
-                "Max validation failed on field 'partner_profile_id'. {} is greater than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'partner_profile_id'. {} is greater than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.partner_profile_id;
 
-        if the_val.len() < 19 as _ {
-            return Err(format!(
-                "Min validation failed on field 'partner_profile_id'. {} is less than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'partner_profile_id'. {} is less than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.server_id;
 
-        if the_val.len() > 19 as _ {
-            return Err(format!(
-                "Max validation failed on field 'server_id'. {} is greater than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_id'. {} is greater than 19",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.server_id;
 
-        if the_val.len() < 19 as _ {
-            return Err(format!(
-                "Min validation failed on field 'server_id'. {} is less than 19",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'server_id'. {} is less than 19",
+                    s.len()
+                ));
+            }
         }
 
         if let Some(the_val) = &self.tags {
@@ -289,7 +311,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -299,7 +321,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

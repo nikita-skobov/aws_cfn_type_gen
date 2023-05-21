@@ -37,7 +37,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "DagS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dag_s3_path: Option<String>,
+    pub dag_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large. To learn more, see Amazon MWAA environment class.
@@ -49,7 +49,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_class: Option<String>,
+    pub environment_class: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA to access AWS resources in your environment. For example, arn:aws:iam::123456789:role/my-execution-role. To learn more, see Amazon MWAA Execution role.
@@ -61,7 +61,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS Key Management Service (KMS) key to encrypt and decrypt the data in your environment. You can use an AWS KMS key managed by MWAA, or a customer-managed KMS key (advanced).
@@ -73,7 +73,7 @@ pub struct CfnEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key: Option<String>,
+    pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
     /// The Apache Airflow logs being sent to CloudWatch Logs: DagProcessingLogs, SchedulerLogs, TaskLogs, WebserverLogs, WorkerLogs.
@@ -120,7 +120,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The VPC networking components used to secure and enable network traffic between the AWS resources for your environment. To learn more, see About networking on Amazon MWAA.
@@ -144,7 +144,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub plugins_s3_object_version: Option<String>,
+    pub plugins_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The relative path to the plugins.zip file on your Amazon S3 bucket. For example, plugins.zip. To learn more, see Installing custom plugins.
@@ -156,7 +156,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub plugins_s3_path: Option<String>,
+    pub plugins_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the requirements.txt file on your Amazon S3 bucket. To learn more, see Installing Python dependencies.
@@ -168,7 +168,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub requirements_s3_object_version: Option<String>,
+    pub requirements_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The relative path to the requirements.txt file on your Amazon S3 bucket. For example, requirements.txt. To learn more, see Installing Python dependencies.
@@ -180,7 +180,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub requirements_s3_path: Option<String>,
+    pub requirements_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of schedulers that you want to run in your environment. Valid values:
@@ -206,7 +206,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "SourceBucketArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_bucket_arn: Option<String>,
+    pub source_bucket_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The version of the startup shell script in your Amazon S3 bucket. You must specify the version ID that Amazon S3 assigns to the file       every time you update the script.
@@ -224,7 +224,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3ObjectVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub startup_script_s3_object_version: Option<String>,
+    pub startup_script_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The relative path to the startup shell script in your Amazon S3 bucket. For example, s3://mwaa-environment/startup.sh.
@@ -238,7 +238,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3Path")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub startup_script_s3_path: Option<String>,
+    pub startup_script_s3_path: Option<cfn_resources::StrVal>,
 
     ///
     /// The key-value tag pairs associated to your environment. For example, "Environment": "Staging". To learn more, see Tagging.
@@ -262,7 +262,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "WebserverAccessMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub webserver_access_mode: Option<String>,
+    pub webserver_access_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The day and time of the week to start weekly maintenance updates of your environment in the following format: DAY:HH:MM. For example: TUE:03:30. You can specify a start time in 30 minute increments only. Supported input includes the following:
@@ -276,7 +276,7 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceWindowStart")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub weekly_maintenance_window_start: Option<String>,
+    pub weekly_maintenance_window_start: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -443,7 +443,7 @@ pub struct ModuleLoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cloud_watch_log_group_arn: Option<String>,
+    pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to enable the Apache Airflow log type (e.g. DagProcessingLogs) in CloudWatch Logs.
@@ -467,7 +467,7 @@ pub struct ModuleLoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub log_level: Option<String>,
+    pub log_level: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for ModuleLoggingConfiguration {

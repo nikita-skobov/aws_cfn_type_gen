@@ -28,7 +28,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigRuleName")]
-    pub config_rule_name: String,
+    pub config_rule_name: cfn_resources::StrVal,
 
     ///
     /// An ExecutionControls object.
@@ -84,7 +84,7 @@ pub struct CfnRemediationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_type: Option<String>,
+    pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
     /// Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds.
@@ -113,7 +113,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetId")]
-    pub target_id: String,
+    pub target_id: cfn_resources::StrVal,
 
     ///
     /// The type of the target. Target executes remediation. For example, SSM document.
@@ -140,7 +140,7 @@ pub struct CfnRemediationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TargetVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_version: Option<String>,
+    pub target_version: Option<cfn_resources::StrVal>,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -168,20 +168,24 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.config_rule_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'config_rule_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'config_rule_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.config_rule_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'config_rule_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'config_rule_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.execution_controls
@@ -202,20 +206,24 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
 
         let the_val = &self.target_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target_id'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target_id'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

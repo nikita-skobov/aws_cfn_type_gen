@@ -16,7 +16,7 @@ pub struct CfnApplicationCloudWatchLoggingOption {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    pub application_name: cfn_resources::StrVal,
 
     ///
     /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
@@ -42,20 +42,24 @@ impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.application_name;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'application_name'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.application_name;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'application_name'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         self.cloud_watch_logging_option.validate()?;
@@ -82,7 +86,7 @@ pub struct CloudWatchLoggingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogStreamARN")]
-    pub log_stream_arn: String,
+    pub log_stream_arn: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLoggingOption {
@@ -97,20 +101,24 @@ impl cfn_resources::CfnResource for CloudWatchLoggingOption {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.log_stream_arn;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'log_stream_arn'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'log_stream_arn'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.log_stream_arn;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'log_stream_arn'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'log_stream_arn'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

@@ -19,7 +19,7 @@ pub struct CfnLifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by 			the lifecycle policy.
@@ -37,7 +37,7 @@ pub struct CfnLifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub execution_role_arn: Option<String>,
+    pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The configuration details of the lifecycle policy.
@@ -110,38 +110,43 @@ impl cfn_resources::CfnResource for CfnLifecyclePolicy {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description {
-            if the_val.len() > 500 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description'. {} is greater than 500",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 500 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'description'. {} is greater than 500",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.description {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_role_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 2048", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.execution_role_arn {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'execution_role_arn'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'execution_role_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -184,7 +189,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Action {
@@ -208,20 +213,24 @@ impl cfn_resources::CfnResource for Action {
 
         let the_val = &self.name;
 
-        if the_val.len() > 120 as _ {
-            return Err(format!(
-                "Max validation failed on field 'name'. {} is greater than 120",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 120 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 120",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -307,7 +316,7 @@ pub struct CreateRule {
     /// Update requires: No interruption
     #[serde(rename = "CronExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cron_expression: Option<String>,
+    pub cron_expression: Option<cfn_resources::StrVal>,
 
     ///
     /// The interval between snapshots. The supported values are 1, 2, 3, 4, 6, 8, 12, and 24.
@@ -411,20 +420,24 @@ impl cfn_resources::CfnResource for CreateRule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cron_expression {
-            if the_val.len() > 106 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cron_expression'. {} is greater than 106",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 106 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cron_expression'. {} is greater than 106",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cron_expression {
-            if the_val.len() < 17 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'cron_expression'. {} is less than 17",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 17 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cron_expression'. {} is less than 17",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -491,7 +504,7 @@ pub struct CrossRegionCopyAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    pub target: String,
+    pub target: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CrossRegionCopyAction {
@@ -512,20 +525,24 @@ impl cfn_resources::CfnResource for CrossRegionCopyAction {
 
         let the_val = &self.target;
 
-        if the_val.len() > 2048 as _ {
-            return Err(format!(
-                "Max validation failed on field 'target'. {} is greater than 2048",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'target'. {} is greater than 2048",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.target;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'target'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'target'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -553,7 +570,7 @@ pub struct CrossRegionCopyDeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    pub interval_unit: String,
+    pub interval_unit: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CrossRegionCopyDeprecateRule {
@@ -667,7 +684,7 @@ pub struct CrossRegionCopyRule {
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cmk_arn: Option<String>,
+    pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// Indicates whether to copy all user-defined tags from the source snapshot or AMI to the 			cross-Region copy.
@@ -733,7 +750,7 @@ pub struct CrossRegionCopyRule {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target: Option<String>,
+    pub target: Option<cfn_resources::StrVal>,
 
     ///
     /// NoteAvoid using this parameter when creating new policies. Instead, use 				Target to specify a target Region or a target 				Outpost for snapshot copies.For policies created before the Target parameter 				was introduced, this parameter indicates the target Region for snapshot copies.
@@ -751,7 +768,7 @@ pub struct CrossRegionCopyRule {
     /// Update requires: No interruption
     #[serde(rename = "TargetRegion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_region: Option<String>,
+    pub target_region: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CrossRegionCopyRule {
@@ -765,20 +782,24 @@ impl cfn_resources::CfnResource for CrossRegionCopyRule {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cmk_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cmk_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cmk_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cmk_arn {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'cmk_arn'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cmk_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -791,38 +812,46 @@ impl cfn_resources::CfnResource for CrossRegionCopyRule {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.target {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'target'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'target'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.target {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'target'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'target'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.target_region {
-            if the_val.len() > 16 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'target_region'. {} is greater than 16",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 16 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'target_region'. {} is greater than 16",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.target_region {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'target_region'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'target_region'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -864,7 +893,7 @@ pub struct DeprecateRule {
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub interval_unit: Option<String>,
+    pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DeprecateRule {
@@ -900,7 +929,7 @@ pub struct EncryptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cmk_arn: Option<String>,
+    pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// To encrypt a copy of an unencrypted snapshot when encryption by default is not enabled, enable 			encryption using this parameter. Copies of encrypted snapshots are encrypted, even if this 			parameter is false or when encryption by default is not enabled.
@@ -925,20 +954,24 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.cmk_arn {
-            if the_val.len() > 2048 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'cmk_arn'. {} is greater than 2048",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 2048 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'cmk_arn'. {} is greater than 2048",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.cmk_arn {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'cmk_arn'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'cmk_arn'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -967,7 +1000,7 @@ pub struct EventParameters {
     /// Update requires: No interruption
     #[serde(rename = "DescriptionRegex")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub description_regex: Option<String>,
+    pub description_regex: Option<cfn_resources::StrVal>,
 
     ///
     /// The type of event. Currently, only snapshot sharing events are supported.
@@ -1020,20 +1053,21 @@ impl cfn_resources::CfnResource for EventParameters {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.description_regex {
-            if the_val.len() > 1000 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'description_regex'. {} is greater than 1000",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 1000 as _ {
+                    return Err(format!("Max validation failed on field 'description_regex'. {} is greater than 1000", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.description_regex {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'description_regex'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'description_regex'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -1658,7 +1692,7 @@ pub struct RetentionArchiveTier {
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub interval_unit: Option<String>,
+    pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for RetentionArchiveTier {
@@ -1768,7 +1802,7 @@ pub struct Schedule {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<cfn_resources::StrVal>,
 
     ///
     /// The retention rule for snapshots or AMIs created by the policy.
@@ -1858,20 +1892,24 @@ impl cfn_resources::CfnResource for Schedule {
             .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-            if the_val.len() > 120 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'name'. {} is greater than 120",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 120 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'name'. {} is greater than 120",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.name {
-            if the_val.len() < 0 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'name'. {} is less than 0",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 0 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'name'. {} is less than 0",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -2019,7 +2057,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -2029,7 +2067,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

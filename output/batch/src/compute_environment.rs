@@ -15,7 +15,7 @@ pub struct CfnComputeEnvironment {
     /// Update requires: Replacement
     #[serde(rename = "ComputeEnvironmentName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub compute_environment_name: Option<String>,
+    pub compute_environment_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The ComputeResources property type specifies details of the compute resources managed by the compute  environment. This parameter is required for managed compute environments. For more information, see Compute Environments in the   AWS Batch User Guide.
@@ -71,7 +71,7 @@ pub struct CfnComputeEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub service_role: Option<String>,
+    pub service_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The state of the compute environment. If the state is ENABLED, then the    compute environment accepts jobs from a queue and can scale out automatically based on    queues.
@@ -298,7 +298,7 @@ pub struct ComputeResources {
     /// Update requires: Some interruptions
     #[serde(rename = "Ec2KeyPair")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ec2_key_pair: Option<String>,
+    pub ec2_key_pair: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.  This parameter is overridden by the imageIdOverride member of the   Ec2Configuration structure. To remove the custom AMI ID and use the default AMI ID,  set this value to an empty string.
@@ -316,7 +316,7 @@ pub struct ComputeResources {
     /// Update requires: Some interruptions
     #[serde(rename = "ImageId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can  specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example,           ecsInstanceRole       or   arn:aws:iam::<aws_account_id>:instance-profile/ecsInstanceRole       .  For more information, see Amazon ECS instance role in the         AWS Batch User Guide.
@@ -332,7 +332,7 @@ pub struct ComputeResources {
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_role: Option<String>,
+    pub instance_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The instances types that can be launched. You can specify instance families to launch any  instance type within those families (for example, c5 or p3), or you can  specify specific sizes within a family (such as c5.8xlarge). You can also choose   optimal to select instance types (from the C4, M4, and R4 instance families) that  match the demand of your job queues.
@@ -411,7 +411,7 @@ pub struct ComputeResources {
     /// Update requires: Some interruptions
     #[serde(rename = "PlacementGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub placement_group: Option<String>,
+    pub placement_group: Option<cfn_resources::StrVal>,
 
     ///
     /// The Amazon EC2 security groups that are associated with instances launched in the compute  environment. This parameter is required for Fargate compute resources, where it can contain up  to 5 security groups. For Fargate compute resources, providing an empty list is handled as if  this parameter wasn't specified and no change is made. For EC2 compute resources, providing an  empty list removes the security groups from the compute resource.
@@ -441,7 +441,7 @@ pub struct ComputeResources {
     /// Update requires: Replacement
     #[serde(rename = "SpotIamFleetRole")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub spot_iam_fleet_role: Option<String>,
+    pub spot_iam_fleet_role: Option<cfn_resources::StrVal>,
 
     ///
     /// The VPC subnets where the compute resources are launched. Fargate compute resources can  contain up to 16 subnets. For Fargate compute resources, providing an empty list will be  handled as if this parameter wasn't specified and no change is made. For EC2 compute resources,  providing an empty list removes the VPC subnets from the compute resource. For more information,  see VPCs and   subnets in the Amazon VPC User Guide.
@@ -589,7 +589,7 @@ pub struct Ec2ConfigurationObject {
     /// Update requires: Some interruptions
     #[serde(rename = "ImageIdOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_id_override: Option<String>,
+    pub image_id_override: Option<cfn_resources::StrVal>,
 
     ///
     /// The Kubernetes version for the compute environment. If you don't specify a value, the latest  version that AWS Batch supports is used.
@@ -605,7 +605,7 @@ pub struct Ec2ConfigurationObject {
     /// Update requires: Some interruptions
     #[serde(rename = "ImageKubernetesVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_kubernetes_version: Option<String>,
+    pub image_kubernetes_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The image type to match with the instance type to select an AMI. The supported values are  different for ECS and EKS resources.
@@ -622,7 +622,7 @@ pub struct Ec2ConfigurationObject {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageType")]
-    pub image_type: String,
+    pub image_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Ec2ConfigurationObject {
@@ -636,54 +636,60 @@ impl cfn_resources::CfnResource for Ec2ConfigurationObject {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.image_id_override {
-            if the_val.len() > 256 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'image_id_override'. {} is greater than 256",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'image_id_override'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.image_id_override {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'image_id_override'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'image_id_override'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.image_kubernetes_version {
-            if the_val.len() > 256 as _ {
-                return Err(format!("Max validation failed on field 'image_kubernetes_version'. {} is greater than 256", the_val.len()));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 256 as _ {
+                    return Err(format!("Max validation failed on field 'image_kubernetes_version'. {} is greater than 256", s.len()));
+                }
             }
         }
 
         if let Some(the_val) = &self.image_kubernetes_version {
-            if the_val.len() < 1 as _ {
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!("Min validation failed on field 'image_kubernetes_version'. {} is less than 1", s.len()));
+                }
+            }
+        }
+
+        let the_val = &self.image_type;
+
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
                 return Err(format!(
-                    "Min validation failed on field 'image_kubernetes_version'. {} is less than 1",
-                    the_val.len()
+                    "Max validation failed on field 'image_type'. {} is greater than 256",
+                    s.len()
                 ));
             }
         }
 
         let the_val = &self.image_type;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'image_type'. {} is greater than 256",
-                the_val.len()
-            ));
-        }
-
-        let the_val = &self.image_type;
-
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'image_type'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image_type'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())
@@ -702,7 +708,7 @@ pub struct EksConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EksClusterArn")]
-    pub eks_cluster_arn: String,
+    pub eks_cluster_arn: cfn_resources::StrVal,
 
     ///
     /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace. The value  can't left empty or null. It must be fewer than 64 characters long, can't be set to   default, can't start with "kube-," and must match this regular  expression: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$. For more information, see Namespaces in the Kubernetes documentation.
@@ -713,7 +719,7 @@ pub struct EksConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KubernetesNamespace")]
-    pub kubernetes_namespace: String,
+    pub kubernetes_namespace: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for EksConfiguration {
@@ -745,7 +751,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: Some interruptions
     #[serde(rename = "LaunchTemplateId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_id: Option<String>,
+    pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the launch template.
@@ -757,7 +763,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: Some interruptions
     #[serde(rename = "LaunchTemplateName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub launch_template_name: Option<String>,
+    pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the launch template, $Latest, or  $Default.
@@ -775,7 +781,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: Some interruptions
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for LaunchTemplateSpecification {

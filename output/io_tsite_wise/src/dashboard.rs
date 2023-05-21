@@ -10,7 +10,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardDefinition")]
-    pub dashboard_definition: String,
+    pub dashboard_definition: cfn_resources::StrVal,
 
     ///
     /// A description for the dashboard.
@@ -21,7 +21,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardDescription")]
-    pub dashboard_description: String,
+    pub dashboard_description: cfn_resources::StrVal,
 
     ///
     /// A friendly name for the dashboard.
@@ -32,7 +32,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardName")]
-    pub dashboard_name: String,
+    pub dashboard_name: cfn_resources::StrVal,
 
     ///
     /// The ID of the project in which to create the dashboard.
@@ -44,7 +44,7 @@ pub struct CfnDashboard {
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub project_id: Option<String>,
+    pub project_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of key-value pairs that contain metadata for the dashboard. For more information,       see Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
@@ -90,7 +90,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -100,7 +100,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

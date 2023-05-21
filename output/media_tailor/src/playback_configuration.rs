@@ -9,7 +9,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdDecisionServerUrl")]
-    pub ad_decision_server_url: String,
+    pub ad_decision_server_url: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -109,7 +109,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -131,7 +131,7 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SlateAdUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub slate_ad_url: Option<String>,
+    pub slate_ad_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -153,7 +153,7 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TranscodeProfileName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transcode_profile_name: Option<String>,
+    pub transcode_profile_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -163,7 +163,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoContentSourceUrl")]
-    pub video_content_source_url: String,
+    pub video_content_source_url: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnPlaybackConfiguration {
@@ -247,7 +247,7 @@ pub struct AvailSuppression {
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mode: Option<String>,
+    pub mode: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -258,7 +258,7 @@ pub struct AvailSuppression {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    pub value: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AvailSuppression {
@@ -287,7 +287,7 @@ pub struct Bumper {
     /// Update requires: No interruption
     #[serde(rename = "EndUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_url: Option<String>,
+    pub end_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -298,7 +298,7 @@ pub struct Bumper {
     /// Update requires: No interruption
     #[serde(rename = "StartUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_url: Option<String>,
+    pub start_url: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Bumper {
@@ -327,7 +327,7 @@ pub struct CdnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AdSegmentUrlPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ad_segment_url_prefix: Option<String>,
+    pub ad_segment_url_prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -338,7 +338,7 @@ pub struct CdnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ContentSegmentUrlPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_segment_url_prefix: Option<String>,
+    pub content_segment_url_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for CdnConfiguration {
@@ -368,7 +368,7 @@ pub struct DashConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ManifestEndpointPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_endpoint_prefix: Option<String>,
+    pub manifest_endpoint_prefix: Option<cfn_resources::StrVal>,
 
     ///
     /// The setting that controls whether MediaTailor includes the Location tag in DASH manifests. MediaTailor populates the Location tag with the URL for manifest update requests, to be used by players that don't support sticky redirects. Disable this if you have CDN routing rules set up for accessing MediaTailor manifests, and you are either using client-side reporting or your players support sticky HTTP redirects. Valid values are DISABLED and EMT_DEFAULT. The EMT_DEFAULT setting enables the inclusion of the tag and is the default value.
@@ -380,7 +380,7 @@ pub struct DashConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MpdLocation")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mpd_location: Option<String>,
+    pub mpd_location: Option<cfn_resources::StrVal>,
 
     ///
     /// The setting that controls whether MediaTailor handles manifests from the origin server as multi-period manifests or single-period manifests. If your origin server produces single-period manifests, set this to SINGLE_PERIOD. The default setting is MULTI_PERIOD. For multi-period manifests, omit this setting or set it to MULTI_PERIOD.
@@ -392,7 +392,7 @@ pub struct DashConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OriginManifestType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub origin_manifest_type: Option<String>,
+    pub origin_manifest_type: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for DashConfiguration {
@@ -422,7 +422,7 @@ pub struct HlsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ManifestEndpointPrefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub manifest_endpoint_prefix: Option<String>,
+    pub manifest_endpoint_prefix: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for HlsConfiguration {
@@ -451,7 +451,7 @@ pub struct LivePreRollConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AdDecisionServerUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ad_decision_server_url: Option<String>,
+    pub ad_decision_server_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -529,7 +529,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -539,7 +539,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

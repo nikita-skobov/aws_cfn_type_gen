@@ -25,7 +25,7 @@ pub struct CfnDisk {
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the disk.
@@ -38,7 +38,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DiskName")]
-    pub disk_name: String,
+    pub disk_name: cfn_resources::StrVal,
 
     /// Property description not available.
     ///
@@ -111,7 +111,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOnType")]
-    pub add_on_type: String,
+    pub add_on_type: cfn_resources::StrVal,
 
     ///
     /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
@@ -194,7 +194,7 @@ pub struct AutoSnapshotAddOn {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_time_of_day: Option<String>,
+    pub snapshot_time_of_day: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for AutoSnapshotAddOn {
@@ -223,7 +223,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub availability_zone: Option<String>,
+    pub availability_zone: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
     ///
@@ -234,7 +234,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region_name: Option<String>,
+    pub region_name: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Location {
@@ -268,7 +268,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -278,7 +278,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

@@ -16,7 +16,7 @@ pub struct CfnStudioSessionMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityName")]
-    pub identity_name: String,
+    pub identity_name: cfn_resources::StrVal,
 
     ///
     /// Specifies whether the identity to map to the Amazon EMR Studio is a user or a     group.
@@ -46,7 +46,7 @@ pub struct CfnStudioSessionMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionPolicyArn")]
-    pub session_policy_arn: String,
+    pub session_policy_arn: cfn_resources::StrVal,
 
     ///
     /// The ID of the Amazon EMR Studio to which the user or group will be     mapped.
@@ -63,7 +63,7 @@ pub struct CfnStudioSessionMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StudioId")]
-    pub studio_id: String,
+    pub studio_id: cfn_resources::StrVal,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -95,56 +95,68 @@ impl cfn_resources::CfnResource for CfnStudioSessionMapping {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.identity_name;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'identity_name'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'identity_name'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.identity_name;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'identity_name'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'identity_name'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.session_policy_arn;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'session_policy_arn'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'session_policy_arn'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.session_policy_arn;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'session_policy_arn'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'session_policy_arn'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.studio_id;
 
-        if the_val.len() > 256 as _ {
-            return Err(format!(
-                "Max validation failed on field 'studio_id'. {} is greater than 256",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'studio_id'. {} is greater than 256",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.studio_id;
 
-        if the_val.len() < 0 as _ {
-            return Err(format!(
-                "Min validation failed on field 'studio_id'. {} is less than 0",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'studio_id'. {} is less than 0",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

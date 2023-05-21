@@ -47,7 +47,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Some interruptions
     #[serde(rename = "AuthToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub auth_token: Option<String>,
+    pub auth_token: Option<cfn_resources::StrVal>,
 
     ///
     /// If you are running Redis engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next minor version upgrade campaign. This parameter is disabled for previous versions.
@@ -93,7 +93,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_node_type: Option<String>,
+    pub cache_node_type: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the parameter group to associate with this replication group.       If this argument is omitted, the default cache parameter group for the specified engine is       used.
@@ -109,7 +109,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_parameter_group_name: Option<String>,
+    pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of cache security group names to associate with this replication group.
@@ -135,7 +135,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cache_subnet_group_name: Option<String>,
+    pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     /// Enabled or Disabled. To modify cluster mode from Disabled to Enabled,    you must first set the cluster mode to Compatible. Compatible mode allows your Redis clients to connect using both cluster mode enabled and cluster mode disabled.    After you migrate all Redis clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.    For more information, see Modify cluster mode.
     ///
@@ -146,7 +146,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "ClusterMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cluster_mode: Option<String>,
+    pub cluster_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes.    For more information, see Data tiering.
@@ -170,7 +170,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine: Option<String>,
+    pub engine: Option<cfn_resources::StrVal>,
 
     ///
     /// The version number of the cache engine to be used for the clusters in this replication group.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
@@ -184,7 +184,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub engine_version: Option<String>,
+    pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
     /// The name of the Global datastore
@@ -196,7 +196,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "GlobalReplicationGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_replication_group_id: Option<String>,
+    pub global_replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The network type you choose when creating a replication group, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
@@ -222,7 +222,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub kms_key_id: Option<String>,
+    pub kms_key_id: Option<cfn_resources::StrVal>,
 
     /// Specifies the destination, format and type of the logs.
     ///
@@ -287,7 +287,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_topic_arn: Option<String>,
+    pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of clusters this replication group initially has.
@@ -369,7 +369,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub preferred_maintenance_window: Option<String>,
+    pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The identifier of the cluster that serves as the primary for this replication       group. This cluster must already exist and have a status of available.
@@ -383,7 +383,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "PrimaryClusterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub primary_cluster_id: Option<String>,
+    pub primary_cluster_id: Option<cfn_resources::StrVal>,
 
     ///
     /// An optional parameter that specifies the number of replica nodes in each node group (shard).       Valid values are 0 to 5.
@@ -406,7 +406,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupDescription")]
-    pub replication_group_description: String,
+    pub replication_group_description: cfn_resources::StrVal,
 
     ///
     /// The replication group identifier. This parameter is stored as a lowercase string.
@@ -422,7 +422,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "ReplicationGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group_id: Option<String>,
+    pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// One or more Amazon VPC security groups associated with this replication group.
@@ -462,7 +462,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_name: Option<String>,
+    pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
     /// The number of days for which ElastiCache retains automatic snapshots before deleting them.       For example, if you set SnapshotRetentionLimit to 5,       a snapshot that was taken today is retained for 5 days before being deleted.
@@ -492,7 +492,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshot_window: Option<String>,
+    pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
     /// The cluster ID that is used as the daily snapshot source for the replication group.       This parameter cannot be set for Redis (cluster mode enabled) replication groups.
@@ -504,7 +504,7 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "SnapshottingClusterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub snapshotting_cluster_id: Option<String>,
+    pub snapshotting_cluster_id: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of tags to be added to this resource.      Tags are comma-separated key,value pairs (e.g. Key=myKey, Value=myKeyValue. You can include multiple tags as shown following:      Key=myKey, Value=myKeyValue Key=mySecondKey, Value=mySecondKeyValue. Tags on replication groups will be replicated to all nodes.
@@ -655,7 +655,7 @@ pub struct CloudWatchLogsDestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
-    pub log_group: String,
+    pub log_group: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
@@ -731,7 +731,7 @@ pub struct KinesisFirehoseDestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: String,
+    pub delivery_stream: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
@@ -769,7 +769,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationType")]
-    pub destination_type: String,
+    pub destination_type: cfn_resources::StrVal,
 
     /// Valid values are either json or text.
     ///
@@ -779,7 +779,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogFormat")]
-    pub log_format: String,
+    pub log_format: cfn_resources::StrVal,
 
     /// Valid value is either slow-log, which refers to slow-log or engine-log.
     ///
@@ -789,7 +789,7 @@ pub struct LogDeliveryConfigurationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogType")]
-    pub log_type: String,
+    pub log_type: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
@@ -827,7 +827,7 @@ pub struct NodeGroupConfiguration {
     /// Update requires: Some interruptions
     #[serde(rename = "NodeGroupId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub node_group_id: Option<String>,
+    pub node_group_id: Option<cfn_resources::StrVal>,
 
     ///
     /// The Availability Zone where the primary node of this node group (shard) is launched.
@@ -839,7 +839,7 @@ pub struct NodeGroupConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "PrimaryAvailabilityZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub primary_availability_zone: Option<String>,
+    pub primary_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
     /// A list of Availability Zones to be used for the read replicas.       The number of Availability Zones in this list must match the value of ReplicaCount       or ReplicasPerNodeGroup if not specified.
@@ -879,7 +879,7 @@ pub struct NodeGroupConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Slots")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub slots: Option<String>,
+    pub slots: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for NodeGroupConfiguration {
@@ -893,20 +893,24 @@ impl cfn_resources::CfnResource for NodeGroupConfiguration {
 
     fn validate(&self) -> Result<(), String> {
         if let Some(the_val) = &self.node_group_id {
-            if the_val.len() > 4 as _ {
-                return Err(format!(
-                    "Max validation failed on field 'node_group_id'. {} is greater than 4",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() > 4 as _ {
+                    return Err(format!(
+                        "Max validation failed on field 'node_group_id'. {} is greater than 4",
+                        s.len()
+                    ));
+                }
             }
         }
 
         if let Some(the_val) = &self.node_group_id {
-            if the_val.len() < 1 as _ {
-                return Err(format!(
-                    "Min validation failed on field 'node_group_id'. {} is less than 1",
-                    the_val.len()
-                ));
+            if let cfn_resources::StrVal::String(s) = &the_val {
+                if s.len() < 1 as _ {
+                    return Err(format!(
+                        "Min validation failed on field 'node_group_id'. {} is less than 1",
+                        s.len()
+                    ));
+                }
             }
         }
 
@@ -931,7 +935,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -941,7 +945,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {

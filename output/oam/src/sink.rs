@@ -14,7 +14,7 @@ pub struct CfnSink {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    pub name: String,
+    pub name: cfn_resources::StrVal,
 
     ///
     /// The IAM policy that grants permissions to source accounts to link to this sink. The policy can grant permission    in the following ways:

@@ -15,7 +15,7 @@ pub struct CfnUserPoolUICustomizationAttachment {
     /// Update requires: No interruption
     #[serde(rename = "CSS")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub css: Option<String>,
+    pub css: Option<cfn_resources::StrVal>,
 
     ///
     /// The client ID for the client app. You can specify the UI customization settings for a    single client (with a specific clientId) or for all clients (by setting the clientId to     ALL).
@@ -32,7 +32,7 @@ pub struct CfnUserPoolUICustomizationAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientId")]
-    pub client_id: String,
+    pub client_id: cfn_resources::StrVal,
 
     ///
     /// The user pool ID for the user pool.
@@ -49,7 +49,7 @@ pub struct CfnUserPoolUICustomizationAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
+    pub user_pool_id: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolUICustomizationAttachment {
@@ -64,38 +64,46 @@ impl cfn_resources::CfnResource for CfnUserPoolUICustomizationAttachment {
     fn validate(&self) -> Result<(), String> {
         let the_val = &self.client_id;
 
-        if the_val.len() > 128 as _ {
-            return Err(format!(
-                "Max validation failed on field 'client_id'. {} is greater than 128",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'client_id'. {} is greater than 128",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.client_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'client_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'client_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() > 55 as _ {
-            return Err(format!(
-                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() > 55 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                    s.len()
+                ));
+            }
         }
 
         let the_val = &self.user_pool_id;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!(
-                "Min validation failed on field 'user_pool_id'. {} is less than 1",
-                the_val.len()
-            ));
+        if let cfn_resources::StrVal::String(s) = &the_val {
+            if s.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                    s.len()
+                ));
+            }
         }
 
         Ok(())

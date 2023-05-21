@@ -25,7 +25,7 @@ pub struct CfnPortal {
     /// Update requires: No interruption
     #[serde(rename = "NotificationSenderEmail")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_sender_email: Option<String>,
+    pub notification_sender_email: Option<cfn_resources::StrVal>,
 
     ///
     /// The service to use to authenticate users to the portal. Choose from the following    options:
@@ -43,7 +43,7 @@ pub struct CfnPortal {
     /// Update requires: Replacement
     #[serde(rename = "PortalAuthMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub portal_auth_mode: Option<String>,
+    pub portal_auth_mode: Option<cfn_resources::StrVal>,
 
     ///
     /// The AWS administrator's contact email address.
@@ -54,7 +54,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortalContactEmail")]
-    pub portal_contact_email: String,
+    pub portal_contact_email: cfn_resources::StrVal,
 
     ///
     /// A description for the portal.
@@ -66,7 +66,7 @@ pub struct CfnPortal {
     /// Update requires: No interruption
     #[serde(rename = "PortalDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub portal_description: Option<String>,
+    pub portal_description: Option<cfn_resources::StrVal>,
 
     ///
     /// A friendly name for the portal.
@@ -77,7 +77,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortalName")]
-    pub portal_name: String,
+    pub portal_name: cfn_resources::StrVal,
 
     ///
     /// The ARN of a service role that allows the portal's users to access your AWS IoT SiteWise       resources on your behalf. For more information, see Using service roles for AWS IoT SiteWise Monitor in the       AWS IoT SiteWise User Guide.
@@ -88,7 +88,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    pub role_arn: cfn_resources::StrVal,
 
     ///
     /// A list of key-value pairs that contain metadata for the portal. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
@@ -132,7 +132,7 @@ pub struct Alarms {
     /// Update requires: No interruption
     #[serde(rename = "AlarmRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub alarm_role_arn: Option<String>,
+    pub alarm_role_arn: Option<cfn_resources::StrVal>,
 
     ///
     /// The ARN of the Lambda function that manages alarm notifications. For more    information, see Managing alarm     notifications in the         AWS IoT Events Developer Guide.
@@ -144,7 +144,7 @@ pub struct Alarms {
     /// Update requires: No interruption
     #[serde(rename = "NotificationLambdaArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub notification_lambda_arn: Option<String>,
+    pub notification_lambda_arn: Option<cfn_resources::StrVal>,
 }
 
 impl cfn_resources::CfnResource for Alarms {
@@ -178,7 +178,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: cfn_resources::StrVal,
 
     ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
@@ -188,7 +188,7 @@ pub struct Tag {
     /// Type: String
     ///
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: cfn_resources::StrVal,
 }
 
 impl cfn_resources::CfnResource for Tag {
